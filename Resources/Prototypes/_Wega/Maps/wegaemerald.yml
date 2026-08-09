@@ -2,7 +2,7 @@
   id: WegaEmerald
   mapName: 'Emerald Station'
   mapPath: /Maps/_Wega/wegaemerald.yml
-  minPlayers: 60
+  minPlayers: 65
   stations:
     Emerald:
       stationProto: StandardNanotrasenStation

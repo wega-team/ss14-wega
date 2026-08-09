@@ -4,17 +4,20 @@
   abstract: true
   name: smile extract
   components:
-    - type: Sprite
-      sprite: _Wega/Objects/Consumable/Food/extracts.rsi
-    - type: Extractable
-      grindableSolutionName: food
-    - type: FlavorProfile
-      flavors:
-        - sweet
-    - type: SolutionContainerManager
-    - type: Tag
-      tags:
-      - SlimeRND
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+  - type: Extractable
+    grindableSolutionName: food
+  - type: FlavorProfile
+    flavors:
+    - sweet
+  - type: Solution
+    id: food
+    solution:
+      maxVol: 20
+  - type: Tag
+    tags:
+    - SlimeRND
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -22,20 +25,17 @@
   name: gray slime extract
   description: A basic slime extract. Contains trace elements.
   components:
-    - type: Sprite
-      state: grey
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractGray
-              Quantity: 5
-            - ReagentId: Silicon
-              Quantity: 5
+  - type: Sprite
+    state: grey
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractGray
+        Quantity: 5
+      - ReagentId: Silicon
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -43,20 +43,17 @@
   name: blue slime extract
   description: A cold slime extract. Chills to the touch.
   components:
-    - type: Sprite
-      state: blue
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractBlue
-              Quantity: 5
-            - ReagentId: Fluorine
-              Quantity: 5
+  - type: Sprite
+    state: blue
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractBlue
+        Quantity: 5
+      - ReagentId: Fluorine
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -64,20 +61,17 @@
   name: purple slime extract
   description: A toxic slime extract. Handle with care.
   components:
-    - type: Sprite
-      state: purple
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractPurple
-              Quantity: 5
-            - ReagentId: Uranium
-              Quantity: 3
+  - type: Sprite
+    state: purple
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractPurple
+        Quantity: 5
+      - ReagentId: Uranium
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -85,20 +79,17 @@
   name: orange slime extract
   description: A fiery slime extract. Warm to the touch.
   components:
-    - type: Sprite
-      state: orange
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractOrange
-              Quantity: 5
-            - ReagentId: Phosphorus
-              Quantity: 5
+  - type: Sprite
+    state: orange
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractOrange
+        Quantity: 5
+      - ReagentId: Phosphorus
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -106,20 +97,17 @@
   name: metallic slime extract
   description: A hard slime extract. Surprisingly dense.
   components:
-    - type: Sprite
-      state: metal
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractMetallic
-              Quantity: 5
-            - ReagentId: Iron
-              Quantity: 8
+  - type: Sprite
+    state: metal
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractMetallic
+        Quantity: 5
+      - ReagentId: Iron
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -127,20 +115,17 @@
   name: dark purple slime extract
   description: A highly toxic slime extract. Extremely dangerous.
   components:
-    - type: Sprite
-      state: dark_purple
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractDarkPurple
-              Quantity: 5
-            - ReagentId: Mercury
-              Quantity: 5
+  - type: Sprite
+    state: dark_purple
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractDarkPurple
+        Quantity: 5
+      - ReagentId: Mercury
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -148,20 +133,17 @@
   name: green slime extract
   description: A radioactive slime extract. Glows faintly.
   components:
-    - type: Sprite
-      state: green
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractGreen
-              Quantity: 5
-            - ReagentId: Radium
-              Quantity: 3
+  - type: Sprite
+    state: green
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractGreen
+        Quantity: 5
+      - ReagentId: Radium
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -169,20 +151,17 @@
   name: dark blue slime extract
   description: An extremely cold slime extract. Freezes on contact.
   components:
-    - type: Sprite
-      state: dark_blue
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractDarkBlue
-              Quantity: 5
-            - ReagentId: Chlorine
-              Quantity: 5
+  - type: Sprite
+    state: dark_blue
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractDarkBlue
+        Quantity: 5
+      - ReagentId: Chlorine
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -190,20 +169,17 @@
   name: pink slime extract
   description: A strange slime extract. Makes you feel... different.
   components:
-    - type: Sprite
-      state: pink
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractPink
-              Quantity: 5
-            - ReagentId: Lithium
-              Quantity: 5
+  - type: Sprite
+    state: pink
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractPink
+        Quantity: 5
+      - ReagentId: Lithium
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -211,20 +187,17 @@
   name: red slime extract
   description: A burning slime extract. Hot to the touch.
   components:
-    - type: Sprite
-      state: red
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractRed
-              Quantity: 5
-            - ReagentId: Sulfur
-              Quantity: 5
+  - type: Sprite
+    state: red
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractRed
+        Quantity: 5
+      - ReagentId: Sulfur
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -232,20 +205,17 @@
   name: yellow slime extract
   description: An electric slime extract. Crackles with energy.
   components:
-    - type: Sprite
-      state: yellow
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractYellow
-              Quantity: 5
-            - ReagentId: Sodium
-              Quantity: 5
+  - type: Sprite
+    state: yellow
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractYellow
+        Quantity: 5
+      - ReagentId: Sodium
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -253,20 +223,17 @@
   name: gold slime extract
   description: A valuable slime extract. Shimmers beautifully.
   components:
-    - type: Sprite
-      state: gold
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractGold
-              Quantity: 5
-            - ReagentId: Gold
-              Quantity: 3
+  - type: Sprite
+    state: gold
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractGold
+        Quantity: 5
+      - ReagentId: Gold
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -274,20 +241,17 @@
   name: silver slime extract
   description: A precious slime extract. Cool and reflective.
   components:
-    - type: Sprite
-      state: silver
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractSilver
-              Quantity: 5
-            - ReagentId: Silver
-              Quantity: 3
+  - type: Sprite
+    state: silver
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractSilver
+        Quantity: 5
+      - ReagentId: Silver
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -295,20 +259,17 @@
   name: black slime extract
   description: A dark slime extract. Absorbs light.
   components:
-    - type: Sprite
-      state: black
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractBlack
-              Quantity: 5
-            - ReagentId: Carbon
-              Quantity: 8
+  - type: Sprite
+    state: black
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractBlack
+        Quantity: 5
+      - ReagentId: Carbon
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -316,20 +277,17 @@
   name: sepia slime extract
   description: An ancient slime extract. Smells like old books.
   components:
-    - type: Sprite
-      state: sepia
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractSepia
-              Quantity: 5
-            - ReagentId: Iodine
-              Quantity: 5
+  - type: Sprite
+    state: sepia
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractSepia
+        Quantity: 5
+      - ReagentId: Iodine
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -337,20 +295,17 @@
   name: oil slime extract
   description: A slick slime extract. Highly flammable.
   components:
-    - type: Sprite
-      state: oil
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractOil
-              Quantity: 5
-            - ReagentId: Hydrogen
-              Quantity: 5
+  - type: Sprite
+    state: oil
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractOil
+        Quantity: 5
+      - ReagentId: Hydrogen
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -358,22 +313,19 @@
   name: bluespace slime extract
   description: A strange slime extract. Warps reality around it.
   components:
-    - type: Sprite
-      state: bluespace
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractBluespace
-              Quantity: 5
-            - ReagentId: Uranium
-              Quantity: 5
-            - ReagentId: Silicon
-              Quantity: 5
+  - type: Sprite
+    state: bluespace
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractBluespace
+        Quantity: 5
+      - ReagentId: Uranium
+        Quantity: 5
+      - ReagentId: Silicon
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -381,22 +333,19 @@
   name: adamantine slime extract
   description: An incredibly dense slime extract. Nearly indestructible.
   components:
-    - type: Sprite
-      state: adamantine
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractAdamantine
-              Quantity: 5
-            - ReagentId: Iron
-              Quantity: 8
-            - ReagentId: Carbon
-              Quantity: 8
+  - type: Sprite
+    state: adamantine
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractAdamantine
+        Quantity: 5
+      - ReagentId: Iron
+        Quantity: 5
+      - ReagentId: Carbon
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -404,22 +353,19 @@
   name: pyrite slime extract
   description: A deceptive slime extract. Not what it seems.
   components:
-    - type: Sprite
-      state: pyrite
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractPyrite
-              Quantity: 5
-            - ReagentId: Iron
-              Quantity: 5
-            - ReagentId: Sulfur
-              Quantity: 5
+  - type: Sprite
+    state: pyrite
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractPyrite
+        Quantity: 5
+      - ReagentId: Iron
+        Quantity: 5
+      - ReagentId: Sulfur
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -427,20 +373,17 @@
   name: azure slime extract
   description: A deep blue slime extract. Cold as the void.
   components:
-    - type: Sprite
-      state: cerulean
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractAzure
-              Quantity: 5
-            - ReagentId: Chlorine
-              Quantity: 8
+  - type: Sprite
+    state: cerulean
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractAzure
+        Quantity: 5
+      - ReagentId: Chlorine
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -448,22 +391,17 @@
   name: light pink slime extract
   description: A calming slime extract. Soothing to the touch.
   components:
-    - type: Sprite
-      state: light_pink
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 10
-            - ReagentId: SlimeExtractLightPink
-              Quantity: 5
-            - ReagentId: Lithium
-              Quantity: 3
-            - ReagentId: Potassium
-              Quantity: 3
+  - type: Sprite
+    state: light_pink
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: SlimeExtractLightPink
+        Quantity: 5
+      - ReagentId: Lithium
+        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -471,27 +409,25 @@
   name: rainbow slime extract
   description: A prismatic slime extract. Contains traces of everything.
   components:
-    - type: Sprite
-      state: rainbow
-    - type: Extractable
-      grindableSolutionName: food
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          reagents:
-            - ReagentId: Nutriment
-              Quantity: 20
-            - ReagentId: SlimeExtractRainbow
-              Quantity: 5
-            - ReagentId: Gold
-              Quantity: 2
-            - ReagentId: Silver
-              Quantity: 2
-            - ReagentId: Uranium
-              Quantity: 2
-            - ReagentId: Iron
-              Quantity: 2
-            - ReagentId: Carbon
-              Quantity: 2
-            - ReagentId: Silicon
-              Quantity: 2
+  - type: Sprite
+    state: rainbow
+  - type: Solution
+    solution:
+      maxVol: 35
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 20
+      - ReagentId: SlimeExtractRainbow
+        Quantity: 5
+      - ReagentId: Gold
+        Quantity: 2
+      - ReagentId: Silver
+        Quantity: 2
+      - ReagentId: Uranium
+        Quantity: 2
+      - ReagentId: Iron
+        Quantity: 2
+      - ReagentId: Carbon
+        Quantity: 2
+      - ReagentId: Silicon
+        Quantity: 2

@@ -59,13 +59,15 @@ public sealed partial class VampireSystem
             if (!HasComp<BloodstreamComponent>(hitEnt))
                 continue;
 
-            var groupsHeal = _damage.CreateWeightedHealFromGroups(args.User, ent.Comp.HealGroups);
-
-            _damage.TryChangeDamage(ent.Owner, groupsHeal, true, false, origin: ent);
+            _damage.TryChangeDamage(args.User, ent.Comp.Damage, true, false, origin: ent);
             _stamina.TakeStaminaDamage(ent, ent.Comp.StaminaMod, visual: false);
-
-            AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
-            _blood.TryModifyBleedAmount(hitEnt, -ent.Comp.BloodStealAmount.Float() * 2);
+            _blood.TryModifyBloodLevel(args.User, ent.Comp.ModifyBloodLevel);
+            _blood.TryModifyBleedAmount(args.User, ent.Comp.BloodlossModifier);
+			
+			if (!_mobState.IsDead(hitEnt))
+			{
+				AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
+			}
         }
     }
 

@@ -14,3 +14,5 @@ ent-MobConstructProteon = Протеон
     .desc = { ent-MobConstructJuggernaut.desc }
 ent-MobConstructIdol = Айдол
     .desc = { ent-MobConstructJuggernaut.desc }
+ent-FantomJaunt = банши
+    .desc = Жуткий призрак.

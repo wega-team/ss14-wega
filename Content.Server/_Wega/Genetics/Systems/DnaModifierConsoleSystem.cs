@@ -61,10 +61,9 @@ namespace Content.Server.Genetics.System
         {
             base.Initialize();
 
-            SubscribeLocalEvent<DnaModifierConsoleComponent, ComponentInit>(OnInit);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<DnaModifierConsoleComponent, AfterActivatableUIOpenEvent>(OnUIOpen);
             SubscribeLocalEvent<DnaModifierConsoleComponent, PowerChangedEvent>(OnPowerChanged);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, MapInitEvent>(OnMapInit);
             SubscribeLocalEvent<DnaModifierConsoleComponent, NewLinkEvent>(OnNewLink);
             SubscribeLocalEvent<DnaModifierConsoleComponent, PortDisconnectedEvent>(OnPortDisconnected);
             SubscribeLocalEvent<DnaModifierConsoleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
@@ -90,13 +89,25 @@ namespace Content.Server.Genetics.System
         }
 
         #region UI logic
-        private void OnInit(EntityUid uid, DnaModifierConsoleComponent component, ComponentInit args)
+        private void OnMapInit(EntityUid uid, DnaModifierConsoleComponent component, MapInitEvent args)
         {
             component.LastInjectorTime = _timing.CurTime + component.InjectorCooldown;
             component.LastSubjectInjectTime = _timing.CurTime + component.SubjectInjectCooldown;
             _signalSystem.EnsureSourcePorts(uid, DnaModifierConsoleComponent.ScannerPort);
 
             Dirty(uid, component);
+
+            if (!TryComp<DeviceLinkSourceComponent>(uid, out var receiver))
+                return;
+
+            foreach (var port in receiver.Outputs.Values.SelectMany(ports => ports))
+            {
+                if (TryComp<MedicalScannerComponent>(port, out var scanner))
+                {
+                    component.GeneticScanner = port;
+                    scanner.ConnectedConsole = uid;
+                }
+            }
         }
 
         public override void Update(float frameTime)
@@ -131,21 +142,6 @@ namespace Content.Server.Genetics.System
         private void OnPowerChanged(EntityUid uid, DnaModifierConsoleComponent component, ref PowerChangedEvent args)
         {
             UpdateUserInterface(uid, component);
-        }
-
-        private void OnMapInit(EntityUid uid, DnaModifierConsoleComponent component, MapInitEvent args)
-        {
-            if (!TryComp<DeviceLinkSourceComponent>(uid, out var receiver))
-                return;
-
-            foreach (var port in receiver.Outputs.Values.SelectMany(ports => ports))
-            {
-                if (TryComp<MedicalScannerComponent>(port, out var scanner))
-                {
-                    component.GeneticScanner = port;
-                    scanner.ConnectedConsole = uid;
-                }
-            }
         }
 
         private void OnNewLink(EntityUid uid, DnaModifierConsoleComponent component, NewLinkEvent args)

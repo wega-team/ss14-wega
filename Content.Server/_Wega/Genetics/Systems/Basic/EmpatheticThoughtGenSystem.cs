@@ -1,7 +1,4 @@
 using System.Linq;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
-using Content.Shared.FixedPoint;
 using Content.Shared.Genetics;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
@@ -10,7 +7,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Roles.Components;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Server.Genetics.System;
 

@@ -33,6 +33,7 @@
   - Reporter
   - Visitor
   - ServiceWorker
+  - TramDriver
   - Barber # Corvax-Wega-Barber
 
 - type: department
@@ -155,6 +156,7 @@
   roles:
   - Reporter
   - Psychologist
+  - TramDriver
   - Pilot # Corvax-Pilot
   - WardenHelper # Corvax-Wega-WardenHelper
   - Barber # Corvax-Wega-Barber

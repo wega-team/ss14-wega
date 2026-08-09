@@ -121,10 +121,21 @@ public sealed partial class DamageOverlayUiController : UIController
                     }
                 }
 
+                // Corvax-Wega-Precritical-Edit-start
                 if (damagePerGroup.TryGetValue("Airloss", out var oxyDamage))
                 {
                     _overlay.OxygenLevel = FixedPoint2.Min(1f, oxyDamage / critThreshold).Float();
+
+                    if (_overlay.OxygenLevel < 0.01f)
+                    {
+                        _overlay.OxygenLevel = 0f;
+                    }
                 }
+                else
+                {
+                    _overlay.OxygenLevel = 0f;
+                }
+                // Corvax-Wega-Precritical-end
 
                 _overlay.CritLevel = 0;
                 _overlay.DeadLevel = 0;
@@ -137,9 +148,31 @@ public sealed partial class DamageOverlayUiController : UIController
                         FixedPoint2.Max(0.0, _damageable.GetTotalDamage((entity, damageable))), out var critLevel))
                     return;
                 _overlay.CritLevel = critLevel.Value.Float();
-                _overlay.OxygenLevel = FixedPoint2.Min(FixedPoint2.New(1f), FixedPoint2.New(0.8f / (critLevel?.Float() ?? 1f))).Float();
 
-                _overlay.PainLevel = 0;
+                if (damagePerGroup.TryGetValue("Airloss", out var oxyDamagePreCrit))
+                {
+                    var oxygenValue = FixedPoint2.Min(FixedPoint2.New(1f), oxyDamagePreCrit / critThreshold);
+                    _overlay.OxygenLevel = oxygenValue.Float();
+                }
+                else
+                {
+                    _overlay.OxygenLevel = 0.8f / (critLevel?.Float() ?? 1f);
+                    _overlay.OxygenLevel = FixedPoint2.Min(FixedPoint2.New(1f), FixedPoint2.New(_overlay.OxygenLevel)).Float();
+                }
+
+                FixedPoint2 painLevelPreCrit = 0;
+                if (!_statusEffects.TryEffectsWithComp<PainNumbnessStatusEffectComponent>(entity, out _))
+                {
+                    foreach (var painDamageType in injurable.PainDamageGroups)
+                    {
+                        damagePerGroup.TryGetValue(painDamageType, out var painDamage);
+                        painLevelPreCrit += painDamage;
+                    }
+                    _overlay.PainLevel = FixedPoint2.Min(1f, painLevelPreCrit / critThreshold).Float();
+                    if (_overlay.PainLevel < 0.05f && _overlay.PainLevel > 0f)
+                        _overlay.PainLevel = 0.05f;
+                }
+
                 _overlay.DeadLevel = 0;
                 break;
             }

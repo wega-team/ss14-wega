@@ -62,8 +62,9 @@ public sealed partial class NavMapSystem
             tileData = FloorMask;
         else
             tileData &= FloorMask;
-
+#pragma warning disable CS0618 // It drives me crazy
         var enumerator = _mapSystem.GetAnchoredEntitiesEnumerator(mapGrid.Owner, mapGrid, originalTile);
+#pragma warning restore CS0618
         while (enumerator.MoveNext(out var ent))
         {
             if (!_airtightQuery.TryComp(ent, out var airtight))

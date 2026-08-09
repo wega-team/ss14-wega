@@ -2,11 +2,10 @@ using Content.Client.Overlays;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Shaders;
 using Robust.Client.Graphics;
-using Robust.Shared.GameStates;
 
 namespace Content.Client.Shaders.Systems;
 
-public sealed partial class NightVisionSystem : ToggleableEquipmentHudSystem<NightVisionComponent>
+public sealed partial class NightVisionSystem : ToggleableEquipmentHudSystem<ClothingNightVisionComponent>
 {
     [Dependency] private IOverlayManager _overlayMan = default!;
     [Dependency] private ILightManager _lightManager = default!;
@@ -15,17 +14,17 @@ public sealed partial class NightVisionSystem : ToggleableEquipmentHudSystem<Nig
 
     public override void Initialize()
     {
-		base.Initialize();
-		SubscribeLocalEvent<NightVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
+        base.Initialize();
+        SubscribeLocalEvent<ClothingNightVisionComponent, AfterAutoHandleStateEvent>(OnHandleState);
         _overlay = new();
     }
 
-	public void OnHandleState(Entity<NightVisionComponent> ent, ref AfterAutoHandleStateEvent args)
+    public void OnHandleState(Entity<ClothingNightVisionComponent> ent, ref AfterAutoHandleStateEvent args)
     {
         RefreshOverlay();
     }
 
-    protected override void UpdateInternal(RefreshEquipmentHudEvent<NightVisionComponent> args)
+    protected override void UpdateInternal(RefreshEquipmentHudEvent<ClothingNightVisionComponent> args)
     {
         base.UpdateInternal(args);
 

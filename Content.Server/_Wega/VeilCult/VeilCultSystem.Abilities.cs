@@ -110,7 +110,7 @@ public sealed partial class VeilCultSystem
 
     private void TransformMaterial(EntityUid user, EntityUid material, StackComponent stack)
     {
-        if (!_prototypeManager.TryIndex(stack.StackTypeId, out var stackPrototype))
+        if (!ProtoMan.TryIndex(stack.StackTypeId, out var stackPrototype))
             return;
 
         if (stackPrototype.ID is not ("Steel" or "Plasteel" or "Brass"))

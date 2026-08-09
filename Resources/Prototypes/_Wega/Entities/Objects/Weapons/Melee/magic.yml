@@ -40,7 +40,7 @@
         Blunt: 15
 
 - type: entity
-  parent: BaseItem
+  parent: [ BaseItem, SolutionWelder ]
   id: WeaponHandOfGod
   name: hand of god
   description: "Your hand is now glowing amazingly!"
@@ -71,13 +71,12 @@
     animation: WeaponArcClaw
   - type: IgniteOnMeleeHit
     fireStacks: 1
-  - type: SolutionContainerManager
-    solutions:
-      Welder:
-        reagents:
-        - ReagentId: WeldingFuel
-          Quantity: 4
-        maxVol: 4
+  - type: Solution
+    solution:
+      maxVol: 4
+      reagents:
+      - ReagentId: WeldingFuel
+        Quantity: 4
   - type: SolutionRegeneration
     generated:
       reagents:
@@ -126,10 +125,12 @@
       types:
         Blunt: 1
   - type: VampireClaws
-    healGroups:
-      groups:
-        Brute: -4
-        Burn: -4
+    damage:
+      types:
+        Heat: -1
+        Blunt: -2
+        Slash: -2
+        Piercing: -2
   - type: MeleeWeapon
     autoAttack: true
     attackRate: 2.5
@@ -138,6 +139,8 @@
       types:
         Slash: 15
     animation: WeaponArcClaw
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
 
 - type: entity
   parent: BaseKnife
@@ -250,6 +253,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
 
 - type: entity
   id: WeaponDeathBlade
@@ -269,8 +274,8 @@
     storedRotation: -45
     size: Normal
     shape:
-    - 0,0,1,0
-    - 0,2,0,1
+    - 0,0,1,2
+    - 0,0,2,1
   - type: CultWeapon
     cult: Blood
   - type: MeleeWeapon
@@ -289,6 +294,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
 
 - type: entity
   id: WeaponHellBlade
@@ -309,7 +316,7 @@
     size: Normal
     shape:
     - 0,0,2,1
-    - 1,2,1,1
+    - 1,0,2,1
   - type: CultWeapon
     cult: Blood
   - type: MeleeWeapon
@@ -328,6 +335,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
 
 - type: entity
   parent: BaseItem
@@ -415,6 +424,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
 
 - type: entity
   parent: BaseItem
@@ -575,6 +586,9 @@
       right:
       - state: inhand-right
         color: "#ff0000"
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container {}
   - type: Gun
     fireRate: 2
     soundGunshot:
@@ -584,6 +598,8 @@
     proto: ProjectileBloodBolt
     capacity: 24
   - type: CultAllowedGun # Corvax-Wega-Cult
+
+## Clockwork
 
 - type: entity
   id: WeaponClockworkSword
@@ -620,6 +636,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
 
 - type: entity
   id: WeaponClockworkSwordBorg
@@ -653,6 +671,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
 
 - type: entity
   id: WeaponClockHammer
@@ -709,6 +729,8 @@
     - WeaponClockHammerKnockback
     - WeaponClockHammerCrusher
     - WeaponClockHammerDismantling
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
 
 - type: entity
   parent: BaseEnchantable
@@ -781,6 +803,8 @@
   - type: Tool
     qualities:
     - Slicing
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
 
 - type: entity
   parent: BaseItem

@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Player;

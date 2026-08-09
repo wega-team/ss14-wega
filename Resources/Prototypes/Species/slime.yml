@@ -8,3 +8,10 @@
   skinColoration: Hues
   minHeight: 140 # Corvax-Wega-Height
   maxHeight: 190 # Corvax-Wega-Height
+  defaultSoundsBySex:
+  - MaleSlime
+  - FemaleSlime
+  - MaleSlime
+  voices:
+  - MaleSlime
+  - FemaleSlime

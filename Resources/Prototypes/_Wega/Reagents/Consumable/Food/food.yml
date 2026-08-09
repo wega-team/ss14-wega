@@ -46,3 +46,25 @@
   - !type:PlantAdjustHealth
     amount: 0.75
   pricePerUnit: 2
+
+- type: reagent
+  parent: Shrimp
+  id: CookedShrimp
+  name: reagent-name-cooked-shrimp
+  desc: reagent-desc-cooked-shrimp
+  color: "#102e0d"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:SatiateHunger
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
+      - !type:AdjustReagent
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
+        reagent: Protein
+        amount: 0.5

@@ -19,6 +19,8 @@ public sealed partial class GhostRespawnSystem : EntitySystem
 
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<MindContainerComponent, MindRemovedMessage>(OnMindRemoved);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
@@ -38,8 +40,10 @@ public sealed partial class GhostRespawnSystem : EntitySystem
     {
         if (e.Mind.Comp.UserId is null)
             return;
+
         if (TryComp<MobStateComponent>(entity, out var state) && state.CurrentState == MobState.Dead)
             return;
+
         if (!_player.TryGetSessionById(e.Mind.Comp.UserId.Value, out var session))
             return;
 

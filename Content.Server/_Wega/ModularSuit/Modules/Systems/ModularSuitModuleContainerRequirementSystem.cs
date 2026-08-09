@@ -20,14 +20,14 @@ public sealed partial class ModularSuitModuleContainerRequirementSystem : Entity
     {
         if (!_container.TryGetContainer(ent.Owner, ent.Comp.RequiredContainerId, out var container))
         {
-            _popup.PopupPredicted(Loc.GetString(ent.Comp.FailureMessage), args.Suit, null);
+            _popup.PopupEntity(Loc.GetString(ent.Comp.FailureMessage), args.Suit);
             args.Cancel();
             return;
         }
 
         if (container.ContainedEntities.Count == 0)
         {
-            _popup.PopupPredicted(Loc.GetString(ent.Comp.FailureMessage), args.Suit, null);
+            _popup.PopupEntity(Loc.GetString(ent.Comp.FailureMessage), args.Suit);
             args.Cancel();
         }
     }

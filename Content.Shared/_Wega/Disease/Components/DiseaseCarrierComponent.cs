@@ -1,5 +1,4 @@
 using System.Linq;
-using Content.Shared.Disease;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Shared.Disease.Components

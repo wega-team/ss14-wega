@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Shared.Body;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DirtVisuals;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Shuttles.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Surgery;

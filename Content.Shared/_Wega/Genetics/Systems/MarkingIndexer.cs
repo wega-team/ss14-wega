@@ -1,14 +1,12 @@
 using System.Linq;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid.Markings;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Shared.Genetics.Systems
 {
     public sealed partial class MarkingPrototypesIndexerSystem : EntitySystem
     {
-        [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private IRobustRandom _random = default!;
 
         private List<MarkingPrototypeInfo> _markingPrototypes = new List<MarkingPrototypeInfo>();
@@ -43,7 +41,7 @@ namespace Content.Shared.Genetics.Systems
         {
             _markingPrototypes.Clear();
 
-            var allMarkingPrototypes = _prototypeManager.EnumeratePrototypes<MarkingPrototype>();
+            var allMarkingPrototypes = ProtoMan.EnumeratePrototypes<MarkingPrototype>();
             foreach (var markingPrototype in allMarkingPrototypes)
             {
                 if (markingPrototype.MarkingType is MarkingTypes.NonGenetics)

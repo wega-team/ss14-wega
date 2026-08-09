@@ -1,4 +1,3 @@
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Genetics;
 using Content.Shared.Movement.Components;
@@ -18,7 +17,7 @@ public sealed partial class SpeedUpGenSystem : EntitySystem
 
         SubscribeLocalEvent<SpeedUpGenComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<SpeedUpGenComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<SpeedUpGenComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<SpeedUpGenComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     private void OnInit(Entity<SpeedUpGenComponent> ent, ref ComponentInit args)
@@ -47,25 +46,15 @@ public sealed partial class SpeedUpGenSystem : EntitySystem
         }
     }
 
-    private void OnDamageChanged(Entity<SpeedUpGenComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<SpeedUpGenComponent> ent, ref DamageDealtEvent args)
     {
-		if (ent.Comp.DamageBooster)		
-		{
-			if (args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
-				return;
+        if (!ent.Comp.DamageBooster)
+            return;
 
-			var bonusDamage = args.DamageDelta * 0.2f;
-			_damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
-		}
-    }
+        if (args.Damage.GetTotal() <= 0)
+            return;
 
-    private bool IsNegativeDamage(DamageSpecifier damage)
-    {
-        foreach (var type in damage.DamageDict)
-        {
-            if (type.Value > 0)
-                return false;
-        }
-        return true;
+        var bonusDamage = args.Damage * 0.2f;
+        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
     }
 }

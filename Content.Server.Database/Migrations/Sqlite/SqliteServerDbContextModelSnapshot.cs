@@ -15,7 +15,7 @@ namespace Content.Server.Database.Migrations.Sqlite
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "10.0.0");
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.6");
 
             modelBuilder.Entity("Content.Server.Database.Achievement", b =>
                 {
@@ -1201,13 +1201,17 @@ namespace Content.Server.Database.Migrations.Sqlite
                         .HasColumnType("TEXT")
                         .HasColumnName("status");
 
+                    b.Property<string>("TTSVoice")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasColumnName("ttsvoice");
+
                     b.Property<string>("TagsFlavorText")
                         .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("tags_flavor_text");
 
                     b.Property<string>("Voice")
-                        .IsRequired()
                         .HasColumnType("TEXT")
                         .HasColumnName("voice");
 

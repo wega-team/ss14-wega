@@ -1,7 +1,9 @@
+using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Body.Events;
 using Content.Shared.Chat;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -28,7 +30,6 @@ namespace Content.Server.Disease
     /// </summary>
     public sealed partial class DiseaseSystem : SharedDiseaseSystem
     {
-        [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
         [Dependency] private PopupSystem _popupSystem = default!;
@@ -37,6 +38,8 @@ namespace Content.Server.Disease
         [Dependency] private InventorySystem _inventorySystem = default!;
         [Dependency] private MobStateSystem _mobStateSystem = default!;
         [Dependency] private ChatSystem _chatSystem = default!;
+
+        private static readonly ProtoId<EmotePrototype> CougheId = "Cough";
 
         public override void Initialize()
         {
@@ -66,7 +69,9 @@ namespace Content.Server.Disease
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
-            foreach (var entity in AddQueue)
+
+            var toProcess = AddQueue.Where(e => !TerminatingOrDeleted(e)).ToList();
+            foreach (var entity in toProcess)
             {
                 EnsureComp<DiseasedComponent>(entity);
             }
@@ -152,7 +157,7 @@ namespace Content.Server.Disease
 
             foreach (var immunity in component.NaturalImmunities)
             {
-                if (_prototypeManager.TryIndex<DiseasePrototype>(immunity, out var disease))
+                if (ProtoMan.TryIndex<DiseasePrototype>(immunity, out var disease))
                     component.PastDiseases.Add(disease);
                 else
                 {
@@ -261,7 +266,7 @@ namespace Content.Server.Disease
         {
             if (TryComp<DiseaseCarrierComponent>(uid, out var carrier))
             {
-                SneezeCough(uid, _random.Pick(carrier.Diseases), string.Empty);
+                SneezeCough(uid, _random.Pick(carrier.Diseases), CougheId);
             }
         }
 
@@ -359,7 +364,7 @@ namespace Content.Server.Disease
 
         public void TryInfect(EntityUid uid, DiseaseCarrierComponent carrier, string? disease, float chance = 0.7f, bool forced = false)
         {
-            if (disease == null || !_prototypeManager.TryIndex<DiseasePrototype>(disease, out var d))
+            if (disease == null || !ProtoMan.TryIndex<DiseasePrototype>(disease, out var d))
                 return;
 
             TryInfect(uid, carrier, d, chance, forced);

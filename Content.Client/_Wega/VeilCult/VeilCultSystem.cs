@@ -3,13 +3,11 @@ using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client.Veil.Cult
 {
     public sealed partial class VeilCultSystem : SharedVeilCultSystem
     {
-        [Dependency] private IPrototypeManager _prototype = default!;
         [Dependency] private SpriteSystem _sprite = default!;
 
         public override void Initialize()
@@ -24,7 +22,7 @@ namespace Content.Client.Veil.Cult
 
         private void GetCultistIcons(Entity<VeilCultistComponent> ent, ref GetStatusIconsEvent args)
         {
-            var iconPrototype = _prototype.Index(ent.Comp.StatusIcon);
+            var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
             args.StatusIcons.Add(iconPrototype);
         }
 

@@ -10,6 +10,7 @@
   - TargetHuman
   - TargetSyndicate
   - Zipties
+  - SecurityBola
   - PouchSec # Corvax-Wega-Add
 
 # Practice ammo/mags and practice weapons
@@ -70,6 +71,7 @@
   - HoloprojectorSecurity
   - PortableRecharger
 # Corvax-Wega-Arsenal-start
+  - WeaponIonCarabine
   - WeaponDominator
   - WeaponTaser
   - PortableRechargerBag
@@ -77,6 +79,7 @@
   - PortableRechargerTurboBag
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
+  - ClothingEyesGlassesNightVision
   - ExmFlash
 # Corvax-Wega-Arsenal-end
   - PowerCageHigh

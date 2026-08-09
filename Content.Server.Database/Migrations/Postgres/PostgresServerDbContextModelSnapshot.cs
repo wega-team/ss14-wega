@@ -21,7 +21,7 @@ namespace Content.Server.Database.Migrations.Postgres
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.0")
+                .HasAnnotation("ProductVersion", "10.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -1268,13 +1268,17 @@ namespace Content.Server.Database.Migrations.Postgres
                         .HasColumnType("text")
                         .HasColumnName("status");
 
+                    b.Property<string>("TTSVoice")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("ttsvoice");
+
                     b.Property<string>("TagsFlavorText")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("tags_flavor_text");
 
                     b.Property<string>("Voice")
-                        .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("voice");
 

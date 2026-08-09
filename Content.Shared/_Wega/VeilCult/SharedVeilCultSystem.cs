@@ -23,7 +23,6 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
 
@@ -129,7 +128,7 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
 
         foreach (var enchantId in component.Enchants)
         {
-            if (_prototype.TryIndex(enchantId, out var enchant))
+            if (ProtoMan.TryIndex(enchantId, out var enchant))
                 availableEnchants.Add(enchant);
         }
 

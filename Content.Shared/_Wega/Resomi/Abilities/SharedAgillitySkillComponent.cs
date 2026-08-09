@@ -10,6 +10,7 @@ public sealed partial class AgillitySkillComponent : Component
 {
     [AutoNetworkedField, DataField]
     public Dictionary<string, int> DisabledJumpUpFixtureMasks = new();
+
     [AutoNetworkedField, DataField]
     public Dictionary<string, int> DisabledJumpDownFixtureMasks = new();
 

@@ -1,21 +1,15 @@
 using Content.Shared.Administration.Logs;
 using Content.Shared.Damage.Components;
 using Content.Shared.Database;
-using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Robust.Shared.Random;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
-using Content.Shared.Random;
 using Content.Shared.Movement.Pulling.Components;
-using Content.Shared.Effects;
 using Content.Shared.Hands;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Shared.DamageOnPickupSystem.Systems;
 
@@ -28,7 +22,6 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
     [Dependency] private InventorySystem _inventorySystem = default!;
     [Dependency] private ThrowingSystem _throwingSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     public override void Initialize()
@@ -46,7 +39,7 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
         entity.Comp.IsDamageActive = mode;
         Dirty(entity);
     }
-	
+
     private void OnEquipped(Entity<DamageOnPickupComponent> entity, ref BeforeGettingEquippedHandEvent args)
     {
         if (!entity.Comp.Throw || !TryComp<PullableComponent>(entity, out var pullComp) || pullComp.BeingPulled)
@@ -56,11 +49,10 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
             return;
 
         var totalDamage = entity.Comp.Damage;
-		
         if (!entity.Comp.IgnoreResistances)
         {
             _inventorySystem.TryGetInventoryEntity<DamageOnInteractProtectionComponent>(args.User, out var protectiveEntity);
-            
+
             if (protectiveEntity.Comp == null && TryComp<DamageOnInteractProtectionComponent>(args.User, out var protectiveComp))
                 protectiveEntity = (args.User, protectiveComp);
 
@@ -70,7 +62,7 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
                 totalDamage = DamageSpecifier.ApplyModifierSet(totalDamage, protectiveEntity.Comp.DamageProtection);
             }
         }
-		
+
         totalDamage = _damageableSystem.ChangeDamage(args.User, totalDamage, origin: entity.Owner);
 
         if (totalDamage.AnyPositive())
@@ -79,12 +71,12 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
             _audioSystem.PlayPredicted(entity.Comp.InteractSound, entity.Owner, args.User);
 
             if (entity.Comp.PopupText != null)
-                _popupSystem.PopupClient(Loc.GetString(entity.Comp.PopupText), args.User, args.User);
-			
-			args.Cancelled = true;
-			_transform.SetCoordinates(entity, Transform(args.User).Coordinates);
-			_transform.AttachToGridOrMap(entity);
-			_throwingSystem.TryThrow(entity, _random.NextVector2(), entity.Comp.ThrowSpeed, doSpin: true);
-		}
+                _popupSystem.PopupEntity(Loc.GetString(entity.Comp.PopupText), args.User, args.User);
+
+            args.Cancelled = true;
+            _transform.SetCoordinates(entity, Transform(args.User).Coordinates);
+            _transform.AttachToGridOrMap(entity);
+            _throwingSystem.TryThrow(entity, _random.NextVector2(), entity.Comp.ThrowSpeed, doSpin: true);
+        }
     }
 }

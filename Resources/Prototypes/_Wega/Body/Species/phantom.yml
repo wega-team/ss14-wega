@@ -100,7 +100,6 @@
     normalBodyTemperature: 288.15
     thermalRegulationTemperatureThreshold: 2
   - type: Temperature
-    currentTemperature: 288.15
     specificHeat: -20
   - type: TemperatureDamage
     heatDamageThreshold: 318.15

@@ -38,9 +38,7 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         var chargeLevel = (short)MathF.Round(_battery.GetChargeLevel(battery.Value.AsNullable()) * 10f);
 
         if (chargeLevel == 0 && _powerCell.HasDrawCharge(ent.Owner))
-        {
             chargeLevel = 1;
-        }
 
         _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargeLevel);
     }

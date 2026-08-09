@@ -25,7 +25,7 @@
     tags:
     - BoxCardboard
     - BoxHug
-    
+
 - type: entity
   parent: BoxCardboard
   id: BoxCore
@@ -38,6 +38,7 @@
     - state: heart
   - type: Item
     heldPrefix: hug
+    size: Ginormous
   - type: Tag
     tags:
     - BoxCardboard

@@ -9,7 +9,7 @@
       entity_storage: !type:NestedSelector
         tableId: FillBlueShieldOfficerHardsuit
   - type: AccessReader
-    access: [["Command"]]
+    access: [["BlueShieldOfficer"]]
 
 #Explorer Suit
 - type: entity

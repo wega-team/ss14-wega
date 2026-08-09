@@ -1,0 +1,149 @@
+- type: entity
+  parent: BaseItem
+  abstract: true
+  id: BaseBadgeSec
+  name: badge
+  components:
+  - type: Item
+    size: Tiny
+  - type: ClothingUpgrade
+    tags: [ Badge ]
+  - type: RedescribeOnInteract
+    isDescIn: true
+    nameTitleLocString: renameable-component-rename-action-badge
+    redescribeActionLocString: renameable-component-name-field-badge
+  - type: ClothingAccessoriesProtection
+    modifiers:
+      coefficients:
+        Piercing: 0.95
+        Heat: 0.95
+  - type: Tag
+    tags:
+    - UniformUpgrade
+    - Badge
+  - type: StealTarget
+    stealGroup: BadgeSec
+
+# Sec
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeSecT0
+  name: pilot badge
+  suffix: t0
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/secT0.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-secT0
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/secT0.rsi, state: equipped-NECK }
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeSecT1
+  name: badge
+  suffix: t1
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/secT1.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-secT1
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/secT1.rsi, state: equipped-NECK }
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeSecT2
+  name: officer badge
+  suffix: t2
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/secT2.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-secT2
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/secT2.rsi, state: equipped-NECK }
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeSecT3
+  name: warden assistant badge
+  suffix: t3
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/secT3.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-secT3
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/secT3.rsi, state: equipped-NECK }
+
+## Com
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeComT1
+  name: warden badge
+  suffix: c1
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/comT1.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-comT1
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/comT1.rsi, state: equipped-NECK }
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeComT2
+  name: head of security badge
+  suffix: c2
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/comT2.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-comT2
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/comT2.rsi, state: equipped-NECK }
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeComT3
+  name: head of security badge
+  suffix: c3
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/comT3.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-comT3
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/comT3.rsi, state: equipped-NECK }
+
+# Special
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeDec
+  name: detective badge
+  suffix: detective
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/detbadge.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-dec
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/detbadge.rsi, state: equipped-NECK }
+
+- type: entity
+  parent: [BaseBadgeSec,BaseClothingAccessories]
+  id: AccessoriesBadgeBrigmed
+  name: brigmedic badge
+  suffix: bm
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/SecBadge/brigmedbadge.rsi
+    state: icon
+  - type: ClothingUpgrade
+    examineText: clothing-upgrade-examine-text-brigmed
+    sprite: { sprite: _Wega/Clothing/Accessories/SecBadge/brigmedbadge.rsi, state: equipped-NECK }
+

@@ -21,6 +21,7 @@ using Robust.Shared.Player;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Strangulation
 {
@@ -34,9 +35,11 @@ namespace Content.Server.Strangulation
         [Dependency] private SharedHandsSystem _hands = default!;
         [Dependency] private PullingSystem _pulling = default!;
         [Dependency] private AlertsSystem _alerts = default!;
-        [Dependency] private SharedStutteringSystem _stutteringSystem = default!;
+        [Dependency] private StutteringSystem _stutteringSystem = default!;
         [Dependency] private SharedCombatModeSystem _combatModeSystem = default!;
         [Dependency] private StatusEffectsSystem _statusEffect = default!;
+
+        private static readonly EntProtoId Muted = "StatusEffectMuted";
 
         public override void Initialize()
         {
@@ -107,7 +110,7 @@ namespace Content.Server.Strangulation
                 return;
 
             var target = args.Target ?? default;
-            _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(3f));
+            _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(3f));
 
             if (args.Cancelled)
             {
@@ -302,7 +305,7 @@ namespace Content.Server.Strangulation
             _doAfterSystem.Cancel(comp.BreakFreeDoAfterId);
             comp.Cancelled = true;
             _alerts.ClearAlert(target, comp.StrangledAlert);
-            _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5));
+            _stutteringSystem.DoStutter(target, TimeSpan.FromSeconds(0), true);
             _combatModeSystem.SetDisarmFailChance(target, 0.75f);
             RemComp<StranglerComponent>(strangler);
             RemComp<StrangulationComponent>(target);

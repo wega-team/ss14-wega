@@ -17,6 +17,11 @@
       reagents:
       - ReagentId: Nutriment
         Quantity: 30
+  # Corvax-Wega-start
+  - type: Tag
+    tags:
+    - ReptilianFood
+  # Corvax-Wega-end
 
 # Noodles
 

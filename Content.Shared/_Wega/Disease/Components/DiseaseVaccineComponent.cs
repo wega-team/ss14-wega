@@ -1,6 +1,3 @@
-using System.Threading;
-using Content.Shared.Disease;
-
 namespace Content.Shared.Disease.Components
 {
     /// <summary>

@@ -89,6 +89,9 @@ ent-HardsuitOperMedSelector = преобразователь медицинск�
 ent-HardsuitChaplain = преобразователь священного одеяния
     .desc = { ent-HardsuitCESelector.desc }
     .suffix = Селектор
+ent-HardsuitAsteroidSelector = преобразователь астероидно-шахтёрского скафандра
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
 
 # Другие селекторы
 ent-OtherCrashSelector = преобразователь крушителя

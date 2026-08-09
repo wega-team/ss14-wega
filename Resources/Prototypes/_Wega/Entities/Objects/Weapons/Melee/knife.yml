@@ -1,6 +1,6 @@
 - type: entity
   name: combat crowbar
-  parent: [BaseKnife, BaseRestrictedContraband]
+  parent: [BaseKnife, BaseCentcommContraband]
   id: CombatCrowbar
   description: A deadly knife designed for close combat. Thanks to the improved handle, it also works as a crowbar.
   components:
@@ -80,6 +80,10 @@
     walkModifier: 1.1
     sprintModifier: 1.1
   - type: HeldSpeedModifier
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseItem

@@ -13,3 +13,11 @@
   #lastNames: names_vulpkanin_last
   minHeight: 160 # Corvax-Wega-Height
   maxHeight: 210 # Corvax-Wega-Height
+  # lastNames: names_vulpkanin_last # Corvax-LastnameGender
+  defaultSoundsBySex:
+  - MaleVulpkanin
+  - FemaleVulpkanin
+  - MaleVulpkanin
+  voices:
+  - MaleVulpkanin
+  - FemaleVulpkanin

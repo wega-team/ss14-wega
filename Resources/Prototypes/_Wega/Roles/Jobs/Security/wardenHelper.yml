@@ -12,7 +12,6 @@
       inverted: true
       traits:
       - Muted
-  weight: 5
   startingGear: WardenHelperGear
   icon: "JobIconWardenHelper"
   supervisors: job-supervisors-hos

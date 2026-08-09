@@ -145,6 +145,7 @@ public sealed partial class VoiceOfGodSystem : EntitySystem
     private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
 
     private static readonly EntProtoId ForceSleeping = "StatusEffectForcedSleeping";
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private static readonly ProtoId<EmotePrototype> Deathgasp = "DefaultDeathgasp";
     private static readonly ProtoId<EmotePrototype> Salute = "Salute";
@@ -359,14 +360,10 @@ public sealed partial class VoiceOfGodSystem : EntitySystem
 
     private void ApplySilence(EntityUid target, float duration)
     {
-        if (HasComp<MutedComponent>(target))
+        if (_statusEffects.HasEffectComp<MutedStatusEffectComponent>(target))
             return;
 
-        EnsureComp<MutedComponent>(target);
-        Timer.Spawn(TimeSpan.FromSeconds(duration), () =>
-        {
-            RemComp<MutedComponent>(target);
-        });
+        _statusEffects.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(duration));
     }
 
     private void ApplyWakeUp(EntityUid target)

@@ -13,7 +13,7 @@ public sealed partial class VentCrawlerClothingSystem : EntitySystem
         SubscribeLocalEvent<VentCrawlerClothingComponent, GotEquippedEvent>(OnDidEquip);
         SubscribeLocalEvent<VentCrawlerClothingComponent, GotUnequippedEvent>(OnDidUnequip);
     }
-    
+
     private void OnDidEquip(Entity<VentCrawlerClothingComponent> ent, ref GotEquippedEvent args)
     {
         if (HasComp<VentCrawlerComponent>(args.EquipTarget))
@@ -25,7 +25,7 @@ public sealed partial class VentCrawlerClothingSystem : EntitySystem
         ent.Comp.AlreadyHas = false;
         EnsureComp<VentCrawlerComponent>(args.EquipTarget);
     }
-    
+
     private void OnDidUnequip(Entity<VentCrawlerClothingComponent> ent, ref GotUnequippedEvent args)
     {
         if (ent.Comp.AlreadyHas)

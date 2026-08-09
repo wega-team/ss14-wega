@@ -1,4 +1,3 @@
-// Content.Client/Shower/ShowerSystem.cs
 using Content.Shared.DirtVisuals;
 using Robust.Client.GameObjects;
 

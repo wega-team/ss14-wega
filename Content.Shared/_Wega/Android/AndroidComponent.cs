@@ -14,6 +14,7 @@ public sealed partial class AndroidComponent : Component
 {
     [DataField]
     public float DischargeSpeedModifier = 0.4f;
+
     [DataField]
     public SoundSpecifier DischargeStunSound = new SoundCollectionSpecifier("CargoError");
     public TimeSpan DischargeTime;
@@ -30,16 +31,22 @@ public sealed partial class AndroidComponent : Component
 
     [DataField]
     public float BasePointLightRadiuse = 2.5f;
+
     [DataField]
     public float BasePointLightEnergy = 1.6f;
+
     [ViewVariables(VVAccess.ReadWrite)]
     public EntityUid? LightEntity;
+
     [DataField]
     public SoundSpecifier ToggleLightSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
+
     [DataField("lightPrototype")]
-    public String LightEntityPrototype = "AndroidLightMarker";
+    public string LightEntityPrototype = "AndroidLightMarker";
+
     [DataField]
     public string TogglelLightAction = "ActionToggleAndroidLeds";
+
     public EntityUid? ToggleLightActionEntity;
 }
 

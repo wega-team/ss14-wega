@@ -40,3 +40,14 @@
     - MedkitAdvancedFilled
     - SurvivalMedipen
     - SurvivalKnife
+
+- type: chameleonOutfit
+  id: ShaftMinerMedicChameleonOutfit
+  job: ShaftMinerMedic
+  equipment:
+    head: ClothingHeadHatCargosoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskGasExplorer
+    outerClothing: ClothingOuterArmorExplorerSuitMedical
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesColorBlack

@@ -27,25 +27,6 @@ pathfinding = false
 [net]
 tickrate = 30
 
-[netres]
-limit = 25.0
-
-[admin]
-admins_count_in_playercount = true
-
-[movement]
-mob_pushing = false
-
-[infolinks]
-discord = "https://discord.gg/bJrgSmKf3a"
-wiki = "https://station14.ru"
-appeal = "https://discord.gg/bJrgSmKf3a"
-website = "https://ss14.ru"
-patreon = "https://boosty.to/corvaxwega"
-
-[viewport]
-maximum_width = 26
-
 [game.panic_bunker]
 enabled = true
 show_reason = true
@@ -65,10 +46,6 @@ tags = "lang:ru,rp:low,rp:med,region:eu_e,tts,18+"
 [server]
 lobby_name = "🌟 Corvax — Вега 🌟[TTS][18+]"
 rules_file = "WegaRuleset"
-
-[atmos]
-max_explosion_range = 5
-space_wind = true
 
 [shuttle]
 emergency_early_launch_allowed = true

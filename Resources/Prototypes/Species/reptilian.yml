@@ -11,3 +11,10 @@
   naming: FirstDashFirst
   minHeight: 190 # Corvax-Wega-Height
   maxHeight: 250 # Corvax-Wega-Height
+  defaultSoundsBySex:
+  - MaleReptilian
+  - FemaleReptilian
+  - MaleReptilian
+  voices:
+  - MaleReptilian
+  - FemaleReptilian

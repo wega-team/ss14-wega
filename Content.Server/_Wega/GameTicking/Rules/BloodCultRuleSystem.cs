@@ -3,8 +3,6 @@ using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Bed.Cryostorage;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
@@ -67,7 +65,6 @@ namespace Content.Server.GameTicking.Rules
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BloodCultRuleComponent, ComponentStartup>(OnRuleStartup);
             SubscribeLocalEvent<BloodCultRuleComponent, AfterAntagEntitySelectedEvent>(OnCultistSelected);
 
             SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>((_, _, _) => CheckStage());
@@ -84,8 +81,10 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<BloodCultistComponent, EntityZombifiedEvent>(OnCultistZombified);
         }
 
-        private void OnRuleStartup(EntityUid uid, BloodCultRuleComponent component, ComponentStartup args)
+        protected override void Started(EntityUid uid, BloodCultRuleComponent component,
+            GameRuleComponent gameRule, GameRuleStartedEvent args)
         {
+            base.Started(uid, component, gameRule, args);
             component.SelectedGod = (BloodCultGod)_random.Next(0, 3);
         }
 
@@ -278,7 +277,7 @@ namespace Content.Server.GameTicking.Rules
                         if (TryComp<StomachComponent>(organ, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
-                        _metabolism.TryAddMetabolizerType(metabolizer, "BloodCultist");
+                        _metabolism.TryAddMetabolizerType(organ, "BloodCultist");
                     }
                 }
             }
@@ -288,6 +287,7 @@ namespace Content.Server.GameTicking.Rules
         {
             string selectedGod = "";
             var query = QueryActiveRules();
+
             while (query.MoveNext(out _, out _, out var cult, out _))
             {
                 selectedGod = cult.SelectedGod switch
@@ -495,6 +495,9 @@ namespace Content.Server.GameTicking.Rules
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
         {
+            string selectedGod = "";
+            var query = QueryActiveRules();
+
             var winText = Loc.GetString($"blood-cult-{component.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 
@@ -504,7 +507,19 @@ namespace Content.Server.GameTicking.Rules
                 args.AddLine(text);
             }
 
-            args.AddLine(Loc.GetString("blood-cultist-list-start"));
+            while (query.MoveNext(out _, out _, out var cult, out _))
+            {
+                selectedGod = cult.SelectedGod switch
+                {
+                    BloodCultGod.NarSi => Loc.GetString("current-god-narsie"),
+                    BloodCultGod.Reaper => Loc.GetString("current-god-reaper-list"),
+                    BloodCultGod.Kharin => Loc.GetString("current-god-kharin-list"),
+                    _ => Loc.GetString("current-god-narsie")
+                };
+                break;
+            }
+
+            args.AddLine(Loc.GetString("blood-cultist-list-start", ("god", selectedGod)));
 
             var antags = _antag.GetAntagIdentifiers(uid);
             foreach (var (_, sessionData, name) in antags)

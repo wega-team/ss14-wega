@@ -2,8 +2,8 @@
   id: WegaKilo
   mapName: 'Kilo'
   mapPath: /Maps/_Wega/wegakilostation.yml
-  minPlayers: 30
-  maxPlayers: 75
+  minPlayers: 25
+  maxPlayers: 65
   stations:
     Kilo:
       stationProto: StandardNanotrasenStation
@@ -17,9 +17,6 @@
           emergencyShuttlePath: /Maps/Shuttles/emergency_amber.yml
         - type: StationCargoShuttle
           path: /Maps/_Wega/Shuttles/cargo_kilo.yml
-        - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
         - type: StationJobs
           availableJobs:
             #service

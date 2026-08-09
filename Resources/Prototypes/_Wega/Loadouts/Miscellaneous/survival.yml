@@ -42,16 +42,7 @@
     proto: SpeciesAndroid
   storage:
     back:
-    - BoxAndroidHug 
-
-- type: loadout
-  id: EmergencyAndroidMime
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: SpeciesAndroid
-  storage:
-    back:
-    - BoxAndroidMime
+    - BoxAndroidHug
 
 - type: loadout
   id: EmergencyAndroidBlueShield
@@ -70,6 +61,16 @@
   storage:
     back:
     - BoxSurvivalAndroidSyndicate
+
+- type: loadout
+  id: EmergencyAndroidPack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpeciesAndroid
+  storage:
+    back:
+    - Tyriumpack3
+    - WelderMini
 
 # Other
 - type: loadout

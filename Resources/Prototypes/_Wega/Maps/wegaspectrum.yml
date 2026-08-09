@@ -2,7 +2,7 @@
   id: WegaSpectrum
   mapName: 'Spectrum Station'
   mapPath: /Maps/_Wega/wegaspectrum.yml
-  minPlayers: 70
+  minPlayers: 65
   stations:
     WegaSpectrum:
       stationProto: StandardNanotrasenStation

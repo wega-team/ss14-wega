@@ -16,3 +16,17 @@
   - BurgerDispenserSuitModule
   - ApparatusSuitModule
   - AdvancedFlashlightSuitModule
+
+- type: technology
+  id: BorgModuleT3Civilian
+  name: research-technology-civilian-t3-borgmodule
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: service
+  discipline: CivilianServices
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - BorgModuleCommonHand
+  - BorgModuleCleanerRare
+  - BorgModuleServiceRare

@@ -1,7 +1,7 @@
 - type: gameMap
   id: CorvaxSilly
   mapName: 'Silly Island'
-  mapPath: /Maps/_Wega/wegasilly.yml #Corvax-Wega-Maps
+  mapPath: /Maps/Corvax/corvax_silly.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0
@@ -19,11 +19,6 @@
           emergencyShuttlePath: /Maps/Corvax/Shuttles/emergency_corvaxsilly.yml
         - type: StationCargoShuttle
           path: /Maps/Corvax/Shuttles/cargo_corvaxsilly.yml
-        # Corvax-Wega-Lavalabd-start
-        - type: StationLavaland
-          planets: [ Lavaland ]
-          enabled: false
-        # Corvax-Wega-Lavalabd-end
         - type: StationJobs
           availableJobs:
             # command

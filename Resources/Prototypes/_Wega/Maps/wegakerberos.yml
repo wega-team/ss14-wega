@@ -2,7 +2,7 @@
   id: WegaKerberos
   mapName: 'Kerberos Station'
   mapPath: /Maps/_Wega/wegakerberos.yml
-  minPlayers: 60
+  minPlayers: 65
   stations:
     Kerberos:
       stationProto: StandardNanotrasenStation
@@ -26,7 +26,6 @@
             #service
             Captain: [ 1, 1 ]
             BlueShieldOfficer: [ 1, 1 ]
-            IAA: [ 1, 1 ] # Corvax-IAA
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 2, 2 ]
             Botanist: [ 3, 4 ]

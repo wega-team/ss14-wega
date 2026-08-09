@@ -8,6 +8,10 @@ on:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ master, staging, stable ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+
 jobs:
   build:
     if: github.actor != 'IanComradeBot' && github.event.pull_request.draft == false
@@ -16,10 +20,18 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60 # Corvax-Wega-Edit | More time is needed for Check
 
     steps:
     - name: Checkout Master
       uses: actions/checkout@v7
+
+    # Corvax-Wega-Specific-start
+    - name: Delete sponsor secrets content
+      run: |
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
+    # Corvax-Wega-Specific-end
 
     - name: Setup Submodule
       run: |

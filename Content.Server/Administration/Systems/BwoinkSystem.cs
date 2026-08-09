@@ -19,6 +19,7 @@ using Content.Shared.Players.RateLimiting;
 using JetBrains.Annotations;
 using Robust.Server.Player;
 using Robust.Shared;
+using Robust.Shared.Asynchronous;
 using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
@@ -44,6 +45,7 @@ namespace Content.Server.Administration.Systems
         [Dependency] private IAfkManager _afkManager = default!;
         [Dependency] private IServerDbManager _dbManager = default!;
         [Dependency] private PlayerRateLimitManager _rateLimit = default!;
+        [Dependency] private ITaskManager _taskManager = default!;
 
         [GeneratedRegex(@"^https://discord\.com/api/webhooks/(\d+)/((?!.*/).*)$")]
         private static partial Regex DiscordRegex();
@@ -95,7 +97,7 @@ namespace Content.Server.Administration.Systems
             Subs.CVar(_config, CVars.GameHostName, OnServerNameChanged, true);
             Subs.CVar(_config, CCVars.AdminAhelpOverrideClientName, OnOverrideChanged, true);
             Subs.CVar(_config, CCVars.AhelpQuickInfoStartWordSize, v => _startWordMinSize = v, true);
-            _sawmill = IoCManager.Resolve<ILogManager>().GetSawmill("AHELP");
+            _sawmill = LogManager.GetSawmill("AHELP");
 
             var defaultParams = new AHelpMessageParams(
                 string.Empty,
@@ -527,6 +529,8 @@ namespace Content.Server.Administration.Systems
             }
 
             _relayMessages[userId] = existingEmbed;
+            _taskManager.RunOnMainThread(() =>
+                RaiseLocalEvent(new CorvaxAHelpRelayChangedEvent(userId))); // Corvax-API
 
             // Actually do the on call relay last, we just need to grab it before we dequeue every message above.
             if (onCallRelay &&
@@ -721,7 +725,7 @@ namespace Content.Server.Administration.Systems
 
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;
-                
+
             _afkManager.PlayerDidAction(senderSession);
 
             // If it's not an admin / admin chooses to keep the sound and message is not an admin only message, then play it.

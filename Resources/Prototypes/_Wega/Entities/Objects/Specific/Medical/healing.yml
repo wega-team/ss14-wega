@@ -1,31 +1,326 @@
+# Pills
 - type: entity
-  suffix: spaceacillin
-  parent: BaseSyringe
-  id: SyringeSpaceacillin
-  components:
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 15
-        reagents:
-        - ReagentId: Spaceacillin
-          Quantity: 15
-
-- type: entity
-  name: mutadon pill
   parent: Pill
   id: PillMutadon
+  name: mutadon pill
+  suffix: Mutadon 10u
   components:
-    - type: Label
-      currentLabel: mutadon 10u
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 20
-          reagents:
-            - ReagentId: Mutadon
-              Quantity: 10
+  - type: Label
+    localizedLabel: pill-label-mutadon-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Mutadon
+        Quantity: 10
 
+- type: entity
+  parent: Pill
+  id: PillBruzin
+  name: pill
+  suffix: Bruzin 10u
+  components:
+  - type: Pill
+    pillType: 4
+  - type: Sprite
+    state: pill4
+  - type: Label
+    localizedLabel: pill-label-bruizine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Bruizine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillLacerinol
+  name: pill
+  suffix: Lacerinol 10u
+  components:
+  - type: Pill
+    pillType: 7
+  - type: Sprite
+    state: pill7
+  - type: Label
+    localizedLabel: pill-label-lacerinol-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Lacerinol
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillPuncturase
+  name: pill
+  suffix: Puncturase 10u
+  components:
+  - type: Pill
+    pillType: 9
+  - type: Sprite
+    state: pill9
+  - type: Label
+    localizedLabel: pill-label-puncturase-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Puncturase
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillInsuzine
+  name: pill
+  suffix: Insuzine 10u
+  components:
+  - type: Pill
+    pillType: 10
+  - type: Sprite
+    state: pill10
+  - type: Label
+    localizedLabel: pill-label-insuzine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Insuzine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillLeporazine
+  name: pill
+  suffix: Leporazine 10u
+  components:
+  - type: Pill
+    pillType: 20
+  - type: Sprite
+    state: pill20
+  - type: Label
+    localizedLabel: pill-label-leporazine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Leporazine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillPyrazine
+  name: pill
+  suffix: Pyrazine 10u
+  components:
+  - type: Pill
+    pillType: 10
+  - type: Sprite
+    state: pill10
+  - type: Label
+    localizedLabel: pill-label-pyrazine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Pyrazine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillPhalanximine
+  name: pill
+  suffix: Phalanximine 10u
+  components:
+  - type: Pill
+    pillType: 17
+  - type: Sprite
+    state: pill17
+  - type: Label
+    localizedLabel: pill-label-phalanximine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Phalanximine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillArithrazine
+  name: pill
+  suffix: Arithrazine 10u
+  components:
+  - type: Pill
+    pillType: 12
+  - type: Sprite
+    state: pill12
+  - type: Label
+    localizedLabel: pill-label-arithrazine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Arithrazine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillDexalinPlus
+  name: pill
+  suffix: DexalinPlus 10u
+  components:
+  - type: Pill
+    pillType: 8
+  - type: Sprite
+    state: pill8
+  - type: Label
+    localizedLabel: pill-label-dexalin-plus-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: DexalinPlus
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillSaline
+  name: pill
+  suffix: Saline 10u
+  components:
+  - type: Pill
+    pillType: 1
+  - type: Sprite
+    state: pill1
+  - type: Label
+    localizedLabel: pill-label-saline-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Saline
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillOmnizine
+  name: pill
+  suffix: Omnizine 10u
+  components:
+  - type: Pill
+    pillType: 18
+  - type: Sprite
+    state: pill8
+  - type: Label
+    localizedLabel: pill-label-omnizine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillSigynate
+  name: pill
+  suffix: Sigynate 10u
+  components:
+  - type: Pill
+    pillType: 20
+  - type: Sprite
+    state: pill20
+  - type: Label
+    localizedLabel: pill-label-sigynate-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sigynate
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillDiphenhydramine
+  name: pill
+  suffix: Diphenhydramine 10u
+  components:
+  - type: Pill
+    pillType: 3
+  - type: Sprite
+    state: pill3
+  - type: Label
+    localizedLabel: pill-label-diphenhydramine-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Diphenhydramine
+        Quantity: 10
+
+- type: entity
+  parent: Pill
+  id: PillDylomet
+  name: pill
+  suffix: Desoxyephedrine + Dyloven 15u
+  components:
+  - type: Pill
+    pillType: 19
+  - type: Sprite
+    state: pill19
+  - type: Label
+    localizedLabel: pill-label-dylomet-15u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Desoxyephedrine
+        Quantity: 10
+      - ReagentId: Dylovene
+        Quantity: 5
+
+- type: entity
+  parent: Pill
+  id: PillExMedipen
+  name: pill
+  description: pill with reagent medipen
+  suffix: Epinephrine + Tranexamic Acid 15u
+  components:
+  - type: Pill
+    pillType: 18
+  - type: Sprite
+    state: pill18
+  - type: Label
+    localizedLabel: pill-label-exmedipen-15u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Epinephrine
+        Quantity: 12
+      - ReagentId: TranexamicAcid
+        Quantity: 3
+
+- type: entity
+  parent: Pill
+  id: PillFresium
+  name: pill
+  suffix: Fresium 10u
+  components:
+  - type: Pill
+    pillType: 16
+  - type: Sprite
+    state: pill16
+  - type: Label
+    localizedLabel: pill-label-fresium-10u
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fresium
+        Quantity: 10
+
+# Syringes
+- type: entity
+  parent: PrefilledSyringe
+  id: SyringeSpaceacillin
+  suffix: spaceacillin
+  components:
+  - type: Label
+    localizedLabel: reagent-name-spaceacillin
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Spaceacillin
+        Quantity: 15
+
+# Pill Canisters
 - type: entity
   name: pill canister
   parent: PillCanister
@@ -33,7 +328,7 @@
   suffix: Ambuzol 10u, 5
   components:
   - type: Label
-    currentLabel: ambuzol 10u
+    localizedLabel: pill-label-ambuzol-10u
   - type: StorageFill
     contents:
     - id: PillAmbuzol
@@ -46,336 +341,11 @@
   suffix: Mutadon 10u, 5
   components:
   - type: Label
-    currentLabel: mutadon 10u
+    localizedLabel: pill-label-mutadon-10u
   - type: StorageFill
     contents:
     - id: PillMutadon
       amount: 5
-
-- type: entity
-  name: pill
-  suffix: Bruzin 10u
-  parent: Pill
-  id: PillBruzin
-  components:
-  - type: Pill
-    pillType: 4
-  - type: Sprite
-    state: pill4
-  - type: Label
-    currentLabel: bruizine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Bruizine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Lacerinol 10u
-  parent: Pill
-  id: PillLacerinol
-  components:
-  - type: Pill
-    pillType: 7
-  - type: Sprite
-    state: pill7
-  - type: Label
-    currentLabel: lacerinol 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Lacerinol
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Puncturase 10u
-  parent: Pill
-  id: PillPuncturase
-  components:
-  - type: Pill
-    pillType: 9
-  - type: Sprite
-    state: pill9
-  - type: Label
-    currentLabel: puncturase 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Puncturase
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Insuzine 10u
-  parent: Pill
-  id: PillInsuzine
-  components:
-  - type: Pill
-    pillType: 10
-  - type: Sprite
-    state: pill10
-  - type: Label
-    currentLabel: insuzine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Insuzine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Leporazine 10u
-  parent: Pill
-  id: PillLeporazine
-  components:
-  - type: Pill
-    pillType: 20
-  - type: Sprite
-    state: pill20
-  - type: Label
-    currentLabel: leporazine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Leporazine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Pyrazine 10u
-  parent: Pill
-  id: PillPyrazine
-  components:
-  - type: Pill
-    pillType: 10
-  - type: Sprite
-    state: pill10
-  - type: Label
-    currentLabel: pyrazine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Pyrazine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Phalanximine 10u
-  parent: Pill
-  id: PillPhalanximine
-  components:
-  - type: Pill
-    pillType: 17
-  - type: Sprite
-    state: pill17
-  - type: Label
-    currentLabel: phalanximine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Phalanximine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Arithrazine 10u
-  parent: Pill
-  id: PillArithrazine
-  components:
-  - type: Pill
-    pillType: 12
-  - type: Sprite
-    state: pill12
-  - type: Label
-    currentLabel: arithrazine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Arithrazine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: DexalinPlus 10u
-  parent: Pill
-  id: PillDexalinPlus
-  components:
-  - type: Pill
-    pillType: 8
-  - type: Sprite
-    state: pill8
-  - type: Label
-    currentLabel: dexalin plus 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: DexalinPlus
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Saline 10u
-  parent: Pill
-  id: PillSaline
-  components:
-  - type: Pill
-    pillType: 1
-  - type: Sprite
-    state: pill1
-  - type: Label
-    currentLabel: saline 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Saline
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Omnizine 10u
-  parent: Pill
-  id: PillOmnizine
-  components:
-  - type: Pill
-    pillType: 18
-  - type: Sprite
-    state: pill8
-  - type: Label
-    currentLabel: omnizine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Omnizine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Sigynate 10u
-  parent: Pill
-  id: PillSigynate
-  components:
-  - type: Pill
-    pillType: 20
-  - type: Sprite
-    state: pill20
-  - type: Label
-    currentLabel: sigynate 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Sigynate
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Diphenhydramine 10u
-  parent: Pill
-  id: PillDiphenhydramine
-  components:
-  - type: Pill
-    pillType: 3
-  - type: Sprite
-    state: pill3
-  - type: Label
-    currentLabel: diphenhydramine 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Diphenhydramine
-          Quantity: 10
-
-- type: entity
-  name: pill
-  suffix: Desoxyephedrine + dyloven 15u
-  parent: Pill
-  id: PillDylomet
-  components:
-  - type: Pill
-    pillType: 19
-  - type: Sprite
-    state: pill19
-  - type: Label
-    currentLabel: desoxyephedrine + dyloven 15u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Desoxyephedrine
-          Quantity: 10
-        - ReagentId: Dylovene
-          Quantity: 5
-
-- type: entity
-  name: pill
-  suffix: Epinephrine + Tranexamic Acid 15u
-  parent: Pill
-  description: pill with reagent medipen
-  id: PillExMedipen
-  components:
-  - type: Pill
-    pillType: 18
-  - type: Sprite
-    state: pill18
-  - type: Label
-    currentLabel: epinephrine + tranexamic acid 15u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Epinephrine
-          Quantity: 12
-        - ReagentId: TranexamicAcid
-          Quantity: 3
-
-- type: entity
-  name: pill
-  suffix: Fresium 10u
-  parent: Pill
-  id: PillFresium
-  components:
-  - type: Pill
-    pillType: 16
-  - type: Sprite
-    state: pill16
-  - type: Label
-    currentLabel: fresium 10u
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-        - ReagentId: Fresium
-          Quantity: 10
 
 - type: entity
   name: pill canister
@@ -384,7 +354,7 @@
   suffix: Bruzin 10u, 5
   components:
   - type: Label
-    currentLabel: bruzin 10u
+    localizedLabel: pill-label-bruizine-10u
   - type: StorageFill
     contents:
     - id: PillBruzin
@@ -397,7 +367,7 @@
   suffix: Lacerinol 10u, 5
   components:
   - type: Label
-    currentLabel: lacerinol 10u
+    localizedLabel: pill-label-lacerinol-10u
   - type: StorageFill
     contents:
     - id: PillLacerinol
@@ -410,7 +380,7 @@
   suffix: Puncturase 10u, 5
   components:
   - type: Label
-    currentLabel: puncturase 10u
+    localizedLabel: pill-label-puncturase-10u
   - type: StorageFill
     contents:
     - id: PillPuncturase
@@ -423,7 +393,7 @@
   suffix: Insuzine 10u, 5
   components:
   - type: Label
-    currentLabel: insuzine 10u
+    localizedLabel: pill-label-insuzine-10u
   - type: StorageFill
     contents:
     - id: PillInsuzine
@@ -436,7 +406,7 @@
   suffix: Leporazine  10u, 5
   components:
   - type: Label
-    currentLabel: leporazine  10u
+    localizedLabel: pill-label-leporazine-10u
   - type: StorageFill
     contents:
     - id: PillLeporazine
@@ -449,7 +419,7 @@
   suffix: Pyrazine 10u, 5
   components:
   - type: Label
-    currentLabel: pyrazine 10u
+    localizedLabel: pill-label-pyrazine-10u
   - type: StorageFill
     contents:
     - id: PillPyrazine
@@ -462,7 +432,7 @@
   suffix: Phalanximine 10u, 5
   components:
   - type: Label
-    currentLabel: phalanximine 10u
+    localizedLabel: pill-label-phalanximine-10u
   - type: StorageFill
     contents:
     - id: PillPhalanximine
@@ -475,7 +445,7 @@
   suffix: Arithrazine 10u, 5
   components:
   - type: Label
-    currentLabel: arithrazine 10u
+    localizedLabel: pill-label-arithrazine-10u
   - type: StorageFill
     contents:
     - id: PillArithrazine
@@ -488,7 +458,7 @@
   suffix: DexalinPlus 10u, 5
   components:
   - type: Label
-    currentLabel: dexalin plus 10u
+    localizedLabel: pill-label-dexalin-plus-10u
   - type: StorageFill
     contents:
     - id: PillDexalinPlus
@@ -501,7 +471,7 @@
   suffix: Saline 10u, 5
   components:
   - type: Label
-    currentLabel: saline 10u
+    localizedLabel: pill-label-saline-10u
   - type: StorageFill
     contents:
     - id: PillSaline
@@ -514,7 +484,7 @@
   suffix: Omnizine 10u, 3
   components:
   - type: Label
-    currentLabel: omnizine 10u
+    localizedLabel: pill-label-omnizine-10u
   - type: StorageFill
     contents:
     - id: PillOmnizine
@@ -527,7 +497,7 @@
   suffix: Sigynate 10u, 5
   components:
   - type: Label
-    currentLabel: sigynate 10u
+    localizedLabel: pill-label-sigynate-10u
   - type: StorageFill
     contents:
     - id: PillSigynate
@@ -540,7 +510,7 @@
   suffix: Diphenhydramine 10u, 4
   components:
   - type: Label
-    currentLabel: diphenhydramine 10u
+    localizedLabel: pill-label-diphenhydramine-10u
   - type: StorageFill
     contents:
     - id: PillDiphenhydramine
@@ -553,7 +523,7 @@
   suffix: Epinephrine 15u, 5
   components:
   - type: Label
-    currentLabel: epinephrine + tranexamicAcid 15u
+    localizedLabel: pill-label-exmedipen-15u
   - type: StorageFill
     contents:
     - id: PillExMedipen
@@ -566,7 +536,7 @@
   suffix: Dylomet 15u, 3
   components:
   - type: Label
-    currentLabel: Dylomet 15u
+    localizedLabel: pill-label-dylomet-15u
   - type: StorageFill
     contents:
     - id: PillDylomet
@@ -579,13 +549,13 @@
   suffix: Fresium 10u, 5
   components:
   - type: Label
-    currentLabel: fresium 10u
+    localizedLabel: pill-label-fresium-10u
   - type: StorageFill
     contents:
     - id: PillFresium
       amount: 5
-# Corvax-Wega-Android-start
 
+# Corvax-Wega-Android-start
 - type: entity
   name: "tyrium pack"
   description: "Extremely important liquid for android functioning."

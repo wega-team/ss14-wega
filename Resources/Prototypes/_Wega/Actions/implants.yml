@@ -5,6 +5,10 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Objects/Specific/Chemistry/pills.rsi, state: "pill" }
+  - type: Sprite
+    sprite: Objects/Specific/Chemistry/pills.rsi
+    layers:
+    - state: pill
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ToothImplantActionEvent

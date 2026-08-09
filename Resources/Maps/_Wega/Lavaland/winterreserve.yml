@@ -3652,37 +3652,31 @@ entities:
   - uid: 11295
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -7.5,-2.5
       parent: 10579
   - uid: 11296
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -7.5,-1.5
       parent: 10579
   - uid: 11297
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -7.5,-0.5
       parent: 10579
   - uid: 11298
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -7.5,1.5
       parent: 10579
   - uid: 11299
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -7.5,2.5
       parent: 10579
   - uid: 11300
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: -7.5,3.5
       parent: 10579
   - uid: 11301

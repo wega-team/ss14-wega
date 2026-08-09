@@ -1,13 +1,11 @@
 using System.Linq;
 using Content.Shared.GameTicking;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Shared.Genetics.Systems
 {
     public sealed partial class StructuralEnzymesIndexerSystem : EntitySystem
     {
-        [Dependency] private IPrototypeManager _prototypeManager = default!;
         [Dependency] private IRobustRandom _random = default!;
 
         private List<EnzymesPrototypeInfo> _enzymesPrototypes = new List<EnzymesPrototypeInfo>();
@@ -40,7 +38,7 @@ namespace Content.Shared.Genetics.Systems
         {
             _enzymesPrototypes.Clear();
 
-            var allEnzymesPrototypes = _prototypeManager.EnumeratePrototypes<StructuralEnzymesPrototype>().ToList();
+            var allEnzymesPrototypes = ProtoMan.EnumeratePrototypes<StructuralEnzymesPrototype>().ToList();
             _random.Shuffle(allEnzymesPrototypes);
 
             int maxBlocks = 54;

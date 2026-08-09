@@ -8,13 +8,13 @@
       contents:
         - id: VehicleSecway
         - id: VehicleKeySecway
-        
+
 - type: entity
-  id: CrateBoxPillCanisterSB
+  id: CrateBoxPillCanisterSecurity
   parent: CrateSecgear
   name: crate sec reagents
   description: Box with pill of sec damage. Requires Medical access to open.
   components:
   - type: StorageFill
     contents:
-      - id: BoxPillCanisterSB
+      - id: BoxPillCanisterSecurity

@@ -1,35 +1,35 @@
-using Content.Shared.Popups;
-using Content.Shared.Damage;
-using Content.Shared.Revenant;
-using Robust.Shared.Random;
-using Content.Shared.Tag;
-using Content.Shared.Storage.Components;
-using Content.Server.Ghost;
-using Robust.Shared.Physics;
-using Content.Shared.Throwing;
-using Content.Server.Storage.EntitySystems;
-using Content.Shared.Interaction;
-using Content.Shared.Item;
-using Content.Shared.Bed.Sleep;
 using System.Linq;
 using System.Numerics;
+using Content.Server.Ghost;
 using Content.Server.Revenant.Components;
-using Content.Shared.Physics;
+using Content.Server.Storage.EntitySystems;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Emag.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction;
+using Content.Shared.Item;
 using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Physics;
+using Content.Shared.Popups;
+using Content.Shared.Revenant;
 using Content.Shared.Revenant.Components;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Utility;
-using Robust.Shared.Map.Components;
+using Content.Shared.Tag;
+using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
+using Robust.Shared.Map.Components;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
+using Robust.Shared.Utility;
 // Corvax-Wega-Revenant-start
 using Content.Server.Administration;
 using Content.Server.Disease;
@@ -78,11 +78,9 @@ public sealed partial class RevenantSystem
     [Dependency] private ContainerSystem _container = default!;
     // Corvax-Wega-Revenant-end
 
-    [Dependency] private EntityQuery<TagComponent> _tagQuery = default!;
-    [Dependency] private EntityQuery<EntityStorageComponent> _entityStorageQuery = default!;
-    [Dependency] private EntityQuery<ItemComponent> _itemQuery = default!;
-    [Dependency] private EntityQuery<PoweredLightComponent> _poweredLightQuery = default!;
-    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery = default!;
+    [Dependency] private EntityQuery<ItemComponent> _itemQuery;
+    [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
+    [Dependency] private EntityQuery<PoweredLightComponent> _poweredLightQuery;
 
     private static readonly ProtoId<TagPrototype> WindowTag = "Window";
     private static readonly ProtoId<HTNCompoundPrototype> HauntRootTask = "SimpleRangedHostileCompound"; // Corvax-Wega-Revenant
@@ -113,9 +111,10 @@ public sealed partial class RevenantSystem
             return;
         var target = args.Target;
 
-        if (HasComp<PoweredLightComponent>(target))
+        // Try to do something spooky first.
+        if (_ghost.DoGhostBooEvent(target))
         {
-            args.Handled = _ghost.DoGhostBooEvent(target);
+            args.Handled = true;
             return;
         }
 
@@ -148,7 +147,11 @@ public sealed partial class RevenantSystem
         if (!_doAfter.TryStartDoAfter(searchDoAfter))
             return;
 
-        _popup.PopupEntity(Loc.GetString("revenant-soul-searching", ("target", target)), uid, uid, PopupType.Medium);
+        _popup.PopupEntity(
+            Loc.GetString("revenant-soul-searching", ("target", Identity.Entity(target, EntityManager))),
+            uid,
+            uid,
+            PopupType.Medium);
     }
 
     private void OnSoulSearch(EntityUid uid, RevenantComponent component, SoulEvent args)
@@ -173,7 +176,11 @@ public sealed partial class RevenantSystem
                 message = "revenant-soul-yield-average";
                 break;
         }
-        _popup.PopupEntity(Loc.GetString(message, ("target", args.Args.Target)), args.Args.Target.Value, uid, PopupType.Medium);
+        _popup.PopupEntity(
+            Loc.GetString(message, ("target", Identity.Entity(args.Args.Target.Value, EntityManager))),
+            args.Args.Target.Value,
+            uid,
+            PopupType.Medium);
 
         args.Handled = true;
     }
@@ -193,7 +200,7 @@ public sealed partial class RevenantSystem
             return;
         }
 
-        if(_physics.GetEntitiesIntersectingBody(uid, (int) CollisionGroup.Impassable).Count > 0)
+        if (_physics.GetEntitiesIntersectingBody(uid, (int)CollisionGroup.Impassable).Count > 0)
         {
             _popup.PopupEntity(Loc.GetString("revenant-in-solid"), uid, uid);
             return;
@@ -212,8 +219,10 @@ public sealed partial class RevenantSystem
 
         _appearance.SetData(uid, RevenantVisuals.Harvesting, true);
 
-        _popup.PopupEntity(Loc.GetString("revenant-soul-begin-harvest", ("target", target)),
-            target, PopupType.Large);
+        _popup.PopupEntity(
+            Loc.GetString("revenant-soul-begin-harvest", ("target", Identity.Entity(target, EntityManager))),
+            target,
+            PopupType.Large);
 
         TryUseAbility(uid, revenant, 0, revenant.HarvestDebuffs);
     }
@@ -234,8 +243,10 @@ public sealed partial class RevenantSystem
         if (!TryComp<EssenceComponent>(args.Args.Target, out var essence))
             return;
 
-        _popup.PopupEntity(Loc.GetString("revenant-soul-finish-harvest", ("target", args.Args.Target)),
-            args.Args.Target.Value, PopupType.LargeCaution);
+        _popup.PopupEntity(
+            Loc.GetString("revenant-soul-finish-harvest", ("target", Identity.Entity(args.Args.Target.Value, EntityManager))),
+            args.Args.Target.Value,
+            PopupType.LargeCaution);
 
         essence.Harvested = true;
         ChangeEssenceAmount(uid, essence.EssenceAmount, component);
@@ -295,7 +306,7 @@ public sealed partial class RevenantSystem
         foreach (var ent in lookup)
         {
             //break windows
-            if (_tagQuery.HasComponent(ent) && _tag.HasTag(ent, WindowTag))
+            if (_tag.HasTag(ent, WindowTag))
             {
                 //hardcoded damage specifiers til i die.
                 var dspec = new DamageSpecifier();
@@ -307,17 +318,15 @@ public sealed partial class RevenantSystem
                 continue;
 
             //randomly opens some lockers and such.
-            if (_entityStorageQuery.TryGetComponent(ent, out var entstorecomp))
-                _entityStorage.OpenStorage(ent, entstorecomp);
+            _entityStorage.OpenStorage(ent, args.Performer);
 
             //chucks shit
-            if (_itemQuery.HasComponent(ent) &&
+            if (_itemQuery.HasComp(ent) &&
                 TryComp<PhysicsComponent>(ent, out var phys) && phys.BodyType != BodyType.Static)
                 _throwing.TryThrow(ent, _random.NextAngle().ToWorldVec());
 
-            //flicker lights
-            if (_poweredLightQuery.HasComponent(ent))
-                _ghost.DoGhostBooEvent(ent);
+            //spooky stuff
+            _ghost.DoGhostBooEvent(ent);
         }
     }
 

@@ -7,6 +7,10 @@ on:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+
 jobs:
   build:
     name: YAML Linter
@@ -14,10 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # Corvax-Wega-Specific-start
       - name: Delete sponsor secrets content
         run: |
           rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
           rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
+      # Corvax-Wega-Specific-end
       - name: Setup submodule
         run: |
           git submodule update --init --recursive
