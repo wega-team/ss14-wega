@@ -92,6 +92,7 @@
         layer:
           - WallLayer
   - type: Airtight
+  - type: Damageable
   - type: Injurable
     damageContainer: Biological
   - type: Destructible

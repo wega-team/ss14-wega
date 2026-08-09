@@ -104,7 +104,7 @@
     price: 100
   - type: Appearance
   - type: WiresVisuals
-  - type: VendingMachineEject
+  # - type: VendingMachineEject # Corvax-Wega-Edit
   - type: VendingMachineDispenseOnHit
     chance: 0.25
     threshold: 2
@@ -118,6 +118,7 @@
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+  - type: VendingMachineEject # Corvax-Wega-Add
 
 - type: entity
   id: VendingMachineWallmount
@@ -227,6 +228,7 @@
     pack: GenericVendGoodbyes
   - type: Transform
     noRot: false
+  - type: VendingMachineEject # Corvax-Wega-Add
 
 - type: entity
   parent: VendingMachine
@@ -1436,6 +1438,7 @@
     radius: 1.5
     energy: 3.0
     color: "#b89f25"
+  # Corvax-Wega-Lavaland-start
   - type: ActivatableUI
     key: enum.UtilityVendorUiKey.Key
   - type: ActivatableUIRequiresPower
@@ -1445,7 +1448,6 @@
         type: UtilityVendorBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  # Corvax-Wega-Lavaland-start
   - type: Voucher
     typeVoucher: Salvage
   - type: UtilityVendor
@@ -2138,6 +2140,7 @@
   - type: Sprite
     sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
     state: dispenser
+  - type: VendingMachineEject # Corvax-Wega-Add
 
 - type: entity
   parent: BaseVendingMachine
@@ -2153,6 +2156,7 @@
     layers:
     - state: dispenser
     - state: dispensereng
+  - type: VendingMachineEject # Corvax-Wega-Add
 
 - type: entity
   parent: VendingMachine
