@@ -78,20 +78,7 @@
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
   - TowelColorWhite
-
-- type: loadoutGroup
-  id: AssistiveItems
-  name: loadout-group-assistive-items
-  minLimit: 0
-  maxLimit: 1 # Increase this limit in the future once there's more assistive items than just canes!
-  loadouts:
-  - OffsetCane
-  - OffsetCaneWood
-  - OffsetCaneClown
-  - OffsetCaneMime
-  - OffsetCaneNT
-  - Cane
-   # Corvax-Loadouts-Start
+  # Corvax-Loadouts-Start
   - ClothingNeckAtharaPin
   - ClothingNeckCorvaxPin
   - ClothingNeckEchoPin
@@ -108,6 +95,19 @@
   - PetCarrierMars
   - FoodInfiniteCub
   # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: AssistiveItems
+  name: loadout-group-assistive-items
+  minLimit: 0
+  maxLimit: 1 # Increase this limit in the future once there's more assistive items than just canes!
+  loadouts:
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
 
 - type: loadoutGroup
   id: GroupTankHarness
