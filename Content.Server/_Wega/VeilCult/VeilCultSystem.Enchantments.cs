@@ -30,7 +30,6 @@ using Content.Shared.Android;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.Tag;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Maps;
 using Content.Shared.Doors.Systems;
@@ -39,20 +38,22 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Map.Components;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.Wall;
 
 namespace Content.Server.Veil.Cult;
 
 public sealed partial class VeilCultSystem
 {
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedDoorSystem _door = default!;
     [Dependency] private SurgerySystem _surgery = default!;
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
-    private static readonly ProtoId<TagPrototype> WallTag = "Wall";
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializeEnchantments()
     {
@@ -395,11 +396,8 @@ public sealed partial class VeilCultSystem
 
                 if (comp.Mute)
                 {
-                    if (!HasComp<MutedComponent>(target))
-                    {
-                        EnsureComp<MutedComponent>(target);
-                        Timer.Spawn(comp.MuteTime, () => RemComp<MutedComponent>(target));
-                    }
+                    if (!_statusEffects.HasEffectComp<MutedStatusEffectComponent>(target))
+                        _statusEffects.TryAddStatusEffectDuration(target, Muted, comp.MuteTime);
                 }
 
                 if (comp.EmpBorgs && HasComp<BorgChassisComponent>(target) || HasComp<AndroidComponent>(target))
@@ -506,7 +504,7 @@ public sealed partial class VeilCultSystem
         }
 
         var nearbyWalls = _entityLookup.GetEntitiesInRange<OccluderComponent>(Transform(uid).Coordinates, comp.Radius)
-            .Where(target => _tag.HasTag(target.Owner, WallTag))
+            .Where(target => HasComp<WallComponent>(target.Owner))
             .ToList();
 
         foreach (var wall in nearbyWalls)

@@ -74,8 +74,6 @@
   - type: StatusEffects
     allowed:
     - Electrocution
-    - PressureImmunity
-    - Muted
     - Pacified
     - Flashed
     - Adrenaline

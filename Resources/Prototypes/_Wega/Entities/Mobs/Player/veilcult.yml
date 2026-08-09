@@ -38,7 +38,9 @@
   - type: CombatMode
   - type: VeilCultConstruct
   - type: MindContainer
-  - type: PressureImmunity
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectPressureImmunity
   - type: ActiveRadio
     channels:
     - Binary
@@ -146,7 +148,9 @@
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
-  - type: PressureImmunity
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectPressureImmunity
   - type: IntrinsicRadioReceiver
   - type: ActiveRadio
     channels:

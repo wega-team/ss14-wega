@@ -12,7 +12,7 @@
     sprite: _Wega/Objects/Specific/Hydroponics/rose.rsi
     state: produce
   - type: Produce
-    seedId: rose
+    plantId: RosePlants
   - type: PotencyVisuals
   - type: Appearance
   - type: Tag
@@ -34,7 +34,7 @@
     sprite: _Wega/Objects/Specific/Hydroponics/sunflower.rsi
     state: produce
   - type: Produce
-    seedId: sunflower
+    plantId: SunflowerPlants
   - type: PotencyVisuals
   - type: Appearance
   - type: Tag
@@ -73,7 +73,7 @@
     sprite: _Wega/Objects/Specific/Hydroponics/clownflower.rsi
     state: produce
   - type: Produce
-    seedId: clownflower
+    plantId: ClownflowerPlants
   - type: PotencyVisuals
   - type: Appearance
 
@@ -91,7 +91,7 @@
     sprite: _Wega/Objects/Specific/Hydroponics/fireblossom.rsi
     state: produce
   - type: Produce
-    seedId: fireblossomflower
+    plantId: FireblossomflowerPlants
   - type: PointLight
     radius: 1.2
     energy: 2
@@ -115,7 +115,9 @@
   - type: Item
     heldPrefix: produce
   - type: Produce
-    seedId: moneyCabbage
+    plantId: MoneyCabbagePlants
+  - type: SpawnItemsOnUse
+    items: []
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -143,7 +145,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
   - type: Produce
-    seedId: demonicWatermelon
+    plantId: DemonicWatermelonPlants
   - type: Extractable
     juiceSolution:
       reagents:
@@ -215,7 +217,7 @@
     - Slice
 
 - type: entity
-  name: blue space banan
+  name: blue space banana
   parent: FoodProduceBase
   id: FoodBlueSpaceBanana
   description: "Weird blue banana"
@@ -238,7 +240,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
   - type: Produce
-    seedId: blueSpaceBanana
+    plantId: BlueSpaceBananaPlants
   - type: Extractable
     juiceSolution:
       reagents:
@@ -320,7 +322,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
   - type: Produce
-    seedId: radioactiveBerries
+    plantId: RadioactiveBerriesPlants
   - type: Extractable
     juiceSolution:
       reagents:
@@ -352,7 +354,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
   - type: Produce
-    seedId: alienBerries
+    plantId: AlienBerriesPlants
   - type: Extractable
     juiceSolution:
       reagents:
@@ -384,7 +386,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
   - type: Produce
-    seedId: energyPotato
+    plantId: EnergyPotatoPlants
   - type: Tag
     tags:
     - SuperPotato
@@ -405,7 +407,7 @@
       - ReagentId: RelaxingTeaAdust
         Quantity: 10
   - type: Produce
-    seedId: treeTeaPlant
+    plantId: TreeTeaPlantPlants
 
 - type: entity
   name: invisible grapes
@@ -428,7 +430,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/Invisiblgrape.rsi
   - type: Produce
-    seedId: invisibleGrape
+    plantId: InvisibleGrapePlants
   - type: Extractable
     juiceSolution:
       reagents:
@@ -457,7 +459,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
   - type: Produce
-    seedId: candytree
+    plantId: CandyTreePlants
   - type: SpawnItemsOnUse
     items:
       - id: FoodProduceLollipopBar
@@ -487,7 +489,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
   - type: Produce
-    seedId: candytreerandom
+    plantId: CandyTreeRandomPlants
   - type: SpawnItemsOnUse
     items:
       - id: FoodProduceLollipopRandomBar
@@ -516,6 +518,8 @@
         Quantity: 1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: Produce
+    plantId: CandyTreeRandomPlants
   - type: SpawnItemsOnUse
     items:
       - id: FoodProduceLollipopMedicalBar
@@ -544,6 +548,8 @@
         Quantity: 1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: Produce
+    plantId: CandyTreeRandomPlants
   - type: SpawnItemsOnUse
     items:
       - id: FoodProduceLollipopBar
@@ -581,7 +587,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
   - type: Produce
-    seedId: tangerine
+    plantId: TangerinePlants
   - type: SpawnItemsOnUse
     items:
       - id: FoodProduceTangerineTrash
@@ -669,7 +675,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
   - type: Produce
-    seedId: festivetangerine
+    plantId: FestiveTangerinePlants
   - type: SpawnItemsOnUse
     items:
       - id: FoodProduceFestiveTangerineTrash
@@ -841,7 +847,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
   - type: Produce
-    seedId: melon
+    plantId: MelonPlants
   - type: Extractable
     juiceSolution:
       reagents:
@@ -932,7 +938,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
   - type: Produce
-    seedId: catmelon
+    plantId: CatmelonPlants
   - type: Extractable
     juiceSolution:
       reagents:

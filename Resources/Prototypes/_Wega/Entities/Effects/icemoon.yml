@@ -159,9 +159,6 @@
         acts: [ "Destruction" ]
   - type: TimedDespawn
     lifetime: 5
-  - type: Tag
-    tags:
-      - Wall
 
 - type: entity
   id: EffectTheThingBigWarning

@@ -16,7 +16,6 @@
     inverted: true
     traits:
     - Muted
-  weight: 19
   startingGear: BlueShieldOfficerGear
   icon: "JobIconBlueShield"
   supervisors: job-supervisors-centcom

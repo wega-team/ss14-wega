@@ -92,6 +92,7 @@
         layer:
           - WallLayer
   - type: Airtight
+  - type: Damageable
   - type: Injurable
     damageContainer: Biological
   - type: Destructible
@@ -114,9 +115,6 @@
     lifetime: 25
   - type: SpawnOnDespawn
     prototype: PuddleBlood
-  - type: Tag
-    tags:
-      - Wall
 
 - type: entity
   parent: [ CollideFloorTrap, BaseShadow ]
@@ -134,7 +132,7 @@
   - type: SpawnOnDespawn
     prototype: ShadowTrapTrue
   - type: EmitSoundOnSpawn
-    sound: 
+    sound:
       path: /Audio/Items/Handcuffs/cuff_end.ogg
       params:
         variation: 0.3

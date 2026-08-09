@@ -229,7 +229,6 @@
   - type: Tag
     tags:
     - Hoe
-    - BotanyHoe
     - Itemborg
 
 - type: entity
@@ -279,7 +278,6 @@
         type: ItemSelectorBoundUserInterface
   - type: Tag
     tags:
-    - PlantSampleTaker
     - Itemborg
 
 - type: entity

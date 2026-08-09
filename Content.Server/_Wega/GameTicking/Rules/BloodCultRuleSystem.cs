@@ -277,7 +277,7 @@ namespace Content.Server.GameTicking.Rules
                         if (TryComp<StomachComponent>(organ, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
-                        _metabolism.TryAddMetabolizerType(metabolizer, "BloodCultist");
+                        _metabolism.TryAddMetabolizerType(organ, "BloodCultist");
                     }
                 }
             }
@@ -287,7 +287,7 @@ namespace Content.Server.GameTicking.Rules
         {
             string selectedGod = "";
             var query = QueryActiveRules();
-			
+
             while (query.MoveNext(out _, out _, out var cult, out _))
             {
                 selectedGod = cult.SelectedGod switch
@@ -497,7 +497,7 @@ namespace Content.Server.GameTicking.Rules
         {
             string selectedGod = "";
             var query = QueryActiveRules();
-			
+
             var winText = Loc.GetString($"blood-cult-{component.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 

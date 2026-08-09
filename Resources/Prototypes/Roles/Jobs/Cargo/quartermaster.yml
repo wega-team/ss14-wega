@@ -30,7 +30,6 @@
           role: JobShaftMiner
           time: 10h
     # Corvax-Wega-AnyRequirement-Edit-end
-  weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
   supervisors: job-supervisors-captain
