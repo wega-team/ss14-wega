@@ -250,6 +250,8 @@
       - BorgModuleNightVisoXenoborg
       - XenoborgModuleTileGun
       - ModuleXenoborgModule
+      - XenoborgModuleNaniteGun
+      - XenoborgModuleBurstFireLaser
   - type: ItemSlots
     slots:
       cell_slot:

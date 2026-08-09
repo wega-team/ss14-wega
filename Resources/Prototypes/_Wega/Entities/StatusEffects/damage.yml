@@ -1,0 +1,44 @@
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: StatusEffectRadiationProtectioSlime
+  name: radiation protection
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Radiation: 0
+        
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: StatusEffectCellularProtectioSlime
+  name: celluar protection
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Cellular: 0.1
+
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: StatusEffectIronSkinProtectioSlime
+  name: iron skin protection
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Piercing: 0.45
+        Slash: 0.45
+
+- type: entity
+  parent: StatusEffectDamageModifierBase
+  id: StatusEffectHeatProtectioSlime
+  name: heat protection
+  components:
+  - type: DamageModifierStatusEffect
+    modifiers:
+      coefficients:
+        Heat: 0.3
+
+
+

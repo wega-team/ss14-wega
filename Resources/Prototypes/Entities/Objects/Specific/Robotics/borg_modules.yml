@@ -1942,6 +1942,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponTileGun
+    - item: WeaponOilGun # Corvax-Wega-Add
     - item: XenoborgTitleBag # Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
@@ -1993,6 +1994,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponNaniteGun
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-nanite-module }
 
@@ -2060,6 +2062,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponBurstFireLaserXenoborg
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser3-module }
 

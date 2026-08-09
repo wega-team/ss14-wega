@@ -67,4 +67,35 @@
   completetime: 6.4
   materials:
     Gold: 400
+
+- type: latheRecipe
+  id: WristwatchGold
+  result: WristwatchGold
+  completetime: 6.4
+  materials:
+    Gold: 200
+
+- type: latheRecipe
+  id: DrinkGoldenCup
+  result: DrinkGoldenCup
+  completetime: 6.4
+  materials:
+    Gold: 600
     
+- type: latheRecipe
+  id: ClothingHandsKnuckleBoneCrushers
+  result: ClothingHandsKnuckleBoneCrushers
+  completetime: 6.4
+  materials:
+    Gold: 3000
+    Silver: 100
+    
+- type: latheRecipe
+  id: ClothingBeltChampion
+  result: ClothingBeltChampion
+  completetime: 6.4
+  materials:
+    Gold: 2000
+    Silver: 500
+    Diamond: 100
+

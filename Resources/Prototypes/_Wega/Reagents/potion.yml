@@ -143,8 +143,8 @@
     Bloodstream:
       effects:
       - !type:MovementSpeedModifier
-        walkSpeedModifier: 1.35
-        sprintSpeedModifier: 1.35
+        walkSpeedModifier: 2
+        sprintSpeedModifier: 2
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -157,8 +157,8 @@
         key: KnockedDown
         time: 3
         type: Remove
-      - !type:SatiateHunger
-        factor: -3
+      # - !type:SatiateHunger
+        # factor: -3
 
 - type: reagent
   id: MindPotion
@@ -222,23 +222,18 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#FAFAD2"
+  # metabolismRate: 0.1
   metabolisms:
     Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Heat" ]
-        conditions:
-        - !type:ReagentCondition
-          reagent: HeatResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectHeatProtectioSlime
+        time: 2
+        type: Add
       - !type:HealthChange
         damage:
           types:
             Cold: 0.5
-        conditions:
-        - !type:ReagentCondition
-          reagent: HeatResistPotion
-          min: 10
 
 - type: reagent
   id: RadiationResistPotion
@@ -251,12 +246,10 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Radiation" ]
-        conditions:
-        - !type:ReagentCondition
-          reagent: RadiationResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectRadiationProtectioSlime
+        time: 2
+        type: Add
       - !type:HealthChange
         damage:
           types:
@@ -273,12 +266,10 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Cellular" ]
-        conditions:
-        - !type:ReagentCondition
-          reagent: CellularResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectCellularProtectioSlime
+        time: 2
+        type: Add
 
 - type: reagent
   id: IronSkinResistPotion
@@ -291,16 +282,13 @@
   metabolisms:
     Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Blunt", "Piercing", "Slash" ]
-        resistFactor: 0.1
-        conditions:
-        - !type:ReagentCondition
-          reagent: IronSkinResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectIronSkinProtectioSlime
+        time: 2
+        type: Add
       - !type:MovementSpeedModifier
-        walkSpeedModifier: 0.95
-        sprintSpeedModifier: 0.95
+        walkSpeedModifier: 0.45
+        sprintSpeedModifier: 0.45
 
 - type: reagent
   id: StabilizingSerumPotion

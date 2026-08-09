@@ -1561,7 +1561,7 @@
     - state: icon-xenoborg-holowall
   - type: ItemBorgModule
     hands:
-    - item: XenoborgHoloprojectorForcefield
+    - item: HoloprojectorXenoField
     - hand:
         emptyRepresentative: Nanopast
         emptyLabel: borg-slot-nanopasta-empty
@@ -1570,7 +1570,7 @@
           - Nanopast
     - item: BorgGeneratorNanopastXenoborg
   - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: xfield-module }
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-deflector-module }
 
 - type: entity
   id: XenoborgModuleCommonRepeir

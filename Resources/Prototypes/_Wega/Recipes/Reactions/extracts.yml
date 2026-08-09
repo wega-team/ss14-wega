@@ -435,10 +435,10 @@
   effects:
   - !type:Explosion
     explosionType: Default
-    maxIntensity: 200
-    intensityPerUnit: 5
+    totalIntensity: 60
     intensitySlope: 5
-    maxTotalIntensity: 200
+    maxIntensity: 100
+    canCreateVacuum: true
 
 # Black
 - type: reaction

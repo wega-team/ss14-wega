@@ -96,6 +96,13 @@
       types:
         Blunt: 8
     bluntStaminaDamageFactor: 2
+# Corvax-Wega-start
+  - type: MartialArtsClothing
+    style: Boxing
+    gotMessage: true
+    equippedMessage: boxer-enabled
+    unequippedMessage: boxer-disabled
+# Corvax-Wega-End
 
 - type: entity
   parent: [ ClothingHandsGlovesBoxingRiggedBase, ClothingHandsGlovesBoxingRed ]
@@ -573,7 +580,7 @@
       collection: Punch
     animation: WeaponArcFist
     mustBeEquippedToUse: true
-    bluntStaminaDamageFactor: 1 # Corvax-Wega-Add
+    bluntStaminaDamageFactor: 1.75 # Corvax-Wega-Add
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -582,7 +589,7 @@
     stealGroup: ClothingHandsKnuckleDustersQM
 # Corvax-Wega-Start
   - type: BonusMeleeDamage
-    heavyDamageMultiplier: 2
+    heavyDamageMultiplier: 1.5
 # Corvax-Wega-End
 
 - type: entity
@@ -709,3 +716,7 @@
   - type: Tag
     tags:
     - Kangaroo
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.25
+# Corvax-Wega-End
