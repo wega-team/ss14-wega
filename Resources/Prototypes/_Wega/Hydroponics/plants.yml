@@ -156,8 +156,6 @@
     production: 3
     yield: 1
     potency: 1
-  - type: PlantAtmospheric
-    idealLight: 8
   - type: PlantChemicals
     chemicals:
       Nutriment:
@@ -195,7 +193,6 @@
   - type: PlantGrowth
     waterConsumption: 0.6
   - type: PlantAtmospheric
-    idealLight: 9
     lowHeatTolerance: 288 # 15°C
     highHeatTolerance: 308 # 35°C
   - type: PlantChemicals
@@ -231,8 +228,6 @@
     harvestRepeat: Repeat
   - type: PlantGrowth
     nutrientConsumption: 0.6
-  - type: PlantAtmospheric
-    idealLight: 7
   - type: PlantChemicals
     chemicals:
       Radium:
@@ -265,8 +260,6 @@
     harvestRepeat: Repeat
   - type: PlantGrowth
     nutrientConsumption: 0.6
-  - type: PlantAtmospheric
-    idealLight: 7
   - type: PlantChemicals
     chemicals:
       Artifexium:
@@ -328,7 +321,6 @@
   - type: PlantGrowth
     waterConsumption: 0.6
   - type: PlantAtmospheric
-    idealLight: 9
     lowHeatTolerance: 288 # 15°C
     highHeatTolerance: 308 # 35°C
   - type: PlantChemicals
@@ -448,8 +440,6 @@
     production: 3
     yield: 1
     potency: 1
-  - type: PlantAtmospheric
-    idealLight: 8
   - type: PlantChemicals
     chemicals:
       Nutriment:
@@ -482,8 +472,6 @@
     production: 3
     yield: 1
     potency: 1
-  - type: PlantAtmospheric
-    idealLight: 8
   - type: PlantChemicals
     chemicals:
       Nutriment:

@@ -145,7 +145,7 @@
     name: seeds-banana-name
     packetPrototype: BananaSeeds
     productPrototypes: [ FoodBanana ]
-    mutationPrototypes: [ MimanaPlants, BlueSpaceBanana ] # Corvax-Wega-Hydroponics-Edit
+    mutationPrototypes: [ MimanaPlants, BlueSpaceBananaPlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 50
     maturation: 6
