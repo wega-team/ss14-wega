@@ -39,6 +39,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Map.Components;
+using Content.Shared.StatusEffectNew;
 
 namespace Content.Server.Veil.Cult;
 
@@ -51,8 +52,10 @@ public sealed partial class VeilCultSystem
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
     private static readonly ProtoId<TagPrototype> WallTag = "Wall";
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializeEnchantments()
     {
@@ -395,11 +398,8 @@ public sealed partial class VeilCultSystem
 
                 if (comp.Mute)
                 {
-                    if (!HasComp<MutedComponent>(target))
-                    {
-                        EnsureComp<MutedComponent>(target);
-                        Timer.Spawn(comp.MuteTime, () => RemComp<MutedComponent>(target));
-                    }
+                    if (!_statusEffects.HasEffectComp<MutedStatusEffectComponent>(target))
+                        _statusEffects.TryAddStatusEffectDuration(target, Muted, comp.MuteTime);
                 }
 
                 if (comp.EmpBorgs && HasComp<BorgChassisComponent>(target) || HasComp<AndroidComponent>(target))

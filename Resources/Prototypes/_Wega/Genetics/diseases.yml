@@ -105,7 +105,9 @@
   typeDeviation: Disease
   costInstability: -10
   addComponent:
-  - type: Muted
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectMuted
 
 - type: structuralEnzymes
   id: GeneticsBlindnessDisease

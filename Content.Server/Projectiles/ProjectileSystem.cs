@@ -64,13 +64,9 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
         if (_damageableSystem.TryChangeDamage((target, damageableComponent), ev.Damage, out var damage, component.IgnoreResistances, origin: component.Shooter)
             && Exists(component.Shooter))
         {
-<<<<<<< HEAD
             _dirt.AddBloodDirtFromDamage(target, component.Shooter.Value, damage, true); // Corvax-Wega-Dirtable
 
-            if (!deleted)
-=======
             if (!Deleted(target))
->>>>>>> upstream/master
             {
                 _color.RaiseEffect(Color.Red, new List<EntityUid> { target }, Filter.Pvs(target, entityManager: EntityManager));
             }

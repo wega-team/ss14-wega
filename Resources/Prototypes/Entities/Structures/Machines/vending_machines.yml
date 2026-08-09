@@ -1411,7 +1411,7 @@
     color: "#ffe599"
 
 - type: entity
-  parent: VendingMachine
+  parent: BaseVendingMachine # Corvax-Wega-Lavaland-Edit
   id: VendingMachineSalvage
   name: Salvage Vendor
   description: A dwarf's best friend!

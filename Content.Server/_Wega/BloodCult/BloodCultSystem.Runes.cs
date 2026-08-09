@@ -16,7 +16,6 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
-using Content.Shared.Ghost;
 using Content.Shared.Gibbing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Humanoid;
@@ -41,6 +40,8 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using Content.Shared.Bible.Components;
+using Content.Shared.Ghost.Systems;
+using Content.Shared.Ghost.Components;
 
 namespace Content.Server.Blood.Cult;
 

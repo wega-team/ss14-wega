@@ -6,9 +6,11 @@
   components:
   - type: VendingMachine
     pack: IntimatInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    denyState: deny-unshaded
   - type: DatasetVocalizer
     dataset: IntimatAds
   - type: SpeakOnUIClosed
@@ -37,9 +39,11 @@
   components:
   - type: VendingMachine
     pack: CosinessInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    denyState: deny-unshaded
   - type: DatasetVocalizer
     dataset: CosinessAds
   - type: SpeakOnUIClosed
@@ -61,39 +65,6 @@
     color: "#e590b9"
 
 - type: entity
-  parent: [ VendingMachine, StorePresetGeneralVoid ]
-  id: BaseUsVoidPat
-  name: P.A.T.
-  description: The Void Trading Machine has a bluespace component that allows you to trade with different galaxies.
-  components:
-  - type: Sprite
-    sprite: _Wega/Structures/Machines/VendingMachines/pat.rsi
-    layers:
-    - state: base
-    - state: unshaded
-      map: ["enum.PowerDeviceVisualLayers.Powered"]
-      shader: unshaded
-  - type: PointLight
-    radius: 1.8
-    energy: 1.6
-    color: "#386d35"
-  - type: GenericVisualizer
-    visuals:
-      enum.PowerDeviceVisuals.Powered:
-        enum.PowerDeviceVisualLayers.Powered:
-          True: { visible: true }
-          False: { visible: false }
-  - type: UserInterface
-    interfaces:
-      enum.StoreUiKey.Key:
-        type: StoreBoundUserInterface
-  - type: ActivatableUI
-    key: enum.StoreUiKey.Key
-  - type: Store
-    balance:
-      Credit: 5000
-
-- type: entity
   parent: VendingMachine
   id: VendingMachineFashion
   name: Fashion-O-Mat
@@ -101,6 +72,7 @@
   components:
   - type: VendingMachine
     pack: FashionOMatInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -113,12 +85,12 @@
     sprite: _Wega/Structures/Machines/VendingMachines/fashiondrobe.rsi
     layers:
     - state: "off"
-      map: [ "enum.VendingMachineVisualLayers.Base" ]
+      map: ["enum.VendingMachineVisualLayers.Base"]
     - state: "off"
-      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
       shader: unshaded
     - state: panel
-      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Speech
   - type: PointLight
     radius: 1.8
@@ -126,7 +98,7 @@
     color: "#FFFFFF"
 
 - type: entity
-  parent: VendingMachine
+  parent: BaseVendingMachine
   id: VendingMachineTankDispenserExtO2
   suffix: More O2
   name: gas tank dispenser
@@ -135,6 +107,5 @@
   - type: VendingMachine
     pack: TankDispenserExtO2Inventory
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
+    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi
     state: dispenser
-

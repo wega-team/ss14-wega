@@ -1,16 +1,14 @@
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Tag;
 using Content.Shared.Vehicle.Components;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared.Vehicle;
+namespace Content.Shared.Vehicle.Systems;
 
 public sealed partial class VehicleSystem
 {
     [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private TagSystem _tagSystem = default!;
     [Dependency] private MovementSpeedModifierSystem _modifier = default!;
 

@@ -76,6 +76,7 @@ public sealed partial class BloodCultSystem
     [Dependency] private VisibilitySystem _visibility = default!;
 
     private static readonly SoundPathSpecifier CultSpell = new SoundPathSpecifier("/Audio/_Wega/Effects/cult_spell.ogg");
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializeBloodAbilities()
     {
@@ -636,7 +637,7 @@ public sealed partial class BloodCultSystem
         ExtractBlood(user, -10, 6);
 
         _stun.TryKnockdown(target, TimeSpan.FromSeconds(4f));
-        _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(10f));
+        _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(10f));
         _flash.Flash(target, user, spell, TimeSpan.FromSeconds(2f), 1f);
 
         QueueDel(spell);
@@ -706,7 +707,7 @@ public sealed partial class BloodCultSystem
         }
 
         _cuff.CuffUsed(handcuffsComp);
-        _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(12f));
+        _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(12f));
 
         QueueDel(spell);
     }

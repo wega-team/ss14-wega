@@ -1,0 +1,563 @@
+- type: entity
+  parent: BasePlant
+  id: RosePlants
+  name: rose
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/rose.rsi
+  - type: PlantData
+    name: seeds-rose-name
+    packetPrototype: RoseSeeds
+    productPrototypes: [ FlowerRose ]
+    mutationPrototypes: [ ClownflowerPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: SunflowerPlants
+  name: sunflower
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/sunflower.rsi
+  - type: PlantData
+    name: seeds-sunflower-name
+    packetPrototype: SunflowerSeeds
+    productPrototypes: [ FlowerSunflower ]
+    mutationPrototypes: [ ClownflowerPlants ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 1
+    yield: 1
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: ClownflowerPlants
+  name: clownflower
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/clownflower.rsi
+  - type: PlantData
+    name: seeds-clownflower-name
+    packetPrototype: ClownflowerSeeds
+    productPrototypes: [ FlowerClown ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 1
+    yield: 1
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: FireblossomflowerPlants
+  name: fireblossomflower
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/fireblossom.rsi
+  - type: PlantData
+    name: seeds-fireblossomflower-name
+    packetPrototype: FireBlossomFlowerSeeds
+    productPrototypes: [ FlowerFireBlossom ]
+  - type: Plant
+    lifespan: 25
+    maturation: 10
+    production: 1
+    yield: 1
+    potency: 10
+    growthStages: 3
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: MoneyCabbagePlants
+  name: money cabbage
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
+  - type: PlantData
+    name: seeds-moneyCabbage-name
+    packetPrototype: MoneyCabbageSeeds
+    productPrototypes: [ FoodMoneyCabbage ]
+  - type: Plant
+    lifespan: 50
+    maturation: 7
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 2
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Monenium:
+        min: 5
+        max: 25
+        potencyDivisor: 5
+      Vitamin:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: DemonicWatermelonPlants
+  name: demonic watermelon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
+  - type: PlantData
+    name: seeds-demonicWatermelon-name
+    packetPrototype: DemonicWatermelonSeeds
+    productPrototypes: [ FoodDemonicWatermelon ]
+  - type: Plant
+    lifespan: 55
+    maturation: 12
+    production: 3
+    yield: 1
+    potency: 1
+  - type: PlantAtmospheric
+    idealLight: 8
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+      Unholywater:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+      Vitamin:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: BlueSpaceBananaPlants
+  name: bluespace banana
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
+  - type: PlantData
+    name: seeds-bluespacebanana-name
+    packetPrototype: BlueSpaceBananaSeeds
+    productPrototypes: [ FoodBlueSpaceBanana ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 6
+    yield: 2
+    potency: 10
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    idealLight: 9
+    lowHeatTolerance: 288 # 15°C
+    highHeatTolerance: 308 # 35°C
+  - type: PlantChemicals
+    chemicals:
+      Vitamin:
+        min: 1
+        max: 4
+        potencyDivisor: 20
+      Nutriment:
+        min: 1
+        max: 2
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: RadioactiveBerriesPlants
+  name: glowing berries
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
+  - type: PlantData
+    name: seeds-glowingberries-name
+    packetPrototype: RadioactiveBerriesSeeds
+    productPrototypes: [ FoodRadioactiveBerries ]
+    mutationPrototypes: [ AlienBerriesPlants ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 6
+    yield: 4
+    potency: 10
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    nutrientConsumption: 0.6
+  - type: PlantAtmospheric
+    idealLight: 7
+  - type: PlantChemicals
+    chemicals:
+      Radium:
+        min: 2
+        max: 10
+        potencyDivisor: 10
+      Uranium:
+        min: 2
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: AlienBerriesPlants
+  name: alien berries
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
+  - type: PlantData
+    name: seeds-alienberries-name
+    packetPrototype: AlienBerriesSeeds
+    productPrototypes: [ FoodAlienBerries ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 6
+    yield: 4
+    potency: 10
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    nutrientConsumption: 0.6
+  - type: PlantAtmospheric
+    idealLight: 7
+  - type: PlantChemicals
+    chemicals:
+      Artifexium:
+        min: 2
+        max: 5
+        potencyDivisor: 25
+
+- type: entity
+  parent: BasePlant
+  id: EnergyPotatoPlants
+  name: energy potato
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
+  - type: PlantData
+    name: seeds-energypotato-name
+    packetPrototype: EnergyPotatoSeeds
+    productPrototypes: [ FoodEnergyPotato ]
+  - type: Plant
+    lifespan: 30
+    maturation: 10
+    production: 3
+    yield: 3
+    potency: 10
+    growthStages: 4
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 9
+        potencyDivisor: 5
+      Licoxide:
+        min: 1
+        max: 15
+        potencyDivisor: 5
+
+- type: entity
+  parent: BasePlant
+  id: TreeTeaPlantPlants
+  name: tea tree
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/relaxing_tea.rsi
+  - type: PlantData
+    name: seeds-teatree-name
+    packetPrototype: TreeTeaPlantSeeds
+    productPrototypes: [ BranchTreeTeaPlant ]
+  - type: Plant
+    lifespan: 75
+    maturation: 5
+    production: 3
+    yield: 2
+    potency: 20
+    growthStages: 5
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.6
+  - type: PlantAtmospheric
+    idealLight: 9
+    lowHeatTolerance: 288 # 15°C
+    highHeatTolerance: 308 # 35°C
+  - type: PlantChemicals
+    chemicals:
+      RelaxingTeaAdust:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: InvisibleGrapePlants
+  name: invisible grape
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/Invisiblgrape.rsi
+  - type: PlantData
+    name: seeds-invisiblegrape-name
+    packetPrototype: InvisibleGrapeSeeds
+    productPrototypes: [ FoodInvisibleGrape ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 2
+  - type: PlantChemicals
+    chemicals:
+      GrapeJuiceInvisible:
+        min: 1
+        max: 2
+        potencyDivisor: 20
+      Nothing:
+        min: 1
+        max: 2
+        potencyDivisor: 35
+
+- type: entity
+  parent: BasePlant
+  id: CandyTreePlants
+  name: candytree
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+  - type: PlantData
+    name: seeds-candytree-name
+    packetPrototype: CandyTreeSeeds
+    productPrototypes: [ FoodProduceLollipop ]
+    mutationPrototypes: [ CandyTreeRandomPlants ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 5
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Sugar:
+        min: 1
+        max: 7
+        potencyDivisor: 20
+      Vitamin:
+        min: 1
+        max: 2
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: CandyTreeRandomPlants
+  name: random candytree
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+  - type: PlantData
+    name: seeds-candytreerandom-name
+    packetPrototype: CandyTreeRandomSeeds
+    productPrototypes: [ FoodProduceLollipopRandom ]
+  - type: Plant
+    lifespan: 50
+    maturation: 6
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 5
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Sugar:
+        min: 1
+        max: 7
+        potencyDivisor: 20
+      UnstableMutagen:
+        min: 0.1
+        max: 0.5
+        potencyDivisor: 50
+
+- type: entity
+  parent: BasePlant
+  id: MelonPlants
+  name: melon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+  - type: PlantData
+    name: seeds-melon-name
+    packetPrototype: MelonSeeds
+    productPrototypes: [ FoodMelon ]
+    mutationPrototypes: [ CatmelonPlants ]
+  - type: Plant
+    lifespan: 55
+    maturation: 12
+    production: 3
+    yield: 1
+    potency: 1
+  - type: PlantAtmospheric
+    idealLight: 8
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+      Water:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+      Vitamin:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+
+- type: entity
+  parent: BasePlant
+  id: CatmelonPlants
+  name: catmelon
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+  - type: PlantData
+    name: seeds-catmelon-name
+    packetPrototype: CatMelonSeeds
+    productPrototypes: [ FoodCatMelon ]
+  - type: Plant
+    lifespan: 55
+    maturation: 12
+    production: 3
+    yield: 1
+    potency: 1
+  - type: PlantAtmospheric
+    idealLight: 8
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+      Vitamin:
+        min: 1
+        max: 10
+        potencyDivisor: 10
+      CatMelonJuice:
+        min: 1
+        max: 5
+        potencyDivisor: 20
+
+- type: entity
+  parent: BasePlant
+  id: TangerinePlants
+  name: tangerine
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+  - type: PlantData
+    name: seeds-tangerine-name
+    packetPrototype: TangerineSeeds
+    productPrototypes: [ FoodProduceTangerine ]
+    mutationPrototypes: [ FestiveTangerinePlants ]
+  - type: Plant
+    lifespan: 50
+    maturation: 7
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 7
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 2
+        max: 7
+        potencyDivisor: 10
+      Vitamin:
+        min: 1
+        max: 5
+        potencyDivisor: 15
+
+- type: entity
+  parent: BasePlant
+  id: FestiveTangerinePlants
+  name: festive tangerine
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+  - type: PlantData
+    name: seeds-festivetangerine-name
+    packetPrototype: FestiveTangerineSeeds
+    productPrototypes: [ FoodProduceFestiveTangerine ]
+  - type: Plant
+    lifespan: 50
+    maturation: 7
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 5
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 2
+        max: 7
+        potencyDivisor: 10
+      Vitamin:
+        min: 1
+        max: 5
+        potencyDivisor: 15
