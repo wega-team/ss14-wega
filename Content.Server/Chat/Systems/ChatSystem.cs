@@ -13,6 +13,7 @@ using Content.Shared.Examine;
 using Content.Shared.Ghost;
 using Content.Shared.Humanoid; // Corvax-Wega-Ghostbar
 using Content.Shared.Mind; // Corvax-Wega-MindChat
+using Content.Shared.Ghost.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players.RateLimiting;
 using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation

@@ -29,7 +29,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Disease.Components;
 using Content.Shared.EnergyShield;
 using Content.Shared.FixedPoint;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Guardian.Components;
 using Content.Shared.Humanoid;
