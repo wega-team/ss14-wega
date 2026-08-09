@@ -568,11 +568,12 @@
     attackRate: 1.5
     damage:
       types:
-        Blunt: 14
+        Blunt: 18 # Corvax-Wega-Add
     soundHit:
       collection: Punch
     animation: WeaponArcFist
     mustBeEquippedToUse: true
+    bluntStaminaDamageFactor: 1 # Corvax-Wega-Add
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -581,7 +582,7 @@
     stealGroup: ClothingHandsKnuckleDustersQM
 # Corvax-Wega-Start
   - type: BonusMeleeDamage
-    heavyDamageMultiplier: 1.5
+    heavyDamageMultiplier: 2
 # Corvax-Wega-End
 
 - type: entity
@@ -691,7 +692,7 @@
   description: "Blessed by the Gods to break all those who don't obey."
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/KnuckleDusters/goldenknuckleduster.rsi
+    sprite: _Wega/Clothing/Hands/goldenknuckleduster.rsi # Corvax-Wega-Edit
     state: goldenknuckleduster
   - type: Clothing
     sprite: Clothing/Hands/Gloves/KnuckleDusters/goldenknuckleduster.rsi
@@ -701,7 +702,7 @@
     attackRate: 2
     damage:
       types:
-        Blunt: 35
+        Blunt: 18 # Corvax-Wega
     soundHit:
       collection: Punch
     animation: WeaponArcFist
