@@ -291,44 +291,6 @@
         type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: TelescopicShieldBorg
-  id: TelescopicShieldBorgSyndCr20
-  components:
-    - type: Blocking
-      activeBlockFraction: 0.8
-      passiveBlockFraction: 0.5
-        flatReductions:
-          Blunt: 100000000000
-          Piercing: 100000000000
-          Slash: 100000000000
-          Heat: 100000000000
-          Cellular: 100000000000
-          Caustic: 100000000000
-          Cold: 100000000000
-          Radiation: 100000000000
-          Shock: 100000000000
-          Poison: 100000000000
-
-- type: entity
-  parent: TelescopicShieldBorg
-  id: TelescopicShieldBorgSyndL6
-  components:
-    - type: Blocking
-      activeBlockFraction: 0.99
-      passiveBlockFraction: 0.8
-        flatReductions:
-          Blunt: 100000000000
-          Piercing: 100000000000
-          Slash: 100000000000
-          Heat: 100000000000
-          Cellular: 100000000000
-          Caustic: 100000000000
-          Cold: 100000000000
-          Radiation: 100000000000
-          Shock: 100000000000
-          Poison: 100000000000
-
-- type: entity
   name: handheld crew monitor
   parent: DefibrillatorSyndicate
   id: DefibrillatorSyndicateCyborg
