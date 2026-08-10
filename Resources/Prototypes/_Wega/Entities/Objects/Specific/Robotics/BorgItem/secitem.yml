@@ -189,7 +189,7 @@
 # SEC Sheild
 - type: entity
   name: telescopic shield borg
-  parent: [ BaseShield, BaseSecurityContraband ]
+  parent: [  BaseItem, BaseSecurityContraband ]
   id: TelescopicShieldBorg
   description: It s nanomachine, son!
   components:
@@ -204,46 +204,18 @@
       passiveBlockFraction: 0.5
       passiveBlockModifier:
         coefficients:
-          Piercing: 0.0
-          Blunt: 0.0
-          Slash: 0.0
-          Heat: 0.0
-      activeBlockModifier:
-        coefficients:
-          Piercing: 0.0
-          Blunt: 0.0
-          Slash: 0.0
-          Heat: 0.0
+          Heat: 0.5
         flatReductions:
-          Piercing: 5
-          Blunt: 5
-          Slash: 5
-          Heat: 5
-    - type: Destructible
-      thresholds:
-        - trigger:
-            !type:DamageTrigger
-            damage: 10000000000000000000000
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-        - trigger:
-            !type:DamageTrigger
-            damage: 10000000000000000000000 #This is probably enough damage before it breaks
-          behaviors:
-            - !type:DoActsBehavior
-              acts: [ "Destruction" ]
-            - !type:PlaySoundBehavior
-              sound:
-                collection: MetalBreak
-            - !type:SpawnEntitiesBehavior
-              spawn:
-                SheetSteel:
-                  min: 2
-                  max: 2
-                SheetGlass:
-                  min: 2
-                  max: 2
+          Blunt: 100000000000
+          Piercing: 100000000000
+          Slash: 100000000000
+          Heat: 100000000000
+          Cellular: 100000000000
+          Caustic: 100000000000
+          Cold: 100000000000
+          Radiation: 100000000000
+          Shock: 100000000000
+          Poison: 100000000000
 
 # Sec Rare
 - type: entity

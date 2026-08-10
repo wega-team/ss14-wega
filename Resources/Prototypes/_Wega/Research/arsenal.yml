@@ -25,6 +25,7 @@
   - WeaponXrayCannon
   - WeaponIonCarabine
   - WeaponTemperatureGun
+  - WeaponImporator
   - BorgModuleLethal
   technologyPrerequisites:
   - WeaponizedLaserManipulation

@@ -297,6 +297,11 @@
     - type: Blocking
       activeBlockFraction: 0.8
       passiveBlockFraction: 0.5
+      flatReductions:
+        Piercing: 50
+        Blunt: 50
+        Slash: 50
+        Heat: 50
 
 - type: entity
   parent: TelescopicShieldBorg
@@ -305,6 +310,11 @@
     - type: Blocking
       activeBlockFraction: 0.99
       passiveBlockFraction: 0.8
+      flatReductions:
+        Piercing: 50
+        Blunt: 50
+        Slash: 50
+        Heat: 50
 
 - type: entity
   name: handheld crew monitor

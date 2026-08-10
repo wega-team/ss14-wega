@@ -1357,9 +1357,13 @@
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
     components:
-    - type: TelekinesisGen
-      itemPrototype: TelescopicShieldBorgSyndCr20
-      handPos: Left
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.4
+          Heat: 0.4
     - type: Reflect
       reflectProb: 0.5
       reflects:
