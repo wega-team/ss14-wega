@@ -40,17 +40,22 @@
 # Orange
 - type: reaction
   id: TearGas # Alternative
+  priority: -10
+  impact: High
+  conserveEnergy: false
   reactants:
     SlimeExtractOrange:
-      amount: 5
+      amount: 2.5
     Blood:
-      amount: 10
+      amount: 5
   effects:
   - !type:AreaReactionEffect
     duration: 10
-    prototypeId: AdminInstantEffectTearGas
+    prototypeId:  Smoke
     sound:
       path: /Audio/Effects/smoke.ogg
+  products:
+    TearGas: 50
 
 - type: reaction
   id: FireEffect
