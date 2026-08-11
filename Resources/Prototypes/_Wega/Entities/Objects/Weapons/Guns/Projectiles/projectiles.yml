@@ -194,4 +194,4 @@
       state: impact_xeno_fire
   - type: HitscanIgnite
     igniteChance: 1
-    fireStacks: 3
+    fireStacks: 0.75
