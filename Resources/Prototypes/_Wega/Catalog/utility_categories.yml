@@ -29,6 +29,7 @@
     ClothingShoesBootsJump: 2500
     ClothingShoesWinterIceHikingBoots: 2500
     ClothingModularControllerMiningPreassembled: 2500
+    BorgModuleKinetic: 4000
 
 - type: utilityVendorCategory
   id: UtilityConsumables
