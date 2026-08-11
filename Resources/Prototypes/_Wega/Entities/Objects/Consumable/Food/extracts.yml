@@ -14,7 +14,7 @@
   - type: Solution
     id: food
     solution:
-      maxVol: 20
+      maxVol: 30
   - type: Tag
     tags:
     - SlimeRND

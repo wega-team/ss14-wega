@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CC-BY-SA-3.0",
+    "copyright": "sprites taken from https://github.com/ss220-space/Paradise",
+    "states": [
+        {
+            "name": "time_stop"
+        }
+    ]
+}

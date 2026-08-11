@@ -20,10 +20,10 @@
   - Weapons
   completetime: 8
   materials:
-    Steel: 850
+    Steel: 750
     Plastic: 500
     Glass: 300
-    Gold: 400
+    Gold: 200
     Silver: 200
     
 - type: latheRecipe
@@ -37,6 +37,20 @@
     Plastic: 300
     Glass: 300
     Gold: 200
+    Uranium: 200
+    
+- type: latheRecipe
+  id: WeaponImporator
+  result: WeaponImporator
+  categories:
+  - Weapons
+  completetime: 8
+  materials:
+    Steel: 1250
+    Plastic: 500
+    Glass: 500
+    Gold: 200
+    Silver: 200
 # Clothing
 
 - type: latheRecipe

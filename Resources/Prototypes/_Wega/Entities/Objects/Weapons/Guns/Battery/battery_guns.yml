@@ -385,3 +385,35 @@
     maxCharge: 1000
     startingCharge: 1000
   - type: Appearance
+
+- type: entity
+  name: x-ray cannon
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  id: WeaponImporator
+  description: An experimental weapon that uses concentrated x-ray energy against its target.
+  components:
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,1
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/imolator.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-0
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/imolator.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/xenofirebeam.ogg
+  - type: BatteryAmmoProvider
+    proto: FireLaser
+    fireCost: 100
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance
