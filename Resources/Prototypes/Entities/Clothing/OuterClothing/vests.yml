@@ -74,25 +74,29 @@
   description: A cloth vest for the fearless reporter in the field. Go land an interview with that space dragon!
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Vests/pressvest.rsi
+    sprite: _Wega/Clothing/OuterClothing/Armor/pressvest.rsi #Corvax-Wega-edit
     layers:
     - state: icon
-    - state: icon-unshaded # See ClothingOuterVestHazard for why we double-add these unshaded states this way
-      shader: unshaded
-    - state: icon-unshaded
-      shader: shaded
+#Corvax-Wega-edit-start
+#    - state: icon-unshaded # See ClothingOuterVestHazard for why we double-add these unshaded states this way
+#      shader: unshaded
+#    - state: icon-unshaded
+#      shader: shaded
+#Corvax-Wega-edit-end
   - type: Clothing
-    sprite: Clothing/OuterClothing/Vests/pressvest.rsi
+    sprite: _Wega/Clothing/OuterClothing/Armor/pressvest.rsi #Corvax-Wega-edit
     clothingVisuals:
       outerClothing:
       - state: equipped-OUTERCLOTHING
-      - state: equipped-OUTERCLOTHING-unshaded
-        shader: unshaded
-      - state: equipped-OUTERCLOTHING-unshaded
-        shader: shaded
-      outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-vox
-      - state: equipped-OUTERCLOTHING-unshaded-vox
-        shader: unshaded
-      - state: equipped-OUTERCLOTHING-unshaded-vox
-        shader: shaded
+#Corvax-Wega-edit-start
+#      - state: equipped-OUTERCLOTHING-unshaded
+#        shader: unshaded
+#      - state: equipped-OUTERCLOTHING-unshaded
+#        shader: shaded
+#      outerClothing-vox: 
+#      - state: equipped-OUTERCLOTHING-vox
+#      - state: equipped-OUTERCLOTHING-unshaded-vox
+#        shader: unshaded
+#      - state: equipped-OUTERCLOTHING-unshaded-vox
+#        shader: shaded
+#Corvax-Wega-edit-end
