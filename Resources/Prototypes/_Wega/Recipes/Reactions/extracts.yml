@@ -38,24 +38,15 @@
     Epinephrine: 5
 
 # Orange
-- type: reaction
-  id: TearGas # Alternative
-  priority: -10
-  impact: High
-  conserveEnergy: false
-  reactants:
-    SlimeExtractOrange:
-      amount: 2.5
-    Blood:
-      amount: 5
-  effects:
-  - !type:AreaReactionEffect
-    duration: 10
-    prototypeId:  Smoke
-    sound:
-      path: /Audio/Effects/smoke.ogg
-  products:
-    TearGas: 50
+# - type: reaction
+  # id: TearGas # Alternative
+  # reactants:
+    # SlimeExtractOrange:
+      # amount: 1
+    # Blood:
+      # amount: 2
+  # products:
+    # TearGas: 3
 
 - type: reaction
   id: FireEffect
