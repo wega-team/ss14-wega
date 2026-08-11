@@ -60,17 +60,35 @@
 
 #region Blood Drunk Miner
 - type: entity
-  parent:
-  - MobBloodstream
-  - MobFlammable
-  - BaseSpeciesMob
-  - AppearanceHuman
-  - BaseMobLavalandMegafaunaMover
+  parent: [ MobHuman, BaseMobLavalandMegafaunaMover ]
   id: MobBloodDrunkMiner
   name: unknown miner
   components:
   - type: RandomHumanoidAppearance
     randomizeName: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 1200
+      behaviors:
+      - !type:GibBehavior { }
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 1500
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MeatLaserImpact
   - type: Loadout
     prototypes:
       - BloodDrunkMinerGear
@@ -86,6 +104,12 @@
       540: 0.7
       720: 0.5
       900: 0.3
+  - type: Respirator
+    saturation: 8.0
+    suffocationThreshold: -6.0
+    maxSaturation: 8.0
+    minSaturation: -4.0
+    updateIntervalMultiplier: 0.8
   - type: BossMusic
     music:
       collection: BDMMusic
@@ -101,6 +125,9 @@
   - type: NpcFactionMember
     factions:
     - AllHostile
+  - type: DnaModifier
+    upper: null
+    lowest: null
   - type: LegionReversible
     canReversible: false
   - type: TrophyHunter

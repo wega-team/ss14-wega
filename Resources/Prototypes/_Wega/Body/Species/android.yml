@@ -2,14 +2,8 @@
   parent: None
   id: Android
   limits:
-    enum.HumanoidVisualLayers.Special:
-      limit: 2
-      required: false
     enum.HumanoidVisualLayers.Head:
       limit: 1
-      required: false
-    enum.HumanoidVisualLayers.HeadTop:
-      limit: 2
       required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1

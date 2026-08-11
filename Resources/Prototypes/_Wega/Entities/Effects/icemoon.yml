@@ -31,6 +31,7 @@
     lifetime: 0.1
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -88,6 +89,7 @@
     lifetime: 0.5
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -132,6 +134,7 @@
     state: thingspike
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -168,7 +171,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
-    canCollide: false
+    canCollide: False
   - type: InteractionOutline
   - type: Sprite
     noRot: true
@@ -185,7 +188,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
-    canCollide: false
+    canCollide: False
   - type: Sprite
     sprite: _Wega/Effects/thething.rsi
     state: acidic
@@ -209,6 +212,7 @@
     anchored: true
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:

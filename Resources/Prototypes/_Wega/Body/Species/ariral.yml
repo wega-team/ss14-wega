@@ -3,7 +3,7 @@
   id: Ariral
   limits:
     enum.HumanoidVisualLayers.Special:
-      limit: 2
+      limit: 1
       required: false
     enum.HumanoidVisualLayers.HeadSide:
       limit: 1

@@ -2,7 +2,7 @@
   id: ActiveHonkVirus
   name: disease-proto-honk
   infectious: false
-  cureResist: 0.08
+  cureResist: 0.2
   stages:
     - 0
     - 120
@@ -55,10 +55,6 @@
   cures:
     - !type:DiseaseReagentCure
       reagent: BananaHonk
-      min: 2
-      stages:
-        - 0
-        - 1
-        - 2
+      min: 5
     - !type:DiseaseJustWaitCure
       maxLength: 900
