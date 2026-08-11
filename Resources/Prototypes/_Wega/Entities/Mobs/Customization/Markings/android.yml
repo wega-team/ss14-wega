@@ -149,7 +149,7 @@
 
 - type: marking
   id: AndroidTorsoFemaleSynt
-  bodyPart: Special
+  bodyPart: Chest
   groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
@@ -163,54 +163,8 @@
     state: body_f_synt
 
 - type: marking
-  id: AndroidTorsoFemaleSmallBreastSynt
-  bodyPart: Special
-  groupWhitelist: [ Android ]
-  sexRestriction: [ Female ]
-  sponsorOnly: false
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#ffffff"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/android.rsi
-    state: body_f_synt_small
-
-
-- type: marking
-  id: AndroidTorsoFemaleBigBreastSynt
-  bodyPart: Special
-  groupWhitelist: [ Android ]
-  sexRestriction: [ Female ]
-  sponsorOnly: false
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#ffffff"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/android.rsi
-    state: body_f_synt_big
-
-- type: marking
-  id: AndroidTorsoFemaleSuperBigBreastSynt
-  bodyPart: Special
-  groupWhitelist: [ Android ]
-  sexRestriction: [ Female ]
-  sponsorOnly: false
-  coloring:
-    default:
-      type:
-        !type:SimpleColoring
-          color: "#ffffff"
-  sprites:
-  - sprite: _Wega/Mobs/Customization/android.rsi
-    state: body_f_synt_superbig
-
-- type: marking
   id: AndroidTorsoMaleSynt
-  bodyPart: Special
+  bodyPart: Chest
   groupWhitelist: [ Android ]
   sexRestriction: [ Male ]
   sponsorOnly: false
@@ -659,34 +613,6 @@
   sprites:
     - sprite: _Wega/Mobs/Customization/android_heads.rsi
       state: synt_m
-
-- type: marking
-  id: AndroidTattooEyeRight
-  bodyPart: Eyes
-  groupWhitelist: [ Android ]
-  sponsorOnly: false
-  coloring:
-    default:
-      type:
-        !type:CategoryColoring
-          category: Special
-  sprites:
-  - sprite: Mobs/Customization/tattoos.rsi
-    state: tattoo_eye_r
-
-- type: marking
-  id: AndroidTattooEyeLeft
-  bodyPart: Eyes
-  groupWhitelist: [ Android ]
-  sponsorOnly: false
-  coloring:
-    default:
-      type:
-        !type:CategoryColoring
-          category: Special
-  sprites:
-  - sprite: Mobs/Customization/tattoos.rsi
-    state: tattoo_eye_l
 
 #endregion Head
 

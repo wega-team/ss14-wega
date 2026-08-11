@@ -140,12 +140,6 @@
         AndroidScreenHead-screen_lit:
           True: { shader: unshaded }
           False: { shader: shaded }
-        AndroidTattooEyeRight-tattoo_eye_r:
-          True: { shader: unshaded }
-          False: { shader: shaded }
-        AndroidTattooEyeLeft-tattoo_eye_l:
-          True: { shader: unshaded }
-          False: { shader: shaded }
   - type: WiresVisuals
   - type: InitialBody
     organs:

@@ -12,8 +12,6 @@ marking-AndroidAnimatronicHead = Андроид, голова (Аниматро�
 marking-AndroidTempleLed = Андроид, светодиод (Висок)
 marking-AndroidHeadFemaleSynt = Андроид, голова (Имитация)
 marking-AndroidHeadMaleSynt = Андроид, голова (Имитация)
-marking-AndroidTattooEyeRight = Андроид, правый глаз
-marking-AndroidTattooEyeLeft = Андроид, левый глаз 
 
 # Торс
 marking-AndroidTorsoFemaleStandart = Андроид, торс (Стандарт)
@@ -23,9 +21,6 @@ marking-AndroidTorsoFemaleNoBreast = Андроид, торс (Без груди
 marking-AndroidTorsoMale = Андроид, торс
 marking-AndroidTorsoSpine = Андроид, торс (Усиленный позвоночник)
 marking-AndroidTorsoFemaleSynt = Андроид, торс (Имитация)
-marking-AndroidTorsoFemaleSmallBreastSynt = Андроид, торс (Имитация, маленькая грудь)
-marking-AndroidTorsoFemaleBigBreastSynt = Андроид, торс (Имитация, крупная грудь)
-marking-AndroidTorsoFemaleSuperBigBreastSynt = Андроид, торс (Имитация, большая грудь)
 marking-AndroidTorsoMaleSynt = Андроид, торс (Имитация)
 
 # Светодиоды
