@@ -227,7 +227,7 @@
     Bloodstream:
       effects:
       - !type:ModifyStatusEffect
-        effectProto: StatusEffectHeatProtectioSlime
+        effectProto: StatusEffectHeatProtectionSlime
         time: 2
         type: Add
       - !type:HealthChange
@@ -247,7 +247,7 @@
     Bloodstream:
       effects:
       - !type:ModifyStatusEffect
-        effectProto: StatusEffectRadiationProtectioSlime
+        effectProto: StatusEffectRadiationProtectionSlime
         time: 2
         type: Add
       - !type:HealthChange
@@ -267,7 +267,7 @@
     Bloodstream:
       effects:
       - !type:ModifyStatusEffect
-        effectProto: StatusEffectCellularProtectioSlime
+        effectProto: StatusEffectCellularProtectionSlime
         time: 2
         type: Add
 
@@ -283,7 +283,7 @@
     Bloodstream:
       effects:
       - !type:ModifyStatusEffect
-        effectProto: StatusEffectIronSkinProtectioSlime
+        effectProto: StatusEffectIronSkinProtectionSlime
         time: 2
         type: Add
       - !type:MovementSpeedModifier

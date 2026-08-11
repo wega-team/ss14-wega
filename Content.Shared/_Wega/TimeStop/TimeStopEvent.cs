@@ -36,10 +36,10 @@ public sealed partial class TimeStopSystem : EntitySystem
 
     private void OnStopTime(TimeStopActionEvent args)
     {
-        if (args.Handled || !PassesSpellPrerequisites(args.Action, args.Performer))
+        if (_net.IsClient)
             return;
 		
-        if (_net.IsClient)
+        if (args.Handled || !PassesSpellPrerequisites(args.Action, args.Performer))
             return;
 
 		args.Handled = true;

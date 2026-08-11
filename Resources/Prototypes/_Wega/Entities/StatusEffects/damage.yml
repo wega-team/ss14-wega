@@ -1,6 +1,6 @@
 - type: entity
   parent: StatusEffectDamageModifierBase
-  id: StatusEffectRadiationProtectioSlime
+  id: StatusEffectRadiationProtectionSlime
   name: radiation protection
   components:
   - type: DamageModifierStatusEffect
@@ -10,7 +10,7 @@
         
 - type: entity
   parent: StatusEffectDamageModifierBase
-  id: StatusEffectCellularProtectioSlime
+  id: StatusEffectCellularProtectionSlime
   name: celluar protection
   components:
   - type: DamageModifierStatusEffect
@@ -20,7 +20,7 @@
 
 - type: entity
   parent: StatusEffectDamageModifierBase
-  id: StatusEffectIronSkinProtectioSlime
+  id: StatusEffectIronSkinProtectionSlime
   name: iron skin protection
   components:
   - type: DamageModifierStatusEffect
@@ -32,13 +32,10 @@
 
 - type: entity
   parent: StatusEffectDamageModifierBase
-  id: StatusEffectHeatProtectioSlime
+  id: StatusEffectHeatProtectionSlime
   name: heat protection
   components:
   - type: DamageModifierStatusEffect
     modifiers:
       coefficients:
         Heat: 0.3
-
-
-
