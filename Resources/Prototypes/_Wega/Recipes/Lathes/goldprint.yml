@@ -73,7 +73,7 @@
   result: WristwatchGold
   completetime: 6.4
   materials:
-    Gold: 200
+    Gold: 550
 
 - type: latheRecipe
   id: DrinkGoldenCup
