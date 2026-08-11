@@ -611,6 +611,8 @@
           components:
           - BallisticAmmoProvider
           - ChamberMagazineAmmoProvider
+          - RevolverAmmoProvider
+          - BatteryAmmoProvider
 
 - type: entity
   parent: BaseSuitModule
