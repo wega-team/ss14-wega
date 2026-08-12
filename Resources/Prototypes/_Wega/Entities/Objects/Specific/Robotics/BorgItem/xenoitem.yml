@@ -200,7 +200,7 @@
           Piercing: -3
           Heat: -3
   - type: PowerCellDraw
-    drawRate: 72 # 10 seconds
+    drawRate: 36 # 10 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot

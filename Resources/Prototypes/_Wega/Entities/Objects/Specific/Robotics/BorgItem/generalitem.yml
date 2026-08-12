@@ -14,7 +14,7 @@
     components:
     - type: SpeedUpGen
   - type: PowerCellDraw
-    drawRate: 50.4 # 25 seconds
+    drawRate: 14.4 # 25 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot

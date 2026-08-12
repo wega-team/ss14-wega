@@ -6,9 +6,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGray:
-      amount: 3
+      amount: 2
     Blood:
-      amount: 6
+      amount: 4
   effects:
     - !type:SpawnEntity
       entity: MonkeyCube
@@ -38,15 +38,17 @@
     Epinephrine: 5
 
 # Orange
-# - type: reaction
-  # id: TearGas # Alternative
-  # reactants:
-    # SlimeExtractOrange:
-      # amount: 1
-    # Blood:
-      # amount: 2
-  # products:
-    # TearGas: 3
+- type: reaction
+  id: FireReagenst
+  reactants:
+    SlimeExtractOrange:
+      amount: 2.5
+    Blood:
+      amount: 5
+  products:
+    Phlogiston: 3
+    Napalm: 3
+    
 
 - type: reaction
   id: FireEffect
@@ -98,7 +100,7 @@
     Plasma:
       amount: 2
   products:
-    Cryoxadone: 1
+    FrostOil: 5
 
 # Metallic
 - type: reaction
@@ -113,7 +115,7 @@
       amount: 2
   effects:
     - !type:SpawnEntity
-      entity: RandomMetalSheet
+      entity: MetalSpawn
 
 - type: reaction
   id: GlassSheet
@@ -127,7 +129,7 @@
       amount: 2
   effects:
     - !type:SpawnEntity
-      entity: RandomGlassSheet
+      entity: GlassSpawn
 
 # Yellow
 - type: reaction
@@ -176,12 +178,12 @@
   conserveEnergy: false
   reactants:
     SlimeExtractDarkPurple:
-      amount: 1
+      amount: 2.5
     Plasma:
-      amount: 2
+      amount: 5
   effects:
     - !type:SpawnEntity
-      entity: SheetPlasma1
+      entity: SheetPlasma10
 
 - type: reaction
   id: SheetPlasmaGlass
@@ -190,12 +192,12 @@
   conserveEnergy: false
   reactants:
     SlimeExtractDarkPurple:
-      amount: 1
+      amount: 2.5
     Water:
-      amount: 2
+      amount: 5
   effects:
     - !type:SpawnEntity
-      entity: SheetPGlass1
+      entity: SheetPGlass10
 
 # Dark Blue
 - type: reaction
@@ -208,6 +210,8 @@
   effects:
   - !type:CreateGas
     gas: Frezon # Alternative
+  - !type:SpawnEntity
+    entity: TempMinusForSlime
 
 - type: reaction
   id: ChillPotion
@@ -217,7 +221,7 @@
     Water:
       amount: 10
   products:
-    ChillPotion: 3
+    ChillPotion: 10
 
 # Silver
 - type: reaction
@@ -232,7 +236,7 @@
       amount: 2
   effects:
     - !type:SpawnEntity
-      entity: RandomFoodSingle
+      entity: FoodSingleSpawn
 
 - type: reaction
   id: RandomDrinkGlass
@@ -246,7 +250,7 @@
       amount: 2
   effects:
     - !type:SpawnEntity
-      entity: RandomDrinkGlass
+      entity: DrinkGlassSpawn
 
 # Bluespace
 - type: reaction
@@ -261,7 +265,7 @@
       amount: 10
   effects:
     - !type:SpawnEntity
-      entity: RandomArtifactSpawner
+      entity: ArtefactSpawn
 
 - type: reaction
   id: RandomAnomaly
@@ -275,7 +279,7 @@
       amount: 10
   effects:
     - !type:SpawnEntity
-      entity: RandomAnomalySpawner
+      entity: AnomalySpawn
 
 # Sepia
 - type: reaction
@@ -306,11 +310,11 @@
   id: HeatResistPotion
   reactants:
     SlimeExtractSepia:
-      amount: 1
+      amount: 5
     Water:
-      amount: 2
+      amount: 10
   products:
-    HeatResistPotion: 1
+    HeatResistPotion: 10
 
 # Azure
 - type: reaction
@@ -328,22 +332,22 @@
   id: RadiationResistPotion
   reactants:
     SlimeExtractPyrite:
-      amount: 1
+      amount: 5
     Water:
-      amount: 2
+      amount: 10
   products:
-    RadiationResistPotion: 1
+    RadiationResistPotion: 25
 
 # Green
 - type: reaction
   id: CellularResistPotion
   reactants:
     SlimeExtractGreen:
-      amount: 1
+      amount: 5
     Water:
-      amount: 2
+      amount: 10
   products:
-    CellularResistPotion: 1
+    CellularResistPotion: 10
 
 # Red
 - type: reaction
@@ -375,12 +379,12 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGold:
-      amount: 20
+      amount: 5
     Blood:
       amount: 20
   effects:
     - !type:SpawnEntity
-      entity: RandomNeutralAnimal
+      entity: NetralAnimalSpawn
 
 - type: reaction
   id: RandomAgressiveAnimal
@@ -389,12 +393,12 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGold:
-      amount: 20
+      amount: 5
     Plasma:
-      amount: 20
+      amount: 10
   effects:
     - !type:SpawnEntity
-      entity: RandomAgressiveAnimal
+      entity: AngryAnimalSpawn
 
 - type: reaction
   id: RandomPassiveAnimal
@@ -403,12 +407,12 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGold:
-      amount: 20
+      amount: 5
     Water:
       amount: 20
   effects:
     - !type:SpawnEntity
-      entity: RandomPassiveAnimal
+      entity: PassiveAnimalSpawn
 
 # Oil
 - type: reaction
@@ -419,7 +423,7 @@
     Blood:
       amount: 2
   products:
-    SpeedPotion: 1
+    SpeedPotion: 2
 
 - type: reaction
   id: OilExtractExplosion
@@ -444,7 +448,7 @@
     Plasma:
       amount: 2
   products:
-    AdvancedMutateToxin: 1
+    AdvancedMutateToxin: 2
 
 # Light Pink
 - type: reaction
@@ -455,18 +459,18 @@
     Plasma:
       amount: 2
   products:
-    MindPotion: 1
+    MindPotion: 2
 
 # Adamantine
 - type: reaction
   id: IronSkinResistPotion
   reactants:
     SlimeExtractAdamantine:
-      amount: 1
+      amount: 5
     Blood:
-      amount: 2
+      amount: 10
   products:
-    IronSkinResistPotion: 1
+    IronSkinResistPotion: 10
 
 # Rainbow
 - type: reaction
@@ -476,9 +480,23 @@
   conserveEnergy: false
   reactants:
     SlimeExtractRainbow:
+      amount: 5
+    Blood:
       amount: 10
-    Plasma:
-      amount: 20
   effects:
     - !type:SpawnEntity
-      entity: RandomXenoSlime
+      entity: SlimeSpawn
+
+- type: reaction
+  id: TechnologyDiskT3
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    SlimeExtractRainbow:
+      amount: 5
+    Plasma:
+      amount: 10
+  effects:
+    - !type:SpawnEntity
+      entity: TechnologyDiskT3
