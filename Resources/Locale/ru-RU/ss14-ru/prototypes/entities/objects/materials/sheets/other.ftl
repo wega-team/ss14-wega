@@ -36,3 +36,6 @@ ent-MaterialSheetMeat = мясо
 ent-MaterialSheetMeat1 = { ent-MaterialSheetMeat }
     .desc = { ent-MaterialSheetMeat.desc }
     .suffix = Один
+ent-SheetPGlass10 = { ent-SheetPGlass }
+    .desc = { ent-SheetPGlass.desc }
+    .suffix = 10

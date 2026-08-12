@@ -86,6 +86,7 @@
   components:
   - type: SlimeHunger
     modifierFood: 3
+  - type: SlimeGrowth
     points: 5000
 
 ## Level 1

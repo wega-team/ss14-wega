@@ -70,7 +70,7 @@
     lifetime: 0
 
 - type: entity
-  id: AnomalySpawn
+  id: AnomalySpawnSlime
   categories: [ HideSpawnMenu, Spawner ]
   components:
   - type: Transform
