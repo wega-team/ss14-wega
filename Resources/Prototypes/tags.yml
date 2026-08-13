@@ -153,9 +153,6 @@
   id: BotanyHatchet # Storage whitelist: ClothingBeltPlant. ItemMapper: ClothingBeltPlant
 
 - type: Tag
-  id: BotanyHoe # Storage whitelist: ClothingBeltPlant. ItemMapper: ClothingBeltPlant
-
-- type: Tag
   id: BotanyShovel # Storage whitelist: ClothingBeltPlant. ItemMapper: ClothingBeltPlant
 
 - type: Tag # Used for specifically chemistry bottles.
@@ -559,6 +556,9 @@
 - type: Tag
   id: FakeMindShieldImplant # Used by FakeMindShieldSystem to toggle the tagged action when a chameleon outfit is selected.
 
+- type: Tag # Also used by FakeMindShieldSystem, but only for changelings
+  id: FakeMindShieldChangeling
+
 - type: Tag
   id: FakeNukeDisk # Exists so that the fake nuke disk can be blacklisted by storages that blacklist the real disk.
 
@@ -582,6 +582,9 @@
 
 - type: Tag
   id: FirelockElectronics # ConstructionGraph: Firelock
+
+- type: Tag
+  id: FitInTeleporterConsole
 
 - type: Tag
   id: Flare # Storage whitelist: BaseClothingBeltEngineering
@@ -1116,9 +1119,6 @@
   id: PlantBGone # Storage whitelist: ClothingBeltPlant. ItemMapper: ClothingBeltPlant
 
 - type: Tag
-  id: PlantSampleTaker # Used by PlantHolderSystem to make tagged entities a pseudo-tool for trimming seeds. TODO this sucks!
-
-- type: Tag
   id: PlasmaGlassShard # ConstructionGraph: ImprovisedArrowPlasma, PlasmaShiv, SpearPlasma
 
 - type: Tag
@@ -1526,10 +1526,6 @@
   id: VoiceTrigger # ConstructionGraph: Vim
 
 ## W ##
-
-- type: Tag
-  id: Wall # Tagged entity is a wall. Several systems and several targeting whitelists (BaseMobDragon) care about this.
-           # .cs: SharedNavMapSystem, WallmountCondition, TileWallsCommand, DungeonJob
 
 - type: Tag
   id: WallmountGeneratorAPUElectronics # ConstructionGraph: WallmountGenerator

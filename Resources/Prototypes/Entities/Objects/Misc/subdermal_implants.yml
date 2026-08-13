@@ -58,13 +58,8 @@
     enabled: false
     radius: 2.5
     softness: 5
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
-  - type: Tag
-    tags:
-    - SubdermalImplant
-    - HideContextMenu
-    - Flashlight
   - type: UnpoweredFlashlight
 
 - type: entity
@@ -88,9 +83,6 @@
       collection: BikeHorn
       params:
         variation: 0.125
-  - type: Tag
-    tags:
-    - BikeHorn
 
 #Security implants
 
@@ -324,9 +316,6 @@
     interfaces:
       enum.VoiceMaskUIKey.Key:
         type: VoiceMaskBoundUserInterface
-  - type: Tag
-    tags:
-    - SubdermalImplant
 
 #Nuclear Operative/Special Exclusive implants
 
@@ -407,10 +396,6 @@
       intensitySlope: 15
       maxIntensity: 70
       canCreateVacuum: true
-    - type: Tag
-      tags:
-      - SubdermalImplant
-      # - HideContextMenu # Corvax-Wega-Surgery-Edit
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -437,10 +422,6 @@
   - type: SpawnOnTrigger
     proto: Acidifier
     predicted: true
-  - type: Tag
-    tags:
-    - SubdermalImplant
-    # - HideContextMenu # Corvax-Wega-Surgery-Edit
 
 - type: entity
   parent: BaseSubdermalImplant
@@ -475,9 +456,7 @@
   components:
   - type: SubdermalImplant
     implantAction: FakeMindShieldToggleAction
-    implantComponents:
-    - type: FakeMindShield # TODO: put the component on the implant and use implant relay events for the status icon
-  - type: FakeMindShieldImplant
+  - type: FakeMindShield
   # Corvax-Wega-Surgery-start
   - type: Sprite
     sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
@@ -496,12 +475,13 @@
   description: This implant will ensure loyalty to Nanotrasen and prevent mind control devices.
   # categories: [ HideSpawnMenu ] # Corvax-Wega-Surgery-Edit
   components:
+    - type: SubdermalImplant
+    - type: MindShieldImplant
+    - type: MindShield
   # Corvax-Wega-Surgery-start
     - type: Sprite
       sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
       state: mind_shield
-    - type: SubdermalImplant
-    - type: MindShieldImplant
     - type: Tag
       tags:
       - SubdermalHeadImplant

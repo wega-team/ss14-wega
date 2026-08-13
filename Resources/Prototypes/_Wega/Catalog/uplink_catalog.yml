@@ -712,7 +712,6 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-
 - type: listing
   id: UplinkMagazinePistolSubMachineGunFrozen
   name: uplink-magazine-pistol-submachinegun-frozen-name

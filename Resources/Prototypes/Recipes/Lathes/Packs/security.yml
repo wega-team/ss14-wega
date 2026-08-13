@@ -10,6 +10,7 @@
   - TargetHuman
   - TargetSyndicate
   - Zipties
+  - SecurityBola
   - PouchSec # Corvax-Wega-Add
 
 # Practice ammo/mags and practice weapons
@@ -71,6 +72,7 @@
   - PortableRecharger
 # Corvax-Wega-Arsenal-start
   - WeaponIonCarabine
+  - WeaponImporator
   - WeaponDominator
   - WeaponTaser
   - PortableRechargerBag

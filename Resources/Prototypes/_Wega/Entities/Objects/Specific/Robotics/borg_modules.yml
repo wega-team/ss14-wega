@@ -1357,9 +1357,13 @@
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
     components:
-    - type: TelekinesisGen
-      itemPrototype: TelescopicShieldBorgSyndCr20
-      handPos: Left
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.4
+          Heat: 0.4
     - type: Reflect
       reflectProb: 0.5
       reflects:
@@ -1561,7 +1565,7 @@
     - state: icon-xenoborg-holowall
   - type: ItemBorgModule
     hands:
-    - item: XenoborgHoloprojectorForcefield
+    - item: HoloprojectorXenoField
     - hand:
         emptyRepresentative: Nanopast
         emptyLabel: borg-slot-nanopasta-empty
@@ -1570,7 +1574,7 @@
           - Nanopast
     - item: BorgGeneratorNanopastXenoborg
   - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: xfield-module }
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-deflector-module }
 
 - type: entity
   id: XenoborgModuleCommonRepeir

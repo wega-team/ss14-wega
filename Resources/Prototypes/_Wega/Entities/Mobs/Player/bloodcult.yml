@@ -129,7 +129,9 @@
   - type: TemperatureProtection
     coefficient: 0.001
   - type: FlashImmunity
-  - type: PressureImmunity
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectPressureImmunity
   - type: ZombieImmune
   - type: Puller
     needsHands: false

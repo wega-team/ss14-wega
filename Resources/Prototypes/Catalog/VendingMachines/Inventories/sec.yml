@@ -6,7 +6,6 @@
     # Corvax-Wega-Edit-Start
     CrisisButton: 4
     BoxBodycam: 1
-    SecutiryBola: 6
     # Corvax-Wega-Edit-End
     GrenadeFlashBang: 4
     TearGasGrenade: 4
@@ -25,6 +24,7 @@
     RiotLaserShield: 2
     RiotBulletShield: 2
     RadioHandheldSecurity: 5
+    SecurityBola: 6
   # security officers need to follow a diet regimen!
   contrabandInventory:
     WeaponMeleeNeedle: 2

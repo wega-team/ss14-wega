@@ -2,7 +2,7 @@ using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;

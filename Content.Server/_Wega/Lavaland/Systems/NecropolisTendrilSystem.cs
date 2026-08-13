@@ -4,6 +4,7 @@ using Content.Server.Lavaland.Components;
 using Content.Shared.Achievements;
 using Content.Shared.Destructible;
 using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Player;

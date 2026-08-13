@@ -38,6 +38,7 @@ public sealed partial class VampireSystem
 
     private static readonly ProtoId<InternalDamagePrototype> InternalBleeding = "ArterialBleeding";
     private static readonly EntProtoId ForceSleeping = "StatusEffectForcedSleeping";
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializePowers()
     {
@@ -98,7 +99,7 @@ public sealed partial class VampireSystem
 
         _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(5f));
         _flash.Flash(target, args.Performer, null, TimeSpan.FromSeconds(3f), 0.8f);
-        _status.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(8f));
+        _status.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(8f));
     }
 
     #endregion

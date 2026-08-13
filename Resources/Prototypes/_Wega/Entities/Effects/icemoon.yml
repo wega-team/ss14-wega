@@ -31,7 +31,6 @@
     lifetime: 0.1
   - type: Physics
     bodyType: Static
-    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -89,7 +88,6 @@
     lifetime: 0.5
   - type: Physics
     bodyType: Static
-    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -134,7 +132,6 @@
     state: thingspike
   - type: Physics
     bodyType: Static
-    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:
@@ -159,9 +156,6 @@
         acts: [ "Destruction" ]
   - type: TimedDespawn
     lifetime: 5
-  - type: Tag
-    tags:
-      - Wall
 
 - type: entity
   id: EffectTheThingBigWarning
@@ -174,7 +168,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
-    canCollide: False
+    canCollide: false
   - type: InteractionOutline
   - type: Sprite
     noRot: true
@@ -191,7 +185,7 @@
     anchored: True
   - type: Physics
     bodyType: Static
-    canCollide: False
+    canCollide: false
   - type: Sprite
     sprite: _Wega/Effects/thething.rsi
     state: acidic
@@ -215,7 +209,6 @@
     anchored: true
   - type: Physics
     bodyType: Static
-    canCollide: False
   - type: Fixtures
     fixtures:
       fix1:

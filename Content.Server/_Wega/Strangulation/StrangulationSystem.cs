@@ -21,6 +21,7 @@ using Robust.Shared.Player;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Strangulation
 {
@@ -37,6 +38,8 @@ namespace Content.Server.Strangulation
         [Dependency] private StutteringSystem _stutteringSystem = default!;
         [Dependency] private SharedCombatModeSystem _combatModeSystem = default!;
         [Dependency] private StatusEffectsSystem _statusEffect = default!;
+
+        private static readonly EntProtoId Muted = "StatusEffectMuted";
 
         public override void Initialize()
         {
@@ -107,7 +110,7 @@ namespace Content.Server.Strangulation
                 return;
 
             var target = args.Target ?? default;
-            _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(3f));
+            _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(3f));
 
             if (args.Cancelled)
             {

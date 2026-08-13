@@ -237,7 +237,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                         continue;
 
                     _metabolism.ClearMetabolizerTypes(meta);
-                    _metabolism.TryAddMetabolizerType(meta, VampireComponent.MetabolizerVampire);
+                    _metabolism.TryAddMetabolizerType(organ, VampireComponent.MetabolizerVampire);
                 }
             }
         }
@@ -298,7 +298,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                 _metabolism.ClearMetabolizerTypes(meta);
                 foreach (var type in types)
                 {
-                    _metabolism.TryAddMetabolizerType(meta, type);
+                    _metabolism.TryAddMetabolizerType(organ, type);
                 }
             }
         }

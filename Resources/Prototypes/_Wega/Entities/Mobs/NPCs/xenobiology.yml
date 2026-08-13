@@ -31,6 +31,26 @@
   - type: SlimeHunger
   - type: SlimeSocial
   - type: SlimeGrowth
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPie
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 3 #Same as slime species
+      - !type:PopupMessage
+        type: Local
+        messages: [ "slime-hurt-by-water-popup" ]
+        probability: 5
 
   - type: SlimeVisuals
     defaultVisuals: MobXenoSlimeGray

@@ -90,9 +90,9 @@
     makeSentient: true
     name: ghost-role-information-rat-king-name
     description: ghost-role-information-rat-king-description
-    rules: ghost-role-information-antagonist-rules
+    rules: ghost-role-information-freeagent-rules # Corvax-Wega-Rules-Edit
     mindRoles:
-    - MindRoleGhostRoleSoloAntagonist
+    - MindRoleGhostRoleFreeAgentHarmless # Corvax-Wega-Rules-Edit
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -136,12 +136,15 @@
     - NamesRegalratKingdom
     - NamesRegalratTitle
     nameFormat: name-format-regal-rat
+  - type: NameIdentifier
+    group: null  # Strips the numeric identifier from the rat king's name, since they already have randomly-generated names anyway
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
   - type: GuideHelp
     guides:
     - MinorAntagonists
-  - type: Grammar
-    attributes:
-      gender: male
   - type: Tool
     qualities: Slicing
   - type: TTS # Corvax-TTS

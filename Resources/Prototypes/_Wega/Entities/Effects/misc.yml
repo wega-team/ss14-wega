@@ -14,3 +14,17 @@
       path: /Audio/Effects/tesla_consume.ogg
       params:
         variation: 0.3
+        
+- type: entity
+  id: TempPlusForOrangeSlime
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: CoreTempChange
+    tempChangePerSecond: 500
+  - type: TimedDespawn
+    lifetime: 2

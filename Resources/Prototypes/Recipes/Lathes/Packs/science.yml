@@ -26,6 +26,7 @@
   - TechDiskBag # Corvax-Wega-Add
   - TechDiskBagT3 # Corvax-Wega-Add
   - ClothingBackpackHarmpack
+  - TeleporterChipBlank
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -85,10 +86,12 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
-# Corvax-wega-start
+  - StationTeleportersControlCircuitboard
+  - StationTeleporterMachineCircuitboard
+  # Corvax-wega-start
   - BorgChargerTurboCircuitboard
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
-# Corvax-wega-end
+  # Corvax-wega-end
 
 - type: latheRecipePack
   id: CameraBoards

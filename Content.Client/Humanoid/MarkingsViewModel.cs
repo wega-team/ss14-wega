@@ -226,6 +226,11 @@ public sealed partial class MarkingsViewModel
         if (!groupProto.Appearances.TryGetValue(layer, out var appearance))
             return true;
 
+        // Corvax-Wega-Customize-start
+        if (markingProto.Sprites.Count > 1)
+            return true;
+        // Corvax-Wega-Customize-end
+
         return !appearance.MatchSkin;
     }
 
@@ -384,7 +389,35 @@ public sealed partial class MarkingsViewModel
         if (markingIdx == -1)
             return;
 
-        markings[markingIdx] = markings[markingIdx].WithColorAt(colorIndex, color);
+        // Corvax-Wega-Customize-start
+        var existingMarking = markings[markingIdx];
+        var proto = _prototype.Index(markingId);
+
+        var isGradient = proto.Sprites.Count > 1;
+        if (isGradient)
+        {
+            var matchSkin = false;
+            if (_organData.TryGetValue(organ, out var organData)
+                && _prototype.TryIndex(organData.Group, out var groupProto))
+            {
+                if (groupProto.Appearances.TryGetValue(layer, out var appearance))
+                    matchSkin = appearance.MatchSkin;
+            }
+
+            if (matchSkin && colorIndex == 0)
+                return;
+
+            markings[markingIdx] = existingMarking.WithColorAt(colorIndex, color);
+        }
+        else
+        {
+            if (!IsMarkingColorCustomizable(organ, layer, markingId))
+                return;
+
+            markings[markingIdx] = existingMarking.WithColorAt(colorIndex, color);
+        }
+        // Corvax-Wega-Customize-End
+
         MarkingsChanged?.Invoke(organ, layer);
     }
 
