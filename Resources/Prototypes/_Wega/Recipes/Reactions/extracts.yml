@@ -182,7 +182,8 @@
       amount: 5
   effects:
     - !type:SpawnEntity
-      entity: SheetPlasma10
+      entity: SheetPlasma1
+      number: 10
 
 - type: reaction
   id: SheetPlasmaGlass
@@ -196,7 +197,8 @@
       amount: 5
   effects:
     - !type:SpawnEntity
-      entity: SheetPGlass10
+      entity: SheetPGlass1
+      number: 10
 
 # Dark Blue
 - type: reaction
