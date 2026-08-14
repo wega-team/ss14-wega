@@ -101,8 +101,8 @@
     Glass: 100
 
 - type: latheRecipe
-  id: TeleporterChipBlank
-  result: TeleporterChipBlank
+  id: SelectorTeleporter # Corvax-Wega-Add
+  result: SelectorTeleporter # Corvax-Wega-Add
   categories:
   - Tools
   - Research
