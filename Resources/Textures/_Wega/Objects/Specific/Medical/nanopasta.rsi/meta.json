@@ -1,0 +1,23 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made with love by Misha_Unity",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "nanopasta-0"
+        },
+        {
+            "name": "nanopasta-1"
+        },
+        {
+            "name": "nanopasta-2"
+        },
+        {
+            "name": "nanopasta-3"
+        }
+    ]
+}

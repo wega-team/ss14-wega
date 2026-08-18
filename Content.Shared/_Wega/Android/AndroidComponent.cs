@@ -1,5 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.Alert;
+using Content.Shared.DoAfter;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -30,20 +31,24 @@ public sealed partial class AndroidComponent : Component
     public ProtoId<AlertPrototype> NoBatteryAlert = "BorgBatteryNone";
 
     [DataField]
-    public float BasePointLightRadiuse = 2.5f;
+    public float ChargeSpeed = 20f;
+    [DataField]
+    public float ChargeEfficency = 0.1f;
+    [DataField]
+    public float ChargeLimit = 0.5f;
+    [DataField]
+    public SoundSpecifier ChargeSound = new SoundCollectionSpecifier("sparks");
 
+    [DataField]
+    public float BasePointLightRadiuse = 2.5f;
     [DataField]
     public float BasePointLightEnergy = 1.6f;
-
     [ViewVariables(VVAccess.ReadWrite)]
     public EntityUid? LightEntity;
-
     [DataField]
     public SoundSpecifier ToggleLightSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
-
     [DataField("lightPrototype")]
     public string LightEntityPrototype = "AndroidLightMarker";
-
     [DataField]
     public string TogglelLightAction = "ActionToggleAndroidLeds";
 
@@ -54,4 +59,15 @@ public sealed partial class AndroidComponent : Component
 public enum AndroidVisuals : byte
 {
     Light
+}
+
+[Serializable, NetSerializable]
+public sealed partial class AndroidChargeDoAfterEvent : SimpleDoAfterEvent
+{
+    public NetEntity Source;
+
+    public AndroidChargeDoAfterEvent(NetEntity source)
+    {
+        Source = source;
+    }
 }
