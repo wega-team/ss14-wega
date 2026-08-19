@@ -265,6 +265,9 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
     private void OnGetAlternativeVerbs(EntityUid uid, ApcComponent component, GetVerbsEvent<AlternativeVerb> args)
     {
+        if (!args.CanAccess || !args.CanComplexInteract)
+            return;
+
         if (!TryComp<AndroidComponent>(args.User, out var android))
             return;
 
