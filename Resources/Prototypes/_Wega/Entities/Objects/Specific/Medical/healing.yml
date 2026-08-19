@@ -624,7 +624,8 @@
       state: nanopasta-3
   - type: Appearance
   - type: Item
-    #heldPrefix: morphine
+    sprite: _Wega/Objects/Specific/Medical/nanopasta.rsi
+    heldPrefix: null
   - type: Healing
     delay: 1.25
     selfHealPenaltyMultiplier: 3

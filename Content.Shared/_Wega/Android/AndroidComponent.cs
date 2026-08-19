@@ -37,7 +37,7 @@ public sealed partial class AndroidComponent : Component
     [DataField]
     public float ChargeLimit = 0.5f;
     [DataField]
-    public SoundSpecifier ChargeSound = new SoundCollectionSpecifier("sparks");
+    public SoundSpecifier ChargeSound = new SoundPathSpecifier("/Audio/Items/Defib/defib_ready.ogg");
 
     [DataField]
     public float BasePointLightRadiuse = 2.5f;
