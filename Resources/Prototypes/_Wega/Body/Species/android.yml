@@ -2,8 +2,14 @@
   parent: None
   id: Android
   limits:
+    enum.HumanoidVisualLayers.Special:
+      limit: 2
+      required: false
     enum.HumanoidVisualLayers.Head:
       limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 2
       required: false
     enum.HumanoidVisualLayers.Hair:
       limit: 1
@@ -138,6 +144,12 @@
           True: { shader: unshaded, visible: true }
           False: { shader: shaded, visible: false }
         AndroidScreenHead-screen_lit:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidTattooEyeRight-tattoo_eye_r:
+          True: { shader: unshaded }
+          False: { shader: shaded }
+        AndroidTattooEyeLeft-tattoo_eye_l:
           True: { shader: unshaded }
           False: { shader: shaded }
   - type: WiresVisuals

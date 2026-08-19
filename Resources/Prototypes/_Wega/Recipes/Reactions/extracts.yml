@@ -35,22 +35,18 @@
     Water:
       amount: 2
   products:
-    Epinephrine: 1
+    Epinephrine: 5
 
 # Orange
 # - type: reaction
-#   id: TearGas # Alternative
-#   reactants:
-#     SlimeExtractOrange:
-#       amount: 5
-#     Blood:
-#       amount: 10
-#   effects:
-#   - !type:AreaReactionEffect
-#     duration: 10
-#     prototypeId: AdminInstantEffectTearGas
-#     sound:
-#       path: /Audio/Effects/smoke.ogg
+  # id: TearGas # Alternative
+  # reactants:
+    # SlimeExtractOrange:
+      # amount: 1
+    # Blood:
+      # amount: 2
+  # products:
+    # TearGas: 3
 
 - type: reaction
   id: FireEffect
@@ -62,6 +58,9 @@
   effects:
   - !type:CreateGas
     gas: Plasma
+    moles: 10
+  - !type:SpawnEntity
+    entity: TempPlusForOrangeSlime
   - !type:Explosion
     explosionType: Default
     maxIntensity: 20
@@ -257,9 +256,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractBluespace:
-      amount: 15
+      amount: 5
     Blood:
-      amount: 30
+      amount: 10
   effects:
     - !type:SpawnEntity
       entity: RandomArtifactSpawner
@@ -271,9 +270,9 @@
   conserveEnergy: false
   reactants:
     SlimeExtractBluespace:
-      amount: 15
+      amount: 5
     Plasma:
-      amount: 30
+      amount: 10
   effects:
     - !type:SpawnEntity
       entity: RandomAnomalySpawner
@@ -294,11 +293,21 @@
       entity: FloorTileItemSepia
 
 - type: reaction
+  id: TimeStopEffect
+  reactants:
+    SlimeExtractSepia:
+      amount: 5
+    Plasma:
+      amount: 10
+  effects:
+    - !type:TimeStopEffect
+
+- type: reaction
   id: HeatResistPotion
   reactants:
     SlimeExtractSepia:
       amount: 1
-    Plasma:
+    Water:
       amount: 2
   products:
     HeatResistPotion: 1
@@ -422,10 +431,9 @@
   effects:
   - !type:Explosion
     explosionType: Default
-    maxIntensity: 200
-    intensityPerUnit: 5
+    maxTotalIntensity: 60
     intensitySlope: 5
-    maxTotalIntensity: 200
+    maxIntensity: 100
 
 # Black
 - type: reaction

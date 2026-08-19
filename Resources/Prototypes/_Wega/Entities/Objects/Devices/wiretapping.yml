@@ -127,8 +127,6 @@
       deconstructionTarget: null
       graph: Bodycam
       node: alt
-    - type: StationAiVision
-      range: 2
     - type: Tag
       tags:
       - UniformUpgrade

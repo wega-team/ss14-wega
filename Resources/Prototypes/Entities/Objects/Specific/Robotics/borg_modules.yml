@@ -608,6 +608,17 @@
     layers:
     - state: cargo
     - state: icon-appraisal
+# Corvax-Wega-Add
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Heat: 0.8
+      flatReductions:
+        Slash: 5
+        Piercing: 5
+# Corvax-Wega-End
   - type: ItemBorgModule
     hands:
     - item: AppraisalTool
@@ -660,11 +671,6 @@
           - Cash
           tags:
           - CoordinatesDisk
-  - type: ComponentBorgModule
-    components:
-    - type: TelekinesisGen
-      itemPrototype: TelescopicShieldBorgMining
-      handPos: Left
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
@@ -1691,11 +1697,13 @@
     - item: WeaponLightMachineGunL6C
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
-  - type: ComponentBorgModule
-    components:
-    - type: TelekinesisGen
-      itemPrototype: TelescopicShieldBorgSyndL6
-      handPos: Left
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.1
+        Slash: 0.1
+        Piercing: 0.1
+        Heat: 0.2
 # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
@@ -1942,6 +1950,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponTileGun
+    - item: WeaponOilGun # Corvax-Wega-Add
     - item: XenoborgTitleBag # Corvax-Wega-Add
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
@@ -1993,6 +2002,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponNaniteGun
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-nanite-module }
 
@@ -2060,6 +2070,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponBurstFireLaserXenoborg
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser3-module }
 

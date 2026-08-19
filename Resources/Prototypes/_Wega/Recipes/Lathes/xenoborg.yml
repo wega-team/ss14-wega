@@ -15,14 +15,15 @@
   materials:
     Steel: 1500
     Glass: 1500
+    Plastic: 1500
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: BorgModuleNightVisoXenoborg
   result: BorgModuleNightVisoXenoborg
   materials:
-    Steel: 1500
-    Glass: 1500
+    Steel: 500
+    Glass: 1000
   
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
@@ -30,7 +31,7 @@
   result: XenoborgModuleCommonSpeed
   materials:
     Steel: 1500
-    Glass: 1500
+    Plastic: 1000
     
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
@@ -38,23 +39,55 @@
   result: XenoborgModuleEMP
   materials:
     Steel: 1500
-    Glass: 1500
+    Glass: 1000
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: XenoborgModuleTileGun
   result: XenoborgModuleTileGun
   materials:
-    Steel: 1500
-    Glass: 1500
+    Steel: 500
+    Glass: 500
+    Plastic: 500
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: ModuleXenoborgModule
   result: ModuleXenoborgModule
   materials:
-    Steel: 1500
-    Glass: 1500
+    Steel: 1000
+    Glass: 1000
+    Plastic: 750
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleBurstFireLaser
+  result: XenoborgModuleBurstFireLaser
+  materials:
+    Steel: 2500
+    Glass: 500
+    
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleNaniteGun
+  result: XenoborgModuleNaniteGun
+  materials:
+    Steel: 750
+    Plastic: 750
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleZap
+  result: XenoborgModuleZap
+  materials:
+    Steel: 500
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleHeavyRadioactive
+  result: XenoborgModuleHeavyRadioactive
+  materials:
+    Steel: 500
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe

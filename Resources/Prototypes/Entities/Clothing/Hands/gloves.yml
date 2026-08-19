@@ -96,6 +96,13 @@
       types:
         Blunt: 8
     bluntStaminaDamageFactor: 2
+# Corvax-Wega-start
+  - type: MartialArtsClothing
+    style: Boxing
+    gotMessage: true
+    equippedMessage: boxer-enabled
+    unequippedMessage: boxer-disabled
+# Corvax-Wega-End
 
 - type: entity
   parent: [ ClothingHandsGlovesBoxingRiggedBase, ClothingHandsGlovesBoxingRed ]
@@ -568,11 +575,12 @@
     attackRate: 1.5
     damage:
       types:
-        Blunt: 14
+        Blunt: 18 # Corvax-Wega-Add
     soundHit:
       collection: Punch
     animation: WeaponArcFist
     mustBeEquippedToUse: true
+    bluntStaminaDamageFactor: 1.75 # Corvax-Wega-Add
   - type: Tag
     tags:
     - WhitelistChameleon
@@ -691,7 +699,7 @@
   description: "Blessed by the Gods to break all those who don't obey."
   components:
   - type: Sprite
-    sprite: Clothing/Hands/Gloves/KnuckleDusters/goldenknuckleduster.rsi
+    sprite: _Wega/Clothing/Hands/goldenknuckleduster.rsi # Corvax-Wega-Edit
     state: goldenknuckleduster
   - type: Clothing
     sprite: Clothing/Hands/Gloves/KnuckleDusters/goldenknuckleduster.rsi
@@ -701,10 +709,14 @@
     attackRate: 2
     damage:
       types:
-        Blunt: 35
+        Blunt: 18 # Corvax-Wega
     soundHit:
       collection: Punch
     animation: WeaponArcFist
   - type: Tag
     tags:
     - Kangaroo
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.25
+# Corvax-Wega-End
