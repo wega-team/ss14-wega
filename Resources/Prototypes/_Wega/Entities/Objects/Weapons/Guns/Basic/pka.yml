@@ -61,8 +61,149 @@
     sprite: _Wega/Objects/Weapons/Guns/Basic/magmite_kinetic_accelerator.rsi
   - type: Clothing
     sprite: _Wega/Objects/Weapons/Guns/Basic/magmite_kinetic_accelerator.rsi
+  - type: DamageExaminable
   - type: UpgradeableGun
     maxUpgradeCount: 4
     whitelist:
       tags:
       - PKAUpgrade
+
+- type: entity
+  name: proto-kinetic shotgun
+  id: WeaponProtoKineticShotgun
+  parent: WeaponProtoKineticAccelerator
+  description: Fires a cone of kinetic slivers at a very short range. A single sliver barely scratches a vein.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_shotgun.rsi
+  - type: Gun
+    fireRate: 0.6
+  - type: WieldSpreadModifier
+    wielded: 0.5
+    unwielded: 1.3
+  - type: DamageExaminable
+  - type: BasicEntityAmmoProvider
+    proto: BulletKineticPelletSpread
+    capacity: 1
+    count: 1
+
+- type: entity
+  name: proto-kinetic rifle
+  id: WeaponProtoKineticRifle
+  parent: WeaponProtoKineticAccelerator
+  description: Fires a single kinetic bolt at a long range, punching through one vein and into the next. Hard rock stops it. Heavy enough to slow you down while wielded.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_railgun.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_railgun.rsi
+    size: Huge
+    shape:
+    - 0,0,5,1
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_railgun.rsi
+  - type: Gun
+    fireRate: 0.25
+    projectileSpeed: 45
+  - type: SpeedModifiedOnWield
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: DamageExaminable
+  - type: GunRequiresWield
+  - type: CursorOffsetRequiresWield
+  - type: EyeCursorOffset
+    maxOffset: 3
+    pvsIncrease: 0.3
+  - type: BasicEntityAmmoProvider
+    proto: BulletKineticLance
+    capacity: 1
+    count: 1
+
+- type: entity
+  id: WeaponProtoKineticAcceleratorHandheldBase
+  abstract: true
+  parent: BaseItem
+  components:
+  - type: Item
+    size: Small
+  - type: Gun
+    fireRate: 0.7
+    selectedMode: SemiAuto
+    angleDecay: 25
+    minAngle: 8
+    maxAngle: 20
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+    projectileSpeed: 25
+  - type: AmmoCounter
+  - type: CustomSpriteAmmoCounter
+    loadedAmmoSprite: Interface/ItemStatus/PKA/not_spent.png
+    spentAmmoSprite: Interface/ItemStatus/PKA/spent.png
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        empty-icon:
+          True: { visible: False }
+          False: { visible: True }
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKineticLight
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 1
+  - type: DamageExaminable
+  - type: CultAllowedGun
+
+- type: entity
+  name: proto-kinetic pistol
+  id: WeaponProtoKineticPistol
+  parent: [WeaponProtoKineticAcceleratorHandheldBase, BaseCargoContraband]
+  description: Fires very low-damage kinetic bolts at a short range. Fits in a pocket, with room for a single modkit.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_pistol.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_pistol.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Basic/kinetic_pistol.rsi
+    quickEquip: false
+    slots:
+    - Belt
+    - suitStorage
+  - type: Tag
+    tags:
+    - PKAWeapon
+  - type: UpgradeableGun
+    maxUpgradeCount: 1
+    whitelist:
+      tags:
+      - PKAUpgrade
+  - type: ContainerContainer
+    containers:
+      upgrades: !type:Container

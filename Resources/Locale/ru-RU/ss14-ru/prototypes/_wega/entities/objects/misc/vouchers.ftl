@@ -94,3 +94,6 @@ ent-HardsuitAsteroidSelector = преобразователь астероидн
 ent-OtherCrashSelector = преобразователь крушителя
     .desc = А какой крушитель ты сегодня?
     .suffix = Селектор
+ent-OtherPkaSelector = преобразователь ускорителя
+    .desc = А какой ускоритель ты сегодня?
+    .suffix = Селектор

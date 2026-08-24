@@ -30,3 +30,11 @@
   items:
   - id: ClothingBackpackDuffelSalvageBaseKit
   - id: OreBag
+
+- type: voucherKit
+  id: SurvivalKineticKit
+  name: voucher-kinetic-kit-name
+  description: voucher-kinetic-kit-desc
+  items:
+  - id: OtherPkaSelector
+  - id: FireExtinguisher

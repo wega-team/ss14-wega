@@ -96,6 +96,27 @@
 
 - type: entity
   parent: BaseAction
+  id: ToggleKineticHolsterModuleAction
+  name: "[color=#58c4e8]Toggle Kinetic Holster[/color]"
+  description: "Deploys or retracts the mining holster for quick accelerator access."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: kinetic_holster-in
+      map: ["enum.ActionVisuals.Icon"]
+    - state: kinetic_holster-out
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleHolsterModuleEvent
+
+- type: entity
+  parent: BaseAction
   id: ActivatePaperDispenserModuleAction
   name: "[color=#58c4e8]Activate Paper Dispenser[/color]"
   description: "Synthesizes fresh paper using advanced fax and printer technology. Converts suit power into high-quality stationery. Perfect for paperwork emergencies or when you just need to leave a note."
