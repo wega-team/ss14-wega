@@ -1,15 +1,14 @@
 using Content.Shared.FixedPoint;
-using Robust.Shared.GameStates;
 
 namespace Content.Shared.Gatherable.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class PiercingGatherComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField]
     public int Depth = 2;
 
-    [DataField, AutoNetworkedField]
+    [DataField]
     public FixedPoint2 MaxDurability = FixedPoint2.New(150);
 
     [ViewVariables]

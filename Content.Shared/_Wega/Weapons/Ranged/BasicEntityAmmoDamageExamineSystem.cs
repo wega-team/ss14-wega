@@ -11,12 +11,11 @@ public sealed partial class BasicEntityAmmoDamageExamineSystem : EntitySystem
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private DamageExamineSystem _damageExamine = default!;
     [Dependency] private IComponentFactory _factory = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
 
     [SubscribeLocalEvent]
     private void OnDamageExamine(Entity<BasicEntityAmmoProviderComponent> ent, ref DamageExamineEvent args)
     {
-        if (!_proto.TryIndex<EntityPrototype>(ent.Comp.Proto, out var proto))
+        if (!ProtoMan.TryIndex<EntityPrototype>(ent.Comp.Proto, out var proto))
             return;
 
         if (!proto.TryComp<ProjectileComponent>(out var projectile, _factory) || projectile.Damage.Empty)

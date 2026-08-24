@@ -1,10 +1,8 @@
-using Robust.Shared.GameStates;
-
 namespace Content.Shared.Gatherable.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class PelletGatheringComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField]
     public int HitsRequired = 3;
 }

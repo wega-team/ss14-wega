@@ -59,7 +59,6 @@ public sealed partial class PiercingGatherProjectileSystem : EntitySystem
         }
 
         ent.Comp.Depth--;
-        Dirty(ent);
 
         if (ent.Comp.Depth <= 0)
         {
@@ -76,6 +75,5 @@ public sealed partial class PiercingGatherProjectileSystem : EntitySystem
             return;
 
         projectile.ProjectileSpent = false;
-        Dirty(bolt, projectile);
     }
 }

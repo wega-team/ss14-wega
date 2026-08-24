@@ -23,9 +23,10 @@ public sealed partial class GunUpgradeSystem
             var carrier = HasComp<AmmoComponent>(fired);
 
             if (carrier)
+            {
                 pellets = TryComp<ProjectileSpreadComponent>(fired, out var spread) && spread.Count > 1
-                    ? spread.Count
-                    : 1;
+                    ? spread.Count : 1;
+            }
 
             if (!TryComp<ProjectileComponent>(fired, out var projectile))
                 continue;
@@ -43,14 +44,14 @@ public sealed partial class GunUpgradeSystem
                 if (pellets > 1 && HasComp<GunUpgradeAoEComponent>(upgrade))
                     EnsureComp<ProjectileAoEComponent>(fired).DamageMultiplier = PelletAoEMultiplier;
 
-                if (carrier)
-                    continue;
+                if (!carrier)
+                {
+                    if (TryComp<GunUpgradeLifestealComponent>(upgrade, out var lifesteal))
+                        EnsureComp<ProjectileLifestealComponent>(fired).StealAmount = lifesteal.StealAmount / pellets;
 
-                if (TryComp<GunUpgradeLifestealComponent>(upgrade, out var lifesteal))
-                    EnsureComp<ProjectileLifestealComponent>(fired).StealAmount = lifesteal.StealAmount / pellets;
-
-                if (HasComp<GunUpgradePressureComponent>(upgrade) && TryComp<ProjectilePressureComponent>(fired, out var pressure))
-                    pressure.Ignore = true;
+                    if (HasComp<GunUpgradePressureComponent>(upgrade) && TryComp<ProjectilePressureComponent>(fired, out var pressure))
+                        pressure.Ignore = true;
+                }
             }
         }
     }

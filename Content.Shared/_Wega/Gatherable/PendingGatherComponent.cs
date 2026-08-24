@@ -1,11 +1,8 @@
-using Robust.Shared.GameStates;
-
 namespace Content.Shared.Gatherable.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(GatherableSystem))]
+[RegisterComponent, Access(typeof(GatherableSystem))]
 public sealed partial class PendingGatherComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField]
     public int Hits;
 }

@@ -20,7 +20,6 @@ public sealed partial class GatherableSystem
 
         var pending = EnsureComp<PendingGatherComponent>(args.OtherEntity);
         pending.Hits++;
-        Dirty(args.OtherEntity, pending);
 
         if (pending.Hits < pellet.Comp.HitsRequired)
             return;
