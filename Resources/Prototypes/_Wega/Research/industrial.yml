@@ -23,6 +23,7 @@
   recipeUnlocks:
     - OreBagSuitModule
     - DrillSuitModule
+    - KineticHolsterSuitModule
     - EngineeringPlating
     - ArmSyntheticPry
     - LegSyntheticJump

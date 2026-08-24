@@ -599,4 +599,6 @@
 
 - type: Tag
   id: UpgradeKitBrain
-  
+
+- type: Tag
+  id: PKAWeapon

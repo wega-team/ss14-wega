@@ -25,11 +25,13 @@ voucher-security-baton-desc = Содержит в себе многофункц�
 voucher-explorer-kit-name = Набор Иследователя
 voucher-fulton-kit-name = Набор Эвакуации фултона
 voucher-crusher-kit-name = Дробильный набор
+voucher-kinetic-kit-name = Протокинетический набор
 voucher-base-kit-name = Базовый шахтёрский набор
 
 voucher-explorer-kit-desc = Содержит в себе один шахтёрская разгрузка и одну спасательную капсулу.
 voucher-fulton-kit-desc = Содержит в себе один набор для эвакуации Фултона (шар и маяк).
 voucher-crusher-kit-desc = Содержит в себе один кинетический крушитель и один огнетушитель.
+voucher-kinetic-kit-desc = Содержит в себе один протокинетический ускоритель на выбор и один огнетушитель.
 voucher-base-kit-desc = Содержит в себе почти стандартный набор шахтёра из шахтёрского ящика.
 
 # Theather
