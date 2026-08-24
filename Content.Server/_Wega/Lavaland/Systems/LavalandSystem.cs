@@ -52,6 +52,8 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     [Dependency] private SharedShuttleSystem _iff = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
+    private ProtoId<LavalandPlanetPrototype>? _lastPlanet = null;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -77,13 +79,18 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
     private void AddLavaland(Entity<StationLavalandComponent> ent)
     {
-        var planetProto = _random.Pick(ent.Comp.Planets);
+        var availablePlanets = ent.Comp.Planets;
+        if (_lastPlanet.HasValue && availablePlanets.Count > 1)
+            availablePlanets.RemoveAll(p => p == _lastPlanet.Value);
+
+        var planetProto = _random.Pick(availablePlanets);
         if (!ProtoMan.TryIndex(planetProto, out var planet))
         {
             Log.Error($"Unable lavaland planet prototype '{planetProto}'");
             return;
         }
 
+        _lastPlanet = planetProto;
         var avanpostPath = GetAvanpostPath(ent, planetProto);
 
         var mapUid = _map.CreateMap(out var mapId);
