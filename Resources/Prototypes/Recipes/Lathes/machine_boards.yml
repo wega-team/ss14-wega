@@ -224,10 +224,12 @@
   result: ArtifactCrusherMachineCircuitboard
 
 # Teleportation
-- type: latheRecipe
-  parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
-  id: StationTeleporterMachineCircuitboard
-  result: StationTeleporterMachineCircuitboard
+# Corvax-wega-start
+# - type: latheRecipe
+  # parent: [ BaseGoldCircuitboardRecipe, BaseResearchMachineRecipeCategory ]
+  # id: StationTeleporterMachineCircuitboard
+  # result: StationTeleporterMachineCircuitboard
+# Corvax-Wega-End
 
 # Anomaly
 - type: latheRecipe

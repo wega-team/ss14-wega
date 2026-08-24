@@ -86,9 +86,9 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
-  - StationTeleportersControlCircuitboard
-  - StationTeleporterMachineCircuitboard
   # Corvax-wega-start
+  # - StationTeleportersControlCircuitboard
+  # - StationTeleporterMachineCircuitboard
   - BorgChargerTurboCircuitboard
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
   # Corvax-wega-end
