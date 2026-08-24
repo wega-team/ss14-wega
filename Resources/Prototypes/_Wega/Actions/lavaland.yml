@@ -18,9 +18,11 @@
   - type: Action
     useDelay: 30
     itemIconStyle: BigAction
-    icon:
-      sprite: Effects/fire.rsi
-      state: fire
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    layers:
+    - state: fire
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:FireSelfActionEvent
 
@@ -32,10 +34,12 @@
   components:
   - type: Action
     itemIconStyle: BigAction
-    icon:
-      sprite: Effects/fire.rsi
-      state: fire
     useDelay: 30
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    layers:
+    - state: fire
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:PolymorphActionEvent
       protoId: LowerAshDrakePolymorph
@@ -48,15 +52,17 @@
   components:
   - type: Action
     raiseOnUser: true
-    icon:
-      sprite: Mobs/Aliens/Asteroid/goliath.rsi
-      state: goliath_tentacle_spawn
-    iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath.rsi
-      state: goliath_tentacle_wiggle
     sound:
       path: "/Audio/Weapons/slash.ogg"
     useDelay: 12
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+    layers:
+    - state: goliath_tentacle_spawn
+      map: ["enum.ActionVisuals.Icon"]
+    - state: goliath_tentacle_wiggle
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: TargetAction
     range: 7
   - type: WorldTargetAction
@@ -81,11 +87,13 @@
   components:
   - type: Action
     raiseOnUser: true
-    icon:
-      sprite: _Wega/Mobs/Lavaland/legionskull.rsi
-      state: legion_head_1
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+    layers:
+    - state: legion_head_1
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -100,9 +108,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
-      state: icon
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -117,9 +127,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
-      state: icon
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -134,9 +146,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
-      state: icon
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -151,9 +165,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
-      state: icon
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -167,10 +183,12 @@
   components:
   - type: Action
     raiseOnUser: true
-    icon:
-      sprite: _Wega/Mobs/Lavaland/legionskull.rsi
-      state: legion_head_1
     useDelay: 1.5
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+    layers:
+    - state: legion_head_1
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -185,11 +203,13 @@
   - type: Action
     raiseOnUser: true
     useDelay: 10
-    icon:
-      sprite: Interface/Actions/jump.rsi
-      state: icon
     sound:
       path: "/Audio/Magic/blink.ogg"
+  - type: Sprite
+    sprite: Interface/Actions/jump.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: WorldTargetAction
@@ -204,11 +224,13 @@
   - type: Action
     raiseOnUser: true
     useDelay: 5
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-      state: throwing_knife
     sound:
       path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -223,11 +245,13 @@
   - type: Action
     raiseOnUser: true
     useDelay: 5
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-      state: throwing_knife
     sound:
       path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -242,11 +266,13 @@
   - type: Action
     raiseOnUser: true
     useDelay: 5
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-      state: throwing_knife
     sound:
       path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -261,11 +287,13 @@
   - type: Action
     raiseOnUser: true
     useDelay: 5
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
-      state: throwing_knife
     sound:
       path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -280,9 +308,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 8
-    icon:
-      sprite: Objects/Magic/magicactions.rsi
-      state: fireball
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    layers:
+    - state: fireball
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -297,9 +327,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 8
-    icon:
-      sprite: Objects/Magic/magicactions.rsi
-      state: fireball
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    layers:
+    - state: fireball
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -314,9 +346,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 20
-    icon:
-      sprite: Tiles/Planet/lava.rsi
-      state: lava
+  - type: Sprite
+    sprite: Tiles/Planet/lava.rsi
+    layers:
+    - state: lava
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -338,9 +372,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 7
-    icon:
-      sprite: _Wega/Effects/bubblegumeffects.rsi
-      state: hand
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 20
   - type: EntityTargetAction
@@ -355,9 +391,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Effects/bubblegumeffects.rsi
-      state: hand
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 20
   - type: EntityTargetAction
@@ -372,9 +410,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 8
-    icon:
-      sprite: _Wega/Effects/bubblegumeffects.rsi
-      state: hand
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 15
   - type: EntityTargetAction
@@ -392,9 +432,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Effects/bubblegumeffects.rsi
-      state: hand
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -412,9 +454,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 6
-    icon:
-      sprite: _Wega/Effects/bubblegumeffects.rsi
-      state: hand
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -432,9 +476,11 @@
   - type: Action
     raiseOnUser: true
     useDelay: 20
-    icon:
-      sprite: _Wega/Effects/bubblegumeffects.rsi
-      state: hand
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -450,11 +496,13 @@
   description: Creates a 3x3 square and 5x5 cross of tentacles around the target.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: tentacle_patch
     itemIconStyle: BigAction
     useDelay: 1.5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: tentacle_patch
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -467,11 +515,13 @@
   description: Become faster for a short time, then slower.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: rage
     itemIconStyle: BigAction
     useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: rage
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -484,11 +534,13 @@
   description: Spawn two Goliath children.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: spawn_children
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: spawn_children
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -501,11 +553,13 @@
   description: Fires a line of hierophant blasts.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: singular_shot
     itemIconStyle: BigAction
     useDelay: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: singular_shot
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -518,11 +572,13 @@
   description: Surrounds target with a 6x6 box, leaving a 3x3 safe zone.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: magic_box
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: magic_box
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -535,11 +591,13 @@
   description: Teleports after a short cue, leaving blasts at both locations.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: pandora_teleport
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: pandora_teleport
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -552,11 +610,13 @@
   description: Emits a 7x7 square of blasts, expanding from the center.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: aoe_squares
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: aoe_squares
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -569,11 +629,13 @@
   description: Charges forward after a short wind-up, dealing heavy damage and knockback.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: legionnaire_charge
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: legionnaire_charge
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 4
   - type: EntityTargetAction
@@ -586,11 +648,13 @@
   description: Detaches the head to chase targets. Use again to recall it.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: head_detach
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: head_detach
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 9
   - type: EntityTargetAction
@@ -603,11 +667,13 @@
   description: Creates a bone fire or swaps places with it.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: bonfire_teleport
     itemIconStyle: BigAction
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: bonfire_teleport
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 9
   - type: EntityTargetAction
@@ -620,11 +686,13 @@
   description: Releases a cloud of smoke from the head or body.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: spew_smoke
     itemIconStyle: BigAction
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: spew_smoke
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 9
   - type: EntityTargetAction
@@ -637,11 +705,13 @@
   description: Fires a volley of three death bolts. Fires twice below 50% health.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: herald_trishot
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_trishot
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -654,11 +724,13 @@
   description: Fires death bolts in all cardinal and diagonal directions. Fires twice below 50% health.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: herald_directionalshot
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_directionalshot
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -671,11 +743,13 @@
   description: Fires a golden bolt that teleports the Herald upon impact.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: herald_teleshot
     itemIconStyle: BigAction
     useDelay: 3
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_teleshot
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -688,11 +762,13 @@
   description: Creates a mirror that mimics Herald's attacks.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Interface/Actions/actions_elites.rsi
-      state: herald_mirror
     itemIconStyle: BigAction
     useDelay: 2.5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_mirror
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction

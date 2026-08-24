@@ -31,3 +31,19 @@
     - WeaponCrusherHarpoon
     - WeaponCrusherSword
     - WeaponDaggerCrusher
+
+- type: entity
+  parent: BaseOtherSelector
+  id: OtherPkaSelector
+  name: accelerator converter
+  description: What kind of accelerator are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: salvage
+  - type: ItemSelector
+    items:
+    - WeaponProtoKineticAccelerator
+    - WeaponProtoKineticShotgun
+    - WeaponProtoKineticRifle
+    - WeaponProtoKineticPistol

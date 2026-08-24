@@ -1,6 +1,7 @@
 # CARGO
 - type: entity
   name: proto-kinetic accelerator1
+  categories: [ HideSpawnMenu ]
   id: WeaponProtoKineticAcceleratorBorg
   parent: BaseItem
   description: Fires low-damage kinetic bolts at a short range.

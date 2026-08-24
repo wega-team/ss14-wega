@@ -66,8 +66,8 @@ public sealed partial class SurgerySystem
         if (args.Cancelled || args.Handled || comp.GraphId == null)
             return;
 
-        var graph = _proto.Index(comp.GraphId.Value);
-        var currentNodeProto = _proto.Index(comp.CurrentNode);
+        var graph = ProtoMan.Index(comp.GraphId.Value);
+        var currentNodeProto = ProtoMan.Index(comp.CurrentNode);
         if (currentNodeProto == null)
             return;
 
@@ -250,7 +250,7 @@ public sealed partial class SurgerySystem
         var transitions = new List<SurgeryTransition>();
         foreach (var transitionId in proto.AllTransitions)
         {
-            if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto))
+            if (ProtoMan.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto))
             {
                 transitions.Add(new SurgeryTransition
                 {
@@ -294,10 +294,10 @@ public sealed partial class SurgerySystem
         if (comp.GraphId == null || targetNode == null)
             return;
 
-        var graph = _proto.Index(comp.GraphId.Value);
+        var graph = ProtoMan.Index(comp.GraphId.Value);
         SurgeryNodePrototype? currentNodeProto = comp.CurrentNode == "Default"
             ? graph.GetStartNodes().FirstOrDefault(n => HasTransitionToTarget(n, targetNode.Value))
-            : _proto.Index(comp.CurrentNode);
+            : ProtoMan.Index(comp.CurrentNode);
 
         if (currentNodeProto == null)
             return;
@@ -498,7 +498,7 @@ public sealed partial class SurgerySystem
     {
         foreach (var transitionId in node.AllTransitions)
         {
-            if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto) &&
+            if (ProtoMan.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto) &&
                 transitionProto.Target == targetNode)
             {
                 return new SurgeryTransition
@@ -522,7 +522,7 @@ public sealed partial class SurgerySystem
     {
         foreach (var transitionId in node.AllTransitions)
         {
-            if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transition) &&
+            if (ProtoMan.TryIndex(transitionId, out SurgeryTransitionPrototype? transition) &&
                 transition.Target == target)
             {
                 return true;

@@ -51,7 +51,6 @@ public sealed partial class CultWeaponComponent : Component
     public CultType Cult = default!;
 }
 
- // Чтобы культисты могли использовать то, что по сути им можно использовать и на геймплей в ПВП особо не влияет.
 [RegisterComponent]
 public sealed partial class CultAllowedGunComponent : Component;
 
@@ -151,6 +150,8 @@ public sealed partial class BloodOrbComponent : Component
 [RegisterComponent]
 public sealed partial class StoneSoulComponent : Component
 {
+    public const string SoulContainerId = "soul_container";
+
     [DataField("soulProto", required: true)]
     public EntProtoId SoulProto { get; set; } = default!;
 

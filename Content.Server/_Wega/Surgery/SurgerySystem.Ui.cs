@@ -48,7 +48,7 @@ public sealed partial class SurgerySystem
         if (comp.GraphId == null)
             return;
 
-        var graph = _proto.Index<SurgeryGraphPrototype>(comp.GraphId);
+        var graph = ProtoMan.Index<SurgeryGraphPrototype>(comp.GraphId);
         UpdateUi(uid, args.Actor, comp, graph);
     }
 
@@ -76,7 +76,7 @@ public sealed partial class SurgerySystem
                 AddNodeSteps(startNode, patient, comp, groups);
             }
         }
-        else if (_proto.TryIndex(comp.CurrentNode, out SurgeryNodePrototype? nodeProto))
+        else if (ProtoMan.TryIndex(comp.CurrentNode, out SurgeryNodePrototype? nodeProto))
         {
             var node = ConvertToRuntimeNode(nodeProto);
             AddNodeSteps(node, patient, comp, groups);

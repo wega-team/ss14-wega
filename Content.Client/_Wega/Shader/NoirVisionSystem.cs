@@ -1,5 +1,4 @@
 using Content.Client.Shaders.Systems;
-using Content.Shared.Genetics;
 using Content.Shared.Shaders;
 using Robust.Client.Graphics;
 using Robust.Client.Player;

@@ -191,7 +191,8 @@ public sealed partial class HumanoidProfileEditor
                 .ToArray();
             // Corvax-Wega-SubRoles-Edit-end
 
-            Array.Sort(jobs, JobUIComparer.Instance);
+            if (JobUIComparer.TryCreate(_prototypeManager, null, out var comparer))
+                Array.Sort(jobs, comparer);
 
             foreach (var job in jobs)
             {

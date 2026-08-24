@@ -13,6 +13,8 @@
   id: BaseStorageSuitModule
   abstract: true
   components:
+  - type: Item
+    size: Huge
   - type: ModularSuitStorageModule
   - type: ModularSuitModule
     tags: [ StorageSuitModule ]
@@ -47,10 +49,14 @@
   components:
   - type: Sprite
     state: storage
+  - type: Item
+    size: Normal
   - type: ModularSuitModule
     verbIcon:
       sprite: *modules-rsi
       state: storage
+  - type: Storage
+    maxItemSize: Normal
 
 - type: entity
   parent: BaseStorageSuitModule
@@ -605,6 +611,37 @@
           components:
           - BallisticAmmoProvider
           - ChamberMagazineAmmoProvider
+          - RevolverAmmoProvider
+          - BatteryAmmoProvider
+
+- type: entity
+  parent: BaseSuitModule
+  id: KineticHolsterSuitModule
+  name: kinetic holster suit module
+  description: "A reinforced clamp bolted across the suit's chest, shaped around the frame of a proto-kinetic accelerator. Salvagers used to hauling weight on their backs love carrying their weapon in it."
+  components:
+  - type: Sprite
+    state: kinetic_holster
+  - type: ModularSuitActionModule
+    action: ToggleKineticHolsterModuleAction
+  - type: ModularSuitModule
+    modulePart: Torso
+    powerInstanceUsage: 2.5
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: kinetic_holster
+  - type: ContainerContainer
+    containers:
+      module_weapon: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_weapon:
+        name: module-weapon-slot-name-default
+        whitelist:
+          tags:
+          - PKAWeapon
 
 - type: entity
   parent: BaseSuitModule
@@ -680,8 +717,7 @@
     targetSlot: outerClothing
     activeComponents:
     - type: TemperatureProtection
-      heatingCoefficient: 0.001
-      coolingCoefficient: 0.001
+      coefficient: 0.001
   - type: ModularSuitModule
     modulePart: Torso
     canBeDisabled: false

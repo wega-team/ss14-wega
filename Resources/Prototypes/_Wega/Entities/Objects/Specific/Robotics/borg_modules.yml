@@ -1357,9 +1357,13 @@
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
     components:
-    - type: TelekinesisGen
-      itemPrototype: TelescopicShieldBorgSyndCr20
-      handPos: Left
+    - type: Armor
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.4
+          Heat: 0.4
     - type: Reflect
       reflectProb: 0.5
       reflects:
@@ -1561,7 +1565,7 @@
     - state: icon-xenoborg-holowall
   - type: ItemBorgModule
     hands:
-    - item: XenoborgHoloprojectorForcefield
+    - item: HoloprojectorXenoField
     - hand:
         emptyRepresentative: Nanopast
         emptyLabel: borg-slot-nanopasta-empty
@@ -1570,7 +1574,7 @@
           - Nanopast
     - item: BorgGeneratorNanopastXenoborg
   - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: xfield-module }
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-deflector-module }
 
 - type: entity
   id: XenoborgModuleCommonRepeir
@@ -1675,7 +1679,7 @@
     - state: icon-emp
   - type: ItemBorgModule
     hands:
-    - item: WeaponIonCarabine
+    - item: WeaponIonCarabineXenoborg
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
@@ -1700,6 +1704,8 @@
           - Brain
           - BorgBrain
           - ChameleonClothing # Corvax-Wega-Add
+          tags:
+          - UpgradeKitBrain
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty
@@ -1714,6 +1720,10 @@
           - PowerCell
     - item: TurboItemRechargerXenoborg
     - item: XenoborgModuleBag
+  - type: ComponentBorgModule
+    components:
+    - type: EmpResistance
+      strengthMultiplier: 0
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
@@ -1736,3 +1746,32 @@
     - item: WeaponClockworkSwordBorg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: clockwork-module }
+
+- type: entity
+  parent: BaseItem
+  id: ModuleCommand
+  name: Module support
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: command
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleCommonHand
+    - BorgModuleSecRare
+    - BorgModuleCargoRare
+    - BorgModuleEngenerRare
+    - BorgModuleCleanerRare
+    - BorgModuleMedicalRare
+    - BorgModuleServiceRare
+    - BorgModuleScienceRND
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface

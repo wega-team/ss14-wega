@@ -13,7 +13,7 @@
     whitelist:
       tags:
       - ArmorScrap
-      
+
 - type: cargoBounty
   id: BountyShardCrystal
   reward: 8000
@@ -57,7 +57,7 @@
     whitelist:
       tags:
       - Sheild
-      
+
 - type: cargoBounty
   id: BountyHorn
   reward: 8000
@@ -115,7 +115,7 @@
 
 - type: cargoBounty
   id: BountyOuterSuitAvar
-  reward: 4500
+  reward: 1200
   description: bounty-description-outersuitavar
   entries:
   - name: bounty-item-outersuitavar
@@ -137,7 +137,7 @@
 
 - type: cargoBounty
   id: BountyPottedPlant
-  reward: 4100
+  reward: 1000
   description: bounty-description-potted-plant
   entries:
   - name: bounty-item-potted-plant

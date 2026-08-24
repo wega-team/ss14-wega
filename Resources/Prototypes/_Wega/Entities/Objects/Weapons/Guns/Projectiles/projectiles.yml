@@ -49,7 +49,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Shock: 25
+        Shock: 5
   - type: HitscanEMP
     range: 0.25
     energyConsumption: 1800
@@ -171,3 +171,110 @@
       types:
         Blunt: 18
         Slash: 4
+
+- type: entity
+  parent: RedMediumLaser
+  id: FireLaser
+  name: fire laser ray
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 20
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_xeno_fire
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_xeno_fire
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_xeno_fire
+  - type: HitscanIgnite
+    igniteChance: 1
+    fireStacks: 0.75
+
+- type: entity
+  id: BulletKineticPellet
+  name: kinetic pellet
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  description: A sliver of a kinetic bolt. On its own, barely a scratch.
+  components:
+  - type: Reflective
+    reflective:
+    - NonEnergy
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 3
+        Structural: 6
+  - type: TimedDespawn
+    lifetime: 0.20
+  - type: PelletGathering
+    hitsRequired: 3
+  - type: ProjectilePressure
+
+- type: entity
+  id: BulletKineticPelletSpread
+  parent: BulletKineticPellet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ProjectileSpread
+    proto: BulletKineticPellet
+    count: 6
+    spread: 45
+
+- type: entity
+  id: BulletKineticLance
+  name: kinetic lance
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  description: A tightly focused kinetic bolt that punches clean through the first vein it meets.
+  components:
+  - type: Reflective
+    reflective:
+    - NonEnergy
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    deleteOnCollide: false
+    damage:
+      types:
+        Blunt: 25
+        Structural: 45
+  - type: TimedDespawn
+    lifetime: 0.27
+  - type: PelletGathering
+    hitsRequired: 1
+  - type: PiercingGather
+    depth: 2
+    maxDurability: 150
+  - type: ProjectilePressure
+
+- type: entity
+  id: BulletKineticLight
+  parent: BulletKinetic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 7
+        Structural: 18
+  - type: TimedDespawn
+    lifetime: 0.22

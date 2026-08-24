@@ -17,6 +17,10 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Power/portable_rechargeres/bag_portable_recharger.rsi
+  - type: ContainerContainer
+    containers:
+      charger_slot: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: Charger
     chargeRate: 30
   - type: Storage
@@ -33,6 +37,10 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Power/portable_rechargeres/tubag_portable_recharger.rsi
+  - type: ContainerContainer
+    containers:
+      charger_slot: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: Charger
     chargeRate: 100
   - type: Storage

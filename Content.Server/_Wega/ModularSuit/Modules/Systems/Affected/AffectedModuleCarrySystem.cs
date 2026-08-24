@@ -32,7 +32,7 @@ public sealed partial class AffectedModuleCarrySystem : EntitySystem
         ent.Comp.Active = true;
         Dirty(ent.Owner, ent.Comp);
 
-        _speed.RefreshMovementSpeedModifiers(ent);
+        _speed.RefreshMovementSpeedModifiers(ent.Owner);
     }
 
     private void OnPullStopped(Entity<AffectedModuleCarryComponent> ent, ref PullStoppedMessage args)
@@ -43,12 +43,12 @@ public sealed partial class AffectedModuleCarrySystem : EntitySystem
         ent.Comp.Active = false;
         Dirty(ent.Owner, ent.Comp);
 
-        _speed.RefreshMovementSpeedModifiers(ent);
+        _speed.RefreshMovementSpeedModifiers(ent.Owner);
     }
 
     private void OnRemove(Entity<AffectedModuleCarryComponent> ent, ref ComponentRemove args)
     {
-        _speed.RefreshMovementSpeedModifiers(ent);
+        _speed.RefreshMovementSpeedModifiers(ent.Owner);
     }
 
     private void OnRefreshSpeed(Entity<AffectedModuleCarryComponent> ent, ref RefreshMovementSpeedModifiersEvent args)

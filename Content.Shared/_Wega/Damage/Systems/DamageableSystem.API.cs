@@ -33,7 +33,7 @@ public sealed partial class DamageableSystem
             if (healAmount >= FixedPoint2.Zero)
                 continue;
 
-            if (!_prototypeManager.TryIndex(groupId, out var groupProto))
+            if (!ProtoMan.TryIndex(groupId, out var groupProto))
                 continue;
 
             var existingTypes = new List<ProtoId<DamageTypePrototype>>();
@@ -93,7 +93,7 @@ public sealed partial class DamageableSystem
             if (healAmount >= FixedPoint2.Zero)
                 continue;
 
-            if (!_prototypeManager.TryIndex(groupId, out var groupProto))
+            if (!ProtoMan.TryIndex(groupId, out var groupProto))
                 continue;
 
             var existingDamage = new List<(ProtoId<DamageTypePrototype> Type, FixedPoint2 Amount)>();

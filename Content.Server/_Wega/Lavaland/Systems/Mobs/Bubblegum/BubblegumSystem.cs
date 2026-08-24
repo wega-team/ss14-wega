@@ -11,6 +11,7 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Gibbing;
 using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
@@ -21,7 +22,6 @@ using Content.Shared.Physics;
 using Content.Shared.Visuals;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
@@ -61,7 +61,7 @@ public sealed partial class BubblegumSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BubblegumBossComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<BubblegumBossComponent, DamageDealtEvent>(OnDamageChanged);
 
         SubscribeLocalEvent<BubblegumBossComponent, BubblegumRageActionEvent>(OnRageAction);
         SubscribeLocalEvent<BubblegumBossComponent, BubblegumBloodDiveActionEvent>(OnBloodDiveAction);
@@ -81,9 +81,9 @@ public sealed partial class BubblegumSystem : EntitySystem
 
     #region Event Handlers
 
-    private void OnDamageChanged(EntityUid uid, BubblegumBossComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, BubblegumBossComponent component, DamageDealtEvent args)
     {
-        if (!args.DamageIncreased)
+        if (args.Damage.GetTotal() < 0)
             return;
 
         var healthRatio = GetHealthRatio(uid);
@@ -1079,16 +1079,13 @@ public sealed partial class BubblegumSystem : EntitySystem
         if (!TryComp<PuddleComponent>(uid, out var puddle))
             return false;
 
-        if (!TryComp(uid, out ContainerManagerComponent? containerManager))
+        if (!TryComp<SolutionComponent>(uid, out var solutionComp))
             return false;
 
-        if (!containerManager.Containers.TryGetValue("solution@puddle", out var container))
-            return false;
+        var solution = solutionComp.Solution;
 
-        return container.ContainedEntities.Any(containedEntity =>
-            TryComp(containedEntity, out SolutionComponent? solutionComponent) &&
-            solutionComponent.Solution.Contents.Any(r =>
-                r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood"));
+        return solution.Contents.Any(r =>
+            r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood");
     }
 
     #endregion

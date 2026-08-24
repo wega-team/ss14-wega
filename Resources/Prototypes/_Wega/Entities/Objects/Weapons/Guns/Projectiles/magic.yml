@@ -1,5 +1,5 @@
 - type: entity
-  parent: BaseBullet
+  parent: [SolutionAmmo, BaseBullet]
   id: ProjectileBloodBolt
   name: ""
   categories: [ HideSpawnMenu ]
@@ -8,20 +8,21 @@
     sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
     layers:
     - state: blood_bolt
+  - type: Ammo
+    muzzleFlash: null
   - type: Projectile
     damage:
       types:
         Blunt: 21
-  - type: SolutionContainerManager
-    solutions:
-      bolt:
-        maxVol: 2
-        reagents:
-        - ReagentId: HemorrhinolBloodCult
-          Quantity: 2
+  - type: Solution
+    solution:
+      maxVol: 2
+      reagents:
+      - ReagentId: HemorrhinolBloodCult
+        Quantity: 2
   - type: SolutionInjectOnProjectileHit
     transferAmount: 2
-    solution: bolt
+    solution: ammo
 
 - type: entity
   parent: BaseBullet

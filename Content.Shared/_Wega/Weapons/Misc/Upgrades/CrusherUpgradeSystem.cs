@@ -60,14 +60,14 @@ public sealed partial class CrusherUpgradeSystem : EntitySystem
         if (!_container.TryGetContainer(ent, ent.Comp.UpgradesContainerId, out var container) ||
             container.ContainedEntities.Count == 0)
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-crusher-popup-no-upgrades"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-crusher-popup-no-upgrades"), ent, args.User);
             return;
         }
 
         var upgrade = container.ContainedEntities.Last();
         if (_container.Remove(upgrade, container))
         {
-            _popup.PopupPredicted(Loc.GetString("crusher-upgrade-popup-remove", ("upgrade", upgrade)), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("crusher-upgrade-popup-remove", ("upgrade", upgrade)), ent, args.User);
             if (TryComp<ToolComponent>(args.Used, out var tool))
                 _tool.PlayToolSound(args.Used, tool, args.User);
 
@@ -82,7 +82,7 @@ public sealed partial class CrusherUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgrades(ent).Count >= ent.Comp.MaxUpgradeCount)
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-crusher-popup-upgrade-limit"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-crusher-popup-upgrade-limit"), ent, args.User);
             return;
         }
 
@@ -91,12 +91,12 @@ public sealed partial class CrusherUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgradeTags(ent).ToHashSet().IsSupersetOf(upgradeComponent.Tags))
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-crusher-popup-already-present"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-crusher-popup-already-present"), ent, args.User);
             return;
         }
 
         _audio.PlayPredicted(ent.Comp.InsertSound, ent, args.User);
-        _popup.PopupClient(Loc.GetString("crusher-upgrade-popup-insert", ("upgrade", args.Used), ("crusher", ent.Owner)), args.User);
+        _popup.PopupEntity(Loc.GetString("crusher-upgrade-popup-insert", ("upgrade", args.Used), ("crusher", ent.Owner)), args.User);
         args.Handled = _container.Insert(args.Used, _container.GetContainer(ent, ent.Comp.UpgradesContainerId));
 
         _adminLog.Add(LogType.Action, LogImpact.Low,

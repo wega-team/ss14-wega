@@ -23,15 +23,3 @@
     stealGroup: CombatRCD
     owner: job-name-ce
 
-# blue laser pistol
-- type: entity
-  parent: BaseTraitorStealObjective
-  id: BlueLaserPistolStealObjective
-  components:
-  - type: Objective
-    difficulty: 3
-  - type: NotJobRequirement
-    jobs: [ BlueShieldOfficer ]
-  - type: StealCondition
-    stealGroup: WeaponBlueLaserPistol
-    owner: job-name-bso

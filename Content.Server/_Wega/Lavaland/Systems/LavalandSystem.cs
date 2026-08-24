@@ -48,10 +48,11 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     [Dependency] private MapSystem _map = default!;
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private NavMapSystem _navMap = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedShuttleSystem _iff = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+
+    private ProtoId<LavalandPlanetPrototype>? _lastPlanet = null;
 
     public override void Initialize()
     {
@@ -78,13 +79,18 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
     private void AddLavaland(Entity<StationLavalandComponent> ent)
     {
-        var planetProto = _random.Pick(ent.Comp.Planets);
-        if (!_proto.TryIndex(planetProto, out var planet))
+        var availablePlanets = ent.Comp.Planets;
+        if (_lastPlanet.HasValue && availablePlanets.Count > 1)
+            availablePlanets.RemoveAll(p => p == _lastPlanet.Value);
+
+        var planetProto = _random.Pick(availablePlanets);
+        if (!ProtoMan.TryIndex(planetProto, out var planet))
         {
             Log.Error($"Unable lavaland planet prototype '{planetProto}'");
             return;
         }
 
+        _lastPlanet = planetProto;
         var avanpostPath = GetAvanpostPath(ent, planetProto);
 
         var mapUid = _map.CreateMap(out var mapId);
@@ -133,7 +139,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
         var worldAABBs = new HashSet<Box2>();
         GenerateBuildings(mapId, tempMapId, mapUid, planet, ref worldAABBs);
 
-        _biome.EnsurePlanet(mapUid, _proto.Index(planet.Biome), planet.Seed, mapLight: planet.MapLightColor);
+        _biome.EnsurePlanet(mapUid, ProtoMan.Index(planet.Biome), planet.Seed, mapLight: planet.MapLightColor);
         var lightCycle = EnsureComp<LightCycleComponent>(mapUid);
         lightCycle.MaxLightLevel = planet.MaxLightLevel;
         lightCycle.MinLightLevel = planet.MinLightLevel;
@@ -180,7 +186,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
 
     public void GenerateBuildings(MapId mapId, MapId tempMapId, EntityUid mainGrid, LavalandPlanetPrototype planet, ref HashSet<Box2> worldAABBs)
     {
-        var buildings = _proto.EnumeratePrototypes<LavalandBuildingPrototype>();
+        var buildings = ProtoMan.EnumeratePrototypes<LavalandBuildingPrototype>();
         var buildingList = buildings.Where(b => b.CurrentPlanet == planet.ID)
             .Select(b => new { Building = b, RandomValue = _random.Next() })
             .OrderByDescending(x => x.Building.IgnoringCounting).ThenByDescending(x => x.Building.ExactPosition.HasValue)

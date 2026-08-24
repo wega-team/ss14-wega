@@ -3,7 +3,6 @@ using Content.Server.Chat.Systems;
 using Content.Server.NPC.HTN;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Speech;
@@ -91,7 +90,7 @@ public sealed partial class SlimeSocialSystem : EntitySystem
         SubscribeLocalEvent<SlimeSocialComponent, MapInitEvent>(OnSlimeInit);
         SubscribeLocalEvent<SlimeSocialComponent, ListenEvent>(OnSlimeHear);
 
-        SubscribeLocalEvent<SlimeSocialComponent, DamageChangedEvent>(OnSlimeDamaged);
+        SubscribeLocalEvent<SlimeSocialComponent, DamageDealtEvent>(OnSlimeDamaged);
     }
 
     public override void Update(float frameTime)
@@ -283,9 +282,9 @@ public sealed partial class SlimeSocialSystem : EntitySystem
         _chat.TrySendInGameICMessage(slime, response, InGameICChatType.Speak, false);
     }
 
-    private void OnSlimeDamaged(EntityUid uid, SlimeSocialComponent social, DamageChangedEvent args)
+    private void OnSlimeDamaged(EntityUid uid, SlimeSocialComponent social, DamageDealtEvent args)
     {
-        if (!args.DamageIncreased || args.Origin == null)
+        if (args.Damage.GetTotal() < 0 || args.Origin == null)
             return;
 
         var attacker = args.Origin.Value;

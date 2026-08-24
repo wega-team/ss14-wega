@@ -1,5 +1,4 @@
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Genetics;
 using Content.Shared.Genetics.UI;
 using JetBrains.Annotations;
 using Robust.Client.UserInterface;

@@ -254,11 +254,6 @@
   description: flavor-complex-rainbow-sky
 
 - type: flavor
-  id: three-mile-island-iced-tea
-  flavorType: Complex
-  description: flavor-complex-three-mile-island-iced-tea
-
-- type: flavor
   id: iron
   flavorType: Base
   description: flavor-base-iron

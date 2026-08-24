@@ -10,17 +10,15 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: chocopocky
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-          - ReagentId: Nutriment
-            Quantity: 10
-          - ReagentId: Theobromine
-            Quantity: 3
-          - ReagentId: CocoaPowder
-            Quantity: 1
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 10
+      - ReagentId: Theobromine
+        Quantity: 3
+      - ReagentId: CocoaPowder
+        Quantity: 1
   - type: Tag
     tags:
     - Cigarette

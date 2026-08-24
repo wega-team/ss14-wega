@@ -13,7 +13,7 @@ public sealed partial class IncreasedDamageSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<IncreasedDamageComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<IncreasedDamageComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<IncreasedDamageComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -35,11 +35,12 @@ public sealed partial class IncreasedDamageSystem : EntitySystem
         ent.Comp.EndTime = _timing.CurTime + ent.Comp.ActiveInterval;
     }
 
-    private void OnDamageChanged(Entity<IncreasedDamageComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<IncreasedDamageComponent> ent, ref DamageDealtEvent args)
     {
-        if (!args.DamageIncreased || args.DamageDelta == null)
+        if (args.Damage.GetTotal() <= 0)
             return;
 
-        _damage.TryChangeDamage(ent.Owner, args.DamageDelta * ent.Comp.DamageModifier, true);
+        var modifiedDamage = args.Damage * ent.Comp.DamageModifier;
+        _damage.TryChangeDamage(ent.Owner, modifiedDamage, true);
     }
 }

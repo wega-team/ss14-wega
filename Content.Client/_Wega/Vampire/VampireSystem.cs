@@ -8,7 +8,6 @@ using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client.Vampire;
 
@@ -17,7 +16,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private GhostSystem _ghost = default!;
     [Dependency] private IClientAdminManager _admin = default!;
     [Dependency] private IPlayerManager _playerManager = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
@@ -39,7 +37,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
         // If the local user is an admin in the ghost?
         if (_admin.HasFlag(AdminFlags.Admin) && _ghost is { IsGhost: true })
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
 
@@ -51,14 +49,14 @@ public sealed partial class VampireSystem : SharedVampireSystem
         var localPlayer = _playerManager.LocalEntity;
         if (localPlayer == ent.Owner) // Is that you?
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
 
         // If we're a vampire's servant?
         if (TryComp<ThrallComponent>(localPlayer, out var thrall) && thrall.VampireOwner == ent.Owner)
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
     }
@@ -71,21 +69,21 @@ public sealed partial class VampireSystem : SharedVampireSystem
         // If the local user is an admin in the ghost?
         if (_admin.HasFlag(AdminFlags.Admin) && _ghost is { IsGhost: true })
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
 
         var localPlayer = _playerManager.LocalEntity;
         if (localPlayer == ent.Owner) // Is that you?
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
 
         // If we are the vampire owner of this servant?
         if (ent.Comp.VampireOwner == localPlayer)
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
 
@@ -93,7 +91,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
         if (TryComp<ThrallComponent>(localPlayer, out var localThrall)
             && localThrall.VampireOwner == ent.Comp.VampireOwner)
         {
-            ShowIcon(_prototype.Index(ent.Comp.StatusIcon), ref args);
+            ShowIcon(ProtoMan.Index(ent.Comp.StatusIcon), ref args);
             return;
         }
     }

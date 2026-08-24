@@ -1,7 +1,7 @@
 - type: entity
   name: rat king
   id: MobRatKing
-  parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable ]
+  parent: [ BaseMobRat, SimpleMobBase, MobCombat, BaseSlicingRefinable, MobNightVision, BaseMobDestructible ]
   description: He's da rat. He make da roolz.
   components:
   - type: CombatMode
@@ -90,9 +90,9 @@
     makeSentient: true
     name: ghost-role-information-rat-king-name
     description: ghost-role-information-rat-king-description
-    rules: ghost-role-information-antagonist-rules
+    rules: ghost-role-information-freeagent-rules # Corvax-Wega-Rules-Edit
     mindRoles:
-    - MindRoleGhostRoleSoloAntagonist
+    - MindRoleGhostRoleFreeAgentHarmless # Corvax-Wega-Rules-Edit
     raffle:
       settings: default
   - type: GhostTakeoverAvailable
@@ -136,17 +136,32 @@
     - NamesRegalratKingdom
     - NamesRegalratTitle
     nameFormat: name-format-regal-rat
+  - type: NameIdentifier
+    group: null  # Strips the numeric identifier from the rat king's name, since they already have randomly-generated names anyway
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: male
   - type: GuideHelp
     guides:
     - MinorAntagonists
-  - type: Grammar
-    attributes:
-      gender: male
   - type: Tool
     qualities: Slicing
   - type: TTS # Corvax-TTS
     voice: Rat
   - type: VentCrawler # Corvax-Wega-VentCrawling
+# Corvax-Wega-Start
+  - type: LeechMeleeWeapon
+    heal:
+      types:
+        Heat: -5
+        Blunt: -5
+        Slash: -5
+        Piercing: -5
+        Bloodloss: -2
+    bloodlossModifier: -2
+    modifyBloodLevel: 10
+# Corvax-Wega-End
 
 - type: entity
   id: MobRatKingBuff
@@ -316,10 +331,7 @@
     - TongueTwister
   # Corvax-Wega-Disease-end
   - type: Vocal
-    sounds:
-      Male: Mouse
-      Female: Mouse
-      Unsexed: Mouse
+    emoteSounds: Mouse
     wilhelmProbability: 0.001
   - type: Tag
     tags:
@@ -340,6 +352,18 @@
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi
     normalState: Mouse_burning
+# Corvax-Wega-Start
+  - type: LeechMeleeWeapon
+    heal:
+      types:
+        Heat: -2.5
+        Blunt: -2.5
+        Slash: -2.5
+        Piercing: -2.5
+        Bloodloss: -2
+    bloodlossModifier: -2
+    modifyBloodLevel: 10
+# Corvax-Wega-End
 
 - type: entityTable
   id: RatKingLoot
@@ -360,9 +384,10 @@
   components:
   - type: Action
     useDelay: 4
-    icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: ratKingArmy
+  - type: Sprite
+    sprite: Interface/Actions/actions_rat_king.rsi
+    layers:
+    - state: ratKingArmy
   - type: InstantAction
     event: !type:RatKingRaiseArmyActionEvent
 
@@ -374,9 +399,10 @@
   components:
   - type: Action
     useDelay: 6
-    icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: ratKingDomain
+  - type: Sprite
+    sprite: Interface/Actions/actions_rat_king.rsi
+    layers:
+    - state: ratKingDomain
   - type: InstantAction
     event: !type:RatKingDomainActionEvent
 
@@ -388,13 +414,15 @@
   components:
   - type: Action
     useDelay: 1
-    icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: stayOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: stay
     priority: 5
+  - type: Sprite
+    sprite: Interface/Actions/actions_rat_king.rsi
+    layers:
+    - state: stayOff
+      map: ["enum.ActionVisuals.Icon"]
+    - state: stay
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:RatKingOrderActionEvent
       type: Stay
@@ -407,13 +435,15 @@
   components:
   - type: Action
     useDelay: 1
-    icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: followOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: follow
     priority: 6
+  - type: Sprite
+    sprite: Interface/Actions/actions_rat_king.rsi
+    layers:
+    - state: followOff
+      map: ["enum.ActionVisuals.Icon"]
+    - state: follow
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:RatKingOrderActionEvent
       type: Follow
@@ -426,13 +456,15 @@
   components:
   - type: Action
     useDelay: 1
-    icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: attackOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: attack
     priority: 7
+  - type: Sprite
+    sprite: Interface/Actions/actions_rat_king.rsi
+    layers:
+    - state: attackOff
+      map: ["enum.ActionVisuals.Icon"]
+    - state: attack
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:RatKingOrderActionEvent
       type: CheeseEm
@@ -445,13 +477,15 @@
   components:
   - type: Action
     useDelay: 1
-    icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: looseOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: loose
     priority: 8
+  - type: Sprite
+    sprite: Interface/Actions/actions_rat_king.rsi
+    layers:
+    - state: looseOff
+      map: ["enum.ActionVisuals.Icon"]
+    - state: loose
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event:
       !type:RatKingOrderActionEvent

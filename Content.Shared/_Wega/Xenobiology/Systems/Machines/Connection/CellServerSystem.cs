@@ -22,10 +22,19 @@ public sealed partial class CellServerSystem : EntitySystem
 
     private void OnShutdown(Entity<CellServerComponent> ent, ref ComponentShutdown args)
     {
-        foreach (var client in ent.Comp.Clients)
+        if (TerminatingOrDeleted(ent.Owner))
+            return;
+
+        var clientsCopy = ent.Comp.Clients.ToList();
+        foreach (var client in clientsCopy)
         {
-            UnregisterClient((ent, ent), client);
+            if (Exists(client) && HasComp<CellClientComponent>(client))
+            {
+                UnregisterClient((ent.Owner, ent.Comp), (client, null));
+            }
         }
+
+        ent.Comp.Clients.Clear();
     }
 
     public IEnumerable<Entity<CellServerComponent>> GetServers()
@@ -49,6 +58,9 @@ public sealed partial class CellServerSystem : EntitySystem
 
     public void UnregisterClient(Entity<CellServerComponent?> server, Entity<CellClientComponent?> client)
     {
+        if (TerminatingOrDeleted(server.Owner) || TerminatingOrDeleted(client.Owner))
+            return;
+
         if (!Resolve(server, ref server.Comp) || !Resolve(client, ref client.Comp))
             return;
 

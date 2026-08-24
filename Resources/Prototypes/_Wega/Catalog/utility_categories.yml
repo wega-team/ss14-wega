@@ -29,6 +29,7 @@
     ClothingShoesBootsJump: 2500
     ClothingShoesWinterIceHikingBoots: 2500
     ClothingModularControllerMiningPreassembled: 2500
+    BorgModuleKinetic: 4000
 
 - type: utilityVendorCategory
   id: UtilityConsumables
@@ -45,7 +46,7 @@
     WormholeJaunter: 900
     TransferCard500: 500
     HandCapsule: 700
-    ChemistryBottleStabilizingSerumP: 600
+    ChemistryBottleStabilizingSerumPotion: 600
     SurvivalMedipen: 800
     LuxuriousSurvivalMedipen: 1600
 
@@ -58,6 +59,10 @@
     WeaponGrapplingGun: 500
     OtherCrashSelector: 750
     WeaponProtoKineticAccelerator: 750
+    WeaponProtoKineticShotgun: 1750
+    WeaponProtoKineticRifle: 1500
+    WeaponProtoKineticPistol: 500
+    KineticHolsterSuitModule: 750
     PKAUpgradeRange: 1000
     PKAUpgradeDamage: 1000
     PKAUpgradeFireRate: 1000

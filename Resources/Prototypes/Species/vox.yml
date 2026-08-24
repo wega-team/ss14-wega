@@ -14,3 +14,9 @@
   # Вот тут мне пох на лор
   minHeight: 140 # Corvax-Wega-Height
   maxHeight: 180 # Corvax-Wega-Height
+  defaultSoundsBySex:
+  - UnisexVox
+  - UnisexVox
+  - UnisexVox
+  voices:
+  - UnisexVox

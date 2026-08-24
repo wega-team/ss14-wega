@@ -177,12 +177,6 @@
 # Synthetic Surgery end
 
 - type: Tag
-  id: JanicartKeys
-
-- type: Tag
-  id: VehicleKey
-
-- type: Tag
   id: CapacitorStockPart
 
 - type: Tag
@@ -587,3 +581,24 @@
 
 - type: Tag
   id: TechnologyDiskT3
+
+- type: Tag
+  id: Badge
+
+- type: Tag
+  id: Camera
+
+- type: Tag
+  id: Tear1
+  
+- type: Tag
+  id: Tear2
+  
+- type: Tag
+  id: Tear3
+
+- type: Tag
+  id: UpgradeKitBrain
+
+- type: Tag
+  id: PKAWeapon

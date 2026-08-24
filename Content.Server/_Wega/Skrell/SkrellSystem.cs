@@ -14,6 +14,8 @@ public sealed partial class SkrellSystem : EntitySystem
     [Dependency] private InventorySystem _inventorySystem = default!;
     [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
+    private static readonly string CurrentSlot = "pocket3";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -25,7 +27,7 @@ public sealed partial class SkrellSystem : EntitySystem
     private void OnEquip(Entity<SkrellComponent> entity, ref DidEquipEvent args)
     {
         var slot = args.Slot;
-        if (slot == "pocket3")
+        if (slot == CurrentSlot)
         {
             var item = args.EquipTarget;
             if (CheckCondition(entity))
@@ -51,9 +53,9 @@ public sealed partial class SkrellSystem : EntitySystem
         if (!HasComp<SkrellComponent>(target))
             return;
 
-        if (_inventorySystem.TryGetSlotEntity(target, "pocket3", out _))
+        if (_inventorySystem.TryGetSlotEntity(target, CurrentSlot, out _))
         {
-            _inventorySystem.TryUnequip(target, "pocket3");
+            _inventorySystem.TryUnequip(target, CurrentSlot);
         }
     }
 }

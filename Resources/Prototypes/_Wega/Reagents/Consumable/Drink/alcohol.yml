@@ -230,27 +230,6 @@
         amount: 0.75
 
 - type: reagent
-  id: ThreeMileIslandIcedTea
-  name: reagent-name-three-mile-island-iced-tea
-  parent: BaseAlcohol
-  desc: reagent-desc-three-mile-island-iced-tea
-  physicalDesc: reagent-physical-desc-ionizing
-  flavor: three-mile-island-iced-tea
-  color: "#8b4513"
-  metamorphicSprite:
-    sprite: _Wega/Objects/Consumable/Drinks/threemileislandicedteaglass.rsi
-    state: icon
-  metamorphicChangeColor: false
-  metabolisms:
-    Digestion:
-      effects:
-      - !type:SatiateThirst
-        factor: 2
-      - !type:AdjustReagent
-        reagent: Ethanol
-        amount: 0.1
-
-- type: reagent
   id: BlackBlood
   name: reagent-name-black-blood
   parent: BaseAlcohol

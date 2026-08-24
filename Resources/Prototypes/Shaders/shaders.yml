@@ -127,6 +127,22 @@
   path: "/Textures/Shaders/heatBlur.swsl"
 
 - type: shader
+  id: ScreechShockWave
+  kind: source
+  path: "/Textures/Shaders/screech_shock_wave.swsl"
+
+- type: shader
+  id: NightVision
+  kind: source
+  path: "/Textures/Shaders/nightvision.swsl"
+
+- type: shader
+  id: Sharpness
+  kind: source
+  path: "/Textures/Shaders/sharpness.swsl"
+
+# Corvax-Wega-Shaders-start
+- type: shader
   id: Dizzy
   kind: source
   path: "/Textures/_Wega/Shaders/dizzy.swsl"
@@ -137,7 +153,7 @@
   path: "/Textures/_Wega/Shaders/colourblindness.swsl"
 
 - type: shader
-  id: NightVision
+  id: WegaNightVision
   kind: source
   path: "/Textures/_Wega/Shaders/night.swsl"
 
@@ -155,3 +171,4 @@
   id: NullDamage
   kind: source
   path: "/Textures/_Wega/Shaders/nulldamage.swsl"
+# Corvax-Wega-Shaders-end

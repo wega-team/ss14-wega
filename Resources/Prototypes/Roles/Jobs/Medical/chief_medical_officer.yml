@@ -26,7 +26,6 @@
       role: JobSurgeon
       time: 14400 #4 hrs
     # Corvax-Wega-Surgery-end
-  weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain

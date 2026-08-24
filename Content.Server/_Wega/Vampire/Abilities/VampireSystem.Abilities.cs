@@ -7,7 +7,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Content.Shared.Flash.Components;
-using Content.Server.Bible.Components;
 using Robust.Shared.Timing;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Damage.Systems;
@@ -21,12 +20,12 @@ using Content.Shared.Stealth;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Surgery;
 using Content.Shared.Surgery;
+using Content.Shared.Bible.Components;
 
 namespace Content.Server.Vampire;
 
 public sealed partial class VampireSystem
 {
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MobThresholdSystem _threshold = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
@@ -39,6 +38,7 @@ public sealed partial class VampireSystem
 
     private static readonly ProtoId<InternalDamagePrototype> InternalBleeding = "ArterialBleeding";
     private static readonly EntProtoId ForceSleeping = "StatusEffectForcedSleeping";
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializePowers()
     {
@@ -85,7 +85,7 @@ public sealed partial class VampireSystem
         if (HasComp<BibleUserComponent>(target) && !HasTruePower(ent))
         {
             _stun.TryUpdateParalyzeDuration(args.Performer, TimeSpan.FromSeconds(5f));
-            _chat.TryEmoteWithoutChat(args.Performer, _proto.Index(Scream), true);
+            _chat.TryEmoteWithoutChat(args.Performer, ProtoMan.Index(Scream), true);
             _damage.TryChangeDamage(args.Performer, ent.Comp.HolyDamage);
             return;
         }
@@ -99,7 +99,7 @@ public sealed partial class VampireSystem
 
         _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(5f));
         _flash.Flash(target, args.Performer, null, TimeSpan.FromSeconds(3f), 0.8f);
-        _status.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(8f));
+        _status.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(8f));
     }
 
     #endregion

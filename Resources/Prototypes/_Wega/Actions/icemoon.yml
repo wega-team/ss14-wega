@@ -5,9 +5,11 @@
   description: "Turns you into a White wolf."
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Mobs/Icemoon/wolf.rsi
-      state: base
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/wolf.rsi
+    layers:
+    - state: base
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:PolymorphActionEvent
       protoId: WhiteWolf
@@ -19,9 +21,11 @@
   description: "Turns you into a Polar bear."
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Mobs/Icemoon/polar_bear.rsi
-      state: bear
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/polar_bear.rsi
+    layers:
+    - state: bear
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:PolymorphActionEvent
       protoId: PolarBear
@@ -34,11 +38,13 @@
   components:
   - type: Action
     raiseOnUser: true
-    icon:
-      sprite: _Wega/Mobs/Icemoon/legionskull.rsi
-      state: head
     itemIconStyle: BigAction
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/legionskull.rsi
+    layers:
+    - state: head
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 10
   - type: EntityTargetAction
@@ -52,10 +58,12 @@
   description: Fires a slow ice bolt that deals cold damage and slows the target.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -68,10 +76,12 @@
   description: Teleports to a random location near the target.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Mobs/Icemoon/ice_demon.rsi
-      state: demon
     useDelay: 3
+  - type: Sprite
+    sprite: _Wega/Mobs/Icemoon/ice_demon.rsi
+    layers:
+    - state: demon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -84,10 +94,12 @@
   description: Breathes a line of ice projectiles at the target.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 3
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -100,10 +112,12 @@
   description: Breathes ice projectiles in all directions around itself.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -116,12 +130,14 @@
   description: Slams the ground, releasing a shockwave that damages and knocks back targets.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 4
     sound:
       path: "/Audio/_Wega/Effects/bamf.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -134,10 +150,12 @@
   description: Teleports near the target.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 3
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -150,12 +168,14 @@
   description: Shakes and screams, firing death bolts in various patterns.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 5
     sound:
       path: "/Audio/Effects/demon_dies.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -168,10 +188,12 @@
   description: Fires ice orbs that explode into shards.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: iceorb
     useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: iceorb
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 18
   - type: EntityTargetAction
@@ -184,10 +206,12 @@
   description: Fires ice orbs that explode into shards.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: iceorb
     useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: iceorb
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 18
   - type: EntityTargetAction
@@ -202,10 +226,12 @@
   description: Fires a barrage of snowballs.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: snowball
     useDelay: 8
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: snowball
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 18
   - type: EntityTargetAction
@@ -218,10 +244,12 @@
   description: Fires a barrage of snowballs with ice waves.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: snowball
     useDelay: 8
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: snowball
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 18
   - type: EntityTargetAction
@@ -238,10 +266,12 @@
   description: Fires waves of ice shards.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 18
   - type: EntityTargetAction
@@ -254,10 +284,12 @@
   description: Fires waves of ice shards.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
-      state: icebeam
     useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 18
   - type: EntityTargetAction
@@ -272,10 +304,12 @@
   description: Charges forward, dealing heavy damage.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Effects/thething.rsi
-      state: thingspike
     useDelay: 8
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    layers:
+    - state: thingspike
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -288,10 +322,12 @@
   description: Summons spikes in a 5x5 area.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Effects/thething.rsi
-      state: thingspike
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    layers:
+    - state: thingspike
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -304,12 +340,14 @@
   description: Shrieks, confusing and disarming targets.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Effects/thething.rsi
-      state: thingspike
     useDelay: 10
     sound:
       path: "/Audio/Effects/demon_dies.ogg"
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    layers:
+    - state: thingspike
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -322,10 +360,12 @@
   description: Summons spikes in a 5x5 area at target.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Effects/thething.rsi
-      state: thingspike
     useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    layers:
+    - state: thingspike
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -338,10 +378,12 @@
   description: Summons spikes vertically and horizontally.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Effects/thething.rsi
-      state: thingspike
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    layers:
+    - state: thingspike
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction
@@ -354,10 +396,12 @@
   description: Spits acid into the air, raining down.
   components:
   - type: Action
-    icon:
-      sprite: _Wega/Effects/thething.rsi
-      state: acidic
     useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Effects/thething.rsi
+    layers:
+    - state: acidic
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 12
   - type: EntityTargetAction

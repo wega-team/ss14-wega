@@ -285,7 +285,7 @@ public sealed partial class VampireCommuneActionEvent : InstantActionEvent { }
 public sealed partial class VampirePacifyActionEvent : EntityTargetActionEvent, IVampireActionEvent
 {
     [DataField]
-    public TimeSpan Time = TimeSpan.FromSeconds(40);
+    public TimeSpan Time = TimeSpan.FromSeconds(20);
 
     [DataField] public FixedPoint2 BloodCost { get; private set; }
 }

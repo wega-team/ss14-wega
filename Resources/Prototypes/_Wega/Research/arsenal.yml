@@ -15,7 +15,7 @@
   id: ConcentratedLaserWeaponry
   name: research-technology-advanced-weapon
   icon:
-    sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
+    sprite: _Wega/Objects/Weapons/Guns/Battery/iongun.rsi
     state: icon
   discipline: Arsenal
   tier: 2
@@ -23,9 +23,23 @@
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponXrayCannon
-  - WeaponTaser
-  - WeaponDominator
+  - WeaponIonCarabine
+  - WeaponTemperatureGun
+  - WeaponImporator
   - BorgModuleLethal
+  technologyPrerequisites:
+  - WeaponizedLaserManipulation
+
+- type: technology
+  id: PowerRecharcherAdv
+  name: research-technology-power-adv
+  icon:
+    sprite: _Wega/Objects/Power/portable_rechargeres/turbo_portable_recharger.rsi
+    state: charging
+  discipline: Arsenal
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
   - PortableRechargerBag
   - PortableRechargerTurbo
   technologyPrerequisites:
@@ -33,15 +47,17 @@
 
 - type: technology
   id: AdvancedFlash
-  name: research-technology-advanced-flash
+  name: research-technology-advanced-nolethal
   icon:
     sprite: _Wega/Clothing/Neck/Misc/flash_neck.rsi
     state: reach
   discipline: Arsenal
   tier: 2
-  cost: 7500
+  cost: 12500
   recipeUnlocks:
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
+  - WeaponTaser
+  - ClothingEyesGlassesNightVision
   technologyPrerequisites:
-  - SpecialMeans
+  - NonlethalAmmunition

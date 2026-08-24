@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise, kinetic_holster modified from holster by depsad",
   "size": {
     "x": 32,
     "y": 32
@@ -67,6 +67,9 @@
     },
     {
       "name": "holster"
+    },
+    {
+      "name": "kinetic_holster"
     },
     {
       "name": "tether"

@@ -1,11 +1,23 @@
 - type: lobbyBackground
   id: Wega
   background: /Textures/_Wega/LobbyScreens/wega_new.png
+  title: lobby-state-background-wega-title
+  artist: lobby-state-background-wega-artist
 
 - type: lobbyBackground
   id: WegaOld
   background: /Textures/_Wega/LobbyScreens/wega_old.png
+  title: lobby-state-background-wegaold-title
+  artist: lobby-state-background-wegaold-artist
 
 - type: lobbyBackground
   id: JustJoke
   background: /Textures/_Wega/LobbyScreens/just_joke.png
+  title: lobby-state-background-justjoke-title
+  artist: lobby-state-background-justjoke-artist
+
+- type: lobbyBackground
+  id: Singuloose
+  background: /Textures/_Wega/LobbyScreens/singuloose.png
+  title: lobby-state-background-singuloose-title
+  artist: lobby-state-background-singuloose-artist

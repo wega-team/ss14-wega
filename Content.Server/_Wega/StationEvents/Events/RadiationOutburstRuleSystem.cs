@@ -8,7 +8,7 @@ using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Tag;
 using Content.Shared.Stacks;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 
 namespace Content.Server.StationEvents.Events;
 
@@ -91,8 +91,6 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
     private void SetRadiation(EntityUid target, float rads)
     {
         var radiationComp = EnsureComp<RadiationSourceComponent>(target);
-        Dirty(target, radiationComp);
-
         Log.Debug($"RadiationOutburst: {target} теперь излучает +{rads} (всего: {radiationComp.Intensity})");
     }
 }

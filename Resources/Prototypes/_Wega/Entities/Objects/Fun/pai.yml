@@ -22,3 +22,19 @@
   - type: Appearance
   - type: Eye
     drawFov: false
+
+- type: entity
+  id: ActionPAIPolymorphBorgi
+  name: Borgi Form
+  description: Become your owner's favorite dog and always follow him.
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_pai.rsi
+    layers:
+    - state: pai_borgi
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: PaiBorgi

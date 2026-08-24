@@ -37,6 +37,19 @@
 
 - type: entity
   abstract: true
+  parent: [ ClothingOuterBaseLarge, TemperatureProtectionGood ]
+  id: ClothingOuterBaseLargeInsulated
+
+- type: entity
+  abstract: true
+  parent: [ ClothingOuterBaseLarge, TemperatureProtectionGreat ]
+  id: ClothingOuterBaseLargeFireproof
+  components:
+  - type: FireProtection
+    reduction: 0.65
+
+- type: entity
+  abstract: true
   parent: ClothingOuterBase
   id: ClothingOuterStorageBase
   components:
@@ -79,10 +92,14 @@
 
 - type: entity
   abstract: true
+  parent: [ ClothingOuterStorageEdible, TemperatureProtectionMinimal]
+  id: ClothingOuterJacketBase
+
+- type: entity
+  abstract: true
   parent: [ClothingOuterStorageBase, BaseFoldable]
   id: ClothingOuterStorageFoldableBase
   components:
-  - type: Appearance
   - type: Foldable
     canFoldInsideContainer: true
     unfoldVerbText: fold-zip-verb
@@ -121,8 +138,8 @@
 
 - type: entity
   abstract: true
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterStorageToggleableBase
+  parent: ClothingOuterJacketBase
+  id: ClothingOuterJacketToggleableBase
   components:
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterDefault
@@ -135,67 +152,7 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterBase, GeigerCounterClothing, AllowSuitStorageClothing]
-  id: ClothingOuterHardsuitBase
-  name: base hardsuit
-  components:
-# SlotBlocker blocked until UI change
-#  - type: SlotBlock
-#    slots: [innerclothing, feet]
-  - type: PressureProtection
-    highPressureMultiplier: 0.3
-    lowPressureMultiplier: 1000
-  - type: TemperatureProtection
-    heatingCoefficient: 0.01
-    coolingCoefficient: 0.01
-  - type: ClothingSpeedModifier
-    walkModifier: 0.6
-    sprintModifier: 0.6
-  - type: HeldSpeedModifier
-  - type: Item
-    size: Ginormous
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.90
-        Slash: 0.90
-        Piercing: 0.95
-        Heat: 0.90
-        Radiation: 0.25
-  - type: DiseaseProtection # Corvax-Wega-Disease
-    protection: 0.05 # Corvax-Wega-Disease
-  - type: ToggleableClothing
-    slot: head
-    verbText: toggle-clothing-verb-helmet
-    action: ActionToggleSuitPiece
-  - type: ContainerContainer
-    containers:
-      toggleable-clothing: !type:ContainerSlot {}
-  - type: GroupExamine
-  - type: Tag
-    tags:
-    - Hardsuit
-    - ModNotEquipable # Corvax-Wega-ModularSuit
-    - WhitelistChameleon
-  - type: ProtectedFromStepTriggers
-    slots: WITHOUT_POCKET
-  - type: DamageOnInteractProtection
-    damageProtection:
-      flatReductions:
-        Heat: 10 # the average lightbulb only does around four damage!
-    slots: OUTERCLOTHING
-  - type: HideLayerClothing
-    slots:
-    - Tail
-  # Corvax-Wega-Dirtable-start
-  - type: Dirtable
-    dirtState: hardsuit
-    equippedDirtState: equipped-hardsuit
-  # Corvax-Wega-Dirtable-end
-
-- type: entity
-  abstract: true
-  parent: [ClothingOuterBase, AllowSuitStorageClothing]
+  parent: [ClothingOuterBaseLargeInsulated, AllowSuitStorageClothing]
   id: ClothingOuterEVASuitBase
   name: base EVA Suit
   components:
@@ -205,15 +162,9 @@
   - type: PressureProtection
     highPressureMultiplier: 0.6
     lowPressureMultiplier: 1000
-  - type: TemperatureProtection
-    heatingCoefficient: 0.01 # Not complete protection from fire
-    coolingCoefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
-  - type: HeldSpeedModifier
-  - type: Item
-    size: Huge
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.05 # Corvax-Wega-Disease
   - type: ProtectedFromStepTriggers
@@ -239,10 +190,67 @@
   # Corvax-Wega-ModularSuit-end
 
 - type: entity
+  abstract: true
+  parent: [ ClothingOuterEVASuitBase, GeigerCounterClothing ]
+  id: ClothingOuterHardsuitBase
+  name: base hardsuit
+  components:
+  - type: PressureProtection
+    highPressureMultiplier: 0.3
+  - type: ClothingSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.6
+  - type: Item
+    size: Ginormous
+    shape:
+    - 0,0,4,5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.90
+        Radiation: 0.25
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.05 # Corvax-Wega-Disease
+  - type: ToggleableClothing
+    slot: head
+    verbText: toggle-clothing-verb-helmet
+    action: ActionToggleSuitPiece
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: GroupExamine
+  - type: Tag
+    tags:
+    - Hardsuit
+    - ModNotEquipable # Corvax-Wega-ModularSuit
+    - WhitelistChameleon
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: hardsuit
+    equippedDirtState: equipped-hardsuit
+  # Corvax-Wega-Dirtable-end
+
+- type: entity
+  parent: ClothingOuterEVASuitBase
+  id: ClothingOuterEVASuitBaseToggleable
+  abstract: true
+  components:
+  - type: ToggleableClothing
+    slot: head
+    verbText: toggle-clothing-verb-helmet
+    action: ActionToggleSuitPiece
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+
+- type: entity
+  abstract: true
   parent: ClothingOuterBase
   id: ClothingOuterBaseToggleable
   name: hoodie with hood
-  abstract: True
   components:
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodWinterDefault

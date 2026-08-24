@@ -3,6 +3,7 @@ loadout-group-top = Верхнее белье
 loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
 loadout-group-base-shoes = Обувь, базовая
+loadout-group-sec-badge = СБ, жетоны
 
 # Heads
 loadout-group-sponsor-head = Спонсор, голова
@@ -12,6 +13,9 @@ loadout-group-sponsor-neck = Спонсор, шея
 
 # Gloves
 loadout-group-sponsor-gloves = Спонсор, перчатки
+
+# Outer
+loadout-group-sponsor-outer= Спонсор, верхняя одежда
 
 # Command
 loadout-group-captain-top = Капитан, верхнее белье

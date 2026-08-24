@@ -6,8 +6,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
     useDelay: 15
+  - type: Sprite
+    sprite: Clothing/Neck/Cloaks/void.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:CloakOfDarknessActionEvent
 
@@ -19,9 +23,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
     itemIconStyle: BigAction
     useDelay: 300
+  - type: Sprite
+    sprite: Clothing/Neck/Cloaks/void.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:PolymorphismActionEvent
@@ -34,8 +42,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: Clothing/Neck/Cloaks/void.rsi, state: "icon" }
     useDelay: 30
+  - type: Sprite
+    sprite: Clothing/Neck/Cloaks/void.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:MindCommunicationActionEvent
 
@@ -47,7 +59,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_hulk.rsi, state: "transformarion" }
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_hulk.rsi
+    layers:
+    - state: transformarion
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:HulkTransformationActionEvent
 
@@ -59,9 +75,13 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_hulk.rsi, state: "charge" }
     itemIconStyle: BigAction
     useDelay: 45
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_hulk.rsi
+    layers:
+    - state: charge
+      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 16
   - type: EntityTargetAction

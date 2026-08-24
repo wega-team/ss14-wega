@@ -136,8 +136,7 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
         - type: FireProtection
           reduction: 0.2
       outerClothing:
@@ -145,8 +144,7 @@
           highPressureMultiplier: 0.02
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
         - type: FireProtection
           reduction: 0.8
 
@@ -272,8 +270,7 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
         - type: FireProtection
           reduction: 0.2
       outerClothing:
@@ -281,8 +278,7 @@
           highPressureMultiplier: 0.02
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.001
-          coolingCoefficient: 0.001
+          coefficient: 0.001
     blacklist:
       tags:
         - TemperatureRegulatorModuleConflict
@@ -411,6 +407,14 @@
     sprite: _Wega/Clothing/Modular/Asteroid/control.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Modular/Asteroid/control.rsi
+  - type: ContainerContainer
+    containers:
+      item: !type:ContainerSlot { }
+      cell_slot: !type:ContainerSlot { }
+      suit_core: !type:ContainerSlot { }
+      suit_module: !type:Container { }
+      suit_part: !type:Container { }
+      suit_hidden: !type:Container { }
   - type: ContainerFill
     containers:
       suit_core: *core-slot
@@ -426,15 +430,13 @@
           highPressureMultiplier: 0.525
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.5
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
@@ -570,8 +572,7 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.005
-          coolingCoefficient: 0.005
+          coefficient: 0.005
         - type: FireProtection
           reduction: 0.2
       outerClothing:
@@ -579,8 +580,7 @@
           highPressureMultiplier: 0.02
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.001
-          coolingCoefficient: 0.001
+          coefficient: 0.001
         - type: FireProtection
           reduction: 0.8
     blacklist:
@@ -933,15 +933,13 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.05
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -1170,15 +1168,13 @@
           highPressureMultiplier: 0.3
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.5
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -1306,8 +1302,7 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.005
-          coolingCoefficient: 0.005
+          coefficient: 0.005
         - type: FireProtection
           reduction: 0.2
       outerClothing:
@@ -1315,8 +1310,7 @@
           highPressureMultiplier: 0.02
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.001
-          coolingCoefficient: 0.001
+          coefficient: 0.001
         - type: FireProtection
           reduction: 0.8
     blacklist:
@@ -1458,15 +1452,13 @@
           highPressureMultiplier: 0.27
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.05
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -1595,15 +1587,13 @@
           highPressureMultiplier: 0.1
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.04
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.7
     sprintModifier: 0.7
@@ -1729,15 +1719,13 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.05
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -1975,15 +1963,13 @@
           highPressureMultiplier: 0.3
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.02
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2106,15 +2092,13 @@
           highPressureMultiplier: 0.6
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.3
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
         - type: ZombificationResistance
           zombificationResistanceCoefficient: 0.4
   - type: ClothingSpeedModifier
@@ -2238,8 +2222,7 @@
           highPressureMultiplier: 0.525
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
         - type: ClothingAshStormProtection
           modifier: 0.2
       outerClothing:
@@ -2247,8 +2230,7 @@
           highPressureMultiplier: 0.5
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
         - type: ClothingAshStormProtection
           modifier: 0.2
         - type: FireProtection
@@ -2487,15 +2469,13 @@
           highPressureMultiplier: 0.72
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.7
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -2739,15 +2719,13 @@
           highPressureMultiplier: 0.6
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.02
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
@@ -2878,15 +2856,13 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.05
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -3021,15 +2997,13 @@
           highPressureMultiplier: 0.45
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.45
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
 
 - type: entity
   parent: ClothingModularHelmetBase
@@ -3159,15 +3133,13 @@
           highPressureMultiplier: 0.525
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.5
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.75
     sprintModifier: 0.75
@@ -3300,15 +3272,13 @@
           highPressureMultiplier: 0.08
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.1
-          coolingCoefficient: 0.1
+          coefficient: 0.1
       outerClothing:
         - type: PressureProtection
           highPressureMultiplier: 0.05
           lowPressureMultiplier: 1000
         - type: TemperatureProtection
-          heatingCoefficient: 0.01
-          coolingCoefficient: 0.01
+          coefficient: 0.01
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9

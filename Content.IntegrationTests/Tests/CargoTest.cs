@@ -57,10 +57,18 @@ public sealed class CargoTest : GameTest
                         continue;
 
                     var ent = entManager.SpawnEntity(proto.Product, testMap.MapCoords);
-                    var price = pricing.GetPrice(ent);
-
-                    Assert.That(price, Is.AtMost(proto.Cost), $"Found arbitrage on {proto.ID} cargo product! Cost is {proto.Cost} but sell is {price}!");
-                    SDeleteNow(ent);
+                    // Corvax-Wega-Заебалоблять-start
+                    try
+                    {
+                        var price = pricing.GetPrice(ent);
+                        Assert.That(price, Is.AtMost(proto.Cost),
+                            $"Found arbitrage on {proto.ID} cargo product! Cost is {proto.Cost} but sell is {price}!");
+                    }
+                    finally
+                    {
+                        entManager.DeleteEntity(ent);
+                    }
+                    // Corvax-Wega-Заебалоблять-end
                 }
             });
         });
@@ -108,7 +116,7 @@ public sealed class CargoTest : GameTest
                 foreach (var (proto, staticPriceComp) in protoIds)
                 {
                     if (
-                        proto.TryGetComponent<StackPriceComponent>(out var stackPriceComp, _sCompFact)
+                        proto.TryComp<StackPriceComponent>(out var stackPriceComp, _sCompFact)
                         && stackPriceComp.Price > 0
                     )
                     {
@@ -243,7 +251,7 @@ public sealed class CargoTest : GameTest
                 foreach (var (proto, comp) in Pair.GetPrototypesWithComponent<MobPriceComponent>())
                 {
                     Assert.That(
-                        proto.TryGetComponent<MobStateComponent>(out _, _sCompFact),
+                        proto.TryComp<MobStateComponent>(out _, _sCompFact),
                         $"Found {nameof(MobPriceComponent)} on {proto.ID}, but no {nameof(MobStateComponent)}!"
                     );
                 }

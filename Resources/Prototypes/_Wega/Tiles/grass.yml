@@ -1,0 +1,408 @@
+- type: tile
+  id: FloorBeautifulGrass
+  name: beautiful-grass-tile
+  parent: BaseFloorPlanet
+  sprite: /Textures/_Wega/Tiles/GrassNormal/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 3
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/GrassNormal/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/GrassNormal/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/GrassNormal/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/GrassNormal/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/GrassNormal/double_edge_S.png
+    East: /Textures/_Wega/Tiles/GrassNormal/double_edge_E.png
+    North: /Textures/_Wega/Tiles/GrassNormal/double_edge_N.png
+    West: /Textures/_Wega/Tiles/GrassNormal/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorBeautifulGrassLight
+  parent: BaseFloorPlanet
+  name: beautiful-light-grass-tile
+  sprite: /Textures/_Wega/Tiles/GrassNormalLight/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 4
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/GrassNormalLight/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/GrassNormalLight/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/GrassNormalLight/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/GrassNormalLight/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/GrassNormalLight/double_edge_S.png
+    East: /Textures/_Wega/Tiles/GrassNormalLight/double_edge_E.png
+    North: /Textures/_Wega/Tiles/GrassNormalLight/double_edge_N.png
+    West: /Textures/_Wega/Tiles/GrassNormalLight/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorBeautifulGrassTall
+  parent: BaseFloorPlanet
+  name: beautiful-tall-grass-tile
+  sprite: /Textures/_Wega/Tiles/GrassNormalTall/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 5
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/GrassNormalTall/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/GrassNormalTall/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/GrassNormalTall/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/GrassNormalTall/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/GrassNormalTall/double_edge_S.png
+    East: /Textures/_Wega/Tiles/GrassNormalTall/double_edge_E.png
+    North: /Textures/_Wega/Tiles/GrassNormalTall/double_edge_N.png
+    West: /Textures/_Wega/Tiles/GrassNormalTall/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorDarkGrass
+  parent: BaseFloorPlanet
+  name: dark-grass-tile
+  sprite: /Textures/_Wega/Tiles/GrassDark/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 3
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/GrassDark/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/GrassDark/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/GrassDark/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/GrassDark/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/GrassDark/double_edge_S.png
+    East: /Textures/_Wega/Tiles/GrassDark/double_edge_E.png
+    North: /Textures/_Wega/Tiles/GrassDark/double_edge_N.png
+    West: /Textures/_Wega/Tiles/GrassDark/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorDarkGrassLight
+  parent: BaseFloorPlanet
+  name: dark-light-grass-tile
+  sprite: /Textures/_Wega/Tiles/GrassDarkLight/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 4
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/GrassDarkLight/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/GrassDarkLight/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/GrassDarkLight/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/GrassDarkLight/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/GrassDarkLight/double_edge_S.png
+    East: /Textures/_Wega/Tiles/GrassDarkLight/double_edge_E.png
+    North: /Textures/_Wega/Tiles/GrassDarkLight/double_edge_N.png
+    West: /Textures/_Wega/Tiles/GrassDarkLight/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorDarkGrassTall
+  parent: BaseFloorPlanet
+  name: dark-tall-grass-tile
+  sprite: /Textures/_Wega/Tiles/DarkGrassTall/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 5
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/DarkGrassTall/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/DarkGrassTall/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/DarkGrassTall/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/DarkGrassTall/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/DarkGrassTall/double_edge_S.png
+    East: /Textures/_Wega/Tiles/DarkGrassTall/double_edge_E.png
+    North: /Textures/_Wega/Tiles/DarkGrassTall/double_edge_N.png
+    West: /Textures/_Wega/Tiles/DarkGrassTall/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorAutumnGrass
+  name: autumn-grass-tile
+  parent: BaseFloorPlanet
+  sprite: /Textures/_Wega/Tiles/AutumnGrass/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 3
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/AutumnGrass/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/AutumnGrass/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/AutumnGrass/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/AutumnGrass/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/AutumnGrass/double_edge_S.png
+    East: /Textures/_Wega/Tiles/AutumnGrass/double_edge_E.png
+    North: /Textures/_Wega/Tiles/AutumnGrass/double_edge_N.png
+    West: /Textures/_Wega/Tiles/AutumnGrass/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorAutumnGrassLight
+  parent: BaseFloorPlanet
+  name: autumn-light-grass-tile
+  sprite: /Textures/_Wega/Tiles/AutumnGrassLight/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 4
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/AutumnGrassLight/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/AutumnGrassLight/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/AutumnGrassLight/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/AutumnGrassLight/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/AutumnGrassLight/double_edge_S.png
+    East: /Textures/_Wega/Tiles/AutumnGrassLight/double_edge_E.png
+    North: /Textures/_Wega/Tiles/AutumnGrassLight/double_edge_N.png
+    West: /Textures/_Wega/Tiles/AutumnGrassLight/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorAutumnGrassTall
+  parent: BaseFloorPlanet
+  name: autumn-tall-grass-tile
+  sprite: /Textures/_Wega/Tiles/AutumnGrassTall/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 5
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/AutumnGrassTall/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/AutumnGrassTall/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/AutumnGrassTall/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/AutumnGrassTall/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/AutumnGrassTall/double_edge_S.png
+    East: /Textures/_Wega/Tiles/AutumnGrassTall/double_edge_E.png
+    North: /Textures/_Wega/Tiles/AutumnGrassTall/double_edge_N.png
+    West: /Textures/_Wega/Tiles/AutumnGrassTall/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorShadowGrass
+  name: shadow-grass-tile
+  parent: BaseFloorPlanet
+  sprite: /Textures/_Wega/Tiles/ShadowGrass/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 3
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/ShadowGrass/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/ShadowGrass/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/ShadowGrass/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/ShadowGrass/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/ShadowGrass/double_edge_S.png
+    East: /Textures/_Wega/Tiles/ShadowGrass/double_edge_E.png
+    North: /Textures/_Wega/Tiles/ShadowGrass/double_edge_N.png
+    West: /Textures/_Wega/Tiles/ShadowGrass/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorShadowGrassLight
+  parent: BaseFloorPlanet
+  name: shadow-light-grass-tile
+  sprite: /Textures/_Wega/Tiles/ShadowGrassLight/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 4
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/ShadowGrassLight/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/ShadowGrassLight/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/ShadowGrassLight/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/ShadowGrassLight/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/ShadowGrassLight/double_edge_S.png
+    East: /Textures/_Wega/Tiles/ShadowGrassLight/double_edge_E.png
+    North: /Textures/_Wega/Tiles/ShadowGrassLight/double_edge_N.png
+    West: /Textures/_Wega/Tiles/ShadowGrassLight/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: CFloorShadowGrassTall
+  parent: BaseFloorPlanet
+  name: shadow-tall-grass-tile
+  sprite: /Textures/_Wega/Tiles/ShadowGrassTall/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 5
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/ShadowGrassTall/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/ShadowGrassTall/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/ShadowGrassTall/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/ShadowGrassTall/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/ShadowGrassTall/double_edge_S.png
+    East: /Textures/_Wega/Tiles/ShadowGrassTall/double_edge_E.png
+    North: /Textures/_Wega/Tiles/ShadowGrassTall/double_edge_N.png
+    West: /Textures/_Wega/Tiles/ShadowGrassTall/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorMagickGrass
+  name: magic-grass-tile
+  parent: BaseFloorPlanet
+  sprite: /Textures/_Wega/Tiles/MagickGrass/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 3
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/MagickGrass/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/MagickGrass/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/MagickGrass/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/MagickGrass/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/MagickGrass/double_edge_S.png
+    East: /Textures/_Wega/Tiles/MagickGrass/double_edge_E.png
+    North: /Textures/_Wega/Tiles/MagickGrass/double_edge_N.png
+    West: /Textures/_Wega/Tiles/MagickGrass/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorMagickGrassLight
+  parent: BaseFloorPlanet
+  name: magic-light-grass-tile
+  sprite: /Textures/_Wega/Tiles/MagickGrassLight/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 4
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/MagickGrassLight/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/MagickGrassLight/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/MagickGrassLight/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/MagickGrassLight/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/MagickGrassLight/double_edge_S.png
+    East: /Textures/_Wega/Tiles/MagickGrassLight/double_edge_E.png
+    North: /Textures/_Wega/Tiles/MagickGrassLight/double_edge_N.png
+    West: /Textures/_Wega/Tiles/MagickGrassLight/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+
+- type: tile
+  id: FloorMagickGrassTall
+  parent: BaseFloorPlanet
+  name: magical-tall-grass-tile
+  sprite: /Textures/_Wega/Tiles/MagickGrassTall/grass.png
+  variants: 6
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  edgeSpritePriority: 5
+  edgeSprites:
+    SouthEast: /Textures/_Wega/Tiles/MagickGrassTall/single_edge_SE.png
+    NorthEast: /Textures/_Wega/Tiles/MagickGrassTall/single_edge_NE.png
+    NorthWest: /Textures/_Wega/Tiles/MagickGrassTall/single_edge_NW.png
+    SouthWest: /Textures/_Wega/Tiles/MagickGrassTall/single_edge_SW.png
+    South: /Textures/_Wega/Tiles/MagickGrassTall/double_edge_S.png
+    East: /Textures/_Wega/Tiles/MagickGrassTall/double_edge_E.png
+    North: /Textures/_Wega/Tiles/MagickGrassTall/double_edge_N.png
+    West: /Textures/_Wega/Tiles/MagickGrassTall/double_edge_W.png
+  baseTurf: FloorPlanetDirt
+  footstepSounds:
+    collection: FootstepGrass
+  heatCapacity: 10000

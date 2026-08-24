@@ -24,7 +24,9 @@ public sealed partial class HitscanEMPSystem : EntitySystem
         if (target == null)
             return;
 
-        if (HasComp<MobStateComponent>(target.Value))
-			_emp.EmpPulse(Transform(target.Value).Coordinates, ent.Comp.Range, ent.Comp.EnergyConsumption, ent.Comp.DisableDuration);
+        if (!HasComp<MobStateComponent>(target.Value))
+            return;
+
+        _emp.EmpPulse(Transform(target.Value).Coordinates, ent.Comp.Range, ent.Comp.EnergyConsumption, ent.Comp.DisableDuration);
     }
 }

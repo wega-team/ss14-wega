@@ -12,10 +12,10 @@ public sealed partial class NPCAggressionSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<NPCAggressionComponent, DamageChangedEvent>(OnDamageChanged, after: [typeof(NPCOptimizationSystem)]);
+        SubscribeLocalEvent<NPCAggressionComponent, DamageDealtEvent>(OnDamageChanged, after: [typeof(NPCOptimizationSystem)]);
     }
 
-    private void OnDamageChanged(EntityUid uid, NPCAggressionComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, NPCAggressionComponent component, DamageDealtEvent args)
     {
         if (args.Origin == null || !TryComp<HTNComponent>(uid, out var htn) || HasComp<ActorComponent>(uid))
             return;

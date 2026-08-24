@@ -1,4 +1,4 @@
-using Content.Server.Bible.Components;
+using Content.Shared.Bible.Components;
 using Content.Shared.Hands;
 using Content.Shared.Inventory.Events;
 using Content.Shared.NullRod.Components;

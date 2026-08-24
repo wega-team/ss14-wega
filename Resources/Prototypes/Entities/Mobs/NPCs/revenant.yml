@@ -12,8 +12,8 @@
     context: "ghost"
   - type: Spectral
   - type: MovementSpeedModifier
-    baseWalkSpeed: 6
-    baseSprintSpeed: 6
+    baseWalkSpeed: 6 # Corvax-wega-edit
+    baseSprintSpeed: 8 # Corvax-wega-edit
   - type: Sprite
     sprite: Mobs/Ghosts/revenant.rsi
     layers:
@@ -35,8 +35,6 @@
       - Ghost
   - type: ContentEye
     maxZoom: 1.2, 1.2
-  - type: NameIdentifier
-    group: GenericNumber
   - type: GhostRole
     makeSentient: true
     name: ghost-role-information-revenant-name
@@ -84,6 +82,9 @@
     - NamesRevenantAdjective
     - NamesRevenantTheme
     nameFormat: name-format-revenant
+  - type: Grammar
+    attributes:
+      proper: true
   - type: Speech
     speechVerb: Ghost
   - type: Reactive
@@ -93,3 +94,10 @@
     tags:
     - SlowImmune
     - KnockdownImmune
+    - AllowPortalTraversal
+# Corvax-Wega-Start
+  - type: NaturalNightVision # Corvax-Wega-NightVision
+    tintColor: "#b366ff"
+    visible: true
+# Corvax-Wega-End
+

@@ -1163,7 +1163,6 @@ entities:
   - uid: 7
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 6.5,-16.5
       parent: 1
   - uid: 12
@@ -1194,19 +1193,16 @@ entities:
   - uid: 119
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 9.5,-9.5
       parent: 1
   - uid: 121
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 5.5,-9.5
       parent: 1
   - uid: 122
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 6.5,-9.5
       parent: 1
   - uid: 146
@@ -1259,19 +1255,16 @@ entities:
   - uid: 2
     components:
     - type: Transform
-      rot: 3.141592653589793 rad
       pos: 11.5,-3.5
       parent: 1
   - uid: 5
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 8.5,-16.5
       parent: 1
   - uid: 6
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 7.5,-16.5
       parent: 1
   - uid: 14
@@ -1287,25 +1280,21 @@ entities:
   - uid: 62
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 8.5,-9.5
       parent: 1
   - uid: 198
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
       pos: 13.5,-5.5
       parent: 1
   - uid: 200
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 15.5,-9.5
       parent: 1
   - uid: 217
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
       pos: 15.5,-5.5
       parent: 1
 - proto: HighSecCommandLocked

@@ -6,7 +6,6 @@ using Content.Shared.Humanoid;
 using Content.Shared.PowerCell.Components;
 using Content.Shared.Preferences;
 using Robust.Server.Containers;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Enums;
 using Content.Server.Popups;
 using Robust.Server.Audio;
@@ -16,7 +15,6 @@ namespace Content.Server._Wega.Android;
 
 public sealed partial class AndroidFrameSystem : SharedAndroidFrameSystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private ContainerSystem _container = default!;
     [Dependency] private HumanoidProfileSystem _humanoid = default!;
     [Dependency] private VisualBodySystem _visualBody = default!;
@@ -39,7 +37,7 @@ public sealed partial class AndroidFrameSystem : SharedAndroidFrameSystem
 
     private void OnInit(EntityUid uid, AndroidFrameComponent component, ComponentInit args)
     {
-        if (!_prototypeManager.Resolve(component.Species, out var species))
+        if (!ProtoMan.Resolve(component.Species, out var species))
             return;
 
         var profile = new HumanoidCharacterProfile();
@@ -68,7 +66,7 @@ public sealed partial class AndroidFrameSystem : SharedAndroidFrameSystem
 
     private bool TryAssemble(EntityUid uid, AndroidFrameComponent component)
     {
-        if (!_prototypeManager.Resolve(component.Species, out var species) || component.Profile == null)
+        if (!ProtoMan.Resolve(component.Species, out var species) || component.Profile == null)
             return false;
 
         if (!TryGetFromSlot(uid, component.BatterySlot, out var battery) || !TryGetFromSlot(uid, component.BrainSlot, out var brain))

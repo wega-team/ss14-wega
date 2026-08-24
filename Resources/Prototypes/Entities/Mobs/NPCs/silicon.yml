@@ -45,8 +45,7 @@
   - type: TypingIndicator
     proto: robot
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
+    emoteSounds: UnisexSilicon
   - type: Emoting
   - type: ZombieImmune
   - type: ProtectedFromStepTriggers
@@ -255,8 +254,7 @@
       params:
         variation: 0.125
   - type: Vocal
-    sounds:
-      Unsexed: Cluwne
+    emoteSounds: Cluwne
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -438,7 +436,7 @@
     enabled: false
     radius: 3.5
     softness: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: FootstepModifier
     footstepSoundCollection:
@@ -463,10 +461,13 @@
     canBeStripped: true
     activeHandId: Right
     hands:
-      Right:
+      hand_right:
         location: Right
-      Left:
+      hand_left:
         location: Left
+    sortedHands:
+    - hand_right
+    - hand_left
   - type: Inventory
     templateId: bots
   - type: OfferGiver

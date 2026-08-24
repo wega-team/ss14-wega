@@ -7,3 +7,10 @@
   skinColoration: HumanToned
   minHeight: 140
   maxHeight: 160
+  defaultSoundsBySex:
+  - MaleFelinid
+  - FemaleFelinid
+  - MaleFelinid
+  voices:
+  - MaleFelinid
+  - FemaleFelinid

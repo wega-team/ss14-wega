@@ -1,0 +1,15 @@
+- type: entity
+  id: ActionPush
+  name: Push
+  description: Push away nearby creatures
+  components:
+  - type: Action
+    useDelay: 120
+    priority: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_dragon.rsi
+    layers:
+    - state: repulse
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:DragonPushActionEvent

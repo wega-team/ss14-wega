@@ -56,7 +56,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         if (_toggle.IsActivated(uid))
             return;
 
-        if (!TryComp<MovementSpeedModifierComponent>(uid, out var movement))
+        if (!HasComp<MovementSpeedModifierComponent>(uid))
             return;
 
         args.ModifySpeed(component.DischargeSpeedModifier, component.DischargeSpeedModifier);

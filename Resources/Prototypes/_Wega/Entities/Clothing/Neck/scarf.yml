@@ -7,18 +7,10 @@
   description: Just base scarf...
   abstract: true
   components:
-    - type: ToolRefinable
-      qualityNeeded: Slicing
-      refineResult:
-      - id: MaterialCloth1
-        amount: 3
-    - type: SolutionContainerManager
-      solutions:
-        food:
-          maxVol: 15
-          reagents:
-          - ReagentId: Fiber
-            Quantity: 15
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialCloth1
+      amount: 3
 
 - type: entity
   parent: ClothingNeckScarfBase
@@ -163,6 +155,6 @@
     - type: Sprite
       sprite: _Wega/Clothing/Neck/Ties/gold_tie.rsi
     - type: Clothing
-      sprite: _Wega/Clothing/Neck/Ties/gold_tie.rsi #спрайты от prazat911
+      sprite: _Wega/Clothing/Neck/Ties/gold_tie.rsi
     - type: StaticPrice
       price: 75

@@ -15,6 +15,7 @@
         state: time
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: AmbientSound
     volume: 2
     range: 5

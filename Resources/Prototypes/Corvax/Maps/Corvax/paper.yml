@@ -1,7 +1,7 @@
 - type: gameMap
   id: CorvaxPaper
   mapName: 'Paper Station'
-  mapPath: /Maps/_Wega/wegapaper.yml # Corvax-Wega-Maps
+  mapPath: /Maps/Corvax/corvax_paper.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 25

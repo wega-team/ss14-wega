@@ -21,7 +21,7 @@ public sealed partial class OfferItemIndicatorsOverlay : Overlay
         IoCManager.InjectDependencies(this);
 
         var resourceCache = IoCManager.Resolve<IResourceCache>();
-        _indicatorTexture = resourceCache.GetTexture("/Textures/_Wega/Interface/Misc/give_item.rsi/give_item.png");
+        _indicatorTexture = resourceCache.GetTexture("/Textures/_Wega/Interface/Misc/give_item.png");
     }
 
     protected override void Draw(in OverlayDrawArgs args)

@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Bible.Components;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Pinpointer;
 using Content.Server.Station.Components;
@@ -17,7 +16,6 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
-using Content.Shared.Ghost;
 using Content.Shared.Gibbing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Humanoid;
@@ -41,6 +39,9 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Bible.Components;
+using Content.Shared.Ghost.Systems;
+using Content.Shared.Ghost.Components;
 
 namespace Content.Server.Blood.Cult;
 
@@ -49,7 +50,7 @@ public sealed partial class BloodCultSystem
     [Dependency] private FlammableSystem _flammable = default!;
     [Dependency] private GibbingSystem _gibbing = default!;
     [Dependency] private IConsoleHost _consoleHost = default!;
-    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private RejuvenateSystem _rejuvenate = default!;
     [Dependency] private SharedGhostSystem _ghost = default!;
@@ -125,7 +126,7 @@ public sealed partial class BloodCultSystem
             }
 
             var cultistPosition = _transform.GetMapCoordinates(Transform(cultist));
-            isValidSurface = _mapMan.TryFindGridAt(cultistPosition, out _, out _);
+            isValidSurface = _map.TryFindGridAt(cultistPosition, out _, out _);
 
             var ritual = EntityQuery<BloodRitualDimensionalRendingComponent>().FirstOrDefault();
             if (!isValidSurface || ritual != default)
@@ -1002,7 +1003,7 @@ public sealed partial class BloodCultSystem
     private bool IsInSpace(EntityUid cultist)
     {
         var cultistPosition = _transform.GetMapCoordinates(Transform(cultist));
-        if (!_mapMan.TryFindGridAt(cultistPosition, out _, out _))
+        if (!_map.TryFindGridAt(cultistPosition, out _, out _))
             return true;
 
         return false;
@@ -1023,7 +1024,7 @@ public sealed partial class BloodCultSystem
         if (bloodReagentPrototypeId == null)
             return Color.FromHex("#880000");
 
-        if (!_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
+        if (!ProtoMan.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
             return Color.FromHex("#880000");
 
         return reagentPrototype.SubstanceColor;

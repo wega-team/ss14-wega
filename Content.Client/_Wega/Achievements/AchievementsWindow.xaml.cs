@@ -15,7 +15,7 @@ public sealed partial class AchievementsWindow : FancyWindow
 {
     [Dependency] private IDependencyCollection _dependencies = default!;
     [Dependency] private IEntitySystemManager _sysMan = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
     private readonly AchievementsSystem _achievements;
     private readonly SpriteSystem _spriteSystem;
 
@@ -36,7 +36,7 @@ public sealed partial class AchievementsWindow : FancyWindow
 
     private void LoadAchievements()
     {
-        _allAchievements = _prototypeManager.EnumeratePrototypes<AchievementPrototype>().ToList();
+        _allAchievements = _proto.EnumeratePrototypes<AchievementPrototype>().ToList();
         _achievements.RequestAchievements();
 
         UpdateAchievements(new List<AchievementsEnum>(), _allAchievements);

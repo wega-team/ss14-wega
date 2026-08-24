@@ -104,6 +104,11 @@
     Telecrystal: 4
   categories:
   - UplinkWeaponry
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
 
 - type: listing
   id: UplinkAdvancedHristov
@@ -214,7 +219,7 @@
   name: uplink-syndicate-rapier-name
   description: uplink-syndicate-rapier-desc
   icon: { sprite: _Wega/Objects/Weapons/Melee/syndicate_rapier.rsi, state: icon }
-  productEntity: BeltSheathSyndieFilledBox
+  productEntity: ClothingBeltSheathSyndicateFilled
   cost:
     Telecrystal: 8
   categories:
@@ -560,9 +565,9 @@
   productEntity: ClothingOuterVestWebElite
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 2
+    Telecrystal: 3 # Corwax-Wega-Stamin-Resistace
   cost:
-    Telecrystal: 3
+    Telecrystal: 5 # Corwax-Wega-Stamin-Resistace
   categories:
   - UplinkWearables
   conditions:
@@ -652,3 +657,54 @@
     blacklist:
       tags:
       - NukeOpsUplink
+
+- type: listing
+  id: UplinkSyndiShaker
+  name: uplink-syndi-shaker-name
+  description: uplink-syndi-shaker-desc
+  productEntity: DrinkShakerSyndi
+  cost:
+    Telecrystal: 1
+  categories:
+    - UplinkChemicals
+
+- type: listing
+  id: UplinkSyndiBarmenKit
+  name: uplink-syndi-barmen-name
+  description: uplink-syndi-barmen-desc
+  productEntity: SyndiBarmenKit
+  cost:
+    Telecrystal: 4
+  categories:
+    - UplinkChemicals
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkSwatHelmet
+  name: uplink-swat-helmet-name
+  description: uplink-swat-helmet-desc
+  productEntity: ClothingHeadHelmetSwatSyndicate
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkWearables
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
+- type: listing
+  id: uplinkCaseBadge
+  name: uplink-casebadge-name
+  description: uplink-casebadge-desc
+  productEntity: BadgeCase
+  categories:
+  - UplinkPointless
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

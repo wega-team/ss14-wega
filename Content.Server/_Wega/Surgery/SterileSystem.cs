@@ -10,8 +10,6 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SterileSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _proto = default!;
-
     private static readonly ProtoId<ReagentPrototype> EthanolReagent = "Ethanol";
 
     private const float EthanolUnitsPerSterilePoint = 0.05f;
@@ -90,7 +88,7 @@ public sealed partial class SterileSystem : EntitySystem
 
         foreach (var reagent in solution.Contents)
         {
-            var reagentProto = _proto.Index<ReagentPrototype>(reagent.Reagent.Prototype);
+            var reagentProto = ProtoMan.Index<ReagentPrototype>(reagent.Reagent.Prototype);
             float ethanolPerUnit = 0f;
 
             if (reagent.Reagent.Prototype == EthanolReagent)

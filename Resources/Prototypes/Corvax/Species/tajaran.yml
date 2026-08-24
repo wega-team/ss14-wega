@@ -13,3 +13,10 @@
   femaleLastNames: NamesTajaranLast # Corvax-LastnameGender
   minHeight: 150 # Corvax-Wega-Height
   maxHeight: 180 # Corvax-Wega-Height
+  defaultSoundsBySex:
+  - MaleTajaran
+  - FemaleTajaran
+  - MaleTajaran
+  voices:
+  - MaleTajaran
+  - FemaleTajaran

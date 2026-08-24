@@ -125,7 +125,7 @@ public sealed partial class StunEnchantComponent : Component
 {
     [DataField]
     public bool Knockout = false;
-    
+
     [DataField]
     public TimeSpan StunTime = TimeSpan.FromSeconds(5);
 

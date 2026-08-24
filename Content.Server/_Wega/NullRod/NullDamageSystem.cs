@@ -1,5 +1,4 @@
 using Content.Server.Administration.Logs;
-using Content.Server.Bible.Components;
 using Content.Shared.Database;
 using Content.Shared.FixedPoint;
 using Content.Shared.NullRod.Components;
@@ -7,6 +6,7 @@ using Content.Shared.Hands.EntitySystems;
 using Robust.Shared.Timing;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Rejuvenate;
+using Content.Shared.Bible.Components;
 
 namespace Content.Server.NullRod;
 
@@ -20,7 +20,7 @@ public sealed partial class NullDamageSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<UnholyComponent, DamageChangedEvent>(OnUnholyDamageTaken);
+        SubscribeLocalEvent<UnholyComponent, DamageDealtEvent>(OnUnholyDamageTaken);
         SubscribeLocalEvent<NullDamageComponent, RejuvenateEvent>(OnRejuvenate);
     }
 
@@ -56,7 +56,7 @@ public sealed partial class NullDamageSystem : EntitySystem
 
     #region Null Damage Logic
 
-    private void OnUnholyDamageTaken(EntityUid uid, UnholyComponent component, ref DamageChangedEvent args)
+    private void OnUnholyDamageTaken(EntityUid uid, UnholyComponent component, ref DamageDealtEvent args)
     {
         if (!args.Origin.HasValue || !HasComp<BibleUserComponent>(args.Origin.Value))
             return;

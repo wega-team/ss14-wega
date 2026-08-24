@@ -254,6 +254,12 @@ ent-TurboItemRechargerXenoborg = { ent-TurboItemRecharger }
     .desc = { ent-TurboItemRecharger.desc }
 ent-ClothingHeadHatChameleonXenoborg = проекция головного убора
     .desc = Дешевый элемент индивидуальности органиков, правда прибор очень хрупкий.
+ent-WeaponIonCarabineXenoborg = { ent-WeaponIonCarabine }
+    .desc = { ent-WeaponIonCarabine.desc }
+ent-UpgradeKitBrain = апгрейдер мозгов
+    .desc = Устройство ксеноборгов, позволяющее им преобразовывать обычные мозги и процессоры андроидов в позитронный аналог для ловли душ.
+ent-XenoborgTitleBag = хранилище плиток ксеноборгов
+    .desc = Хранилище для быстро сбора плиток в одно хранилище, для примагничивания нужно держать его в активной руке.
 
 ent-WeaponClockworkSwordBorg = { ent-WeaponClockworkSword }
     .desc = { ent-WeaponClockworkSword.desc }

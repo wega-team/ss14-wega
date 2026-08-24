@@ -2,8 +2,10 @@ using System.Linq;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Clothing.Upgrades.Components;
+using Content.Shared.Clothing;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
@@ -21,6 +23,7 @@ namespace Content.Shared.Clothing.Upgrades;
 
 public sealed partial class ClothingUpgradeSystem : EntitySystem
 {
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
@@ -39,7 +42,9 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
         SubscribeLocalEvent<UpgradeableClothingComponent, InventoryRelayedEvent<GetFireProtectionEvent>>(RelayInventoryEvent,
             after: [typeof(FireProtectionSystem)]);
 
-        SubscribeLocalEvent<UpgradeableClothingComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<UpgradeableClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
+        SubscribeLocalEvent<UpgradeableClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
+        SubscribeLocalEvent<UpgradeableClothingComponent, MapInitEvent>(OnInit);
         SubscribeLocalEvent<UpgradeableClothingComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<UpgradeableClothingComponent, ExaminedEvent>(OnExamine);
         SubscribeLocalEvent<UpgradeableClothingComponent, GetVerbsEvent<Verb>>(OnGetVerb);
@@ -51,9 +56,21 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
             RaiseLocalEvent(upgrade, ref args.Args);
     }
 
-    private void OnInit(Entity<UpgradeableClothingComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<UpgradeableClothingComponent> ent, ref MapInitEvent args)
     {
         _container.EnsureContainer<Container>(ent, ent.Comp.UpgradesContainerId);
+    }
+
+    private void OnEquipped(Entity<UpgradeableClothingComponent> ent, ref ClothingGotEquippedEvent args)
+    {
+        ent.Comp.User = args.Wearer;
+        Dirty(ent);
+    }
+
+    private void OnUnequipped(Entity<UpgradeableClothingComponent> ent, ref ClothingGotUnequippedEvent args)
+    {
+        ent.Comp.User = null;
+        Dirty(ent);
     }
 
     private void OnAfterInteractUsing(Entity<UpgradeableClothingComponent> ent, ref AfterInteractUsingEvent args)
@@ -63,7 +80,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgrades(ent).Count >= ent.Comp.MaxUpgradeCount)
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-clothing-popup-upgrade-limit"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-clothing-popup-upgrade-limit"), ent, args.User);
             return;
         }
 
@@ -72,11 +89,11 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgradeTags(ent).ToHashSet().IsSupersetOf(upgradeComponent.Tags))
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-clothing-popup-already-present"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-clothing-popup-already-present"), ent, args.User);
             return;
         }
 
-        _popup.PopupClient(Loc.GetString("clothing-upgrade-popup-insert",
+        _popup.PopupEntity(Loc.GetString("clothing-upgrade-popup-insert",
             ("upgrade", args.Used), ("clothing", ent.Owner)), args.User);
 
         args.Handled = _container.Insert(args.Used, _container.GetContainer(ent, ent.Comp.UpgradesContainerId));
@@ -106,7 +123,10 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
     private void OnGetVerb(Entity<UpgradeableClothingComponent> ent, ref GetVerbsEvent<Verb> args)
     {
-        if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract)
+        if (!args.CanInteract || args.Hands == null)
+            return;
+
+        if (ent.Comp.User != null && args.User != ent.Comp.User && _actionBlocker.CanInteract(ent.Comp.User.Value, null))
             return;
 
         var upgrades = GetCurrentUpgrades(ent);
@@ -143,7 +163,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         if (_container.Remove(upgrade, container))
         {
-            _popup.PopupPredicted(Loc.GetString("clothing-upgrade-popup-remove", ("upgrade", upgrade)), ent, user);
+            _popup.PopupEntity(Loc.GetString("clothing-upgrade-popup-remove", ("upgrade", upgrade)), ent, user);
             _adminLog.Add(LogType.Action, LogImpact.Low,
                 $"{ToPrettyString(user):player} removed clothing upgrade {ToPrettyString(upgrade)} from {ToPrettyString(ent.Owner)}.");
 

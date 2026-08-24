@@ -319,7 +319,7 @@ public sealed partial class VampireSystem
         }
 
         _audio.PlayPvs(args.DissectSound, target);
-        _chat.TryEmoteWithoutChat(target, _proto.Index(Scream), true);
+        _chat.TryEmoteWithoutChat(target, ProtoMan.Index(Scream), true);
         _blood.TryBleedOut(target, args.BloodCost);
 
         RecordExtraction(vampireBody, target, out var bestia);

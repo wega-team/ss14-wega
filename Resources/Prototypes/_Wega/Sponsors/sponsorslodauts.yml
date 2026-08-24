@@ -19,13 +19,22 @@
   inhand:
   - BigToyHammerRed
 
-## Eyes
-#- type: loadout
-#  id: ClothingEyesGlassesGarGigaSponsor
-#  effects:
-#  - !type:SponsorLoadoutEffect
-#  equipment:
-#    eyes: ClothingEyesGlassesGarGigaSponsor
+- type: loadout
+  id: FoodInfiniteCub
+  effects:
+  - !type:SponsorLoadoutEffect
+  storage:
+    back:
+    - FoodInfiniteCub
+
+# Eyes
+
+- type: loadout
+  id: ClothingEyesGlassesHeroX
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    eyes: ClothingEyesGlassesHeroX
     
 # Head
 - type: loadout
@@ -78,6 +87,41 @@
   - !type:SponsorLoadoutEffect
   equipment:
     neck: ClothingNeckCloakManly
+
+- type: loadout
+  id: ClothingNeckChocerMoo
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckChocerMoo
+
+- type: loadout
+  id: ClothingNeckCloakSponsorRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckCloakSponsorRed
+
+- type: loadout
+  id: ClothingNeckCloakSponsorBlac
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckCloakSponsorBlac
+
+- type: loadout
+  id: ClothingNeckCloakSponsorWithe
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckCloakSponsorWithe
+
+- type: loadout
+  id: ClothingNeckCloakSponsorBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    neck: ClothingNeckCloakSponsorBlue
 
 # Hands
 - type: loadout
@@ -229,6 +273,70 @@
     jumpsuit: ClothingUniformJumpskirtElegantTacticalmaid
   groupBy: "sponsorjumpskirt"
 
+- type: loadout
+  id: ClothingUniformJumpskirtElegantShortRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantShortRed
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorWhite
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorWhite
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorBlack
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorRed
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorBlue
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorPink
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorPink
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorGrey
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorGrey
+  groupBy: "sponsorjumpskirt"
+
+- type: loadout
+  id: ClothingUniformJumpskirtElegantColorGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantColorGreen
+  groupBy: "sponsorjumpskirt"
+
 # Jumpsuit
 
 - type: loadout
@@ -255,7 +363,31 @@
     jumpsuit: ClothingUniformJumpsuitBeautifulSweater
   groupBy: "sponsorjumpsuit"
 
-# Bottom
+- type: loadout
+  id: ClothingUniformJumpsuitStylishWithe
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitStylishWithe
+  groupBy: "sponsorjumpsuit"
+
+# Shoes
+
+- type: loadout
+  id: ClothingShoesStylishWhite
+  equipment:
+    shoes: ClothingShoesStylishWhite
+
+# OuterClothing
+
+- type: loadout
+  id: ClothingOuterCyberJacket
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    outerClothing: ClothingOuterCyberJacket
+
+# Underwear bottoms
 
 - type: loadout
   id: ClothingUnderBottomElegantVampire
@@ -265,3 +397,207 @@
     proto: FemaleRequired
   equipment:
     underwearbottom: ClothingUnderBottomElegantVampire
+
+- type: loadout
+  id: ClothingUnderBottomEroWhith
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroWhith
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomEroPink
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroPink
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomEroBlack
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroBlack
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomEroOrange
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroOrange
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomEroRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroRed
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomEroYellow
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroYellow
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomEroGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomEroGreen
+  groupBy: "sponsorUnderEro"
+
+- type: loadout
+  id: ClothingUnderBottomCuteMooo
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomCuteMooo
+
+- type: loadout
+  id: ClothingUnderBottomGold
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomGold
+
+- type: loadout
+  id: ClothingUnderBottomCuteBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomCuteBlue
+  groupBy: "sponsorUnderBottomCute"
+
+- type: loadout
+  id: ClothingUnderBottomCuteRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomCuteRed
+  groupBy: "sponsorUnderBottomCute"
+
+- type: loadout
+  id: ClothingUnderBottomCuteGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomCuteGreen
+  groupBy: "sponsorUnderBottomCute"
+
+- type: loadout
+  id: ClothingUnderBottomCutePink
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underwearbottom: ClothingUnderBottomCutePink
+  groupBy: "sponsorUnderBottomCute"
+
+# Underwear tops
+
+- type: loadout
+  id: ClothingUnderTopCuteMooo
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underweartop: ClothingUnderTopCuteMooo
+
+- type: loadout
+  id: ClothingUnderTopGold
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underweartop: ClothingUnderTopGold
+
+- type: loadout
+  id: ClothingUnderTopCuteBlue
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underweartop: ClothingUnderTopCuteBlue
+  groupBy: "sponsorUnderTopCute"
+
+- type: loadout
+  id: ClothingUnderTopCuteRed
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underweartop: ClothingUnderTopCuteRed
+  groupBy: "sponsorUnderTopCute"
+
+- type: loadout
+  id: ClothingUnderTopCuteGreen
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underweartop: ClothingUnderTopCuteGreen
+  groupBy: "sponsorUnderTopCute"
+
+- type: loadout
+  id: ClothingUnderTopCutePink
+  effects:
+  - !type:SponsorLoadoutEffect
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  equipment:
+    underweartop: ClothingUnderTopCutePink
+  groupBy: "sponsorUnderTopCute"
+
+# Socks
+
+- type: loadout
+  id: ClothingUnderSocksHighMoo
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    socks: ClothingUnderSocksHighMoo
+
+- type: loadout
+  id: ClothingUnderSocksMoo
+  effects:
+  - !type:SponsorLoadoutEffect
+  equipment:
+    socks: ClothingUnderSocksMoo

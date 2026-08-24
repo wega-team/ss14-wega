@@ -24,7 +24,7 @@ public sealed partial class BloodConditionSystem : EntitySystem
         if (args.Mind.OwnedEntity.HasValue)
         {
             var ownedEntity = args.Mind.OwnedEntity.Value;
-            comp.BloodTargets[ownedEntity] = _random.Next(200, 300);
+            comp.BloodTargets[ownedEntity] = _random.Next(comp.TargetMin, comp.TargetMax);
         }
     }
 

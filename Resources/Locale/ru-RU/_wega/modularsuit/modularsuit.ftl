@@ -75,6 +75,9 @@ modsuit-verb-extract-core = Извлечь ядро
 modsuit-verb-extract-core-desc = Извлечь ядро питания из костюма
 modsuit-verb-extract-part = Извлечь {$part}
 modsuit-verb-extract-part-desc = Извлечь часть костюма
+modsuit-verb-auto-activate-on = Авто-активация: Вкл
+modsuit-verb-auto-activate-off = Авто-активация: Выкл
+modsuit-verb-auto-activate-toggled = Авто-активация переключена
 modsuit-continue-sealing = Продолжение герметизации следующей части...
 modsuit-impossible-equipped-part = Невозможно одеть часть модульного скафандра без контроллера.
 

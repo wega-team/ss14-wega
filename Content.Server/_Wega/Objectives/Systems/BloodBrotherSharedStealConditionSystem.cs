@@ -3,7 +3,6 @@ using Content.Shared.Mind;
 using Content.Shared.Objectives.Components;
 using Content.Shared.Objectives.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
@@ -18,7 +17,6 @@ namespace Content.Server.Objectives.Systems;
 public sealed partial class BloodBrotherSharedStealConditionSystem : EntitySystem
 {
     [Dependency] private IRobustRandom _random = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
@@ -72,7 +70,7 @@ public sealed partial class BloodBrotherSharedStealConditionSystem : EntitySyste
 
     private void OnAfterAssign(Entity<BloodBrotherSharedStealConditionComponent> condition, ref ObjectiveAfterAssignEvent args)
     {
-        var group = _proto.Index(condition.Comp.StealGroup);
+        var group = ProtoMan.Index(condition.Comp.StealGroup);
         string localizedName = Loc.GetString(group.Name);
 
         var title = condition.Comp.OwnerText == null

@@ -3,7 +3,6 @@ using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.Rotting;
-using Content.Server.Bible.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.EUI;
@@ -16,6 +15,7 @@ using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Rotting;
+using Content.Shared.Bible.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
@@ -54,7 +54,6 @@ using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -72,7 +71,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private EuiManager _euiMan = default!;
     [Dependency] private IAdminLogManager _admin = default!;
     [Dependency] private IComponentFactory _componentFactory = default!;
-    [Dependency] private IMapManager _mapMan = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
@@ -167,6 +165,9 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private void OnRemove(Entity<VampireComponent> vampire, ref ComponentRemove args)
     {
+        if (TerminatingOrDeleted(vampire.Owner))
+            return;
+
         if (HasComp<PolymorphedEntityComponent>(vampire))
             return;
 
@@ -236,7 +237,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                         continue;
 
                     _metabolism.ClearMetabolizerTypes(meta);
-                    _metabolism.TryAddMetabolizerType(meta, VampireComponent.MetabolizerVampire);
+                    _metabolism.TryAddMetabolizerType(organ, VampireComponent.MetabolizerVampire);
                 }
             }
         }
@@ -297,7 +298,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                 _metabolism.ClearMetabolizerTypes(meta);
                 foreach (var type in types)
                 {
-                    _metabolism.TryAddMetabolizerType(meta, type);
+                    _metabolism.TryAddMetabolizerType(organ, type);
                 }
             }
         }
@@ -719,7 +720,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     private bool IsInSpace(EntityUid vampireUid)
     {
         var vampirePosition = _transform.GetMapCoordinates(Transform(vampireUid));
-        if (!_mapMan.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
+        if (!_map.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
             return true;
 
         if (!_map.TryGetTileRef(gridUid, grid, vampirePosition.Position, out var tileRef))

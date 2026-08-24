@@ -49,6 +49,9 @@
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -174,6 +177,9 @@
       path: /Audio/_Wega/Weapons/Guns/Gunshots/deserteagle.ogg
       params:
         volume: 2
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -285,25 +291,10 @@
         type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: TelescopicShieldBorg
-  id: TelescopicShieldBorgSyndCr20
-  components:
-    - type: Blocking
-      activeBlockFraction: 0.8
-      passiveBlockFraction: 0.5
-
-- type: entity
-  parent: TelescopicShieldBorg
-  id: TelescopicShieldBorgSyndL6
-  components:
-    - type: Blocking
-      activeBlockFraction: 0.99
-      passiveBlockFraction: 0.8
-
-- type: entity
   name: handheld crew monitor
   parent: DefibrillatorSyndicate
   id: DefibrillatorSyndicateCyborg
+  categories: [ HideSpawnMenu ]
   components:
   - type: ItemSlots
     slots:

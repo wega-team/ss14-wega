@@ -161,16 +161,30 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
 
-# Corvax-Wega-start
+# Corvax-Wega-Edit-start
 # - type: technology
-  # id: BluespaceTimeManipulation
-  # name: research-technology-bluespace-time-manipulation
-  # icon:
-    # sprite: Objects/Devices/desynchronizer.rsi
-    # state: icon
-  # discipline: Experimental
-  # tier: 3
-  # cost: 10000
-  # recipeUnlocks:
-  # - DeviceDesynchronizer
-# Corvax-Wega-end
+#   id: BluespaceTimeManipulation
+#   name: research-technology-bluespace-time-manipulation
+#   icon:
+#     sprite: Objects/Devices/desynchronizer.rsi
+#     state: icon
+#   discipline: Experimental
+#   tier: 3
+#   cost: 10000
+#   recipeUnlocks:
+#   - DeviceDesynchronizer
+# Corvax-Wega-Edit-end
+
+- type: technology
+  id: TeleSci
+  name: research-technology-telesci
+  icon:
+    sprite: Effects/portal.rsi
+    state: portal-artifact
+  discipline: Experimental
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - StationTeleportersControlCircuitboard
+  - StationTeleporterMachineCircuitboard
+  - TeleporterChipBlank

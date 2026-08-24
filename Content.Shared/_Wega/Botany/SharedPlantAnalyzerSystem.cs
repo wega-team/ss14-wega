@@ -9,8 +9,6 @@ namespace Content.Shared.Botany.Systems;
 
 public abstract partial class SharedPlantAnalyzerSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
-
     #region Loc
 
     public string GasesToLocalizedStrings(List<Gas> gases)
@@ -19,7 +17,7 @@ public abstract partial class SharedPlantAnalyzerSystem : EntitySystem
             return "";
 
         List<string> gasesLoc = [];
-        var gasPrototypes = _prototypeManager.EnumeratePrototypes<GasPrototype>().ToArray();
+        var gasPrototypes = ProtoMan.EnumeratePrototypes<GasPrototype>().ToArray();
         foreach (var gas in gases)
         {
             var gasProto = gasPrototypes.FirstOrDefault(g =>
@@ -45,7 +43,7 @@ public abstract partial class SharedPlantAnalyzerSystem : EntitySystem
 
         List<string> locStrings = [];
         foreach (var id in ids)
-            locStrings.Add(_prototypeManager.TryIndex<ReagentPrototype>(id, out var prototype) ? prototype.LocalizedName : id);
+            locStrings.Add(ProtoMan.TryIndex<ReagentPrototype>(id, out var prototype) ? prototype.LocalizedName : id);
 
         return ContentLocalizationManager.FormatList(locStrings);
     }
@@ -59,7 +57,7 @@ public abstract partial class SharedPlantAnalyzerSystem : EntitySystem
         List<string> pluralStrings = [];
         foreach (var id in ids)
         {
-            var singular = _prototypeManager.TryIndex(id, out var prototype) ? prototype.Name : id.Id;
+            var singular = ProtoMan.TryIndex(id, out var prototype) ? prototype.Name : id.Id;
             var plural = singular switch
             {
                 string s when s.EndsWith("о") => s + "в",

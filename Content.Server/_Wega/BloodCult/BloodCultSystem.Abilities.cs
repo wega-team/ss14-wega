@@ -76,6 +76,7 @@ public sealed partial class BloodCultSystem
     [Dependency] private VisibilitySystem _visibility = default!;
 
     private static readonly SoundPathSpecifier CultSpell = new SoundPathSpecifier("/Audio/_Wega/Effects/cult_spell.ogg");
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializeBloodAbilities()
     {
@@ -636,7 +637,7 @@ public sealed partial class BloodCultSystem
         ExtractBlood(user, -10, 6);
 
         _stun.TryKnockdown(target, TimeSpan.FromSeconds(4f));
-        _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(10f));
+        _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(10f));
         _flash.Flash(target, user, spell, TimeSpan.FromSeconds(2f), 1f);
 
         QueueDel(spell);
@@ -706,7 +707,7 @@ public sealed partial class BloodCultSystem
         }
 
         _cuff.CuffUsed(handcuffsComp);
-        _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(12f));
+        _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(12f));
 
         QueueDel(spell);
     }
@@ -746,7 +747,7 @@ public sealed partial class BloodCultSystem
 
     private void TransformMaterial(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid material, StackComponent stack)
     {
-        if (!_prototypeManager.TryIndex(stack.StackTypeId, out var stackPrototype))
+        if (!ProtoMan.TryIndex(stack.StackTypeId, out var stackPrototype))
             return;
 
         if (stackPrototype.ID is not ("Steel" or "Plasteel"))
@@ -940,44 +941,45 @@ public sealed partial class BloodCultSystem
 
     private bool IsBloodPuddle(EntityUid puddle)
     {
-        if (!TryComp(puddle, out ContainerManagerComponent? containerManager) ||
-            !containerManager.Containers.TryGetValue("solution@puddle", out var container))
+        if (!TryComp<SolutionComponent>(puddle, out var solutionComp))
             return false;
 
-        return container.ContainedEntities.Any(containedEntity =>
-            TryComp(containedEntity, out SolutionComponent? solutionComponent) &&
-            solutionComponent.Solution.Contents.Any(r =>
-                r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood"));
+        var solution = solutionComp.Solution;
+        return solution.Contents.Any(r =>
+            r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood");
     }
 
     private int ExtractBloodFromPuddle(EntityUid puddle)
     {
-        if (!TryComp(puddle, out ContainerManagerComponent? containerManager) ||
-            !containerManager.Containers.TryGetValue("solution@puddle", out var container))
+        if (!TryComp<SolutionComponent>(puddle, out var solutionComp))
             return 0;
 
+        var solution = solutionComp.Solution;
         var absorbedBlood = 0;
-        foreach (var containedEntity in container.ContainedEntities.ToList())
+
+        var bloodReagents = solution.Contents
+            .Where(r => r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood")
+            .ToList();
+
+        if (bloodReagents.Count == 0)
+            return 0;
+
+        foreach (var reagent in bloodReagents)
         {
-            if (!_solution.TryGetSolution(containedEntity, "solution", out var solutionComp, out var solutionData))
-                continue;
+            var reagentId = reagent.Reagent;
+            var quantity = reagent.Quantity;
 
-            var bloodReagents = solutionData.Contents
-                .Where(r => r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood")
-                .ToList();
-
-            foreach (var reagent in bloodReagents)
-            {
-                absorbedBlood += reagent.Quantity.Int();
-                _solution.RemoveReagent(solutionComp.Value, reagent);
-            }
-
-            if (bloodReagents.Count > 0)
-                Spawn("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
-
-            if (_solution.TryGetSolution(containedEntity, "solution", out _, out var updatedSolution) && updatedSolution.Contents.Count == 0)
-                QueueDel(puddle);
+            var removed = solution.RemoveReagent(reagentId, quantity);
+            absorbedBlood += removed.Int();
         }
+
+        _solution.UpdateChemicals((puddle, solutionComp));
+
+        if (absorbedBlood > 0)
+            Spawn("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
+
+        if (solution.Volume <= FixedPoint2.Zero)
+            QueueDel(puddle);
 
         return absorbedBlood;
     }

@@ -40,8 +40,8 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
         InitializePower();
         InitializeUi();
 
-        SubscribeLocalEvent<ModularSuitComponent, ComponentInit>(OnSuitInit);
         SubscribeLocalEvent<ModularSuitComponent, GetVerbsEvent<Verb>>(OnGetVerbs);
+        SubscribeLocalEvent<ModularSuitComponent, GetVerbsEvent<AlternativeVerb>>(OnGetVerbs);
         SubscribeLocalEvent<ModularSuitComponent, ModularSuitExtractDoAfterEvent>(OnDoAfterComplete);
         SubscribeLocalEvent<ModularSuitComponent, InteractUsingEvent>(OnSuitInteractUsing);
 
@@ -49,14 +49,6 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
 
         SubscribeLocalEvent<ModularSuitPartComponent, GetVerbsEvent<Verb>>(OnGetPartVerbs);
         SubscribeLocalEvent<ModularSuitPartComponent, ModularSuitPartSealDoAfterEvent>(OnPartDoAfterComplete);
-    }
-
-    private void OnSuitInit(Entity<ModularSuitComponent> ent, ref ComponentInit args)
-    {
-        Container.EnsureContainer<ContainerSlot>(ent, CoreContainer);
-        Container.EnsureContainer<Container>(ent, PartContainer);
-        Container.EnsureContainer<Container>(ent, ModuleContainer);
-        Container.EnsureContainer<Container>(ent, HiddenClothingContainer);
     }
 
     private void OnGetVerbs(Entity<ModularSuitComponent> suit, ref GetVerbsEvent<Verb> args)
@@ -138,6 +130,34 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
             };
             args.Verbs.Add(extractVerb);
         }
+    }
+
+    private void OnGetVerbs(Entity<ModularSuitComponent> suit, ref GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || !args.CanComplexInteract)
+            return;
+
+        if (suit.Comp.Active)
+            return;
+
+        var user = args.User;
+        var verb = new AlternativeVerb
+        {
+            Priority = 4,
+            Text = suit.Comp.AutoActivateOnAssemble
+                ? Loc.GetString("modsuit-verb-auto-activate-off")
+                : Loc.GetString("modsuit-verb-auto-activate-on"),
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/Spare/poweronoff.svg.192dpi.png")),
+            Act = () =>
+            {
+                suit.Comp.AutoActivateOnAssemble = !suit.Comp.AutoActivateOnAssemble;
+                Dirty(suit.Owner, suit.Comp);
+
+                Popup.PopupEntity(Loc.GetString("modsuit-verb-auto-activate-toggled"), suit.Owner, user);
+            },
+        };
+
+        args.Verbs.Add(verb);
     }
 
     private void StartExtractDoAfter(EntityUid suit, EntityUid target, float delay, EntityUid user, ModularSuitPart type)
@@ -454,8 +474,14 @@ public sealed partial class ModularSuitSystem : SharedModularSuitSystem
 
                     _doAfter.TryStartDoAfter(doAfterArgs);
                     Popup.PopupEntity(Loc.GetString("modsuit-continue-sealing"), args.User, args.User);
-                    break;
+                    return;
                 }
+            }
+
+            if (TryComp<ModularSuitComponent>(attached.Suit.Value, out var suitComp)
+                && suitComp.AutoActivateOnAssemble && !suitComp.Active && suitComp.Assembled)
+            {
+                SetActive((attached.Suit.Value, suitComp), true);
             }
         }
     }
