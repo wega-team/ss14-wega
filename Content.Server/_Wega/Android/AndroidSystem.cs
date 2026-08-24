@@ -1,8 +1,13 @@
 using Content.Server.Actions;
+using Content.Server.DoAfter;
 using Content.Server.Popups;
+using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Shared.Android;
+using Content.Shared.Blood.Cult;
 using Content.Shared.Body;
+using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
@@ -14,12 +19,14 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.PowerCell;
 using Content.Shared.Standing;
 using Content.Shared.Toggleable;
+using Content.Shared.Verbs;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Android;
 
@@ -31,7 +38,9 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private BatterySystem _battery = default!;
     [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
     [Dependency] private ActionsSystem _actions = default!;
     [Dependency] private LockSystem _lock = default!;
     [Dependency] private AudioSystem _audio = default!;
@@ -55,6 +64,9 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
         SubscribeLocalEvent<AndroidComponent, ToggleActionEvent>(OnToggleLightAction);
         SubscribeLocalEvent<AndroidComponent, ToggleLockActionEvent>(OnToggleLockAction);
+
+        SubscribeLocalEvent<ApcComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbs);
+        SubscribeLocalEvent<AndroidComponent, AndroidChargeDoAfterEvent>(OnChargeDoAfter);
     }
 
     public override void Update(float frameTime)
@@ -206,7 +218,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         }
 
         _audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid);
-        _popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
 
         if (lockComp.Locked)
             _lock.Unlock(uid, uid, lockComp);
@@ -214,6 +225,71 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
             _lock.Lock(uid, uid, lockComp);
 
         args.Handled = true;
+    }
+
+    private bool DoCharging(EntityUid uid, AndroidComponent component, EntityUid source)
+    {
+        if (!_powerCell.TryGetBatteryFromSlot(uid, out var battery))
+        {
+            _popup.PopupEntity(Loc.GetString("android-charging-no-battery"), uid, uid);
+            return false;
+        }
+
+        if (_battery.GetCharge(source) == 0)
+        {
+            _popup.PopupEntity(Loc.GetString("android-charging-no-charge"), uid, uid);
+            return false;
+        }
+
+        float needCharge = Math.Max(0f, battery.Value.Comp.MaxCharge * component.ChargeLimit - _battery.GetCharge(battery.Value.Owner));
+        float transferAmount = Math.Min(Math.Min(component.ChargeSpeed / component.ChargeEfficency,
+                                      needCharge / component.ChargeEfficency), _battery.GetCharge(source));
+
+        _battery.TryUseCharge(source, transferAmount);
+        _battery.ChangeCharge(battery.Value.Owner, transferAmount * component.ChargeEfficency);
+        _audio.PlayPvs(component.ChargeSound, uid);
+
+        if (_battery.GetChargeLevel(battery.Value.Owner) >= component.ChargeLimit)
+        {
+            _popup.PopupEntity(Loc.GetString("android-charging-limit"), uid, uid);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void OnChargeDoAfter(EntityUid uid, AndroidComponent component, AndroidChargeDoAfterEvent args)
+    {
+        args.Repeat = DoCharging(uid, component, GetEntity(args.Source));
+    }
+
+    private void OnGetAlternativeVerbs(EntityUid uid, ApcComponent component, GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanComplexInteract)
+            return;
+
+        if (!TryComp<AndroidComponent>(args.User, out var android))
+            return;
+
+        AlternativeVerb verb = new()
+        {
+            Act = () =>
+            {
+                _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(1f),
+                                         new AndroidChargeDoAfterEvent(GetNetEntity(uid)), args.User)
+                {
+                    BreakOnMove = true,
+                    BreakOnDamage = true,
+                    MovementThreshold = 0.01f,
+                    NeedHand = true
+                });
+            },
+            Text = Loc.GetString("android-charging-start"),
+            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/zap.svg.192dpi.png")),
+            Priority = 2
+        };
+
+        args.Verbs.Add(verb);
     }
 
     #endregion Battery
