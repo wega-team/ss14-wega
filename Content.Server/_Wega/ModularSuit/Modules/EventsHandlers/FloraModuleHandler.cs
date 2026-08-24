@@ -1,5 +1,7 @@
-using Content.Shared.Mobs.Components;
 using Content.Shared.Modular.Suit;
+using Content.Server.Surgery;
+using Content.Shared.Surgery;
+using Content.Shared.Surgery.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Robust.Shared.Serialization;
@@ -7,19 +9,19 @@ using Robust.Shared.Map;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed partial class TeleporterModuleHandler : ModuleActionHandler
+public sealed partial class HealSurgeryModuleHandler : ModuleActionHandler
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SurgerySystem _surgery = default!;
 
-    public const float TeleportRadius = 5f;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<ModularSuitActionHolderComponent, ActivateTeleporterModuleEvent>(OnActivate);
+        SubscribeLocalEvent<ModularSuitActionHolderComponent, ModuleHealSurgeyEvent>(OnActivate);
     }
 
-    private void OnActivate(Entity<ModularSuitActionHolderComponent> ent, ref ActivateTeleporterModuleEvent args)
+    private void OnActivate(Entity<ModularSuitActionHolderComponent> ent, ref ModuleHealSurgeyEvent args)
     {
         if (args.Handled)
             return;
@@ -36,23 +38,20 @@ public sealed partial class TeleporterModuleHandler : ModuleActionHandler
         if (attemptEvent.Cancelled)
             return;
 
-        if (PerformTeleport(args.Performer, args.Target))
+        if (PerformSyrgeyHeal(args.Performer))
         {
-            Audio.PlayPvs(args.ActivationSound, args.Performer);
             ModularSuit.UseCoreCharge(ent.Owner, moduleComp.PowerInstanceUsage);
         }
 
         args.Handled = true;
     }
 
-    private bool PerformTeleport(EntityUid user, EntityCoordinates coordinates)
+    private bool PerformSyrgeyHeal(EntityUid user)
     {
-        var transform = Transform(user);
-        if (transform.MapID != _transform.GetMapId(coordinates) || !_interaction.InRangeUnobstructed(user, coordinates, range: 1000F, collisionMask: CollisionGroup.Opaque, popup: true))
+        if (!TryComp<OperatedComponent>(user, out var comp))
             return false;
 
-        _transform.SetCoordinates(user, coordinates);
-        _transform.AttachToGridOrMap(user, transform);
+        comp.InternalDamages.Clear();
 
         return true;
     }

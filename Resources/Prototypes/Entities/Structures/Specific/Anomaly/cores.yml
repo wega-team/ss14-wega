@@ -66,6 +66,11 @@
   - type: AmmoCounter
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FlameCore
 
 - type: entity
   parent: BaseAnomalyCore
@@ -122,6 +127,11 @@
   - type: AmmoCounter
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - IceCore
 
 - type: entity
   parent: BaseAnomalyCore
@@ -184,6 +194,11 @@
       params:
         volume: -10
         maxDistance: 1
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - RockCore
 
 - type: entity
   parent: [BaseAnomalyCore, BaseHypospray]
@@ -235,6 +250,7 @@
     tags:
     - ForceableFollow
     - AnomalyCore
+    - ChemCore
   # Corvax-Wega-Add-end
 
 - type: entity
@@ -301,6 +317,11 @@
   - type: AmmoCounter
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ElecCore
 
 - type: entity
   parent: BaseAnomalyCore
@@ -328,6 +349,11 @@
   - type: AmmoCounter
   - type: RechargeBasicEntityAmmo
     rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FloraCore
 
 - type: entity
   parent: BaseAnomalyCore # Corvax-Wega-add BaseShadow
@@ -343,6 +369,11 @@
     energy: 2.0
     color: "#793a80"
     castShadows: false
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ShadowCore
 
 - type: entity
   parent: BaseAnomalyCore
@@ -361,6 +392,11 @@
     energy: 2.0
     color: "#56c1e8"
     castShadows: false
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - TechCore
 ## Corvax-Wega-Anomaly-end
 
 - type: entity
@@ -415,6 +451,11 @@
       # castShadows: false
     - type: Sprite
       sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
+    - type: Tag
+      tags:
+      - ForceableFollow
+      - AnomalyCore
+      - FlameCore
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -463,6 +504,13 @@
       castShadows: false
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/ice_core.rsi
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - IceCore
+  # Corvax-Wega-Add-end
   # - type: PointLight
     # radius: 1.5
     # energy: 2.7
@@ -514,6 +562,13 @@
           path: /Audio/Effects/break_stone.ogg
           params:
             volume: -6
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - RockCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -570,6 +625,7 @@
     tags:
     - ForceableFollow
     - AnomalyCore # Corvax-Wega-add
+    - ChemCore
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -630,6 +686,13 @@
     startingCharge: 0
   - type: BatterySelfRecharger
     autoRechargeRate: 12
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ElecCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -645,6 +708,13 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FloraCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: [ BaseAnomalyInertCore, BaseShadow ]
@@ -660,6 +730,13 @@
     castShadows: false
   - type: SpawnOnTrigger
     proto: ShadowKudzu
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ShadowCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -680,6 +757,13 @@
     maxCharges: 1
   - type: AutoRecharge
     rechargeDuration: 300
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - TechCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore

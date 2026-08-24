@@ -184,10 +184,10 @@
   id: WeldingSuitModule
   result: WeldingSuitModule
 
-- type: latheRecipe
-  parent: BaseModesuitModule
-  id: VisorMesonSuitModule
-  result: VisorMesonSuitModule
+# - type: latheRecipe
+  # parent: BaseModesuitModule
+  # id: VisorMesonSuitModule
+  # result: VisorMesonSuitModule
 
 - type: latheRecipe
   parent: BaseModesuitModule

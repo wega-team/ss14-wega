@@ -60,18 +60,95 @@
   id: ActivateTeleporterModuleAction
   name: "[color=#58c4e8]Activate Teleporter[/color]"
   description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
-  categories: [ HideSpawnMenu ]
   components:
   - type: Action
     startDelay: true
+    itemIconStyle: BigItem
     useDelay: 20
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_modules.rsi
     layers:
     - state: teleporter
       map: ["enum.ActionVisuals.Icon"]
-  - type: InstantAction
+  - type: TargetAction
+    range: 16 # default examine-range.
+    # ^ should probably add better validation that the clicked location is on the users screen somewhere,
+    repeat: false
+    checkCanAccess: false
+  - type: WorldTargetAction
     event: !type:ActivateTeleporterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateAntiGravitationModuleAction
+  name: "[color=#58c4e8]Activate Antigrav[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AntiGravitationEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateEMPModuleAction
+  name: "[color=#58c4e8]Activate EMP[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleEMPEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateFloraModuleAction
+  name: "[color=#58c4e8]Activate Flora[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleHealSurgeyEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateShadowModuleAction
+  name: "[color=#58c4e8]Activate Stealth[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleStealthEvent
 
 - type: entity
   parent: BaseAction

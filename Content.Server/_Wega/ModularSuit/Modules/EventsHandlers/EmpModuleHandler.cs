@@ -1,5 +1,5 @@
-using Content.Shared.Mobs.Components;
 using Content.Shared.Modular.Suit;
+using Content.Shared.Emp;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Robust.Shared.Serialization;
@@ -7,19 +7,19 @@ using Robust.Shared.Map;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed partial class TeleporterModuleHandler : ModuleActionHandler
+public sealed partial class EMPModuleHandler : ModuleActionHandler
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedEmpSystem _emp = default!;
 
-    public const float TeleportRadius = 5f;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<ModularSuitActionHolderComponent, ActivateTeleporterModuleEvent>(OnActivate);
+        SubscribeLocalEvent<ModularSuitActionHolderComponent, ModuleEMPEvent>(OnActivate);
     }
 
-    private void OnActivate(Entity<ModularSuitActionHolderComponent> ent, ref ActivateTeleporterModuleEvent args)
+    private void OnActivate(Entity<ModularSuitActionHolderComponent> ent, ref ModuleEMPEvent args)
     {
         if (args.Handled)
             return;
@@ -36,23 +36,17 @@ public sealed partial class TeleporterModuleHandler : ModuleActionHandler
         if (attemptEvent.Cancelled)
             return;
 
-        if (PerformTeleport(args.Performer, args.Target))
+        if (PerformEMP(args.Performer))
         {
-            Audio.PlayPvs(args.ActivationSound, args.Performer);
             ModularSuit.UseCoreCharge(ent.Owner, moduleComp.PowerInstanceUsage);
         }
 
         args.Handled = true;
     }
 
-    private bool PerformTeleport(EntityUid user, EntityCoordinates coordinates)
+    private bool PerformEMP(EntityUid user)
     {
-        var transform = Transform(user);
-        if (transform.MapID != _transform.GetMapId(coordinates) || !_interaction.InRangeUnobstructed(user, coordinates, range: 1000F, collisionMask: CollisionGroup.Opaque, popup: true))
-            return false;
-
-        _transform.SetCoordinates(user, coordinates);
-        _transform.AttachToGridOrMap(user, transform);
+		_emp.EmpPulse(Transform(user).Coordinates, 4f, 75000f, TimeSpan.FromSeconds(8));
 
         return true;
     }

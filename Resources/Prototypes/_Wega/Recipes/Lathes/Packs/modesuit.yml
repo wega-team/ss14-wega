@@ -29,7 +29,7 @@
   - VisorDiagnosticSuitModule
   - VisorMedicalSuitModule
   - WeldingSuitModule
-  - VisorMesonSuitModule
+  # - VisorMesonSuitModule
   - RadiationShieldSuitModule
   - StorageSuitModule
   - HealthAnalyzerSuitModule
