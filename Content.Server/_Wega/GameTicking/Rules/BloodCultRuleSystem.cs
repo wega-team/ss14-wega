@@ -128,9 +128,18 @@ namespace Content.Server.GameTicking.Rules
             cult.SelectedTargets.Clear();
 
             var mindShieldCandidates = new List<EntityUid>();
-            var enumerator = EntityQueryEnumerator<MindShieldComponent>();
-            while (enumerator.MoveNext(out var uid, out _))
+            var enumerator = EntityQueryEnumerator<HumanoidProfileComponent, MindShieldStatusComponent>();
+
+            while (enumerator.MoveNext(out var uid, out _, out var status))
+            {
+                if (!status.IsMindshielded)
+                    continue;
+
+                if (HasComp<BloodCultistComponent>(uid))
+                    continue;
+
                 mindShieldCandidates.Add(uid);
+            }
 
             if (mindShieldCandidates.Count >= 2)
             {
