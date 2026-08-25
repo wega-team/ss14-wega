@@ -185,6 +185,8 @@
   tier: 3
   cost: 10000
   recipeUnlocks:
-  - StationTeleportersControlCircuitboard
-  - StationTeleporterMachineCircuitboard
-  - TeleporterChipBlank
+# Corvax-Wega-Start
+  # - StationTeleportersControlCircuitboard
+  # - StationTeleporterMachineCircuitboard
+  - SelectorTeleporter # TeleporterChipBlank
+# Corvax-Wega-End

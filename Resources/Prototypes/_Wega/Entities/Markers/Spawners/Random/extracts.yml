@@ -1,11 +1,168 @@
+## entity
+- type: entity
+  id: MetalSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomMetalSheet
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: GlassSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomGlassSheet
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: FoodSingleSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomFoodSingle
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: DrinkGlassSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomDrinkGlass
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: ArtefactSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomArtifactSpawner
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: AnomalySpawnSlime
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomAnomalySpawner
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: PassiveAnimalSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomPassiveAnimal
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: NetralAnimalSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomNeutralAnimal
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: AngryAnimalSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomAgressiveAnimal
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: SlimeSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomXenoSlime
+  - type: TimedDespawn
+    lifetime: 0
+
+- type: entity
+  id: ExtractSpawn
+  categories: [ HideSpawnMenu, Spawner ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: SpawnOnDespawn
+    prototype: RandomXenoSlimeExtract
+  - type: TimedDespawn
+    lifetime: 0
+
+## Spawner
+
 - type: entity
   id: RandomMetalSheet
   categories: [ HideSpawnMenu ]
   components:
   - type: RandomSpawner
     prototypes:
-      - SheetSteel1
-      - SheetPlasteel1
+      - SheetSteel
+      - SheetPlasteel10
 
 - type: entity
   id: RandomGlassSheet
@@ -13,8 +170,8 @@
   components:
   - type: RandomSpawner
     prototypes:
-      - SheetGlass1
-      - SheetRGlass1
+      - SheetGlass
+      - SheetRGlass
 
 - type: entity
   id: RandomPassiveAnimal

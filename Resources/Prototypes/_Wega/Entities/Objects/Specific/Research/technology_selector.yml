@@ -1,0 +1,24 @@
+- type: entity
+  parent: BaseItem
+  id: SelectorTeleporter
+  name: selector teleport tech
+  description: fast tech 
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/teleporter_chips.rsi
+    layers:
+    - state: base
+    - state: mark1
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - TeleporterChipBlank
+    - StationTeleportersControlCircuitboard
+    - StationTeleporterMachineCircuitboard
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface

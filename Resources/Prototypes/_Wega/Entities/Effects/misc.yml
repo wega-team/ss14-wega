@@ -28,3 +28,17 @@
     tempChangePerSecond: 500
   - type: TimedDespawn
     lifetime: 2
+    
+- type: entity
+  id: TempMinusForSlime
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
+    anchored: True
+  - type: Physics
+    bodyType: Static
+    canCollide: false
+  - type: CoreTempChange
+    tempChangePerSecond: -500
+  - type: TimedDespawn
+    lifetime: 2
