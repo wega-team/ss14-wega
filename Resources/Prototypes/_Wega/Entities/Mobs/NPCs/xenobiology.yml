@@ -86,6 +86,8 @@
   components:
   - type: SlimeHunger
     modifierFood: 3
+  - type: SlimeGrowth
+    points: 5000
 
 ## Level 1
 
@@ -105,7 +107,7 @@
         Base: blue_baby_dead
   - type: SlimeGrowth
     slimeType: Blue
-    points: 5000
+    points: 10000
   - type: SlimeHunger
     modifierFood: 2.5
 
@@ -125,7 +127,7 @@
         Base: purple_baby_dead
   - type: SlimeGrowth
     slimeType: Purple
-    points: 5000
+    points: 10000
   - type: Appearance
   - type: SlimeHunger
     modifierFood: 2.5
@@ -146,7 +148,7 @@
         Base: orange_baby_dead
   - type: SlimeGrowth
     slimeType: Orange
-    points: 5000
+    points: 10000
   - type: SlimeHunger
     modifierFood: 2.5
 
@@ -166,7 +168,7 @@
         Base: metallic_baby_dead
   - type: SlimeGrowth
     slimeType: Metallic
-    points: 5000
+    points: 10000
   - type: SlimeHunger
     modifierFood: 2.5
 
@@ -188,7 +190,7 @@
         Base: darkpurple_baby_dead
   - type: SlimeGrowth
     slimeType: DarkPurple
-    points: 7500
+    points: 12500
   - type: SlimeHunger
     modifierFood: 2
 
@@ -208,7 +210,7 @@
         Base: darkblue_baby_dead
   - type: SlimeGrowth
     slimeType: DarkBlue
-    points: 7500
+    points: 12500
   - type: SlimeHunger
     modifierFood: 2
 
@@ -228,7 +230,7 @@
         Base: yellow_baby_dead
   - type: SlimeGrowth
     slimeType: Yellow
-    points: 7500
+    points: 12500
   - type: SlimeHunger
     modifierFood: 2
 
@@ -248,7 +250,7 @@
         Base: silver_baby_dead
   - type: SlimeGrowth
     slimeType: Silver
-    points: 7500
+    points: 12500
   - type: SlimeHunger
     modifierFood: 2
 
@@ -270,7 +272,7 @@
         Base: sepia_baby_dead
   - type: SlimeGrowth
     slimeType: Sepia
-    points: 10000
+    points: 15000
   - type: SlimeHunger
     modifierFood: 1.75
 
@@ -290,7 +292,7 @@
         Base: bluespace_baby_dead
   - type: SlimeGrowth
     slimeType: Bluespace
-    points: 10000
+    points: 15000
   - type: SlimeHunger
     modifierFood: 1.75
 
@@ -310,7 +312,7 @@
         Base: pyrite_baby_dead
   - type: SlimeGrowth
     slimeType: Pyrite
-    points: 10000
+    points: 15000
   - type: SlimeHunger
     modifierFood: 1.75
 
@@ -330,7 +332,7 @@
         Base: azure_baby_dead
   - type: SlimeGrowth
     slimeType: Azure
-    points: 10000
+    points: 15000
   - type: SlimeHunger
     modifierFood: 1.75
 
@@ -352,7 +354,7 @@
         Base: green_baby_dead
   - type: SlimeGrowth
     slimeType: Green
-    points: 15000
+    points: 20000
   - type: SlimeHunger
     modifierFood: 1.5
 
@@ -372,7 +374,7 @@
         Base: pink_baby_dead
   - type: SlimeGrowth
     slimeType: Pink
-    points: 15000
+    points: 20000
   - type: SlimeHunger
     modifierFood: 1.5
 
@@ -392,7 +394,7 @@
         Base: red_baby_dead
   - type: SlimeGrowth
     slimeType: Red
-    points: 15000
+    points: 20000
   - type: SlimeHunger
     modifierFood: 1.5
 
@@ -412,7 +414,7 @@
         Base: gold_baby_dead
   - type: SlimeGrowth
     slimeType: Gold
-    points: 15000
+    points: 20000
   - type: SlimeHunger
     modifierFood: 1.5
 

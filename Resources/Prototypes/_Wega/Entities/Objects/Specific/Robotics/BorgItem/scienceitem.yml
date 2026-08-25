@@ -42,10 +42,10 @@
   - type: ComponentToggler
     components:
     - type: ResearchPointSource
-      pointspersecond: 25
+      pointspersecond: 50
       active: true
   - type: PowerCellDraw
-    drawRate: 37 # 360 seconds
+    drawRate: 1 # 360 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot

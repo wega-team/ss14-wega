@@ -114,31 +114,31 @@ public abstract partial class SharedSlimeGrowthSystem : EntitySystem
 
     public static readonly Dictionary<SlimeType, (SlimeType Type, int Point, float ModifierFood)> ParametrTable = new()
     {
-		[SlimeType.Gray] = (SlimeType.Gray, 0, 3f),
+		[SlimeType.Gray] = (SlimeType.Gray, 5000, 3f),
     
     // lvl 1
-		[SlimeType.Purple] = (SlimeType.Purple, 5000, 2.5f),
-		[SlimeType.Orange] = (SlimeType.Orange, 5000, 2.5f),
-		[SlimeType.Metallic] = (SlimeType.Metallic, 5000, 2.5f),
-		[SlimeType.Blue] = (SlimeType.Blue, 5000, 2.5f),
+		[SlimeType.Purple] = (SlimeType.Purple, 10000, 2.5f),
+		[SlimeType.Orange] = (SlimeType.Orange, 10000, 2.5f),
+		[SlimeType.Metallic] = (SlimeType.Metallic, 10000, 2.5f),
+		[SlimeType.Blue] = (SlimeType.Blue, 10000, 2.5f),
     
     // lvl 2
-		[SlimeType.DarkPurple] = (SlimeType.DarkPurple, 7500, 2f),
-		[SlimeType.Yellow] = (SlimeType.Yellow, 7500, 2f),
-		[SlimeType.DarkBlue] = (SlimeType.DarkBlue, 7500, 2f),
-		[SlimeType.Silver] = (SlimeType.Silver, 7500, 2f),
+		[SlimeType.DarkPurple] = (SlimeType.DarkPurple, 12500, 2f),
+		[SlimeType.Yellow] = (SlimeType.Yellow, 12500, 2f),
+		[SlimeType.DarkBlue] = (SlimeType.DarkBlue, 12500, 2f),
+		[SlimeType.Silver] = (SlimeType.Silver, 12500, 2f),
     
     // lvl 2.5
-		[SlimeType.Bluespace] = (SlimeType.Bluespace, 10000, 1.75f),
-		[SlimeType.Pyrite] = (SlimeType.Pyrite, 10000, 1.75f),
-		[SlimeType.Azure] = (SlimeType.Azure, 10000, 1.75f),
-		[SlimeType.Sepia] = (SlimeType.Sepia, 10000, 1.75f),
+		[SlimeType.Bluespace] = (SlimeType.Bluespace, 15000, 1.75f),
+		[SlimeType.Pyrite] = (SlimeType.Pyrite, 15000, 1.75f),
+		[SlimeType.Azure] = (SlimeType.Azure, 15000, 1.75f),
+		[SlimeType.Sepia] = (SlimeType.Sepia, 15000, 1.75f),
     
     // lvl 3
-		[SlimeType.Pink] = (SlimeType.Pink, 15000, 1.5f),
-		[SlimeType.Red] = (SlimeType.Red, 15000, 1.5f),
-		[SlimeType.Green] = (SlimeType.Green, 15000, 1.5f),
-		[SlimeType.Gold] = (SlimeType.Gold, 15000, 1.5f),
+		[SlimeType.Pink] = (SlimeType.Pink, 20000, 1.5f),
+		[SlimeType.Red] = (SlimeType.Red, 20000, 1.5f),
+		[SlimeType.Green] = (SlimeType.Green, 20000, 1.5f),
+		[SlimeType.Gold] = (SlimeType.Gold, 20000, 1.5f),
     
     // lvl 4
 		[SlimeType.Black] = (SlimeType.Black, 25000, 1f),
