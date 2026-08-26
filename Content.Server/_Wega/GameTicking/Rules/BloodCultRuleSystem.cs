@@ -31,6 +31,7 @@ using Content.Shared.Popups;
 using Content.Shared.Zombies;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Surgery.Components;
+using Content.Shared.Mind.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -254,7 +255,13 @@ namespace Content.Server.GameTicking.Rules
             foreach (var objectiveUid in replacedObjectives)
             {
                 _target.SetTarget(objectiveUid, newTarget);
-                var jobName = _job.MindTryGetJobName(newTarget);
+                var jobName = Loc.GetString("generic-unknown-title");
+
+                if (TryComp<MindContainerComponent>(newTarget, out var mindContainer)
+                    && mindContainer.Mind is { } targetMindId)
+                {
+                    jobName = _job.MindTryGetJobName(targetMindId);
+                }
 
                 _meta.SetEntityName(objectiveUid, Loc.GetString(
                     "objective-condition-blood-ritual-person-title",
@@ -306,12 +313,19 @@ namespace Content.Server.GameTicking.Rules
                     continue;
 
                 _target.SetTarget(objective.Value, target);
-                var jobName = _job.MindTryGetJobName(target);
+                var jobName = Loc.GetString("generic-unknown-title");
+
+                if (TryComp<MindContainerComponent>(target, out var mindContainer)
+                    && mindContainer.Mind is { } targetMindId)
+                {
+                    jobName = _job.MindTryGetJobName(targetMindId);
+                }
 
                 _meta.SetEntityName(objective.Value, Loc.GetString(
                     "objective-condition-blood-ritual-person-title",
-                    ("targetName", Name(target)), // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
+                    ("targetName", Name(target)),
                     ("job", jobName)));
+
                 _mind.AddObjective(mindId, mind, objective.Value);
             }
         }
