@@ -30,6 +30,7 @@ using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Zombies;
 using Content.Shared.Roles.Jobs;
+using Content.Shared.Surgery.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -131,10 +132,12 @@ namespace Content.Server.GameTicking.Rules
 
             var mindShieldCandidates = new List<EntityUid>();
             var enumerator = EntityQueryEnumerator<HumanoidProfileComponent, MindShieldStatusComponent>();
-
             while (enumerator.MoveNext(out var uid, out _, out var status))
             {
                 if (!status.IsMindshielded)
+                    continue;
+
+                if (HasComp<SyntheticOperatedComponent>(uid))
                     continue;
 
                 if (HasComp<BloodCultistComponent>(uid))
