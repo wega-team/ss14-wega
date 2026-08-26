@@ -83,6 +83,67 @@
       tags:
         - Mop
         - MopAdv
+        
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorBoxLight
+  name: light box generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 150
+  - type: Sprite
+    sprite: Objects/Devices/gates.rsi
+    layers:
+    - state: base
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: BoxLightMixed
+        orGroup: DountBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: BaseItem
+  id: BorgGeneratorRestock
+  name: restock generator
+  description: Tastes like cardboard.
+  components:
+  - type: UseDelay
+    delay: 150
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Android/parts.rsi
+    layers:
+    - state: gas_module
+  - type: Item
+    size: Tiny
+  - type: SpawnItemsOnUse
+    uses: 100000
+    items:
+      - id: VendingMachineRestockDiscountDans
+        orGroup: RestockBorg
+      - id: VendingMachineRestockGetmoreChocolateCorp
+        orGroup: RestockBorg
+      - id: VendingMachineRestockChang
+        orGroup: RestockBorg
+      - id: VendingMachineRestockDonut
+        orGroup: RestockBorg
+      - id: VendingMachineRestockSmokes
+        orGroup: RestockBorg
+      - id: VendingMachineRestockHotDrinks
+        orGroup: RestockBorg
+      - id: VendingMachineRestockCondimentStation
+        orGroup: RestockBorg
+      - id: VendingMachineRestockHappyHonk
+        orGroup: RestockBorg
+      - id: VendingMachineRestockRobustSoftdrinks
+        orGroup: RestockBorg
+    sound:
+      path: /Audio/Machines/phasein.ogg
+
 # Ubor rare
 - type: entity
   parent: LightReplacer

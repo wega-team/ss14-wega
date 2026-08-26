@@ -14,6 +14,9 @@
             "name": "cook-module"
         },
         {
+            "name": "restock-module"
+        },
+        {
             "name": "bar-module"
         },
         {

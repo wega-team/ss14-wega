@@ -10,7 +10,7 @@
     antags:
     - !type:LinearAntagCount
       proto: Vampire
-      playerRatio: 20
+      playerRatio: 15
       range:
         min: 1
         max: 4

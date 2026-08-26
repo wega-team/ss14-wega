@@ -24,7 +24,7 @@
   showInVote: false
   rules:
     - Vampire
-    - SubGamemodesTraitVampRule
+    - SubGamemodesRule
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
@@ -54,7 +54,7 @@
   showInVote: false
   rules:
     - BloodBrothers
-    - SubGamemodesTraitVampRule
+    - SubGamemodesRule
     - BasicStationEventScheduler
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler

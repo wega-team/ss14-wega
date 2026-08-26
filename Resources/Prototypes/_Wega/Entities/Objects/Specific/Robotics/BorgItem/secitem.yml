@@ -35,8 +35,8 @@
     layers:
     - state: icon
   - type: Battery
-    maxCharge: 2000
-    startingCharge: 2000
+    maxCharge: 1200
+    startingCharge: 1200
   - type: BatteryAmmoProvider
     proto: BulletDisablerSmg
     fireCost: 40
@@ -48,7 +48,7 @@
     - proto: BulletDisablerSmg
       fireCost: 40
     - proto: BulletTaser
-      fireCost: 400
+      fireCost: 600
 
 
 - type: entity
@@ -200,22 +200,59 @@
       sprite: Objects/Weapons/Melee/teleriot_shield.rsi
       heldPrefix: teleriot
     - type: Blocking
-      activeBlockFraction: 0.8
-      passiveBlockFraction: 0.5
+      activeBlockFraction: 0.0
+      passiveBlockFraction: 0.0
       passiveBlockModifier:
-        coefficients:
-          Heat: 0.5
         flatReductions:
-          Blunt: 100000000000
-          Piercing: 100000000000
-          Slash: 100000000000
-          Heat: 100000000000
-          Cellular: 100000000000
-          Caustic: 100000000000
-          Cold: 100000000000
-          Radiation: 100000000000
-          Shock: 100000000000
-          Poison: 100000000000
+          Blunt: 500
+          Piercing: 500
+          Slash: 500
+          Heat: 500
+          Cellular: 500
+          Caustic: 500
+          Cold: 500
+          Radiation: 500
+          Shock: 500
+          Poison: 500
+      
+- type: entity
+  name: Bullet shield borg
+  parent: TelescopicShieldBorg
+  id: BulletShieldBorg
+  description: It s nanomachine, son!
+  components:
+    - type: Sprite
+      state: riot_bullet-icon
+      sprite: Objects/Weapons/Melee/shields.rsi
+    - type: Item
+      sprite: Objects/Weapons/Melee/shields.rsi
+      heldPrefix: riot_bullet
+
+- type: entity
+  name: laser shield borg
+  parent: TelescopicShieldBorg
+  id: LaserSheildBorg
+  description: It s nanomachine, son!
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/shields.rsi
+      state: riot_laser-icon
+    - type: Item
+      sprite: Objects/Weapons/Melee/shields.rsi
+      heldPrefix: riot_laser
+
+- type: entity
+  name: riot shield borg
+  parent: TelescopicShieldBorg
+  id: RiotSheildBorg
+  description: It s nanomachine, son!
+  components:
+    - type: Sprite
+      sprite: Objects/Weapons/Melee/shields.rsi
+      state: riot-icon
+    - type: Item
+      sprite: Objects/Weapons/Melee/shields.rsi
+      heldPrefix: riot
 
 # Sec Rare
 - type: entity
@@ -331,3 +368,5 @@
   - type: Tag
     tags:
     - Itemborg
+
+

@@ -42,11 +42,11 @@ ent-WeaponHandGranadeGun = режим "Гранатомет"
     .desc = Режим стрельбы ствола настроенный на выпуск гранат на более далекое расстояние.
 ent-BoxBorgGranade = коробка с гранатами
     .desc = Коробка для хранения гранат.
-ent-RiotShieldBorg = встроенная броня от ударов
+ent-RiotSheildBorg = встроенная броня от ударов и порезов
     .desc = Наномашины, сынок...
-ent-RiotLaserShieldBorg = встроенная броня от тепловых излучений
+ent-LaserSheildBorg = встроенная броня от тепловых излучений
     .desc = Наномашины, сынок...
-ent-RiotBulletShieldBorg = встроенная броня от пуль
+ent-BulletShieldBorg = встроенная броня от пуль
     .desc = Наномашины, сынок...
 ent-TelescopicShieldBorg = встроенная универсальная броня
     .desc = Наномашины, сынок...
@@ -121,6 +121,10 @@ ent-BorgMopItem = { ent-MopItem }
 ent-BorgAdvMopItem = { ent-AdvMopItem }
     .desc = { ent-AdvMopItem.desc }
     .suffix = Киборг
+ent-BorgGeneratorBoxLight = генератор коробок с лампочками
+    .desc = Специальный генератор материи, производящий целую коробку с лампочками.
+ent-BorgGeneratorRestock = генератор пополняшек еды
+    .desc = Генератор пополняшек для торговых автоматов с едой.
 
 
 # Инженер
@@ -163,6 +167,8 @@ ent-DocumentBorg = карта очков киборга
     .desc = Теперь Вы официально способны получать очки с переработчика руды. Не забудьте подписать только карту на всякий случай. 
 ent-TelescopicShieldBorgMining = броня киборга
     .desc = Легкая броня работничка НТ.
+ent-WeaponPlasmaCutterBorg = плазменый резак киборга
+    .desc = Резак, который сравним с силой магмы лаваленда.
 
 # НИО, не РНД йоу
 ent-WeaponPistolCHIMPBorg = встроенный излучатель М.А.Р.Т.Ы.Х.

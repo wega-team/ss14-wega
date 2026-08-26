@@ -5,6 +5,7 @@ using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Content.Shared.Silicons.Laws; // Corvax-Wega-borg
 using Content.Shared.Corvax.TTS; // Corvax-Wega-tts-borg
 using Content.Shared.Lock; // Corvax-Wega-borg
 
@@ -167,5 +168,12 @@ public sealed partial class BorgTypePrototype : IPrototype
     /// </summary>
     [DataField]
     public EntityWhitelist? Blacklist { get; set; }
+	
+    /// <summary>
+    /// Lawset created from the prototype id.
+    /// Cached when getting laws and modified during an ion storm event and when emagged.
+    /// </summary>
+    [DataField]
+    public ProtoId<SiliconLawsetPrototype>? Lawset;
 	// Corvax-Wega-End
 }

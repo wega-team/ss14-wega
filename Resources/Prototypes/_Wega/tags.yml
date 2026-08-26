@@ -602,3 +602,15 @@
 
 - type: Tag
   id: PKAWeapon
+
+- type: Tag
+  id: BorgModulePower
+  
+- type: Tag
+  id: BorgModuleArmorSec
+
+- type: Tag
+  id: BorgModuleLethalSec
+
+- type: Tag
+  id: BorgModuleLethalSynd

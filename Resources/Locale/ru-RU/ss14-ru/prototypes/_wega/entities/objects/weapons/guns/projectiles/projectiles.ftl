@@ -10,3 +10,5 @@ ent-BulletMagmaCharge = магмитовый снаряд
     .desc = Помечает цели для нанесения повышенного урона.
 ent-FireLaser = поджигающий луч
     .desc = { ent-BaseBullet.desc }
+ent-BulletIonMagnum = ионный заряд
+    .desc = { ent-BaseBullet.desc }

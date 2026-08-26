@@ -29,11 +29,17 @@
   - type: SubGamemodes
     rules:
     - id: Thief
-      prob: 0.5
+      prob: 0.25 # Corvax-Wega-Edit
     - id: SubWizard
       prob: 0.05
     - id: SubXenoborgs
-      prob: 0.15 # Corvax-Wega-Edit
+      prob: 0.1 # Corvax-Wega-Edit
+# Corvax-Wega-Start
+    - id: SubVampire
+      prob: 0.25
+    - id: SubBloodBrothers
+      prob: 0.15
+# Corvax-Wega-End
 
 - type: entity
   parent: BaseGameRule
@@ -44,7 +50,7 @@
     - id: Thief
       prob: 0.5
     - id: SubXenoborgs
-      prob: 0.15 # Corvax-Wega-Edit
+      prob: 0.1 # Corvax-Wega-Edit
 
 - type: entity
   parent: BaseGameRule

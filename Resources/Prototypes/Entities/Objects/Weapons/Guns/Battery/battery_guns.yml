@@ -1005,6 +1005,8 @@
     - proto: BulletDisabler
       fireCost: 62.5
       pacifismAllowedMode: true
+    - proto: BulletIonMagnum
+      fireCost: 250
   - type: BatterySelfRecharger
     autoRechargeRate: 48
     autoRechargePauseTime: 10
