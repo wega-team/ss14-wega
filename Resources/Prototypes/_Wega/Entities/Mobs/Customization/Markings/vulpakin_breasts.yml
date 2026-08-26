@@ -3,10 +3,6 @@
   bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
   groupWhitelist: [Vulpkanin]
   sexRestriction: [Female]
-  coloring:
-    default:
-      type:
-        !type:SkinColoring
   sprites:
   - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi 
     state: big_breasts
