@@ -1555,7 +1555,7 @@
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
-      - BorgModuleLethalSynd
+      - BorgModuleLethalSyndi
   - type: Armor
     modifiers:
       coefficients:
