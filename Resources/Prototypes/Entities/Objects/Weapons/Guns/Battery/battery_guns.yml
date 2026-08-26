@@ -1005,8 +1005,8 @@
     - proto: BulletDisabler
       fireCost: 62.5
       pacifismAllowedMode: true
-    - proto: BulletIonMagnum
-      fireCost: 250
+    - proto: BulletIonMagnum # Corvax-Wega-Add
+      fireCost: 250 # Corvax-Wega-Add
   - type: BatterySelfRecharger
     autoRechargeRate: 48
     autoRechargePauseTime: 10
