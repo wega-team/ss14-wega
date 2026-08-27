@@ -12,3 +12,5 @@ ent-FireLaser = поджигающий луч
     .desc = { ent-BaseBullet.desc }
 ent-BulletIonMagnum = ионный заряд
     .desc = { ent-BaseBullet.desc }
+ent-BulletTaserBorg = { ent-BulletTaser.desc }
+    .desc = { ent-BulletTaser.desc }

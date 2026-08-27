@@ -90,6 +90,14 @@
     energyConsumption: 360
 
 - type: entity
+  id: BulletTaserBorg
+  categories: [ HideSpawnMenu ]
+  parent: BulletTaser
+  components:
+  - type: TimedDespawn
+    lifetime: 0.1 # Very short range
+
+- type: entity
   name: pulsar shot
   id: PulsarProjectile
   parent: BulletLaser

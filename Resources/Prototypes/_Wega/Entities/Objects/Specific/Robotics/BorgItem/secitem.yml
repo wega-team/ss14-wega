@@ -47,7 +47,7 @@
     fireModes:
     - proto: BulletDisablerSmg
       fireCost: 40
-    - proto: BulletTaser
+    - proto: BulletTaserBorg
       fireCost: 600
 
 
