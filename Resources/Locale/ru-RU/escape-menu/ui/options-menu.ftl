@@ -108,6 +108,10 @@ ui-options-fps-counter = Показать счётчик FPS
 ui-options-vp-width = Ширина окна игры:
 ui-options-hud-layout = Тип HUD:
 ui-options-sharpness = Резкость:
+ui-options-postprocess = Экспериментальная постобработка (вега)
+ui-options-postprocess-tooltip = При включении, обилие света создает эффект переосвещенности.
+                                 Данный параметр влияет лишь на визуальную составляющую.
+			 	
 
 ## Controls menu
 
