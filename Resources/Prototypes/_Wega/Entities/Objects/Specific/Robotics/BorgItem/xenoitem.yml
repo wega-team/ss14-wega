@@ -222,7 +222,7 @@
   description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
   components:
     - type: HolosignProjector
-      signProto: FloorTrapEMPXenoborg
+      signProto: FloorTrapEMPXenoborgStart
       chargeUse: 360
     - type: Sprite
       sprite:  _Wega/Objects/Devices/Holoprojectors/xfield.rsi
@@ -410,8 +410,8 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 50
   - type: BatteryAmmoProvider
-    proto: IonScan
-    fireCost: 250
+    proto: IonScanDamage
+    fireCost: 500
     
 - type: entity
   name: upgradebrain
@@ -451,3 +451,20 @@
       components:
         - FloorTile
 
+- type: entity
+  parent: [ BorgHypo, BaseXenoborgContraband ]
+  id: LexorinHypo
+  name: lexorin hypo
+  description: A self-refilling injector for rapid administration of nocturine to victms.
+  components:
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Lexorin
+        Quantity: 10
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Lexorin
+        Quantity: 0.2

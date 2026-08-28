@@ -2224,6 +2224,14 @@
           tags:
           - Handcuffs
     - item: BoxZiptie
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoBorgModuleStalthWeapons
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoBorgModuleStalthWeapons
  # Corvax-Wega-Robot-start
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-hypo-module }

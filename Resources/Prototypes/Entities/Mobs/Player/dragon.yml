@@ -175,6 +175,18 @@
   - type: NaturalNightVision # Corvax-Wega-NightVision
     tintColor: "#fb1e1e" # Corvax-Wega-NightVision
 # Corvax-Wega-start
+  - type: DamageInContainer
+    allowedStates:
+    - Alive
+    - Critical
+    damage:
+      types:
+        Heat: 1
+    damageCap: 200
+    slotId: stomach
+    whitelist:
+      components:
+      - BorgChassis
   - type: MindLink
     channels: ["MindCarp"]
 # Corvax-Wega-End

@@ -1929,12 +1929,45 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-emp
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoBorgModuleStalthWeapons
   - type: ItemBorgModule
     hands:
     - item: WeaponIonCarabineXenoborg
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoBorgModuleStalthWeapons
+
+- type: entity
+  parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleLexorinHypo
+  name: lexorin xenoborg module
+  description: Module with a self-refilling nocturine hypo.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: xenoborg_stealth
+    - state: icon-xenoborg-hypo2
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoBorgModuleStalthWeapons
+  - type: ItemBorgModule
+    hands:
+    - item: LexorinHypo
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: xenoborg-hypo-2-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoBorgModuleStalthWeapons
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]

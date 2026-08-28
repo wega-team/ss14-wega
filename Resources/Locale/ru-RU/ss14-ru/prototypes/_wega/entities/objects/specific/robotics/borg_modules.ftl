@@ -109,7 +109,11 @@ ent-BorgModuleNightVisoXenoborg = модуль ПНВ ксеноборгов
     .desc = Модуль ПНВ для поддержки зрения в темноте, жалко Вы всё равно видны противнику!
 ent-ModuleXenoborgModule = модуль ксенотехники
     .desc = Модуль для обслуживания ксеноборгов и других киборгов. Помоги маме собрать конструктор из людей.
+ent-XenoborgModuleLexorinHypo = модуль лескорин-гипо
+    .desc = Модуль убийства скрытного ксеноборга, позволяющий ему двумя уколами сразить любую тварь.
 ent-FloorTrapEMPXenoborg = ловушка ЭМИ
+    .desc = { ent-CollideFloorTrap.desc }
+ent-FloorTrapEMPXenoborgStart = ловушка ЭМИ
     .desc = { ent-CollideFloorTrap.desc }
 # Синдикат
 ent-BorgModuleChina = подрывной модуль киборга

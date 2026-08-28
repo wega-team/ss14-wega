@@ -105,6 +105,9 @@ public sealed partial class DamageInContainerSystem : EntitySystem
         if (args.Container.ID != comp.SlotId)
             return;
 
-        AddComp<ActiveDamageInContainerComponent>(args.Entity);
+		if (!HasComp<ActiveDamageInContainerComponent>(uid))
+		{
+			AddComp<ActiveDamageInContainerComponent>(uid);
+		}
     }
 }
