@@ -10,8 +10,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Overlays;
 
-// This overlay serves as the foundational post processing overlay.
-// Ideally, for performance reasons, post processing designed to be present at all times, such as additive light blending or tonemapping, should be done as part of a single shader pass.
 public sealed class BasePostProcessOverlay : Overlay
 {
     [Dependency] private readonly IConfigurationManager _configManager = default!;
