@@ -173,7 +173,7 @@
   path: "/Textures/_Wega/Shaders/nulldamage.swsl"
 
 - type: shader
-  id: BasePostProcess
+  id: Postprocess
   kind: source
   path: "/Textures/_Wega/Shaders/postprocess.swsl"
   params:

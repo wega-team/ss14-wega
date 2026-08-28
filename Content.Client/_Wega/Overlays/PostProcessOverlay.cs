@@ -12,20 +12,20 @@ namespace Content.Client.Overlays;
 
 public sealed class BasePostProcessOverlay : Overlay
 {
-    [Dependency] private readonly IConfigurationManager _configManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly ILightManager _lightManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private ILightManager _lightManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
-    private readonly ShaderInstance _basePostProcessShader;
+    private ShaderInstance _basePostProcessShader;
 
     public BasePostProcessOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _basePostProcessShader = _prototypeManager.Index<ShaderPrototype>("BasePostProcess").InstanceUnique();
+        _basePostProcessShader = _prototypeManager.Index<ShaderPrototype>("Postprocess").InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
