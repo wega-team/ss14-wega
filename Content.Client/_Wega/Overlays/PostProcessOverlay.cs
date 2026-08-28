@@ -12,6 +12,8 @@ namespace Content.Client.Overlays;
 
 public sealed class BasePostProcessOverlay : Overlay
 {
+    private static readonly ProtoId<ShaderPrototype> shader = "Postprocess";
+
     [Dependency] private IConfigurationManager _configManager = default!;
     [Dependency] private IEntityManager _entityManager = default!;
     [Dependency] private ILightManager _lightManager = default!;
@@ -24,8 +26,9 @@ public sealed class BasePostProcessOverlay : Overlay
 
     public BasePostProcessOverlay()
     {
+    
         IoCManager.InjectDependencies(this);
-        _basePostProcessShader = _prototypeManager.Index<ShaderPrototype>("Postprocess").InstanceUnique();
+        _basePostProcessShader = _prototypeManager.Index(shader).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
