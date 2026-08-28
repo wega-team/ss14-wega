@@ -10,7 +10,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Overlays;
 
-public sealed class BasePostProcessOverlay : Overlay
+public partial sealed class BasePostProcessOverlay : Overlay
 {
     private static readonly ProtoId<ShaderPrototype> shader = "Postprocess";
 
