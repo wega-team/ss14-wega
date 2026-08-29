@@ -181,7 +181,7 @@
     - Critical
     damage:
       types:
-        Heat: 1
+        Heat: 2
     damageCap: 200
     slotId: stomach
     whitelist:
