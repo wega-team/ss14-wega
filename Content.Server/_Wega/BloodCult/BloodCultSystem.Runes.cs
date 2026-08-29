@@ -376,9 +376,15 @@ public sealed partial class BloodCultSystem
         }
     }
 
+    private bool IsMindshielded(EntityUid target)
+    {
+        return TryComp<MindShieldStatusComponent>(target, out var shield)
+            && shield.IsMindshielded; // changelings or fake shields
+    }
+
     private bool IsSpecialTarget(EntityUid target)
     {
-        return HasComp<MindShieldComponent>(target)
+        return IsMindshielded(target)
             || HasComp<BibleUserComponent>(target)
             || HasComp<BloodCultObjectComponent>(target)
             || HasComp<VeilCultistComponent>(target);
@@ -386,15 +392,16 @@ public sealed partial class BloodCultSystem
 
     private bool IsConvertibleTarget(EntityUid target)
     {
-        return !HasComp<MindShieldComponent>(target)
+        return !IsMindshielded(target)
             && !HasComp<BibleUserComponent>(target)
             && !HasComp<SyntheticOperatedComponent>(target)
-            && !HasComp<VeilCultistComponent>(target);
+            && !HasComp<VeilCultistComponent>(target)
+            && !HasComp<BloodCultObjectComponent>(target);
     }
 
     private bool IsRegularTarget(EntityUid target)
     {
-        return !HasComp<MindShieldComponent>(target)
+        return !IsMindshielded(target)
             && !HasComp<BibleUserComponent>(target)
             && !HasComp<SyntheticOperatedComponent>(target)
             && !HasComp<VeilCultistComponent>(target);
