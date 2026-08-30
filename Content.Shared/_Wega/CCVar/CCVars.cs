@@ -148,4 +148,11 @@ public sealed partial class WegaCVars
 
     public static readonly CVarDef<float> LavalandSpawnIntervalMax =
         CVarDef.Create("lavaland.spawn_interval_max", 600f, CVar.SERVER | CVar.REPLICATED);
+
+    /*
+        Graphic
+    */
+
+    public static readonly CVarDef<bool> PostProcess =
+        CVarDef.Create("graphics.post_process", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

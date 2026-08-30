@@ -76,6 +76,7 @@ public sealed partial class GraphicsTab : Control
         Control.AddOption(new OptionIntegerScaling(Control, _cfg, IntegerScalingCheckBox));
         Control.AddOptionCheckBox(CCVars.ViewportScaleRender, ViewportLowResCheckBox, invert: true);
         Control.AddOptionCheckBox(CCVars.ParallaxLowQuality, ParallaxLowQualityCheckBox);
+        Control.AddOptionCheckBox(WegaCVars.PostProcess, PostProcessCheckBox); // Corvax-Wega-Postprocess
         Control.AddOptionCheckBox(CCVars.HudFpsCounterVisible, FpsCounterCheckBox);
 
         Control.Initialize();
