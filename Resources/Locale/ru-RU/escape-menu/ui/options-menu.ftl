@@ -49,6 +49,7 @@ ui-options-quality-label = Качество
 ui-options-misc-label = Разное
 ui-options-interface-label = Интерфейс
 
+
 ui-options-auto-fill-highlights = Автоматическое заполнение списка подсветки на основе имени и должности персонажа
 ui-options-highlights-color = Цвет подсветки:
 ui-options-highlights-color-example = Это подсвеченный текст.
@@ -106,8 +107,7 @@ ui-options-ambient-occlusion = Отображать окружающее зат�
 ui-options-fps-counter = Показать счётчик FPS
 ui-options-vp-width = Ширина окна игры:
 ui-options-hud-layout = Тип HUD:
-ui-options-sharpness = Резкость:
-			 	
+ui-options-sharpness = Резкость:	
 
 ## Controls menu
 
