@@ -2,9 +2,19 @@
   id: DemonChestCowSpots
   bodyPart: Special
   groupWhitelist: [Demon]
+  sexRestriction: [Male]
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: cow_spots
+    state: cow_spots-m
+
+- type: marking
+  id: DemonChestCowSpotsFem
+  bodyPart: Special
+  groupWhitelist: [Demon]
+  sexRestriction: [Female]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/demon.rsi
+    state: cow_spots-f
 
 - type: marking
   id: DemonChestGuard
