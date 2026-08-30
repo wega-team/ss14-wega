@@ -11,3 +11,1203 @@
       - FloorSepia
   - type: Stack
     stackType: FloorTileItemSepia
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDark
+  name: dark tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDark1
+  - type: Stack
+    stackType: FloorTileItemWegaDark
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkCorner
+  name: dark corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaDarkCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkEdge
+  name: dark edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaDarkEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkcorner
+  name: darkcorner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_darkcorner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkcorner1
+  - type: Stack
+    stackType: FloorTileItemWegaDarkcorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaFloorCorner
+  name: floor corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaFloorCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaFloorCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaFloorEdge
+  name: floor edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaFloorEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaFloorEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmoothCorner
+  name: smooth corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_smooth_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmoothCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaSmoothCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmoothEdge
+  name: smooth edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_smooth_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmoothEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaSmoothEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedCorner
+  name: textured corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedDarkCorner
+  name: textured dark corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_dark_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedDarkCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedDarkCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedDarkEdge
+  name: textured dark edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_dark_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedDarkEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedDarkEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedEdge
+  name: textured edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedWhiteCorner
+  name: textured white corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_white_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedWhiteCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedWhiteCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedWhiteEdge
+  name: textured white edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_white_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedWhiteEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedWhiteEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteCorner
+  name: white corner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_corner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteCorner1
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteCorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteEdge
+  name: white edge tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_edge
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteEdge1
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteEdge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhitecorner
+  name: whitecorner tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_whitecorner
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhitecorner1
+  - type: Stack
+    stackType: FloorTileItemWegaWhitecorner
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhitehall
+  name: white hall tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_whiteside
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhitehall1
+  - type: Stack
+    stackType: FloorTileItemWegaWhitehall
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaCafeteria
+  name: cafeteria tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_cafeteria
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaCafeteriaL
+  - type: Stack
+    stackType: FloorTileItemWegaCafeteria
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaCafeteriaInverted
+  name: inverted cafeteria tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_cafeteria
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaCafeteriaR
+  - type: Stack
+    stackType: FloorTileItemWegaCafeteriaInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaChecker
+  name: checker tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_checker
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaCheckerL
+  - type: Stack
+    stackType: FloorTileItemWegaChecker
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaCheckerInverted
+  name: inverted checker tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_checker
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaCheckerR
+  - type: Stack
+    stackType: FloorTileItemWegaCheckerInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkHalf
+  name: dark half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaDarkHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkHalfInverted
+  name: inverted dark half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaDarkHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaFloorHalf
+  name: floor half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaFloorHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaFloorHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaFloorHalfInverted
+  name: inverted floor half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaFloorHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaFloorHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmoothHalf
+  name: smooth half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_smooth_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmoothHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaSmoothHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmoothHalfInverted
+  name: inverted smooth half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_smooth_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmoothHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaSmoothHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedDarkHalf
+  name: textured dark half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_dark_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedDarkHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedDarkHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedDarkHalfInverted
+  name: inverted textured dark half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_dark_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedDarkHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedDarkHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedHalf
+  name: textured half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedHalfInverted
+  name: inverted textured half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedWhiteHalf
+  name: textured white half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_white_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedWhiteHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedWhiteHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedWhiteHalfInverted
+  name: inverted textured white half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_white_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedWhiteHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedWhiteHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteHalf
+  name: white half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteHalfL
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteHalf
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteHalfInverted
+  name: inverted white half tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_half
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteHalfR
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteHalfInverted
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkDiagonal
+  name: dark diagonal tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_diagonal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkDiagonal
+  - type: Stack
+    stackType: FloorTileItemWegaDarkDiagonal
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkHerringbone
+  name: dark herringbone tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_herringbone
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkHerringbone
+  - type: Stack
+    stackType: FloorTileItemWegaDarkHerringbone
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkLarge
+  name: dark large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkLarge
+  - type: Stack
+    stackType: FloorTileItemWegaDarkLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkSmall
+  name: dark small tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark_small
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkSmall
+  - type: Stack
+    stackType: FloorTileItemWegaDarkSmall
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDarkfull
+  name: dark full tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_dark
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDarkfull
+  - type: Stack
+    stackType: FloorTileItemWegaDarkfull
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaDiagonal
+  name: diagonal tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_diagonal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaDiagonal
+  - type: Stack
+    stackType: FloorTileItemWegaDiagonal
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaEngine
+  name: engine tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_engine
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaEngine
+  - type: Stack
+    stackType: FloorTileItemWegaEngine
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaFloor
+  name: floor tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaFloor
+  - type: Stack
+    stackType: FloorTileItemWegaFloor
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaFloorLarge
+  name: floor large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaFloorLarge
+  - type: Stack
+    stackType: FloorTileItemWegaFloorLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaHerringbone
+  name: herringbone tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_herringbone
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaHerringbone
+  - type: Stack
+    stackType: FloorTileItemWegaHerringbone
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaKitchen
+  name: kitchen tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_kitchen
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaKitchen
+  - type: Stack
+    stackType: FloorTileItemWegaKitchen
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaKitchenDiagonal
+  name: kitchen diagonal tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_kitchen_diagonal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaKitchenDiagonal
+  - type: Stack
+    stackType: FloorTileItemWegaKitchenDiagonal
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaKitchenHerringbone
+  name: kitchen herringbone tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_kitchen_herringbone
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaKitchenHerringbone
+  - type: Stack
+    stackType: FloorTileItemWegaKitchenHerringbone
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaKitchenSmall
+  name: kitchen small tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_kitchen_small
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaKitchenSmall
+  - type: Stack
+    stackType: FloorTileItemWegaKitchenSmall
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaMaterialfloor
+  name: material floor tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaMaterialfloor
+  - type: Stack
+    stackType: FloorTileItemWegaMaterialfloor
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaPinkblack
+  name: pink-black tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_pinkblack
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaPinkblack
+  - type: Stack
+    stackType: FloorTileItemWegaPinkblack
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaPlaque
+  name: plaque tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_plaque
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaPlaque
+  - type: Stack
+    stackType: FloorTileItemWegaPlaque
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaPlastic
+  name: plastic tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_plastic
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaPlastic
+  - type: Stack
+    stackType: FloorTileItemWegaPlastic
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaPlastitanium
+  name: plastitanium tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_plastitanium
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaPlastitanium
+  - type: Stack
+    stackType: FloorTileItemWegaPlastitanium
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaPlastitaniumRed
+  name: red plastitanium tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_plastitanium_red
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaPlastitaniumRed
+  - type: Stack
+    stackType: FloorTileItemWegaPlastitaniumRed
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSepia
+  name: sepia tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_sepia
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorSepia
+  - type: Stack
+    stackType: FloorTileItemWegaSepia
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmall
+  name: small tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_small
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmall
+  - type: Stack
+    stackType: FloorTileItemWegaSmall
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmooth
+  name: smooth tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_smooth
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmooth
+  - type: Stack
+    stackType: FloorTileItemWegaSmooth
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaSmoothLarge
+  name: smooth large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_smooth_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaSmoothLarge
+  - type: Stack
+    stackType: FloorTileItemWegaSmoothLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTerracotta
+  name: terracotta tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_terracotta
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTerracotta
+  - type: Stack
+    stackType: FloorTileItemWegaTerracotta
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTerracottaDiagonal
+  name: terracotta diagonal tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_terracotta_diagonal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTerracottaDiagonal
+  - type: Stack
+    stackType: FloorTileItemWegaTerracottaDiagonal
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTerracottaHerringbone
+  name: terracotta herringbone tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_terracotta_herringbone
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTerracottaHerringbone
+  - type: Stack
+    stackType: FloorTileItemWegaTerracottaHerringbone
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTerracottaSmall
+  name: terracotta small tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_terracotta_small
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTerracottaSmall
+  - type: Stack
+    stackType: FloorTileItemWegaTerracottaSmall
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTextured
+  name: textured tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTextured
+  - type: Stack
+    stackType: FloorTileItemWegaTextured
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedDark
+  name: textured dark tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_dark
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedDark
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedDark
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedDarkLarge
+  name: textured dark large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_dark_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedDarkLarge
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedDarkLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedLarge
+  name: textured large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedLarge
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedWhite
+  name: textured white tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_white
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedWhite
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedWhite
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTexturedWhiteLarge
+  name: textured white large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_textured_white_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTexturedWhiteLarge
+  - type: Stack
+    stackType: FloorTileItemWegaTexturedWhiteLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTitaniumTiled
+  name: titanium tiled tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_titanium
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTitaniumTiled
+  - type: Stack
+    stackType: FloorTileItemWegaTitaniumTiled
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTitaniumTiledBlue
+  name: blue titanium tiled tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_titaniumblue
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTitaniumTiledBlue
+  - type: Stack
+    stackType: FloorTileItemWegaTitaniumTiledBlue
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTitaniumTiledPurple
+  name: purple titanium tiled tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_titaniumpurple
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTitaniumTiledPurple
+  - type: Stack
+    stackType: FloorTileItemWegaTitaniumTiledPurple
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTitaniumTiledWhite
+  name: white titanium tiled tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_titaniumwhite
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTitaniumTiledWhite
+  - type: Stack
+    stackType: FloorTileItemWegaTitaniumTiledWhite
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaTitaniumTiledYellow
+  name: yellow titanium tiled tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_titaniumyellow
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaTitaniumTiledYellow
+  - type: Stack
+    stackType: FloorTileItemWegaTitaniumTiledYellow
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhite
+  name: white tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhite
+  - type: Stack
+    stackType: FloorTileItemWegaWhite
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteDiagonal
+  name: white diagonal tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_diagonal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteDiagonal
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteDiagonal
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteHerringbone
+  name: white herringbone tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_herringbone
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteHerringbone
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteHerringbone
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteLarge
+  name: white large tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_large
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteLarge
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteLarge
+
+- type: entity
+  parent: FloorTileItemSteel
+  id: FloorTileItemWegaWhiteSmall
+  name: white small tile
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Tiles/tiles.rsi
+    state: tile_white_small
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FloorWegaWhiteSmall
+  - type: Stack
+    stackType: FloorTileItemWegaWhiteSmall

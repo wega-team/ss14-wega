@@ -21,3 +21,4 @@ construction-recipe-bench-steel-white-right = белая стальная ска
 construction-recipe-bench-park-bamboo-middle = бамбуковая парковая скамейка (средний)
 construction-recipe-bench-park-bamboo-left = бамбуковая парковая скамейка (левый)
 construction-recipe-bench-park-bamboo-right = бамбуковая парковая скамейка (правый)
+construction-recipe-hedge = живая изгородь

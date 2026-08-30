@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/Skyrat-SS13/Skyrat-tg and modified.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "hedge0",
+            "directions": 4
+        },
+        {
+            "name": "hedge1",
+            "directions": 4
+        },
+        {
+            "name": "hedge2",
+            "directions": 4
+        },
+        {
+            "name": "hedge3",
+            "directions": 4
+        },
+        {
+            "name": "hedge4",
+            "directions": 4
+        },
+        {
+            "name": "hedge5",
+            "directions": 4
+        },
+        {
+            "name": "hedge6",
+            "directions": 4
+        },
+        {
+            "name": "hedge7",
+            "directions": 4
+        }
+    ]
+}
