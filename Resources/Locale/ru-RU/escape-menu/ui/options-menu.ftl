@@ -49,7 +49,6 @@ ui-options-quality-label = Качество
 ui-options-misc-label = Разное
 ui-options-interface-label = Интерфейс
 
-
 ui-options-auto-fill-highlights = Автоматическое заполнение списка подсветки на основе имени и должности персонажа
 ui-options-highlights-color = Цвет подсветки:
 ui-options-highlights-color-example = Это подсвеченный текст.
