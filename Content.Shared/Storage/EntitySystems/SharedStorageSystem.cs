@@ -149,10 +149,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
         SubscribeLocalEvent<StorageComponent, AreaPickupDoAfterEvent>(OnDoAfter);
         SubscribeLocalEvent<StorageComponent, GotReclaimedEvent>(OnReclaimed);
-        // Corvax-Wega-Add-start
-        SubscribeLocalEvent<RecentlyOpenedStoragesComponent, ComponentGetState>(OnRecentlyOpenedGetState);
-        SubscribeLocalEvent<RecentlyOpenedStoragesComponent, ComponentHandleState>(OnRecentlyOpenedHandleState);
-        /// Corvax-Wega-Add-end
+
         SubscribeLocalEvent<MetaDataComponent, StackCountChangedEvent>(OnStackCountChanged);
 
         SubscribeAllEvent<OpenNestedStorageEvent>(OnStorageNested);
@@ -302,14 +299,15 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
     private void OnBoundUIClosed(EntityUid uid, StorageComponent storageComp, BoundUIClosedEvent args)
     {
-        // Corvax-Wega-Add-start
+        // Corvax-Wega-StorageLimit-start
         if (TryComp<RecentlyOpenedStoragesComponent>(args.Actor, out var recently))
         {
             recently.OpenedStorages.ForEach(it => it.Remove(uid));
             recently.OpenedStorages.RemoveAll(it => it.Count == 0);
             Dirty(args.Actor, recently);
         }
-        // Corvax-Wega-Add-end
+        // Corvax-Wega-StorageLimit-end
+
         CloseNestedInterfaces(uid, args.Actor, storageComp);
 
         // If UI is closed for everyone
@@ -465,7 +463,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
         }
     }
 
-    public virtual void UpdateUI(Entity<StorageComponent?> entity) { }
+    public virtual void UpdateUI(Entity<StorageComponent?> entity) {}
 
     private void AddTransferVerbs(EntityUid uid, StorageComponent component, GetVerbsEvent<UtilityVerb> args)
     {
@@ -865,27 +863,28 @@ public abstract partial class SharedStorageSystem : EntitySystem
     private void OnBoundUIOpen(Entity<StorageComponent> ent, ref BoundUIOpenedEvent args)
     {
         UpdateAppearance((ent.Owner, ent.Comp, null));
-        // Corvax-Wega-Add-start
+
+        // Corvax-Wega-StorageLimit-start
         var recently = EnsureComp<RecentlyOpenedStoragesComponent>(args.Actor);
 
-        if (recently.OpenedStorages.Any(inner => inner.Contains(ent.Owner)))
-            return;
-
-        if (ContainerSystem.TryGetContainingContainer(ent.Owner, out var container))
+        if (!recently.OpenedStorages.Any(inner => inner.Contains(ent.Owner)))
         {
-            var parentGroup = recently.OpenedStorages.Find(inner => inner.Contains(container.Owner));
-            if (parentGroup != null)
-                parentGroup.Add(ent.Owner);
+            if (ContainerSystem.TryGetContainingContainer(ent.Owner, out var container))
+            {
+                var parentGroup = recently.OpenedStorages.Find(inner => inner.Contains(container.Owner));
+                if (parentGroup != null)
+                    parentGroup.Add(ent.Owner);
+                else
+                    recently.OpenedStorages.Add(new List<EntityUid> { ent.Owner });
+            }
             else
+            {
                 recently.OpenedStorages.Add(new List<EntityUid> { ent.Owner });
-        }
-        else
-        {
-            recently.OpenedStorages.Add(new List<EntityUid> { ent.Owner });
-        }
+            }
 
-        Dirty(args.Actor, recently);
-        // Corvax-Wega-Add-end
+            Dirty(args.Actor, recently);
+        }
+        // Corvax-Wega-StorageLimit-end
     }
 
     private void OnBoundUIAttempt(Entity<StorageComponent> ent, ref BoundUserInterfaceMessageAttempt args)
@@ -898,8 +897,33 @@ public abstract partial class SharedStorageSystem : EntitySystem
             return;
 
         var actor = args.Actor;
-        // Corvax-Wega-Add-start
+        // Corvax-Wega-StorageLimit-edit-start
         var target = args.Target;
+        //var count = 0;
+
+        // if (_userQuery.TryComp(actor, out var userComp))
+        // {
+        //     foreach (var (ui, keys) in userComp.OpenInterfaces)
+        //     {
+        //         if (ui == uid)
+        //             continue;
+
+        //         foreach (var key in keys)
+        //         {
+        //             if (key is not StorageComponent.StorageUiKey)
+        //                 continue;
+
+        //             count++;
+
+        //             if (count >= _openStorageLimit)
+        //             {
+        //                 args.Cancel();
+        //             }
+
+        //             break;
+        //         }
+        //     }
+        // }
 
         if (!TryComp<RecentlyOpenedStoragesComponent>(actor, out var comp))
             return;
@@ -908,10 +932,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
         // so it should only count as one occupied slot, not one per entity in the chain
         var occupiedSlots = comp.OpenedStorages.Count(group => !group.Contains(target));
 
-        if (occupiedSlots < _openStorageLimit)
-            return;
-
-        if (comp.OpenedStorages.Count == 0)
+        if (occupiedSlots < _openStorageLimit || comp.OpenedStorages.Count == 0)
             return;
 
         var newest = comp.OpenedStorages[^1];
@@ -923,7 +944,7 @@ public abstract partial class SharedStorageSystem : EntitySystem
         }
 
         Dirty(actor, comp);
-        // Corvax-Wega-Add-end
+        // Corvax-Wega-StorageLimit-edit-end
     }
 
     private void OnEntInserted(Entity<StorageComponent> entity, ref EntInsertedIntoContainerMessage args)
@@ -2044,46 +2065,4 @@ public abstract partial class SharedStorageSystem : EntitySystem
         public SoundSpecifier? StorageCloseSound;
         public StorageDefaultOrientation? DefaultStorageOrientation;
     }
-    // Corvax-Wega-Add-start
-    [Serializable, NetSerializable]
-    private sealed class RecentlyOpenedStoragesComponentState : ComponentState
-    {
-        public List<List<NetEntity>> OpenedStorages = new();
-    }
-
-    private void OnRecentlyOpenedGetState(EntityUid uid, RecentlyOpenedStoragesComponent component, ref ComponentGetState args)
-    {
-        var state = new RecentlyOpenedStoragesComponentState();
-
-        foreach (var group in component.OpenedStorages)
-        {
-            var netGroup = new List<NetEntity>();
-            foreach (var ent in group)
-            {
-                netGroup.Add(GetNetEntity(ent));
-            }
-            state.OpenedStorages.Add(netGroup);
-        }
-
-        args.State = state;
-    }
-
-    private void OnRecentlyOpenedHandleState(EntityUid uid, RecentlyOpenedStoragesComponent component, ref ComponentHandleState args)
-    {
-        if (args.Current is not RecentlyOpenedStoragesComponentState state)
-            return;
-
-        component.OpenedStorages.Clear();
-
-        foreach (var netGroup in state.OpenedStorages)
-        {
-            var group = new List<EntityUid>();
-            foreach (var net in netGroup)
-            {
-                group.Add(EnsureEntity<RecentlyOpenedStoragesComponent>(net, uid));
-            }
-            component.OpenedStorages.Add(group);
-        }
-    }
-    // Corvax-Wega-Add-end
 }

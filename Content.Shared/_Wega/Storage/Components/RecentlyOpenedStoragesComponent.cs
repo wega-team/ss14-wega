@@ -1,5 +1,6 @@
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Storage.Components;
 
@@ -13,4 +14,10 @@ public sealed partial class RecentlyOpenedStoragesComponent : Component
 {
     [ViewVariables]
     public List<List<EntityUid>> OpenedStorages = new();
+}
+
+[Serializable, NetSerializable]
+public sealed class RecentlyOpenedStoragesComponentState : ComponentState
+{
+    public List<List<NetEntity>> OpenedStorages = new();
 }
