@@ -299,6 +299,15 @@ public abstract partial class SharedStorageSystem : EntitySystem
 
     private void OnBoundUIClosed(EntityUid uid, StorageComponent storageComp, BoundUIClosedEvent args)
     {
+        // Corvax-Wega-StorageLimit-start
+        if (TryComp<RecentlyOpenedStoragesComponent>(args.Actor, out var recently))
+        {
+            recently.OpenedStorages.ForEach(it => it.Remove(uid));
+            recently.OpenedStorages.RemoveAll(it => it.Count == 0);
+            Dirty(args.Actor, recently);
+        }
+        // Corvax-Wega-StorageLimit-end
+
         CloseNestedInterfaces(uid, args.Actor, storageComp);
 
         // If UI is closed for everyone
@@ -854,6 +863,28 @@ public abstract partial class SharedStorageSystem : EntitySystem
     private void OnBoundUIOpen(Entity<StorageComponent> ent, ref BoundUIOpenedEvent args)
     {
         UpdateAppearance((ent.Owner, ent.Comp, null));
+
+        // Corvax-Wega-StorageLimit-start
+        var recently = EnsureComp<RecentlyOpenedStoragesComponent>(args.Actor);
+
+        if (!recently.OpenedStorages.Any(inner => inner.Contains(ent.Owner)))
+        {
+            if (ContainerSystem.TryGetContainingContainer(ent.Owner, out var container))
+            {
+                var parentGroup = recently.OpenedStorages.Find(inner => inner.Contains(container.Owner));
+                if (parentGroup != null)
+                    parentGroup.Add(ent.Owner);
+                else
+                    recently.OpenedStorages.Add(new List<EntityUid> { ent.Owner });
+            }
+            else
+            {
+                recently.OpenedStorages.Add(new List<EntityUid> { ent.Owner });
+            }
+
+            Dirty(args.Actor, recently);
+        }
+        // Corvax-Wega-StorageLimit-end
     }
 
     private void OnBoundUIAttempt(Entity<StorageComponent> ent, ref BoundUserInterfaceMessageAttempt args)
@@ -865,33 +896,55 @@ public abstract partial class SharedStorageSystem : EntitySystem
             args.Message is not OpenBoundInterfaceMessage)
             return;
 
-        var uid = args.Target;
         var actor = args.Actor;
-        var count = 0;
+        // Corvax-Wega-StorageLimit-edit-start
+        var target = args.Target;
+        //var count = 0;
 
-        if (_userQuery.TryComp(actor, out var userComp))
+        // if (_userQuery.TryComp(actor, out var userComp))
+        // {
+        //     foreach (var (ui, keys) in userComp.OpenInterfaces)
+        //     {
+        //         if (ui == uid)
+        //             continue;
+
+        //         foreach (var key in keys)
+        //         {
+        //             if (key is not StorageComponent.StorageUiKey)
+        //                 continue;
+
+        //             count++;
+
+        //             if (count >= _openStorageLimit)
+        //             {
+        //                 args.Cancel();
+        //             }
+
+        //             break;
+        //         }
+        //     }
+        // }
+
+        if (!TryComp<RecentlyOpenedStoragesComponent>(actor, out var comp))
+            return;
+
+        // A nested chain (folder-in-a-bag) is one group and only shows one window at a time,
+        // so it should only count as one occupied slot, not one per entity in the chain
+        var occupiedSlots = comp.OpenedStorages.Count(group => !group.Contains(target));
+
+        if (occupiedSlots < _openStorageLimit || comp.OpenedStorages.Count == 0)
+            return;
+
+        var newest = comp.OpenedStorages[^1];
+        comp.OpenedStorages.RemoveAt(comp.OpenedStorages.Count - 1);
+
+        foreach (var storageUid in newest)
         {
-            foreach (var (ui, keys) in userComp.OpenInterfaces)
-            {
-                if (ui == uid)
-                    continue;
-
-                foreach (var key in keys)
-                {
-                    if (key is not StorageComponent.StorageUiKey)
-                        continue;
-
-                    count++;
-
-                    if (count >= _openStorageLimit)
-                    {
-                        args.Cancel();
-                    }
-
-                    break;
-                }
-            }
+            UI.CloseUi(storageUid, StorageComponent.StorageUiKey.Key, actor);
         }
+
+        Dirty(actor, comp);
+        // Corvax-Wega-StorageLimit-edit-end
     }
 
     private void OnEntInserted(Entity<StorageComponent> entity, ref EntInsertedIntoContainerMessage args)
