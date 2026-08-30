@@ -7,3 +7,7 @@ ui-options-function-posing-offset-up = Переместиться вверх (п
 ui-options-function-posing-offset-down = Переместиться вниз (позирование)
 ui-options-function-posing-rotate-negative = Повернуть против часовой (позирование)
 ui-options-function-posing-rotate-positive = Повернуть по часовой (позирование)
+ui-options-postprocess = Экспериментальная постобработка
+ui-options-postprocess-tooltip =
+    При включении, обилие света создает эффект переосвещенности.
+    Данный параметр влияет лишь на визуальную составляющую.

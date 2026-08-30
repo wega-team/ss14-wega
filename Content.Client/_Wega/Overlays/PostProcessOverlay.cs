@@ -26,7 +26,6 @@ public sealed partial class BasePostProcessOverlay : Overlay
 
     public BasePostProcessOverlay()
     {
-    
         IoCManager.InjectDependencies(this);
         _basePostProcessShader = _prototypeManager.Index(shader).InstanceUnique();
     }

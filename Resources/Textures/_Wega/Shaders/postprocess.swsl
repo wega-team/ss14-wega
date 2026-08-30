@@ -1,10 +1,8 @@
-//Boilerplate
 uniform sampler2D SCREEN_TEXTURE;
 uniform sampler2D LIGHT_TEXTURE;
 
 uniform highp float Zoom;
 
-//Variables for controlling the falloff of the additive lighting effect.
 uniform highp float CircleRadius; //= 420.0;
 uniform highp float CircleMinDist; //= 0.0;
 uniform highp float CirclePow; //= 0.75;
