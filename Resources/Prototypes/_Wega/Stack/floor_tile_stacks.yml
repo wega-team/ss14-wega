@@ -1,5 +1,485 @@
 - type: stack
-  id: FloorTileItemSepia
+  id: FloorTileItemWegaDark
+  name: stack-dark-floor
+  spawn: FloorTileItemWegaDark
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkCorner
+  name: stack-dark-corner-floor
+  spawn: FloorTileItemWegaDarkCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkEdge
+  name: stack-dark-edge-floor
+  spawn: FloorTileItemWegaDarkEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkcorner
+  name: stack-darkcorner-floor
+  spawn: FloorTileItemWegaDarkcorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaFloorCorner
+  name: stack-floor-corner-floor
+  spawn: FloorTileItemWegaFloorCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaFloorEdge
+  name: stack-floor-edge-floor
+  spawn: FloorTileItemWegaFloorEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmoothCorner
+  name: stack-smooth-corner-floor
+  spawn: FloorTileItemWegaSmoothCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmoothEdge
+  name: stack-smooth-edge-floor
+  spawn: FloorTileItemWegaSmoothEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedCorner
+  name: stack-textured-corner-floor
+  spawn: FloorTileItemWegaTexturedCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedDarkCorner
+  name: stack-textured-dark-corner-floor
+  spawn: FloorTileItemWegaTexturedDarkCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedDarkEdge
+  name: stack-textured-dark-edge-floor
+  spawn: FloorTileItemWegaTexturedDarkEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedEdge
+  name: stack-textured-edge-floor
+  spawn: FloorTileItemWegaTexturedEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedWhiteCorner
+  name: stack-textured-white-corner-floor
+  spawn: FloorTileItemWegaTexturedWhiteCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedWhiteEdge
+  name: stack-textured-white-edge-floor
+  spawn: FloorTileItemWegaTexturedWhiteEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteCorner
+  name: stack-white-corner-floor
+  spawn: FloorTileItemWegaWhiteCorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteEdge
+  name: stack-white-edge-floor
+  spawn: FloorTileItemWegaWhiteEdge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhitecorner
+  name: stack-whitecorner-floor
+  spawn: FloorTileItemWegaWhitecorner
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhitehall
+  name: stack-whitehall-floor
+  spawn: FloorTileItemWegaWhitehall
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaCafeteria
+  name: stack-cafeteria-floor
+  spawn: FloorTileItemWegaCafeteria
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaCafeteriaInverted
+  name: stack-cafeteria-inverted-floor
+  spawn: FloorTileItemWegaCafeteriaInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaChecker
+  name: stack-checker-floor
+  spawn: FloorTileItemWegaChecker
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaCheckerInverted
+  name: stack-checker-inverted-floor
+  spawn: FloorTileItemWegaCheckerInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkHalf
+  name: stack-dark-half-floor
+  spawn: FloorTileItemWegaDarkHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkHalfInverted
+  name: stack-dark-half-inverted-floor
+  spawn: FloorTileItemWegaDarkHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaFloorHalf
+  name: stack-floor-half-floor
+  spawn: FloorTileItemWegaFloorHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaFloorHalfInverted
+  name: stack-floor-half-inverted-floor
+  spawn: FloorTileItemWegaFloorHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmoothHalf
+  name: stack-smooth-half-floor
+  spawn: FloorTileItemWegaSmoothHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmoothHalfInverted
+  name: stack-smooth-half-inverted-floor
+  spawn: FloorTileItemWegaSmoothHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedDarkHalf
+  name: stack-textured-dark-half-floor
+  spawn: FloorTileItemWegaTexturedDarkHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedDarkHalfInverted
+  name: stack-textured-dark-half-inverted-floor
+  spawn: FloorTileItemWegaTexturedDarkHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedHalf
+  name: stack-textured-half-floor
+  spawn: FloorTileItemWegaTexturedHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedHalfInverted
+  name: stack-textured-half-inverted-floor
+  spawn: FloorTileItemWegaTexturedHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedWhiteHalf
+  name: stack-textured-white-half-floor
+  spawn: FloorTileItemWegaTexturedWhiteHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedWhiteHalfInverted
+  name: stack-textured-white-half-inverted-floor
+  spawn: FloorTileItemWegaTexturedWhiteHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteHalf
+  name: stack-white-half-floor
+  spawn: FloorTileItemWegaWhiteHalf
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteHalfInverted
+  name: stack-white-half-inverted-floor
+  spawn: FloorTileItemWegaWhiteHalfInverted
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkDiagonal
+  name: stack-dark-diagonal-floor
+  spawn: FloorTileItemWegaDarkDiagonal
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkHerringbone
+  name: stack-dark-herringbone-floor
+  spawn: FloorTileItemWegaDarkHerringbone
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkLarge
+  name: stack-dark-large-floor
+  spawn: FloorTileItemWegaDarkLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkSmall
+  name: stack-dark-small-floor
+  spawn: FloorTileItemWegaDarkSmall
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDarkfull
+  name: stack-darkfull-floor
+  spawn: FloorTileItemWegaDarkfull
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaDiagonal
+  name: stack-diagonal-floor
+  spawn: FloorTileItemWegaDiagonal
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaEngine
+  name: stack-engine-floor
+  spawn: FloorTileItemWegaEngine
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaFloor
+  name: stack-floor-floor
+  spawn: FloorTileItemWegaFloor
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaFloorLarge
+  name: stack-floor-large-floor
+  spawn: FloorTileItemWegaFloorLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaHerringbone
+  name: stack-herringbone-floor
+  spawn: FloorTileItemWegaHerringbone
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaKitchen
+  name: stack-kitchen-floor
+  spawn: FloorTileItemWegaKitchen
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaKitchenDiagonal
+  name: stack-kitchen-diagonal-floor
+  spawn: FloorTileItemWegaKitchenDiagonal
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaKitchenHerringbone
+  name: stack-kitchen-herringbone-floor
+  spawn: FloorTileItemWegaKitchenHerringbone
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaKitchenSmall
+  name: stack-kitchen-small-floor
+  spawn: FloorTileItemWegaKitchenSmall
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaMaterialfloor
+  name: stack-materialfloor-floor
+  spawn: FloorTileItemWegaMaterialfloor
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaNecropolis
+  name: stack-necropolis-floor
+  spawn: FloorTileItemWegaNecropolis
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaPinkblack
+  name: stack-pinkblack-floor
+  spawn: FloorTileItemWegaPinkblack
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaPlaque
+  name: stack-plaque-floor
+  spawn: FloorTileItemWegaPlaque
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaPlastic
+  name: stack-plastic-floor
+  spawn: FloorTileItemWegaPlastic
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaPlastitanium
+  name: stack-plastitanium-floor
+  spawn: FloorTileItemWegaPlastitanium
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaPlastitaniumRed
+  name: stack-plastitanium-red-floor
+  spawn: FloorTileItemWegaPlastitaniumRed
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSepia
   name: stack-sepia-floor
-  spawn: FloorTileItemSepia
+  spawn: FloorTileItemWegaSepia
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmall
+  name: stack-small-floor
+  spawn: FloorTileItemWegaSmall
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmooth
+  name: stack-smooth-floor
+  spawn: FloorTileItemWegaSmooth
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaSmoothLarge
+  name: stack-smooth-large-floor
+  spawn: FloorTileItemWegaSmoothLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTerracotta
+  name: stack-terracotta-floor
+  spawn: FloorTileItemWegaTerracotta
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTerracottaDiagonal
+  name: stack-terracotta-diagonal-floor
+  spawn: FloorTileItemWegaTerracottaDiagonal
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTerracottaHerringbone
+  name: stack-terracotta-herringbone-floor
+  spawn: FloorTileItemWegaTerracottaHerringbone
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTerracottaSmall
+  name: stack-terracotta-small-floor
+  spawn: FloorTileItemWegaTerracottaSmall
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTextured
+  name: stack-textured-floor
+  spawn: FloorTileItemWegaTextured
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedDark
+  name: stack-textured-dark-floor
+  spawn: FloorTileItemWegaTexturedDark
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedDarkLarge
+  name: stack-textured-dark-large-floor
+  spawn: FloorTileItemWegaTexturedDarkLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedLarge
+  name: stack-textured-large-floor
+  spawn: FloorTileItemWegaTexturedLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedWhite
+  name: stack-textured-white-floor
+  spawn: FloorTileItemWegaTexturedWhite
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTexturedWhiteLarge
+  name: stack-textured-white-large-floor
+  spawn: FloorTileItemWegaTexturedWhiteLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTitaniumTiled
+  name: stack-titanium-tiled-floor
+  spawn: FloorTileItemWegaTitaniumTiled
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTitaniumTiledBlue
+  name: stack-titanium-tiled-blue-floor
+  spawn: FloorTileItemWegaTitaniumTiledBlue
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTitaniumTiledPurple
+  name: stack-titanium-tiled-purple-floor
+  spawn: FloorTileItemWegaTitaniumTiledPurple
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTitaniumTiledWhite
+  name: stack-titanium-tiled-white-floor
+  spawn: FloorTileItemWegaTitaniumTiledWhite
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaTitaniumTiledYellow
+  name: stack-titanium-tiled-yellow-floor
+  spawn: FloorTileItemWegaTitaniumTiledYellow
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhite
+  name: stack-white-floor
+  spawn: FloorTileItemWegaWhite
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteDiagonal
+  name: stack-white-diagonal-floor
+  spawn: FloorTileItemWegaWhiteDiagonal
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteHerringbone
+  name: stack-white-herringbone-floor
+  spawn: FloorTileItemWegaWhiteHerringbone
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteLarge
+  name: stack-white-large-floor
+  spawn: FloorTileItemWegaWhiteLarge
+  maxCount: 30
+
+- type: stack
+  id: FloorTileItemWegaWhiteSmall
+  name: stack-white-small-floor
+  spawn: FloorTileItemWegaWhiteSmall
   maxCount: 30

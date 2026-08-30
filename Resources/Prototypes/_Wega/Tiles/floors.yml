@@ -21,8 +21,1137 @@
   id: FloorNecropolis
   name: tiles-necropolis-floor
   sprite: /Textures/_Wega/Tiles/necropolis.png
+  itemDrop: FloorTileItemWegaNecropolis
   isSubfloor: true
   footstepSounds:
     collection: FootstepFloor
   heatCapacity: 10000
   indestructible: true
+
+- type: tile
+  id: FloorWegaCafeteriaL
+  parent: BaseStationTile
+  name: tiles-wega-cafeteria-l
+  sprite: /Textures/_Wega/Tiles/cafeteria-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaCafeteria
+
+- type: tile
+  id: FloorWegaCafeteriaR
+  parent: BaseStationTile
+  name: tiles-wega-cafeteria-r
+  sprite: /Textures/_Wega/Tiles/cafeteria-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaCafeteriaInverted
+
+- type: tile
+  id: FloorWegaCheckerL
+  parent: BaseStationTile
+  name: tiles-wega-checker-l
+  sprite: /Textures/_Wega/Tiles/checker-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaChecker
+
+- type: tile
+  id: FloorWegaCheckerR
+  parent: BaseStationTile
+  name: tiles-wega-checker-r
+  sprite: /Textures/_Wega/Tiles/checker-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaCheckerInverted
+
+- type: tile
+  id: FloorWegaDark1
+  parent: BaseStationTile
+  name: tiles-wega-dark-1
+  sprite: /Textures/_Wega/Tiles/dark-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark2
+  parent: BaseStationTile
+  name: tiles-wega-dark-2
+  sprite: /Textures/_Wega/Tiles/dark-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark3
+  parent: BaseStationTile
+  name: tiles-wega-dark-3
+  sprite: /Textures/_Wega/Tiles/dark-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark4
+  parent: BaseStationTile
+  name: tiles-wega-dark-4
+  sprite: /Textures/_Wega/Tiles/dark-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark5
+  parent: BaseStationTile
+  name: tiles-wega-dark-5
+  sprite: /Textures/_Wega/Tiles/dark-5.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark6
+  parent: BaseStationTile
+  name: tiles-wega-dark-6
+  sprite: /Textures/_Wega/Tiles/dark-6.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark7
+  parent: BaseStationTile
+  name: tiles-wega-dark-7
+  sprite: /Textures/_Wega/Tiles/dark-7.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDark8
+  parent: BaseStationTile
+  name: tiles-wega-dark-8
+  sprite: /Textures/_Wega/Tiles/dark-8.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDark
+
+- type: tile
+  id: FloorWegaDarkCorner1
+  parent: BaseStationTile
+  name: tiles-wega-dark-corner-1
+  sprite: /Textures/_Wega/Tiles/dark_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkCorner
+
+- type: tile
+  id: FloorWegaDarkCorner2
+  parent: BaseStationTile
+  name: tiles-wega-dark-corner-2
+  sprite: /Textures/_Wega/Tiles/dark_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkCorner
+
+- type: tile
+  id: FloorWegaDarkCorner3
+  parent: BaseStationTile
+  name: tiles-wega-dark-corner-3
+  sprite: /Textures/_Wega/Tiles/dark_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkCorner
+
+- type: tile
+  id: FloorWegaDarkCorner4
+  parent: BaseStationTile
+  name: tiles-wega-dark-corner-4
+  sprite: /Textures/_Wega/Tiles/dark_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkCorner
+
+- type: tile
+  id: FloorWegaDarkDiagonal
+  parent: BaseStationTile
+  name: tiles-wega-dark-diagonal
+  sprite: /Textures/_Wega/Tiles/dark_diagonal.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkDiagonal
+
+- type: tile
+  id: FloorWegaDarkEdge1
+  parent: BaseStationTile
+  name: tiles-wega-dark-edge-1
+  sprite: /Textures/_Wega/Tiles/dark_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkEdge
+
+- type: tile
+  id: FloorWegaDarkEdge2
+  parent: BaseStationTile
+  name: tiles-wega-dark-edge-2
+  sprite: /Textures/_Wega/Tiles/dark_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkEdge
+
+- type: tile
+  id: FloorWegaDarkEdge3
+  parent: BaseStationTile
+  name: tiles-wega-dark-edge-3
+  sprite: /Textures/_Wega/Tiles/dark_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkEdge
+
+- type: tile
+  id: FloorWegaDarkEdge4
+  parent: BaseStationTile
+  name: tiles-wega-dark-edge-4
+  sprite: /Textures/_Wega/Tiles/dark_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkEdge
+
+- type: tile
+  id: FloorWegaDarkHalfL
+  parent: BaseStationTile
+  name: tiles-wega-dark-half-l
+  sprite: /Textures/_Wega/Tiles/dark_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkHalf
+
+- type: tile
+  id: FloorWegaDarkHalfR
+  parent: BaseStationTile
+  name: tiles-wega-dark-half-r
+  sprite: /Textures/_Wega/Tiles/dark_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkHalfInverted
+
+- type: tile
+  id: FloorWegaDarkHerringbone
+  parent: BaseStationTile
+  name: tiles-wega-dark-herringbone
+  sprite: /Textures/_Wega/Tiles/dark_herringbone.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkHerringbone
+
+- type: tile
+  id: FloorWegaDarkLarge
+  parent: BaseStationTile
+  name: tiles-wega-dark-large
+  sprite: /Textures/_Wega/Tiles/dark_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkLarge
+
+- type: tile
+  id: FloorWegaDarkSmall
+  parent: BaseStationTile
+  name: tiles-wega-dark-small
+  sprite: /Textures/_Wega/Tiles/dark_small.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkSmall
+
+- type: tile
+  id: FloorWegaDarkcorner1
+  parent: BaseStationTile
+  name: tiles-wega-darkcorner-1
+  sprite: /Textures/_Wega/Tiles/darkcorner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkcorner
+
+- type: tile
+  id: FloorWegaDarkcorner2
+  parent: BaseStationTile
+  name: tiles-wega-darkcorner-2
+  sprite: /Textures/_Wega/Tiles/darkcorner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkcorner
+
+- type: tile
+  id: FloorWegaDarkcorner3
+  parent: BaseStationTile
+  name: tiles-wega-darkcorner-3
+  sprite: /Textures/_Wega/Tiles/darkcorner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkcorner
+
+- type: tile
+  id: FloorWegaDarkcorner4
+  parent: BaseStationTile
+  name: tiles-wega-darkcorner-4
+  sprite: /Textures/_Wega/Tiles/darkcorner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkcorner
+
+- type: tile
+  id: FloorWegaDarkfull
+  parent: BaseStationTile
+  name: tiles-wega-darkfull
+  sprite: /Textures/_Wega/Tiles/darkfull.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDarkfull
+
+- type: tile
+  id: FloorWegaDiagonal
+  parent: BaseStationTile
+  name: tiles-wega-diagonal
+  sprite: /Textures/_Wega/Tiles/diagonal.png
+  variants: 1
+  itemDrop: FloorTileItemWegaDiagonal
+
+- type: tile
+  id: FloorWegaEngine
+  parent: BaseStationTile
+  name: tiles-wega-engine
+  sprite: /Textures/_Wega/Tiles/engine.png
+  variants: 1
+  itemDrop: FloorTileItemWegaEngine
+
+- type: tile
+  id: FloorWegaFloor
+  parent: BaseStationTile
+  name: tiles-wega-floor
+  sprite: /Textures/_Wega/Tiles/floor.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloor
+
+- type: tile
+  id: FloorWegaFloorCorner1
+  parent: BaseStationTile
+  name: tiles-wega-floor-corner-1
+  sprite: /Textures/_Wega/Tiles/floor_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorCorner
+
+- type: tile
+  id: FloorWegaFloorCorner2
+  parent: BaseStationTile
+  name: tiles-wega-floor-corner-2
+  sprite: /Textures/_Wega/Tiles/floor_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorCorner
+
+- type: tile
+  id: FloorWegaFloorCorner3
+  parent: BaseStationTile
+  name: tiles-wega-floor-corner-3
+  sprite: /Textures/_Wega/Tiles/floor_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorCorner
+
+- type: tile
+  id: FloorWegaFloorCorner4
+  parent: BaseStationTile
+  name: tiles-wega-floor-corner-4
+  sprite: /Textures/_Wega/Tiles/floor_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorCorner
+
+- type: tile
+  id: FloorWegaFloorEdge1
+  parent: BaseStationTile
+  name: tiles-wega-floor-edge-1
+  sprite: /Textures/_Wega/Tiles/floor_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorEdge
+
+- type: tile
+  id: FloorWegaFloorEdge2
+  parent: BaseStationTile
+  name: tiles-wega-floor-edge-2
+  sprite: /Textures/_Wega/Tiles/floor_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorEdge
+
+- type: tile
+  id: FloorWegaFloorEdge3
+  parent: BaseStationTile
+  name: tiles-wega-floor-edge-3
+  sprite: /Textures/_Wega/Tiles/floor_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorEdge
+
+- type: tile
+  id: FloorWegaFloorEdge4
+  parent: BaseStationTile
+  name: tiles-wega-floor-edge-4
+  sprite: /Textures/_Wega/Tiles/floor_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorEdge
+
+- type: tile
+  id: FloorWegaFloorHalfL
+  parent: BaseStationTile
+  name: tiles-wega-floor-half-l
+  sprite: /Textures/_Wega/Tiles/floor_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorHalf
+
+- type: tile
+  id: FloorWegaFloorHalfR
+  parent: BaseStationTile
+  name: tiles-wega-floor-half-r
+  sprite: /Textures/_Wega/Tiles/floor_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorHalfInverted
+
+- type: tile
+  id: FloorWegaFloorLarge
+  parent: BaseStationTile
+  name: tiles-wega-floor-large
+  sprite: /Textures/_Wega/Tiles/floor_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaFloorLarge
+
+- type: tile
+  id: FloorWegaHerringbone
+  parent: BaseStationTile
+  name: tiles-wega-herringbone
+  sprite: /Textures/_Wega/Tiles/herringbone.png
+  variants: 1
+  itemDrop: FloorTileItemWegaHerringbone
+
+- type: tile
+  id: FloorWegaKitchen
+  parent: BaseStationTile
+  name: tiles-wega-kitchen
+  sprite: /Textures/_Wega/Tiles/kitchen.png
+  variants: 1
+  itemDrop: FloorTileItemWegaKitchen
+
+- type: tile
+  id: FloorWegaKitchenDiagonal
+  parent: BaseStationTile
+  name: tiles-wega-kitchen-diagonal
+  sprite: /Textures/_Wega/Tiles/kitchen_diagonal.png
+  variants: 1
+  itemDrop: FloorTileItemWegaKitchenDiagonal
+
+- type: tile
+  id: FloorWegaKitchenHerringbone
+  parent: BaseStationTile
+  name: tiles-wega-kitchen-herringbone
+  sprite: /Textures/_Wega/Tiles/kitchen_herringbone.png
+  variants: 1
+  itemDrop: FloorTileItemWegaKitchenHerringbone
+
+- type: tile
+  id: FloorWegaKitchenSmall
+  parent: BaseStationTile
+  name: tiles-wega-kitchen-small
+  sprite: /Textures/_Wega/Tiles/kitchen_small.png
+  variants: 1
+  itemDrop: FloorTileItemWegaKitchenSmall
+
+- type: tile
+  id: FloorWegaMaterialfloor
+  parent: BaseStationTile
+  name: tiles-wega-materialfloor
+  sprite: /Textures/_Wega/Tiles/materialfloor.png
+  variants: 1
+  itemDrop: FloorTileItemWegaMaterialfloor
+
+- type: tile
+  id: FloorWegaPinkblack
+  parent: BaseStationTile
+  name: tiles-wega-pinkblack
+  sprite: /Textures/_Wega/Tiles/pinkblack.png
+  variants: 1
+  itemDrop: FloorTileItemWegaPinkblack
+
+- type: tile
+  id: FloorWegaPlaque
+  parent: BaseStationTile
+  name: tiles-wega-plaque
+  sprite: /Textures/_Wega/Tiles/plaque.png
+  variants: 1
+  itemDrop: FloorTileItemWegaPlaque
+
+- type: tile
+  id: FloorWegaPlastic
+  parent: BaseStationTile
+  name: tiles-wega-plastic
+  sprite: /Textures/_Wega/Tiles/plastic.png
+  variants: 1
+  itemDrop: FloorTileItemWegaPlastic
+
+- type: tile
+  id: FloorWegaPlastitanium
+  parent: BaseStationTile
+  name: tiles-wega-plastitanium
+  sprite: /Textures/_Wega/Tiles/plastitanium.png
+  variants: 1
+  itemDrop: FloorTileItemWegaPlastitanium
+
+- type: tile
+  id: FloorWegaPlastitaniumRed
+  parent: BaseStationTile
+  name: tiles-wega-plastitanium-red
+  sprite: /Textures/_Wega/Tiles/plastitanium_red.png
+  variants: 1
+  itemDrop: FloorTileItemWegaPlastitaniumRed
+
+- type: tile
+  id: FloorWegaSmall
+  parent: BaseStationTile
+  name: tiles-wega-small
+  sprite: /Textures/_Wega/Tiles/small.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmall
+
+- type: tile
+  id: FloorWegaSmooth
+  parent: BaseStationTile
+  name: tiles-wega-smooth
+  sprite: /Textures/_Wega/Tiles/smooth.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmooth
+
+- type: tile
+  id: FloorWegaSmoothCorner1
+  parent: BaseStationTile
+  name: tiles-wega-smooth-corner-1
+  sprite: /Textures/_Wega/Tiles/smooth_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothCorner
+
+- type: tile
+  id: FloorWegaSmoothCorner2
+  parent: BaseStationTile
+  name: tiles-wega-smooth-corner-2
+  sprite: /Textures/_Wega/Tiles/smooth_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothCorner
+
+- type: tile
+  id: FloorWegaSmoothCorner3
+  parent: BaseStationTile
+  name: tiles-wega-smooth-corner-3
+  sprite: /Textures/_Wega/Tiles/smooth_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothCorner
+
+- type: tile
+  id: FloorWegaSmoothCorner4
+  parent: BaseStationTile
+  name: tiles-wega-smooth-corner-4
+  sprite: /Textures/_Wega/Tiles/smooth_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothCorner
+
+- type: tile
+  id: FloorWegaSmoothEdge1
+  parent: BaseStationTile
+  name: tiles-wega-smooth-edge-1
+  sprite: /Textures/_Wega/Tiles/smooth_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothEdge
+
+- type: tile
+  id: FloorWegaSmoothEdge2
+  parent: BaseStationTile
+  name: tiles-wega-smooth-edge-2
+  sprite: /Textures/_Wega/Tiles/smooth_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothEdge
+
+- type: tile
+  id: FloorWegaSmoothEdge3
+  parent: BaseStationTile
+  name: tiles-wega-smooth-edge-3
+  sprite: /Textures/_Wega/Tiles/smooth_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothEdge
+
+- type: tile
+  id: FloorWegaSmoothEdge4
+  parent: BaseStationTile
+  name: tiles-wega-smooth-edge-4
+  sprite: /Textures/_Wega/Tiles/smooth_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothEdge
+
+- type: tile
+  id: FloorWegaSmoothHalfL
+  parent: BaseStationTile
+  name: tiles-wega-smooth-half-l
+  sprite: /Textures/_Wega/Tiles/smooth_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothHalf
+
+- type: tile
+  id: FloorWegaSmoothHalfR
+  parent: BaseStationTile
+  name: tiles-wega-smooth-half-r
+  sprite: /Textures/_Wega/Tiles/smooth_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothHalfInverted
+
+- type: tile
+  id: FloorWegaSmoothLarge
+  parent: BaseStationTile
+  name: tiles-wega-smooth-large
+  sprite: /Textures/_Wega/Tiles/smooth_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaSmoothLarge
+
+- type: tile
+  id: FloorWegaTerracotta
+  parent: BaseStationTile
+  name: tiles-wega-terracotta
+  sprite: /Textures/_Wega/Tiles/terracotta.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTerracotta
+
+- type: tile
+  id: FloorWegaTerracottaDiagonal
+  parent: BaseStationTile
+  name: tiles-wega-terracotta-diagonal
+  sprite: /Textures/_Wega/Tiles/terracotta_diagonal.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTerracottaDiagonal
+
+- type: tile
+  id: FloorWegaTerracottaHerringbone
+  parent: BaseStationTile
+  name: tiles-wega-terracotta-herringbone
+  sprite: /Textures/_Wega/Tiles/terracotta_herringbone.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTerracottaHerringbone
+
+- type: tile
+  id: FloorWegaTerracottaSmall
+  parent: BaseStationTile
+  name: tiles-wega-terracotta-small
+  sprite: /Textures/_Wega/Tiles/terracotta_small.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTerracottaSmall
+
+- type: tile
+  id: FloorWegaTextured
+  parent: BaseStationTile
+  name: tiles-wega-textured
+  sprite: /Textures/_Wega/Tiles/textured.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTextured
+
+- type: tile
+  id: FloorWegaTexturedCorner1
+  parent: BaseStationTile
+  name: tiles-wega-textured-corner-1
+  sprite: /Textures/_Wega/Tiles/textured_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedCorner
+
+- type: tile
+  id: FloorWegaTexturedCorner2
+  parent: BaseStationTile
+  name: tiles-wega-textured-corner-2
+  sprite: /Textures/_Wega/Tiles/textured_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedCorner
+
+- type: tile
+  id: FloorWegaTexturedCorner3
+  parent: BaseStationTile
+  name: tiles-wega-textured-corner-3
+  sprite: /Textures/_Wega/Tiles/textured_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedCorner
+
+- type: tile
+  id: FloorWegaTexturedCorner4
+  parent: BaseStationTile
+  name: tiles-wega-textured-corner-4
+  sprite: /Textures/_Wega/Tiles/textured_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedCorner
+
+- type: tile
+  id: FloorWegaTexturedDark
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark
+  sprite: /Textures/_Wega/Tiles/textured_dark.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDark
+
+- type: tile
+  id: FloorWegaTexturedDarkCorner1
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-corner-1
+  sprite: /Textures/_Wega/Tiles/textured_dark_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkCorner
+
+- type: tile
+  id: FloorWegaTexturedDarkCorner2
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-corner-2
+  sprite: /Textures/_Wega/Tiles/textured_dark_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkCorner
+
+- type: tile
+  id: FloorWegaTexturedDarkCorner3
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-corner-3
+  sprite: /Textures/_Wega/Tiles/textured_dark_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkCorner
+
+- type: tile
+  id: FloorWegaTexturedDarkCorner4
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-corner-4
+  sprite: /Textures/_Wega/Tiles/textured_dark_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkCorner
+
+- type: tile
+  id: FloorWegaTexturedDarkEdge1
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-edge-1
+  sprite: /Textures/_Wega/Tiles/textured_dark_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkEdge
+
+- type: tile
+  id: FloorWegaTexturedDarkEdge2
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-edge-2
+  sprite: /Textures/_Wega/Tiles/textured_dark_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkEdge
+
+- type: tile
+  id: FloorWegaTexturedDarkEdge3
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-edge-3
+  sprite: /Textures/_Wega/Tiles/textured_dark_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkEdge
+
+- type: tile
+  id: FloorWegaTexturedDarkEdge4
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-edge-4
+  sprite: /Textures/_Wega/Tiles/textured_dark_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkEdge
+
+- type: tile
+  id: FloorWegaTexturedDarkHalfL
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-half-l
+  sprite: /Textures/_Wega/Tiles/textured_dark_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkHalf
+
+- type: tile
+  id: FloorWegaTexturedDarkHalfR
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-half-r
+  sprite: /Textures/_Wega/Tiles/textured_dark_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkHalfInverted
+
+- type: tile
+  id: FloorWegaTexturedDarkLarge
+  parent: BaseStationTile
+  name: tiles-wega-textured-dark-large
+  sprite: /Textures/_Wega/Tiles/textured_dark_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedDarkLarge
+
+- type: tile
+  id: FloorWegaTexturedEdge1
+  parent: BaseStationTile
+  name: tiles-wega-textured-edge-1
+  sprite: /Textures/_Wega/Tiles/textured_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedEdge
+
+- type: tile
+  id: FloorWegaTexturedEdge2
+  parent: BaseStationTile
+  name: tiles-wega-textured-edge-2
+  sprite: /Textures/_Wega/Tiles/textured_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedEdge
+
+- type: tile
+  id: FloorWegaTexturedEdge3
+  parent: BaseStationTile
+  name: tiles-wega-textured-edge-3
+  sprite: /Textures/_Wega/Tiles/textured_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedEdge
+
+- type: tile
+  id: FloorWegaTexturedEdge4
+  parent: BaseStationTile
+  name: tiles-wega-textured-edge-4
+  sprite: /Textures/_Wega/Tiles/textured_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedEdge
+
+- type: tile
+  id: FloorWegaTexturedHalfL
+  parent: BaseStationTile
+  name: tiles-wega-textured-half-l
+  sprite: /Textures/_Wega/Tiles/textured_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedHalf
+
+- type: tile
+  id: FloorWegaTexturedHalfR
+  parent: BaseStationTile
+  name: tiles-wega-textured-half-r
+  sprite: /Textures/_Wega/Tiles/textured_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedHalfInverted
+
+- type: tile
+  id: FloorWegaTexturedLarge
+  parent: BaseStationTile
+  name: tiles-wega-textured-large
+  sprite: /Textures/_Wega/Tiles/textured_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedLarge
+
+- type: tile
+  id: FloorWegaTexturedWhite
+  parent: BaseStationTile
+  name: tiles-wega-textured-white
+  sprite: /Textures/_Wega/Tiles/textured_white.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhite
+
+- type: tile
+  id: FloorWegaTexturedWhiteCorner1
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-corner-1
+  sprite: /Textures/_Wega/Tiles/textured_white_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteCorner
+
+- type: tile
+  id: FloorWegaTexturedWhiteCorner2
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-corner-2
+  sprite: /Textures/_Wega/Tiles/textured_white_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteCorner
+
+- type: tile
+  id: FloorWegaTexturedWhiteCorner3
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-corner-3
+  sprite: /Textures/_Wega/Tiles/textured_white_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteCorner
+
+- type: tile
+  id: FloorWegaTexturedWhiteCorner4
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-corner-4
+  sprite: /Textures/_Wega/Tiles/textured_white_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteCorner
+
+- type: tile
+  id: FloorWegaTexturedWhiteEdge1
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-edge-1
+  sprite: /Textures/_Wega/Tiles/textured_white_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteEdge
+
+- type: tile
+  id: FloorWegaTexturedWhiteEdge2
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-edge-2
+  sprite: /Textures/_Wega/Tiles/textured_white_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteEdge
+
+- type: tile
+  id: FloorWegaTexturedWhiteEdge3
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-edge-3
+  sprite: /Textures/_Wega/Tiles/textured_white_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteEdge
+
+- type: tile
+  id: FloorWegaTexturedWhiteEdge4
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-edge-4
+  sprite: /Textures/_Wega/Tiles/textured_white_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteEdge
+
+- type: tile
+  id: FloorWegaTexturedWhiteHalfL
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-half-l
+  sprite: /Textures/_Wega/Tiles/textured_white_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteHalf
+
+- type: tile
+  id: FloorWegaTexturedWhiteHalfR
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-half-r
+  sprite: /Textures/_Wega/Tiles/textured_white_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteHalfInverted
+
+- type: tile
+  id: FloorWegaTexturedWhiteLarge
+  parent: BaseStationTile
+  name: tiles-wega-textured-white-large
+  sprite: /Textures/_Wega/Tiles/textured_white_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTexturedWhiteLarge
+
+- type: tile
+  id: FloorWegaTitaniumTiled
+  parent: BaseStationTile
+  name: tiles-wega-titanium-tiled
+  sprite: /Textures/_Wega/Tiles/titanium_tiled.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTitaniumTiled
+
+- type: tile
+  id: FloorWegaTitaniumTiledBlue
+  parent: BaseStationTile
+  name: tiles-wega-titanium-tiled-blue
+  sprite: /Textures/_Wega/Tiles/titanium_tiled_blue.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTitaniumTiledBlue
+
+- type: tile
+  id: FloorWegaTitaniumTiledPurple
+  parent: BaseStationTile
+  name: tiles-wega-titanium-tiled-purple
+  sprite: /Textures/_Wega/Tiles/titanium_tiled_purple.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTitaniumTiledPurple
+
+- type: tile
+  id: FloorWegaTitaniumTiledWhite
+  parent: BaseStationTile
+  name: tiles-wega-titanium-tiled-white
+  sprite: /Textures/_Wega/Tiles/titanium_tiled_white.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTitaniumTiledWhite
+
+- type: tile
+  id: FloorWegaTitaniumTiledYellow
+  parent: BaseStationTile
+  name: tiles-wega-titanium-tiled-yellow
+  sprite: /Textures/_Wega/Tiles/titanium_tiled_yellow.png
+  variants: 1
+  itemDrop: FloorTileItemWegaTitaniumTiledYellow
+
+- type: tile
+  id: FloorWegaWhite
+  parent: BaseStationTile
+  name: tiles-wega-white
+  sprite: /Textures/_Wega/Tiles/white.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhite
+
+- type: tile
+  id: FloorWegaWhiteCorner1
+  parent: BaseStationTile
+  name: tiles-wega-white-corner-1
+  sprite: /Textures/_Wega/Tiles/white_corner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteCorner
+
+- type: tile
+  id: FloorWegaWhiteCorner2
+  parent: BaseStationTile
+  name: tiles-wega-white-corner-2
+  sprite: /Textures/_Wega/Tiles/white_corner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteCorner
+
+- type: tile
+  id: FloorWegaWhiteCorner3
+  parent: BaseStationTile
+  name: tiles-wega-white-corner-3
+  sprite: /Textures/_Wega/Tiles/white_corner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteCorner
+
+- type: tile
+  id: FloorWegaWhiteCorner4
+  parent: BaseStationTile
+  name: tiles-wega-white-corner-4
+  sprite: /Textures/_Wega/Tiles/white_corner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteCorner
+
+- type: tile
+  id: FloorWegaWhiteDiagonal
+  parent: BaseStationTile
+  name: tiles-wega-white-diagonal
+  sprite: /Textures/_Wega/Tiles/white_diagonal.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteDiagonal
+
+- type: tile
+  id: FloorWegaWhiteEdge1
+  parent: BaseStationTile
+  name: tiles-wega-white-edge-1
+  sprite: /Textures/_Wega/Tiles/white_edge-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteEdge
+
+- type: tile
+  id: FloorWegaWhiteEdge2
+  parent: BaseStationTile
+  name: tiles-wega-white-edge-2
+  sprite: /Textures/_Wega/Tiles/white_edge-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteEdge
+
+- type: tile
+  id: FloorWegaWhiteEdge3
+  parent: BaseStationTile
+  name: tiles-wega-white-edge-3
+  sprite: /Textures/_Wega/Tiles/white_edge-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteEdge
+
+- type: tile
+  id: FloorWegaWhiteEdge4
+  parent: BaseStationTile
+  name: tiles-wega-white-edge-4
+  sprite: /Textures/_Wega/Tiles/white_edge-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteEdge
+
+- type: tile
+  id: FloorWegaWhiteHalfL
+  parent: BaseStationTile
+  name: tiles-wega-white-half-l
+  sprite: /Textures/_Wega/Tiles/white_half-l.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteHalf
+
+- type: tile
+  id: FloorWegaWhiteHalfR
+  parent: BaseStationTile
+  name: tiles-wega-white-half-r
+  sprite: /Textures/_Wega/Tiles/white_half-r.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteHalfInverted
+
+- type: tile
+  id: FloorWegaWhiteHerringbone
+  parent: BaseStationTile
+  name: tiles-wega-white-herringbone
+  sprite: /Textures/_Wega/Tiles/white_herringbone.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteHerringbone
+
+- type: tile
+  id: FloorWegaWhiteLarge
+  parent: BaseStationTile
+  name: tiles-wega-white-large
+  sprite: /Textures/_Wega/Tiles/white_large.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteLarge
+
+- type: tile
+  id: FloorWegaWhiteSmall
+  parent: BaseStationTile
+  name: tiles-wega-white-small
+  sprite: /Textures/_Wega/Tiles/white_small.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhiteSmall
+
+- type: tile
+  id: FloorWegaWhitecorner1
+  parent: BaseStationTile
+  name: tiles-wega-whitecorner-1
+  sprite: /Textures/_Wega/Tiles/whitecorner-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitecorner
+
+- type: tile
+  id: FloorWegaWhitecorner2
+  parent: BaseStationTile
+  name: tiles-wega-whitecorner-2
+  sprite: /Textures/_Wega/Tiles/whitecorner-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitecorner
+
+- type: tile
+  id: FloorWegaWhitecorner3
+  parent: BaseStationTile
+  name: tiles-wega-whitecorner-3
+  sprite: /Textures/_Wega/Tiles/whitecorner-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitecorner
+
+- type: tile
+  id: FloorWegaWhitecorner4
+  parent: BaseStationTile
+  name: tiles-wega-whitecorner-4
+  sprite: /Textures/_Wega/Tiles/whitecorner-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitecorner
+
+- type: tile
+  id: FloorWegaWhitehall1
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-1
+  sprite: /Textures/_Wega/Tiles/whitehall-1.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall2
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-2
+  sprite: /Textures/_Wega/Tiles/whitehall-2.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall3
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-3
+  sprite: /Textures/_Wega/Tiles/whitehall-3.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall4
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-4
+  sprite: /Textures/_Wega/Tiles/whitehall-4.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall5
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-5
+  sprite: /Textures/_Wega/Tiles/whitehall-5.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall6
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-6
+  sprite: /Textures/_Wega/Tiles/whitehall-6.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall7
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-7
+  sprite: /Textures/_Wega/Tiles/whitehall-7.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall
+
+- type: tile
+  id: FloorWegaWhitehall8
+  parent: BaseStationTile
+  name: tiles-wega-whitehall-8
+  sprite: /Textures/_Wega/Tiles/whitehall-8.png
+  variants: 1
+  itemDrop: FloorTileItemWegaWhitehall

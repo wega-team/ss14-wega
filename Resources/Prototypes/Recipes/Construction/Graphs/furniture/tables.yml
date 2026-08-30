@@ -1,4 +1,4 @@
-﻿- type: constructionGraph
+- type: constructionGraph
   id: Table
   start: start
   graph:
@@ -111,6 +111,13 @@
             - material: WoodPlank
               amount: 1
               doAfter: 1
+        #Corvax-Wega-Added-start
+        - to: CounterHedge
+          steps:
+            - tag: SoilBag
+              name: soil bag
+              doAfter: 1
+        #Corvax-Wega-Added-end
 
     - node: CounterMetalFrame
       entity: CounterMetalFrame
@@ -439,6 +446,20 @@
           steps:
             - tool: Prying
               doAfter: 1
+
+    #Corvax-Wega-Added-start
+    - node: CounterHedge
+      entity: TableCounterHedge
+      edges:
+        - to: CounterWoodFrame
+          completed:
+            - !type:SpawnPrototype
+              prototype: SoilBag
+              amount: 1
+          steps:
+            - tool: Prying
+              doAfter: 1
+    #Corvax-Wega-Added-end
 
     - node: TableXeno
       entity: TableXeno

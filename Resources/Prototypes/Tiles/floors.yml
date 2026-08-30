@@ -168,8 +168,8 @@
   id: FloorWood
   parent: BaseStationTile
   name: tiles-wood
-  sprite: /Textures/Tiles/wood.png
-  variants: 4
+  sprite: /Textures/_Wega/Tiles/wood.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
   footstepSounds:
     collection: FootstepWood
   barestepSounds:
@@ -1281,8 +1281,8 @@
   id: FloorWoodTile
   parent: BaseStationTile
   name: tiles-wood2
-  sprite: /Textures/Tiles/wood_tile.png
-  variants: 4
+  sprite: /Textures/_Wega/Tiles/wood_tile.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
   footstepSounds:
     collection: FootstepWood
   barestepSounds:
@@ -1476,8 +1476,8 @@
   id: FloorWoodLarge
   parent: BaseStationTile
   name: tiles-wood-large
-  sprite: /Textures/Tiles/wood_large.png
-  variants: 4
+  sprite: /Textures/_Wega/Tiles/wood_large.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
   footstepSounds:
     collection: FootstepWood
   barestepSounds:

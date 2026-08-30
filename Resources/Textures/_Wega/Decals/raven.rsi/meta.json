@@ -1,0 +1,422 @@
+{
+  "version": 1,
+   "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/Skyrat-SS13/Skyrat-tg and modified.",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "diagonal_centre"
+    },
+    {
+      "name": "diagonal_edge"
+    },
+    {
+      "name": "RAVEN1"
+    },
+    {
+      "name": "RAVEN2"
+    },
+    {
+      "name": "RAVEN3"
+    },
+    {
+      "name": "RAVEN4"
+    },
+    {
+      "name": "RAVEN5"
+    },
+    {
+      "name": "RAVEN6"
+    },
+    {
+      "name": "RAVEN7"
+    },
+    {
+      "name": "RAVEN8"
+    },
+    {
+      "name": "RAVEN9"
+    },
+    {
+      "name": "tile_anticorner-1"
+    },
+    {
+      "name": "tile_anticorner-2"
+    },
+    {
+      "name": "tile_anticorner-3"
+    },
+    {
+      "name": "tile_anticorner-4"
+    },
+    {
+      "name": "tile_anticorner_contrasted-1"
+    },
+    {
+      "name": "tile_anticorner_contrasted-2"
+    },
+    {
+      "name": "tile_anticorner_contrasted-3"
+    },
+    {
+      "name": "tile_anticorner_contrasted-4"
+    },
+    {
+      "name": "tile_corner-1"
+    },
+    {
+      "name": "tile_corner-2"
+    },
+    {
+      "name": "tile_corner-3"
+    },
+    {
+      "name": "tile_corner-4"
+    },
+    {
+      "name": "tile_fourcorners"
+    },
+    {
+      "name": "tile_full"
+    },
+    {
+      "name": "tile_half-1"
+    },
+    {
+      "name": "tile_half-2"
+    },
+    {
+      "name": "tile_half-3"
+    },
+    {
+      "name": "tile_half-4"
+    },
+    {
+      "name": "tile_half_contrasted-1"
+    },
+    {
+      "name": "tile_half_contrasted-2"
+    },
+    {
+      "name": "tile_half_contrasted-3"
+    },
+    {
+      "name": "tile_half_contrasted-4"
+    },
+    {
+      "name": "tile_opposing_corners-1"
+    },
+    {
+      "name": "tile_opposing_corners-2"
+    },
+    {
+      "name": "tile_tram-1"
+    },
+    {
+      "name": "tile_tram-2"
+    },
+    {
+      "name": "tile_tram-3"
+    },
+    {
+      "name": "tile_tram-4"
+    },
+    {
+      "name": "trimline-1"
+    },
+    {
+      "name": "trimline-2"
+    },
+    {
+      "name": "trimline-3"
+    },
+    {
+      "name": "trimline-4"
+    },
+    {
+      "name": "trimline-5"
+    },
+    {
+      "name": "trimline-6"
+    },
+    {
+      "name": "trimline-7"
+    },
+    {
+      "name": "trimline-8"
+    },
+    {
+      "name": "trimline_arrow_ccw-1"
+    },
+    {
+      "name": "trimline_arrow_ccw-2"
+    },
+    {
+      "name": "trimline_arrow_ccw-3"
+    },
+    {
+      "name": "trimline_arrow_ccw-4"
+    },
+    {
+      "name": "trimline_arrow_ccw-5"
+    },
+    {
+      "name": "trimline_arrow_ccw-6"
+    },
+    {
+      "name": "trimline_arrow_ccw-7"
+    },
+    {
+      "name": "trimline_arrow_ccw-8"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-1"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-2"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-3"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-4"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-5"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-6"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-7"
+    },
+    {
+      "name": "trimline_arrow_ccw_fill-8"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-1"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-2"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-3"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-4"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-5"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-6"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-7"
+    },
+    {
+      "name": "trimline_arrow_cw_fill-8"
+    },
+    {
+      "name": "trimline_box"
+    },
+    {
+      "name": "trimline_box_fill"
+    },
+    {
+      "name": "trimline_corner-1"
+    },
+    {
+      "name": "trimline_corner-2"
+    },
+    {
+      "name": "trimline_corner-3"
+    },
+    {
+      "name": "trimline_corner-4"
+    },
+    {
+      "name": "trimline_corner_fill-1"
+    },
+    {
+      "name": "trimline_corner_fill-2"
+    },
+    {
+      "name": "trimline_corner_fill-3"
+    },
+    {
+      "name": "trimline_corner_fill-4"
+    },
+    {
+      "name": "trimline_corner_warn_fill-1"
+    },
+    {
+      "name": "trimline_corner_warn_fill-2"
+    },
+    {
+      "name": "trimline_corner_warn_fill-3"
+    },
+    {
+      "name": "trimline_corner_warn_fill-4"
+    },
+    {
+      "name": "trimline_end-1"
+    },
+    {
+      "name": "trimline_end-2"
+    },
+    {
+      "name": "trimline_end-3"
+    },
+    {
+      "name": "trimline_end-4"
+    },
+    {
+      "name": "trimline_end_fill-1"
+    },
+    {
+      "name": "trimline_end_fill-2"
+    },
+    {
+      "name": "trimline_end_fill-3"
+    },
+    {
+      "name": "trimline_end_fill-4"
+    },
+    {
+      "name": "trimline_fill-1"
+    },
+    {
+      "name": "trimline_fill-2"
+    },
+    {
+      "name": "trimline_fill-3"
+    },
+    {
+      "name": "trimline_fill-4"
+    },
+    {
+      "name": "trimline_fill-5"
+    },
+    {
+      "name": "trimline_fill-6"
+    },
+    {
+      "name": "trimline_fill-7"
+    },
+    {
+      "name": "trimline_fill-8"
+    },
+    {
+      "name": "trimline_mid-1"
+    },
+    {
+      "name": "trimline_mid-2"
+    },
+    {
+      "name": "trimline_mid-3"
+    },
+    {
+      "name": "trimline_mid-4"
+    },
+    {
+      "name": "trimline_mid_fill-1"
+    },
+    {
+      "name": "trimline_mid_fill-2"
+    },
+    {
+      "name": "trimline_mid_fill-3"
+    },
+    {
+      "name": "trimline_mid_fill-4"
+    },
+    {
+      "name": "trimline_shrink_ccw-1"
+    },
+    {
+      "name": "trimline_shrink_ccw-2"
+    },
+    {
+      "name": "trimline_shrink_ccw-3"
+    },
+    {
+      "name": "trimline_shrink_ccw-4"
+    },
+    {
+      "name": "trimline_shrink_cw-1"
+    },
+    {
+      "name": "trimline_shrink_cw-2"
+    },
+    {
+      "name": "trimline_shrink_cw-3"
+    },
+    {
+      "name": "trimline_shrink_cw-4"
+    },
+    {
+      "name": "trimline_tram-1"
+    },
+    {
+      "name": "trimline_tram-2"
+    },
+    {
+      "name": "trimline_tram-3"
+    },
+    {
+      "name": "trimline_tram-4"
+    },
+    {
+      "name": "trimline_warn-1"
+    },
+    {
+      "name": "trimline_warn-2"
+    },
+    {
+      "name": "trimline_warn-3"
+    },
+    {
+      "name": "trimline_warn-4"
+    },
+    {
+      "name": "trimline_warn-5"
+    },
+    {
+      "name": "trimline_warn-6"
+    },
+    {
+      "name": "trimline_warn-7"
+    },
+    {
+      "name": "trimline_warn-8"
+    },
+    {
+      "name": "trimline_warn_fill-1"
+    },
+    {
+      "name": "trimline_warn_fill-2"
+    },
+    {
+      "name": "trimline_warn_fill-3"
+    },
+    {
+      "name": "trimline_warn_fill-4"
+    },
+    {
+      "name": "trimline_warn_fill-5"
+    },
+    {
+      "name": "trimline_warn_fill-6"
+    },
+    {
+      "name": "trimline_warn_fill-7"
+    },
+    {
+      "name": "trimline_warn_fill-8"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 - type: tile
   id: FloorWoodParquet
   name: tiles-wood-parquet
-  sprite: /Textures/Corvax/Tiles/wood_parquet.png
-  variants: 4
+  sprite: /Textures/_Wega/Tiles/wood_parquet.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
   placementVariants:
   - 1.0
   - 1.0
