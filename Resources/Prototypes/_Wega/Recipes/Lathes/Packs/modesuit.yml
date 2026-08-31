@@ -40,7 +40,6 @@
   id: ModesuitModuleReach
   recipes:
   - MicrowaveBeamSuitModule
-  - AntiGravitySuitModule
   - StorageHoldingSuitModule
   - StorageLargeSuitModule
   - MagnetSuitModule
@@ -55,7 +54,7 @@
   - OreBagSuitModule
   - ApparatusSuitModule
   - SolutionScannerSuitModule
-  - TeleporterSuitModule
+  - OtherCoreSuitModuleNoCoreSelector
   - ConstructorSuitModule
   - DrillSuitModule
   - AdvancedFlashlightSuitModule

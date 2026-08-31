@@ -6,15 +6,17 @@ using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Robust.Shared.Serialization;
 using Robust.Shared.Map;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Modular.Suit;
 
 public sealed partial class HealSurgeryModuleHandler : ModuleActionHandler
-{
+{	
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private SurgerySystem _surgery = default!;
 
+    private static readonly ProtoId<InternalDamagePrototype> InternalBleeding = "ArterialBleeding";
 
     public override void Initialize()
     {
@@ -48,10 +50,7 @@ public sealed partial class HealSurgeryModuleHandler : ModuleActionHandler
 
     private bool PerformSyrgeyHeal(EntityUid user)
     {
-        if (!TryComp<OperatedComponent>(user, out var comp))
-            return false;
-
-        comp.InternalDamages.Clear();
+		_surgery.TryRemoveInternalDamage(user, InternalBleeding);
 
         return true;
     }

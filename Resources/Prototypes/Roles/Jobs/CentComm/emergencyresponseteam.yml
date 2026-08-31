@@ -121,8 +121,7 @@
     id: ERTChaplainPDA # Corvax-Wega
     ears: ClothingHeadsetAltCentCom # Corvax-Wega
     belt: ClothingBeltSheathChaplinFilledERT # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: DrinkWaterBottleFull # Corvax-Wega
+    pocket2: WeaponPistolMk58 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
@@ -155,8 +154,7 @@
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSheathChaplinFilledERT # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: DrinkWaterBottleFull # Corvax-Wega
+    pocket2: WeaponPistolMk58 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
@@ -217,8 +215,7 @@
     id: ERTEngineerPDA # Corvax-Wega
     ears: ClothingHeadsetAltCentCom # Corvax-Wega
     belt: ClothingBeltChiefEngineerFilled # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: GasAnalyzer # Corvax-Wega
+    pocket2: WeaponPistolMk58 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
@@ -248,8 +245,7 @@
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltChiefEngineerFilled # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: GasAnalyzer # Corvax-Wega
+    pocket2: WeaponPistolMk58 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
@@ -418,8 +414,7 @@
     id: ERTMedicPDA # Corvax-Wega
     ears: ClothingHeadsetAltCentCom # Corvax-Wega
     belt: ClothingBeltMedicalFilled # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: Hypospray # Corvax-Wega-ERT
+    pocket2: WeaponPistolMk58 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
@@ -427,6 +422,7 @@
     - SyringeBluespace # Corvax-Wega-ERT
     - MedkitAdvancedFilled # Corvax-Wega-ERT
     - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    - Hypospray # Corvax-Wega-ERT
     - ChemistryBottleOmnizine
     - ChemistryBottleEpinephrine
     - ChemistryBottleEpinephrine
@@ -444,14 +440,14 @@
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltMedicalFilled # Corvax-Wega
-    pocket1: WeaponPistolMk58 # Corvax-Wega
-    pocket2: Hypospray # Corvax-Wega-ERT
+    pocket2: WeaponPistolMk58 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
     - SurgerykitFilledPro # Corvax-Wega-Surgery
     - SyringeBluespace # Corvax-Wega-ERT
     - MedkitCombatFilled
+    - Hypospray # Corvax-Wega-ERT
     - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - ChemistryBottleOmnizine
     - ChemistryBottleEpinephrine
@@ -527,7 +523,7 @@
     - WireBrush
     - CrowbarRed
     - WeaponPistolMk58
-    - MagazinePistol
+    # - MagazinePistol # Corvax-Wega-ERT
     - EmergencyMedipen
   inhand:
     - TrashBag

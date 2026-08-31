@@ -89,8 +89,18 @@ ent-HardsuitOperMedSelector = преобразователь медицинск�
 ent-HardsuitAsteroidSelector = преобразователь астероидно-шахтёрского скафандра
     .desc = { ent-HardsuitCESelector.desc }
     .suffix = Селектор
+ent-HardsuitERTLeaderSelector = преобразователь скафандра лидера ОБР
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
+
 
 # Другие селекторы
 ent-OtherCrashSelector = преобразователь крушителя
     .desc = А какой крушитель ты сегодня?
+    .suffix = Селектор
+ent-OtherCoreSuitModuleNoCoreSelector = преобразователь аномальных улучшений мод-костюма
+    .desc = Соддержит один из аномальных улучшений без ядер, их вам надо найти самостоятельно. На поиски братва.
+    .suffix = Селектор
+ent-OtherCoreSuitModuleSelector = преобразователь аномальных улучшений мод-костюма с ядрами
+    .desc = Соддержит один из аномальных улучшений, в котором встроенно ядро аномалии, которое невозможно вытащить.
     .suffix = Селектор

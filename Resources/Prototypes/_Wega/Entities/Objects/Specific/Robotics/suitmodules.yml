@@ -591,7 +591,7 @@
   - type: ModularSuitActionModule
     action: ActivateEMPModuleAction
   - type: ModularSuitModule
-    powerInstanceUsage: 25
+    powerInstanceUsage: 200
     canBeDisabled: false
     active: true
     verbIcon:
@@ -672,7 +672,7 @@
   - type: ModularSuitActionModule
     action: ActivateFloraModuleAction
   - type: ModularSuitModule
-    powerInstanceUsage: 1800
+    powerInstanceUsage: 600
     canBeDisabled: false
     active: true
     verbIcon:
@@ -811,6 +811,7 @@
 - type: entity
   parent: AntiGravitySuitModule
   id: AntiGravitySuitModuleSelector
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -827,6 +828,7 @@
 - type: entity
   parent: TeleporterSuitModule
   id: TeleporterSuitModuleSelector
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -843,6 +845,7 @@
 - type: entity
   parent: FlameSuitModule
   id: FlameSuitModuleSelector
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -860,6 +863,7 @@
 - type: entity
   parent: IceSuitModule
   id: IceSuitModuleSelector
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -892,6 +896,7 @@
 - type: entity
   parent: ElecSuitModule
   id: ElecSuitModuleSelector
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -908,8 +913,7 @@
 - type: entity
   parent: ShadowSuitModule
   id: ShadowSuitModuleSelector
-  name: shadow suit module
-  description: "A module that uses a gravitational core to make the user completely weightless."
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -926,6 +930,7 @@
 - type: entity
   parent: FloraSuitModule
   id: FloraSuitModuleSelector
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -942,8 +947,7 @@
 - type: entity
   parent: RockModuleSuitModule
   id: RockModuleSuitModuleSelector
-  name: rock suit module
-  description: "A module that uses a bluespace core to let the user transport their particles elsewhere."
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -960,8 +964,7 @@
 - type: entity
   parent: TechVisorSuitModule
   id: TechVisorSuitModuleSelector
-  name: tech visor suit module
-  description: "A heads-up display installed into the visor of the suit. This cross-references suit sensor data with a modern biological scanning suite, allowing the user to visualize the current health of organic lifeforms, as well as access data such as patient files in a convenient readout. They say these also let you see behind you."
+  suffix: Selector
   components:
   - type: ItemSlots
     slots:
@@ -1766,13 +1769,11 @@
   - type: Sprite
     state: microwave_beam
   - type: ModularSuitItemModule
-    handId: microwave-hand
+    handId: laser-gun-hand
     item: WeaponLaserSuitModule
   - type: ModularSuitModule
     modulePart: Gloves
-    powerInstanceUsage: 10
+    powerUsage: 5
     verbIcon:
       sprite: *modules-rsi
       state: microwave_beam
-
-## Core Unprintable

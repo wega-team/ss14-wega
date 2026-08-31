@@ -214,8 +214,8 @@
 
 - type: latheRecipe
   parent: BaseGoldModesuitModule
-  id: AntiGravitySuitModule
-  result: AntiGravitySuitModule
+  id: OtherCoreSuitModuleNoCoreSelector
+  result: OtherCoreSuitModuleNoCoreSelector
 
 - type: latheRecipe
   parent: BaseGoldModesuitModule
@@ -291,11 +291,6 @@
   parent: BaseModesuitModule
   id: SolutionScannerSuitModule
   result: SolutionScannerSuitModule
-
-- type: latheRecipe
-  parent: BaseGoldModesuitModule
-  id: TeleporterSuitModule
-  result: TeleporterSuitModule
 
 - type: latheRecipe
   parent: BaseGoldModesuitModule

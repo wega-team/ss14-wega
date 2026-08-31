@@ -1,22 +1,5 @@
 - type: entity
-  parent: BaseItem
-  id: BaseOtherSelector
-  abstract: true
-  components:
-  - type: Sprite
-    state: icon
-  - type: Item
-    size: Normal
-  - type: ItemSelector
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-
-- type: entity
-  parent: BaseOtherSelector
+  parent: BaseSelector
   id: OtherCrashSelector
   name: crasher converter
   description: What kind of crusher are you today?
@@ -31,3 +14,47 @@
     - WeaponCrusherHarpoon
     - WeaponCrusherSword
     - WeaponDaggerCrusher
+
+- type: entity
+  parent: BaseSelector
+  id: OtherCoreSuitModuleNoCoreSelector
+  name: core suit module converter
+  description: What kind of crusher are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: core
+  - type: ItemSelector
+    items:
+    - AntiGravitySuitModule
+    - TeleporterSuitModule
+    - FlameSuitModule
+    - IceSuitModule
+    - ChemSuitModule
+    - ElecSuitModule
+    - ShadowSuitModule
+    - FloraSuitModuleS
+    - RockModuleSuitModule
+    - TechVisorSuitModule
+
+- type: entity
+  parent: BaseSelector
+  id: OtherCoreSuitModuleSelector
+  name: core suit module converter
+  description: What kind of crusher are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: core
+  - type: ItemSelector
+    items:
+    - AntiGravitySuitModuleSelector
+    - TeleporterSuitModuleSelector
+    - FlameSuitModuleSelector
+    - IceSuitModuleSelector
+    - ChemSuitModuleSelector
+    - ElecSuitModuleSelector
+    - ShadowSuitModuleSelector
+    - FloraSuitModuleSelector
+    - RockModuleSuitModuleSelector
+    - TechVisorSuitModuleSelector

@@ -75,25 +75,34 @@ ent-TechVisorSuitModule = модуль омнивизора
     .desc = Модуль, использующий техническое ядро дающее всю возможную аналитическую информацию с визоров.
 ent-AntiGravitySuitModuleSelector = { ent-AntiGravitySuitModule }
     .desc = { ent-AntiGravitySuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-TeleporterSuitModuleSelector = { ent-TeleporterSuitModule }
     .desc = { ent-TeleporterSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-FlameSuitModuleSelector = { ent-FlameSuitModule }
     .desc = { ent-FlameSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-IceSuitModuleSelector = { ent-IceSuitModule }
     .desc = { ent-IceSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-ChemSuitModuleSelector = { ent-ChemSuitModule }
     .desc = { ent-ChemSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-ElecSuitModuleSelector = { ent-ElecSuitModule }
     .desc = { ent-ElecSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-ShadowSuitModuleSelector = { ent-ShadowSuitModule }
     .desc = { ent-ShadowSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-FloraSuitModuleSelector = { ent-FloraSuitModule }
     .desc = { ent-FloraSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-RockModuleSuitModuleSelector = { ent-RockModuleSuitModule }
     .desc = { ent-RockModuleSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 ent-TechVisorSuitModuleSelector = { ent-TechVisorSuitModule }
     .desc = { ent-TechVisorSuitModule.desc }
-
+    .suffix = Собранный, НЕ МАППИТЬ
 
 # Printed
 ent-WeldingSuitModule = сварочный модуль
@@ -172,7 +181,7 @@ ent-JetpackAdvancedSuitModule = улучшенный модуль ионного
     .desc = Высокопроизводительная ионная двигательная установка, используемая силами безопасности Nanotrasen. Отличается повышенной тягой и улучшенной эффективностью по сравнению со стандартной моделью. Идеально подходит для операций преследования и быстрого реагирования.
 ent-MagnetAdvancedSuitModule = улучшенный магнитный модуль
     .desc = Сложное улучшение системы магнитной стабильности Nakamura Engineering с компьютерной автоматической настройкой и улучшенной калибровкой сцепления. В отличие от базовой модели, эти электромагниты интеллектуально регулируют силу поля в зависимости от условий поверхности и намерений пользователя, устраняя «липкость», о которой сообщалось в старых версиях. Включает нейро-интерфейс, который интуитивно активирует магнитное сцепление только при необходимости, обеспечивая плавное движение. Изначально разработан для продвинутого костюма старшего инженера, но впоследствии стал доступен инженерному персоналу, требующему наилучшего контроля мобильности.
-ent-MagnetAdvancedSuitModule = улучшенный магнитный модуль
+ent-GunSuitModule = модуль встроенного вооружения
     .desc = Аварийный модуль вооружения, позволяющий вам оброняться даже в том случае, когда ваше оружие выпало.
 
 # Entities

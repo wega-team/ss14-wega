@@ -23,3 +23,4 @@ research-technology-power-adv = Усиление мобильных зарядн
 research-technology-biochemical-chemistry = Редкий медицинский модуль
 research-technology-civilian-t3-borgmodule = Редкие сервисные модули
 research-technology-indastrial-t3-borgmodule = Редкие промышленные модули
+research-technology-synthcore = Синтетическое ядро

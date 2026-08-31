@@ -1,5 +1,22 @@
 - type: entity
   parent: BaseItem
+  id: BaseSelector
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Normal
+  - type: ItemSelector
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseSelector
   id: JumpsuitSelector
   name: Jumpsuit
   description: "An obsidian rod that strikes paranormal things."
@@ -7,8 +24,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: clouth
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingUniformJumpsuitColorGrey
@@ -37,15 +52,9 @@
     - ClothingUniformJumpskirtColorDarkGreen
     - ClothingUniformJumpsuitColorTeal
     - ClothingUniformJumpskirtColorTeal
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: TopSelector
   name: Top
   description: "An obsidian rod that strikes paranormal things."
@@ -53,8 +62,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: top
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingUniformTopColorWhite
@@ -74,15 +81,9 @@
     - ClothingUniformTopColorMaroon
     - ClothingUniformTopic
     - ClothingUniformTopicCool
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: HatSelector
   name: Hat
   description: "An obsidian rod that strikes paranormal things."
@@ -90,8 +91,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: hat
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingHeadHatGreysoft
@@ -117,15 +116,9 @@
     - ClothingHeadHatCorpsoft
     - ClothingHeadFishCap
     - ClothingHeadRastaHat
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: ShooseSelector
   name: Shoose
   description: "An obsidian rod that strikes paranormal things."
@@ -133,8 +126,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: shoose
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingShoesColorBlack
@@ -159,15 +150,9 @@
     - ClothingShoesHeelsOrange
     - ClothingShoesHeelsYellow
     - ClothingShoesHighheelBoots
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: GlovesSelector
   name: Gloves
   description: "An obsidian rod that strikes paranormal things."
@@ -175,8 +160,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: gloves
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingHandsGlovesColorBlack
@@ -189,15 +172,9 @@
     - ClothingHandsGlovesColorGreen
     - ClothingHandsGlovesColorOrange
     - ClothingHandsGlovesColorPurple
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: OtherJumpsuitSelector
   name: Other jumpsuit
   description: "An obsidian rod that strikes paranormal things."
@@ -205,8 +182,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: otherclout
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingUniformJumpsuitHawaiBlack
@@ -227,15 +202,9 @@
     - ClothingUniformJumpskirtRedElegantDress
     - ClothingUniformJumpskirtBlueElegantDress
     - ClothingUniformJumpskirtPurpleElegantDress
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: TurtleneckSelector
   name: Turtleneck
   description: "An obsidian rod that strikes paranormal things."
@@ -243,8 +212,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: turtleneck
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingUniformJumpskirtTurtleneckAquamarine
@@ -281,15 +248,9 @@
     - ClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless
     - ClothingUniformJumpsuitTurtleneckWhiteSleeveless
     - ClothingUniformJumpskirtTurtleneckWhiteSleeveless
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: ScarfSelector
   name: Scarf
   description: "An obsidian rod that strikes paranormal things."
@@ -297,8 +258,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: scarf
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingNeckScarfStripedRed
@@ -320,15 +279,9 @@
     - ClothingNeckScarfLongPink
     - ClothingNeckScarfStripedWhite
     - ClothingNeckScarfWindy
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: ChoeckerSelector
   name: Chocker
   description: "An obsidian rod that strikes paranormal things."
@@ -336,8 +289,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: chocker
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingNeckChokerBlack
@@ -351,15 +302,9 @@
     - ClothingNeckChokerTealBlack
     - ClothingNeckChokerWhite
     - ClothingNeckChokerYellow
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: OtherClouthSelector
   name: OtherClout
   description: "An obsidian rod that strikes paranormal things."
@@ -367,8 +312,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: otherclout
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingOuterHoodieBlack
@@ -385,15 +328,9 @@
     - ClothingOuterApronBar
     - ClothingOuterHoodieGrey
     - ClothingOuterCoatGentle
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: OfficalSelector
   name: Offical
   description: "An obsidian rod that strikes paranormal things."
@@ -401,8 +338,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: otherclout
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingUniformJumpsuitRedVictorianSuit
@@ -435,15 +370,9 @@
     - ClothingUniformJumpsuitWhiteShirt
     - ClothingUniformJumpsuitFancyShirt
     - ClothingUniformJumpsuitRedPlaidShirt
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
 
 - type: entity
-  parent: BaseItem
+  parent: BaseSelector
   id: OtherModeSuitSelector
   name: OtherModeSuit
   description: "An obsidian rod that strikes paranormal things."
@@ -451,8 +380,6 @@
   - type: Sprite
     sprite: _Wega/Objects/Misc/vouchers.rsi
     state: clouth
-  - type: Item
-    size: Normal
   - type: ItemSelector
     items:
     - ClothingUniformJumpsuitFamilyGuy
@@ -471,9 +398,4 @@
     - ClothingUniformJumpsuitOldBrownSuit
     - ClothingUniformJumpsuitSweatshirtBright
     - ClothingUniformKimanoZero
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
+
