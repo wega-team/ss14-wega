@@ -21,31 +21,43 @@
 
 # Rules
 - type: entity
+  abstract: true
   parent: BaseGameRule
-  id: Vampire
+  id: BaseVampireRule
   components:
-  - type: GameRule
-    minPlayers: 5
   - type: VampireRule
-  - type: AntagObjectives
-    objectives:
-      - EscapeVampirefShuttleObjective
   - type: AntagRandomObjectives
     sets:
     - groups: VampireObjectiveGroups
     maxDifficulty: 5
   - type: AntagSelection
     agentName: vampire-round-end-name
+  - type: DynamicRuleCost
+    cost: 100
+
+- type: entity
+  parent: [BaseVampireRule, BaseRoundstartAntagRule]
+  id: Vampire
+  components:
+  - type: GameRule
+    minPlayers: 20
+    delay:
+      min: 240
+      max: 420
+  - type: AntagObjectives
+    objectives:
+      - EscapeVampirefShuttleObjective
+  - type: AntagSelection
     lateJoinAdditional: true
     antags:
     - !type:LinearAntagCount
       proto: Vampire
       range:
         min: 1
-        max: 8
+        max: 4
 
 - type: entity
-  parent: BaseGameRule
+  parent: [BaseGameRule, BaseRoundstartAntagRule]
   id: BloodCult
   components:
   - type: GameRule
@@ -65,7 +77,7 @@
         max: 4
 
 - type: entity
-  parent: BaseGameRule
+  parent: [BaseGameRule,BaseRoundstartAntagRule]
   id: BloodBrothers
   components:
   - type: GameRule
@@ -88,7 +100,7 @@
         max: 8
 
 - type: entity
-  parent: BaseGameRule
+  parent: [BaseGameRule, BaseRoundstartAntagRule]
   id: VeilCult
   components:
   - type: GameRule
