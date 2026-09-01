@@ -20,17 +20,17 @@ public sealed partial class CCVars
     /// Prefix for prototype folders included in entity_project generation.
     /// </summary>
     public static readonly CVarDef<string> EntityProjectFolderPrefix =
-        CVarDef.Create("autogen.entity_project.folder_prefix", string.Empty, CVar.ARCHIVE);
+        CVarDef.Create("autogen.entity_project.folder_prefix", "_", CVar.ARCHIVE);
 
     /// <summary>
     /// Prototype folder name to exclude from entity_project generation.
     /// </summary>
     public static readonly CVarDef<string> EntityProjectExcludedCoreProjectFolder =
-        CVarDef.Create("autogen.entity_project.excluded_core_project_folder", string.Empty, CVar.ARCHIVE);
+        CVarDef.Create("autogen.entity_project.excluded_core_project_folder", "Corvax", CVar.ARCHIVE);
 
     /// <summary>
     /// Name of the project, which is clearly worth noting for the purpose of organizing the wiki's content.
     /// </summary>
     public static readonly CVarDef<string> WikiProjectPrefix =
-        CVarDef.Create("autogen.wiki.project_prefix", string.Empty, CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("autogen.wiki.project_prefix", "Wega", CVar.SERVERONLY | CVar.ARCHIVE);
 }
