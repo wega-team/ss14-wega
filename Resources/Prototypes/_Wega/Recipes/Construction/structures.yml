@@ -1,4 +1,19 @@
 - type: construction
+  id: HangedManStructure
+  graph: HangedManStructure
+  startNode: start
+  targetNode: hangedman
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+    - !type:NoUnstackableInTile
+    - !type:NoHangedVictimInTile
+
+- type: construction
   id: CultGirder
   graph: CultGirder
   startNode: start

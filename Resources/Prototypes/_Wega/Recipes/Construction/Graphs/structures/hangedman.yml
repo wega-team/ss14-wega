@@ -1,0 +1,23 @@
+- type: constructionGraph
+  id: HangedManStructure
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: hangedman
+      steps:
+      - material: Cable
+        amount: 10
+        doAfter: 4
+  - node: hangedman
+    entity: HangedManStructure
+    edges:
+    - to: start
+      completed:
+      - !type:GivePrototype
+        prototype: CableApcStack1
+        amount: 10
+      - !type:DeleteEntity
+      steps:
+      - tool: Cutting
+        doAfter: 3
