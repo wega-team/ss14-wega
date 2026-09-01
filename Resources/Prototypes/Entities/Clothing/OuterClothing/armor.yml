@@ -219,6 +219,8 @@
         Slash: 0.7
         Piercing: 0.5
         Heat: 0.9
+  - type: StaminaResistance # Corvax-Wega-Change
+    damageCoefficient: 1
 
 
 # Armor covering multiple body parts including limbs
@@ -244,6 +246,7 @@
         Slash: 0.35
         Piercing: 0.35
         Heat: 0.35
+        Radiation: 0.5 # Corvax-Wega-Change
         Caustic: 0.5
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.45

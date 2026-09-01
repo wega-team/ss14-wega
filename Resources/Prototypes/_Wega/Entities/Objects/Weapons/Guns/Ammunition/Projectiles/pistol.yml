@@ -14,3 +14,17 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
     - state: practice
+
+- type: entity
+  id: BulletPistolFrozen
+  name: bullet (.35 auto frozen)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 4
+        Cold: 2
+  - type: ChangeTemperatureOnCollide
+    heat: -35000

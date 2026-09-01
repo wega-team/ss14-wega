@@ -53,5 +53,3 @@ ent-RadioImplanterCentcomm = имплантер "Радио Центком"
     .desc = { ent-BaseImplantOnlyImplanter.desc }
 ent-DeathRattleImplanterCentcomm = имплантер "Предсмертный хрип Центком"
     .desc = { ent-BaseImplantOnlyImplanter.desc }
-ent-LoyaltyImplanter = имплантер лояльности
-    .desc = { ent-BaseImplantOnlyImplanter.desc }

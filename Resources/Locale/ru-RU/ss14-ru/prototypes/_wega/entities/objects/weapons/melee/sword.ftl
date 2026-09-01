@@ -1,6 +1,6 @@
 ent-WeaponChainsword = цепной меч
     .desc = Не позволяй вульпе еретику жить.
-ent-WeaponForceSword = cиловой меч
+ent-WeaponForceSword = силовой меч
     .desc = Сияет силой веры. Или энергией батареи.
 ent-WeaponHanzoSteel = клинок Ханзо
     .desc = Эта катана способна перерубить святой Клеймор. Вдоль.

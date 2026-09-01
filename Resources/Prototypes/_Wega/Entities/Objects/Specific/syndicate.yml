@@ -1,0 +1,92 @@
+- type: entity
+  parent: MiniSyringe
+  id: MiniSyringeOmni
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/syringe.rsi
+    layers:
+      - state: minisyringe1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+      - state: syringeprojgreen
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Omnizine
+        Quantity: 5
+  - type: Projectile
+    deleteOnCollide: true
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Piercing: 1
+  - type: SolutionInjectWhileEmbedded
+    transferAmount: 5
+    solution: injector
+    updateInterval: 2
+  - type: SolutionInjectOnEmbed
+    transferAmount: 5
+    solution: injector
+
+- type: entity
+  parent: MiniSyringe
+  id: MiniSyringeStimulants
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/syringe.rsi
+    layers:
+      - state: minisyringe1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+      - state: syringeprojgreen
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Stimulants
+        Quantity: 5
+  - type: Projectile
+    deleteOnCollide: true
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Piercing: 1
+  - type: SolutionInjectWhileEmbedded
+    transferAmount: 5
+    solution: injector
+    updateInterval: 2
+  - type: SolutionInjectOnEmbed
+    transferAmount: 5
+    solution: injector
+
+- type: entity
+  parent: MiniSyringe
+  id: MiniSyringeImpedrezeneNoDamage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/syringe.rsi
+    layers:
+      - state: minisyringe1
+        map: ["enum.SolutionContainerLayers.Fill"]
+        visible: false
+      - state: syringeprojgreen
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ImpedrezeneNoDamage
+        Quantity: 5
+  - type: Projectile
+    deleteOnCollide: true
+    onlyCollideWhenShot: true
+    damage:
+      types:
+        Piercing: 1
+  - type: SolutionInjectWhileEmbedded
+    transferAmount: 5
+    solution: injector
+    updateInterval: 2
+  - type: SolutionInjectOnEmbed
+    transferAmount: 5
+    solution: injector

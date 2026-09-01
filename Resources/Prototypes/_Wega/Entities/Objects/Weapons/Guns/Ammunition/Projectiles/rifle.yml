@@ -1,0 +1,14 @@
+- type: entity
+  parent: BaseBullet
+  id: BulletRifleFrozen
+  categories: [ HideSpawnMenu ]
+  name: bullet (.20 rifle frozen)
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 6
+        Cold: 2
+  - type: ChangeTemperatureOnCollide
+    heat: -50000
+  
