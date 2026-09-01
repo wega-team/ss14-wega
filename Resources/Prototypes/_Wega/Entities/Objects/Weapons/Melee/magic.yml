@@ -27,6 +27,7 @@
     - WeaponHighFrequencyBlade
     - WeaponPossessedBlade
     - ArrhythmicKnife
+    - ClothingBeltHolsterFilledChaplain
   - type: ActivatableUI
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface
