@@ -2252,8 +2252,9 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-projector-module }
 
+# Corvax-Wega-Start
 - type: entity
-  parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
+  parent: [ BaseXenoborgModuleStealth, BaseXenoborgContraband ]
   id: XenoborgModuleCloakDevice
   name: cloaking device xenoborg module
   description: Module with a device that allows xenoborgs to become semi-invisible for some time.
@@ -2262,15 +2263,32 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-xenoborg-cloak
-  - type: ItemBorgModule
-    hands:
-    - item: CloakingDevice
-    - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye-module }
+  - type: ComponentBorgModule
+    components:
+    - type: StealthAbility
+      action: ActionStealthCyborg
+      time: 110
+      stealthСoefficient: 0.1
+    - type: TelekinesisGen
+      itemPrototype: ChameleonProjectorNoBattery
+      handPos: Left
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleStealthInvisible
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoborgModuleStealthInvisible
+  # - type: ItemBorgModule
+    # hands:
+    # - item: CloakingDevice
+    # - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
+  # - type: BorgModuleIcon
+    # icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye-module }
 
 - type: entity
-  parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
+  parent: [ BaseXenoborgModuleStealth, BaseXenoborgContraband ]
   id: XenoborgModuleSuperCloakDevice
   name: invisibility device xenoborg module
   description: Module with a device that allows xenoborgs to become truly invisible for a short amount of time.
@@ -2279,9 +2297,27 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-xenoborg-cloak2
-  - type: ItemBorgModule
-    hands:
-    - item: SuperCloakingDevice
-    - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
-  - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye2-module }
+  - type: ComponentBorgModule
+    components:
+    - type: StealthAbility
+      action: ActionStealthCyborgTwo
+      time: 30
+      stealthСoefficient: -1
+    - type: TelekinesisGen
+      itemPrototype: ChameleonProjectorNoBattery
+      handPos: Left
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleStealthInvisible
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoborgModuleStealthInvisible
+  # - type: ItemBorgModule
+    # hands:
+    # - item: SuperCloakingDevice
+    # - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
+  # - type: BorgModuleIcon
+    # icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye2-module }
+# Corvax-Wega-End

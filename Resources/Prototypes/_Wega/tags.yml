@@ -617,3 +617,6 @@
 
 - type: Tag
   id: XenoBorgModuleStalthWeapons
+
+- type: Tag
+  id: XenoborgModuleStealthInvisible
