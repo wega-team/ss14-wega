@@ -30,6 +30,7 @@
     allowDeimplantAll: false
     deimplantWhitelist:
     - SadTromboneImplant
+    - SecurityDeathImplant  # Corvax-Wega-securitydeathimplants
     - LightImplant
     - BikeHornImplant
     - TrackingImplant
@@ -166,6 +167,14 @@
   components:
   - type: Implanter
     implant: SadTromboneImplant
+
+- type: entity
+  id: SecurityDeathImplanter
+  name: security death implanter
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: SecurityDeathImplant
 
 - type: entity
   id: LightImplanter
