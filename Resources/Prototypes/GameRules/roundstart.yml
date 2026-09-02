@@ -147,7 +147,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 30 # Corvax-Wega-Edit
   - type: LoadMapRule
     mapPath: /Maps/_Wega/Nonstations/nukieplanet.yml # Corvax-Wega-Edit
   - type: AntagSelection
