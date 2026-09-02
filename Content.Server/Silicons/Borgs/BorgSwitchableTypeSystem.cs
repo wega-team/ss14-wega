@@ -59,6 +59,11 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
             }
         }
 
+        // Begin DeltaV Code: Custom lawset patching
+        if (prototype.Lawset is { } law)
+            ChangeLaw(ent, law);
+        // End DeltaV Code
+
         // Configure special components
         if (ProtoMan.Resolve(ent.Comp.SelectedBorgType, out var previousPrototype))
         {

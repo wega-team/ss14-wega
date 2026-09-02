@@ -57,6 +57,57 @@
     reflectiveType: None
 
 - type: entity
+  parent: IonScan
+  id: IonScanDamage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 30
+
+- type: entity
+  name: magnum ion bolt
+  id: BulletIonMagnum
+  categories: [ HideSpawnMenu ]
+  parent: [BulletLaser, BaseBulletTrigger]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: PointLight
+    enabled: true
+    color: "#5b6ee1"
+  - type: Projectile
+    impactEffect: BulletImpactEffectOrangeDisabler
+    damage:
+      types:
+        Heat: 10
+  - type: ComplexProjectileDamage
+    damageOptions:
+    - damage:
+        types:
+          Heat: 15
+          Shock: 5
+      whitelist:
+        components:
+        - BorgChassis
+        - Android
+  - type: EmpOnTrigger
+    range: 0.5
+    energyConsumption: 360
+
+- type: entity
+  id: BulletTaserBorg
+  categories: [ HideSpawnMenu ]
+  parent: BulletTaser
+  components:
+  - type: TimedDespawn
+    lifetime: 0.1 # Very short range
+
+- type: entity
   name: pulsar shot
   id: PulsarProjectile
   parent: BulletLaser

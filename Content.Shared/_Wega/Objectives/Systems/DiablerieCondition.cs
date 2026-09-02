@@ -24,7 +24,7 @@ public sealed partial class DiablerieConditionSystem : EntitySystem
         if (args.Mind.OwnedEntity.HasValue)
         {
             var ownedEntity = args.Mind.OwnedEntity.Value;
-            comp.BloodTargets[ownedEntity] = _random.Next(1, 2);
+            comp.BloodTargets[ownedEntity] = _random.Next(1, 1);
         }
     }
 

@@ -23,3 +23,35 @@
     checkCanAccess: false
   - type: WorldTargetAction
     event: !type:TeleportSpellEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionStealthCyborg
+  name: Stealth
+  description: Stalth base
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 120
+  - type: Sprite
+    sprite: Interface/Actions/actions_borg.rsi
+    layers:
+    - state: xenoborg-eye-module    
+  - type: InstantAction
+    event: !type:SteathAbilityEvent {}
+    
+- type: entity
+  parent: BaseAction
+  id: ActionStealthCyborgTwo
+  name: Stealth II
+  description: Stalth base
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 40
+  - type: Sprite
+    sprite: Interface/Actions/actions_borg.rsi
+    layers:
+    - state: xenoborg-eye2-module
+  - type: InstantAction
+    event: !type:SteathAbilityEvent {}

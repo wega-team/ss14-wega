@@ -26,6 +26,9 @@
             "name": "command"
         },
         {
+            "name": "janitor"
+        },
+        {
             "name": "security"
         },
         {
@@ -77,7 +80,22 @@
             "name": "icon-sheild"
         },
         {
+            "name": "icon-sheild-laser"
+        },
+        {
+            "name": "icon-sheild-riot"
+        },
+        {
+            "name": "icon-sheild-bullet"
+        },
+        {
             "name": "icon-gun"
+        },
+        {
+            "name": "icon-restock"
+        },
+        {
+            "name": "icon-xenoborg-hypo2"
         },
         {
             "name": "icon-grenade"

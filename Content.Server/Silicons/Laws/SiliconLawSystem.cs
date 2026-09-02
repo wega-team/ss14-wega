@@ -165,10 +165,24 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         // Show the silicon has been subverted.
         component.Subverted = true;
 
+
+		var name = "";
+        if (TryComp<EmagSiliconLawComponent>(uid, out var emag))
+        {
+			if (emag.OwnerName != null)
+			{
+				name = emag.OwnerName;
+			}
+			else
+			{
+				name = Name(args.user);
+			}
+        }
+
         // Add the first emag law before the others
         component.Lawset?.Laws.Insert(0, new SiliconLaw
         {
-            LawString = Loc.GetString("law-emag-custom", ("name", Name(args.user)), ("title", Loc.GetString(component.Lawset.ObeysTo))),
+            LawString = Loc.GetString("law-emag-custom", ("name", name), ("title", Loc.GetString(component.Lawset.ObeysTo))), // DeltaV
             Order = 0
         });
 

@@ -72,6 +72,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
 # Corvax-Wega-Start
+  - type: Stripping
   - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
     blacklist:
       null

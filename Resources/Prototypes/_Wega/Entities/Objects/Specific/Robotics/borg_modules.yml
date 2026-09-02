@@ -545,12 +545,20 @@
     layers:
     - state: generic
     - state: icon-speed
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModulePower
   - type: ComponentBorgModule
     components:
     - type: SpeedUpGen
       damageBooster: false
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: speed }
+  - type: Tag
+    tags:
+    - BorgModuleGeneric
+    - BorgModulePower
 
 - type: entity
   id: BorgModuleCommonMagBoots
@@ -613,6 +621,10 @@
     layers:
     - state: generic
     - state: icon-repeir
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModulePower
   - type: ItemBorgModule
     hands:
     - hand:
@@ -637,6 +649,10 @@
           Heat: -0.25
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-module }
+  - type: Tag
+    tags:
+    - BorgModuleGeneric
+    - BorgModulePower
 
 - type: entity
   id: BorgModuleNightVison
@@ -712,6 +728,7 @@
     - item: SprayBottle
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cleaning-module }
+
 # Servive Module
 
 - type: entity
@@ -893,6 +910,17 @@
     layers:
     - state: security
     - state: icon-sheild
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleArmorSec
   - type: ItemBorgModule
     hands:
     - hand:
@@ -907,8 +935,161 @@
     - type: TelekinesisGen
       itemPrototype: TelescopicShieldBorg
       handPos: Left
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: borg_sheild_teleskop
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+    - BorgModuleArmorSec
+
+- type: entity
+  id: BorgModuleSheildLaser
+  parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
+  name: sheld laser module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: security
+    - state: icon-sheild-laser
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.4
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleArmorSec
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: LaserSheildBorg
+      handPos: Left
+    - type: Reflect
+      reflectProb: 0.5
+      reflects:
+        - Energy
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: borg_sheild_laser
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+    - BorgModuleArmorSec
+
+- type: entity
+  id: BorgModuleSheildBullet
+  parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
+  name: sheld bullet module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: security
+    - state: icon-sheild-bullet
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.4
+        Heat: 0.9
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleArmorSec
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: BulletShieldBorg
+      handPos: Left
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: borg_sheild_bullet
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+    - BorgModuleArmorSec
+
+- type: entity
+  id: BorgModuleSheildRiot
+  parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
+  name: sheld riot module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: security
+    - state: icon-sheild-riot
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.8
+        Heat: 0.3
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleArmorSec
+  - type: ItemBorgModule
+    hands:
+    - hand:
+        emptyRepresentative: Nanopast
+        emptyLabel: borg-slot-nanopasta-empty
+        whitelist:
+          tags:
+          - Nanopast
+    - item: BorgGeneratorNanopast
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: RiotSheildBorg
+      handPos: Left
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: borg_sheild_riot
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+    - BorgModuleArmorSec
 
 - type: entity
   id: BorgModuleGranader
@@ -959,6 +1140,10 @@
     layers:
     - state: security
     - state: icon-gun
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleLethalSec
   - type: ItemBorgModule
     hands:
     - item: WeaponBorgLethal
@@ -972,6 +1157,42 @@
           - Flash
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: gun-module }
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+    - BorgModuleLethalSec
+
+## Jaintor    
+
+- type: entity
+  id: BorgModuleRestock
+  parent: [ BaseBorgModuleJanitor, BaseProviderBorgModule ]
+  name: restock cyborg module
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: janitor
+    - state: icon-restock
+  - type: ItemBorgModule
+    hands:
+    - item: Screwdriver
+    - hand:
+        emptyLabel: borg-slot-restock-empty
+        emptyRepresentative: VendingMachineRestockGetmoreChocolateCorp
+        whitelist:
+          components:
+          - VendingMachineRestock
+    - hand:
+        emptyLabel: borg-slot-restock-empty
+        emptyRepresentative: VendingMachineRestockGetmoreChocolateCorp
+        whitelist:
+          components:
+          - VendingMachineRestock
+    - item: BorgGeneratorRestock
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: restock-module }
+
 ## Rare
 - type: entity
   id: BorgModuleSecRare
@@ -1002,6 +1223,10 @@
     layers:
     - state: command
     - state: icon-gun-rare
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleLethalSec
   - type: ItemBorgModule
     hands:
     - item: WeaponBorgTurel
@@ -1019,6 +1244,10 @@
           - Itemborg
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: lethal-rare }
+  - type: Tag
+    tags:
+    - BorgModuleSecurity
+    - BorgModuleLethalSec
 
 - type: entity
   id: BorgModuleCargoRare
@@ -1051,7 +1280,7 @@
     - state: icon-mining-rare
   - type: ItemBorgModule
     hands:
-    - item: WeaponPlasmaCutter
+    - item: WeaponPlasmaCutterBorg
     - item: AdvancedMineralScannerUnpowered
     - hand:
         emptyLabel: borg-slot-ore-empty
@@ -1323,6 +1552,17 @@
     layers:
     - state: syndicate
     - state: icon-sniper
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleLethalSyndi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
   - type: ItemBorgModule
     hands:
     - item: BorgWeaponSniperHristovAdvanced
@@ -1337,6 +1577,10 @@
         - Energy
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sniper-module }
+  - type: Tag
+    tags:
+    - BorgModuleSyndicateAssault
+    - BorgModuleLethalSyndi
 
 - type: entity
   id: BorgModuleCR20Advensed
@@ -1349,6 +1593,17 @@
     layers:
     - state: syndicate
     - state: icon-cr20-gun
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.4
+        Heat: 0.4
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - BorgModuleLethalSyndi
   - type: ItemBorgModule
     hands:
     - item: WeaponSubMachineGunC20rROWAdvensed
@@ -1357,19 +1612,16 @@
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
     components:
-    - type: Armor
-      modifiers:
-        coefficients:
-          Blunt: 0.5
-          Slash: 0.5
-          Piercing: 0.4
-          Heat: 0.4
     - type: Reflect
       reflectProb: 0.5
       reflects:
         - Energy
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-c20r-module }
+  - type: Tag
+    tags:
+    - BorgModuleSyndicateAssault
+    - BorgModuleLethalSyndi
 
 - type: entity
   id: BorgModuleNightVisonSyndi
@@ -1677,12 +1929,45 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-emp
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoBorgModuleStalthWeapons
   - type: ItemBorgModule
     hands:
     - item: WeaponIonCarabineXenoborg
     - item: XenoborgHoloprojectorEMPTrap
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: emp-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoBorgModuleStalthWeapons
+
+- type: entity
+  parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleLexorinHypo
+  name: lexorin xenoborg module
+  description: Module with a self-refilling nocturine hypo.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: xenoborg_stealth
+    - state: icon-xenoborg-hypo2
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoBorgModuleStalthWeapons
+  - type: ItemBorgModule
+    hands:
+    - item: LexorinHypo
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: xenoborg-hypo-2-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoBorgModuleStalthWeapons
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1769,6 +2054,31 @@
     - BorgModuleMedicalRare
     - BorgModuleServiceRare
     - BorgModuleScienceRND
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseItem
+  id: ModuleSelectorSheild
+  name: security selector sheild
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: security
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleSheild
+    - BorgModuleSheildLaser
+    - BorgModuleSheildBullet
+    - BorgModuleSheildRiot
   - type: ActivatableUI
     key: enum.ItemSelectorUiKey.Key
   - type: UserInterface

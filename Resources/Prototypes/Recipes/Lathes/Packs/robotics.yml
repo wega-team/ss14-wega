@@ -75,7 +75,7 @@
   - BorgModuleKinetic
   - BorgModuleGardening
   - BorgModuleClowning
-  - BorgModuleSheild
+  - ModuleSelectorSheild
   - BorgModuleGranader
   - ModuleCommand
   - BorgModuleDNA
