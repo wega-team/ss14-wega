@@ -293,6 +293,11 @@
     magState: mag
     steps: 3
   - type: Appearance
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/iongun.rsi
+    slots:
+    - Belt
+    - suitStorage
   - type: Gun
     fireRate: 1
     soundGunshot:

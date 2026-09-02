@@ -2,7 +2,7 @@
   parent: BaseWeaponRifle
   id: WeaponRifleXC67
   name: assault riffle xC-67
-  description: A prototype of a new assault rifle from the creators of the famous C-20r. Uses the .20 cartridge. Advanced ergonomics allow for excellent shooting accuracy.
+  description: A prototype of a new assault rifle from the creators of the famous C-20r. Uses the .30 cartridge. Advanced ergonomics allow for excellent shooting accuracy.
   suffix: Rifles
   components:
   - type: Sprite
@@ -36,11 +36,11 @@
             - ExtMagazineRifle
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeRifle
+        startingItem: CartridgeLightRifle
         priority: 1
         whitelist:
           tags:
-            - CartridgeRifle
+            - CartridgeLightRifle
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -116,3 +116,113 @@
     steps: 1
     zeroVisible: true
   - type: Appearance
+
+- type: entity
+  name: m90-sm
+  parent: [BaseItem, BaseSyndicateContraband]
+  id: WeaponSubMachineMG90
+  description: An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses .50 shotgun shells.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Large
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 6
+    selectedMode: FullAuto
+    availableModes:
+    - FullAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/atreides.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: ItemSlots
+    disableSmartEquipEject: true # Corvax-Wega-Add
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MagazinePistolSubMachineGun
+        priority: 2
+        whitelist:
+          tags:
+          - MagazinePistolSubMachineGun
+        whitelistFailPopup: gun-magazine-whitelist-fail
+        insertSound: /Audio/Weapons/Guns/MagIn/smg_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/smg_magout.ogg
+  - type: ContainerContainer
+    containers:
+      gun_magazine: !type:ContainerSlot
+      gun_chamber: !type:ContainerSlot
+      hotswap-paired: !type:Container
+  - type: MagazineAmmoProvider
+  - type: MagazineVisuals
+    magState: mag
+    steps: 1
+    zeroVisible: true
+  - type: WeaponHotswap
+    alternateForm: WeaponLauncherMG90
+    isAlternate: false
+  - type: Appearance
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: WeaponLauncherMG90
+  categories: [ HideSpawnMenu ]
+  name: m90-lm
+  description: PLOOP.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Large
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+      hotswap-paired: !type:Container
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - Grenade
+    capacity: 1
+    proto: GrenadeFrag
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: Gun
+    fireRate: 1
+    projectileSpeed: 25 # Slower than a bullet, same speed as our old projectile limit.
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: WeaponHotswap
+    alternateForm: WeaponSubMachineMG90
+    isAlternate: true
+  - type: StaticPrice
+    price: 10000
