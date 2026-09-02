@@ -15,7 +15,6 @@ public sealed partial class SharedStealthAbilitySystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _actions = default!;
     [Dependency] private SharedStealthSystem _stealth = default!;
-    [Dependency] protected IGameTiming _timing = default!;
 
     public override void Initialize()
     {
