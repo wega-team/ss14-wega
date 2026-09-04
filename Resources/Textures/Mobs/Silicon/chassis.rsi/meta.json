@@ -562,6 +562,10 @@
             "directions": 4
         },
         {
+            "name": "xenoborg_heavy_missile_launcher",
+            "directions": 4
+        },
+        {
             "name": "xenoborg_scout",
             "directions": 4
         },

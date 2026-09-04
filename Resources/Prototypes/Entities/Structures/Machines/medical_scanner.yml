@@ -60,7 +60,7 @@
           - FitsInDispenser
   # Corvax-Wega-Genetic-end
   - type: Damageable
-    damageModifierSet: StrongMetallic
+    damageModifierSet: GlassMod
   - type: Destructible
     thresholds:
     - trigger:

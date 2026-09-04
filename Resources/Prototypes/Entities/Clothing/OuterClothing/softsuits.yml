@@ -129,6 +129,7 @@
     stealGroup: ClothingOuterHardsuitVoidParamed
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetVoidParamed
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     onUse: false
     soundActivate:
