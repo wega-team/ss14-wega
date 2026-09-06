@@ -225,6 +225,12 @@
             "name": "paper_stamp-wizard"
         },
         {
+            "name": "paper_ticket"
+        },
+        {
+            "name": "paper_ticket_words"
+        },
+        {
             "name": "paper-inhand-right",
             "directions": 4
         },

@@ -1,4 +1,4 @@
-## item-icon
+# Item-icon
 - type: entity
   parent: BaseItem
   id: BorgIconMorgBag
@@ -33,7 +33,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: kitchen
-    
+
 - type: entity
   parent: BaseItem
   id: BorgIcon
@@ -121,7 +121,7 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: cash-icon
-    
+
 - type: entity
   parent: BaseItem
   id: ConstrukAndBattery
@@ -154,4 +154,3 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
     state: gren-icon
-

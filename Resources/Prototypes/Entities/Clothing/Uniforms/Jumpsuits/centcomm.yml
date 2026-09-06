@@ -8,6 +8,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/deathsquad.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/deathsquad.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
 
 - type: entity
   parent: [ ClothingUniformBase, BaseCentcommContraband ]
@@ -107,6 +108,9 @@
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/ert_medic.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpsuits/Centcomm/ert_medic.rsi
+  - type: ClothingSterility # Corvax-Wega-Surgery
+  - type: DiseaseProtection # Corvax-Wega-Disease
+    protection: 0.15 # Corvax-Wega-Disease
 
 - type: entity
   parent: [ BaseCentcommContraband, ClothingUniformBase ]

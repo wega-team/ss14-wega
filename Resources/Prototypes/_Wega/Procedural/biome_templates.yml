@@ -115,19 +115,19 @@
         cellularReturnType: Distance2
       # As I can see, it works much better than I could have imagined.
       entityWeights:
-        WallRockBasalt: 0.647
-        WallRockBasaltLavalandTin: 0.04
-        WallRockBasaltLavalandCoal: 0.019
-        WallRockBasaltLavalandQuartz: 0.019
-        WallRockBasaltLavalandPlasma: 0.0098
-        WallRockBasaltLavalandSilver: 0.0098
-        WallRockBasaltLavalandGold: 0.0098
-        WallRockBasaltLavalandUranium: 0.00535
-        WallRockBasaltLavalandBananium: 0.00508
-        WallRockBasaltLavalandGems: 0.0015
-        WallRockBasaltLavalandMagmite: 0.0015
-        WallRockBasaltLavalandDiamond: 0.001
-        WallRockBasaltLavalandGibtonite: 0.0005
+        WallRockChromite: 0.647
+        WallRockChromiteLavalandTin: 0.04
+        WallRockChromiteLavalandCoal: 0.019
+        WallRockChromiteLavalandQuartz: 0.019
+        WallRockChromiteLavalandPlasma: 0.0098
+        WallRockChromiteLavalandSilver: 0.0098
+        WallRockChromiteLavalandGold: 0.0098
+        WallRockChromiteLavalandUranium: 0.00535
+        WallRockChromiteLavalandBananium: 0.00508
+        WallRockChromiteLavalandGems: 0.0015
+        WallRockChromiteLavalandMagmite: 0.0015
+        WallRockChromiteLavalandDiamond: 0.001
+        WallRockChromiteLavalandGibtonite: 0.0005
     - !type:BiomeDummyLayer
       id: Loot
     # Fill basalt

@@ -23,6 +23,9 @@ public sealed partial class ItemSlotsComponent : Component
     [DataField(readOnly:true)]
     public Dictionary<string, ItemSlot> Slots = new();
 
+    [DataField] // Corvax-Wega-Add
+    public bool DisableSmartEquipEject = false; // Corvax-Wega-Add
+
     // There are two ways to use item slots:
     //
     // #1 - Give your component an ItemSlot datafield, and add/remove the item slot through the ItemSlotsSystem on

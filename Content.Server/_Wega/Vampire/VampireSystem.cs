@@ -1,9 +1,7 @@
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.Rotting;
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.EUI;
 using Content.Server.GameTicking.Rules;
@@ -25,7 +23,6 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -43,9 +40,11 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Shaders;
 using Content.Shared.SSDIndicator;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Temperature.Components;
@@ -78,6 +77,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private NullDamageSystem _nullDamage = default!;
     [Dependency] private RottingSystem _rotting = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedActionsSystem _action = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
@@ -89,6 +89,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private StomachSystem _stomach = default!;
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private TurfSystem _turf = default!;
@@ -99,13 +100,14 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
     private static readonly EntProtoId RejuvenateAdvanced = "ActionVampireRejuvenateAdvanced";
+    private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
     /// <summary>
     /// An array of "transparent" coatings that allow sunlight to reach the vampire.
     /// </summary>
     private static readonly ProtoId<ContentTileDefinition>[] FloorProto = new ProtoId<ContentTileDefinition>[]
     {
-        "Space", "Lattice", "TrainLattice", "FloorGlass", "FloorRGlass"
+        "Space", "Lattice", "FloorGlass", "FloorRGlass"
     };
 
     /// <summary>
@@ -183,8 +185,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
     {
         var componentsToRemove = new[]
         {
-            typeof(PacifiedComponent), typeof(PerishableComponent), typeof(BarotraumaComponent),
-            typeof(TemperatureSpeedComponent), typeof(ThirstComponent), typeof(ClumsyComponent)
+            typeof(PacifiedComponent), typeof(PerishableComponent),
+            typeof(BarotraumaComponent), typeof(TemperatureSpeedComponent)
         };
 
         foreach (var type in componentsToRemove)
@@ -195,12 +197,23 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
         }
 
+        _status.TryRemoveStatusEffect(vampire.Owner, Clumsy);
         if (TryComp<BodyComponent>(vampire, out var body) && body.Organs != null)
         {
             foreach (var organ in body.Organs.ContainedEntities)
             {
                 if (TryComp<MetabolizerComponent>(organ, out var meta) && meta.MetabolizerTypes != null)
                     state.OriginalMetabolizerTypes[organ] = new(meta.MetabolizerTypes);
+            }
+        }
+
+        if (TryComp<SatiationComponent>(vampire, out var satiation))
+        {
+            var thirst = satiation.GetOrNull(SatiationSystem.Thirst);
+            if (thirst != null)
+            {
+                state.OriginalThirst = thirst;
+                _satiation.RemoveSatiationType(vampire.Owner, SatiationSystem.Thirst);
             }
         }
 
@@ -217,8 +230,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
     {
         var toRemove = new[]
         {
-            typeof(PacifiedComponent), typeof(PerishableComponent), typeof(BarotraumaComponent),
-            typeof(TemperatureSpeedComponent), typeof(ThirstComponent), typeof(ClumsyComponent)
+            typeof(PacifiedComponent), typeof(PerishableComponent),
+            typeof(BarotraumaComponent), typeof(TemperatureSpeedComponent)
         };
 
         foreach (var type in toRemove)
@@ -302,6 +315,9 @@ public sealed partial class VampireSystem : SharedVampireSystem
                 }
             }
         }
+
+        if (state.OriginalThirst != null && HasComp<SatiationComponent>(vampire))
+            _satiation.AddSatiation(vampire.Owner, SatiationSystem.Thirst, state.OriginalThirst);
 
         if (state.OriginalColdDamageThreshold is float cold && TryComp<TemperatureDamageComponent>(vampire, out var temp))
             temp.ColdDamageThreshold = cold;

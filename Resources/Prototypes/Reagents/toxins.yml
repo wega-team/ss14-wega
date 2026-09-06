@@ -589,7 +589,7 @@
   metabolisms:
     Bloodstream:
       metabolismRate: 0.05
-      effects
+      effects:
       # Corvax-Wegea-Disease-start
       # - !type:Emote
       #   emote: Honk

@@ -2,6 +2,7 @@ using Content.Shared.Flash.Components;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes; // Corvax-Wega-Phantom-Start
 using Content.Shared.Damage.Systems;
+using Robust.Shared.Prototypes; // Corvax-Wega-Phantom-Start
 
 namespace Content.Shared.Flash;
 
@@ -9,10 +10,7 @@ public sealed partial class DamagedByFlashingSystem : EntitySystem
 {
     [Dependency] private DamageableSystem _damageable = default!;
 
-    // Corvax-Wega-Phantom-Start
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string Damage = "Heat";
-    // Corvax-Wega-Phantom-End
+    private static readonly ProtoId<DamageTypePrototype> Damage = "Heat"; // Corvax-Wega-Phantom
 
     public override void Initialize()
     {

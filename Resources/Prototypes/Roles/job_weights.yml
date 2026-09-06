@@ -55,3 +55,16 @@
     SeniorResearcher: 4 # Corvax
     IAA: 9 # Corvax
     Magistrate: 9 # Corvax
+    # Corvax-Wega-start
+    CBURNLeader: 0
+    BlueShieldOfficer: 20
+    WardenHelper: 5
+    Brigmedic: 0
+    Barber: 0
+    Postman: 0
+    ShaftMiner: 0
+    ShaftMinerMedic: 0
+    Coroner: 0
+    Geneticist: 0
+    Surgeon: 0
+    # Corvax-Wega-end

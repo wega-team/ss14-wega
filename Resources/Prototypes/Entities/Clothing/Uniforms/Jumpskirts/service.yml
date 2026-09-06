@@ -32,7 +32,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Service/chef.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: ClothingUniformSkirtToggleableBase # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpskirtHydroponics
   name: hydroponics jumpskirt
   description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
@@ -43,7 +43,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Service/hydro.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: ClothingUniformSkirtToggleableBase # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpskirtJanitor
   name: janitor jumpskirt
   description: The jumpskirt for the poor sop with a mop.
@@ -54,7 +54,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Service/janitor.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: ClothingUniformSkirtToggleableBase # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpskirtMime
   name: mime jumpskirt
   description: ...

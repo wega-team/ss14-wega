@@ -1,8 +1,8 @@
 using Content.Server.Lavaland.Components;
 using Content.Server.Shuttles.Components;
-using Content.Server.Station.Components;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
+using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 

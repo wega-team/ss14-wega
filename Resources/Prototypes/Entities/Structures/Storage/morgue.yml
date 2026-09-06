@@ -1,8 +1,7 @@
 - type: entity
-  parent: StructureHealthMachineWeak
+  parent: [ StructureHealthMachineWeak, BasePaperLabelableVisualized ] # Corvax-Wega-Morgue-change-start
   id: Morgue
   name: morgue
-  parent: [ BasePaperLabelableVisualized ] # Corvax-Wega-Morgue-change-start
   description: Used to store bodies until someone fetches them. Includes a high-tech alert system for false-positives!
   placement:
     mode: SnapgridCenter

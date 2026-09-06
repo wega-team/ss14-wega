@@ -1,4 +1,4 @@
-## Common Speed
+# Common Speed
 - type: entity
   parent: BaseItem
   id: SpeedModeDevice
@@ -29,7 +29,7 @@
         disableEject: true
         swap: false
 
-## Common Magboots
+# Common Magboots
 - type: entity
   parent: BaseItem
   id: MagbootsModeDevice
@@ -60,7 +60,7 @@
         disableEject: true
         swap: false
 
-## Common repeir
+# Common repeir
 - type: entity
   parent: BaseItem
   id: RepeirModeDevice
@@ -110,9 +110,9 @@
   - type: UseDelay
     delay: 60
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    sprite: Structures/Wallmounts/air-alarm.rsi
     layers:
-    - state: fire_b1
+    - state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse
@@ -178,7 +178,7 @@
       Steel: 100
       Wood: 100
 
-## Common generator
+# Common generator
 - type: entity
   parent: BaseItem
   id: BorgGeneratorInflatableWall
@@ -203,7 +203,7 @@
     sound:
       path: /Audio/Machines/phasein.ogg
 
-# candy genetator
+# Candy genetator
 - type: entity
   parent: BaseItem
   id: BorgGeneratorCommonCandy

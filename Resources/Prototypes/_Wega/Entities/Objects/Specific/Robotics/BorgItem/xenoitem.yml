@@ -1,4 +1,4 @@
-# heavy
+# Heavy
 - type: entity
   parent: Holoprojector
   id: XenoborgHoloprojectorForcefield
@@ -46,7 +46,7 @@
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
 
-# eng
+# Eng
 - type: entity
   id: XenoRCD
   parent: [ BaseItem, BaseXenoborgContraband ]
@@ -89,7 +89,7 @@
   - type: AutoRecharge
     rechargeDuration: 10
 
-# stels
+# Stels
 - type: entity
   parent: MiniSyringe
   id: MiniSyringePax
@@ -153,7 +153,8 @@
       - id: MiniSyringePax
     sound:
       path: /Audio/Machines/phasein.ogg
-# mothership
+
+# Mothership
 - type: entity
   parent: XenoborgHoloprojectorForcefield
   id: XenoborgHoloprojectorForcefieldMother
@@ -181,7 +182,7 @@
     sprite: _Wega/Objects/Tools/xeno_access_breaker.rsi
     state: icon
 
-# xenoborgs
+# Xenoborgs
 - type: entity
   parent: RepeirModeDevice
   id: RepeirModeDeviceXenoborg
@@ -262,9 +263,9 @@
   - type: UseDelay
     delay: 120
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    sprite: Structures/Wallmounts/air-alarm.rsi
     layers:
-    - state: fire_b1
+    - state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse
@@ -316,9 +317,10 @@
       charger_slot:
         ejectOnInteract: false
         whitelist:
+          tags:
+          - Stunbaton
           components:
           - BatteryAmmoProvider
-          - Stunbaton
           - PowerCell
         blacklist:
           tags:
@@ -374,8 +376,8 @@
   - type: Dirtable
     dirtState: beret
     equippedDirtState: equipped-beret
-    # Corvax-Wega-Dirtable-end
-    
+  # Corvax-Wega-Dirtable-end
+
 - type: entity
   name: ion carabine
   parent: BaseWeaponBatterySmall
@@ -412,7 +414,7 @@
   - type: BatteryAmmoProvider
     proto: IonScan
     fireCost: 250
-    
+
 - type: entity
   name: upgradebrain
   parent: BaseItem
@@ -450,4 +452,3 @@
     whitelist:
       components:
         - FloorTile
-

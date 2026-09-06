@@ -324,19 +324,6 @@
 - type: entity
   name: pill canister
   parent: PillCanister
-  id: PillCanisterAmbuzol
-  suffix: Ambuzol 10u, 5
-  components:
-  - type: Label
-    localizedLabel: pill-label-ambuzol-10u
-  - type: StorageFill
-    contents:
-    - id: PillAmbuzol
-      amount: 5
-
-- type: entity
-  name: pill canister
-  parent: PillCanister
   id: PillCanisterMutadon
   suffix: Mutadon 10u, 5
   components:

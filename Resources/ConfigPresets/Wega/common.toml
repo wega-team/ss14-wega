@@ -27,3 +27,6 @@ space_wind = true
 
 [lavaland]
 enabled = true
+
+[ghost.go_lobby]
+enabled = true

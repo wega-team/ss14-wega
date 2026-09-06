@@ -105,9 +105,6 @@ ent-PillCanisterDylomet = баночка для таблеток
 ent-PillCanisterFresium = баночка для таблеток
     .desc = { ent-PillCanister.desc }
     .suffix = Фризиум 10 ед, 5 шт
-ent-PillCanisterAmbuzol = баночка для таблеток
-    .desc = { ent-PillCanister.desc }
-    .suffix = Амбузол 10 ед, 5 шт
 
 ent-Tyriumpack = пакет тириума
     .desc = Крайне важная жидкость для функционирования андроидов.

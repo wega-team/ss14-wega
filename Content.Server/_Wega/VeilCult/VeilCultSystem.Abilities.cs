@@ -1,7 +1,7 @@
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Flash;
+using Content.Shared.Body.Systems;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Damage.Systems;

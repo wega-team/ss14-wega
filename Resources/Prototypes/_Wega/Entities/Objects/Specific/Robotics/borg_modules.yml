@@ -1,4 +1,4 @@
-## base module
+# Base module
 - type: entity
   id: BaseBorgModuleSecurity
   parent: BaseBorgModule
@@ -57,7 +57,8 @@
       - state: base-part-inhand-right
       - state: base-stripes-inhand-right
         color: "#7B0F12"
-## Med Module
+
+# Med Module
 - type: entity
   id: BorgModuleSurgery
   parent: [ BaseBorgModuleMedical, BaseProviderBorgModule ]
@@ -113,7 +114,6 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-module }
 
 # Cargo Module
-
 - type: entity
   id: BorgModuleKinetic
   parent: [ BaseBorgModuleCargo, BaseProviderBorgModule ]
@@ -138,7 +138,6 @@
           - PKAUpgrade
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: kinetic-weapon-module }
-
 
 # Science
 - type: entity
@@ -167,8 +166,8 @@
         emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
-          components: 
-          - PowerCell 
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
           - PowerCell
@@ -322,8 +321,8 @@
           - PowerCell
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: robotic-module }
-## Basic Module
 
+# Basic Module
 - type: entity
   id: BorgModuleCommonMedical
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
@@ -489,8 +488,8 @@
         emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
         emptyLabel: borg-slot-construction-empty
         whitelist:
-          components: 
-          - PowerCell 
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
           - PowerCell
@@ -655,41 +654,6 @@
       tintColor: "#449544"
 
 - type: entity
-  id: BorgModuleMusique
-  parent: [ BaseBorgModule, BaseProviderBorgModule ]
-  name: musique cyborg module
-  components:
-  - type: Sprite
-    layers:
-    - state: generic
-    - state: icon-musique
-  - type: ItemBorgModule
-    hands:
-    - item: SynthesizerInstrument
-      hand:
-        emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: MusicIcon
-        whitelist:
-          components:
-          - Instrument
-    - item: ElectricGuitarInstrument
-      hand:
-        emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: MusicIcon
-        whitelist:
-          components:
-          - Instrument
-    - item: SaxophoneInstrument
-      hand:
-        emptyLabel: borg-slot-instruments-empty
-        emptyRepresentative: MusicIcon
-        whitelist:
-          components:
-          - Instrument
-  - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: musical-module }
-
-- type: entity
   id: BorgModuleCleaningCommon
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: cleaning common cyborg module
@@ -712,8 +676,8 @@
     - item: SprayBottle
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cleaning-module }
-# Servive Module
 
+# Servive Module
 - type: entity
   id: BorgModuleCook
   parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
@@ -809,7 +773,6 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: bar-module }
 
 # Security module
-
 - type: entity
   id: BorgModuleDisabler
   parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
@@ -972,7 +935,8 @@
           - Flash
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: gun-module }
-## Rare
+
+# Rare
 - type: entity
   id: BorgModuleSecRare
   parent: [ BaseBorgModuleSecurity, BaseProviderBorgModule ]
@@ -1292,7 +1256,7 @@
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: rnd-rare }
 
-## Syndicate
+# Syndicate
 - type: entity
   id: BorgModuleChina
   parent: [ BaseBorgModuleSyndicateAssault, BaseProviderBorgModule, BaseSyndicateContraband ]
@@ -1386,7 +1350,7 @@
     components:
     - type: NaturalNightVision
       tintColor: "#953c3c"
-      
+
 - type: entity
   id: BorgModuleRepiarSyndi
   parent: [ BaseBorgModuleSyndicateAssault, BaseSyndicateContraband ]
@@ -1410,7 +1374,7 @@
           Slash: -1
           Piercing: -1
           Heat: -1
-          
+
 - type: entity
   id: BorgModuleSurgerySyndicate
   parent: [ BaseBorgModuleSyndicateMedical, BaseProviderBorgModule ]
@@ -1463,7 +1427,7 @@
           - Pill
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: surgery-s-module }
-    
+
 - type: entity
   id: BorgModuleChemSyndicate
   parent: [ BaseBorgModuleSyndicateMedical, BaseProviderBorgModule ]
@@ -1497,8 +1461,8 @@
           - Healing
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: chem-s-module }
- 
-## Xenoborg
+
+# Xenoborg
 - type: entity
   id: BorgModuleXenoConstruction
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband  ]
@@ -1514,8 +1478,8 @@
         emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
-          components: 
-          - PowerCell 
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
           - PowerCell
@@ -1524,14 +1488,14 @@
         emptyRepresentative: ConstrukAndCabel
         emptyLabel: borg-slot-construction-empty
         whitelist:
-          components: 
-          - PowerCell 
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
           - PowerCell
           - CableCoil
     - hand:
-        emptyRepresentative: FloorTileItemXenoborg
+        emptyRepresentative: FloorTileItemSteel
         emptyLabel: borg-slot-tiles-empty
         whitelist:
           components:
@@ -1727,8 +1691,7 @@
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
-  # Clockwork
-  
+# Clockwork
 - type: entity
   id: BorgModuleClockwork
   parent: [ BaseBorgModule, BaseProviderBorgModule, BaseSyndicateContraband ]

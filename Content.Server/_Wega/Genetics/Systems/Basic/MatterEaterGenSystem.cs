@@ -29,11 +29,11 @@ public sealed partial class MatterEaterSystem : EntitySystem
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private PopupSystem _popup = default!;
-    [Dependency] private HungerSystem _hunger = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private StackSystem _stack = default!;
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
 
     public override void Initialize()
     {
@@ -100,8 +100,11 @@ public sealed partial class MatterEaterSystem : EntitySystem
             QueueDel(ent);
         }
 
-        if (TryComp<HungerComponent>(args.User, out var hunger))
-            _hunger.ModifyHunger(args.User, ent.Comp.NutritionValue, hunger);
+        if (TryComp<SatiationComponent>(args.User, out var satiation))
+        {
+            _satiation.ModifyValue((args.User, satiation),
+                SatiationSystem.Hunger, ent.Comp.NutritionValue);
+        }
 
         _audio.PlayPvs(eater.EatSound, args.User);
 

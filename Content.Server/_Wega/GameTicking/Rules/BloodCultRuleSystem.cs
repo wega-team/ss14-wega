@@ -15,7 +15,6 @@ using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
@@ -32,6 +31,7 @@ using Content.Shared.Zombies;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Mind.Components;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -62,8 +62,10 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private TargetObjectiveSystem _target = default!;
         [Dependency] private MetaDataSystem _meta = default!;
         [Dependency] private SharedJobSystem _job = default!;
+        [Dependency] private StatusEffectsSystem _effects = default!;
 
-        public readonly ProtoId<NpcFactionPrototype> BloodCultNpcFaction = "BloodCult";
+        private static readonly ProtoId<NpcFactionPrototype> Faction = "BloodCult";
+        private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
         public override void Initialize()
         {
@@ -283,12 +285,13 @@ namespace Content.Server.GameTicking.Rules
 
             var componentsToRemove = new[]
             {
-                typeof(PacifiedComponent),
-                typeof(ClumsyComponent)
+                typeof(PacifiedComponent)
             };
 
             foreach (var compType in componentsToRemove)
                 RemComp(ent, compType);
+
+            _effects.TryRemoveStatusEffect(ent, Clumsy);
 
             HandleMetabolism(ent);
             CreateObjectivesForCultist(ent);
@@ -380,7 +383,7 @@ namespace Content.Server.GameTicking.Rules
                 return;
             }
 
-            _npcFaction.AddFaction(uid, BloodCultNpcFaction);
+            _npcFaction.AddFaction(uid, Faction);
             var culsistComp = EnsureComp<BloodCultistComponent>(uid);
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Blood Cult");
             if (mindId == default || !_role.MindHasRole<BloodCultistComponent>(mindId))

@@ -32,7 +32,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Special/pyjamasyndicatered.rsi
 
 - type: entity
-  parent: [UnsensoredClothingUniformBase, BaseSyndicateContraband]
+  parent: [UnsensoredClothingUniformToggleableBase, BaseSyndicateContraband] # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpsuitOperative
   name: operative jumpsuit
   description: Uniform for elite syndicate operatives performing tactical operations in deep space.

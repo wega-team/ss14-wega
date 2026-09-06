@@ -92,11 +92,11 @@
 - type: tileAlias
   id: FloorGrayConcreteOutsideMono
   target: FloorGrayConcreteMono
-  
+
 - type: tileAlias
   id: FloorGrayConcreteOutsideSmooth
   target: FloorGrayConcreteSmooth
- 
+
 - type: tileAlias
   id: FloorOldConcreteOutside
   target: FloorOldConcrete
@@ -104,7 +104,7 @@
 - type: tileAlias
   id: FloorOldConcreteOutsideMono
   target: FloorOldConcreteMono
-  
+
 - type: tileAlias
   id: FloorOldConcreteOutsideSmooth
   target: FloorOldConcreteSmooth

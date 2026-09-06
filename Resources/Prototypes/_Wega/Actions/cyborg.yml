@@ -22,4 +22,4 @@
     repeat: false
     checkCanAccess: false
   - type: WorldTargetAction
-    event: !type:TeleportSpellEvent
+    event: !type:TeleportActionEvent

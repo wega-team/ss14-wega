@@ -108,7 +108,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Service/jester2.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpsuitHydroponics
   name: hydroponics jumpsuit
   description: Has a strong earthy smell to it. Hopefully it's merely dirty as opposed to soiled.
@@ -117,7 +117,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Service/hydro.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, ClothingUniformFoldableBase]
+  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpsuitJanitor
   name: janitor jumpsuit
   description: The jumpsuit for the poor sop with a mop.
@@ -126,7 +126,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Service/janitor.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
   id: ClothingUniformJumpsuitMime
   name: mime suit
   description: ...

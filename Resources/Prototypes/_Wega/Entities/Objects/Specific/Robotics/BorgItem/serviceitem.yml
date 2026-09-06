@@ -205,7 +205,7 @@
         Quantity: 5
       name: reagent-name-milk
 
-#Garding
+# Garding
 - type: entity
   parent: HydroponicsToolMiniHoe
   categories: [ HideSpawnMenu ]
@@ -344,7 +344,7 @@
     - BotanyHatchet
     - Itemborg
 
-## Service Rare
+# Service Rare
 - type: entity
   id: MicrowaveForBorg
   categories: [ HideSpawnMenu ]
@@ -482,9 +482,9 @@
   - type: UseDelay
     delay: 30
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    sprite: Structures/Wallmounts/air-alarm.rsi
     layers:
-    - state: fire_b1
+    - state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse
