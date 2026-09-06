@@ -25,7 +25,6 @@ using Content.Shared.Polymorph;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.SSDIndicator;
-using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Vampire;
@@ -94,7 +93,7 @@ public sealed partial class VampireSystem
         var maxCritical = ent.Comp.MaxCriticalOrgans;
         var maxRegular = ent.Comp.MaxRegularOrgans;
 
-        var modifiers = new Dictionary<string, float>();
+        var modifiers = new Dictionary<ProtoId<DamageTypePrototype>, float>();
 
         var physicalMultiplier = CalculateBonusMultiplier(heartCount, maxCritical, 5f);
         if (physicalMultiplier < 1f)

@@ -12,7 +12,6 @@ using Content.Server.Audio;
 using Content.Server.Chat.Systems;
 using Content.Shared.Achievements;
 using Content.Shared.Veil.Cult.Components;
-using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
@@ -25,6 +24,7 @@ using Content.Shared.Popups;
 using Content.Shared.Pinpointer;
 using Content.Shared.Zombies;
 using Content.Shared.Station;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -56,9 +56,11 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private SharedStationSystem _stationSystem = default!;
         [Dependency] private EntityLookupSystem _entityLookup = default!;
         [Dependency] private ServerGlobalSoundSystem _sound = default!;
+        [Dependency] private StatusEffectsSystem _effects = default!;
         [Dependency] private ChatSystem _chat = default!;
 
-        public readonly ProtoId<NpcFactionPrototype> VeilCultNpcFaction = "VeilCult";
+        private static readonly ProtoId<NpcFactionPrototype> Faction = "VeilCult";
+        private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
         public override void Initialize()
         {
@@ -101,12 +103,13 @@ namespace Content.Server.GameTicking.Rules
 
             var componentsToRemove = new[]
             {
-                typeof(PacifiedComponent),
-                typeof(ClumsyComponent)
+                typeof(PacifiedComponent)
             };
 
             foreach (var compType in componentsToRemove)
                 RemComp(ent, compType);
+
+            _effects.TryRemoveStatusEffect(ent, Clumsy);
 
             CreateObjectivesForCultist(ent);
         }
@@ -204,7 +207,7 @@ namespace Content.Server.GameTicking.Rules
                 return;
             }
 
-            _npcFaction.AddFaction(uid, VeilCultNpcFaction);
+            _npcFaction.AddFaction(uid, Faction);
             var culsistComp = EnsureComp<VeilCultistComponent>(uid);
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Veil Cult");
             if (mindId == default || !_role.MindHasRole<VeilCultistComponent>(mindId))

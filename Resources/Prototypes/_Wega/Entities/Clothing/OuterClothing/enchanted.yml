@@ -18,10 +18,8 @@
     actions:
     - ActionVeilCultActivateHaste
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateHaste
     activeIfWorn: true
-    
+
 - type: entity
   parent: ClothingOuterVeilCultRobes
   id: ClothingOuterVeilCultRobesCamouflage
@@ -40,10 +38,8 @@
     actions:
     - ActionVeilCultActivateCamouflage
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateCamouflage
     activeIfWorn: true
-    
+
 # VEIL CULT CUIRASS
 
 - type: entity
@@ -64,10 +60,8 @@
     actions:
     - ActionVeilCultActivateSmoke
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateSmoke
     activeIfWorn: true
-    
+
 - type: entity
   parent: VeilCultBrassCuirass
   id: VeilCultBrassCuirassAbsorb
@@ -86,10 +80,8 @@
     actions:
     - ActionVeilCultActivateAbsorb
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateAbsorb
     activeIfWorn: true
-    
+
 - type: entity
   parent: VeilCultBrassCuirass
   id: VeilCultBrassCuirassReflection
@@ -108,10 +100,8 @@
     actions:
     - ActionVeilCultActivateReflection
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateReflection
     activeIfWorn: true
-    
+
 - type: entity
   parent: VeilCultBrassCuirass
   id: VeilCultBrassCuirassHardenPlates
@@ -130,7 +120,4 @@
     actions:
     - ActionVeilCultActivateHardenPlates
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateHardenPlates
     activeIfWorn: true
-

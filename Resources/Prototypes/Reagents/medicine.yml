@@ -494,7 +494,8 @@
             Heat: -0.33
             Shock: -0.33
             Cold: -0.33
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: -10
         conditions:
         - !type:ReagentCondition
@@ -673,14 +674,14 @@
           conditions:
             - !type:ReagentCondition
               reagent: Ambuzol
-              min: 10
+              min: 15
     Digestion:
       effects:
         - !type:CureZombieInfection
           conditions:
             - !type:ReagentCondition
               reagent: Ambuzol
-              min: 10
+              min: 15
 
 - type: reagent
   id: AmbuzolPlus
@@ -733,7 +734,8 @@
   metabolisms:
     Bloodstream:
       effects:
-        - !type:SatiateThirst
+        - !type:Satiate
+          satiationType: Thirst
           factor: 6
         - !type:ModifyBloodLevel
           amount: 6
@@ -871,7 +873,8 @@
     Bloodstream:
       effects:
       # what the hell, this isn't satiating at all!!
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         factor: -1
 
   # Should heal quite literally everything, use in very small amounts
@@ -929,7 +932,7 @@
           min: 20
         damage:
           Toxin: -2
-      - !type:HealthChange # Corvax-Wega-Change
+      - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Ultravasculine
@@ -1166,10 +1169,10 @@
       - !type:HealthChange
         damage:
           types:
-  #          Blunt: -2.25 # 9 per u  # Corvax-Wega-Change
- #     - !type:SatiateHunger  # Corvax-Wega-Change
-#        factor: -1  # Corvax-Wega-Change
-            Blunt: -3.5  # Corvax-Wega-Change
+            Blunt: -2.25 # 9 per u
+      - !type:Satiate
+        satiationType: Hunger
+        factor: -1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -1195,7 +1198,8 @@
   metabolisms:
     Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
     Bloodstream:
       effects:
@@ -1477,7 +1481,7 @@
   flavor: medicine
   color: "#baa15d"
   metabolisms:
-    Bloodstream:
+    Digestion:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectRadiationProtection
@@ -1505,7 +1509,6 @@
       effects:
       - !type:Emote
         emote: Yawn
-        showInChat: true
         probability: 0.1
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness

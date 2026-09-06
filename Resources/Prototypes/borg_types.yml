@@ -298,8 +298,10 @@
 
 # Corvax-Wega-start
   addComponents:
-  - type: ShowThirstIcons
-  - type: ShowHungerIcons
+  - type: ShowSatiationIcons
+    shownTypes:
+    - Thirst
+    - Hunger
   - type: Instrument
     allowPercussion: false
   - type: UserInterface

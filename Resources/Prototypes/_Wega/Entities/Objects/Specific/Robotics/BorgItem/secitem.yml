@@ -1,4 +1,4 @@
-## Security module
+# Security module
 - type: entity
   parent: HoloprojectorSecurity
   id: HoloprojectorSecurityMicrowave
@@ -67,6 +67,7 @@
     damage:
       types:
         Piercing: 0
+
 # SEC Lethal
 - type: entity
   name: makeshift laser pistol

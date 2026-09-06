@@ -3,8 +3,8 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
 using Content.Shared.Disease;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.Body.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Disease.Effects
 {
@@ -17,8 +17,8 @@ namespace Content.Server.Disease.Effects
         /// <summary>
         /// The reagent ID to add or remove.
         /// </summary>
-        [DataField("reagent", customTypeSerializer: typeof(PrototypeIdSerializer<ReagentPrototype>))]
-        public string? Reagent = null;
+        [DataField("reagent")]
+        public ProtoId<ReagentPrototype>? Reagent = null;
 
         [DataField("amount", required: true)]
         public FixedPoint2 Amount = default!;

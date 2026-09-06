@@ -3,15 +3,14 @@ using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Content.Shared.Actions.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Movement.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class FlyAbilityComponent : Component
 {
-    [DataField("FlyAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string? Action = "ActionSwitchHarpyFly";
+    [DataField("FlyAction")]
+    public EntProtoId? Action = "ActionSwitchHarpyFly";
 
     [DataField("ActionEntity")] public EntityUid? ActionEntity;
 

@@ -158,7 +158,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
             return;
         // Corvax-Wega-Add-end
 
-        _tool.UseTool(args.Used, args.User, uid, 1f, component.KeysExtractionMethod, new EncryptionRemovalFinishedEvent(), toolComponent: tool);
+        _tool.UseTool(args.Used, args.User, uid, 1f, component.KeysExtractionMethod.Value, new EncryptionRemovalFinishedEvent(), toolComponent: tool); // Corvax-Wega-Edit
     }
 
     private void OnStartup(EntityUid uid, EncryptionKeyHolderComponent component, ComponentStartup args)
@@ -225,7 +225,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
                 ("color", proto.Color),
                 ("key", key),
                 ("id", proto.LocalizedName),
-                ("freq", proto.Frequency / 10f)));
+                ("freq", proto.Frequency)));
         }
 
         if (defaultChannel != null && ProtoMan.TryIndex(defaultChannel, out proto))

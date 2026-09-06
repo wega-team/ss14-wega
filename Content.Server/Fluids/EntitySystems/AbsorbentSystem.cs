@@ -1,3 +1,6 @@
 using Content.Shared.Fluids;
 
-public sealed class AbsorbentSystem : SharedAbsorbentSystem;
+namespace Content.Server.Fluids.EntitySystems;
+
+/// <inheritdoc/>
+public sealed partial class AbsorbentSystem : SharedAbsorbentSystem;

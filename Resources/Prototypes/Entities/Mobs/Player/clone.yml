@@ -8,7 +8,6 @@
 - type: cloningSettings
   id: TraitsMental
   components:
-  - Clumsy
   - Pacified
   - Paracusia
   - LightweightDrunk
@@ -34,12 +33,12 @@
   id: Body
   components:
   # general
-  - CreamPied
   - DetailExaminable
   - Dna
   - Fingerprint
   - Grammar # Pronouns
   - HumanoidProfile # Age, Sex, Gender
+  - InnerBodyAnomalyVisuals # How you look with anomalies
   - MeleeWeapon # Attack animation, damage and sound
   - NpcFactionMember
   - RandomPrice
@@ -84,6 +83,10 @@
   - LispAccent # Corvax-Wega-Add
   - UnintelligibleAccent # Corvax-Wega-Add
   eventComponents:
+  - Damageable # Sprites and damage modifier
+  - Flammable # Displacements
+  - CreamPied # Displacements
+  - Hands # displacements
   - Puller
   - Vocal # voice sounds
 
@@ -186,6 +189,7 @@
   id: PlantClone
   components:
   - Plant
+  - PlantHarvest
   - PlantChemicals
   - PlantGrowth
   - PlantAtmospheric
@@ -203,7 +207,6 @@
   id: PlantLifecycleClone
   parent: PlantClone
   components:
-  - PlantHarvest
   # traits
   - PlantTraitSampled
   - PlantTraitSeedless

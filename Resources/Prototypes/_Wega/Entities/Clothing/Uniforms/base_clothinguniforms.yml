@@ -28,19 +28,29 @@
 
 - type: entity
   abstract: true
-  parent: ClothingUniformBase
-  id: ClothingUniformToggleableBase
+  parent: UnsensoredClothingUniformBase
+  id: UnsensoredClothingUniformToggleableBase
   components:
   - type: ToggleableSpriteClothing
     defaultSuffix: "-down"
 
 - type: entity
   abstract: true
-  parent: ClothingUniformSkirtBase
-  id: ClothingUniformSkirtToggleableBase
+  parent: UnsensoredClothingUniformSkirtBase
+  id: UnsensoredClothingUniformSkirtToggleableBase
   components:
   - type: ToggleableSpriteClothing
     defaultSuffix: "-down"
+
+- type: entity
+  abstract: true
+  parent: [ ClothingUniformBase, UnsensoredClothingUniformToggleableBase ]
+  id: ClothingUniformToggleableBase
+
+- type: entity
+  abstract: true
+  parent: [ ClothingUniformSkirtBase, UnsensoredClothingUniformSkirtToggleableBase ]
+  id: ClothingUniformSkirtToggleableBase
 
 - type: entity
   abstract: true

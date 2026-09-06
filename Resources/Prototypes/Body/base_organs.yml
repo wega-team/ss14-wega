@@ -109,12 +109,10 @@
       - SnoutCover
       - HeadSide
       - HeadTop
-  # Corvax-Wega-Surgery-start
   - type: Tag
     tags:
-    - BaseBodyPart
+    - BaseBodyPart # Corvax-Wega-Surgery
     - Head
-  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent:

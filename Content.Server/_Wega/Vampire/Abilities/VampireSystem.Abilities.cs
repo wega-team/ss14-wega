@@ -11,7 +11,6 @@ using Robust.Shared.Timing;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Flash;
-using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Damage;
 using Content.Shared.Mobs.Systems;
@@ -29,7 +28,6 @@ public sealed partial class VampireSystem
     [Dependency] private MobThresholdSystem _threshold = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
-    [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private SharedStealthSystem _stealth = default!;
     [Dependency] private SharedFlashSystem _flash = default!;
     [Dependency] private MovementModStatusSystem _movementMod = default!;

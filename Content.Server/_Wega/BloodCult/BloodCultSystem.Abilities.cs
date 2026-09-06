@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Administration;
 using Content.Server.Blood.Cult.UI;
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.EUI;
@@ -11,6 +10,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Card.Tarot;
 using Content.Shared.Card.Tarot.Components;
 using Content.Shared.Chemistry.Components;

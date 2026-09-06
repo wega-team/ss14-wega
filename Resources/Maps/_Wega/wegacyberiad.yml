@@ -207018,7 +207018,6 @@ entities:
     components:
     - type: Transform
       parent: 2
-      rot: 1.5707963267948966 rad
       pos: 35.5,11.5
 - proto: StatueVenusBlue
   entities:

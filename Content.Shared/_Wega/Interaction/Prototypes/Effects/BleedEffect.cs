@@ -18,7 +18,7 @@ public sealed partial class BleedEffect : InteractionEffect
 
     public override void Apply(EntityUid user, EntityUid target, IEntityManager entityManager)
     {
-        var bloodstreamSystem = entityManager.System<SharedBloodstreamSystem>();
+        var bloodstreamSystem = entityManager.System<BloodstreamSystem>();
         bloodstreamSystem.TryModifyBleedAmount(target, Amount);
     }
 }

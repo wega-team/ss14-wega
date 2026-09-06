@@ -47,7 +47,8 @@
         - "relaxingtea-effect-at-peace"
     Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 5
 
 - type: reagent
