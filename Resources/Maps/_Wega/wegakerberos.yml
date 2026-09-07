@@ -6093,92 +6093,6 @@ entities:
       - 49567
       - 49568
       - 49569
-- proto: ActionStethoscope
-  entities:
-  - uid: 133
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 132
-    - type: Action
-      container: 132
-  - uid: 135
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 134
-    - type: Action
-      container: 134
-- proto: ActionToggleInternals
-  entities:
-  - uid: 137
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 136
-    - type: Action
-      container: 136
-  - uid: 139
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 138
-    - type: Action
-      container: 138
-  - uid: 142
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 141
-    - type: Action
-      container: 141
-  - uid: 144
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 143
-    - type: Action
-      container: 143
-- proto: ActionToggleLight
-  entities:
-  - uid: 154
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 153
-    - type: Action
-      container: 153
-  - uid: 156
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 155
-    - type: Action
-      container: 155
-  - uid: 158
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 157
-    - type: Action
-      container: 157
-  - uid: 160
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 159
-    - type: Action
-      container: 159
 - proto: AirAlarm
   entities:
   - uid: 161
@@ -22375,10 +22289,6 @@ entities:
     - type: Transform
       parent: 131
       pos: 27.5,14.5
-    - type: UserInterface
-      actors:
-        enum.StorageUiKey.Key:
-        - invalid
     - type: Storage
       storedItems:
         2337:
@@ -22431,7 +22341,6 @@ entities:
           - 2345
           showEnts: False
           occludes: True
-    - type: ActiveUserInterface
   - uid: 2347
     components:
     - type: Transform
@@ -127910,27 +127819,11 @@ entities:
     - type: Transform
       parent: 131
       pos: 33.371017,-37.311756
-    - type: Stethoscope
-      actionEntity: 133
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 133
   - uid: 134
     components:
     - type: Transform
       parent: 131
       pos: 43.415703,-67.29202
-    - type: Stethoscope
-      actionEntity: 135
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 135
   - uid: 16996
     components:
     - type: Transform
@@ -145499,16 +145392,6 @@ entities:
     components:
     - type: Transform
       parent: 140
-    - type: GasTank
-      toggleActionEntity: 142
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 142
 - proto: EmergencyOxygenTank
   entities:
   - uid: 48617
@@ -145522,16 +145405,6 @@ entities:
     components:
     - type: Transform
       parent: 140
-    - type: GasTank
-      toggleActionEntity: 144
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 144
   - uid: 19824
     components:
     - type: Transform
@@ -156332,58 +156205,16 @@ entities:
     - type: Transform
       parent: 131
       pos: -24.451448,11.849533
-    - type: HandheldLight
-      toggleActionEntity: 156
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 156
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 157
     components:
     - type: Transform
       parent: 131
       pos: -24.763948,11.630783
-    - type: HandheldLight
-      toggleActionEntity: 158
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 158
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 159
     components:
     - type: Transform
       parent: 131
       pos: -21.43582,9.099532
-    - type: HandheldLight
-      toggleActionEntity: 160
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 160
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 20810
     components:
     - type: Transform
@@ -220876,7 +220707,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 357
-      - invalid
     - type: AtmosPipeColor
       color: '#0000FFFF'
     - type: AtmosPipeLayers
@@ -243728,22 +243558,6 @@ entities:
     - type: Transform
       parent: 131
       pos: 61.51801,30.628143
-    - type: HandheldLight
-      toggleActionEntity: 154
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 154
-          showEnts: False
-          occludes: True
-    - type: Physics
-      canCollide: True
-    - type: ActionsContainer
   - uid: 32565
     components:
     - type: Transform
@@ -247976,27 +247790,11 @@ entities:
     - type: Transform
       parent: 131
       pos: 24.465202,-45.682095
-    - type: GasTank
-      toggleActionEntity: 137
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 137
   - uid: 138
     components:
     - type: Transform
       parent: 131
       pos: 22.480827,-45.635212
-    - type: GasTank
-      toggleActionEntity: 139
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 139
   - uid: 33106
     components:
     - type: Transform
@@ -272751,9 +272549,6 @@ entities:
       parent: 131
       rot: 3.141592653589793 rad
       pos: 12.5,-27.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 37209
     components:
     - type: Transform
@@ -275493,9 +275288,6 @@ entities:
       parent: 131
       rot: -1.5707963267948966 rad
       pos: 15.5,-23.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: DeviceLinkSource
       linkedPorts:
         37208:

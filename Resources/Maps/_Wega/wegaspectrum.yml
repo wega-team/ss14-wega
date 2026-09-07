@@ -7785,9 +7785,6 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 60.5,1.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
   - uid: 440
     components:
     - type: Transform
@@ -9210,8 +9207,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 10637
-      configurators:
-      - invalid
   - uid: 670
     components:
     - type: Transform
@@ -10470,8 +10465,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 160
-      configurators:
-      - invalid
   - uid: 29459
     components:
     - type: Transform
@@ -10499,8 +10492,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 29613
-      configurators:
-      - invalid
 - proto: AirTankFilled
   entities:
   - uid: 840
@@ -153282,8 +153273,6 @@ entities:
       deviceLists:
       - 136
       - 166
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
   - uid: 21440
@@ -154676,8 +154665,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 10637
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -155001,8 +154988,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 160
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -155146,8 +155131,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 29613
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -155419,8 +155402,6 @@ entities:
       deviceLists:
       - 136
       - 166
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
   - uid: 21627
@@ -156503,8 +156484,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 10637
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -157158,8 +157137,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 160
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -157185,8 +157162,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 29613
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -187780,9 +187755,6 @@ entities:
       parent: 2
       rot: 1.5707963267948966 rad
       pos: 57.5,3.5
-    - type: DeviceNetwork
-      configurators:
-      - invalid
     - type: DeviceLinkSource
       linkedPorts:
         439:

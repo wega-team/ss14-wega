@@ -2995,12 +2995,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -0.39634466,12.638008
-- proto: ActionToggleLight
-  entities:
-  - uid: 5
-    components:
-    - type: Transform
-      parent: 4
 - proto: AirAlarm
   entities:
   - uid: 6
@@ -7991,8 +7985,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
   - uid: 586
     components:
     - type: Transform
@@ -8660,8 +8652,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 23423
-      configurators:
-      - invalid
   - uid: 23535
     components:
     - type: Transform
@@ -69762,8 +69752,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
   - uid: 10327
     components:
     - type: Transform
@@ -69883,8 +69871,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
   - uid: 10341
     components:
     - type: Transform
@@ -69894,8 +69880,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
   - uid: 10342
     components:
     - type: Transform
@@ -69926,8 +69910,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
   - uid: 10345
     components:
     - type: Transform
@@ -96559,8 +96541,6 @@ entities:
       deviceLists:
       - 21
       - 12231
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -96805,8 +96785,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Tertiary
     - type: AtmosPipeColor
@@ -97745,8 +97723,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 23423
-      configurators:
-      - invalid
     - type: AtmosPipeColor
       color: '#0000FFFF'
     - type: AtmosPipeLayers
@@ -99343,8 +99319,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -99358,8 +99332,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -99431,8 +99403,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 21
-      configurators:
-      - invalid
     - type: AtmosPipeLayers
       pipeLayer: Secondary
     - type: AtmosPipeColor
@@ -100087,8 +100057,6 @@ entities:
     - type: DeviceNetwork
       deviceLists:
       - 23423
-      configurators:
-      - invalid
     - type: AtmosPipeColor
       color: '#FF0000FF'
     - type: AtmosPipeLayers
@@ -110399,22 +110367,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -7.4727917,-35.277233
-    - type: HandheldLight
-      toggleActionEntity: 5
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 5
-          showEnts: False
-          occludes: True
-    - type: Physics
-      canCollide: True
-    - type: ActionsContainer
   - uid: 15935
     components:
     - type: Transform

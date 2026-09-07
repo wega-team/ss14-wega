@@ -2477,70 +2477,6 @@ entities:
     - type: Transform
       parent: 3
       pos: -17.62993,-28.218384
-- proto: ActionToggleInternals
-  entities:
-  - uid: 11534
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 16466
-  - uid: 12981
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 16464
-  - uid: 19943
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11857
-    - type: Action
-      container: 11857
-  - uid: 19944
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11858
-    - type: Action
-      container: 11858
-  - uid: 19961
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11852
-    - type: Action
-      container: 11852
-  - uid: 19965
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11853
-    - type: Action
-      container: 11853
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 19958
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11852
-    - type: Action
-      container: 11852
-  - uid: 19964
-    mapInit: true
-    paused: true
-    components:
-    - type: Transform
-      parent: 11853
-    - type: Action
-      container: 11853
 - proto: AirAlarm
   entities:
   - uid: 22
@@ -74114,32 +74050,10 @@ entities:
     components:
     - type: Transform
       parent: 19942
-    - type: GasTank
-      toggleActionEntity: 19943
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 19943
-    - type: InsideEntityStorage
   - uid: 11858
     components:
     - type: Transform
       parent: 19942
-    - type: GasTank
-      toggleActionEntity: 19944
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 19944
-    - type: InsideEntityStorage
   - uid: 11859
     components:
     - type: Transform
@@ -74169,32 +74083,10 @@ entities:
     components:
     - type: Transform
       parent: 11349
-    - type: GasTank
-      toggleActionEntity: 12981
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 12981
-    - type: InsideEntityStorage
   - uid: 16466
     components:
     - type: Transform
       parent: 10484
-    - type: GasTank
-      toggleActionEntity: 11534
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 11534
-    - type: InsideEntityStorage
   - uid: 16467
     components:
     - type: Transform
@@ -76902,8 +76794,6 @@ entities:
       - 13302
       - 8774
       - 16343
-      configurators:
-      - invalid
   - uid: 16555
     components:
     - type: Transform
@@ -76915,8 +76805,6 @@ entities:
       - 13302
       - 8774
       - 16343
-      configurators:
-      - invalid
   - uid: 16556
     components:
     - type: Transform
@@ -76929,8 +76817,6 @@ entities:
       - 20240
       - 10991
       - 4594
-      configurators:
-      - invalid
   - uid: 16557
     components:
     - type: Transform
@@ -76943,8 +76829,6 @@ entities:
       - 20240
       - 10991
       - 4594
-      configurators:
-      - invalid
   - uid: 16561
     components:
     - type: Transform
@@ -111463,38 +111347,10 @@ entities:
     components:
     - type: Transform
       parent: 19942
-    - type: GasTank
-      toggleActionEntity: 19961
-    - type: Jetpack
-      toggleActionEntity: 19958
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 19958
-          - 19961
-    - type: InsideEntityStorage
   - uid: 11853
     components:
     - type: Transform
       parent: 19942
-    - type: GasTank
-      toggleActionEntity: 19965
-    - type: Jetpack
-      toggleActionEntity: 19964
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 19964
-          - 19965
-    - type: InsideEntityStorage
 - proto: Joint
   entities:
   - uid: 21339
@@ -114228,7 +114084,7 @@ entities:
 
         Челнок WCoSH-681 По пути к Robust-station Dk-984
 
-        пострадал в следствии удара неизвестного объекта на высокой скорости, предположительно канистры для хранения газа. 
+        пострадал в следствии удара неизвестного объекта на высокой скорости, предположительно канистры для хранения газа.
 
         Герметичность частично нарушена: грузовой бокс повреждён, шлюзы заблокированы, часть товара утеряна.
 
@@ -114239,11 +114095,6 @@ entities:
 
         =============================================
                                     [italic]Место для печатей[/italic]
-    - type: UserInterface
-      actors:
-        enum.PaperUiKey.Key:
-        - invalid
-    - type: ActiveUserInterface
   - uid: 21563
     components:
     - type: Transform
@@ -114392,11 +114243,6 @@ entities:
         Запросил: Роб-Астер
 
         Причина: нехватка вооружения для регулярной армии
-    - type: UserInterface
-      actors:
-        enum.PaperUiKey.Key:
-        - invalid
-    - type: ActiveUserInterface
   - uid: 19956
     components:
     - type: Transform
@@ -130425,7 +130271,7 @@ entities:
     - type: Transform
       parent: 3
       pos: -20.5,2.5
-- proto: SpawnPointSalvageSpecialist
+- proto: SpawnPointShaftMiner
   entities:
   - uid: 13320
     components:

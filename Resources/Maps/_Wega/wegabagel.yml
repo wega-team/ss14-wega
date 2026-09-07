@@ -3537,44 +3537,6 @@ entities:
     - type: Transform
       parent: 60
       pos: -23.517168,-10.499137
-- proto: ActionToggleInternals
-  entities:
-  - uid: 5836
-    components:
-    - type: Transform
-      parent: 5430
-  - uid: 6830
-    components:
-    - type: Transform
-      parent: 6707
-  - uid: 13159
-    components:
-    - type: Transform
-      parent: 19510
-- proto: ActionToggleJetpack
-  entities:
-  - uid: 5757
-    components:
-    - type: Transform
-      parent: 5430
-  - uid: 6734
-    components:
-    - type: Transform
-      parent: 6707
-- proto: ActionToggleLight
-  entities:
-  - uid: 4547
-    components:
-    - type: Transform
-      parent: 18456
-  - uid: 8989
-    components:
-    - type: Transform
-      parent: 18528
-  - uid: 13684
-    components:
-    - type: Transform
-      parent: 18476
 - proto: AirAlarm
   entities:
   - uid: 12
@@ -75052,14 +75014,6 @@ entities:
     - type: Transform
       parent: 60
       pos: 56.09298,8.675501
-    - type: GasTank
-      toggleActionEntity: 13159
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 13159
 - proto: DresserCaptainFilled
   entities:
   - uid: 6419
@@ -78819,39 +78773,11 @@ entities:
     - type: Transform
       parent: 60
       pos: 0.76574916,21.115711
-    - type: HandheldLight
-      toggleActionEntity: 4547
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 4547
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 18476
     components:
     - type: Transform
       parent: 60
       pos: 0.68762416,21.240711
-    - type: HandheldLight
-      toggleActionEntity: 13684
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 13684
-          showEnts: False
-          occludes: True
-    - type: ActionsContainer
   - uid: 18702
     components:
     - type: Transform
@@ -117581,38 +117507,10 @@ entities:
     components:
     - type: Transform
       parent: 5313
-    - type: GasTank
-      toggleActionEntity: 5836
-    - type: Jetpack
-      toggleActionEntity: 5757
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 5757
-          - 5836
-    - type: InsideEntityStorage
   - uid: 6707
     components:
     - type: Transform
       parent: 1906
-    - type: GasTank
-      toggleActionEntity: 6830
-    - type: Jetpack
-      toggleActionEntity: 6734
-    - type: Physics
-      canCollide: False
-    - type: ActionsContainer
-    - type: ContainerContainer
-      containers:
-        actions: !type:Container
-          ents:
-          - 6734
-          - 6830
-    - type: InsideEntityStorage
 - proto: KitchenElectricGrill
   entities:
   - uid: 2227
@@ -117770,22 +117668,6 @@ entities:
     - type: Transform
       parent: 60
       pos: -4.6236715,-6.065073
-    - type: HandheldLight
-      toggleActionEntity: 8989
-    - type: ContainerContainer
-      containers:
-        cell_slot: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        actions: !type:Container
-          ents:
-          - 8989
-          showEnts: False
-          occludes: True
-    - type: Physics
-      canCollide: True
-    - type: ActionsContainer
   - uid: 18888
     components:
     - type: Transform
