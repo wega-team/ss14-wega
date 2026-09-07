@@ -200,6 +200,24 @@
 
 - type: entity
   parent: BaseHardsuitSelector
+  id: HardsuitChaplain
+  name: chaplain armory selector
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/advanced.rsi
+  - type: ItemSelector
+    items:
+    - BaseArmorChaplain
+    - ArmorChaplainHelldiver
+    - ArmorChaplainMagic
+    - ArmorChaplainBrass
+    - ArmorChaplainInquisitor
+    - ArmorChaplainWitchHunter
+    - ArmorChaplainSchema
+  - type: Item
+    size: Normal # чтоб в лодаут вмещался
+   
+- type: entity
+  parent: BaseHardsuitSelector
   id: HardsuitAsteroidSelector
   name: asteroid hardsuit selector
   description: "An obsidian rod that strikes paranormal things."
