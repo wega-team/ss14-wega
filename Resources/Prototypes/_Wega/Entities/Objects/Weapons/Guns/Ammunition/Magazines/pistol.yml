@@ -92,3 +92,64 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  id: MagazinePistolSubMachineGunFrozen
+  name: SMG magazine (.35 frozen)
+  description: 30-round double-stack magazine for submachine guns. Intended to hold experimental chilling ammunition.
+  parent: BaseMagazinePistolSubMachineGun
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 30
+    proto: CartridgePistolFrozen
+    whitelist:
+      tags:
+        - CartridgePistol
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
+      color: "#18a2d5ff"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      - state: inhand-left-stripe
+        color: "#18a2d5ff"
+      right:
+      - state: inhand-right-mag
+      - state: inhand-right-stripe
+        color: "#18a2d5ff"
+  - type: Tag
+    tags:
+      - MagazinePistolSubMachineGun
+
+- type: entity
+  parent: BaseMagazinePistolSubMachineGun
+  id: ExtMagazinePistolSubMachineGun
+  name: extended SMG magazine (.35 auto)
+  description: 60-round triple-stack magazine for submachine guns. Intended to hold general-purpose kinetic ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 60
+    proto: CartridgePistol
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag_ext.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      right:
+      - state: inhand-right-mag

@@ -176,9 +176,8 @@
     refineResult:
     - id: FoodDemonicWatermelonSlice
       amount: 5
-  - type: Butcherable
-    spawned:
     - id: ClothingHeadHatDemonicWatermelon
+      prob: 0.5
     - id: ClothingNeckWingsTail
   - type: Tag
     tags:

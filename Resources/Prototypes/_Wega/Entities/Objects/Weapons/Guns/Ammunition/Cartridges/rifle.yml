@@ -1,0 +1,15 @@
+- type: entity
+  parent: BaseCartridgeRifle
+  id: CartridgeRifleFrozen
+  name: cartridge (.20 rifle frozen)
+  description: A modern intermediate cartridge for combat rifles. Frozen ammunition lowers body temperature when it hits an opponent.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletRifleFrozen
+  - type: Sprite
+    layers:
+      - state: base
+        map: [ "enum.AmmoVisualLayers.Base" ]
+      - state: tip
+        map: [ "enum.AmmoVisualLayers.Tip" ]
+        color: "#18a2d5ff"
