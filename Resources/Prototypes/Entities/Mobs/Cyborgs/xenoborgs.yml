@@ -47,14 +47,14 @@
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleAdvancedTool
+      - XenoborgModuleConstruction
     # Corvax-Wega-robots-start
-      # - XenoborgModuleConstruction
       # - BorgModuleAdvancedTool
       # - BorgModuleConstruction
       # - BorgModuleRCD
       # - BorgModuleRCD
-      # - XenoborgModuleAccessBreaker
-      # - XenoborgModuleTileGun
+      - XenoborgModuleAccessBreaker
+      - XenoborgModuleTileGun
       - BorgModuleXenoConstruction
       - XenoborgHoloprojector
       # - BorgModuleCable
@@ -72,8 +72,7 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-# Corvax-Wega-Start
-  - type: Stripping
+  # Corvax-Wega-Start
   - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
     blacklist:
       null
@@ -328,21 +327,22 @@
       - MMI
       borg_module:
       - XenoborgModuleBasic
-      - XenoborgModuleAdvancedTool
-    # Corvax-Wega-robots-start
-      # - XenoborgModuleConstruction
+      # Corvax-Wega-robots-start
       # - BorgModuleAdvancedTool
       # - BorgModuleConstruction
       # - BorgModuleRCD
       # - BorgModuleRCD
-      # - XenoborgModuleAccessBreaker
-      # - XenoborgModuleTileGun
+      - XenoborgModuleAdvancedTool
+      - XenoborgModuleConstruction
+      - XenoborgModuleAccessBreaker
       - BorgModuleXenoConstruction
       - XenoborgHoloprojector
       # - BorgModuleCable
-      # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
-      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
-  # Corvax-Wega-robots-end
+      # - XenoborgModuleAccessBreaker
+      # - XenoborgModuleFireExtinguisher
+      # - XenoborgModuleFireExtinguisher
+      # Corvax-Wega-robots-end
+      - XenoborgModuleTileGun
   - type: ItemSlots
     slots:
       cell_slot:
