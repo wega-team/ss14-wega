@@ -165,7 +165,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         // Show the silicon has been subverted.
         component.Subverted = true;
 
-
+ // Corvax-Wega-start
 		var name = "";
         if (TryComp<EmagSiliconLawComponent>(uid, out var emag))
         {
@@ -177,12 +177,13 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 			{
 				name = Name(args.user);
 			}
+ // Corvax-Wega-end
         }
 
         // Add the first emag law before the others
         component.Lawset?.Laws.Insert(0, new SiliconLaw
         {
-            LawString = Loc.GetString("law-emag-custom", ("name", name), ("title", Loc.GetString(component.Lawset.ObeysTo))), // DeltaV
+            LawString = Loc.GetString("law-emag-custom", ("name", name), ("title", Loc.GetString(component.Lawset.ObeysTo))), //  Corvax-Wega-Change
             Order = 0
         });
 
