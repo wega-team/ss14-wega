@@ -59,10 +59,10 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
             }
         }
 
-        // Begin DeltaV Code: Custom lawset patching
+        // Corvax-Wega-start
         if (prototype.Lawset is { } law)
             ChangeLaw(ent, law);
-        // End DeltaV Code
+        // Corvax-Wega-end
 
         // Configure special components
         if (ProtoMan.Resolve(ent.Comp.SelectedBorgType, out var previousPrototype))
