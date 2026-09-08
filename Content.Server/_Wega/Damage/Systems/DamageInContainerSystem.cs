@@ -106,8 +106,6 @@ public sealed partial class DamageInContainerSystem : EntitySystem
             return;
 
 		if (!HasComp<ActiveDamageInContainerComponent>(uid))
-		{
 			AddComp<ActiveDamageInContainerComponent>(uid);
-		}
     }
 }
