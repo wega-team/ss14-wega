@@ -78,19 +78,26 @@ namespace Content.Shared.Verbs
 
         public static readonly VerbCategory ChannelSelect = new("verb-categories-channel-select", null);
 
-        public static readonly VerbCategory SetSensor = new("verb-categories-set-sensor", null);
+        public static readonly VerbCategory SetSensor = new("verb-categories-set-sensor", "/Textures/Interface/VerbIcons/signal.svg.192dpi.png");
 
         public static readonly VerbCategory Lever = new("verb-categories-lever", null);
 
         public static readonly VerbCategory SelectType = new("verb-categories-select-type", null);
 
         public static readonly VerbCategory PowerLevel = new("verb-categories-power-level", null);
+
         public static readonly VerbCategory Adjust =
             new("verb-categories-adjust", "/Textures/Interface/VerbIcons/screwdriver.png");
 
+        public static readonly VerbCategory Metabolizers =
+            new("verb-categories-select-target", "/Textures/Interface/VerbIcons/group.svg.192dpi.png");
+
+        // Corvax-Wega-Block-start
         public static readonly VerbCategory ToggleHeadsetSound = new("verb-categories-toggle-headset-sound", null); // Corvax-Wega-Headset
         public static readonly VerbCategory CargoAccount = new("verb-categories-cargo-account", null); // Corvax-Wega-Chaneable-Cargo-Account
+        public static readonly VerbCategory ReagentChange = new("verb-categories-reagents-change", null); // Corvax-Wega-Chaneable-Reagent
         public static readonly VerbCategory Interaction = // Corvax-Wega-Interactions
             new("verb-categories-interaction", "/Textures/Interface/VerbIcons/group.svg.192dpi.png"); // Corvax-Wega-Interactions
+        // Corvax-Wega-Block-end
     }
 }

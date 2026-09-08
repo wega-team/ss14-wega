@@ -10,6 +10,7 @@
   - CommonBackpack
   - Glasses
   - BaseShoose
+  - AssistiveItems
   - Survival
   - Trinkets
   # - ServiceWorkerJobTrinkets
@@ -26,6 +27,8 @@
   - BrigmedicJumpsuit
   - BrigmedicBackpack
   - BrigmedicOuterClothing
+  - WegaBrigmedBadge
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - SecurityJobTrinkets
@@ -46,6 +49,7 @@
   - GeneticsOuterClothing
   - MedicalShoes
   - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -63,6 +67,7 @@
   - MedicalBackpack
   - MedicalShoes
   - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -79,6 +84,7 @@
   - MedicalBackpack
   - MedicalShoes
   - MedicalDoctorOuterClothing
+  - AssistiveItems
   - SurvivalMedical
   - Glasses
   - Trinkets
@@ -95,6 +101,7 @@
   - BlueShieldJumpsuit
   - BlueshieldBackpack
   - BlueshielOuter
+  - AssistiveItems
   - SurvivalBlueShield
   - Trinkets
   - LoadoutSpeciesBreathToolBlueShield
@@ -113,6 +120,7 @@
   - PostmanBackpack
   - Glasses
   - BaseShoose
+  - AssistiveItems
   - Survival
   - Trinkets
   # - CargoTechnicianJobTrinkets
@@ -135,6 +143,7 @@
   - ShaftMinerOuterClothing
   - ShaftMinerShoes
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -155,6 +164,7 @@
   - ShaftMinerMedicJumpsuit
   # - ShaftMinerMedicGloves
   - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -170,7 +180,9 @@
   - SecurityBackpack
   - SecurityBelt
   - WardenOuterClothing
+  - WegaDefoltBadge
   - SecurityShoes
+  - AssistiveItems
   - SurvivalSecurity
   - Trinkets
   - WardenJobTrinkets

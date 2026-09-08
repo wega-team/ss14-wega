@@ -1,22 +1,20 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.Body.Systems;
 using Content.Server.Cargo.Components;
 using Content.Server.Chat.Systems;
 using Content.Server.Dice;
 using Content.Server.Economy.SlotMachine;
-using Content.Server.Guardian;
 using Content.Server.Hallucinations;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Revolutionary.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Stack;
-using Content.Server.Station.Components;
 using Content.Server.Surgery;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Armor;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body.Components;
+using Content.Shared.Body.Systems;
 using Content.Shared.Card.Tarot;
 using Content.Shared.Card.Tarot.Components;
 using Content.Shared.Chat;
@@ -30,8 +28,9 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Disease.Components;
 using Content.Shared.EnergyShield;
 using Content.Shared.FixedPoint;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Gravity;
+using Content.Shared.Guardian.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -44,6 +43,7 @@ using Content.Shared.Pinpointer;
 using Content.Shared.Polymorph;
 using Content.Shared.Popups;
 using Content.Shared.Stacks;
+using Content.Shared.Station.Components;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
@@ -53,7 +53,7 @@ using Content.Shared.Tiles;
 using Content.Shared.Traits.Assorted;
 using Content.Shared.Trigger.Components.Triggers;
 using Content.Shared.Trigger.Systems;
-using Content.Shared.VendingMachines;
+using Content.Shared.VendingMachines.Components;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Ranged.Components;
 using Robust.Server.GameObjects;
@@ -86,7 +86,7 @@ public sealed partial class CardTarotSystem : EntitySystem
     [Dependency] private MetaDataSystem _meta = default!;
     [Dependency] private PolymorphSystem _polymorph = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private IMapManager _mapManager = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private RejuvenateSystem _rejuvenate = default!;
     [Dependency] private SlotMachineSystem _slotMachine = default!;
@@ -856,7 +856,7 @@ public sealed partial class CardTarotSystem : EntitySystem
         }
         else
         {
-            var grids = _mapManager.GetAllGrids(Transform(target).MapID)
+            var grids = _map.GetAllGrids(Transform(target).MapID)
                 .Where(g => !HasComp<BecomesStationComponent>(g) && !HasComp<ProtectedGridComponent>(g)).ToList();
 
             if (grids.Count == 0)

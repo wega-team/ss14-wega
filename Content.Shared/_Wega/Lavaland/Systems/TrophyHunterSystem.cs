@@ -36,6 +36,7 @@ public sealed partial class TrophyHunterSystem : EntitySystem
         if (args.HitEntities.Count == 0)
             return;
 
+        var toolDamage = args.BaseDamage.GetTotal().Float() + args.BonusDamage.GetTotal().Float();
         foreach (var hitEnt in args.HitEntities)
         {
             if (!TryComp<TrophyHunterComponent>(hitEnt, out var trophyComp) || trophyComp.Collected)
@@ -48,24 +49,25 @@ public sealed partial class TrophyHunterSystem : EntitySystem
             if (totalDamage <= 0)
                 continue;
 
+            trophyComp.CurrentDamage += toolDamage;
+
             if (_threshold.TryGetThresholdForState(hitEnt, MobState.Dead, out var threshold))
             {
                 var currentDamage = totalDamage.Float();
-                var baseDamage = args.BaseDamage.GetTotal().Float();
-                var bonusDamage = args.BonusDamage.GetTotal().Float();
-
-                var newTotalDamage = currentDamage + baseDamage + bonusDamage;
+                var newTotalDamage = currentDamage + toolDamage;
 
                 if (newTotalDamage < threshold)
                     continue;
 
                 trophyComp.Collected = true;
-                if (!_random.Prob(trophyComp.DropChance))
-                    continue;
+                var requiredDamage = threshold * trophyComp.RequiredThreshold;
 
-                var trophy = Spawn(trophyComp.Trophy, Transform(hitEnt).Coordinates);
-                _throwing.TryThrow(trophy, _random.NextVector2());
-                _audio.PlayPvs(trophyComp.CollectSound, hitEnt);
+                if (trophyComp.CurrentDamage >= requiredDamage && _random.Prob(trophyComp.DropChance))
+                {
+                    var trophy = Spawn(trophyComp.Trophy, Transform(hitEnt).Coordinates);
+                    _throwing.TryThrow(trophy, _random.NextVector2());
+                    _audio.PlayPvs(trophyComp.CollectSound, hitEnt);
+                }
             }
         }
     }

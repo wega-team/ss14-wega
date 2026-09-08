@@ -3,7 +3,10 @@
   startingInventory:
     SecurityWhistle: 5
     Handcuffs: 8
-    BoxBodycam: 1 # Corvax-Wega
+    # Corvax-Wega-Edit-Start
+    CrisisButton: 4
+    BoxBodycam: 1
+    # Corvax-Wega-Edit-End
     GrenadeFlashBang: 4
     TearGasGrenade: 4
     ClusterBangFull: 2
@@ -21,7 +24,7 @@
     RiotLaserShield: 2
     RiotBulletShield: 2
     RadioHandheldSecurity: 5
-    SecutiryBola: 6 # Bola Corvax-Wega
+    SecurityBola: 6
   # security officers need to follow a diet regimen!
   contrabandInventory:
     WeaponMeleeNeedle: 2

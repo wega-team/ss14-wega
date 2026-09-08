@@ -39,7 +39,13 @@
     channels:
     - Supply
   - type: SalvageMagnet
-  - type: SalvageMagnetData # Corvax-Wega-Salvage
+  # Corvax-Wega-Salvage-start
+  - type: SalvageMagnetData
+  - type: ContainerContainer
+    containers:
+      machine_parts:  !type:Container
+      machine_board: !type:Container
+  # Corvax-Wega-Salvage-end
   - type: ApcPowerReceiver
     powerLoad: 2500 # TODO change this to a HV power draw that really hits the grid hard WHEN active
   - type: Machine

@@ -1,4 +1,4 @@
-# heavy
+# Heavy
 - type: entity
   parent: Holoprojector
   id: XenoborgHoloprojectorForcefield
@@ -46,7 +46,7 @@
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
 
-# eng
+# Eng
 - type: entity
   id: XenoRCD
   parent: [ BaseItem, BaseXenoborgContraband ]
@@ -89,32 +89,28 @@
   - type: AutoRecharge
     rechargeDuration: 10
 
-# stels
+# Stels
 - type: entity
   parent: MiniSyringe
   id: MiniSyringePax
   suffix: Pax
   components:
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 5
-        reagents:
-        - ReagentId: Pax
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Pax
+        Quantity: 7.5
 
 - type: entity
   parent: MiniSyringe
   id: MiniSyringeImpedrezene
   suffix: Impedrezene
   components:
-  - type: SolutionContainerManager
-    solutions:
-      injector:
-        maxVol: 5
-        reagents:
-        - ReagentId: ImpedrezeneNoDamage
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: ImpedrezeneNoDamage
+        Quantity: 7.5
 
 - type: entity
   parent: BaseItem
@@ -157,7 +153,8 @@
       - id: MiniSyringePax
     sound:
       path: /Audio/Machines/phasein.ogg
-# mothership
+
+# Mothership
 - type: entity
   parent: XenoborgHoloprojectorForcefield
   id: XenoborgHoloprojectorForcefieldMother
@@ -185,7 +182,7 @@
     sprite: _Wega/Objects/Tools/xeno_access_breaker.rsi
     state: icon
 
-# xenoborgs
+# Xenoborgs
 - type: entity
   parent: RepeirModeDevice
   id: RepeirModeDeviceXenoborg
@@ -204,7 +201,7 @@
           Piercing: -3
           Heat: -3
   - type: PowerCellDraw
-    drawRate: 72 # 10 seconds
+    drawRate: 36 # 10 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot
@@ -266,9 +263,9 @@
   - type: UseDelay
     delay: 120
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    sprite: Structures/Wallmounts/air-alarm.rsi
     layers:
-    - state: fire_b1
+    - state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse
@@ -277,3 +274,181 @@
       - id: Nanopast
     sound:
       path: /Audio/Machines/phasein.ogg
+
+- type: entity
+  parent: ClothingBackpack
+  id: XenoborgModuleBag
+  name: silicon storage square
+  description: A knockoff version of a bluespace bag, can vacumn up select materials, unfit for use by humanoids due to harmful emissions.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/silicon_storage_cube.rsi
+    state: xenoborg
+  - type: MagnetPickup
+  - type: Dumpable
+  - type: Storage
+    grid:
+    - 0,0,5,3
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - PowerCell
+        - BorgModule
+  - type: Tool
+    qualities:
+      - Screwing
+    useSound:
+      collection: Screwdriver
+
+- type: entity
+  parent: BaseItemRecharger
+  id: TurboItemRechargerXenoborg
+  categories: [ HideSpawnMenu ]
+  name: turbo recharger
+  description: An overclocked recharger. Not recommended for use around asthmatics.
+  components:
+  - type: Sprite
+    sprite: Structures/Power/turbo_recharger.rsi
+  - type: Charger
+    chargeRate: 100
+  - type: ItemSlots
+    slots:
+      charger_slot:
+        ejectOnInteract: false
+        whitelist:
+          tags:
+          - Stunbaton
+          components:
+          - BatteryAmmoProvider
+          - PowerCell
+        blacklist:
+          tags:
+          - PotatoBattery
+  - type: ApcPowerReceiver
+    needsPower: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80000000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 80000000
+      behaviors:
+      - !type:EmptyAllContainersBehaviour
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatChameleonXenoborg
+  name: beret
+  description: A beret, an artists favorite headwear.
+  suffix: Chameleon
+  components:
+  - type: FleetingClothing
+    playSoundOnSelfUnequip: false
+    examineOthers: null # stealthy unless stripped
+  - type: ActivatableUI
+    key: enum.ChameleonUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonUiKey.Key:
+        type: ChameleonBoundUserInterface
+  - type: Tag
+    tags: # ignore "WhitelistChameleon" tag
+    - ClothMade
+  - type: Sprite
+    sprite: Clothing/Head/Hats/beret.rsi
+  - type: Clothing
+    sprite: Clothing/Head/Hats/beret.rsi
+  - type: ChameleonClothing
+    slot: [HEAD]
+    default: ClothingHeadHatBeret
+  # Corvax-Wega-Dirtable-start
+  - type: Dirtable
+    dirtState: beret
+    equippedDirtState: equipped-beret
+  # Corvax-Wega-Dirtable-end
+
+- type: entity
+  name: ion carabine
+  parent: BaseWeaponBatterySmall
+  id: WeaponIonCarabineXenoborg
+  categories: [ HideSpawnMenu ]
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/iongun.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-2
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    zeroVisible: true
+    magState: mag
+    steps: 3
+  - type: Appearance
+  - type: Gun
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,1
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50
+  - type: BatteryAmmoProvider
+    proto: IonScan
+    fireCost: 250
+
+- type: entity
+  name: upgradebrain
+  parent: BaseItem
+  id: UpgradeKitBrain
+  description: An experimental upgrade kit for the C.H.I.M.P.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/xenomater.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Tag
+    tags:
+    - UpgradeKitBrain
+
+- type: entity
+  parent: ClothingBackpack
+  id: XenoborgTitleBag
+  name: silicon storage square
+  description: A knockoff version of a bluespace bag, can vacumn up select materials, unfit for use by humanoids due to harmful emissions.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/silicon_storage_cube.rsi
+    state: xenoborg
+  - type: MagnetPickup
+    slotFlags: null
+    range: 1.5
+    requireActiveHand: true
+  - type: Dumpable
+  - type: Storage
+    grid:
+    - 0,0,1,1
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+        - FloorTile

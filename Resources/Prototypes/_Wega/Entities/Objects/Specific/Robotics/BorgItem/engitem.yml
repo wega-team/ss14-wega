@@ -75,9 +75,9 @@
   - type: UseDelay
     delay: 3
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    sprite: Structures/Wallmounts/air-alarm.rsi
     layers:
-    - state: fire_b1
+    - state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse

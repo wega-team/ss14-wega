@@ -3,9 +3,6 @@
   id: WallHierophantArena
   name: hierophant wall
   components:
-  - type: Tag
-    tags:
-      - Wall
   - type: Sprite
     sprite: _Wega/Structures/Walls/hierophant.rsi
   - type: Icon
@@ -63,6 +60,3 @@
     enabled: false
   - type: TimedDespawn
     lifetime: 10
-  - type: Tag
-    tags:
-      - Wall

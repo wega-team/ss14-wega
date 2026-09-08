@@ -14,6 +14,11 @@
   loadouts:
   - ClothingNeckCloakMagic
   - ClothingNeckCloakManly
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
 
 - type: loadoutGroup
   id: SponsorGloves
@@ -21,3 +26,10 @@
   minLimit: 0
   loadouts:
   - ClothingHandsGlovesElegantTacticalmaid
+
+- type: loadoutGroup
+  id: SponsorOuterClothing
+  name: loadout-group-sponsor-outer
+  minLimit: 0
+  loadouts:
+  - ClothingOuterCyberJacket

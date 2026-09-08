@@ -13,10 +13,22 @@ public sealed partial class LeechMeleeWeaponComponent : Component
     public GroupHealSpecifier? HealGroups = default!;
 
     [DataField]
+    public float ModifyBloodLevel = 0.0f;
+
+    [DataField]
+    public float BloodlossModifier = 0.0f;
+
+    [DataField]
     public bool Weighted = false;
 
     [DataField]
-    public EntityWhitelist? Whitelist;
+    public EntityWhitelist? Whitelist = new()
+    {
+        Components = new[]
+        {
+            "MobState",
+        }
+    };
 
     [DataField]
     public EntityWhitelist? Blacklist;

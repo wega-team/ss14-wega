@@ -1,8 +1,7 @@
+/*
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Actions;
-using Content.Shared.Nutrition.EntitySystems;
-using Content.Shared.Nutrition.Components;
 using Content.Server.Popups;
 
 namespace Content.Server.Damage.Systems;
@@ -46,3 +45,4 @@ public sealed partial class DamageOnActionSystem : EntitySystem
         _actions.SetCooldown(ent.Comp.ActionEntity, ent.Comp.Delay);
     }
 }
+*/

@@ -60,6 +60,7 @@
   - DrillSuitModule
   - AdvancedFlashlightSuitModule
   - TemperatureRegulatorSuitModule
+  - KineticHolsterSuitModule
 
 - type: latheRecipePack
   id: ModesuitModuleSecStatic

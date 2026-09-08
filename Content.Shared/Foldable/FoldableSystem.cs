@@ -8,6 +8,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Whitelist; // Corvax-Wega-Morgue-change
 
 namespace Content.Shared.Foldable;
 
@@ -19,6 +20,7 @@ public sealed partial class FoldableSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private AnchorableSystem _anchorable = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-Morgue-change
 
     public override void Initialize()
     {
@@ -91,7 +93,7 @@ public sealed partial class FoldableSystem : EntitySystem
 
     private void OnInsertEvent(EntityUid uid, FoldableComponent component, ContainerGettingInsertedAttemptEvent args)
     {
-        if (!component.IsFolded && !component.CanFoldInsideContainer)
+        if (!component.IsFolded && !component.CanFoldInsideContainer && _whitelistSystem.IsWhitelistFailOrNull(component.DeployedContainerWhitelist, args.Container.Owner)) // Corvax-Wega-Morgue-change
             args.Cancel();
     }
 
@@ -101,9 +103,9 @@ public sealed partial class FoldableSystem : EntitySystem
         if (!result && folder != null)
         {
             if (comp.IsFolded)
-                _popup.PopupPredicted(Loc.GetString("foldable-unfold-fail", ("object", uid)), uid, folder.Value);
+                _popup.PopupEntity(Loc.GetString("foldable-unfold-fail", ("object", uid)), uid, folder.Value);
             else
-                _popup.PopupPredicted(Loc.GetString("foldable-fold-fail", ("object", uid)), uid, folder.Value);
+                _popup.PopupEntity(Loc.GetString("foldable-fold-fail", ("object", uid)), uid, folder.Value);
         }
         return result;
     }

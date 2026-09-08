@@ -3,11 +3,9 @@
   id: OreIronLavaland
   entityMask:
     AsteroidRock: AsteroidRockTin
-    WallRock: WallRockTin
-    WallRockBasalt: WallRockBasaltLavalandTin
-    WallRockChromite: WallRockChromiteTin
+    WallRockChromite: WallRockChromiteLavalandTin
     WallRockSand: WallRockSandTin
-    WallRockSnow: WallRockSnowTin
+    WallRockSnow: WallRockSnowIcemoonTin
   maxCount: 30
   minGroupSize: 10
   maxGroupSize: 15
@@ -17,10 +15,9 @@
   id: OreQuartzLavaland
   entityMask:
     AsteroidRock: AsteroidRockQuartz
-    WallRock: WallRockQuartz
-    WallRockBasalt: WallRockBasaltLavalandQuartz
     WallRockChromite: WallRockChromiteQuartz
-    WallRockSnow: WallRockSnowQuartz
+    WallRockSand: WallRockSandQuartz
+    WallRockSnow: WallRockSnowIcemoonQuartz
   maxCount: 30
   minGroupSize: 10
   maxGroupSize: 15
@@ -30,11 +27,9 @@
   id: OreCoalLavaland
   entityMask:
     AsteroidRock: AsteroidRockCoal
-    WallRock: WallRockCoal
-    WallRockBasalt: WallRockBasaltLavalandCoal
-    WallRockChromite: WallRockChromiteCoal
+    WallRockChromite: WallRockChromiteLavalandCoal
     WallRockSand: WallRockSandCoal
-    WallRockSnow: WallRockSnowCoal
+    WallRockSnow: WallRockSnowIcemoonCoal
   maxCount: 30
   minGroupSize: 8
   maxGroupSize: 12
@@ -46,11 +41,9 @@
   id: OreGoldLavaland
   entityMask:
     AsteroidRock: AsteroidRockGold
-    WallRock: WallRockGold
-    WallRockBasalt: WallRockBasaltLavalandGold
-    WallRockChromite: WallRockChromiteGold
+    WallRockChromite: WallRockChromiteLavalandGold
     WallRockSand: WallRockSandGold
-    WallRockSnow: WallRockSnowGold
+    WallRockSnow: WallRockSnowIcemoonGold
   maxCount: 20
   minGroupSize: 5
   maxGroupSize: 10
@@ -61,11 +54,9 @@
   id: OreSilverLavaland
   entityMask:
     AsteroidRock: AsteroidRockSilver
-    WallRock: WallRockSilver
-    WallRockBasalt: WallRockBasaltLavalandSilver
-    WallRockChromite: WallRockChromiteSilver
+    WallRockChromite: WallRockChromiteLavalandSilver
     WallRockSand: WallRockSandSilver
-    WallRockSnow: WallRockSnowSilver
+    WallRockSnow: WallRockSnowIcemoonSilver
   maxCount: 20
   minGroupSize: 5
   maxGroupSize: 10
@@ -77,11 +68,9 @@
   id: OrePlasmaLavaland
   entityMask:
     AsteroidRock: AsteroidRockPlasma
-    WallRock: WallRockPlasma
-    WallRockBasalt: WallRockBasaltLavalandPlasma
-    WallRockChromite: WallRockChromitePlasma
+    WallRockChromite: WallRockChromiteLavalandPlasma
     WallRockSand: WallRockSandPlasma
-    WallRockSnow: WallRockSnowPlasma
+    WallRockSnow: WallRockSnowIcemoonPlasma
   maxCount: 12
   minGroupSize: 4
   maxGroupSize: 8
@@ -92,11 +81,9 @@
   id: OreUraniumLavaland
   entityMask:
     AsteroidRock: AsteroidRockUranium
-    WallRock: WallRockUranium
-    WallRockBasalt: WallRockBasaltLavalandUranium
-    WallRockChromite: WallRockChromiteUranium
+    WallRockChromite: WallRockChromiteLavalandUranium
     WallRockSand: WallRockSandUranium
-    WallRockSnow: WallRockSnowUranium
+    WallRockSnow: WallRockSnowIcemoonUranium
   maxCount: 15
   minGroupSize: 4
   maxGroupSize: 8
@@ -106,11 +93,9 @@
   id: OreDiamondLavaland
   entityMask:
     AsteroidRock: AsteroidRockDiamond
-    WallRock: WallRockDiamond
-    WallRockBasalt: WallRockBasaltLavalandDiamond
-    WallRockChromite: WallRockChromiteDiamond
+    WallRockChromite: WallRockChromiteLavalandDiamond
     WallRockSand: WallRockSandDiamond
-    WallRockSnow: WallRockSnowDiamond
+    WallRockSnow: WallRockSnowIcemoonDiamond
   maxCount: 6
   minGroupSize: 1
   maxGroupSize: 2

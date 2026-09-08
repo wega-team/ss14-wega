@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "license": "CC-BY-SA 3.0",
+    "license": "CC-BY-SA-3.0",
     "copyright": "Taken from https://github.com/tgstation/tgstation/",
     "size": {
         "x": 96,
@@ -9,6 +9,9 @@
     "states": [
         {
             "name": "landing"
+        },
+        {
+            "name": "target_largebox"
         }
     ]
 }

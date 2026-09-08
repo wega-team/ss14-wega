@@ -19,6 +19,7 @@ marking-DemomTailUp-tail = Хвост
 marking-DemomTailUp-up = Кончик хвоста
 # Пятна
 marking-DemonChestCowSpots = Аркана, туловище (Коровьи пятна)
+marking-DemonChestCowSpotsFem = Аркана, туловище (Коровьи пятна)
 marking-DemonChestCowSpots-cow_spots = Пятна
 marking-DemonChestGuard = Аркана, туловище (Защита)
 marking-DemonChestGuard-guards_stripes = Линии

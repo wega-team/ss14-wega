@@ -70,6 +70,13 @@
   id: TechDiskComputerCircuitboard
   result: TechDiskComputerCircuitboard
 
+# Corvax-Wega-Start
+# - type: latheRecipe
+  # parent: [ BaseGoldCircuitboardRecipe, BaseResearchComputerRecipeCategory ]
+  # id: StationTeleportersControlCircuitboard
+  # result: StationTeleportersControlCircuitboard
+# Corvax-Wega-End
+
 # Cameras
 - type: latheRecipe
   parent: [ BaseCircuitboardRecipe, BaseSecurityComputerRecipeCategory ]

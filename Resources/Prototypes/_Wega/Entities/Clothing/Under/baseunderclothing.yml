@@ -25,3 +25,98 @@
 #           MaterialCloth1:
 #             min: 2
 #             max: 2
+
+- type: entity
+  parent: [SolutionFood, SolutionToolSmall, Clothing, BaseSlicingRefinable]
+  id: ClothingUnderBottomBase
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Clothing
+    equipDelay: 2
+    unequipDelay: 2
+    quickEquip: false
+    slots:
+    - underwearbottom
+  - type: Item
+    size: Small
+  - type: Storage
+    grid:
+    - 0,0,0,1
+    maxItemSize: Tiny
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: UseDelay
+    delay: 0.5
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialCloth1
+      amount: 2
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+
+- type: entity
+  parent: [SolutionFood, SolutionToolSmall, Clothing, BaseSlicingRefinable]
+  id: ClothingUnderSocksBase
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Small
+  - type: Clothing
+    unequipSound:
+    quickEquip: false
+    slots:
+    - socks
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialCloth1
+      amount: 2
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+
+- type: entity
+  parent: [SolutionFood, SolutionToolSmall, Clothing, BaseSlicingRefinable]
+  id: ClothingUnderTopBase
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Small
+  - type: Clothing
+    equipSound: /Audio/Items/jumpsuit_equip.ogg
+    equipDelay: 2
+    unequipDelay: 2
+    quickEquip: false
+    slots:
+    - underweartop
+  - type: ToolRefinable
+    refineResult:
+    - id: MaterialCloth1
+      amount: 2
+  - type: Edible
+    requiresSpecialDigestion: true
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10

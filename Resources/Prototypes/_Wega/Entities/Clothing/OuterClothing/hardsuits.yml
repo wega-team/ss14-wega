@@ -12,8 +12,7 @@
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
-    heatingCoefficient: 0.001
-    coolingCoefficient: 0.001
+    coefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.5
   - type: FireProtection
@@ -61,8 +60,7 @@
     highPressureMultiplier: 0.02
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
-    heatingCoefficient: 0.001
-    coolingCoefficient: 0.001
+    coefficient: 0.001
   - type: ExplosionResistance
     damageCoefficient: 0.4
   - type: FireProtection
@@ -126,4 +124,19 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitBlueShield
-  
+
+- type: entity
+  parent: ClothingOuterHardsuitMaxim
+  id: ClothingOuterHardsuitFrostMiner
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/frostminer.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Hardsuits/frostminer.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.4
+    sprintModifier: 0.4
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitFrostMiner
+  - type: Unremoveable
+  - type: DeleteOnDrop

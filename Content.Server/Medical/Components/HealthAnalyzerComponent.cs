@@ -1,7 +1,7 @@
 using Content.Shared.Disease; // Corvax-Wega-Disease
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype; // Corvax-Wega-Disease
 
 namespace Content.Server.Medical.Components;
 
@@ -74,8 +74,8 @@ public sealed partial class HealthAnalyzerComponent : Component
     /// <summary>
     /// The disease this will give people.
     /// </summary>
-    [DataField("disease", customTypeSerializer: typeof(PrototypeIdSerializer<DiseasePrototype>))]
+    [DataField("disease")]
     [ViewVariables(VVAccess.ReadWrite)]
-    public string? Disease;
+    public ProtoId<DiseasePrototype>? Disease;
     // Corvax-Wega-Disease-end
 }

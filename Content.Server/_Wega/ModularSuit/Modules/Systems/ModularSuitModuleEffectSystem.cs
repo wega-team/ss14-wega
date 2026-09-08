@@ -60,7 +60,7 @@ public sealed partial class ModularSuitSuitEffectSystem : EntitySystem
         foreach (var (_, entry) in component.ActiveComponents)
         {
             var compType = entry.Component.GetType();
-            if (EntityManager.TryGetComponent(targetEntity.Value, compType, out var comp))
+            if (TryComp(targetEntity.Value, compType, out var comp))
             {
                 var reg = EntityManager.ComponentFactory.GetRegistration(compType);
                 if (reg.NetID != null)

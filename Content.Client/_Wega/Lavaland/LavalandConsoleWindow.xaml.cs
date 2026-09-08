@@ -50,6 +50,18 @@ public sealed partial class LavalandConsoleWindow : FancyWindow
         };
         LocationLabel.Text = locationText;
 
+        if (!string.IsNullOrEmpty(state.CurrentPlanet))
+        {
+            UpdatePlanetColor(state.CurrentPlanet);
+            PlanetLabel.Text = state.CurrentPlanet;
+            PlanetLabel.Visible = true;
+        }
+        else
+        {
+            PlanetLabel.Text = Loc.GetString("lavaland-shuttle-no-planet");
+            PlanetLabel.Visible = true;
+        }
+
         UpdateCallButton(state);
         UpdateStatusVisuals(state.Status, state.Location);
         UpdateCooldownInfo();
@@ -113,6 +125,22 @@ public sealed partial class LavalandConsoleWindow : FancyWindow
             _cooldownEndTime = null;
             InfoLabel.Text = Loc.GetString("lavaland-shuttle-info-ready");
             InfoLabel.FontColorOverride = Color.FromHex("#4CAF50");
+        }
+    }
+
+    private void UpdatePlanetColor(string planetName)
+    {
+        if (planetName.Contains(Loc.GetString("lavaland-map"), StringComparison.OrdinalIgnoreCase))
+        {
+            PlanetLabel.FontColorOverride = Color.FromHex("#FF6B35");
+        }
+        else if (planetName.Contains(Loc.GetString("icemoon-map"), StringComparison.OrdinalIgnoreCase))
+        {
+            PlanetLabel.FontColorOverride = Color.FromHex("#4FC3F7");
+        }
+        else
+        {
+            PlanetLabel.FontColorOverride = Color.FromHex("#FFD54F");
         }
     }
 

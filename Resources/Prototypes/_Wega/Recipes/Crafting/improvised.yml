@@ -55,6 +55,22 @@
   objectType: Item
 
 - type: construction
+  id: ExplorerSuitPolar
+  graph: ExplorerSuitPolar
+  startNode: start
+  targetNode: explorerSuit
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: ExplorerSuitKhakiPolar
+  graph: ExplorerSuitKhakiPolar
+  startNode: start
+  targetNode: explorerSuit
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
   id: BoneBracers
   graph: BoneBracers
   startNode: start
@@ -103,9 +119,25 @@
   objectType: Item
 
 - type: construction
-  id: VehicleBoat
+  id: VehicleBoatGoliath
   graph: VehicleBoat
   startNode: start
-  targetNode: boat
+  targetNode: goliath_boat
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: VehicleBoatPolar
+  graph: VehicleBoat
+  startNode: start
+  targetNode: polar_boat
+  category: construction-category-primitive
+  objectType: Item
+
+- type: construction
+  id: GodslayerArmour
+  graph: GodslayerArmour
+  startNode: start
+  targetNode: armour
   category: construction-category-primitive
   objectType: Item

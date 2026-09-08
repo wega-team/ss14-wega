@@ -25,7 +25,7 @@ reagent-desc-gin = Дистиллированный алкогольный на�
 reagent-name-coffeeliqueur = кофейный ликёр
 reagent-desc-coffeeliqueur = Ликёр, со вкусом кофе колд брю и специй.
 
-reagent-name-melon-liquor = арбузный ликёр
+reagent-name-melon-liquor = дынный ликёр
 reagent-desc-melon-liquor = Довольно сладкий фруктовый ликёр крепостью 23 градуса.
 
 reagent-name-n-t-cahors = НеоТеологический кагор
@@ -228,9 +228,6 @@ reagent-desc-monkey-business = Задумайтесь, как обезьяны �
 
 reagent-name-moonshine = самогон
 reagent-desc-moonshine = Самодельный напиток, изготавливаемый в домашних условиях. Что может пойти не так?
-
-reagent-name-neurotoxin = нейротоксин
-reagent-desc-neurotoxin = Сильный нейротоксин, который вводит субъекта в состояние, напоминающее смерть.
 
 reagent-name-painkiller = болеутоляющее
 reagent-desc-painkiller = Лекарство от всех бед.

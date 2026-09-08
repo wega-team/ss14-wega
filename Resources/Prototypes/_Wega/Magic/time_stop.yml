@@ -1,0 +1,20 @@
+- type: entity
+  parent: BaseAction
+  id: ActionTimeStop
+  name: Time stop
+  description: Stop time and fuck here
+  components:
+  - type: Action
+    useDelay: 47
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/action_wizard.rsi
+    layers:
+    - state: time_stop
+      map: ["enum.ActionVisuals.Icon"]
+  - type: SpeakOnAction
+    sentence: action-speech-spell-stop-time
+  - type: InstantAction
+    event: !type:TimeStopActionEvent
+  - type: Magic
+    requiresClothes: true

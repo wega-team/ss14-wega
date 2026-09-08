@@ -14,21 +14,23 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
     [DataField(required: true)]
     public ProtoId<BiomeTemplatePrototype> Biome = default!;
 
+    // If null, its random
+    [DataField] public int? Seed = null;
+
     [DataField]
     public Color MapLightColor = Color.FromHex("#4D4033");
 
     [DataField]
-    public List<ProtoId<BiomeMarkerLayerPrototype>> BiomeLayers = new();
+    public float MaxLightLevel = 3f;
 
     [DataField]
-    public List<LavalandWeatherType> AvailableWeather = new()
-    {
-        LavalandWeatherType.StormWind,
-        LavalandWeatherType.AshStormLight,
-        LavalandWeatherType.AshStormHeavy,
-        LavalandWeatherType.VolcanicActivity,
-        LavalandWeatherType.AcidRain
-    };
+    public float MinLightLevel = 0.2f;
+
+    [DataField]
+    public List<ProtoId<BiomeMarkerLayerPrototype>> BiomeLayers = new();
+
+    [DataField("weather")]
+    public List<ProtoId<LavalandWeatherEntryPrototype>> AvailableWeather = new();
 
     [DataField("temperature")]
     public float AtmosphereTemperature = 293.15f;
@@ -37,12 +39,12 @@ public sealed partial class LavalandPlanetPrototype : IPrototype
     public float[] GasesContent = new float[Atmospherics.TotalNumberOfGases];
 }
 
+/// <summary>
+/// Keys for weather phenomena that have unique effects from their activity.
+/// </summary>
 public enum LavalandWeatherType : byte
 {
     None = 0,
-    AshStormLight,
-    AshStormHeavy,
     VolcanicActivity,
-    AcidRain,
     StormWind
 }

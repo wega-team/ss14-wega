@@ -6,9 +6,11 @@
   components:
   - type: VendingMachine
     pack: IntimatInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    denyState: deny-unshaded
   - type: DatasetVocalizer
     dataset: IntimatAds
   - type: SpeakOnUIClosed
@@ -37,9 +39,11 @@
   components:
   - type: VendingMachine
     pack: CosinessInventory
+  - type: VendingMachineVisuals
     offState: off
     brokenState: broken
     normalState: normal-unshaded
+    denyState: deny-unshaded
   - type: DatasetVocalizer
     dataset: CosinessAds
   - type: SpeakOnUIClosed
@@ -61,7 +65,40 @@
     color: "#e590b9"
 
 - type: entity
-  parent: [ VendingMachine, StorePresetGeneralVoid ]
+  parent: VendingMachine
+  id: VendingMachineFashion
+  name: Fashion-O-Mat
+  description: Station for the stylish!
+  components:
+  - type: VendingMachine
+    pack: FashionOMatInventory
+  - type: VendingMachineVisuals
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    denyState: deny-unshaded
+  - type: DatasetVocalizer
+    dataset: FashionOMatAds
+  - type: SpeakOnUIClosed
+    pack: FashionOMatGoodbyes
+  - type: Sprite
+    sprite: _Wega/Structures/Machines/VendingMachines/fashiondrobe.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: Speech
+  - type: PointLight
+    radius: 1.8
+    energy: 1
+    color: "#FFFFFF"
+
+- type: entity
+  parent: [ BaseVendingMachine, StorePresetGeneralVoid ]
   id: BaseUsVoidPat
   name: P.A.T.
   description: The Void Trading Machine has a bluespace component that allows you to trade with different galaxies.
@@ -94,39 +131,7 @@
       Credit: 5000
 
 - type: entity
-  parent: VendingMachine
-  id: VendingMachineFashion
-  name: Fashion-O-Mat
-  description: Station for the stylish!
-  components:
-  - type: VendingMachine
-    pack: FashionOMatInventory
-    offState: off
-    brokenState: broken
-    normalState: normal-unshaded
-    denyState: deny-unshaded
-  - type: DatasetVocalizer
-    dataset: FashionOMatAds
-  - type: SpeakOnUIClosed
-    pack: FashionOMatGoodbyes
-  - type: Sprite
-    sprite: _Wega/Structures/Machines/VendingMachines/fashiondrobe.rsi
-    layers:
-    - state: "off"
-      map: [ "enum.VendingMachineVisualLayers.Base" ]
-    - state: "off"
-      map: [ "enum.VendingMachineVisualLayers.BaseUnshaded" ]
-      shader: unshaded
-    - state: panel
-      map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-  - type: Speech
-  - type: PointLight
-    radius: 1.8
-    energy: 1
-    color: "#FFFFFF"
-
-- type: entity
-  parent: VendingMachine
+  parent: BaseVendingMachine
   id: VendingMachineTankDispenserExtO2
   suffix: More O2
   name: gas tank dispenser
@@ -135,6 +140,6 @@
   - type: VendingMachine
     pack: TankDispenserExtO2Inventory
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi #TODO add visualiser for remaining tanks as layers
+    sprite: Structures/Machines/VendingMachines/tankdispenser.rsi
     state: dispenser
-
+  - type: VendingMachineEject

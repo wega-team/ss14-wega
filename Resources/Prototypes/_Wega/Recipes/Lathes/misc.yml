@@ -37,13 +37,44 @@
   materials:
     Steel: 500
     Plastic: 300
-    
+
 - type: latheRecipe
   id: TechDiskBag
   result: TechDiskBag
   categories:
   - Clothing
-  completetime: 5
+  completetime: 3
   materials:
     Cloth: 300
     Durathread: 100
+
+- type: latheRecipe
+  id: TechDiskBagT3
+  result: TechDiskBagT3
+  categories:
+  - Clothing
+  completetime: 3
+  materials:
+    Cloth: 300
+    Durathread: 100
+
+- type: latheRecipe
+  id: Binoculars
+  result: Binoculars
+  categories:
+  - Tools
+  completetime: 2
+  materials:
+    Steel: 100
+    Glass: 50
+
+- type: latheRecipe
+  id: TravelCameraCivilian
+  result: TravelCameraCivilian
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+    Gold: 10

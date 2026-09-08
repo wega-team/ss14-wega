@@ -3,20 +3,20 @@
   maps:
   # Highpop
   - WegaKerberos
-  - WegaCyberiad
   - WegaCereStation
   - WegaSpectrum
   - WegaEmerald
   - WegaFland
   # Midpop
+  - WegaCyberiad
   - WegaIshimura
   - WegaKilo
-  - Core
-  - Bagel
-  - Marathon
+  - WegaCore
+  - WegaBagel
+  - WegaMarathon
   # Lowpop
-  - CorvaxSilly
+  - WegaSilly
   - WegaTuhoba
-  - Barratry
-  - Packed
-  - Meta
+  - WegaBarratry
+  - WegaPacked
+  - WegaMeta

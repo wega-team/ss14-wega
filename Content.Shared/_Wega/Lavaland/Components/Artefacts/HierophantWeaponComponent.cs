@@ -12,8 +12,18 @@ public sealed partial class HierophantClubComponent : Component
     public EntProtoId DamageTilePrototype = "EffectHierophantSquare";
 
     [DataField]
+    public EntProtoId BeaconPrototype = "EffectHierophantBeacon";
+
+    [DataField]
     public int MaxChasers = 2;
 
     [DataField]
     public int CrossLength = 4;
+}
+
+[RegisterComponent]
+public sealed partial class HierophantBeaconComponent : Component
+{
+    [ViewVariables(VVAccess.ReadOnly)]
+    public EntityUid ClubEntity;
 }

@@ -8,9 +8,18 @@ public sealed partial class SpawnOnDespawnSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<SpawnOnDeleteComponent, EntityTerminatingEvent>(OnDelete);
+        SubscribeLocalEvent<SpawnOnDeleteComponent, ComponentShutdown>(OnShutdown);
     }
 
-    private void OnDelete(EntityUid uid, SpawnOnDeleteComponent comp, EntityTerminatingEvent args)
-        => Spawn(comp.Prototype, Transform(uid).Coordinates);
+    private void OnShutdown(EntityUid uid, SpawnOnDeleteComponent comp, ComponentShutdown args)
+    {
+        if (TerminatingOrDeleted(uid))
+            return;
+
+        var xform = Transform(uid);
+        if (!xform.Coordinates.IsValid(EntityManager))
+            return;
+
+        SpawnAtPosition(comp.Prototype, xform.Coordinates);
+    }
 }

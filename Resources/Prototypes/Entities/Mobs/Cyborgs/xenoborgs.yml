@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
+  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder, BaseXenoborgDestructible ]
   id: XenoborgEngi
   name: engi xenoborg
   suffix: with brain
@@ -21,6 +21,17 @@
       shader: unshaded
       map: ["light"]
       visible: false
+    - state: electrified
+      sprite: Effects/electricity.rsi
+      shader: unshaded
+      visible: false
+      map: ["enum.ElectrifiedLayers.Sparks"]
+  - type: GenericVisualizer
+    visuals:
+      enum.ElectrifiedVisuals.ShowSparks:
+        enum.ElectrifiedLayers.Sparks:
+          True: { visible: True }
+          False: { visible: False }
   - type: BorgChassis
     maxModules: 5 #Corvax-Wega-add
     hasMindState: xenoborg_engi_e
@@ -29,26 +40,27 @@
       tags:
       - XenoborgModuleGeneric
       - XenoborgModuleEngi
-      - BorgModuleEngineering
-      - BorgModuleGeneric
   - type: ContainerFill
     containers:
       borg_brain:
       - MMIFilled
       borg_module:
       - XenoborgModuleBasic
-# Corvax-Wega-robots-start
+      - XenoborgModuleAdvancedTool
+      - XenoborgModuleConstruction
+    # Corvax-Wega-robots-start
       # - BorgModuleAdvancedTool
       # - BorgModuleConstruction
       # - BorgModuleRCD
       # - BorgModuleRCD
       - XenoborgModuleAccessBreaker
+      - XenoborgModuleTileGun
       - BorgModuleXenoConstruction
       - XenoborgHoloprojector
       # - BorgModuleCable
-# Corvax-Wega-robots-end
       # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
       # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
+  # Corvax-Wega-robots-end
   - type: ShowElectrocutionHUD
   - type: ShowHealthBars
     damageContainers:
@@ -60,6 +72,11 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
+  # Corvax-Wega-Start
+  - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
+    blacklist:
+      null
+  # Corvax-Wega-End
 
 - type: entity
   parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
@@ -153,14 +170,16 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - type: ShowHealthBars
     damageContainers:
     - Biological
-# Corvax-Wega-end
+  - type: Inventory
+    templateId: borgTall
+  # Corvax-Wega-end
 
 - type: entity
-  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
+  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder, BaseXenoborgDestructible ]
   id: XenoborgScout
   name: scout xenoborg
   suffix: with brain
@@ -214,7 +233,7 @@
       cell_slot:
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - type: UserInterface
     interfaces:
       enum.SiliconLawsUiKey.Key:
@@ -237,10 +256,12 @@
   - type: ActionGrant
     actions:
     - ActionBlinkBorg
-# Corvax-Wega-end
+  - type: Inventory
+    templateId: borgDutch
+  # Corvax-Wega-end
 
 - type: entity
-  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder ]
+  parent: [ BaseXenoborgChassis, BaseXenoborgTransponder, BaseXenoborgDestructible ]
   id: XenoborgStealth
   name: stealth xenoborg
   suffix: with brain
@@ -266,7 +287,7 @@
     footstepSoundCollection:
       collection: FootstepHoverXenoborg
   - type: BorgChassis
-    maxModules: 5 #Corvax-Wega-add 
+    maxModules: 5 #Corvax-Wega-add
     hasMindState: xenoborg_stealth_e
     noMindState: xenoborg_stealth_e_r
     moduleWhitelist:
@@ -306,19 +327,22 @@
       - MMI
       borg_module:
       - XenoborgModuleBasic
-# Corvax-Wega-robots-start
+      # Corvax-Wega-robots-start
       # - BorgModuleAdvancedTool
       # - BorgModuleConstruction
       # - BorgModuleRCD
       # - BorgModuleRCD
+      - XenoborgModuleAdvancedTool
+      - XenoborgModuleConstruction
       - XenoborgModuleAccessBreaker
       - BorgModuleXenoConstruction
       - XenoborgHoloprojector
       # - BorgModuleCable
-# Corvax-Wega-robots-end
-      # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
-      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
-      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
+      # - XenoborgModuleAccessBreaker
+      # - XenoborgModuleFireExtinguisher
+      # - XenoborgModuleFireExtinguisher
+      # Corvax-Wega-robots-end
+      - XenoborgModuleTileGun
   - type: ItemSlots
     slots:
       cell_slot:

@@ -2,7 +2,7 @@ using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Timing;
@@ -52,7 +52,8 @@ public sealed partial class GhostRespawnCommand : IConsoleCommand
             shell.WriteLine("You have no mind.");
             return;
         }
-        var time = (_gameTiming.CurTime - ghost.TimeOfDeath);
+
+        var time = _gameTiming.CurTime - ghost.TimeOfDeath;
         var respawnTime = _configurationManager.GetCVar(WegaCVars.GhostRespawnTime);
 
         if (respawnTime > time.TotalSeconds)

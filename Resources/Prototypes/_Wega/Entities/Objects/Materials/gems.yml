@@ -7,6 +7,9 @@
     sprite: _Wega/Objects/Materials/gems.rsi
   - type: StaticPrice
   - type: Damageable
+    damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

@@ -3,3 +3,8 @@
   files:
   - /Audio/_Wega/Effects/Footsteps/suitstep1.ogg
   - /Audio/_Wega/Effects/Footsteps/suitstep2.ogg
+
+- type: soundCollection
+  id: FootstepHarpyFly
+  files:
+  - /Audio/_Wega/Effects/wing_flap.ogg

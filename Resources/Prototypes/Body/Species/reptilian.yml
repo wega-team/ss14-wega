@@ -1,10 +1,10 @@
 - type: markingsGroup
   parent: None # Corvax-Wega-Edit
   id: Reptilian
-  onlyGroupWhitelisted: true
+  # onlyGroupWhitelisted: true Corvax-Wega-Edit
   limits:
     enum.HumanoidVisualLayers.Hair:
-      limit: 0
+      limit: 1 # Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.FacialHair:
       limit: 0
@@ -24,7 +24,7 @@
       limit: 2
       required: false
     enum.HumanoidVisualLayers.HeadSide:
-      limit: 1
+      limit: 2 # Corvax-Wega-Edit
       required: false
     enum.HumanoidVisualLayers.LArm:
       limit: 1
@@ -157,7 +157,6 @@
   - type: Puller
     needsHands: false
   - type: Butcherable
-    butcheringType: Spike
     spawned:
     - id: FoodMeatLizard
       amount: 5
@@ -165,7 +164,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump']
+    allowedEmotes: ['Thump', 'Purr', 'FilinidHisses', 'Growl'] # Corvax-Wega-Edit
   - type: TypingIndicator
     proto: lizard
   - type: CreamPied
@@ -173,10 +172,7 @@
       sprite: Effects/creampie.rsi
       state: creampie_lizard
   - type: Vocal
-    sounds:
-      Male: MaleReptilian
-      Female: FemaleReptilian
-      Unsexed: MaleReptilian
+    emoteSounds: MaleReptilian
   - type: BodyEmotes
     soundsId: ReptilianBodyEmotes
   - type: Damageable
@@ -189,11 +185,8 @@
     damage:
       types:
         Slash: 5
-  - type: Temperature
-    currentTemperature: 310.15
-    specificHeat: 42
   - type: TemperatureDamage
-    heatDamageThreshold: 400
+    heatDamageThreshold: 321.15
     coldDamageThreshold: 285
     coldDamage:
       types:
@@ -214,7 +207,7 @@
   # Corvax-Wega-Genetics-end
 
 - type: entity
-  parent: OrganBase
+  parent: OrganBaseOrganic
   id: OrganReptilian
   abstract: true
   suffix: Reptilian
@@ -265,6 +258,7 @@
     - enum.HumanoidVisualLayers.Snout
     - enum.HumanoidVisualLayers.HeadTop
     - enum.HumanoidVisualLayers.HeadSide
+    - enum.HumanoidVisualLayers.Hair # Corvax-Wega-Add
 
 - type: entity
   parent: [ OrganBaseArmLeft, OrganReptilianExternal ]
@@ -367,6 +361,11 @@
       - Pill
       - Crayon
       - Paper
+      # Corvax-Wega-start
+      - Salad 
+      - Vegetable
+      - Soup
+      # Corvax-Wega-end
 
 - type: entity
   parent: [ OrganBaseLiver, OrganSpriteHumanInternal, OrganReptilianInternal, OrganReptilianMetabolizer ]

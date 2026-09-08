@@ -1,15 +1,17 @@
 using System.Linq;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Kitchen.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
-using Robust.Shared.Timing;
+using Content.Shared.Tools;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
+    private static readonly ProtoId<ToolQualityPrototype> SharpQuality = "Slicing";
+
     private void UiInitialize()
     {
         SubscribeLocalEvent<OperatedComponent, AfterInteractUsingEvent>(OnInteractUsing);
@@ -22,7 +24,7 @@ public sealed partial class SurgerySystem
         var used = args.Used;
 
         var hasSpecialTool = comp.SpecialTool != null && _tool.HasQuality(used, comp.SpecialTool);
-        var hasDefaultTool = comp.SpecialTool == null && HasComp<SharpComponent>(used);
+        var hasDefaultTool = comp.SpecialTool == null && _tool.HasQuality(used, SharpQuality);
         if (!hasSpecialTool && !hasDefaultTool)
             return;
 
@@ -46,11 +48,8 @@ public sealed partial class SurgerySystem
         if (comp.GraphId == null)
             return;
 
-        var graph = _proto.Index<SurgeryGraphPrototype>(comp.GraphId);
-        Timer.Spawn(250, () =>
-        {
-            UpdateUi(uid, comp, graph);
-        });
+        var graph = ProtoMan.Index<SurgeryGraphPrototype>(comp.GraphId);
+        UpdateUi(uid, args.Actor, comp, graph);
     }
 
     private void OnUnbuckled(Entity<OperatedComponent> ent, ref UnbuckledEvent args)
@@ -61,7 +60,7 @@ public sealed partial class SurgerySystem
         _ui.CloseUi(ent.Owner, SurgeryUiKey.Key);
     }
 
-    private void UpdateUi(EntityUid patient, OperatedComponent comp, SurgeryGraphPrototype graph)
+    private void UpdateUi(EntityUid patient, EntityUid surgeon, OperatedComponent comp, SurgeryGraphPrototype graph)
     {
         if (!_ui.HasUi(patient, SurgeryUiKey.Key))
             return;
@@ -77,13 +76,22 @@ public sealed partial class SurgerySystem
                 AddNodeSteps(startNode, patient, comp, groups);
             }
         }
-        else if (_proto.TryIndex(comp.CurrentNode, out SurgeryNodePrototype? nodeProto))
+        else if (ProtoMan.TryIndex(comp.CurrentNode, out SurgeryNodePrototype? nodeProto))
         {
             var node = ConvertToRuntimeNode(nodeProto);
             AddNodeSteps(node, patient, comp, groups);
         }
 
-        _ui.ServerSendUiMessage(patient, SurgeryUiKey.Key,
-            new SurgeryProcedureDto(groups, GetNetEntity(patient)));
+        var sterilityInfo = GetSterilityInfo(patient, surgeon);
+        _ui.SetUiState(patient, SurgeryUiKey.Key, new SurgeryProcedureDtoState(groups, sterilityInfo));
+    }
+
+    private void SendSterilityUpdateToUi(EntityUid patient, EntityUid surgeon)
+    {
+        if (!_ui.HasUi(patient, SurgeryUiKey.Key))
+            return;
+
+        var sterilityInfo = GetSterilityInfo(patient, surgeon);
+        _ui.ServerSendUiMessage(patient, SurgeryUiKey.Key, new SurgerySterilityUpdateMessage(sterilityInfo), surgeon);
     }
 }

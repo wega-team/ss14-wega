@@ -16,7 +16,7 @@ public sealed partial class AndroidConstructBoundUserInterface : BoundUserInterf
 
     [Dependency] private IConfigurationManager _cfgManager = default!;
     [Dependency] private MarkingManager _markingManager = default!;
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
 
     public HumanoidCharacterProfile Profile = new();
 
@@ -45,7 +45,7 @@ public sealed partial class AndroidConstructBoundUserInterface : BoundUserInterf
 
         Profile = cast.Profile;
 
-        _menu.LoadProfile(Profile, _cfgManager, _markingManager, _prototypeManager);
+        _menu.LoadProfile(Profile, _cfgManager, _markingManager, _proto);
         _menu.UpdateSlotsStatus(cast.HasBattery, cast.HasBrain);
     }
 
@@ -61,7 +61,7 @@ public sealed partial class AndroidConstructBoundUserInterface : BoundUserInterf
 
         Profile = profile;
         if (needReload)
-            _menu.LoadProfile(Profile, _cfgManager, _markingManager, _prototypeManager);
+            _menu.LoadProfile(Profile, _cfgManager, _markingManager, _proto);
         else
             _menu.UpdatePreview();
 

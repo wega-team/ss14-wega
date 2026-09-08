@@ -39,6 +39,9 @@
     enum.HumanoidVisualLayers.RLeg:
       limit: 1
       required: false
+    enum.HumanoidVisualLayers.TailOverlay:
+      limit: 1
+      required: false
 
 - type: entity
   parent: BaseSpeciesAppearance
@@ -95,7 +98,6 @@
         Slash: 2
         Piercing: 3
   - type: Temperature
-    currentTemperature: 310.15
     specificHeat: 46
   - type: TemperatureDamage
     heatDamageThreshold: 343

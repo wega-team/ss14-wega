@@ -39,6 +39,8 @@
     - id: PlushieArachind
     - id: PlushiePenguin
     - id: PlushieVulp
+    - id: PlushieSheep
+    - id: PlushieSpaceSheep
     - !type:GroupSelector
       children:
       - id: PlushieBee
@@ -300,7 +302,6 @@
     - id: ClothingShoesSkates
     - id: CrazyGlue
     - id: CrazyLube
-    - id: VehicleUnicycleFolded # Corvax-Wega-Vehicles
     - !type:NestedSelector
       tableId: AllBoardGamesTable
     - !type:GroupSelector # Where there's Chips there's Dips

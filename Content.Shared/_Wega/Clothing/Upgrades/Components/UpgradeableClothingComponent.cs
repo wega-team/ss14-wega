@@ -10,6 +10,9 @@ public sealed partial class UpgradeableClothingComponent : Component
     public string UpgradesContainerId = "clothing_upgrades";
 
     [DataField]
+    public EntityUid? User = null;
+
+    [DataField]
     public EntityWhitelist Whitelist = new();
 
     [DataField]

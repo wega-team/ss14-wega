@@ -1,3 +1,4 @@
+using Content.Shared.Clothing; // Corvax-Wega-Add
 using Content.Shared.Gravity;
 using Content.Shared.Movement.Components;
 using Robust.Shared.Physics.Components;
@@ -106,18 +107,17 @@ public sealed partial class FrictionContactsSystem : EntitySystem
 
         if (entries > 0)
         {
-            if (!MathHelper.CloseTo(friction, entries) || !MathHelper.CloseTo(frictionNoInput, entries))
-            {
-                friction /= entries;
-                frictionNoInput /= entries;
-                args.ModifyFriction(friction, frictionNoInput);
-            }
+            // Corvax-Wega-Edit-start
+            var finalFriction = friction / entries;
+            var finalFrictionNoInput = frictionNoInput / entries;
+            var finalAcceleration = acceleration / entries;
 
-            if (!MathHelper.CloseTo(acceleration, entries))
-            {
-                acceleration /= entries;
-                args.ModifyAcceleration(acceleration);
-            }
+            var clothingEv = new ClothingFrictionModifierEvent(finalFriction, finalFrictionNoInput, finalAcceleration);
+            RaiseLocalEvent(entity.Owner, ref clothingEv);
+
+            args.ModifyFriction(clothingEv.FrictionModifier, clothingEv.FrictionNoInputModifier);
+            args.ModifyAcceleration(clothingEv.AccelerationModifier);
+            // Corvax-Wega-Edit-end
         }
 
         // no longer colliding with anything

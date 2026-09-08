@@ -1,0 +1,49 @@
+- type: entity
+  parent: BaseItem
+  id: BaseOtherSelector
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Normal
+  - type: ItemSelector
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseOtherSelector
+  id: OtherCrashSelector
+  name: crasher converter
+  description: What kind of crusher are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: crash
+  - type: ItemSelector
+    items:
+    - WeaponCrusherGlaive
+    - WeaponCrusher
+    - WeaponCrusherHarpoon
+    - WeaponCrusherSword
+    - WeaponDaggerCrusher
+
+- type: entity
+  parent: BaseOtherSelector
+  id: OtherPkaSelector
+  name: accelerator converter
+  description: What kind of accelerator are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: salvage
+  - type: ItemSelector
+    items:
+    - WeaponProtoKineticAccelerator
+    - WeaponProtoKineticShotgun
+    - WeaponProtoKineticRifle
+    - WeaponProtoKineticPistol

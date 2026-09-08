@@ -27,7 +27,9 @@
     ClothingBackpackDuffelSalvageBaseKit: 2000
     JetpackMiningFilled: 2000
     ClothingShoesBootsJump: 2500
+    ClothingShoesWinterIceHikingBoots: 2500
     ClothingModularControllerMiningPreassembled: 2500
+    BorgModuleKinetic: 4000
 
 - type: utilityVendorCategory
   id: UtilityConsumables
@@ -44,8 +46,9 @@
     WormholeJaunter: 900
     TransferCard500: 500
     HandCapsule: 700
-    ChemistryBottleStabilizingSerumP: 600
+    ChemistryBottleStabilizingSerumPotion: 600
     SurvivalMedipen: 800
+    LuxuriousSurvivalMedipen: 1600
 
 - type: utilityVendorCategory
   id: UtilityDiggingTools
@@ -54,8 +57,12 @@
   inventory:
     Pickaxe: 100
     WeaponGrapplingGun: 500
-    WeaponCrusher: 750
+    OtherCrashSelector: 750
     WeaponProtoKineticAccelerator: 750
+    WeaponProtoKineticShotgun: 1750
+    WeaponProtoKineticRifle: 1500
+    WeaponProtoKineticPistol: 500
+    KineticHolsterSuitModule: 750
     PKAUpgradeRange: 1000
     PKAUpgradeDamage: 1000
     PKAUpgradeFireRate: 1000
@@ -71,6 +78,7 @@
     Cigar: 100
     ClothingEyesGlassesGar: 500
     HandLuxuriousCapsule: 3000
+    HandCapsuleBar: 10000
     Soap: 200
     SpaceCash1000: 2000
     DrinkWhiskeyBottleFull: 500

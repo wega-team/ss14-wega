@@ -9,7 +9,6 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Client.Achievements;
@@ -18,7 +17,6 @@ public sealed partial class AchievementsSystem : SharedAchievementsSystem
 {
     [Dependency] private IPlayerManager _playerManager = default!;
     [Dependency] private IUserInterfaceManager _ui = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
@@ -106,7 +104,7 @@ public sealed partial class AchievementsSystem : SharedAchievementsSystem
 
     private void ShowAchievementNotification(AchievementsEnum achievement)
     {
-        var prototype = _prototype.EnumeratePrototypes<AchievementPrototype>()
+        var prototype = ProtoMan.EnumeratePrototypes<AchievementPrototype>()
             .FirstOrDefault(p => p.Key == achievement);
 
         if (prototype == null)

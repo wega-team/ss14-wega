@@ -8,9 +8,8 @@ ent-BlueShieldVoucherCard = карточка-ваучер синего щита
 ent-SecurityVoucherCard = карточка-ваучер безопасности
     .desc = Дисконтная карта, выпущенная для службы безопасности, предоставляемой компанией NanoTrasen, для более эффективного распределения оборудования между сотрудниками отдела. Используется в СБТехе.
 
-
 # Селектор одеждлы
-ent-JumpsuitSelector = преобразователь комбенизонов
+ent-JumpsuitSelector = преобразователь комбинезонов
     .desc = Ваучер карта, способная генерировать вещи прямо на руках!
     .suffix = Селектор
 ent-TopSelector = преобразователь топиков
@@ -86,4 +85,15 @@ ent-HardsuitOperSelector = преобразователь кровавого-к�
     .suffix = Селектор
 ent-HardsuitOperMedSelector = преобразователь медицинского кровавого-красного скафандра
     .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
+ent-HardsuitAsteroidSelector = преобразователь астероидно-шахтёрского скафандра
+    .desc = { ent-HardsuitCESelector.desc }
+    .suffix = Селектор
+
+# Другие селекторы
+ent-OtherCrashSelector = преобразователь крушителя
+    .desc = А какой крушитель ты сегодня?
+    .suffix = Селектор
+ent-OtherPkaSelector = преобразователь ускорителя
+    .desc = А какой ускоритель ты сегодня?
     .suffix = Селектор

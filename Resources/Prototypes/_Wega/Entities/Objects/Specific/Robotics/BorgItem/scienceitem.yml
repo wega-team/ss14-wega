@@ -28,8 +28,6 @@
     sound:
       path: /Audio/Machines/phasein.ogg
 
-
-
 - type: entity
   id: BaseResearchAndDevelopmentPointSourceBorg
   parent: BaseItem
@@ -44,10 +42,10 @@
   - type: ComponentToggler
     components:
     - type: ResearchPointSource
-      pointspersecond: 25
+      pointspersecond: 50
       active: true
   - type: PowerCellDraw
-    drawRate: 37 # 360 seconds
+    drawRate: 1 # 360 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot
@@ -90,9 +88,20 @@
   - type: TimedDespawn
     lifetime: 30
 
+- type: entity
+  id: TechDiskBagBorg
+  parent: TechDiskBag
+  components:
+    - type: MagnetPickup
+      slotFlags: null
+      range: 1.5
+      requireActiveHand: true
 
-
-
-
-
-
+- type: entity
+  id: TechDiskBagT3Borg
+  parent: TechDiskBagT3
+  components:
+    - type: MagnetPickup
+      slotFlags: null
+      range: 1.5
+      requireActiveHand: true

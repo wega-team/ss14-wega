@@ -6,3 +6,5 @@ verb-common-toggle-headset-disabled = Выключить звук
 verb-categories-cargo-account = Сменить аккаунт
 
 verb-categories-interaction = Взаимодействия
+
+verb-categories-reagents-change = Генерируемые реагенты

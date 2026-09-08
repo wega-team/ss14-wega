@@ -33,9 +33,6 @@ public sealed partial class BubblegumBossComponent : Component
     [DataField]
     public float BloodDiveCooldown = 25f;
 
-    [DataField("rewards")]
-    public List<EntProtoId> RewardsProto = new();
-
     [DataField]
     public List<EntProtoId<TargetActionComponent>> Phase1Actions = new();
 

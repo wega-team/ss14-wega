@@ -10,7 +10,7 @@
       tags:
         - CartridgeLightRifle
     proto: CartridgeLightRifle
-    capacity: 60
+    capacity: 120 # increase X2 Corvax-Wega-Edit
   - type: Item
     size: Small
   - type: ContainerContainer

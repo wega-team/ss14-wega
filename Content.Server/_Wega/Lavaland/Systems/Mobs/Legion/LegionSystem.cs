@@ -8,6 +8,7 @@ using Content.Server.Surgery;
 using Content.Shared.Achievements;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared.Destructible;
 using Content.Shared.FixedPoint;
 using Content.Shared.Height;
 using Content.Shared.Humanoid;
@@ -34,6 +35,7 @@ public sealed partial class LegionSystem : EntitySystem
 {
     [Dependency] private SharedAchievementsSystem _achievement = default!;
     [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private BossMusicSystem _bossMusic = default!;
     [Dependency] private DamageableSystem _damage = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private IGameTiming _timing = default!;
@@ -57,6 +59,14 @@ public sealed partial class LegionSystem : EntitySystem
 
         SubscribeLocalEvent<LegionFaunaComponent, LegionSummonSkullAction>(OnLegionSummon);
         SubscribeLocalEvent<LegionReversibleComponent, MobStateChangedEvent>(OnReversible);
+
+        SubscribeLocalEvent<LegionnaireComponent, MobStateChangedEvent>(OnLegionnaireMobStateChanged);
+        SubscribeLocalEvent<LegionnaireComponent, LegionnaireChargeActionEvent>(OnLegionnaireCharge);
+        SubscribeLocalEvent<LegionnaireComponent, LegionnaireDetachHeadActionEvent>(OnLegionnaireDetachHead);
+        SubscribeLocalEvent<LegionnaireComponent, LegionnaireBoneFireActionEvent>(OnLegionnaireBoneFire);
+        SubscribeLocalEvent<LegionnaireComponent, LegionnaireSmokeActionEvent>(OnLegionnaireSmoke);
+
+        SubscribeLocalEvent<LegionnaireHeadComponent, DestructionEventArgs>(OnHeadDeath);
 
         SubscribeLocalEvent<LegionBossComponent, MapInitEvent>(OnMegaLegionMapInit);
         SubscribeLocalEvent<LegionBossComponent, MegaLegionAction>(OnMegaLegionAction);
@@ -140,6 +150,7 @@ public sealed partial class LegionSystem : EntitySystem
     #endregion
 
     #region Basic Legion
+
     private void OnLegionSummon(Entity<LegionFaunaComponent> entity, ref LegionSummonSkullAction args)
     {
         args.Handled = true;
@@ -154,6 +165,9 @@ public sealed partial class LegionSystem : EntitySystem
 
     private void OnReversible(Entity<LegionReversibleComponent> entity, ref MobStateChangedEvent args)
     {
+        if (!entity.Comp.CanReversible)
+            return;
+
         if (args.NewMobState != MobState.Critical && args.NewMobState != MobState.Dead)
             return;
 
@@ -161,14 +175,139 @@ public sealed partial class LegionSystem : EntitySystem
         if (TryComp<RandomHumanoidAppearanceComponent>(entity, out var random) && !random.RandomizeName)
             return;
 
-        if (_lookup.GetEntitiesInRange<LegionFaunaComponent>(Transform(entity).Coordinates, 6f, LookupFlags.Uncontained).Count > 0)
-        {
-            var legion = TryComp<HumanoidProfileComponent>(entity, out var humanoid) && humanoid.Height <= 160
-                || HasComp<SmallHeightComponent>(entity) ? entity.Comp.DwarfPolymorph : entity.Comp.BasePolymorph;
+        var legions = _lookup.GetEntitiesInRange<LegionFaunaComponent>(Transform(entity).Coordinates, 6f, LookupFlags.Uncontained).ToList();
+        if (legions.Count == 0)
+            return;
 
-            _polymorph.PolymorphEntity(entity, legion);
+        var legion = legions.First();
+        // lol                                                                                                 ↓ ur so big bozo
+        var polymorphProto = TryComp<HumanoidProfileComponent>(entity, out var humanoid) && humanoid.Height < 160 || HasComp<SmallHeightComponent>(entity)
+            ? legion.Comp.DwarfPolymorph : legion.Comp.BasePolymorph;
+
+        _bossMusic.StopTracker(entity); // <- If you lost to Legion.
+        _polymorph.PolymorphEntity(entity, polymorphProto);
+    }
+
+    #endregion
+
+    #region Legionnaire
+
+    private void OnLegionnaireMobStateChanged(Entity<LegionnaireComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead)
+        {
+            DeleteHead(ent);
+            _appearance.SetData(ent, VisualLayers.Enabled, false);
+        }
+        else
+        {
+            _appearance.SetData(ent, VisualLayers.Enabled, true);
         }
     }
+
+    private void OnLegionnaireCharge(Entity<LegionnaireComponent> ent, ref LegionnaireChargeActionEvent args)
+    {
+        args.Handled = true;
+        if (_mobState.IsIncapacitated(ent) || !Exists(args.Target))
+            return;
+
+        var target = args.Target;
+        var xform = Transform(ent);
+        var targetCoords = Transform(target).Coordinates;
+
+        var direction = (targetCoords.Position - xform.Coordinates.Position).Normalized();
+        var throwTarget = xform.Coordinates.Offset(direction * args.ChargeDistance);
+
+        _throwing.TryThrow(ent, throwTarget, args.ChargeForce);
+    }
+
+    private void OnLegionnaireDetachHead(Entity<LegionnaireComponent> ent, ref LegionnaireDetachHeadActionEvent args)
+    {
+        args.Handled = true;
+        if (_mobState.IsIncapacitated(ent))
+            return;
+
+        if (ent.Comp.HeadEntity != null && Exists(ent.Comp.HeadEntity.Value))
+        {
+            ReturnHead(ent);
+            return;
+        }
+
+        var head = Spawn(args.HeadPrototype, Transform(ent).Coordinates);
+        var headComp = EnsureComp<LegionnaireHeadComponent>(head);
+        headComp.OwnerLegionnaire = ent.Owner;
+
+        ent.Comp.HeadEntity = head;
+
+        _appearance.SetData(ent, VisualLayers.Enabled, false);
+    }
+
+    private void ReturnHead(Entity<LegionnaireComponent> ent)
+    {
+        if (ent.Comp.HeadEntity == null)
+            return;
+
+        DeleteHead(ent);
+        _appearance.SetData(ent, VisualLayers.Enabled, true);
+    }
+
+    private void DeleteHead(Entity<LegionnaireComponent> ent)
+    {
+        if (ent.Comp.HeadEntity == null)
+            return;
+
+        if (Exists(ent.Comp.HeadEntity.Value))
+            QueueDel(ent.Comp.HeadEntity.Value);
+
+        ent.Comp.HeadEntity = null;
+    }
+
+    private void OnLegionnaireBoneFire(Entity<LegionnaireComponent> ent, ref LegionnaireBoneFireActionEvent args)
+    {
+        args.Handled = true;
+        if (_mobState.IsIncapacitated(ent))
+            return;
+
+        if (ent.Comp.BoneCampfire != null && Exists(ent.Comp.BoneCampfire))
+        {
+            var selfCoords = Transform(ent).Coordinates;
+            var fireCoords = Transform(ent.Comp.BoneCampfire.Value).Coordinates;
+
+            _transform.SetCoordinates(ent, fireCoords);
+            _transform.SetCoordinates(ent.Comp.BoneCampfire.Value, selfCoords);
+
+            return;
+        }
+
+        var boneFire = Spawn(args.BoneFirePrototype, Transform(ent).Coordinates);
+        ent.Comp.BoneCampfire = boneFire;
+    }
+
+    private void OnLegionnaireSmoke(Entity<LegionnaireComponent> ent, ref LegionnaireSmokeActionEvent args)
+    {
+        args.Handled = true;
+        if (_mobState.IsIncapacitated(ent))
+            return;
+
+        if (ent.Comp.HeadEntity != null && Exists(ent.Comp.HeadEntity.Value))
+        {
+            var headCoords = Transform(ent.Comp.HeadEntity.Value).Coordinates;
+            Spawn(args.SmokePrototype, headCoords);
+        }
+        else
+        {
+            Spawn(args.SmokePrototype, Transform(ent).Coordinates);
+        }
+    }
+
+    private void OnHeadDeath(Entity<LegionnaireHeadComponent> ent, ref DestructionEventArgs args)
+    {
+        if (!TryComp<LegionnaireComponent>(ent.Comp.OwnerLegionnaire, out var legionnaire))
+            return;
+
+        ReturnHead((ent.Comp.OwnerLegionnaire, legionnaire));
+    }
+
     #endregion
 
     private void OnMegaLegionMapInit(EntityUid uid, LegionBossComponent component, MapInitEvent args)

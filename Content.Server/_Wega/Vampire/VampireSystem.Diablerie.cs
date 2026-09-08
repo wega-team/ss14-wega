@@ -1,5 +1,5 @@
-using Content.Server.Bible.Components;
 using Content.Shared.Administration.Systems;
+using Content.Shared.Bible.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;

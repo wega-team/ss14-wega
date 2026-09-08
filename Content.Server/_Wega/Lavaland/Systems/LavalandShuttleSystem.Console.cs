@@ -1,8 +1,8 @@
 using Content.Server.Lavaland.Components;
 using Content.Server.Shuttles.Components;
-using Content.Server.Station.Components;
 using Content.Shared.Lavaland;
 using Content.Shared.Lavaland.Components;
+using Content.Shared.Station.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 
@@ -15,6 +15,14 @@ public sealed partial class LavalandShuttleSystem
 
     private void OnConsoleInit(EntityUid uid, LavalandShuttleConsoleComponent component, MapInitEvent args)
     {
+        var query = EntityQueryEnumerator<LavalandComponent>();
+        while (query.MoveNext(out var planetUid, out var _))
+        {
+            var meta = MetaData(planetUid);
+            component.CurrentPlanet = meta.EntityName;
+            break;
+        }
+
         UpdateLocation(uid, component);
     }
 
@@ -183,6 +191,7 @@ public sealed partial class LavalandShuttleSystem
             status,
             component.Location,
             launchTime,
+            component.CurrentPlanet,
             canCall
         );
 

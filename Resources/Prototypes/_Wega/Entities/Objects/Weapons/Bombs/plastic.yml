@@ -28,7 +28,8 @@
         volume: -2
   - type: DeviceLinkSink
     ports:
-      - Timer
+    - Timer
+    - Trigger
   - type: Explosive
     explosionType: Default
     totalIntensity: 35

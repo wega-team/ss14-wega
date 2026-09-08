@@ -14,3 +14,9 @@
   maxHeight: 190 # Corvax-Wega-Height
   sexes:
   - Unsexed
+  defaultSoundsBySex:
+  - UnisexArachnid
+  - UnisexArachnid
+  - UnisexArachnid
+  voices:
+  - UnisexArachnid

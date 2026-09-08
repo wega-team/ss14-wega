@@ -68,6 +68,8 @@
   - type: Item
     size: Tiny
   - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
   - type: TapeCassette
     maxCapacity: 180
     repairWhitelist:
@@ -97,12 +99,12 @@
     maxCapacity: 600
 
 - type: entity
-  suffix: Interview with Garry Smosh
   parent: CassetteTape
   id: CassetteTapeInterview
+  suffix: Interview with Garry Smosh
   components:
   - type: Label
-    currentLabel: Interview with Garry Smosh
+    localizedLabel: tape-label-interview-garry-smosh
   - type: TapeCassette
     recordedData:
       - timestamp: 2

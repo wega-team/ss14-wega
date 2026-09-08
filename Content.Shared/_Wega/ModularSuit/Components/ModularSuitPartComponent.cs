@@ -11,7 +11,7 @@ public sealed partial class ModularSuitPartComponent : Component
     public SuitPartType PartType;
 
     [DataField]
-    public TimeSpan ToggleDelay = TimeSpan.FromSeconds(1.5);
+    public TimeSpan ToggleDelay = TimeSpan.FromSeconds(0.75);
 
     [DataField]
     public SpriteSpecifier? VerbIcon;

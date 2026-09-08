@@ -1,15 +1,11 @@
 using Content.Shared.Instruments;
-using Robust.Shared.Player;
 using Robust.Shared.Prototypes; // Corvax-Wega-Harpy
-using ActivatableUIComponent = Content.Shared.UserInterface.ActivatableUIComponent;
 
 namespace Content.Server.Instruments;
 
 [RegisterComponent]
 public sealed partial class InstrumentComponent : SharedInstrumentComponent
 {
-    [Dependency] private IEntityManager _entMan = default!;
-
     [ViewVariables] public float Timer = 0f;
     [ViewVariables] public int BatchesDropped = 0;
     [ViewVariables] public int LaggedBatches = 0;
@@ -17,9 +13,4 @@ public sealed partial class InstrumentComponent : SharedInstrumentComponent
     [ViewVariables] public uint LastSequencerTick = 0;
     [ViewVariables(VVAccess.ReadOnly)] public EntityUid? ActionUid = default!; // Corvax-Wega-Harpy
     public readonly EntProtoId Action = "ActionPlayInstrumentSelf"; // Corvax-Wega-Harpy
-
-    // TODO Instruments: Make this ECS
-    public EntityUid? InstrumentPlayer =>
-        _entMan.GetComponentOrNull<ActivatableUIComponent>(Owner)?.CurrentSingleUser
-        ?? _entMan.GetComponentOrNull<ActorComponent>(Owner)?.PlayerSession.AttachedEntity;
 }

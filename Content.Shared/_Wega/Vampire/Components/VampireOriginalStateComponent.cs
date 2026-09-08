@@ -1,5 +1,6 @@
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Metabolism;
+using Content.Shared.Nutrition.EntitySystems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Vampire.Components;
@@ -16,6 +17,9 @@ public sealed partial class VampireOriginalStateComponent : Component
 
     [DataField]
     public Dictionary<EntityUid, HashSet<ProtoId<MetabolizerTypePrototype>>> OriginalMetabolizerTypes = new();
+
+    [DataField]
+    public Satiation? OriginalThirst;
 
     [DataField]
     public float? OriginalColdDamageThreshold;

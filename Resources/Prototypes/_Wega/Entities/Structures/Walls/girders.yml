@@ -4,9 +4,9 @@
   name: girder
   description: A large frame made of unknown material.
   components:
-  - type: Construction
-    graph: CultGirder
-    node: cultgirder
+#  - type: Construction
+#    graph: CultGirder
+#    node: cultgirder
   - type: Sprite
     sprite: _Wega/Structures/Walls/cult.rsi
     state: cult_girder

@@ -48,7 +48,6 @@ flavor-complex-demonic-watermelon = как порченый арбуз
 flavor-complex-triple-citrus = как три в одном
 flavor-complex-ginsonic = как джин с тоником
 flavor-complex-rainbow-sky = как радужное небо
-flavor-complex-three-mile-island-iced-tea = как ядерный взрыв во рту
 flavor-base-iron = как железо
 flavor-base-acrid = как едкий дым
 flavor-base-fiery = как огонь

@@ -1,0 +1,519 @@
+- type: entity
+  id: BaseMobElites
+  abstract: true
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.75
+        density: 50
+        mask:
+          - MobMask
+        layer:
+          - MobLayer
+  - type: RequireProjectileTarget
+    active: false
+  - type: Actions
+  - type: Clickable
+  - type: InteractionOutline
+  - type: LagCompensation
+  - type: NoSlip
+  - type: MobState
+  - type: CombatMode
+  - type: Damageable
+  - type: Injurable
+    damageContainer: Biological
+  - type: NPCAggression
+  - type: NPCIgnoringOptimize
+  - type: NpcFactionMember
+    factions:
+    - LavalandFauna
+  - type: LavalandVisitor
+    immuneToStorm: true
+  - type: Unrevivable
+    analyzable: false
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - StunImmune
+    - SlowImmune
+
+- type: entity
+  parent: BaseMobElites
+  id: BaseMobElitesMover
+  abstract: true
+  components:
+  - type: InputMover
+  - type: Input
+    context: "human"
+  - type: MobMover
+  - type: MovementSpeedModifier
+
+#region Broodmother
+- type: entity
+  parent: [ BaseMobElitesMover, BaseMobLavalandButcherable ]
+  id: MobBroodmother
+  name: broodmother
+  description: "A massive and ferocious Goliath matriarch, whose body is scarred from countless battles. This massive individual can summon tentacles from the ground, become enraged, and spawn hordes of offspring that can take even the most experienced miner by surprise."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/broodmother.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: MeleeWeapon
+    ignoreAttempted: true
+    altDisarm: false
+    attackRate: 0.5
+    damage:
+     types:
+       Slash: 30
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.25
+    baseSprintSpeed: 3.25
+  - type: Bloodstream
+    bloodlossDamage:
+      types:
+        Bloodloss: 0
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 500
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: BossMusic
+    music:
+      collection: RandomBossMusic
+  - type: Broodmother
+  - type: HTN
+    rootTask:
+      task: GoliathCompound
+    blackboard:
+      VisionRadius: !type:Single
+        12
+      AggroVisionRadius: !type:Single
+        12
+      NavSmash: !type:Bool
+        true
+  - type: NPCUseActionsOnTarget
+    delayModifier: 0.75
+    actionIds:
+      - ActionGoliathTentacle
+      - ActionBroodmotherTentaclePatch
+      - ActionBroodmotherRage
+      - ActionBroodmotherSpawnChildren
+    actionChances:
+      ActionGoliathTentacle: 0.6
+      ActionBroodmotherTentaclePatch: 0.4
+      ActionBroodmotherRage: 0.3
+      ActionBroodmotherSpawnChildren: 0.5
+  - type: TrophyHunter
+    trophy: TrophyLavalandBroodmotherTongue
+    dropChance: 0.5
+  - type: ToolRefinable
+    refineTime: 6
+    refineResult:
+    - id: FoodMeatGoliath
+      amount: 8
+    - id: MaterialGoliathHide1
+      amount: 10
+    - id: MaterialBones1
+      amount: 10
+    - id: CrateNecropolisFilled
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        enum.DamageStateVisualLayers.Base:
+          True: {color: red}
+          False: {color: white}
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+    - DoorBumpOpener
+    - StunImmune
+    - SlowImmune
+    - Goliath
+#endregion
+
+#region Pandora
+- type: entity
+  parent: [ BaseMobElites, BaseMobLavalandButcherable ]
+  id: MobPandora
+  name: pandora
+  description: "A large magic box, whose design and power are strikingly reminiscent of the Hierophant. When this ancient mechanism opens, it is almost impossible to close it, and it will methodically destroy everything around it until only ashes remain."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/pandora.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.5,0.25,0.5"
+        density: 50
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Damageable
+    damageModifierSet: Hierophant
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: MeleeWeapon
+    altDisarm: false
+    damage:
+     types:
+       Blunt: 15
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: PointLight
+    color: "#9900ff"
+    castShadows: false
+    softness: 1
+    radius: 2.5
+    energy: 2.5
+  - type: BossMusic
+    music:
+      collection: HierophantMusic
+  - type: Pandora
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+  - type: NPCUseActionsOnTarget
+    actionIds:
+    - ActionPandoraBlastLine
+    - ActionPandoraMagicBox
+    - ActionPandoraTeleport
+    - ActionPandoraAOEBlast
+    actionChances:
+      ActionPandoraBlastLine: 0.4
+      ActionPandoraMagicBox: 0.3
+      ActionPandoraTeleport: 0.2
+      ActionPandoraAOEBlast: 0.3
+  - type: TrophyHunter
+    trophy: AccessoriesClothingPandoraHope
+    dropChance: 0.5
+    collectSound:
+      path: "/Audio/Effects/singularity_collapse.ogg" # More Cinema
+  - type: ToolRefinable
+    refineTime: 6
+    refineResult:
+    - id: CrateNecropolisFilled
+  - type: Appearance
+#endregion
+
+#region Legionnaire
+- type: entity
+  parent: [ BaseMobElitesMover, BaseMobLavalandButcherable ]
+  id: MobLegionnaire
+  name: legionnaire
+  description: "A massive skeleton that embodies the terrifying power of the Legion. Its flaming red eyes pierce the darkness, and every step is accompanied by the dull thud of its bones. Even when it is disassembled, it continues to fight."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionnaire.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: base
+    - map: ["head"]
+      state: head
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: Damageable
+    damageModifierSet: Skeleton
+  - type: MeleeWeapon
+    ignoreAttempted: true
+    altDisarm: false
+    attackRate: 0.5
+    damage:
+     types:
+       Slash: 30
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 20
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: BossMusic
+    music:
+      collection: RandomBossMusic
+  - type: LegionFauna
+  - type: Legionnaire
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+    blackboard:
+      VisionRadius: !type:Single
+        9
+      AggroVisionRadius: !type:Single
+        9
+  - type: NPCUseActionsOnTarget
+    delayModifier: 0.75
+    actionIds:
+    - ActionLegionnaireCharge
+    - ActionLegionnaireDetachHead
+    - ActionLegionnaireBoneFire
+    - ActionLegionnaireSmoke
+    actionChances:
+      ActionLegionnaireCharge: 0.4
+      ActionLegionnaireDetachHead: 0.25
+      ActionLegionnaireBoneFire: 0.2
+      ActionLegionnaireSmoke: 0.2
+  - type: TrophyHunter
+    trophy: TrophyLavalandLegionnaireSpine
+    dropChance: 0.5
+  - type: ToolRefinable
+    refineTime: 6
+    refineResult:
+    - id: MaterialBones1
+      amount: 20
+    - id: LegionCore
+      amount: 2
+    - id: CrateNecropolisFilled
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+     enum.VisualLayers.Enabled:
+        head:
+          True: {visible: true}
+          False: {visible: false}
+
+- type: entity
+  parent: BaseMobLavaland
+  id: MobLegionnaireHead
+  name: legionnaire skull
+  description: "The detached skull of a legionnaire, still burning with an ominous red light. It furiously pursues its victim, knowing no fear and feeling no pain."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionnaire.rsi
+    state: head_separated
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          position: "0,-0.345"
+          radius: 0.25
+        density: 130
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 80
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: NoSlip
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.5
+    baseSprintSpeed: 4.5
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Slash: 10
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+#endregion
+
+#region Herald
+- type: entity
+  parent: BaseMobElitesMover
+  id: MobHerald
+  name: herald
+  description: "A monstrous beast whose body is covered in glowing patterns and whose eyes burn with cold fire. It relentlessly pursues its target, unleashing deadly bolts that can penetrate even the strongest armor."
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/herald.rsi
+    state: base
+  - type: MeleeWeapon
+    ignoreAttempted: true
+    altDisarm: false
+    attackRate: 0.25
+    damage:
+     types:
+       Blunt: 20
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 0.01
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: BulletHerald
+    capacity: 9999
+    count: 9999
+  - type: Gun
+    projectileSpeed: 4
+    fireRate: 10
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    showExamineText: false
+    soundGunshot: null
+    soundEmpty: null
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 3.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          EffectHeraldDisappear:
+            min: 1
+            max: 1
+          CrateNecropolisFilled:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: BossMusic
+    music:
+      collection: RandomBossMusic
+  - type: Herald
+  - type: HTN
+    rootTask:
+      task: MegafaunaBehaviorCompound
+    blackboard:
+      VisionRadius: !type:Single
+        10
+      AggroVisionRadius: !type:Single
+        12
+  - type: NPCUseActionsOnTarget
+    delayModifier: 0.5
+    actionIds:
+    - ActionHeraldTriShot
+    - ActionHeraldSpreadShot
+    - ActionHeraldTeleShot
+    - ActionHeraldMirror
+    actionChances:
+      ActionHeraldTriShot: 0.4
+      ActionHeraldSpreadShot: 0.4
+      ActionHeraldTeleShot: 0.3
+      ActionHeraldMirror: 0.2
+  - type: TrophyHunter
+    trophy: ClothingNeckProphetCloak
+    dropChance: 0.5
+
+- type: entity
+  id: HeraldMirror
+  name: mirror
+  description: "Knock-Knock. Who's there?"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/herald.rsi
+    state: mirror
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.8,0.35,0.6"
+        layer:
+        - GlassLayer
+        mask:
+        - GlassLayer
+        density: 50
+        hard: true
+  - type: RechargeBasicEntityAmmo
+    showExamineText: false
+    rechargeCooldown: 0.01
+    rechargeSound: null
+  - type: BasicEntityAmmoProvider
+    proto: BulletHerald
+    capacity: 9999
+    count: 9999
+  - type: Gun
+    projectileSpeed: 4
+    fireRate: 10
+    useKey: false
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    showExamineText: false
+    soundGunshot: null
+    soundEmpty: null
+  - type: Damageable
+    damageModifierSet: Glass
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 60
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WindowShatter
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+#endregion

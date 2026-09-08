@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Server.Popups;
 using Content.Server.Tools;
 using Content.Shared._Wega.Implants.Components;
@@ -5,9 +6,6 @@ using Content.Shared.Body;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Tools.Components;
-using Robust.Server.GameObjects;
-using Robust.Shared.Utility;
-using System.Linq;
 
 namespace Content.Server.Implants
 {
@@ -20,7 +18,7 @@ namespace Content.Server.Implants
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BodyPartImplantComponent, ComponentStartup>(OnStartup);
+            SubscribeLocalEvent<BodyPartImplantComponent, MapInitEvent>(OnInit);
             SubscribeLocalEvent<BodyPartImplantComponent, ExaminedEvent>(OnExamine);
             SubscribeLocalEvent<BodyPartImplantComponent, InteractUsingEvent>(OnToolUseAttempt);
 
@@ -28,7 +26,7 @@ namespace Content.Server.Implants
             SubscribeLocalEvent<BodyComponent, OrganRemovedFromEvent>(OnOrganRemoved);
         }
 
-        private void OnStartup(Entity<BodyPartImplantComponent> ent, ref ComponentStartup args)
+        private void OnInit(Entity<BodyPartImplantComponent> ent, ref MapInitEvent args)
         {
             UpdateConfig(ent.Owner, null, ent.Comp);
 

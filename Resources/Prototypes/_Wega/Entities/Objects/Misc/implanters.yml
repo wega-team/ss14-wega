@@ -13,3 +13,11 @@
   components:
   - type: Implanter
     implant: LoyaltyImplant
+    
+- type: entity
+  id: SmokeImplanter
+  name: smoke implanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: SmokeImplant

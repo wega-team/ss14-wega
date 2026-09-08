@@ -8,8 +8,8 @@
   - type: DragonRift
     spawnWeights:
       MobCarpDragon: 0.59
-      MobSharkDragon: 0.2
-      MobCarpHoloDragon: 0.2
+      MobSharkDragon: 0.1
+      MobCarpHoloDragon: 0.3
       MobCarpRainbowDragon: 0.01
   - type: Transform
     anchored: true

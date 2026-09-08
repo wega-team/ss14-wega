@@ -1,12 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Client.DirtVisuals; // Corvax-Wega-Dirtable
 using Content.Client.DisplacementMap;
 using Content.Client.Inventory;
 using Content.Shared.Clothing;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Clothing.Upgrades.Components; // Corvax-Wega-UpgradableClothing
-using Content.Shared.DirtVisuals; // Corvax-Wega-Dirtable
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
@@ -14,8 +14,6 @@ using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
-using Robust.Shared.Containers; // Corvax-Wega-UpgradableClothing
-using Robust.Shared.GameStates; // Corvax-Wega-ToggleClothing
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
 using static Robust.Client.GameObjects.SpriteComponent;
@@ -57,77 +55,69 @@ public sealed partial class ClientClothingSystem : ClothingSystem
     };
 
     [Dependency] private IResourceCache _cache = default!;
-    [Dependency] private InventorySystem _inventorySystem = default!;
     [Dependency] private DisplacementMapSystem _displacement = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
     [Dependency] private SpriteSystem _sprite = default!;
-    [Dependency] private SharedContainerSystem _container = default!; // Corvax-Wega-UpgradableClothing
+    [Dependency] private DirtVisualsSystem _dirt = default!; // Corvax-Wega-Dirtable
 
-    public override void Initialize()
-    {
-        base.Initialize();
+    [Dependency] private EntityQuery<InventorySlotsComponent> _inventorySlotsQuery;
+    [Dependency] private EntityQuery<SpriteComponent> _spriteQuery;
 
-        SubscribeLocalEvent<ClothingComponent, GetEquipmentVisualsEvent>(OnGetVisuals);
-        SubscribeLocalEvent<InventoryComponent, InventoryTemplateUpdated>(OnInventoryTemplateUpdated);
-
-        SubscribeLocalEvent<ToggleableSpriteClothingComponent, ComponentHandleState>(OnHandleState); // Corvax-Wega-ToggleClothing
-
-        SubscribeLocalEvent<InventoryComponent, VisualsChangedEvent>(OnVisualsChanged);
-        SubscribeLocalEvent<SpriteComponent, DidUnequipEvent>(OnDidUnequip);
-        SubscribeLocalEvent<InventoryComponent, AppearanceChangeEvent>(OnAppearanceUpdate);
-    }
-
-    private void OnAppearanceUpdate(EntityUid uid, InventoryComponent component, ref AppearanceChangeEvent args)
+    #region Entity Handlers
+    [SubscribeLocalEvent]
+    private void OnAppearanceUpdate(Entity<InventoryComponent> ent, ref AppearanceChangeEvent args)
     {
         // May need to update displacement maps if the sex changed. Also required to properly set the stencil on init
         if (args.Sprite == null)
             return;
 
-        UpdateAllSlots(uid, component);
+        UpdateAllSlots(ent.AsNullable());
 
         // No clothing equipped -> make sure the layer is hidden, though this should already be handled by on-unequip.
-        if (_sprite.LayerMapTryGet((uid, args.Sprite), HumanoidVisualLayers.StencilMask, out var layer, false))
+        if (_sprite.LayerMapTryGet((ent, args.Sprite), HumanoidVisualLayers.StencilMask, out var layer, false))
         {
             DebugTools.Assert(!args.Sprite[layer].Visible);
-            _sprite.LayerSetVisible((uid, args.Sprite), layer, false);
+            _sprite.LayerSetVisible((ent, args.Sprite), layer, false);
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnInventoryTemplateUpdated(Entity<InventoryComponent> ent, ref InventoryTemplateUpdated args)
     {
-        UpdateAllSlots(ent.Owner, ent.Comp);
+        UpdateAllSlots(ent.AsNullable());
     }
 
     private void UpdateAllSlots(
-        EntityUid uid,
-        InventoryComponent? inventoryComponent = null)
+        Entity<InventoryComponent?> ent)
     {
-        var enumerator = _inventorySystem.GetSlotEnumerator((uid, inventoryComponent));
+        var enumerator = _inventorySystem.GetSlotEnumerator((ent, ent.Comp));
         while (enumerator.NextItem(out var item, out var slot))
         {
-            RenderEquipment(uid, item, slot.Name, inventoryComponent);
+            RenderEquipment(ent, item, slot.Name, ent.Comp);
         }
     }
 
-    private void OnGetVisuals(EntityUid uid, ClothingComponent item, GetEquipmentVisualsEvent args)
+    [SubscribeLocalEvent]
+    private void OnGetVisuals(Entity<ClothingComponent> ent, ref GetEquipmentVisualsEvent args)
     {
-        if (!TryComp(args.Equipee, out InventoryComponent? inventory))
+        if (!InventoryQuery.TryComp(args.Equipee, out var inventory))
             return;
 
         List<PrototypeLayerData>? layers = null;
         // Corvax-Wega-ToggleClothing-start
-        var suffix = TryComp<ToggleableSpriteClothingComponent>(uid, out var toggleable)
+        var suffix = TryComp<ToggleableSpriteClothingComponent>(ent, out var toggleable)
             ? toggleable.ActiveSuffix : string.Empty;
         // Corvax-Wega-ToggleClothing-end
 
         // first attempt to get species specific data.
         if (inventory.SpeciesId != null)
-            item.ClothingVisuals.TryGetValue($"{args.Slot}-{inventory.SpeciesId}", out layers);
+            ent.Comp.ClothingVisuals.TryGetValue($"{args.Slot}-{inventory.SpeciesId}", out layers);
 
         // if that returned nothing, attempt to find generic data
-        if (layers == null && !item.ClothingVisuals.TryGetValue(args.Slot, out layers))
+        if (layers == null && !ent.Comp.ClothingVisuals.TryGetValue(args.Slot, out layers))
         {
             // No generic data either. Attempt to generate defaults from the item's RSI & item-prefixes
-            if (!TryGetDefaultVisuals(uid, item, args.Slot, inventory.SpeciesId, out layers))
+            if (!TryGetDefaultVisuals(ent, args.Slot, inventory.SpeciesId, out layers))
                 return;
         }
 
@@ -143,9 +133,8 @@ public sealed partial class ClientClothingSystem : ClothingSystem
             var newState = originalState;
             if (!string.IsNullOrEmpty(suffix))
             {
-
                 var suffixedState = $"{originalState}{suffix}";
-                if (StateExists(uid, suffixedState, inventory.SpeciesId))
+                if (StateExists(ent, suffixedState, inventory.SpeciesId))
                     newState = suffixedState;
                 else if (!originalState.StartsWith("equipped-"))
                     continue;
@@ -165,9 +154,9 @@ public sealed partial class ClientClothingSystem : ClothingSystem
         }
 
         // Corvax-Wega-UpgradableClothing-start
-        if (TryComp<UpgradeableClothingComponent>(uid, out var upgradeable))
+        if (TryComp<UpgradeableClothingComponent>(ent, out var upgradeable))
         {
-            foreach (var upgrade in GetCurrentUpgrades(uid, upgradeable))
+            foreach (var upgrade in GetCurrentUpgrades(ent, upgradeable))
             {
                 if (upgrade.Comp.EquippedState is not SpriteSpecifier.Rsi rsi)
                     continue;
@@ -185,74 +174,21 @@ public sealed partial class ClientClothingSystem : ClothingSystem
         // Corvax-Wega-UpgradableClothing-end
     }
 
-    /// <summary>
-    ///     If no explicit clothing visuals were specified, this attempts to populate with default values.
-    /// </summary>
-    /// <remarks>
-    ///     Useful for lazily adding clothing sprites without modifying yaml. And for backwards compatibility.
-    /// </remarks>
-    private bool TryGetDefaultVisuals(EntityUid uid, ClothingComponent clothing, string slot, string? speciesId,
-        [NotNullWhen(true)] out List<PrototypeLayerData>? layers)
-    {
-        layers = null;
-
-        RSI? rsi = null;
-
-        if (clothing.RsiPath != null)
-            rsi = _cache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / clothing.RsiPath).RSI;
-        else if (TryComp(uid, out SpriteComponent? sprite))
-            rsi = sprite.BaseRSI;
-
-        if (rsi == null)
-            return false;
-
-        var correctedSlot = slot;
-        TemporarySlotMap.TryGetValue(correctedSlot, out correctedSlot);
-
-        // Corvax-Wega-ToggleClothing-Edit-start
-        var suffix = string.Empty;
-        if (TryComp<ToggleableSpriteClothingComponent>(uid, out var toggleable))
-        {
-            suffix = toggleable.ActiveSuffix;
-        }
-
-        var state = $"equipped-{correctedSlot}{suffix}";
-
-        if (!string.IsNullOrEmpty(clothing.EquippedPrefix))
-            state = $"{clothing.EquippedPrefix}-equipped-{correctedSlot}{suffix}";
-
-        if (clothing.EquippedState != null)
-            state = $"{clothing.EquippedState}{suffix}";
-        // Corvax-Wega-ToggleClothing-Edit-end
-
-        // species specific
-        if (speciesId != null && rsi.TryGetState($"{state}-{speciesId}", out _))
-            state = $"{state}-{speciesId}";
-        else if (!rsi.TryGetState(state, out _))
-            return false;
-
-        var layer = new PrototypeLayerData();
-        layer.RsiPath = rsi.Path.ToString();
-        layer.State = state;
-        layer.Scale = clothing.Scale;
-        layers = new() { layer };
-
-        return true;
-    }
-
-    private void OnVisualsChanged(EntityUid uid, InventoryComponent component, VisualsChangedEvent args)
+    [SubscribeLocalEvent]
+    private void OnVisualsChanged(Entity<InventoryComponent> ent, ref VisualsChangedEvent args)
     {
         var item = GetEntity(args.Item);
 
-        if (!TryComp(item, out ClothingComponent? clothing) || clothing.InSlot == null)
+        if (!ClothingQuery.TryComp(item, out var clothing) || clothing.InSlot == null)
             return;
 
-        RenderEquipment(uid, item, clothing.InSlot, component, null, clothing);
+        RenderEquipment(ent, item, clothing.InSlot, ent.Comp, null, clothing);
     }
 
+    [SubscribeLocalEvent]
     private void OnDidUnequip(Entity<SpriteComponent> entity, ref DidUnequipEvent args)
     {
-        if (!TryComp(entity, out InventorySlotsComponent? inventorySlots))
+        if (!_inventorySlotsQuery.TryComp(entity, out var inventorySlots))
             return;
 
         if (!inventorySlots.VisualLayerKeys.TryGetValue(args.Slot, out var revealedLayers))
@@ -266,16 +202,120 @@ public sealed partial class ClientClothingSystem : ClothingSystem
         }
         revealedLayers.Clear();
     }
+    #endregion Entity Handlers
 
+    #region Public API
     public void InitClothing(EntityUid uid, InventoryComponent component)
     {
-        if (!TryComp(uid, out SpriteComponent? sprite))
+        if (!_spriteQuery.TryComp(uid, out var sprite))
             return;
 
         var enumerator = _inventorySystem.GetSlotEnumerator((uid, component));
         while (enumerator.NextItem(out var item, out var slot))
         {
             RenderEquipment(uid, item, slot.Name, component, sprite);
+        }
+    }
+    #endregion Public API
+
+    #region Internal
+    /// <summary>
+    /// If no explicit clothing visuals were specified, this attempts to populate with default values.
+    /// </summary>
+    /// <remarks>
+    /// Useful for lazily adding clothing sprites without modifying yaml. And for backwards compatibility.
+    /// </remarks>
+    private bool TryGetDefaultVisuals(Entity<ClothingComponent> ent, string slot, string? speciesId,
+        [NotNullWhen(true)] out List<PrototypeLayerData>? layers)
+    {
+        layers = null;
+
+        RSI? rsi = null;
+
+        if (ent.Comp.RsiPath != null)
+            rsi = _cache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / ent.Comp.RsiPath).RSI;
+        else if (_spriteQuery.TryComp(ent, out var sprite))
+            rsi = sprite.BaseRSI;
+
+        if (rsi == null)
+            return false;
+
+        var correctedSlot = slot;
+        TemporarySlotMap.TryGetValue(correctedSlot, out correctedSlot);
+
+        // Corvax-Wega-ToggleClothing-Edit-start
+        var suffix = string.Empty;
+        if (TryComp<ToggleableSpriteClothingComponent>(ent, out var toggleable))
+            suffix = toggleable.ActiveSuffix;
+
+        var state = $"equipped-{correctedSlot}{suffix}";
+
+        if (!string.IsNullOrEmpty(ent.Comp.EquippedPrefix))
+            state = $"{ent.Comp.EquippedPrefix}-equipped-{correctedSlot}{suffix}";
+
+        if (ent.Comp.EquippedState != null)
+            state = $"{ent.Comp.EquippedState}{suffix}";
+        // Corvax-Wega-ToggleClothing-Edit-end
+
+        // species specific
+        if (speciesId != null && rsi.TryGetState($"{state}-{speciesId}", out _))
+            state = $"{state}-{speciesId}";
+        else if (!rsi.TryGetState(state, out _))
+            return false;
+
+        layers = new() {
+            new() {
+                RsiPath = rsi.Path.ToString(),
+                State = state,
+                Scale = ent.Comp.Scale
+            }
+        };
+
+        return true;
+    }
+
+    /// <summary>
+    /// Checks the given Clothing for species-specific layers.
+    /// Adjusts <paramref name="layers"/> to append "-SPECIES" per layer if that state exists,
+    /// where SPECIES is given in <paramref name="speciesId"/>.
+    /// </summary>
+    /// <remarks>
+    /// Useful for avoiding YAML redundancy with species-specific ClothingVisuals.
+    /// </remarks>
+    private void SetSpeciesSpecificLayers(Entity<ClothingComponent, SpriteComponent?> ent, string speciesId, List<(string, PrototypeLayerData)> layers)
+    {
+        var clothing = ent.Comp1;
+        var sprite = ent.Comp2;
+        // Find fallback RSI
+        RSI? baseRSI;
+        if (clothing.RsiPath != null)
+            baseRSI = _cache.GetResource<RSIResource>(SpriteSpecifierSerializer.TextureRoot / clothing.RsiPath).RSI;
+        else
+            baseRSI = sprite?.BaseRSI;
+
+        // For each layer, check that a species-specific version exists.
+        foreach (var tuple in layers)
+        {
+            var layer = tuple.Item2;
+
+            // Empty or species-specific layer, nothing to do.
+            if (layer.State == null || layer.State.EndsWith(speciesId))
+                continue;
+
+            // Use a path for the layer if specified, otherwise use the default.
+            RSI? rsi;
+            if (layer.RsiPath != null && _cache.TryGetResource<RSIResource>(layer.RsiPath, out var rsiResource))
+                rsi = rsiResource.RSI;
+            else
+                rsi = baseRSI;
+
+            // Lookup your state.
+            if (rsi != null)
+            {
+                var speciesState = $"{layer.State}-{speciesId}";
+                if (rsi.TryGetState(speciesState, out _))
+                    layer.State = speciesState;
+            }
         }
     }
 
@@ -315,6 +355,9 @@ public sealed partial class ClientClothingSystem : ClothingSystem
             inventorySlots.VisualLayerKeys[slot] = revealedLayers;
         }
 
+        // Cache the clothing sprite, used later.
+        _spriteQuery.TryComp(equipment, out var clothingSprite);
+
         var ev = new GetEquipmentVisualsEvent(equipee, slot);
         RaiseLocalEvent(equipment, ev);
 
@@ -323,6 +366,9 @@ public sealed partial class ClientClothingSystem : ClothingSystem
             RaiseLocalEvent(equipment, new EquipmentVisualsUpdatedEvent(equipee, slot, revealedLayers), true);
             return;
         }
+
+        if (!string.IsNullOrEmpty(inventory.SpeciesId))
+            SetSpeciesSpecificLayers((equipment, clothingComponent, clothingSprite), inventory.SpeciesId, ev.Layers);
 
         // temporary, until layer draw depths get added. Basically: a layer with the key "slot" is being used as a
         // bookmark to determine where in the list of layers we should insert the clothing layers.
@@ -378,7 +424,7 @@ public sealed partial class ClientClothingSystem : ClothingSystem
             if (layerData.RsiPath == null
                 && layerData.TexturePath == null
                 && layer.RSI == null
-                && TryComp(equipment, out SpriteComponent? clothingSprite))
+                && clothingSprite != null)
             {
                 _sprite.LayerSetRsi(layer, clothingSprite.BaseRSI);
             }
@@ -400,131 +446,10 @@ public sealed partial class ClientClothingSystem : ClothingSystem
             }
         }
 
-        // Corvax-Wega-Dirtable-start
-        if (TryComp<DirtableComponent>(equipment, out var dirtable) &&
-            dirtable.IsDirty &&
-            !revealedLayers.Contains($"dirt_{equipment}"))
-        {
-            RSI? dirtRsi = null;
-            if (dirtable.DirtSpritePath != null)
-            {
-                dirtRsi = _cache.GetResource<RSIResource>(
-                    SpriteSpecifierSerializer.TextureRoot / dirtable.DirtSpritePath).RSI;
-            }
-
-            if (dirtRsi != null)
-            {
-                var state = dirtable.EquippedDirtState;
-                if (!string.IsNullOrEmpty(clothingComponent.EquippedPrefix))
-                    state = $"{clothingComponent.EquippedPrefix}-{state}";
-                if (inventory.SpeciesId != null && dirtRsi.TryGetState($"{state}-{inventory.SpeciesId}", out _))
-                    state = $"{state}-{inventory.SpeciesId}";
-                if (TryComp<ToggleableSpriteClothingComponent>(equipment, out var toggleable))
-                    state += toggleable.ActiveSuffix;
-
-                if (dirtRsi.TryGetState(state, out _))
-                {
-                    var dirtLayer = new PrototypeLayerData
-                    {
-                        RsiPath = dirtable.DirtSpritePath,
-                        State = state,
-                        Color = dirtable.DirtColor
-                    };
-
-                    var dirtKey = $"dirt_{equipment}";
-                    if (slotLayerExists)
-                    {
-                        index++;
-                        _sprite.AddBlankLayer((equipee, sprite), index);
-                        _sprite.LayerMapSet((equipee, sprite), dirtKey, index);
-                    }
-                    else
-                    {
-                        index = _sprite.LayerMapReserve((equipee, sprite), dirtKey);
-                    }
-
-                    // Accounting for a displacements
-                    if (sprite[index] is Layer layer)
-                    {
-                        _sprite.LayerSetData((equipee, sprite), index, dirtLayer);
-                        _sprite.LayerSetOffset(layer, layer.Offset + slotDef.Offset);
-                        revealedLayers.Add(dirtKey);
-
-                        if (displacementData is not null)
-                        {
-                            if (_displacement.TryAddDisplacement(
-                                displacementData,
-                                (equipee, sprite),
-                                index,
-                                dirtKey,
-                                out var displacementKey))
-                            {
-                                revealedLayers.Add(displacementKey);
-                                index++;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        // Corvax-Wega-Dirtable-end
+        _dirt.TryAddEquipmentDirtLayer(equipee, equipment, inventory, sprite, clothingComponent, slotDef, // Corvax-Wega-Dirtable
+            slotLayerExists, ref index, displacementData, revealedLayers); // Corvax-Wega-Dirtable
 
         RaiseLocalEvent(equipment, new EquipmentVisualsUpdatedEvent(equipee, slot, revealedLayers), true);
     }
-
-    // Corvax-Wega-Add-start
-    // Corvax-Wega-ToggleClothing-start
-    private bool StateExists(EntityUid uid, string state, string? speciesId)
-    {
-        if (TryComp<SpriteComponent>(uid, out var sprite) && sprite.BaseRSI != null)
-        {
-            if (!string.IsNullOrEmpty(speciesId))
-            {
-                var speciesState = $"{state}-{speciesId}";
-                if (sprite.BaseRSI.TryGetState(speciesState, out _))
-                    return true;
-            }
-
-            return sprite.BaseRSI.TryGetState(state, out _);
-        }
-        return false;
-    }
-
-    private void OnHandleState(EntityUid uid, ToggleableSpriteClothingComponent component, ref ComponentHandleState args)
-    {
-        if (args.Current is not ToggleableSpriteClothingComponentState state)
-            return;
-
-        component.ActiveSuffix = state.ActiveSuffix;
-        UpdateClothingVisuals(uid);
-    }
-
-    private void UpdateClothingVisuals(EntityUid uid)
-    {
-        if (!TryComp<ClothingComponent>(uid, out var clothing)
-            || clothing.InSlot == null)
-            return;
-
-        var parent = Transform(uid).ParentUid;
-        if (!HasComp<SpriteComponent>(parent) || !TryComp<InventoryComponent>(parent, out var inventory))
-            return;
-
-        RenderEquipment(parent, uid, clothing.InSlot, inventory, clothingComponent: clothing);
-    }
-    // Corvax-Wega-ToggleClothing-end
-
-    // Corvax-Wega-UpgradableClothing-start
-    private IEnumerable<Entity<ClothingUpgradeComponent>> GetCurrentUpgrades(EntityUid clothing, UpgradeableClothingComponent component)
-    {
-        if (!_container.TryGetContainer(clothing, component.UpgradesContainerId, out var container))
-            yield break;
-
-        foreach (var contained in container.ContainedEntities)
-        {
-            if (TryComp<ClothingUpgradeComponent>(contained, out var upgradeComp))
-                yield return (contained, upgradeComp);
-        }
-    }
-    // Corvax-Wega-UpgradableClothing-end
-    // Corvax-Wega-Add-end
+    #endregion Internal
 }

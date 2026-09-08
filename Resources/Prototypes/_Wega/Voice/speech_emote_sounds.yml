@@ -1,5 +1,5 @@
 - type: emoteSounds
-  id: FelinidSoundM
+  id: MaleFelinid
   params:
     variation: 0.125
   sounds:
@@ -37,7 +37,7 @@
       collection: MaleMoans
 
 - type: emoteSounds
-  id: FelinidSoundF
+  id: FemaleFelinid
   params:
     variation: 0.125
   sounds:

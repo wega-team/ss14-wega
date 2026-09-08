@@ -16,6 +16,9 @@ current-god-narsie = Нар'Си
 current-god-reaper = Жнецу
 current-god-kharin = Кха'Рину
 
+current-god-reaper-list = Жнеца
+current-god-kharin-list = Кха'Рин
+
 blood-cult-break-control =
     Туман перед глазами { $name } рассеялся, { GENDER($name) ->
         [male] он приходит в себя.
@@ -34,5 +37,5 @@ blood-cult-cond-ritualconducted = Ритуал не был завершён, К�
 blood-cult-cond-neutral = Цели не выполнены, Культ Крови ничего не достиг.
 blood-cult-cond-cultlose = Культ Крови потерпел поражение, жертвы не были принесены, и Божество Крови не явилось.
 
-blood-cultist-list-start = Культистами были:
+blood-cultist-list-start = Культистами { $god } были:
 blood-cultist-list-name-user = - [color=White]{ $name }[/color] ([color=gray]{ $user }[/color])

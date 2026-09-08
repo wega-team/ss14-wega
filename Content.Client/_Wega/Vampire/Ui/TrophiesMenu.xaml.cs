@@ -67,19 +67,28 @@ public sealed partial class TrophiesMenu : FancyWindow
         AbilitiesContainer.RemoveAllChildren();
         foreach (var ability in state.Abilities)
         {
-            var button = new TextureButton
+            var container = new BoxContainer
             {
-                ToolTip = BuildTooltip(ability),
-                Scale = new Vector2(3f, 3f),
-                VerticalExpand = true,
-                Margin = new Thickness(5)
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                Margin = new Thickness(5),
+                HorizontalAlignment = HAlignment.Center
             };
 
             var entity = _entityManager.GetEntity(ability.Action);
-            if (_entityManager.TryGetComponent<ActionComponent>(entity, out var action) && action.Icon != null)
-                button.TextureNormal = _spriteSystem.Frame0(action.Icon);
+            var entityProto = _entityManager.GetComponent<MetaDataComponent>(entity).EntityPrototype;
 
-            AbilitiesContainer.AddChild(button);
+            if (entityProto != null)
+            {
+                var iconView = new EntityPrototypeView
+                {
+                    Scale = new Vector2(3f, 3f),
+                    VerticalExpand = true
+                };
+                iconView.SetPrototype(entityProto.ID);
+                container.AddChild(iconView);
+            }
+
+            AbilitiesContainer.AddChild(container);
         }
     }
 

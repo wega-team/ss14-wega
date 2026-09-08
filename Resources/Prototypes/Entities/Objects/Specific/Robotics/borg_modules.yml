@@ -484,21 +484,21 @@
     hands:
     - item: CableApcStack10
       hand:
-        emptyRepresentative: CabelIcon # Corvax-Wega-Robot
+        emptyRepresentative: CabelIcon # Corvax-Wega-Robot-Edit
         emptyLabel: borg-slot-cables-empty
         whitelist:
           tags:
           - CableCoil
     - item: CableMVStack10
       hand:
-        emptyRepresentative: CabelIcon # Corvax-Wega-Robot
+        emptyRepresentative: CabelIcon # Corvax-Wega-Robot-Edit
         emptyLabel: borg-slot-cables-empty
         whitelist:
           tags:
           - CableCoil
     - item: CableHVStack10
       hand:
-        emptyRepresentative: CabelIcon # Corvax-Wega-Robot
+        emptyRepresentative: CabelIcon # Corvax-Wega-Robot-Edit
         emptyLabel: borg-slot-cables-empty
         whitelist:
           tags:
@@ -590,9 +590,9 @@
         whitelist:
           tags:
           - Inflatable
-# Corvax-Wega-Robot-Start
+    # Corvax-Wega-Robot-Start
     - item: BorgGeneratorInflatableWall
-# Corvax-Wega-Robot-End
+    # Corvax-Wega-Robot-End
     - item: BoxInflatable
     - item: WeaponMeleeNeedle
   - type: BorgModuleIcon
@@ -608,6 +608,17 @@
     layers:
     - state: cargo
     - state: icon-appraisal
+  # Corvax-Wega-Add
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Heat: 0.8
+      flatReductions:
+        Slash: 5
+        Piercing: 5
+  # Corvax-Wega-End
   - type: ItemBorgModule
     hands:
     - item: AppraisalTool
@@ -648,9 +659,9 @@
     - item: BoxFolderYellowEmpty
     # - item: Pen
     - item: HandLabeler
-        # - item: RubberStampApproved
-        # - item: RubberStampDenied
-        # - item: RadioHandheld
+    # - item: RubberStampApproved
+    # - item: RubberStampDenied
+    # - item: RadioHandheld
     - item: MailBagBorg
     - hand:
         emptyLabel: borg-slot-cash-empty
@@ -660,7 +671,7 @@
           - Cash
           tags:
           - CoordinatesDisk
-# Corvax-Wega-Robot-End
+  # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: appraisal-module }
 
@@ -780,9 +791,9 @@
     - item: WelderExperimental
     - item: Multitool
     - item: RemoteSignallerAdvanced
-# Corvax-Wega-Robot-Start
+    # Corvax-Wega-Robot-Start
     - item: SprayPainterBorg
-# Corvax-Wega-Robot-End
+    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-tools-module }
 
@@ -791,7 +802,7 @@
   parent: BaseItem
   components:
   - type: Sprite
-    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi # Corvax-Wega-Robot
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi # Corvax-Wega-Robot-Edit
     state: generic_materials
 
 - type: entity
@@ -805,27 +816,25 @@
     - state: icon-construction
   - type: ItemBorgModule
     hands:
+    # Corvax-Wega-Robot-Edit-start
     - hand:
-        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-add
+        emptyRepresentative: ConstrukAndBattery
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
-          - PowerCell # Corvax-Wega-robots
+          - PowerCell
     - hand:
-        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-Add
+        emptyRepresentative: ConstrukAndBattery
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
-          - PowerCell # Corvax-Wega-robots
-# Corvax-Wega-Robot-Start
-    # - hand:
-        # emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
-        # emptyLabel: borg-slot-construction-empty
-        # whitelist:
-          # tags:
-          # - ConstructionMaterial
+          - PowerCell
     - hand:
         emptyRepresentative: FloorTileItemSteel
         emptyLabel: borg-slot-tiles-empty
@@ -833,7 +842,30 @@
           components:
           - FloorTile
     - item: ConstructionBag
-# Corvax-Wega-Robot-End
+    # - hand:
+    #     emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+    #     emptyLabel: borg-slot-construction-empty
+    #     whitelist:
+    #       tags:
+    #       - ConstructionMaterial
+    # - hand:
+    #     emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+    #     emptyLabel: borg-slot-construction-empty
+    #     whitelist:
+    #       tags:
+    #       - ConstructionMaterial
+    # - hand:
+    #     emptyRepresentative: FloorTileItemWhite
+    #     emptyLabel: borg-slot-tiles-empty
+    #     whitelist:
+    #       components:
+    #       - FloorTile
+    # - hand:
+    #     emptyRepresentative: FloorTileItemDark
+    #     emptyLabel: borg-slot-tiles-empty
+    #     whitelist:
+    #       components:
+    #       - FloorTile
     - hand:
         emptyRepresentative: DoorElectronics
         emptyLabel: borg-slot-circuitboards-empty
@@ -843,40 +875,13 @@
         blacklist:
           components:
           - SiliconLawProvider
-# Corvax-Wega-start
-    # - hand:
-        # emptyRepresentative: BorgModuleConstructionMaterialPlaceholder # Corvax-Wega-Robot
-        # emptyLabel: borg-slot-construction-empty
-        # whitelist:
-          # tags:
-          # - ConstructionMaterial
-# Corvax-Wega-End
     - hand:
         emptyRepresentative: SpaceHeaterFlatpack
         emptyLabel: borg-slot-flatpacks-empty
         whitelist:
           components:
           - Flatpack
-# Corvax-Wega-Robot-Start
-    # - hand:
-        # emptyRepresentative: FloorTileItemSteel
-        # emptyLabel: borg-slot-tiles-empty
-        # whitelist:
-          # components:
-          # - FloorTile
-    # - hand:
-        # emptyRepresentative: FloorTileItemWhite
-        # emptyLabel: borg-slot-tiles-empty
-        # whitelist:
-          # components:
-          # - FloorTile
-    # - hand:
-        # emptyRepresentative: FloorTileItemDark
-        # emptyLabel: borg-slot-tiles-empty
-        # whitelist:
-          # components:
-          # - FloorTile
-# Corvax-Wega-Robot-End
+    # Corvax-Wega-Robot-Edit-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: construction-module }
 
@@ -924,8 +929,8 @@
     - state: icon-light-replacer
   - type: ItemBorgModule
     hands:
-    - item: LightReplacer
-# Corvax-Wega-Robot-Start
+    - item: LightReplacerFilled
+    # Corvax-Wega-Robot-Start
     - hand:
         emptyLabel: borg-slot-box-light-mixed-empty
         emptyRepresentative: BoxLightMixed
@@ -958,10 +963,10 @@
     - state: icon-mop
   - type: ItemBorgModule
     hands:
-    - item: BorgMopItem # MopItem Corvax-Wega-Robot
+    - item: BorgMopItem # Corvax-Wega-Robot-Edit
     - item: WireBrush
     - item: BorgBucket
-# Corvax-Wega-Robot-start
+    # Corvax-Wega-Robot-start
     - item: Beaker
       hand:
         emptyLabel: borg-slot-beakers-empty
@@ -969,7 +974,7 @@
         whitelist:
           components:
           - FitsInDispenser
-# Corvax-Wega-Robot-End
+    # Corvax-Wega-Robot-End
     - item: BorgSprayBottle
     - item: HoloprojectorBorg
   - type: BorgModuleIcon
@@ -987,7 +992,7 @@
     - state: icon-mop-adv
   - type: ItemBorgModule
     hands:
-    - item: BorgAdvMopItem # AdvMopItem Corvax-Wega-Robot
+    - item: BorgAdvMopItem # Corvax-Wega-Robot-Edit
     - item: BorgTrashBag # Corvax-Wega-Robot
     - item: WireBrushElectrical
     - item: BorgMegaSprayBottle
@@ -1032,47 +1037,28 @@
   - type: ItemBorgModule
     hands:
     - item: HandheldHealthAnalyzer
-    # - item: AdvancedJetInjector Corvax-Wega-Robot
-# Corvax-Wega-Robot-Start
-    - item: BorgHypoTricordrazineBase
-      hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoTricordrazineBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-hypo-empty
-        emptyRepresentative: BorgHypoEpinephrineBase
-        whitelist:
-          tags:
-          - Itemborg
-# Corvax-Wega-Robot-End
+    # Corvax-Wega-Robot-Start
+    # - item: AdvancedJetInjector
+    - item: BorgHypoGeneratedGeneral
+    # Corvax-Wega-Robot-End
     - item: Gauze
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: MedicalIcon
+        emptyRepresentative: Gauze
         whitelist:
           components:
           - Healing
     - item: Brutepack
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: MedicalIcon
+        emptyRepresentative: Brutepack
         whitelist:
           components:
           - Healing
     - item: Ointment
       hand:
         emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: MedicalIcon
-        whitelist:
-          components:
-          - Healing
-    - item: Bloodpack
-      hand:
-        emptyLabel: borg-slot-topicals-empty
-        emptyRepresentative: MedicalIcon
+        emptyRepresentative: Ointment
         whitelist:
           components:
           - Healing
@@ -1096,7 +1082,6 @@
     # - item: Crowbar # Corvax-Wega-Robot
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
-    - item: HandLabeler
     # Corvax-Wega-Robot-Start
     - hand:
         emptyLabel: borg-slot-table-empty
@@ -1125,10 +1110,19 @@
     - state: icon-chemist
   - type: ItemBorgModule
     hands:
-# Corvax-Wega-Robot-Start
+    # Corvax-Wega-Robot-Start
     - item: HandheldHealthAnalyzer
     - item: AdvancedJetInjector
-# Corvax-Wega-Robot-End
+    # - item: HandLabeler
+    # - item: Syringe
+    #   hand:
+    #     emptyLabel: borg-slot-injector-dropper-empty
+    #     emptyRepresentative: Syringe
+    #     whitelist:
+    #       tags:
+    #       - Dropper
+    #       - Syringe
+    # Corvax-Wega-Robot-End
     - item: PillCanister
       hand:
         emptyLabel: borg-slot-small-containers-empty
@@ -1189,7 +1183,7 @@
     hands:
     - item: HandheldHealthAnalyzer
     - item: BorgHypo
-# Corvax-Wega-Robot-Start
+    # Corvax-Wega-Robot-Edit-start
     - item: BorgDropper
     - item: Jug
       hand:
@@ -1219,27 +1213,27 @@
           tags:
           - ChemDispensable
     # - item: Gauze
-      # hand:
-        # emptyLabel: borg-slot-topicals-empty
-        # emptyRepresentative: Gauze
-        # whitelist:
-          # components:
-          # - Healing
+    #   hand:
+    #     emptyLabel: borg-slot-topicals-empty
+    #     emptyRepresentative: Gauze
+    #     whitelist:
+    #       components:
+    #       - Healing
     # - item: Brutepack
-      # hand:
-        # emptyLabel: borg-slot-topicals-empty
-        # emptyRepresentative: Brutepack
-        # whitelist:
-          # components:
-          # - Healing
+    #   hand:
+    #     emptyLabel: borg-slot-topicals-empty
+    #     emptyRepresentative: Brutepack
+    #     whitelist:
+    #       components:
+    #       - Healing
     # - item: Ointment
-      # hand:
-        # emptyLabel: borg-slot-topicals-empty
-        # emptyRepresentative: Ointment
-        # whitelist:
-          # components:
-          # - Healing
-# Corvax-Wega-Robot-End
+    #   hand:
+    #     emptyLabel: borg-slot-topicals-empty
+    #     emptyRepresentative: Ointment
+    #     whitelist:
+    #       components:
+    #       - Healing
+  # Corvax-Wega-Robot-Edit-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: adv-chem-module }
 
@@ -1270,8 +1264,8 @@
     # Corvax-Wega-Robot-end
     - item: SprayBottle
     - item: GasAnalyzer
-    - item: Syringe # Corvax-Wega-Robot
-    - item: Beaker # Corvax-Wega-Robot
+    - item: BorgDropper
+    - item: ChemistryEmptyVial
       hand:
         emptyLabel: borg-slot-small-containers-empty
         emptyRepresentative: ChemistryEmptyVial
@@ -1280,7 +1274,7 @@
           - FitsInDispenser
     - item: GeigerCounter
   - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: node-scanner-module } # Corvax-Wega-add
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: node-scanner-module } # Corvax-Wega-Robot-Edit
 
 - type: entity
   id: BorgModuleAnomaly
@@ -1301,27 +1295,41 @@
         emptyRepresentative: ConstrukAndCabel # Corvax-Wega-Robot
         emptyLabel: borg-slot-construction-empty
         whitelist:
+          # Corvax-Wega-Robot-Edit-start
+          components:
+          - PowerCell
           tags:
           - ConstructionMaterial
-          - PowerCell # Corvax-Wega-Add
-          - CableCoil # Corvax-Wega-Robot
-# Corvax-Wega-Start
+          - PowerCell
+          - CableCoil
+          # Corvax-Wega-Robot-Edit-end
+    # Corvax-Wega-Robot-Edit-start
     # - hand:
-        # emptyRepresentative: SheetPlasma # Corvax-Wega-Robot
-        # emptyLabel: borg-slot-construction-empty
-        # whitelist:
-          # tags:
-          # - ConstructionMaterial
+    #     emptyRepresentative: SheetRPGlass
+    #     emptyLabel: borg-slot-construction-empty
+    #     whitelist:
+    #       tags:
+    #       - ConstructionMaterial
     - hand:
-        emptyRepresentative: ScientistIcon # Corvax-Wega-Robot
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+    - hand:
+        emptyRepresentative: ScientistIcon
         emptyLabel: borg-slot-diski-empty
         whitelist:
           components:
           - ResearchDisk
           - TechnologyDisk
-# Corvax-Wega-end
+    - item: TechDiskBagBorg
+  # Corvax-Wega-Robot-Edit-end
   - type: BorgModuleIcon
-    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-add
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: anomaly-module } # Corvax-Wega-Robot-Edit
 
 # service modules
 - type: entity
@@ -1335,68 +1343,44 @@
     - state: icon-pen
   - type: ItemBorgModule
     hands:
-    # Corvax-Wega-Robot-start
+    # Corvax-Wega-Robot-Edit-start
     # - item: Pen
-    # - hand:
-        # emptyLabel: borg-slot-documents-empty
-        # emptyRepresentative: Paper
-        # whitelist:
-          # tags:
-          # - Book
-          # - Dice
-          # - Document
-          # - Figurine
-          # - TabletopBoard
-          # - Write
     # - item: BooksBag
     # - hand:
-        # emptyLabel: borg-slot-documents-empty
-        # emptyRepresentative: BookBase
-        # whitelist:
-          # tags:
-          # - Book
-          # - Dice
-          # - Document
-          # - Figurine
-          # - TabletopBoard
-          # - Write
+    #     emptyLabel: borg-slot-documents-empty
+    #     emptyRepresentative: BookBase
+    #     whitelist:
+    #       tags:
+    #       - Book
+    #       - Dice
+    #       - Document
+    #       - Figurine
+    #       - TabletopBoard
+    #       - Write
     # - hand:
-        # emptyLabel: borg-slot-documents-empty
-        # emptyRepresentative: Paper
-        # whitelist:
-          # tags:
-          # - Book
-          # - Dice
-          # - Document
-          # - Figurine
-          # - TabletopBoard
-          # - Write
+    #     emptyLabel: borg-slot-documents-empty
+    #     emptyRepresentative: Paper
+    #     whitelist:
+    #       tags:
+    #       - Book
+    #       - Dice
+    #       - Document
+    #       - Figurine
+    #       - TabletopBoard
+    #       - Write
     # - item: HandLabeler
     # - item: RubberStampApproved
     # - item: RubberStampDenied
-    # Corvax-Wega-Robot-start
     # - item: BorgDropper
     # - item: DrinkShaker
-      # hand:
-        # emptyLabel: borg-slot-small-containers-empty
-        # emptyRepresentative: DrinkShaker
-        # whitelist:
-          # components:
-          # - FitsInDispenser
+    #   hand:
+    #     emptyLabel: borg-slot-small-containers-empty
+    #     emptyRepresentative: DrinkShaker
+    #     whitelist:
+    #       components:
+    #       - FitsInDispenser
     # - item: BarSpoon
-    - item: BorgDrinkSolutionWaterBase
-      hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionWaterBase
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-drinks-empty
-        emptyRepresentative: BorgDrinkSolutionBeerBase
-        whitelist:
-          tags:
-          - Itemborg
+    - item: BorgDrinkSolutionBase
     - item: BorgGeneratorCup
     - hand:
         emptyLabel: borg-slot-chemical-containers-empty
@@ -1416,46 +1400,44 @@
         blacklist:
           components:
           - Clothing
-    # Corvax-Wega-Robot-end
+    # Corvax-Wega-Robot-Edit-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
 
-# Corvax-Wega-Robot-Start
-# - type: entity
-  # id: BorgModuleMusique
-  # parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
-  # name: musique cyborg module
-  # components:
-  # - type: Sprite
-    # layers:
-    # - state: service
-    # - state: icon-musique
-  # - type: ItemBorgModule
-    # hands:
-    # - item: SynthesizerInstrument
-      # hand:
-        # emptyLabel: borg-slot-instruments-empty
-        # emptyRepresentative: SynthesizerInstrument
-        # whitelist:
-          # components:
-          # - Instrument
-    # - item: ElectricGuitarInstrument
-      # hand:
-        # emptyLabel: borg-slot-instruments-empty
-        # emptyRepresentative: ElectricGuitarInstrument
-        # whitelist:
-          # components:
-          # - Instrument
-    # - item: SaxophoneInstrument
-      # hand:
-        # emptyLabel: borg-slot-instruments-empty
-        # emptyRepresentative: SaxophoneInstrument
-        # whitelist:
-          # components:
-          # - Instrument
-  # - type: BorgModuleIcon
-    # icon: { sprite: Interface/Actions/actions_borg.rsi, state: musical-module }
-# Corvax-Wega-Robot-End
+- type: entity
+  id: BorgModuleMusique
+  parent: [ BaseBorgModule, BaseProviderBorgModule ] # Corvax-Wega-Robot-Edit
+  name: musique cyborg module
+  components:
+  - type: Sprite
+    layers:
+    - state: service
+    - state: icon-musique
+  - type: ItemBorgModule
+    hands:
+    - item: SynthesizerInstrument
+      hand:
+        emptyLabel: borg-slot-instruments-empty
+        emptyRepresentative: MusicIcon # Corvax-Wega-Robot-Edit
+        whitelist:
+          components:
+          - Instrument
+    - item: ElectricGuitarInstrument
+      hand:
+        emptyLabel: borg-slot-instruments-empty
+        emptyRepresentative: MusicIcon # Corvax-Wega-Robot-Edit
+        whitelist:
+          components:
+          - Instrument
+    - item: SaxophoneInstrument
+      hand:
+        emptyLabel: borg-slot-instruments-empty
+        emptyRepresentative: MusicIcon # Corvax-Wega-Robot-Edit
+        whitelist:
+          components:
+          - Instrument
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: musical-module } # Corvax-Wega-Robot-Edit
 
 - type: entity
   id: BorgModuleGardening
@@ -1468,32 +1450,9 @@
     - state: icon-gardening
   - type: ItemBorgModule
     hands:
-    # Corvax-Wega-Robot-start
-    - item: PlantAnalyzerUnpowered
-    - item: BorgHydroponicsToolMiniHoe
-      hand:
-        emptyLabel: borg-slot-hydro-empty
-        emptyRepresentative: BorgHydroponicsToolMiniHoe
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-hydro-empty
-        emptyRepresentative: BorgHydroponicsToolSpade
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyRepresentative: WheatSeeds
-        emptyLabel: borg-slot-seed-empty
-        whitelist:
-          components:
-          - Seed
-          tags:
-          - Vegetable
-          - Fruit
-    - item: BorgDropper
-    # Corvax-Wega-Robot-end
+    - item: HydroponicsToolMiniHoe
+    - item: HydroponicsToolSpade
+    - item: HydroponicsToolClippers
     - item: Bucket
     # Corvax-Wega-Robot-Start
     - hand:
@@ -1547,7 +1506,7 @@
     - item: BikeHorn
     - item: ClownRecorder
     - item: BikeHornInstrument
-# Corvax-Wega-Robot-start
+    # Corvax-Wega-Robot-start
     - hand:
         emptyLabel: borg-slot-soap-empty
         emptyRepresentative: SoapNT
@@ -1621,22 +1580,28 @@
   name: operative cyborg module
   description: A module that comes with a crowbar, an Emag, an Access Breaker and a syndicate pinpointer.
   components:
-    - type: Sprite
-      layers:
-      - state: syndicate
-      - state: icon-syndicate
-    - type: ItemBorgModule
-      hands:
-      # Corvax-Wega-Robot-start
-      - item: SyndicateJawsOfLife # Crowbar
-      # - item: Emag
-      - item: AccessBreaker
-      - item: SyndicateDrill
-      # Corvax-Wega-Robot-End
-      - item: PinpointerSyndicateNuclear
-      - item: PinpointerUniversal # Corvax-Wega-Robot-add
-    - type: BorgModuleIcon
-      icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-operative-module }
+  - type: Sprite
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: ItemBorgModule
+    hands:
+    # Corvax-Wega-Robot-Edit-start
+    - item: SyndicateJawsOfLife
+    - item: SyndicateDrill
+    - hand:
+        emptyRepresentative: NukeDisk
+        emptyLabel: borg-slot-nukedisk-empty # Corvax-Wega-Add
+        whitelist:
+          components:
+          - NukeDisk
+    # - item: Emag
+    - item: AccessBreaker
+    # Corvax-Wega-Robot-Edit-end
+    - item: PinpointerSyndicateNuclear
+    - item: PinpointerUniversal # Corvax-Wega-Robot-add
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-operative-module }
 
 - type: entity
   parent: [ BaseBorgModuleSyndicate, BaseProviderBorgModule, BaseSyndicateContraband ]
@@ -1684,17 +1649,18 @@
     - state: icon-syndicate
   - type: ItemBorgModule
     hands:
-# Corvax-Wega-Robot-start
     - item: WeaponLightMachineGunL6C
     - item: PinpointerSyndicateNuclear
-    - item: PinpointerUniversal # Corvax-Wega-Robot-add
-  - type: ComponentBorgModule
-    components:
-    - type: Reflect
-      reflectProb: 0.15
-      slotFlags:
-      - NONE
-# Corvax-Wega-Robot-End
+    - item: PinpointerUniversal # Corvax-Wega-Robot
+  # Corvax-Wega-Robot-start
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.1
+        Slash: 0.1
+        Piercing: 0.1
+        Heat: 0.2
+  # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-l6c-module }
 
@@ -1721,35 +1687,35 @@
   name: martyr cyborg module
   description: "A module that comes with an explosive you probably don't want to handle yourself."
   components:
-    - type: Sprite
-      layers:
-        - state: syndicateborgbomb
-        - state: icon-bomb
-    - type: ItemBorgModule
-      hands:
-      - item: SelfDestructSeq
-    - type: BorgModuleIcon
-      icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-martyr-module }
-    - type: Item
-      inhandVisuals:
-        left:
-        - state: base-icon-inhand-left
-          color: "#FF0000"
-        - state: base-module-inhand-left
-          color: "#891417"
-        - state: base-part-inhand-left
-        - state: base-stripes-inhand-left
-          color: "#7B0F12"
-        right:
-        - state: base-icon-inhand-right
-          color: "#FF0000"
-        - state: base-module-inhand-right
-          color: "#891417"
-        - state: base-part-inhand-right
-        - state: base-stripes-inhand-right
-          color: "#7B0F12"
-    - type: StaticPrice
-      price: 2000
+  - type: Sprite
+    layers:
+    - state: syndicateborgbomb
+    - state: icon-bomb
+  - type: ItemBorgModule
+    hands:
+    - item: SelfDestructSeq
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: syndicate-martyr-module }
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: base-icon-inhand-left
+        color: "#FF0000"
+      - state: base-module-inhand-left
+        color: "#891417"
+      - state: base-part-inhand-left
+      - state: base-stripes-inhand-left
+        color: "#7B0F12"
+      right:
+      - state: base-icon-inhand-right
+        color: "#FF0000"
+      - state: base-module-inhand-right
+        color: "#891417"
+      - state: base-part-inhand-right
+      - state: base-stripes-inhand-right
+        color: "#7B0F12"
+  - type: StaticPrice
+    price: 2000
 
 # mothership module
 - type: entity
@@ -1768,14 +1734,19 @@
   - type: ItemBorgModule
     hands:
     - item: DoorRemoteXenoborg
-    - item: XenoborgHoloprojectorForcefieldMother # Corvax-Wega-Robot-Add
+    - item: XenoborgHoloprojectorForcefieldMother # Corvax-Wega-Robot
     - hand:
         emptyRepresentative: MMIFilled
-        emptyLabel: borg-slot-brains-empty
+        emptyLabel: borg-slot-mmi-and-head-brains-empty # Corvax-Wega-Robot-Edit
         whitelist:
           components:
           - Brain
           - BorgBrain
+          # Corvax-Wega-Robot-start
+          - ChameleonClothing
+          tags:
+          - UpgradeKitBrain
+          # Corvax-Wega-Robot-end
     - hand:
         emptyRepresentative: XenoborgModuleBasic
         emptyLabel: borg-slot-modules-empty
@@ -1783,17 +1754,33 @@
           components:
           - BorgModule
     - hand:
-        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyRepresentative: MaterialXenoborgCrystal
+        emptyLabel: borg-slot-xenoborg-crystal-empty
+        whitelist:
+          tags:
+          - XenoborgCrystal
+    - hand:
+        emptyRepresentative: ConstrukAndBattery # Corvax-Wega-Robot-Edit
         emptyLabel: borg-slot-construction-empty
         whitelist:
           tags:
           - ConstructionMaterial
-    - hand:
-        emptyRepresentative: PowerCellHigh
-        emptyLabel: borg-slot-powercell-empty
-        whitelist:
+    # Corvax-Wega-Robot-Edit-start
+          - PowerCell
           components:
           - PowerCell
+    # - hand:
+    #     emptyRepresentative: PowerCellHigh
+    #     emptyLabel: borg-slot-powercell-empty
+    #     whitelist:
+    #       components:
+    #       - PowerCell
+    # - item: XenoborgModuleBag
+    # Corvax-Wega-Robot-Edit-end
+    - item: JawsOfLife
+    - item: PowerDrill
+    - item: WelderExperimental
+    - item: Multitool
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-module-module }
 
@@ -1811,6 +1798,12 @@
   - type: ItemBorgModule
     hands:
     - hand:
+        emptyRepresentative: MaterialXenoborgCrystal
+        emptyLabel: borg-slot-xenoborg-crystal-empty
+        whitelist:
+          tags:
+          - XenoborgCrystal
+    - hand:
         emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
         emptyLabel: borg-slot-construction-empty
         whitelist:
@@ -1818,7 +1811,7 @@
           - ConstructionMaterial
     - item: XenoborgMaterialBag
     - item: PinpointerMothership
-    - item: BorgHandheldGPSBasic # Corvax-Wega-add
+    - item: BorgHandheldGPSBasic # Corvax-Wega-Robot-Edit
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-basic-module }
 
@@ -1845,43 +1838,118 @@
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleAdvancedTool
+  name: advanced tool xenoborg module
+  description: Advanced engineering module containing advanced xenoborg technology.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-construction
+  - type: ItemBorgModule
+    hands:
+    - item: XenoborgJawsOfLife
+    - item: PowerDrill
+    - item: WelderExperimental
+    - item: Multitool
+    - item: trayScanner
+    - item: RCDRecharging
+    - item: SelfRechargingFireExtinguisher
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-adv-tools-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
   id: XenoborgModuleAccessBreaker
   name: access breaker xenoborg module
-  description: Module with a access breaker.
+  description: Module with an access breaker.
   components:
   - type: Sprite
     layers:
     - state: xenoborg_engi
     - state: icon-xenoborg-access-breaker
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleAccessBreaker
   - type: ItemBorgModule
     hands:
-# Corvax-Wega-Robot-Start
-    - item: Omnitool
-    - item: WelderExperimental
-    - item: XenoAccessBreaker
-    - item: XenoRCD
-    - item: Multitool
-    - item: RemoteSignallerAdvanced
-    - item: SelfRechargingFireExtinguisher
-# Corvax-Wega-Robot-end
+    - item: XenoborgAccessBreaker
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-access-breaker-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleEngi
+    - XenoborgModuleAccessBreaker
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
-  id: XenoborgModuleFireExtinguisher
-  name: fire extinguisher xenoborg module
-  description: Module with a self-refueling fire extinguisher.
+  id: XenoborgModuleConstruction
+  name: construction xenoborg module
   components:
   - type: Sprite
     layers:
     - state: xenoborg_engi
-    - state: icon-xenoborg-fire-extinguisher
+    - state: icon-xenoborg-construction
   - type: ItemBorgModule
     hands:
-    - item: SelfRechargingFireExtinguisher
+    - hand:
+        emptyRepresentative: BorgModuleConstructionMaterialPlaceholder
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+    - hand:
+        emptyRepresentative: CableApcStack10
+        emptyLabel: borg-slot-cables-empty
+        whitelist:
+          tags:
+          - CableCoil
+    - hand:
+        emptyRepresentative: FloorTileItemExoBorg
+        emptyLabel: borg-slot-tiles-empty
+        whitelist:
+          components:
+          - FloorTile
+    - hand:
+        emptyRepresentative: MicroManipulatorStockPart
+        emptyLabel: borg-slot-construction-empty
+        whitelist:
+          tags:
+          - ConstructionMaterial
+    - hand:
+        emptyRepresentative: DoorElectronics
+        emptyLabel: borg-slot-circuitboards-empty
+        whitelist:
+          components:
+          - Circuitboard
+        blacklist:
+          components:
+          - SiliconLawProvider
+    - hand:
+        emptyRepresentative: SpaceHeaterFlatpack
+        emptyLabel: borg-slot-flatpacks-empty
+        whitelist:
+          components:
+          - Flatpack
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-extinguisher-module }
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-construction-module }
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleDeflectorField
+  name: deflector field xenoborg module
+  description: Module with a self-recharging deflector field projector.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-shield
+  - type: ItemBorgModule
+    hands:
+    - item: HoloprojectorXenoField
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-deflector-module }
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1893,12 +1961,21 @@
     layers:
     - state: xenoborg_engi
     - state: icon-xenoborg-access-breaker
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleAccessBreaker
   - type: ItemBorgModule
     hands:
     - item: DoorRemoteXenoborg
+    - item: XenoborgAccessBreaker
     - item: AccessConfiguratorXenoborg
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-door-remote-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleEngi
+    - XenoborgModuleAccessBreaker
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1910,11 +1987,86 @@
     layers:
     - state: xenoborg_engi
     - state: icon-xenoborg-tile
+  - type: BorgModuleWhitelist
+    moduleBlacklist: &secondaryWeapon
+      tags:
+      - XenoborgModuleSecondaryWeapon
   - type: ItemBorgModule
     hands:
     - item: WeaponTileGun
+    - item: WeaponOilGun # Corvax-Wega-Robot
+    - item: XenoborgTitleBag # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-tile-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleEngi
+    - XenoborgModuleSecondaryWeapon
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseXenoborgContraband ]
+  id: XenoborgModuleZap
+  name: zap xenoborg module
+  description: Module that disables the grounding of the xenoborg, making them electrified. Shocking!
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-zap
+  - type: ComponentBorgModule
+    components:
+    - type: Electrified
+      requirePower: false
+      shockDamage: 15
+      shockDelay: 6
+      shockTime: 0.25
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleOilGun
+  name: oil gun xenoborg module
+  description: Module with a gun that shoots ampoules filled with flammable oil.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-oil
+  - type: BorgModuleWhitelist
+    moduleBlacklist: &primaryWeapon
+      tags:
+      - XenoborgModulePrimaryWeapon
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponOilGun
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-oil-gun-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleEngi
+    - XenoborgModulePrimaryWeapon
+
+- type: entity
+  parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleNaniteGun
+  name: nanite gun xenoborg module
+  description: Module that allows Xenoborgs to have a crystal firing nanite gun.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_engi
+    - state: icon-xenoborg-nanite-gun
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponNaniteGun
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-nanite-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleEngi
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1943,12 +2095,18 @@
     layers:
     - state: xenoborg_heavy
     - state: icon-xenoborg-laser
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
   - type: ItemBorgModule
     hands:
     - item: WeaponLaserGunXenoborg
     - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1960,12 +2118,145 @@
     layers:
     - state: xenoborg_heavy
     - state: icon-xenoborg-laser2
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
   - type: ItemBorgModule
     hands:
     - item: WeaponLaserCannonXenoborg
     - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser2-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModulePrimaryWeapon
+
+- type: entity
+  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleGuidedMissileLauncher
+  name: guided missile launcher xenoborg module
+  description: Module with guided missile launcher and a range finder to set targets.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: icon-xenoborg-guided-missile
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleSecondaryWeapon
+      - XenoborgModuleWithSimpleOverlay
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: Mobs/Silicon/chassis.rsi
+        state: xenoborg_heavy_missile_launcher
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponGuidedMissileLauncherXenoborg
+    - item: WeaponRangeFinderXenoborg
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-guided-missile-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModuleSecondaryWeapon
+    - XenoborgModuleWithSimpleOverlay
+
+- type: entity
+  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleRocket
+  name: rocket module
+  description: A module with a rocket launcher designed to destroy structures.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: icon-xenoborg-rocket
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleSecondaryWeapon
+      - XenoborgModuleWithSimpleOverlay
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponRocketLauncherXenoborg
+    - item: WeaponRocketLauncherXenoborg
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-rocket-module }
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: Mobs/Silicon/rockets.rsi
+        state: heavy_xenoborg_rockets
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModuleSecondaryWeapon
+    - XenoborgModuleWithSimpleOverlay
+
+- type: entity
+  parent: [ BaseXenoborgModuleHeavy, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleBurstFireLaser
+  name: burst fire laser xenoborg module
+  description: Module with a burst fire incendiary laser.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: icon-xenoborg-laser3
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
+  - type: ItemBorgModule
+    hands:
+    - item: WeaponBurstFireLaserXenoborg
+    - item: XenoborgHoloprojectorForcefield # Corvax-Wega-Robot
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-laser3-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModulePrimaryWeapon
+
+- type: entity
+  parent: [ BaseXenoborgModuleHeavy, BaseXenoborgContraband ]
+  id: XenoborgModuleHeavyRadioactive
+  name: radioactive xenoborg module
+  description: Module that causes a xenoborg to emanate radioactive energy.
+  components:
+  - type: PointLight
+    color: green
+    radius: 5
+    energy: 1
+  - type: Sprite
+    layers:
+    - state: xenoborg_heavy
+    - state: icon-xenoborg-radioactive
+  - type: BorgModuleWhitelist
+    moduleBlacklist: &moduleWithSimpleOverlay
+      tags:
+      - XenoborgModuleWithSimpleOverlay
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: Mobs/Silicon/chassis.rsi
+        state: xenoborg_heavy_rad
+      shader: unshaded
+    - type: RadiationSource
+      intensity: 4
+      slope: 1
+    - type: AmbientSound
+      range: 6
+      volume: -3
+      sound:
+        path: /Audio/Ambience/Objects/xenoborg_radioactive.ogg
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModuleWithSimpleOverlay
 
 - type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1979,12 +2270,19 @@
     - state: icon-xenoborg-space-movement
   - type: ItemBorgModule
     hands:
-    - item: BorgHandheldGPSBasic # Corvax-Wega-add
+    - item: BorgHandheldGPSBasic # Corvax-Wega-Robot
     - item: HandHeldMassScannerBorg
     - item: PinpointerMothership
     - item: HandheldStationMapUnpowered
     - item: WeaponGrapplingGun
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg # Corvax-Wega-Robot-Edit
+  # Corvax-Wega-Robot-start
+  - type: ComponentBorgModule
+    components:
+    - type: TelekinesisGen
+      itemPrototype: JetpackXenoborg
+      handPos: Left
+    # Corvax-Wega-Robot-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-space-movement-module }
 
@@ -2015,12 +2313,18 @@
     layers:
     - state: xenoborg_scout
     - state: icon-xenoborg-sword
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
   - type: ItemBorgModule
     hands:
     - item: KukriKnife
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg # Corvax-Wega-Robot-Edit
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleScout
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -2032,12 +2336,41 @@
     layers:
     - state: xenoborg_scout
     - state: icon-xenoborg-sword2
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
   - type: ItemBorgModule
     hands:
     - item: EnergyDaggerLoudBlue
-    - item: JetpackXenoborg
+    # - item: JetpackXenoborg # Corvax-Wega-Robot-Edit
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-sword2-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleScout
+    - XenoborgModulePrimaryWeapon
+
+- type: entity
+  parent: [ BaseXenoborgModuleScout, BaseProviderBorgModule, BaseXenoborgContraband ]
+  id: XenoborgModuleBioKinfe
+  name: bio knife xenoborg module
+  description: Module with an bio knife.
+  components:
+  - type: Sprite
+    layers:
+    - state: xenoborg_scout
+    - state: icon-xenoborg-sword2
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
+  - type: ItemBorgModule
+    hands:
+    - item: XenoborgBioKnife
+    - item: JetpackXenoborg
+  - type: BorgModuleIcon
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-bio-knife }
+  - type: Tag
+    tags:
+    - XenoborgModuleScout
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -2049,10 +2382,12 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-xenoborg-hypo
+  - type: BorgModuleWhitelist
+    moduleBlacklist: *primaryWeapon
   - type: ItemBorgModule
     hands:
     - item: NocturineHypo
- # Corvax-Wega-Robot-start
+    # Corvax-Wega-Robot-start
     - item: LauncherSyringe
     - item: BorgGeneratorMiniSyringePax
     - item: BorgGeneratorMiniSyringeImpedrezene
@@ -2070,9 +2405,13 @@
           tags:
           - Handcuffs
     - item: BoxZiptie
- # Corvax-Wega-Robot-start
+  # Corvax-Wega-Robot-start
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-hypo-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -2100,12 +2439,20 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-xenoborg-cloak
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleInvisibility
   - type: ItemBorgModule
     hands:
     - item: CloakingDevice
     - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoborgModuleInvisibility
 
 - type: entity
   parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -2117,9 +2464,17 @@
     layers:
     - state: xenoborg_stealth
     - state: icon-xenoborg-cloak2
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleInvisibility
   - type: ItemBorgModule
     hands:
     - item: SuperCloakingDevice
     - item: ChameleonProjectorNoBattery # Corvax-Wega-Robot
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-eye2-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleStealth
+    - XenoborgModuleInvisibility

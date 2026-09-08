@@ -38,6 +38,12 @@
   id: DoctorGear
   equipment:
     ears: ClothingHeadsetMedical
+    # Corvax-Wega-Edit-Start
+    eyes: ClothingEyesHudMedical
+    belt: ClothingBeltMedicalFilled
+    gloves: ClothingHandsGlovesLatex
+    neck: ClothingNeckStethoscope
+    # Corvax-Wega-Edit-End
 
 - type: chameleonOutfit
   id: MedicalDoctorChameleonOutfit

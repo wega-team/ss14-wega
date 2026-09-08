@@ -67,7 +67,7 @@ public abstract partial class SharedInternalStorageSystem : EntitySystem
         _action.RemoveAction(ent.Owner, ent.Comp.ToothImplantActionEntity);
         Del(pill);
 
-        _popup.PopupClient(Loc.GetString("internal-storage-eat-pill"), ent, ent);
+        _popup.PopupEntity(Loc.GetString("internal-storage-eat-pill"), ent, ent);
         _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/pill.ogg"), ent);
 
         args.Handled = true;

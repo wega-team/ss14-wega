@@ -29,6 +29,16 @@
     Gold: 400
     Diamond: 200
 
+- type: latheRecipe
+  parent: MiningDrill
+  id: Jackhammer
+  result: Jackhammer
+  materials:
+    Steel: 600
+    Plastic: 200
+    Silver: 200
+    Diamond: 300
+
 # Magmite
 - type: latheRecipe
   id: WeaponMagmiteProtoKineticAccelerator

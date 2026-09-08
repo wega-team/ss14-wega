@@ -68,7 +68,14 @@
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container
+      machine_parts:  !type:Container
+      machine_board: !type:Container
   - type: EntityStorageVisuals
     stateBaseClosed: base
     stateDoorOpen: door_open
     stateDoorClosed: door_closed
+  - type: Construction
+    containers:
+    - machine_parts
+    - machine_board
+    - entity_storage

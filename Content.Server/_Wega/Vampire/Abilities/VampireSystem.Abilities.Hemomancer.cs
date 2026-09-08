@@ -59,13 +59,15 @@ public sealed partial class VampireSystem
             if (!HasComp<BloodstreamComponent>(hitEnt))
                 continue;
 
-            var groupsHeal = _damage.CreateWeightedHealFromGroups(args.User, ent.Comp.HealGroups);
-
-            _damage.TryChangeDamage(ent.Owner, groupsHeal, true, false, origin: ent);
+            _damage.TryChangeDamage(args.User, ent.Comp.Damage, true, false, origin: ent);
             _stamina.TakeStaminaDamage(ent, ent.Comp.StaminaMod, visual: false);
-
-            AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
-            _blood.TryModifyBleedAmount(hitEnt, -ent.Comp.BloodStealAmount.Float() * 2);
+            _blood.TryModifyBloodLevel(args.User, ent.Comp.ModifyBloodLevel);
+            _blood.TryModifyBleedAmount(args.User, ent.Comp.BloodlossModifier);
+			
+			if (!_mobState.IsDead(hitEnt))
+			{
+				AddBloodEssence(args.User, ent.Comp.BloodStealAmount);
+			}
         }
     }
 
@@ -225,12 +227,14 @@ public sealed partial class VampireSystem
         }
 
         var puddlesInRange = _entityLookup.GetEntitiesInRange<PuddleComponent>(Transform(ent).Coordinates, 4f)
-            .Where(puddle => TryComp(puddle.Owner, out ContainerManagerComponent? containerManager)
-                && containerManager.Containers.TryGetValue("solution@puddle", out var container)
-                && container.ContainedEntities.Any(containedEntity =>
-                    TryComp(containedEntity, out SolutionComponent? solutionComponent)
-                    && solutionComponent.Solution.Contents.Any(r =>
-                        BloodProto.Contains(r.Reagent.Prototype))))
+            .Where(puddle =>
+            {
+                if (TryComp<SolutionComponent>(puddle.Owner, out var solutionComp))
+                {
+                    return solutionComp.Solution.Contents.Any(r => BloodProto.Contains(r.Reagent.Prototype));
+                }
+                return false;
+            })
             .ToList();
 
         foreach (var puddleEntity in puddlesInRange)
@@ -322,6 +326,9 @@ public sealed partial class VampireSystem
 
             foreach (var entity in nearbyEntities)
             {
+                if (HasComp<VampireComponent>(entity.Owner))
+                    continue;
+
                 if (HasComp<NullRodOwnerComponent>(entity.Owner) && !HasTruePower(ent))
                     continue;
 

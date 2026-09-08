@@ -51,3 +51,31 @@
     tags:
     - UniformUpgrade
     - SkullCodpieceUpgrade
+
+- type: entity
+  parent: BaseClothingAccessories
+  id: AccessoriesClothingPandoraHope
+  name: hope
+  description: "A small shiny crystal emitting a barely noticeable purple glow. His warmth spreads through my body, giving me a strange feeling of calm and security. It is said that it is able to reflect even the strongest flame."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Accessories/pandora_hope.rsi
+    state: icon
+  - type: PointLight
+    color: "#8f00ec"
+    energy: 2.5
+    radius: 0.6
+  - type: ClothingUpgrade
+    tags: [ PandoraHopeUpgrade ]
+    examineText: clothing-upgrade-examine-text-pandora-hope
+    sprite: { sprite: _Wega/Clothing/Accessories/pandora_hope.rsi, state: equipped-ACCESSORIES }
+  - type: ClothingAccessoriesProtection
+    modifiers:
+      coefficients:
+        Heat: 0.9
+  - type: ClothingAccessoriesFireProtection
+    reduction: 0.5
+  - type: Tag
+    tags:
+    - UniformUpgrade
+    - PandoraHopeUpgrade

@@ -7,5 +7,8 @@ public sealed partial class LavalandShuttleConsoleComponent : Component
     public EntityUid? ConnectedShuttle;
 
     [ViewVariables]
+    public string? CurrentPlanet;
+
+    [ViewVariables]
     public DockLocation Location = DockLocation.Station;
 }

@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingMaskGas, BaseRestrictedContraband]
+  parent: ClothingMaskGas
   id: ClothingMaskGasBlueShield
   name: blue shield gas mask
   description: A special protective gas mask for bodyguards.

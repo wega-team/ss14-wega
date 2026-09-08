@@ -12,11 +12,11 @@ public sealed partial class DnaServerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DnaServerComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<DnaServerComponent, MapInitEvent>(OnStartup);
         SubscribeLocalEvent<DnaServerComponent, ComponentShutdown>(OnShutdown);
     }
 
-    private void OnStartup(Entity<DnaServerComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<DnaServerComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.ServerId = GenerateId();
         Dirty(ent);

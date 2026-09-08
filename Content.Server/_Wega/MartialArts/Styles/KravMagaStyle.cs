@@ -2,12 +2,15 @@ using Content.Shared.Damage;
 using Content.Shared.Martial.Arts;
 using Content.Shared.Martial.Arts.Components;
 using Content.Shared.Standing;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Martial.Arts;
 
 /// KravMaga
 public sealed partial class MartialArtsSystem
 {
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
+
     private void InitializeKravMaga()
     {
         SubscribeLocalEvent<MartialArtsComponent, KravMagaLegSweepActionEvent>(OnLegSweep);
@@ -58,7 +61,7 @@ public sealed partial class MartialArtsSystem
 
     private void HandleNeckChop(EntityUid target)
     {
-        _statusEffect.TryAddStatusEffectDuration(target, "Muted", TimeSpan.FromSeconds(20f));
+        _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(20f));
 
         var damage = new DamageSpecifier { DamageDict = { { "Blunt", 15 } } };
         _damage.TryChangeDamage(target, damage);

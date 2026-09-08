@@ -1,7 +1,7 @@
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
 using Content.Server.Flash;
+using Content.Shared.Body.Systems;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Damage.Systems;
@@ -110,7 +110,7 @@ public sealed partial class VeilCultSystem
 
     private void TransformMaterial(EntityUid user, EntityUid material, StackComponent stack)
     {
-        if (!_prototypeManager.TryIndex(stack.StackTypeId, out var stackPrototype))
+        if (!ProtoMan.TryIndex(stack.StackTypeId, out var stackPrototype))
             return;
 
         if (stackPrototype.ID is not ("Steel" or "Plasteel" or "Brass"))

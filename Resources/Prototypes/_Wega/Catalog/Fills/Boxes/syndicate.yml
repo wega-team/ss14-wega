@@ -28,3 +28,21 @@
         - id: ModuleSyndiWeapon
         - id: ModuleSyndiSupport
         - id: Screwdriver
+
+- type: entity
+  id: SyndiBarmenKit
+  parent: [BoxCardboard, BaseSyndicateContraband]
+  name: syndi barmen Kit
+  description: The Syndicate's Young Bartender's Kit consists of six Syndi-shakers for the entire company.
+  components:
+    - type: Sprite
+      layers: 
+        - state: box_of_doom
+        - state: vials
+    - type: Storage
+      grid:
+      - 0,0,5,2
+    - type: StorageFill
+      contents:
+        - id: DrinkShakerSyndi
+          amount: 6

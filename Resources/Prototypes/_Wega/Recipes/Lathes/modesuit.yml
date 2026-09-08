@@ -348,6 +348,15 @@
   result: HolsterSuitModule
 
 - type: latheRecipe
+  parent: BaseModesuitModule
+  id: KineticHolsterSuitModule
+  result: KineticHolsterSuitModule
+  materials:
+    Steel: 5000
+    Glass: 5000
+    Plastic: 500
+
+- type: latheRecipe
   parent: BaseGoldModesuitModule
   id: EMPShieldSuitModule
   result: EMPShieldSuitModule

@@ -8,7 +8,7 @@ namespace Content.Shared.Mobs.Systems;
 
 public partial class MobStateSystem
 {
-    [Dependency] private SharedStutteringSystem _stutteringSystem = default!; // Corvax-Wega-PreCritical
+    [Dependency] private StutteringSystem _stuttering = default!; // Corvax-Wega-PreCritical
 
     #region Public API
 
@@ -23,22 +23,6 @@ public partial class MobStateSystem
     {
         return _mobStateQuery.Resolve(entity, ref component, false) &&
                component.AllowedStates.Contains(mobState);
-    }
-
-    /// <summary>
-    /// Run a MobState update check. This will trigger update events if the state has been changed.
-    /// </summary>
-    /// <param name="entity">Target Entity we want to change the MobState of</param>
-    /// <param name="component">MobState Component attached to the entity</param>
-    /// <param name="origin">Entity that caused the state update (if applicable)</param>
-    public void UpdateMobState(EntityUid entity, MobStateComponent? component = null, EntityUid? origin = null)
-    {
-        if (!_mobStateQuery.Resolve(entity, ref component))
-            return;
-
-        var ev = new UpdateMobStateEvent {Target = entity, Component = component, Origin = origin};
-        RaiseLocalEvent(entity, ref ev);
-        ChangeState(entity, component, ev.State, origin: origin);
     }
 
     /// <summary>
@@ -135,24 +119,13 @@ public partial class MobStateSystem
     #region PreCritical Effect
     private void ApplyStutteringEffect(EntityUid target)
     {
-        _stutteringSystem.DoStutter(target, TimeSpan.FromSeconds(5), refresh: true);
+        _stuttering.DoStutter(target, TimeSpan.FromSeconds(5), true);
     }
 
     private void RemoveStutteringEffect(EntityUid target)
     {
-        _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5));
+        _stuttering.DoStutter(target, TimeSpan.FromSeconds(0), true);
     }
     #endregion
     // Corvax-Wega-PreCritical-end
 }
-
-/// <summary>
-/// Event that gets triggered when we want to update the mobstate. This allows for systems to override MobState changes
-/// </summary>
-/// <param name="Target">The Entity whose MobState is changing</param>
-/// <param name="Component">The MobState Component owned by the Target</param>
-/// <param name="State">The new MobState we want to set</param>
-/// <param name="Origin">Entity that caused the state update (if applicable)</param>
-[ByRefEvent]
-public record struct UpdateMobStateEvent(EntityUid Target, MobStateComponent Component, MobState State,
-    EntityUid? Origin = null);

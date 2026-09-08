@@ -1,6 +1,4 @@
-﻿using Robust.Shared.GameStates;
-
-namespace Content.Shared.Weapons.Hitscan.Components;
+﻿namespace Content.Shared.Weapons.Hitscan.Components;
 
 /// <summary>
 /// Allows for hitscan entities to ignite their targets. This component modifies the ignition chance, as well as how many stacks are added once ignited.

@@ -24,7 +24,9 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
   - TechDiskBag # Corvax-Wega-Add
+  - TechDiskBagT3 # Corvax-Wega-Add
   - ClothingBackpackHarmpack
+  - SelectorTeleporter # Corvax-Wega-Add
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -84,10 +86,12 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
-# Corvax-wega-start
+  # Corvax-wega-start
+  # - StationTeleportersControlCircuitboard
+  # - StationTeleporterMachineCircuitboard
   - BorgChargerTurboCircuitboard
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
-# Corvax-wega-end
+  # Corvax-wega-end
 
 - type: latheRecipePack
   id: CameraBoards

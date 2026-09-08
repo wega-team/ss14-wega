@@ -1,0 +1,4 @@
+- type: satiation
+  id: SkrellThirst
+  parent: NormalSatiationThirst
+  baseChangeRate: -0.15

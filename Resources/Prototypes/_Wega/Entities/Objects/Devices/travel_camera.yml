@@ -1,0 +1,20 @@
+- type: entity
+  parent: TravelCamera
+  id: TravelCameraCivilian
+  name: travel camera
+  description: A picture says more than a thousand words. Comes with an ultrabright flash and internal recharging photo roll.
+  suffix: Civilian
+  components:
+  - type: Flash
+    flashOnRangedInteract: true
+    sound: !type:SoundPathSpecifier
+      path: /Audio/Misc/camera_snap.ogg
+    range: 1
+    slowTo: 1
+    aoeFlashDuration: 0.5
+  - type: LimitedCharges
+    maxCharges: 2
+  - type: AutoRecharge
+    rechargeDuration: 120
+  - type: UseDelay
+    delay: 20

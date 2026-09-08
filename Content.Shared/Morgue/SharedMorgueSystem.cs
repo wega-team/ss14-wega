@@ -76,8 +76,23 @@ public abstract partial class SharedMorgueSystem : EntitySystem
                 _appearance.SetData(uid, MorgueVisuals.Contents, MorgueContents.HasSoul, app);
                 return;
             }
-        }
+            // Corvax-Wega-Morgue-change-start
+            if (TryComp<EntityStorageComponent>(ent, out var container))
+            {
+                foreach (var enti in container.Contents.ContainedEntities)
+                {
+                    if (!hasMob && HasComp<MobStateComponent>(enti))
+                        hasMob = true;
 
+                    if (HasComp<ActorComponent>(enti))
+                    {
+                        _appearance.SetData(uid, MorgueVisuals.Contents, MorgueContents.HasSoul, app);
+                        return;
+                    }
+                }
+            }
+            // Corvax-Wega-Morgue-change-end
+        }
         _appearance.SetData(uid, MorgueVisuals.Contents, hasMob ? MorgueContents.HasMob : MorgueContents.HasContents, app);
     }
 }

@@ -1,14 +1,14 @@
 using Content.Client.Movement.Systems;
+using Content.Shared.Corvax.Events;
 using Content.Shared.Actions;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
+using Content.Shared.Ghost.Systems;
+using Content.Shared.NightVision;
+using Content.Shared.Overlays;
 using Robust.Client.Console;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Player;
-using Content.Client.UserInterface.Systems.Ghost.Widgets; // Corvax-Wega-GhostRespawn
-using Content.Shared.Mind; // Corvax-Wega-GhostRespawn
-using Robust.Client.UserInterface; // Corvax-Wega-GhostRespawn
-using Content.Client.Wega.Ghost.Respawn; // Corvax-Wega-GhostRespawn
 
 namespace Content.Client.Ghost
 {
@@ -17,20 +17,18 @@ namespace Content.Client.Ghost
         [Dependency] private IClientConsoleHost _console = default!;
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private SharedActionsSystem _actions = default!;
-        [Dependency] private PointLightSystem _pointLightSystem = default!;
         [Dependency] private ContentEyeSystem _contentEye = default!;
         [Dependency] private SpriteSystem _sprite = default!;
-        [Dependency] private IUserInterfaceManager _uiManager = default!; // Corvax-Wega-GhostRespawn
-        [Dependency] private GhostRespawnSystem _respawn = default!; // Corvax-Wega-GhostRespawn
+        [Dependency] private SharedNightVisionSystem _nv = default!;
 
         public int AvailableGhostRoleCount { get; private set; }
 
         private bool _ghostVisibility = true;
 
-        private bool GhostVisibility
+        public bool GhostVisibility
         {
             get => _ghostVisibility;
-            set
+            private set
             {
                 if (_ghostVisibility == value)
                 {
@@ -46,18 +44,6 @@ namespace Content.Client.Ghost
                 }
             }
         }
-
-        // Corvax-Wega-GhostRespawn-start
-        public override void Update(float frameTime)
-        {
-            foreach (var ghost in EntityQuery<GhostComponent, MindComponent>(true))
-            {
-                var ui = _uiManager.GetActiveUIWidgetOrNull<GhostGui>();
-                if (ui != null && Player != null)
-                    ui.UpdateGhostRespawn(_respawn.GhostRespawnTime);
-            }
-        }
-        // Corvax-Wega-GhostRespawn-end
 
         public GhostComponent? Player => CompOrNull<GhostComponent>(_playerManager.LocalEntity);
         public bool IsGhost => Player != null;
@@ -99,27 +85,25 @@ namespace Content.Client.Ghost
             if (args.Handled)
                 return;
 
-            TryComp<PointLightComponent>(uid, out var light);
-
             if (!component.DrawLight)
             {
                 // normal lighting
                 Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-normal"), args.Performer);
                 _contentEye.RequestEye(component.DrawFov, true);
             }
-            else if (!light?.Enabled ?? false) // skip this option if we have no PointLightComponent
+            else if (TryComp<NightVisionComponent>(uid, out var nv) && !nv.Enabled)
             {
-                // enable personal light
-                Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-personal-light"), args.Performer);
-                _pointLightSystem.SetEnabled(uid, true, light);
+                Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-half-bright"), args.Performer);
+                _nv.SetEnabled((uid, nv), true);
             }
             else
             {
                 // fullbright mode
                 Popup.PopupEntity(Loc.GetString("ghost-gui-toggle-lighting-manager-popup-fullbright"), args.Performer);
                 _contentEye.RequestEye(component.DrawFov, false);
-                _pointLightSystem.SetEnabled(uid, false, light);
+                _nv.SetEnabled((uid, nv), false);
             }
+
             args.Handled = true;
         }
 
@@ -203,6 +187,11 @@ namespace Content.Client.Ghost
         public void RequestWarps()
         {
             RaiseNetworkEvent(new GhostWarpsRequestEvent());
+        }
+
+        public void GhostGoLobby() // Corvax-GoLobby
+        {
+            RaiseNetworkEvent(new GhostGoLobbyEvent());
         }
 
         public void ReturnToBody()

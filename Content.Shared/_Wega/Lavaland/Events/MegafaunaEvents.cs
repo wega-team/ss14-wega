@@ -1,6 +1,5 @@
 using Content.Shared.Actions;
 using Content.Shared.Damage;
-using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Lavaland.Events;
@@ -13,17 +12,9 @@ namespace Content.Shared.Lavaland.Events;
 [ByRefEvent]
 public record struct MegafaunaKilledEvent(EntityUid Megafauna, EntityUid? Killer);
 
-/// <summary>
-/// An event triggered when a megafauna attacks a target.
-/// </summary>
-/// <param name="Target">ID of the attack target</param>
-[ByRefEvent]
-public record struct MegafaunaAttackEvent(EntityUid Target);
-
 // BDM
 public sealed partial class BloodDrunkMinerDashAction : WorldTargetActionEvent
 {
-    public SoundSpecifier DashSound = new SoundPathSpecifier("/Audio/Magic/blink.ogg");
 }
 
 // Hierophant
@@ -148,4 +139,91 @@ public sealed partial class BubblegumChaoticIllusionDashActionEvent : EntityTarg
     [DataField] public float PreDashDelay = 0.8f;
     [DataField(required: true)] public DamageSpecifier IllusionDamage;
     [DataField] public EntProtoId IllusionPrototype = "MobBubblegumIllusion";
+}
+
+// Wendigo
+public sealed partial class WendigoStompActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float Range = 4f;
+}
+
+public sealed partial class WendigoTeleportActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float TeleportDistance = 4f;
+    [DataField] public EntProtoId TeleportEffect = "EffectSparks";
+}
+
+public sealed partial class WendigoScreamActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int SpreadCount = 16;
+    [DataField] public int AlternatingCount = 12;
+    [DataField] public int StarCount = 8;
+    [DataField] public float StarRotationSpeed = 0.2f;
+}
+
+// Frost Miner
+public sealed partial class FrostMinerIceOrbsActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int Count = 8;
+    [DataField] public float SpawnDelay = 1f;
+    [DataField] public float ExplodeDelay = 10f;
+    [DataField] public int ShardsPerOrb = 5;
+    [DataField] public EntProtoId OrbPrototype = "EffectFrostMinerIceOrb";
+}
+
+public sealed partial class FrostMinerSnowballActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int Count = 60;
+    [DataField] public float Spread = 45f;
+    [DataField] public int WaveCount = 0;
+    [DataField] public int WaveShards = 0;
+    [DataField] public EntProtoId SnowballPrototype = "ProjectileFrostMinerSnowball";
+    [DataField] public EntProtoId ShardPrototype = "ProjectileFrostMinerShard";
+}
+
+public sealed partial class FrostMinerShotgunActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int Waves = 5;
+    [DataField] public int WaveCount = 5;
+    [DataField] public float Spread = 80f;
+    [DataField] public EntProtoId ShardPrototype = "ProjectileFrostMinerShard";
+}
+
+// The Thing
+public sealed partial class TheThingChargeActionEvent : EntityTargetActionEvent
+{
+    [DataField] public float ChargeDistance = 5f;
+    [DataField] public float ChargeForce = 15f;
+}
+
+public sealed partial class TheThingDecimateActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int AreaSize = 5;
+    [DataField] public EntProtoId SpikePrototype = "EffectTheThingSpawnBase";
+}
+
+public sealed partial class TheThingShriekActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int AreaSize = 5;
+    [DataField] public float StunChance = 0.5f;
+    [DataField] public float StunDuration = 0.1f;
+}
+
+public sealed partial class TheThingSquareTendrilsActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int AreaSize = 5;
+    [DataField] public float WarningDelay = 2.5f;
+    [DataField] public EntProtoId SpikePrototype = "EffectTheThingSpikeDamage";
+    [DataField] public EntProtoId WarningPrototype = "EffectTheThingBigWarning";
+}
+
+public sealed partial class TheThingCardinalTendrilsActionEvent : EntityTargetActionEvent
+{
+    [DataField] public int Length = 5;
+    [DataField] public EntProtoId SpikePrototype = "EffectTheThingSpawnBase";
+}
+
+public sealed partial class TheThingAcidShowerActionEvent : EntityTargetActionEvent
+{
+    [DataField] public EntProtoId AcidPrototype = "EffectTheThingAcidSpawn";
 }

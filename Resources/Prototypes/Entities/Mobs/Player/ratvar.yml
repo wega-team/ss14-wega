@@ -82,21 +82,17 @@
   - type: Physics
     bodyStatus: InAir
   - type: CanMoveInAir
-  - type: EventHorizon
-    radius: 5
-    canBreachContainment: true
-  - type: GravityWell
-    baseRadialAcceleration: 6
-    maxRange: 8
-  - type: Tag
-    tags:
-    - GhostOnlyWarp
+  # Corvax-Wega-Edit-Start
+  # - type: EventHorizon
+  #   radius: 5
+  #   canBreachContainment: true
+  # - type: GravityWell
+  #   baseRadialAcceleration: 6
+  #   maxRange: 8
+  # Corvax-Wega-Edit-End
   - type: WarpPoint
     follow: true
-    location: Ratvar
-    blacklist:
-      tags:
-      - GhostOnlyWarp
+    location: location-ratvar
   # Corvax-Wega-Veil-Cult-start
   - type: Godmode
   - type: Eye

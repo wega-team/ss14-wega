@@ -1,5 +1,4 @@
 using Content.Server.Disease.Components;
-using Content.Server.Nutrition.Components;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Power;

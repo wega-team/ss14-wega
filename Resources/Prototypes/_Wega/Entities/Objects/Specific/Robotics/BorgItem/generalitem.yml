@@ -1,4 +1,4 @@
-## Common Speed
+# Common Speed
 - type: entity
   parent: BaseItem
   id: SpeedModeDevice
@@ -14,7 +14,7 @@
     components:
     - type: SpeedUpGen
   - type: PowerCellDraw
-    drawRate: 50.4 # 25 seconds
+    drawRate: 14.4 # 25 seconds
   - type: ToggleCellDraw
   - type: PowerCellSlot
     cellSlotId: cell_slot
@@ -29,7 +29,7 @@
         disableEject: true
         swap: false
 
-## Common Magboots
+# Common Magboots
 - type: entity
   parent: BaseItem
   id: MagbootsModeDevice
@@ -60,7 +60,7 @@
         disableEject: true
         swap: false
 
-## Common repeir
+# Common repeir
 - type: entity
   parent: BaseItem
   id: RepeirModeDevice
@@ -110,9 +110,9 @@
   - type: UseDelay
     delay: 60
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
+    sprite: Structures/Wallmounts/air-alarm.rsi
     layers:
-    - state: fire_b1
+    - state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse
@@ -144,6 +144,7 @@
 - type: entity
   name: pickaxe
   parent: BaseItem
+  categories: [ HideSpawnMenu ]
   id: PickaxeBorg
   description: Notched to perfection, for jamming it into rocks.
   components:
@@ -177,7 +178,7 @@
       Steel: 100
       Wood: 100
 
-## Common generator
+# Common generator
 - type: entity
   parent: BaseItem
   id: BorgGeneratorInflatableWall
@@ -202,7 +203,7 @@
     sound:
       path: /Audio/Machines/phasein.ogg
 
-# candy genetator
+# Candy genetator
 - type: entity
   parent: BaseItem
   id: BorgGeneratorCommonCandy
@@ -230,7 +231,7 @@
       path: /Audio/Machines/phasein.ogg
 
 - type: entity
-  parent: DrinkBase
+  parent: [ DrinkBase, SolutionToolSmall ]
   id: BorgDrinkSolutionWaterCommon
   name: water generation
   suffix: Water
@@ -242,14 +243,7 @@
     - state: icon
     - state: water
   - type: Label
-    currentLabel: reagent-name-water
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        maxVol: 30
-        reagents:
-        - ReagentId: Water
-          Quantity: 0
+    localizedLabel: reagent-name-water
   - type: FitsInDispenser
     solution: drink
   - type: SolutionRegeneration
@@ -270,34 +264,3 @@
   - type: Sprite
     layers:
       - state: box_of_doom_big
-
-- type: entity
-  parent: BaseItem
-  id: ModuleCommand
-  name: Module support
-  description: "An obsidian rod that strikes paranormal things."
-  components:
-  - type: Sprite
-    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
-    layers:
-    - state: command
-  - type: Item
-    size: Small
-  - type: ItemSelector
-    items:
-    - BorgModuleCommonHand
-    - BorgModuleSecRare
-    - BorgModuleCargoRare
-    - BorgModuleEngenerRare
-    - BorgModuleCleanerRare
-    - BorgModuleMedicalRare
-    - BorgModuleServiceRare
-    - BorgModuleScienceRND
-  - type: ActivatableUI
-    key: enum.ItemSelectorUiKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.ItemSelectorUiKey.Key:
-        type: ItemSelectorBoundUserInterface
-
-

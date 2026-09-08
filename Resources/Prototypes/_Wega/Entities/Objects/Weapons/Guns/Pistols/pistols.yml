@@ -21,6 +21,7 @@
     - suitStorage
     - Belt
   - type: Gun
+    projectileSpeed: 80
     fireRate: 2
     selectedMode: SemiAuto
     availableModes:

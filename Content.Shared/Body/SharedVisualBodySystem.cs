@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared.DisplacementMap;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid;
 using Robust.Shared.Containers;
@@ -12,7 +13,6 @@ namespace Content.Shared.Body;
 /// </summary>
 public abstract partial class SharedVisualBodySystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private MarkingManager _marking = default!;
     [Dependency] private SharedContainerSystem _container = default!;
 
@@ -49,6 +49,11 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
 
         foreach (var (marking, prototype) in forcedColors)
         {
+            // Corvax-Wega-Customize-start
+            var isGradient = prototype.Sprites.Count > 1;
+            var originalColors = marking.MarkingColors.ToList();
+            // Corvax-Wega-Customize-end
+
             var colors = MarkingColoring.GetMarkingLayerColors(
                 prototype,
                 skinColor,
@@ -59,10 +64,32 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
             {
                 Forced = marking.Forced,
             };
+
+            // Corvax-Wega-Customize-Edit-start
             if (appearances.GetValueOrDefault(prototype.BodyPart) is { MatchSkin: true } appearance && skinColor is { } color)
             {
-                markingWithColor = markingWithColor.WithColor(color.WithAlpha(appearance.LayerAlpha));
+                if (isGradient)
+                {
+                    var newColors = new List<Color>();
+                    newColors.Add(color.WithAlpha(appearance.LayerAlpha));
+
+                    for (int i = 1; i < markingWithColor.MarkingColors.Count; i++)
+                    {
+                        var layerColor = i < originalColors.Count ? originalColors[i] : markingWithColor.MarkingColors[i];
+                        newColors.Add(layerColor.WithAlpha(appearance.LayerAlpha));
+                    }
+
+                    markingWithColor = new Marking(marking.MarkingId, newColors)
+                    {
+                        Forced = marking.Forced,
+                    };
+                }
+                else
+                {
+                    markingWithColor = markingWithColor.WithColor(color.WithAlpha(appearance.LayerAlpha));
+                }
             }
+            // Corvax-Wega-Customize-Edit-end
             ret.Add(markingWithColor);
         }
 
@@ -75,15 +102,17 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         Dirty(ent);
     }
 
-    protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data)
+    protected virtual void SetOrganAppearance(Entity<VisualOrganComponent> ent, PrototypeLayerData data, ProtoId<DisplacementDataPrototype>? displacement)
     {
         ent.Comp.Data = data;
+        ent.Comp.Displacement = displacement;
         Dirty(ent);
     }
 
-    protected virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings)
+    protected virtual void SetOrganMarkings(Entity<VisualOrganMarkingsComponent> ent, Dictionary<HumanoidVisualLayers, List<Marking>> markings, Dictionary<HumanoidVisualLayers, DisplacementData> displacement)
     {
         ent.Comp.Markings = markings;
+        ent.Comp.MarkingsDisplacement = displacement.ShallowClone();
         Dirty(ent);
     }
 
@@ -95,7 +124,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!other.Layer.Equals(ent.Comp.Layer))
             return;
 
-        SetOrganAppearance(ent, other.Data);
+        SetOrganAppearance(ent, other.Data, other.Displacement);
     }
 
     private void OnMarkingsOrganCopyAppearance(Entity<VisualOrganMarkingsComponent> ent, ref BodyRelayedEvent<OrganCopyAppearanceEvent> args)
@@ -106,7 +135,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!other.MarkingData.Layers.SetEquals(ent.Comp.MarkingData.Layers))
             return;
 
-        SetOrganMarkings(ent, other.Markings);
+        SetOrganMarkings(ent, other.Markings, other.MarkingsDisplacement);
     }
 
     private void OnVisualOrganApplyProfile(Entity<VisualOrganComponent> ent, ref BodyRelayedEvent<ApplyOrganProfileDataEvent> args)
@@ -131,7 +160,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (ent.Comp.SexStateOverrides is { } overrides && overrides.TryGetValue(data.Sex, out var state))
         {
             ent.Comp.Data.State = state;
-            SetOrganAppearance(ent, ent.Comp.Data);
+            SetOrganAppearance(ent, ent.Comp.Data, ent.Comp.Displacement);
         }
     }
 
@@ -143,7 +172,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
         if (!args.Args.Markings.TryGetValue(category, out var markingSet))
             return;
 
-        var groupProto = _prototype.Index(ent.Comp.MarkingData.Group);
+        var groupProto = ProtoMan.Index(ent.Comp.MarkingData.Group);
         var organMarkings = ent.Comp.Markings.ShallowClone();
 
         foreach (var layer in ent.Comp.MarkingData.Layers)
@@ -169,7 +198,7 @@ public abstract partial class SharedVisualBodySystem : EntitySystem
             kvp => kvp.Key,
             kvp => ResolveMarkings(kvp.Value, profile.SkinColor, profile.EyeColor, groupProto.Appearances));
 
-        SetOrganMarkings(ent, resolved);
+        SetOrganMarkings(ent, resolved, ent.Comp.MarkingsDisplacement);
     }
 }
 

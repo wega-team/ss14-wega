@@ -1,0 +1,11 @@
+﻿- type: surgeryPackage
+  id: MedicinalSurgeryPackage
+  transitions:
+    - BruteHealingTransition
+    - BurnHealingTransition
+
+- type: surgeryPackage
+  id: SlimeMedicinalSurgeryPackage
+  transitions:
+    - SlimeBruteHealingTransition
+    - SlimeBurnHealingTransition

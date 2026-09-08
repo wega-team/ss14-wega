@@ -6,16 +6,16 @@ using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Disease.Effects
 {
     [UsedImplicitly]
     public sealed partial class DiseasePolymorph : DiseaseEffect
     {
-        [DataField("polymorphId", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PolymorphPrototype>))]
+        [DataField(required: true)]
         [ViewVariables(VVAccess.ReadWrite)]
-        public string PolymorphId = default!;
+        public ProtoId<PolymorphPrototype> PolymorphId = default!;
 
         [DataField("polymorphSound")]
         [ViewVariables(VVAccess.ReadWrite)]

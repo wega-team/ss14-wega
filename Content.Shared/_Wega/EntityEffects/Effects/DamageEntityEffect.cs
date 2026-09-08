@@ -3,7 +3,6 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.EntityEffects.Effects;
 
@@ -33,8 +32,8 @@ public sealed partial class DamageEntityEffectSystem : EntityEffectSystem<Damage
 /// <inheritdoc cref="EntityEffect"/>
 public sealed partial class EntityDamage : EntityEffectBase<EntityDamage>
 {
-    [DataField(required: true, customTypeSerializer: typeof(PrototypeIdSerializer<DamageTypePrototype>))]
-    public string DamageType = string.Empty;
+    [DataField(required: true)]
+    public ProtoId<DamageTypePrototype> DamageType = string.Empty;
 
     [DataField]
     public float Amount = 5f;

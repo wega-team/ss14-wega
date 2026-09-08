@@ -8,3 +8,7 @@ ent-JetpackBlueModule = джетпак
     .desc = { ent-JetpackBlue.desc }
 ent-JetpackSecurityModule = джетпак
     .desc = { ent-JetpackSecurity.desc }
+ent-JetpackBlackSyndicate = джетпак
+    .desc = { ent-JetpackBlack.desc }
+ent-JetpackBlackSyndicateFilled = джетпак
+    .desc = { ent-JetpackBlack.desc }

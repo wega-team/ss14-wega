@@ -55,6 +55,7 @@
   recipeUnlocks:
   - TechDiskComputerCircuitboard
   - TechDiskBag # Corvax-Wega-Add
+  - TechDiskBagT3 # Corvax-Wega-Add
 
 - type: technology
   id: MagnetsTech
@@ -160,16 +161,32 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
 
-# Corvax-Wega-start
+# Corvax-Wega-Edit-start
 # - type: technology
-  # id: BluespaceTimeManipulation
-  # name: research-technology-bluespace-time-manipulation
-  # icon:
-    # sprite: Objects/Devices/desynchronizer.rsi
-    # state: icon
-  # discipline: Experimental
-  # tier: 3
-  # cost: 10000
-  # recipeUnlocks:
-  # - DeviceDesynchronizer
-# Corvax-Wega-end
+#   id: BluespaceTimeManipulation
+#   name: research-technology-bluespace-time-manipulation
+#   icon:
+#     sprite: Objects/Devices/desynchronizer.rsi
+#     state: icon
+#   discipline: Experimental
+#   tier: 3
+#   cost: 10000
+#   recipeUnlocks:
+#   - DeviceDesynchronizer
+# Corvax-Wega-Edit-end
+
+- type: technology
+  id: TeleSci
+  name: research-technology-telesci
+  icon:
+    sprite: Effects/portal.rsi
+    state: portal-artifact
+  discipline: Experimental
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+# Corvax-Wega-Start
+  # - StationTeleportersControlCircuitboard
+  # - StationTeleporterMachineCircuitboard
+  - SelectorTeleporter # TeleporterChipBlank
+# Corvax-Wega-End

@@ -1,7 +1,7 @@
 - type: entity
   parent: DefaultStationBeaconSupply
   id: DefaultStationBeaconCargoLavalandAvanpost
-  suffix: Lavaland Avanpost
+  suffix: Avanpost
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-cargo-lavaland-avanpost
@@ -13,6 +13,14 @@
   components:
   - type: NavMapBeacon
     defaultText: station-beacon-security-penal-servitude
+
+- type: entity
+  parent: DefaultStationBeaconSupply
+  id: DefaultStationBeaconCargoLavalandAuxiliaryBase
+  suffix: Auxiliary Base
+  components:
+  - type: NavMapBeacon
+    defaultText: station-beacon-cargo-lavaland-auxiliary-base
 
 - type: entity
   parent: BaseItem

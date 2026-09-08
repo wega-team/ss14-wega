@@ -13,7 +13,6 @@ namespace Content.Shared.Martial.Arts;
 public abstract partial class SharedMartialArtsSystem : EntitySystem
 {
     [Dependency] private SharedActionsSystem _action = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
@@ -32,7 +31,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             return;
 
         var style = ent.Comp.Style.FirstOrDefault();
-        if (!_prototype.TryIndex(style, out var stylePrototype))
+        if (!ProtoMan.TryIndex(style, out var stylePrototype))
             return;
 
         if (stylePrototype.Actions == null)
@@ -72,7 +71,7 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
         if (!TryComp<ClothingComponent>(uid, out var clothing) || !clothing.Slots.HasFlag(args.SlotFlags))
             return;
 
-        if (!_prototype.TryIndex(component.Style, out var stylePrototype))
+        if (!ProtoMan.TryIndex(component.Style, out var stylePrototype))
             return;
 
         if (stylePrototype.Actions == null)

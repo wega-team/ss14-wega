@@ -13,3 +13,18 @@
   - type: ConditionalSpawner
     prototypes:
       - MobXenoSlimeGray
+
+- type: entity
+  name: Lammar Spawner
+  id: SpawnMobLammar
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Wega/Mobs/Aliens/facehugger.rsi
+        state: facehugger_dead
+      - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+      - MobXenomorphLammar

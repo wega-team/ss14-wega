@@ -117,10 +117,7 @@
   - type: Speech
     allowedEmotes: ['FilinidMeows', 'Purr', 'FilinidHisses']
   - type: Vocal
-    sounds:
-      Male: FelinidSoundM
-      Female: FelinidSoundF
-      Unsexed: FelinidSoundM
+    emoteSounds: MaleFelinid
   - type: DnaModifier
     upper: MobFelinid
     lowest: MobCat

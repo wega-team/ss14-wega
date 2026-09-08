@@ -12,6 +12,7 @@
   - type: Tag
     tags:
     - HighRiskItem
+    - FitInTeleporterConsole
   - type: StealTarget
     stealGroup: HandTeleporter
   - type: EdibleMatter # Corvax-Wega-Add
@@ -29,6 +30,9 @@
     layers:
     - state: icon
       color: green
+  - type: Tag
+    tags:
+    - FitInTeleporterConsole
   - type: HandTeleporter
     allowPortalsOnDifferentGrids: true
     allowPortalsOnDifferentMaps: true

@@ -11,6 +11,7 @@
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
 
 - type: startingGear
   id: CBURNLeaderGear

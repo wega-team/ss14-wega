@@ -16,13 +16,22 @@ public sealed partial class NightLightningSystem : EntitySystem
     [Dependency] private SharedPointLightSystem _light = default!;
     [Dependency] private ChatSystem _chat = default!;
 
+    private int _nightStartHour = 22;
+    private int _nightEndHour = 8;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<NightLightningComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<NightLightComponent, PointLightToggleEvent>(OnPointLightToggle);
+
+        _cfg.OnValueChanged(WegaCVars.NightStartHour, OnNightStartHourChanged, true);
+        _cfg.OnValueChanged(WegaCVars.NightEndHour, OnNightEndHourChanged, true);
     }
+
+    private void OnNightStartHourChanged(int obj) => _nightStartHour = Math.Clamp(obj, 0, 23);
+    private void OnNightEndHourChanged(int obj) => _nightEndHour = Math.Clamp(obj, 0, 23);
 
     public override void Update(float frameTime)
     {
@@ -54,7 +63,7 @@ public sealed partial class NightLightningSystem : EntitySystem
             foreach (var lightEntity in lightEntities)
             {
                 var light = lightEntity.Owner;
-                if (!TryComp<AmbientSoundComponent>(light, out var sound) || HasComp<NightLightBlockedComponent>(light))
+                if (!HasComp<AmbientSoundComponent>(light) || HasComp<NightLightBlockedComponent>(light))
                     continue;
 
                 if (_light.TryGetLight(light, out var pointLight))
@@ -116,10 +125,20 @@ public sealed partial class NightLightningSystem : EntitySystem
 
     private bool IsNightTime()
     {
-        DateTime currentTime = DateTime.Now;
         if (_cfg.GetCVar(WegaCVars.PartyEnabled))
-            return currentTime.Hour >= 0;
-        return currentTime.Hour >= 19 || currentTime.Hour < 5;
+            return true;
+
+        var currentHour = DateTime.Now.Hour;
+        if (_nightStartHour > _nightEndHour)
+        {
+            return currentHour >= _nightStartHour || currentHour < _nightEndHour;
+        }
+        else if (_nightStartHour < _nightEndHour)
+        {
+            return currentHour >= _nightStartHour && currentHour < _nightEndHour;
+        }
+
+        return false;
     }
 
     private void OnComponentStartup(EntityUid uid, NightLightningComponent component, ComponentStartup ev)

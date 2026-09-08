@@ -41,8 +41,8 @@ public sealed partial class SlotMachineSystem : EntitySystem
     private const float JackpotChance = 0.0002f;
     private const float BigWinChance = 0.004f;
     private const float MediumWinChance = 0.016f;
-    private const float SmallWinChance = 0.08f;
-    private const float TinyWinChance = 0.1f;
+    private const float SmallWinChance = 0.06f;
+    private const float TinyWinChance = 0.01f;
     private const float CursedWinChance = 0.05f;
 
     public override void Initialize()

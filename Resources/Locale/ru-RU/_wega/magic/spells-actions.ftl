@@ -1,0 +1,1 @@
+action-speech-spell-stop-time = TOKI YO TOMARE!!!

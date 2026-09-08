@@ -1,45 +1,45 @@
 using Content.Shared.Forensics;
+using Content.Shared.Forensics.Components;
+using JetBrains.Annotations;
 using Robust.Client.UserInterface;
 
-namespace Content.Client.Forensics
+namespace Content.Client.Forensics;
+
+public sealed partial class ForensicScannerBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
-    public sealed partial class ForensicScannerBoundUserInterface : BoundUserInterface
+    [ViewVariables]
+    private ForensicScannerMenu? _window;
+
+    protected override void Open()
     {
-        [ViewVariables]
-        private ForensicScannerMenu? _window;
+        base.Open();
+        _window = this.CreateWindow<ForensicScannerMenu>();
+        _window.Print.OnPressed += _ => Print();
+        _window.Clear.OnPressed += _ => Clear();
 
-        public ForensicScannerBoundUserInterface(EntityUid owner, Enum uiKey) : base(owner, uiKey)
-        {
-        }
+        Update();
+    }
 
-        protected override void Open()
-        {
-            base.Open();
+    private void Print()
+    {
+        SendPredictedMessage(new ForensicScannerPrintMessage());
+    }
 
-            _window = this.CreateWindow<ForensicScannerMenu>();
-            _window.Print.OnPressed += _ => Print();
-            _window.Clear.OnPressed += _ => Clear();
-            _window.OpenCentered();
-        }
+    private void Clear()
+    {
+        SendPredictedMessage(new ForensicScannerClearMessage());
+    }
 
-        protected override void UpdateState(BoundUserInterfaceState state)
-        {
-            base.UpdateState(state);
+    public override void Update()
+    {
+        base.Update();
 
-            if (_window == null || state is not ForensicScannerBoundUserInterfaceState cast)
-                return;
+        if (_window == null)
+            return;
 
-            _window.UpdateState(cast);
-        }
+        if (!EntMan.TryGetComponent(Owner, out ForensicScannerComponent? scanner))
+            return;
 
-        private void Print()
-        {
-            SendMessage(new ForensicScannerPrintMessage());
-        }
-
-        private void Clear()
-        {
-            SendMessage(new ForensicScannerClearMessage());
-        }
+        _window.Update(scanner);
     }
 }

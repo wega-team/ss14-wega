@@ -25,6 +25,7 @@
         - MidImpassable
         - LowImpassable
         density: 1000
+  - type: NecropolisTendril
   - type: PointLight
     color: "#df8409"
     enabled: true
@@ -54,7 +55,7 @@
   parent: NecropolisTendril
   id: GoliathNecropolisTendril
   components:
-  - type: NecropolisTendril
+  - type: MobSpawner
     spawnWeights:
       MobGoliath: 1
   - type: ConditionalSpawner
@@ -65,7 +66,7 @@
   parent: NecropolisTendril
   id: LegionNecropolisTendril
   components:
-  - type: NecropolisTendril
+  - type: MobSpawner
     spawnWeights:
       MobLegionLavaland: 1
   - type: ConditionalSpawner
@@ -76,7 +77,7 @@
   parent: NecropolisTendril
   id: WatchersNecropolisTendril
   components:
-  - type: NecropolisTendril
+  - type: MobSpawner
     spawnWeights:
       MobWatcherLavaland: 0.99
       MobWatcherMagmawing: 0.0075

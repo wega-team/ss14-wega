@@ -8,7 +8,7 @@ using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Tag;
 using Content.Shared.Stacks;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 
 namespace Content.Server.StationEvents.Events;
 
@@ -40,7 +40,7 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
 
         while (query.MoveNext(out var targetUid, out _, out var xform))
         {
-            // не на обломке какм нить ли
+            // не на обломке каком-нибудь
             if (StationSystem.GetOwningStation(targetUid, xform) != station)
                 continue;
 
@@ -66,13 +66,11 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
         if (candidates.Count == 0)
         {
             Log.Info("RadiationOutburst: Нет предметов для облучения");
-            Announce(station.Value, false);
             return;
         }
 
         _random.Shuffle(candidates);
 
-        // доооо 8
         var itemsToIrradiate = Math.Min(8, candidates.Count);
         for (int i = 0; i < itemsToIrradiate; i++)
         {
@@ -80,8 +78,6 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
             var rads = _random.Next(2, 3); // Интенсивность 2-3
             SetRadiation(target, rads);
         }
-
-        Announce(station.Value, true);
     }
 
     private bool IsInsideLivingEntity(EntityUid entity)
@@ -95,22 +91,6 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
     private void SetRadiation(EntityUid target, float rads)
     {
         var radiationComp = EnsureComp<RadiationSourceComponent>(target);
-        Dirty(target, radiationComp);
-
         Log.Debug($"RadiationOutburst: {target} теперь излучает +{rads} (всего: {radiationComp.Intensity})");
-    }
-
-    private void Announce(EntityUid station, bool success)
-    {
-        var message = success
-            ? "station-event-radiation-outburst-announcement"
-            : "station-event-radiation-outburst-failed";
-
-        ChatSystem.DispatchStationAnnouncement(
-            station,
-            Loc.GetString(message),
-            playDefaultSound: false,
-            colorOverride: Color.Gold
-        );
     }
 }

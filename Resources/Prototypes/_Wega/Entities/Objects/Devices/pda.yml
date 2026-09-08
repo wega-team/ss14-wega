@@ -104,16 +104,17 @@
     borderColor: "#B7B7B6"
   - type: Icon
     state: pda-blueshield
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - NanoChatCartridge # Corvax-Wega-NanoChat
-      - MedTekCartridge
-      - WantedListCartridge
+  - type: EntityTableContainerFill
+    containers:
+      preinstalled-program-container: !type:AllSelector
+        children:
+        - id: CrewManifestCartridge
+        - id: NotekeeperCartridge
+        - id: NanoTaskCartridge
+        - id: NewsReaderCartridge
+        - id: NanoChatCartridge
+        - id: MedTekCartridge
+        - id: WantedListCartridge
 
 - type: entity
   parent: BasePDA
@@ -172,15 +173,16 @@
     accentVColor: "#8900c9"
   - type: Icon
     state: pda-miner-medic
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - NanoChatCartridge # Corvax-Wega-NanoChat
-      - MedTekCartridge
+  - type: EntityTableContainerFill
+    containers:
+      preinstalled-program-container: !type:AllSelector
+        children:
+        - id: CrewManifestCartridge
+        - id: NotekeeperCartridge
+        - id: NanoTaskCartridge
+        - id: NewsReaderCartridge
+        - id: NanoChatCartridge
+        - id: MedTekCartridge
 
 - type: entity
   parent: BaseSecurityPDA

@@ -24,7 +24,7 @@
   parent: BaseComputerCircuitboard
   id: LavalandShuttleComputerCircuitboard
   name: lavaland shuttle console computer board
-  description: "The console board for the lavaland shuttle console."
+  description: "The console board for the avanpost shuttle console."
   components:
     - type: Sprite
       state: cpu_supply
@@ -35,7 +35,7 @@
   parent: BaseComputerCircuitboard
   id: LavalandPenalServitudeShuttleComputerCircuitboard
   name: lavaland penal sarvitude shuttle console computer board
-  description: "The console board for the lavaland penal sarvitude shuttle console."
+  description: "The console board for the avanpost penal sarvitude shuttle console."
   components:
     - type: Sprite
       state: cpu_security

@@ -1,0 +1,21 @@
+- type: soundCollection
+  id: ReptilianHiss
+  files:
+    - /Audio/_Wega/Voice/Reptilian/hiss.ogg
+    - /Audio/_Wega/Voice/Reptilian/lizard_hiss.ogg
+    
+- type: soundCollection
+  id: ReptilianPurr
+  files:
+    - /Audio/_Wega/Voice/Reptilian/urr1.ogg
+    - /Audio/_Wega/Voice/Reptilian/urr2.ogg
+    - /Audio/_Wega/Voice/Reptilian/urr3.ogg
+    - /Audio/_Wega/Voice/Reptilian/hiss2.ogg
+    
+- type: soundCollection
+  id: ReptilianGrowl
+  files:
+    - /Audio/_Wega/Voice/Reptilian/roar.ogg
+    - /Audio/_Wega/Voice/Reptilian/roar2.ogg
+    - /Audio/_Wega/Voice/Reptilian/roar3.ogg
+    - /Audio/_Wega/Voice/Reptilian/rumble.ogg

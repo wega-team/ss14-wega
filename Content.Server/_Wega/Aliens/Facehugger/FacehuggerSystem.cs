@@ -1,7 +1,7 @@
 using Content.Server.Atmos.Components;
 using Content.Shared._Wega.Aliens.Facehugger;
 using Content.Shared.Bed.Sleep;
-using Content.Shared.Ghost;
+using Content.Shared.Ghost.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Components;

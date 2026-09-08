@@ -40,10 +40,8 @@ public sealed partial class HierophantSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<HierophantBossComponent, MegafaunaKilledEvent>(OnHierophantKilled);
-
         SubscribeLocalEvent<HierophantBossComponent, MapInitEvent>(OnHierophantMapInit);
-        SubscribeLocalEvent<HierophantBossComponent, DamageChangedEvent>(OnHierophantDamage);
+        SubscribeLocalEvent<HierophantBossComponent, DamageDealtEvent>(OnHierophantDamage);
 
         SubscribeLocalEvent<HierophantBossComponent, HierophantBlinkActionEvent>(OnBlinkAction);
         SubscribeLocalEvent<HierophantBossComponent, HierophantCrossActionEvent>(OnCrossAction);
@@ -60,15 +58,6 @@ public sealed partial class HierophantSystem : EntitySystem
         UpdateChasers();
         UpdatePassiveMovement();
         UpdateReturnToBase();
-    }
-
-    private void OnHierophantKilled(EntityUid uid, HierophantBossComponent component, MegafaunaKilledEvent args)
-    {
-        var coords = Transform(uid).Coordinates;
-        foreach (var reward in component.RewardsProto)
-            Spawn(reward, coords);
-
-        QueueDel(uid);
     }
 
     #region Passive Movement
@@ -179,15 +168,16 @@ public sealed partial class HierophantSystem : EntitySystem
 
     #region Damage System
 
-    private void OnHierophantDamage(EntityUid uid, HierophantBossComponent component, DamageChangedEvent args)
+    private void OnHierophantDamage(EntityUid uid, HierophantBossComponent component, DamageDealtEvent args)
     {
         var totalDamage = _damage.GetTotalDamage(uid);
-        if (args.DamageIncreased && totalDamage > 0)
+        if (args.Damage.GetTotal() > 0 && totalDamage > 0)
         {
             UpdateAttackSpeed(uid);
-
             if (!component.NeedComeBack)
+            {
                 component.NeedComeBack = true;
+            }
         }
     }
 

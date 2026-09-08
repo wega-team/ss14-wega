@@ -11,13 +11,14 @@ using Robust.Shared.Prototypes;
 using System.Numerics;
 using Robust.Client.UserInterface;
 using Content.Shared.Tools;
+using Content.Shared.Guidebook;
 
 namespace Content.Client._Wega.Surgery.Ui;
 
 [GenerateTypedNameReferences]
 public sealed partial class SurgeryWindow : FancyWindow
 {
-    private readonly IPrototypeManager _prototypeManager;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     private readonly StyleBoxFlat _groupButtonStyle = new()
     {
@@ -49,7 +50,7 @@ public sealed partial class SurgeryWindow : FancyWindow
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        _prototypeManager = IoCManager.Resolve<IPrototypeManager>();
+        HelpGuidebookIds = new List<ProtoId<GuideEntryPrototype>> { "Surgery" };
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -64,7 +65,7 @@ public sealed partial class SurgeryWindow : FancyWindow
         }
     }
 
-    public void UpdateState(SurgeryProcedureDto state, OperatedComponent comp)
+    public void UpdateState(SurgeryProcedureDtoState state, OperatedComponent comp)
     {
         GroupListContainer.RemoveAllChildren();
         ProtoId<SurgeryNodePrototype>? currentTargetNode = comp.CurrentTargetNode;
@@ -114,6 +115,30 @@ public sealed partial class SurgeryWindow : FancyWindow
                 }
             }
         }
+
+        UpdateSterilityToolTip(state.SterilityInfo);
+    }
+
+    public void UpdateSterilityToolTip(SurgerySterilityInfo info)
+    {
+        var percent = (int)(info.Sterility * 100);
+        var tooltipText = Loc.GetString("surgery-sterility-percent", ("percent", percent)) + "\n\n";
+
+        if (info.NegativeFactors.Count > 0)
+        {
+            tooltipText += Loc.GetString("surgery-sterility-negative-header") + "\n";
+            foreach (var factor in info.NegativeFactors)
+                tooltipText += $"• {factor}\n";
+        }
+
+        if (info.PositiveFactors.Count > 0)
+        {
+            tooltipText += Loc.GetString("surgery-sterility-positive-header") + "\n";
+            foreach (var factor in info.PositiveFactors)
+                tooltipText += $"• {factor}\n";
+        }
+
+        HelpButton.ToolTip = tooltipText;
     }
 
     private void SelectGroup(Button button)
@@ -212,8 +237,8 @@ public sealed partial class SurgeryWindow : FancyWindow
             Margin = new Thickness(4)
         };
 
-        if (_prototypeManager.TryIndex<ToolQualityPrototype>(toolQualityId, out var toolQuality) &&
-            _prototypeManager.TryIndex<EntityPrototype>(toolQuality.Spawn, out var toolProto))
+        if (_prototype.TryIndex<ToolQualityPrototype>(toolQualityId, out var toolQuality) &&
+            _prototype.TryIndex<EntityPrototype>(toolQuality.Spawn, out var toolProto))
         {
             var icon = new EntityPrototypeView
             {
@@ -242,7 +267,7 @@ public sealed partial class SurgeryWindow : FancyWindow
             Margin = new Thickness(4)
         };
 
-        if (_prototypeManager.TryIndex<EntityPrototype>(entityPreview, out var entity))
+        if (_prototype.TryIndex<EntityPrototype>(entityPreview, out var entity))
         {
             var icon = new EntityPrototypeView
             {
@@ -266,8 +291,8 @@ public sealed partial class SurgeryWindow : FancyWindow
     {
         var tooltip = "";
         var tool = step.RequiredTool;
-        if (!string.IsNullOrEmpty(tool) && _prototypeManager.TryIndex<ToolQualityPrototype>(tool, out var toolQuality) &&
-            _prototypeManager.TryIndex<EntityPrototype>(toolQuality.Spawn, out var toolProto))
+        if (!string.IsNullOrEmpty(tool) && _prototype.TryIndex<ToolQualityPrototype>(tool, out var toolQuality) &&
+            _prototype.TryIndex<EntityPrototype>(toolQuality.Spawn, out var toolProto))
             tool = toolProto.Name;
 
         if (!string.IsNullOrEmpty(tool))

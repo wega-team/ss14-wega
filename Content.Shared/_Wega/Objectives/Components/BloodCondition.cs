@@ -6,4 +6,10 @@ namespace Content.Server.Objectives.Components;
 public sealed partial class BloodConditionComponent : Component
 {
     public Dictionary<EntityUid, float> BloodTargets = new();
+	
+    [DataField]
+    public int TargetMin;
+
+    [DataField]
+    public int TargetMax;
 }

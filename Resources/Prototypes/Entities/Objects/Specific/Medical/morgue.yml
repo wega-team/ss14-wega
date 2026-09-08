@@ -27,6 +27,13 @@
     tags:
     - BodyBag
   - type: Clickable
+  # Corvax-Wega-Morgue-change-start
+  - type: Foldable
+    canFoldInsideContainer: false
+    deployedContainerWhitelist:
+      tags:
+      - Morgue
+   # Corvax-Wega-Morgue-change-end
   - type: InteractionOutline
   - type: MovedByPressure
   - type: Physics

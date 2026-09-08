@@ -1,12 +1,10 @@
 using Content.Shared.Disease.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 
 namespace Content.Shared.Disease;
 
 public abstract partial class SharedDiseaseSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _prototypeManager = default!;
     [Dependency] private ISerializationManager _serializationManager = default!;
 
     public Queue<EntityUid> AddQueue = new();
@@ -39,7 +37,7 @@ public abstract partial class SharedDiseaseSystem : EntitySystem
 
     public void TryAddDisease(EntityUid host, string? addedDisease, DiseaseCarrierComponent? target = null)
     {
-        if (addedDisease == null || !_prototypeManager.TryIndex<DiseasePrototype>(addedDisease, out var added))
+        if (addedDisease == null || !ProtoMan.TryIndex<DiseasePrototype>(addedDisease, out var added))
             return;
 
         TryAddDisease(host, added, target);

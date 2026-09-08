@@ -20,3 +20,15 @@
       lastVisibility: 0.1
     - type: TimedDespawn
       lifetime: 120
+    - type: DamageOnTrigger
+      targetUser: true
+      ignoreResistances: true
+      damage:
+        types:
+          Shock: 20
+      blacklist:
+        components:
+        - Xenoborg
+    - type: StatusIcon
+    - type: EventIcon
+      eventStatusIcon: "XenoborgFaction"

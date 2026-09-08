@@ -62,3 +62,6 @@ ent-ClothingUniformJumpsuitExplorer = комбинезон исследоват�
     .desc = Плотная и удобная, предназначена для тяжелой работы в сложных условиях.
 ent-ClothingUniformJumpsuitExplorerKhaki = комбинезон исследователя
     .desc = Плотная и удобная, предназначена для тяжелой работы в сложных условиях.
+ent-ClothingUniformJumpsuitVentCrawler = { ent-ClothingUniformJumpsuitAtmos }
+    .desc = { ent-ClothingUniformJumpsuitAtmos.desc }
+    .suffix = Акробат, Синдикат

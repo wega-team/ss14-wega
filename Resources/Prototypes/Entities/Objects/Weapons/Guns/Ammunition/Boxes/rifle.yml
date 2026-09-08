@@ -9,7 +9,7 @@
       tags:
         - CartridgeRifle
     proto: CartridgeRifle
-    capacity: 50
+    capacity: 100 # increase x2 Corvax-Wega-Edit
   - type: Item
     size: Small
   - type: ContainerContainer

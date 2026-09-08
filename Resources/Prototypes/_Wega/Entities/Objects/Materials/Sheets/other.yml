@@ -1,0 +1,11 @@
+- type: entity
+  parent: SheetPGlass
+  id: SheetPGlass10
+  name: plasma glass
+  suffix: Single
+  components:
+  - type: Sprite
+    state: pglass
+  - type: Stack
+    stackType: PlasmaGlass
+    count: 10

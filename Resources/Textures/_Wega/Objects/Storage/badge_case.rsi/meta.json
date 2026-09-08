@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken at https://github.com/ParadiseSS13/Paradise/blob/HEAD/icons/obj/wallets.dmi, edited by whitleyvk (git)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+        {
+            "name": "icon"
+        }
+    ]
+}

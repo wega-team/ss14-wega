@@ -1,0 +1,83 @@
+- type: entity
+  parent: BaseStructure
+  id: PulsatingTumor
+  name: pulsating tumor
+  description: "A pulsating, fleshy growth that beats with an unnatural rhythm. Touching it causes something inside to stir..."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/Lavaland/tumor.rsi
+    state: base
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.45,0.4,0.35"
+        mask:
+        - MachineMask
+        layer:
+        - BulletImpassable
+        - MidImpassable
+        - LowImpassable
+        density: 1000
+  - type: Damageable
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 75
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/Fluids/splat.ogg
+      - !type:SpawnEntitiesBehavior
+          spawn:
+            PulsatingTumorPopped:
+              min: 1
+              max: 1
+            SpawnerRandomPulsatingTumorMob:
+              min: 1
+              max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: NavMapBeacon
+    defaultText: nav-map-beacon-lavaland-signal-tumor
+    defaultDesc: nav-map-beacon-lavaland-signal-tumor-desc
+    color: "#b21010"
+
+- type: entity
+  parent: PulsatingTumor
+  id: PulsatingTumorPopped
+  name: popped tumor
+  description: "A hollow, shriveled husk of what was once a pulsating growth. It feels empty and dead."
+  suffix: DO NOT MAP
+  components:
+  - type: Sprite
+    state: popped
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.45,0.4,0.0"
+        mask:
+        - MachineMask
+        layer:
+        - BulletImpassable
+        - MidImpassable
+        - LowImpassable
+        density: 1000
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: NavMapBeacon
+    enabled: false

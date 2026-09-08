@@ -578,7 +578,7 @@
     - id: AnomalyCoreLiquid
       amount: !type:RangeNumberSelector
         range: 1, 3
-    - id: AnomalyCoreBluespace
+    - id: AnomalyCoreBluespaceInert # Corvax-Wega-Edit
       amount: !type:RangeNumberSelector
         range: 1, 3
     - id: AnomalyCoreElectricity

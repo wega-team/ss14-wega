@@ -2,7 +2,7 @@
   id: WegaEmerald
   mapName: 'Emerald Station'
   mapPath: /Maps/_Wega/wegaemerald.yml
-  minPlayers: 60
+  minPlayers: 65
   stations:
     Emerald:
       stationProto: StandardNanotrasenStation
@@ -15,8 +15,12 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emeraldemergency.yml
         - type: StationLavaland
-          lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
-          planets: [ Lavaland ]
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
         - type: StationJobs
           availableJobs:
             #service
@@ -56,7 +60,6 @@
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
-            WardenHelper: [ 1, 1 ]
             SeniorOfficer: [ 1, 1 ]
             SecurityOfficer: [ 4, 4 ]
             Detective: [ 1, 1 ]

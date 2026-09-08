@@ -5,48 +5,46 @@ using Content.Server.Body.Components;
 using Content.Server.Chat;
 using Content.Server.Chat.Managers;
 using Content.Server.Ghost;
-using Content.Server.Ghost.Roles.Components;
-using Content.Server.Humanoid;
 using Content.Server.Inventory;
 using Content.Server.Mind;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.StationEvents.Components;
-using Content.Server.Speech.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.CombatMode.Pacification;
+using Content.Shared.Ghost.Roles.Components;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.NameModifier.EntitySystems;
+using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Nutrition.AnimalHusbandry;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Popups;
+using Content.Shared.Prying.Components;
+using Content.Shared.Roles;
+using Content.Shared.Speech.EntitySystems;
+using Content.Shared.Tag;
+using Content.Shared.Temperature.Components;
+using Content.Shared.Traits.Assorted;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Zombies;
-using Content.Shared.Prying.Components;
-using Content.Shared.Traits.Assorted;
 using Robust.Shared.Audio.Systems;
-using Content.Shared.Ghost.Roles.Components;
-using Content.Shared.Humanoid.Markings;
-using Content.Shared.IdentityManagement;
-using Content.Shared.Tag;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Content.Shared.Disease.Components; // Corvax-Wega-Disease
-using Content.Shared.NPC.Prototypes;
-using Content.Shared.Roles;
-using Content.Shared.Temperature.Components;
 using Content.Server.NPC.Components; // Corvax-Wega-Zombie
+using Content.Shared.Mind; // Corvax-wega-Zomnie
 using Robust.Shared.Utility;
 
 namespace Content.Server.Zombies;
@@ -72,6 +70,7 @@ public sealed partial class ZombieSystem
     [Dependency] private MindSystem _mind = default!;
     [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private NameModifierSystem _nameMod = default!;
+    [Dependency] private ReplacementAccentSystem _replacementAccent = default!;
     [Dependency] private NPCSystem _npc = default!;
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
@@ -143,8 +142,7 @@ public sealed partial class ZombieSystem
         RemComp<DiseaseCarrierComponent>(target); // Corvax-Wega-Disease
         RemComp<RespiratorComponent>(target);
         RemComp<BarotraumaComponent>(target);
-        RemComp<HungerComponent>(target);
-        RemComp<ThirstComponent>(target);
+        RemComp<SatiationComponent>(target);
         RemComp<ReproductiveComponent>(target);
         RemComp<ReproductivePartnerComponent>(target);
         RemComp<LegsParalyzedComponent>(target);
@@ -156,7 +154,7 @@ public sealed partial class ZombieSystem
         if (TryComp<ZombieAccentOverrideComponent>(target, out var accent))
             accentType = accent.Accent;
 
-        EnsureComp<ReplacementAccentComponent>(target).Accent = accentType;
+        _replacementAccent.ApplyAccent(target, accentType);
 
         //This is needed for stupid entities that fuck up combat mode component
         //in an attempt to make an entity not attack. This is the easiest way to do it.
@@ -267,7 +265,10 @@ public sealed partial class ZombieSystem
         _inventory.TryUnequip(target, "ears", true, true);
 
         //popup
-        _popup.PopupEntity(Loc.GetString("zombie-transform", ("target", target)), target, PopupType.LargeCaution);
+        _popup.PopupEntity(
+            Loc.GetString("zombie-transform", ("target", Identity.Entity(target, EntityManager))),
+            target,
+            PopupType.LargeCaution);
 
         //Make it sentient if it's an animal or something
         _mind.MakeSentient(target);
@@ -313,13 +314,7 @@ public sealed partial class ZombieSystem
 
         if (!HasComp<GhostRoleMobSpawnerComponent>(target) && !hasMind) //this specific component gives build test trouble so pop off, ig
         {
-            //yet more hardcoding. Visit zombie.ftl for more information.
-            var ghostRole = EnsureComp<GhostRoleComponent>(target);
-            EnsureComp<GhostTakeoverAvailableComponent>(target);
-            ghostRole.RoleName = Loc.GetString("zombie-generic");
-            ghostRole.RoleDescription = Loc.GetString("zombie-role-desc");
-            ghostRole.RoleRules = Loc.GetString("zombie-role-rules");
-            ghostRole.MindRoles.Add(MindRoleZombie);
+            MakeGhostRole(target);
         }
 
         if (TryComp<HandsComponent>(target, out var handsComp))
@@ -328,6 +323,8 @@ public sealed partial class ZombieSystem
             RemComp(target, handsComp);
         }
 
+        var mindLink = EnsureComp<MindLinkComponent>(target); // Corvax-wega-Zomnie
+        mindLink.Channels.Add(zombiecomp.MindChat); // Corvax-wega-Zomnie
         // Sloth: What the fuck?
         // How long until compregistry lmao.
         RemComp<PullerComponent>(target);

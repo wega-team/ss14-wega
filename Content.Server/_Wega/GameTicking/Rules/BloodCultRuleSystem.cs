@@ -3,8 +3,6 @@ using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Bed.Cryostorage;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
 using Content.Server.Objectives;
@@ -17,7 +15,6 @@ using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
 using Content.Shared.GameTicking.Components;
@@ -31,6 +28,10 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Zombies;
+using Content.Shared.Roles.Jobs;
+using Content.Shared.Surgery.Components;
+using Content.Shared.Mind.Components;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -60,14 +61,16 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private ObjectivesSystem _objectives = default!;
         [Dependency] private TargetObjectiveSystem _target = default!;
         [Dependency] private MetaDataSystem _meta = default!;
+        [Dependency] private SharedJobSystem _job = default!;
+        [Dependency] private StatusEffectsSystem _effects = default!;
 
-        public readonly ProtoId<NpcFactionPrototype> BloodCultNpcFaction = "BloodCult";
+        private static readonly ProtoId<NpcFactionPrototype> Faction = "BloodCult";
+        private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
         public override void Initialize()
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BloodCultRuleComponent, ComponentStartup>(OnRuleStartup);
             SubscribeLocalEvent<BloodCultRuleComponent, AfterAntagEntitySelectedEvent>(OnCultistSelected);
 
             SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>((_, _, _) => CheckStage());
@@ -84,8 +87,10 @@ namespace Content.Server.GameTicking.Rules
             SubscribeLocalEvent<BloodCultistComponent, EntityZombifiedEvent>(OnCultistZombified);
         }
 
-        private void OnRuleStartup(EntityUid uid, BloodCultRuleComponent component, ComponentStartup args)
+        protected override void Started(EntityUid uid, BloodCultRuleComponent component,
+            GameRuleComponent gameRule, GameRuleStartedEvent args)
         {
+            base.Started(uid, component, gameRule, args);
             component.SelectedGod = (BloodCultGod)_random.Next(0, 3);
         }
 
@@ -129,9 +134,20 @@ namespace Content.Server.GameTicking.Rules
             cult.SelectedTargets.Clear();
 
             var mindShieldCandidates = new List<EntityUid>();
-            var enumerator = EntityQueryEnumerator<MindShieldComponent>();
-            while (enumerator.MoveNext(out var uid, out _))
+            var enumerator = EntityQueryEnumerator<HumanoidProfileComponent, MindShieldStatusComponent>();
+            while (enumerator.MoveNext(out var uid, out _, out var status))
+            {
+                if (!status.IsMindshielded)
+                    continue;
+
+                if (HasComp<SyntheticOperatedComponent>(uid))
+                    continue;
+
+                if (HasComp<BloodCultistComponent>(uid))
+                    continue;
+
                 mindShieldCandidates.Add(uid);
+            }
 
             if (mindShieldCandidates.Count >= 2)
             {
@@ -179,23 +195,51 @@ namespace Content.Server.GameTicking.Rules
 
         private EntityUid? FindNewRandomTarget(BloodCultRuleComponent cult, EntityUid excludedTarget)
         {
-            var candidates = new List<EntityUid>();
-            var query = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
-            while (query.MoveNext(out var uid, out _, out _))
+            var mindShieldCandidates = new List<EntityUid>();
+
+            var mindShieldQuery = EntityQueryEnumerator<
+                HumanoidProfileComponent,
+                ActorComponent,
+                MindShieldStatusComponent>();
+
+            while (mindShieldQuery.MoveNext(out var uid, out _, out _, out var status))
             {
-                if (uid == excludedTarget || cult.SelectedTargets.Contains(uid)
+                if (!status.IsMindshielded
+                    || uid == excludedTarget
+                    || cult.SelectedTargets.Contains(uid)
                     || HasComp<BloodCultistComponent>(uid)
                     || HasComp<BloodCultObjectComponent>(uid))
                     continue;
 
-                candidates.Add(uid);
+                mindShieldCandidates.Add(uid);
             }
 
-            if (candidates.Count == 0)
+            if (mindShieldCandidates.Count > 0)
+            {
+                var index = _random.Next(0, mindShieldCandidates.Count);
+                return mindShieldCandidates[index];
+            }
+
+            var globalCandidates = new List<EntityUid>();
+
+            var globalQuery = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
+
+            while (globalQuery.MoveNext(out var uid, out _, out _))
+            {
+                if (uid == excludedTarget
+                    || cult.SelectedTargets.Contains(uid)
+                    || HasComp<BloodCultistComponent>(uid)
+                    || HasComp<BloodCultObjectComponent>(uid))
+                    continue;
+
+                globalCandidates.Add(uid);
+            }
+
+            if (globalCandidates.Count == 0)
                 return null;
 
-            var index = _random.Next(0, candidates.Count);
-            return candidates[index];
+            var globalIndex = _random.Next(0, globalCandidates.Count);
+            return globalCandidates[globalIndex];
         }
 
         private void ReplaceTargetForAllCultists(EntityUid oldTarget, EntityUid newTarget)
@@ -213,8 +257,18 @@ namespace Content.Server.GameTicking.Rules
             foreach (var objectiveUid in replacedObjectives)
             {
                 _target.SetTarget(objectiveUid, newTarget);
-                _meta.SetEntityName(objectiveUid, Loc.GetString("objective-condition-blood-ritual-person-title",
-                    ("targetName", Name(newTarget))));
+                var jobName = Loc.GetString("generic-unknown-title");
+
+                if (TryComp<MindContainerComponent>(newTarget, out var mindContainer)
+                    && mindContainer.Mind is { } targetMindId)
+                {
+                    jobName = _job.MindTryGetJobName(targetMindId);
+                }
+
+                _meta.SetEntityName(objectiveUid, Loc.GetString(
+                    "objective-condition-blood-ritual-person-title",
+                    ("targetName", Name(newTarget)),
+                    ("job", jobName)));
             }
         }
 
@@ -231,12 +285,13 @@ namespace Content.Server.GameTicking.Rules
 
             var componentsToRemove = new[]
             {
-                typeof(PacifiedComponent),
-                typeof(ClumsyComponent)
+                typeof(PacifiedComponent)
             };
 
             foreach (var compType in componentsToRemove)
                 RemComp(ent, compType);
+
+            _effects.TryRemoveStatusEffect(ent, Clumsy);
 
             HandleMetabolism(ent);
             CreateObjectivesForCultist(ent);
@@ -261,8 +316,19 @@ namespace Content.Server.GameTicking.Rules
                     continue;
 
                 _target.SetTarget(objective.Value, target);
-                _meta.SetEntityName(objective.Value, Loc.GetString("objective-condition-blood-ritual-person-title",
-                    ("targetName", Name(target)))); // <see cref="ObjectiveAssignedEvent"/> here doesn't worked, or i'm stupid
+                var jobName = Loc.GetString("generic-unknown-title");
+
+                if (TryComp<MindContainerComponent>(target, out var mindContainer)
+                    && mindContainer.Mind is { } targetMindId)
+                {
+                    jobName = _job.MindTryGetJobName(targetMindId);
+                }
+
+                _meta.SetEntityName(objective.Value, Loc.GetString(
+                    "objective-condition-blood-ritual-person-title",
+                    ("targetName", Name(target)),
+                    ("job", jobName)));
+
                 _mind.AddObjective(mindId, mind, objective.Value);
             }
         }
@@ -278,7 +344,7 @@ namespace Content.Server.GameTicking.Rules
                         if (TryComp<StomachComponent>(organ, out _))
                             _metabolism.ClearMetabolizerTypes(metabolizer);
 
-                        _metabolism.TryAddMetabolizerType(metabolizer, "BloodCultist");
+                        _metabolism.TryAddMetabolizerType(organ, "BloodCultist");
                     }
                 }
             }
@@ -288,6 +354,7 @@ namespace Content.Server.GameTicking.Rules
         {
             string selectedGod = "";
             var query = QueryActiveRules();
+
             while (query.MoveNext(out _, out _, out var cult, out _))
             {
                 selectedGod = cult.SelectedGod switch
@@ -316,7 +383,7 @@ namespace Content.Server.GameTicking.Rules
                 return;
             }
 
-            _npcFaction.AddFaction(uid, BloodCultNpcFaction);
+            _npcFaction.AddFaction(uid, Faction);
             var culsistComp = EnsureComp<BloodCultistComponent>(uid);
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Blood Cult");
             if (mindId == default || !_role.MindHasRole<BloodCultistComponent>(mindId))
@@ -495,6 +562,9 @@ namespace Content.Server.GameTicking.Rules
             GameRuleComponent gameRule,
             ref RoundEndTextAppendEvent args)
         {
+            string selectedGod = "";
+            var query = QueryActiveRules();
+
             var winText = Loc.GetString($"blood-cult-{component.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 
@@ -504,7 +574,19 @@ namespace Content.Server.GameTicking.Rules
                 args.AddLine(text);
             }
 
-            args.AddLine(Loc.GetString("blood-cultist-list-start"));
+            while (query.MoveNext(out _, out _, out var cult, out _))
+            {
+                selectedGod = cult.SelectedGod switch
+                {
+                    BloodCultGod.NarSi => Loc.GetString("current-god-narsie"),
+                    BloodCultGod.Reaper => Loc.GetString("current-god-reaper-list"),
+                    BloodCultGod.Kharin => Loc.GetString("current-god-kharin-list"),
+                    _ => Loc.GetString("current-god-narsie")
+                };
+                break;
+            }
+
+            args.AddLine(Loc.GetString("blood-cultist-list-start", ("god", selectedGod)));
 
             var antags = _antag.GetAntagIdentifiers(uid);
             foreach (var (_, sessionData, name) in antags)

@@ -28,7 +28,8 @@
           type: [ Ariral ]
     Digestion:
       effects:
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Vampire ]
@@ -46,3 +47,26 @@
   - !type:PlantAdjustHealth
     amount: 0.75
   pricePerUnit: 2
+
+- type: reagent
+  parent: Shrimp
+  id: CookedShrimp
+  name: reagent-name-cooked-shrimp
+  desc: reagent-desc-cooked-shrimp
+  color: "#102e0d"
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Hunger
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
+      - !type:AdjustReagent
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Vampire ]
+          inverted: true
+        reagent: Protein
+        amount: 0.5

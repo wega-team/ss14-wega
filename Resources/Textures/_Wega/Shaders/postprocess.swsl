@@ -1,0 +1,31 @@
+uniform sampler2D SCREEN_TEXTURE;
+uniform sampler2D LIGHT_TEXTURE;
+
+uniform highp float Zoom;
+
+uniform highp float CircleRadius;
+uniform highp float CircleMinDist;
+uniform highp float CirclePow;
+uniform highp float CircleMax;
+uniform highp float CircleMult;
+uniform highp float FalloffClampMin;
+uniform highp float FalloffClampMax;
+uniform highp float FalloffPow;
+
+void fragment() {
+	COLOR = zTextureSpec(SCREEN_TEXTURE, Pos);
+	highp vec2 aspect = vec2(1.0/SCREEN_PIXEL_SIZE.x, 1.0/SCREEN_PIXEL_SIZE.y);
+	highp float actualZoom = Zoom;
+
+
+	highp float circle = clamp(zCircleGradient(aspect, FRAGCOORD.xy, CircleMax, CircleRadius / actualZoom, CircleMinDist / actualZoom, CirclePow) * CircleMult, FalloffClampMin, FalloffClampMax);
+
+	highp vec3 lightsampleraw = texture2D(LIGHT_TEXTURE, Pos).rgb;
+	highp float graylight = max(zGrayscale(lightsampleraw), 0.0);
+	graylight = pow(graylight, FalloffPow);
+
+	highp vec3 lightsample = lightsampleraw * vec3(graylight) * circle;
+	COLOR.a = COLOR.a * circle;
+
+	COLOR.rgb = COLOR.rgb + lightsample;
+}

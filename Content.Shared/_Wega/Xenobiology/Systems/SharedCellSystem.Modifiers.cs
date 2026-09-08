@@ -35,7 +35,7 @@ public abstract partial class SharedCellSystem
     {
         foreach (var modifierId in cell.Modifiers)
         {
-            if (!_prototype.TryIndex(modifierId, out var modifierProto))
+            if (!ProtoMan.TryIndex(modifierId, out var modifierProto))
             {
                 Log.Error($"Enumerate modifiers prototype with nonexistent id {modifierId}");
                 continue;

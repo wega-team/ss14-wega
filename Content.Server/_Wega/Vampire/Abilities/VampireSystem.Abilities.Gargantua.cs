@@ -175,6 +175,8 @@ public sealed partial class VampireSystem
                 force *= 2;
 
             _throwing.TryThrow(humanoidUid, direction * (force / 2), force);
+			
+			_stun.TryKnockdown(humanoidUid, TimeSpan.FromSeconds(2f), true, true, false);
         }
 
         _audio.PlayPvs(args.Sound, ent);

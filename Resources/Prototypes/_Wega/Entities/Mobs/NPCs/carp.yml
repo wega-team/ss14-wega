@@ -7,7 +7,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: ghost-role-information-sentient-carp-name
+      name: ghost-role-information-sentient-carpshark-name
       description: ghost-role-information-sentient-carp-description
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
@@ -21,10 +21,26 @@
        types: {}
     - type: Temperature
     - type: TemperatureDamage
-      heatDamageThreshold: 1200
-    - type: FriendlyFaction # Corvax-Wega-Friendly
-      faction: Dragon # Corvax-Wega-Friendly
-      
+      heatDamageThreshold: 3600
+    - type: FriendlyFaction
+      faction: Dragon
+    - type: MeleeWeapon
+      damage:
+        types:
+          Slash: 20
+          Bloodloss: 5
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        125: Dead
+    - type: LeechMeleeWeapon
+      heal:
+        types:
+          Heat: -7.5
+          Blunt: -7.5
+          Slash: -7.5
+          Piercing: -7.5
+
 - type: entity
   id: MobCarpRainbowDragon
   suffix: DragonBrood
@@ -34,7 +50,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: ghost-role-information-sentient-carp-name
+      name: ghost-role-information-sentient-rainbowcarp-name
       description: ghost-role-information-sentient-carp-description
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
@@ -48,9 +64,9 @@
        types: {}
     - type: Temperature
     - type: TemperatureDamage
-      heatDamageThreshold: 1200
-    - type: FriendlyFaction # Corvax-Wega-Friendly
-      faction: Dragon # Corvax-Wega-Friendly
+      heatDamageThreshold: 3600
+    - type: FriendlyFaction
+      faction: Dragon
       
 - type: entity
   id: MobCarpHoloDragon
@@ -61,7 +77,7 @@
       allowMovement: true
       allowSpeech: true
       makeSentient: true
-      name: ghost-role-information-sentient-carp-name
+      name: ghost-role-information-sentient-golocarp-name
       description: ghost-role-information-sentient-carp-description
       rules: ghost-role-information-space-dragon-summoned-carp-rules
       mindRoles:
@@ -75,6 +91,13 @@
        types: {}
     - type: Temperature
     - type: TemperatureDamage
-      heatDamageThreshold: 1200
-    - type: FriendlyFaction # Corvax-Wega-Friendly
-      faction: Dragon # Corvax-Wega-Friendly
+      heatDamageThreshold: 3600
+    - type: FriendlyFaction
+      faction: Dragon
+    - type: LeechMeleeWeapon
+      heal:
+        types:
+          Heat: -2.5
+          Blunt: -2.5
+          Slash: -2.5
+          Piercing: -2.5

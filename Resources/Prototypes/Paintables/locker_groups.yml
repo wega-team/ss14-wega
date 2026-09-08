@@ -28,6 +28,7 @@
     scientist: LockerScientist
     security: LockerSecurity
     welding: LockerWeldingSupplies
+    blueshield: LockerBlueShieldOfficer # Corvax-Wega-BlueShield
 
 - type: paintableGroup
   id: Closet

@@ -17,8 +17,14 @@ public sealed partial class LavalandBuildingPrototype : IPrototype
     /// <summary>
     /// Why should I explain anything? Sosal?
     /// </summary>
-    [DataField("gridPath", required: true, customTypeSerializer: typeof(ResPathSerializer))]
+    [DataField(required: true, customTypeSerializer: typeof(ResPathSerializer))]
     public ResPath GridPath = default!;
+
+    /// <summary>
+    /// On what specific type of planet will this building appear.
+    /// </summary>
+    [DataField("planet")]
+    public ProtoId<LavalandPlanetPrototype> CurrentPlanet = "Lavaland";
 
     /// <summary>
     /// Preloading the grid for a specific position on the map.
@@ -42,7 +48,7 @@ public sealed partial class LavalandBuildingPrototype : IPrototype
     /// Whether to ignore the buildings counting. Applies to those constructions that should always be there.
     /// </summary>
     [DataField("ignoring")]
-    public bool IgnoringCounting;
+    public bool IgnoringCounting = false;
 
     /// <summary>
     /// Is it necessary to preload the spawn area?

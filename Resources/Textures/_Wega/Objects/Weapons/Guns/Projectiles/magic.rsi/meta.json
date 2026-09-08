@@ -21,6 +21,15 @@
         },
         {
             "name": "skull"
+        },
+        {
+            "name": "icebeam"
+        },
+        {
+            "name": "iceorb"
+        },
+        {
+            "name": "snowball"
         }
     ]
 }

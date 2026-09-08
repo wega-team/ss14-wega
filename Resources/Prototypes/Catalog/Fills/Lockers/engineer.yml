@@ -151,10 +151,12 @@
     - id: ClothingMaskGasAtmos
     - id: ClothingOuterSuitAtmosFire
     - id: ClothingHeadHelmetAtmosFire
+    - id: ClothingHandsGlovesAtmos # Corvax-Wega
     - id: GasAnalyzer
     - id: MedkitOxygenFilled
     - id: HolofanProjector
     - id: RCD
+    - id: RPD # Corvax-Wega
     - id: RCDAmmo
     - id: AirGrenade
     - id: PlushieLizardJobAtmospherictechnician

@@ -10,6 +10,7 @@ store-category-ert-engineering = Инженерные инструменты
 store-category-ert-materials = Ресурсы
 store-category-ert-flatpack = Упаковки
 store-category-ert-medicine = Медицина
+
 # Void
 store-category-void-survival = Выживание
 store-category-void-food = Еда
@@ -18,3 +19,6 @@ store-category-void-medical = Медикаменты
 store-category-void-weapon = Оружие
 store-category-void-shuttle = Шаттл
 store-category-void-special = Специальное
+
+# Revolution
+store-category-support = общая поддержка

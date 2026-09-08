@@ -42,7 +42,7 @@ public sealed partial class VampireComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public float TotalBloodDrank = 0;
 
-    [ViewVariables(VVAccess.ReadOnly), AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
     public Dictionary<EntityUid, FixedPoint2> BloodConsumedFromVictim = new();
 
     [ViewVariables(VVAccess.ReadOnly)]

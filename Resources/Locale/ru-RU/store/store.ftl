@@ -16,4 +16,5 @@ store-preset-name-uplink = Аплинк
 store-preset-name-spellbook = Книга заклинаний
 store-preset-name-nukie-delivery = Блюспейс доставка Ядерных Оперативников
 store-preset-name-changeling = Магазин ДНК
-store-preset-name-revolution = Магазин поддержки
+
+store-listing-locked = Заблокировано

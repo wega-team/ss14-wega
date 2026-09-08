@@ -155,7 +155,7 @@
   - PortableScrubberMachineCircuitBoard
   - HolofanProjector
   - AtmosPlating # Corvax-Wega-Add
-  # - TemperatureRegulatorSuitModule # Corvax-Wega-add
+  - TemperatureRegulatorSuitModule # Corvax-Wega-add
   technologyPrerequisites:
   - AtmosphericTech
 
@@ -189,12 +189,15 @@
     - OreBagOfHolding
     - MiningDrillDiamond
     - AdvancedMineralScannerEmpty
-    - WeaponPlasmaCutterAdv # Corvax-Wega-Lavaland
-    - WeaponIndustrialFanPlasmaCutter # Corvax-Wega-Lavaland
     - BorgModuleAdvancedMining
     - SalvageExpeditionsComputerCircuitboard # Corvax-Cringe
-  technologyPrerequisites: # Corvax-Wega-Add
-  - SalvageEquipment # Corvax-Wega-add
+  # Corvax-Wega-Add-start
+    - Jackhammer
+    - WeaponPlasmaCutterAdv
+    - WeaponIndustrialFanPlasmaCutter
+  technologyPrerequisites:
+  - SalvageEquipment
+  # Corvax-Wega-Add-end
 
 # Tier 3
 
@@ -225,6 +228,6 @@
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellHyper
-  # - ModularSuitCoreInfinite # Corvax-Wega-Add
+  - ModularSuitCoreInfinite # Corvax-Wega-Add
   technologyPrerequisites:
   - AdvancedPowercells

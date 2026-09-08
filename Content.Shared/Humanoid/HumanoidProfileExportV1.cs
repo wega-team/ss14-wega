@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -88,7 +89,7 @@ public sealed partial class HumanoidCharacterProfileV1
     public ProtoId<SpeciesPrototype> Species;
 
     [DataField] //Corvax-TTS
-    public string Voice = HumanoidProfileSystem.DefaultVoice;
+    public string TTSVoice = HumanoidProfileSystem.DefaultVoice;
 
     [DataField] // Corvax-Wega-Barks
     public string BarkVoice = HumanoidProfileSystem.DefaultBarkVoice;
@@ -135,9 +136,10 @@ public sealed partial class HumanoidCharacterProfileV1
             NSFWFlavorText,
             Species,
             BarkVoice,
-            Voice,
+            TTSVoice,
             Age,
             Sex,
+            GetDefaultVoice(Species, Sex),
             Gender,
             Status,
             Height,
@@ -148,6 +150,15 @@ public sealed partial class HumanoidCharacterProfileV1
             AntagPreferences,
             TraitPreferences,
             Loadouts);
+    }
+
+    // In V2 voices are stored as a separate database entry, this picks the default for the species and sex, which would give the same voice as pre-nubody.
+    private ProtoId<EmoteSoundsPrototype> GetDefaultVoice(ProtoId<SpeciesPrototype> species, Sex sex)
+    {
+        var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
+
+        var speciesPrototye = prototypeManager.Index(species);
+        return speciesPrototye.DefaultSoundsBySex[(int)sex];
     }
 }
 
@@ -167,9 +178,9 @@ public sealed partial class HumanoidCharacterAppearanceV1
         get
         {
             if (_hairColor is string str)
-                return Color.TryFromHex(str) ?? Color.Black;
+                return Color.TryFromHex(str, out var color) ? color : Color.Black;
             if (_hairColor is List<object> list && list.Count > 0 && list[0] is string listStr)
-                return Color.TryFromHex(listStr) ?? Color.Black;
+                return Color.TryFromHex(listStr, out var color) ? color : Color.Black;
             return Color.Black;
         }
         set => _hairColor = value.ToHex();

@@ -223,7 +223,6 @@
       types:
         Slash: 5
   - type: Temperature
-    currentTemperature: 310.15
     specificHeat: 42
   - type: TemperatureDamage
     heatDamageThreshold: 325
@@ -244,10 +243,7 @@
   - type: Speech
     speechSounds: Resomi
   - type: Vocal
-    sounds:
-      Male: MaleResomi
-      Female: FemaleResomi
-      Unsexed: MaleResomi
+    emoteSounds: MaleResomi
   - type: Respirator
     damage:
       types:

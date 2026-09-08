@@ -31,8 +31,6 @@
         type: DnaModifierBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: DnaModifierComputerCircuitboard
   - type: DeviceLinkSource
@@ -92,8 +90,6 @@
         type: MiningConsoleBoundInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: MiningMonitoringComputerCircuitboard
   - type: AccessReader
@@ -106,7 +102,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: LavalandShuttleConsole
-  name: lavaland shuttle console
+  name: avanpost shuttle console
   description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
   - type: Sprite
@@ -132,8 +128,6 @@
         type: LavalandConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: LavalandShuttleComputerCircuitboard
   - type: AccessReader
@@ -146,7 +140,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: PenalServitudeLavalandShuttleConsole
-  name: penal servitude lavaland shuttle console
+  name: penal servitude avanpost shuttle console
   description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
   - type: Sprite
@@ -172,8 +166,6 @@
         type: LavalandPenalServitudeConsoleBoundUserInterface
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
-  - type: ApcPowerReceiver
-    powerLoad: 250
   - type: Computer
     board: LavalandPenalServitudeShuttleComputerCircuitboard
   - type: AccessReader

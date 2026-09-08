@@ -1,10 +1,8 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
-using Content.Server.Bible.Components;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Pinpointer;
-using Content.Server.Station.Components;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
@@ -17,8 +15,8 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
-using Content.Shared.Ghost;
 using Content.Shared.Gibbing;
+using Content.Shared.Storage.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -40,6 +38,10 @@ using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Bible.Components;
+using Content.Shared.Ghost.Systems;
+using Content.Shared.Ghost.Components;
+using Content.Shared.Station.Components;
 
 namespace Content.Server.Blood.Cult;
 
@@ -48,7 +50,7 @@ public sealed partial class BloodCultSystem
     [Dependency] private FlammableSystem _flammable = default!;
     [Dependency] private GibbingSystem _gibbing = default!;
     [Dependency] private IConsoleHost _consoleHost = default!;
-    [Dependency] private IMapManager _mapMan = default!;
+    [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private NavMapSystem _navMap = default!;
     [Dependency] private RejuvenateSystem _rejuvenate = default!;
     [Dependency] private SharedGhostSystem _ghost = default!;
@@ -75,8 +77,22 @@ public sealed partial class BloodCultSystem
 
     #region Runes
 
+    private bool IsInsideClosedLocker(EntityUid entity)
+    {
+        if (!_container.TryGetContainingContainer(entity, out var container))
+            return false;
+
+        if (TryComp<EntityStorageComponent>(container.Owner, out var storage))
+            return !storage.Open;
+
+        return false;
+    }
+
     private void AfterRuneSelect(Entity<BloodDaggerComponent> rune, ref SelectBloodRuneMessage args)
     {
+        if (IsInsideClosedLocker(args.Actor))
+            return;
+
         if (!HasComp<BloodCultistComponent>(args.Actor) || IsInSpace(args.Actor))
             return;
 
@@ -110,7 +126,7 @@ public sealed partial class BloodCultSystem
             }
 
             var cultistPosition = _transform.GetMapCoordinates(Transform(cultist));
-            isValidSurface = _mapMan.TryFindGridAt(cultistPosition, out _, out _);
+            isValidSurface = _map.TryFindGridAt(cultistPosition, out _, out _);
 
             var ritual = EntityQuery<BloodRitualDimensionalRendingComponent>().FirstOrDefault();
             if (!isValidSurface || ritual != default)
@@ -146,6 +162,13 @@ public sealed partial class BloodCultSystem
     {
         if (args.Cancelled)
         {
+            QueueDel(GetEntity(args.Rune));
+            return;
+        }
+
+        if (IsInsideClosedLocker(cultist))
+        {
+            _popup.PopupEntity(Loc.GetString("rune-cant-draw-in-locker"), cultist, cultist, PopupType.MediumCaution);
             QueueDel(GetEntity(args.Rune));
             return;
         }
@@ -197,19 +220,19 @@ public sealed partial class BloodCultSystem
 
         args.PushMarkup(component.LocDesc);
 
-		if (component.RuneType == BloodCultRune.Revive)
-		{
-			var o = cult.Offerings;
-			var revives = o / 3;
-			var need = 3 - o % 3;
+        if (component.RuneType == BloodCultRune.Revive)
+        {
+            var o = cult.Offerings;
+            var revives = o / 3;
+            var need = 3 - o % 3;
 
             args.PushMarkup(revives > 0
                 ? Loc.GetString("revive-alive-count", ("alive", revives))
                 : Loc.GetString("revive-need-more", ("needed", need)), -1);
 
-			args.PushMarkup(Loc.GetString("revive-offering-count", ("offerings", o)), -2);
-		}
-	}
+            args.PushMarkup(Loc.GetString("revive-offering-count", ("offerings", o)), -2);
+        }
+    }
 
     private void OnRitualInteract(EntityUid rune, BloodRitualDimensionalRendingComponent component, InteractHandEvent args)
     {
@@ -353,9 +376,15 @@ public sealed partial class BloodCultSystem
         }
     }
 
+    private bool IsMindshielded(EntityUid target)
+    {
+        return TryComp<MindShieldStatusComponent>(target, out var shield)
+            && shield.IsMindshielded; // changelings or fake shields
+    }
+
     private bool IsSpecialTarget(EntityUid target)
     {
-        return HasComp<MindShieldComponent>(target)
+        return IsMindshielded(target)
             || HasComp<BibleUserComponent>(target)
             || HasComp<BloodCultObjectComponent>(target)
             || HasComp<VeilCultistComponent>(target);
@@ -363,15 +392,16 @@ public sealed partial class BloodCultSystem
 
     private bool IsConvertibleTarget(EntityUid target)
     {
-        return !HasComp<MindShieldComponent>(target)
+        return !IsMindshielded(target)
             && !HasComp<BibleUserComponent>(target)
             && !HasComp<SyntheticOperatedComponent>(target)
-            && !HasComp<VeilCultistComponent>(target);
+            && !HasComp<VeilCultistComponent>(target)
+            && !HasComp<BloodCultObjectComponent>(target);
     }
 
     private bool IsRegularTarget(EntityUid target)
     {
-        return !HasComp<MindShieldComponent>(target)
+        return !IsMindshielded(target)
             && !HasComp<BibleUserComponent>(target)
             && !HasComp<SyntheticOperatedComponent>(target)
             && !HasComp<VeilCultistComponent>(target);
@@ -980,7 +1010,7 @@ public sealed partial class BloodCultSystem
     private bool IsInSpace(EntityUid cultist)
     {
         var cultistPosition = _transform.GetMapCoordinates(Transform(cultist));
-        if (!_mapMan.TryFindGridAt(cultistPosition, out _, out _))
+        if (!_map.TryFindGridAt(cultistPosition, out _, out _))
             return true;
 
         return false;
@@ -1001,7 +1031,7 @@ public sealed partial class BloodCultSystem
         if (bloodReagentPrototypeId == null)
             return Color.FromHex("#880000");
 
-        if (!_prototypeManager.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
+        if (!ProtoMan.TryIndex(bloodReagentPrototypeId, out ReagentPrototype? reagentPrototype))
             return Color.FromHex("#880000");
 
         return reagentPrototype.SubstanceColor;

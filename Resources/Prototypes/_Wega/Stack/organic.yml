@@ -21,6 +21,13 @@
 
 - type: stack
   parent: BaseMediumStack
+  id: PolarBearHide
+  name: stack-polar-bear-hide
+  icon: { sprite: _Wega/Objects/Materials/polar_bear_hide.rsi, state: hide }
+  spawn: MaterialPolarBearHide1
+
+- type: stack
+  parent: BaseMediumStack
   id: ConsecratedIngot
   name: consecrated-ingot
   icon: { sprite: _Wega/Objects/Materials/consecrated_ingot.rsi, state: consecrated_3 }

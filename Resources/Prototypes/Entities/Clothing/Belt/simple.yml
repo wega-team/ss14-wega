@@ -15,6 +15,13 @@
     tags:
     - Kangaroo # Kangaroo wearable. Dare to challenge the champ?
     - WhitelistChameleon
+# Corvax-Wega-start
+  - type: MartialArtsClothing
+    style: Boxing
+    gotMessage: true
+    equippedMessage: boxer-enabled
+    unequippedMessage: boxer-disabled
+# Corvax-Wega-End
 
 - type: entity
   parent: ClothingBeltBase

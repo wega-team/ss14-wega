@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
-using Content.Server.Body.Systems;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Access;
@@ -49,7 +48,6 @@ public sealed partial class DiceOfFateSystem : EntitySystem
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private PolymorphSystem _polymorph = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private RejuvenateSystem _rejuvenate = default!;
     [Dependency] private SharedStunSystem _stun = default!;
@@ -195,7 +193,7 @@ public sealed partial class DiceOfFateSystem : EntitySystem
 
     private bool ExplosionUser(EntityUid user)
     {
-        if (!_prototype.TryIndex(ExplosionSystem.DefaultExplosionPrototypeId, out ExplosionPrototype? type))
+        if (!ProtoMan.TryIndex(ExplosionSystem.DefaultExplosionPrototypeId, out ExplosionPrototype? type))
             return false;
 
         _explosion.QueueExplosion(user, type.ID, 5000f, 3f, 10f);
@@ -310,7 +308,7 @@ public sealed partial class DiceOfFateSystem : EntitySystem
 
     private void GiveAllAccess(EntityUid entity)
     {
-        var allAccess = _prototype
+        var allAccess = ProtoMan
             .EnumeratePrototypes<AccessLevelPrototype>()
             .Select(p => new ProtoId<AccessLevelPrototype>(p.ID)).ToArray();
 

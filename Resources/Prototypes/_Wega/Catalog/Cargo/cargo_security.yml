@@ -9,11 +9,11 @@
   group: market
 
 - type: cargoProduct
-  id: CrateBoxPillCanisterSB
+  id: CrateBoxPillCanisterSecurity
   icon:
     sprite: /Textures/Objects/Storage/boxes.rsi
     state: box_security
-  product: CrateBoxPillCanisterSB
+  product: CrateBoxPillCanisterSecurity
   cost: 1250
   category: cargoproduct-category-name-security
   group: market

@@ -83,3 +83,45 @@
   - type: ConditionalSpawner
     prototypes:
     - MobBubblegum
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobWendigoIcemoon
+  name: Wendigo Spawner
+  suffix: Icemoon, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobWendigo
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobFrostMinerIcemoon
+  name: Frost Miner Spawner
+  suffix: Icemoon, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobFrostMiner
+
+- type: entity
+  parent: MarkerBase
+  id: SpawnMobTheThingIcemoon
+  name: The Thing Spawner
+  suffix: Icemoon, DO NOT MAP
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ai
+  - type: ConditionalSpawner
+    prototypes:
+    - MobTheThingPhase1

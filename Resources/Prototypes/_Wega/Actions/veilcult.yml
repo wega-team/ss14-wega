@@ -7,12 +7,16 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    icon: { sprite: _Wega/Interface/Actions/actions_veilcult.rsi, state: "midastouch" }
     useDelay: 15
     priority: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_veilcult.rsi
+    layers:
+    - state: midastouch
+      map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:VeilCultMidasTouchActionEvent
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateCrusher
@@ -27,7 +31,7 @@
     event: !type:CrusherEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateDismantling
@@ -42,7 +46,7 @@
     event: !type:DismantlingEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateConfusion
@@ -57,7 +61,7 @@
     event: !type:ConfusionEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateKnockback
@@ -72,7 +76,7 @@
     event: !type:KnockbackEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-   
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateSwordsmen
@@ -87,7 +91,7 @@
     event: !type:SwordsmenEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateBloodshed
@@ -102,7 +106,7 @@
     event: !type:BloodshedEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateHaste
@@ -117,7 +121,7 @@
     event: !type:HasteEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateReflection
@@ -132,7 +136,7 @@
     event: !type:ReflectionEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateCamouflage
@@ -147,7 +151,7 @@
     event: !type:CamouflageEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateAbsorb
@@ -162,7 +166,7 @@
     event: !type:AbsorbEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateSmoke
@@ -177,7 +181,7 @@
     event: !type:SmokeEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateHardenPlates
@@ -192,7 +196,7 @@
     event: !type:HardenPlatesEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateNorthStar
@@ -207,7 +211,7 @@
     event: !type:NorthStarEnchantActionEvent
   - type: LimitedCharges
     maxCharges: 1
-    
+
 - type: entity
   parent: BaseAction
   id: ActionVeilCultActivateRedFlame

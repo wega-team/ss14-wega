@@ -1,9 +1,14 @@
 - files: ["wega_old.png", "wega_new.png"]
   license: "CC-BY-NC-SA-4.0"
-  copyright: "Specially created for Wega, by vovock2702 on discord"
+  copyright: "Specially created for Wega, by melissandravov on discord"
   source: "https://discord.com/channels/1286594744432066562/1303329439869833286" # Gooooooool
 
 - files: ["just_joke.png"]
   license: "CC-BY-NC-SA-4.0"
   copyright: "Specially created for Wega, by allochtonado on discord"
   source: "https://discord.com/channels/1286594744432066562/1303329439869833286" # Gooooooool
+
+- files: ["singuloose.png"]
+  license: "CC-BY-NC-SA-4.0"
+  copyright: "Taken from the project channel with the author's permission, by krikun12 on discord"
+  source: "https://discord.com/channels/1286594744432066562/1386992502237696071/1525830441343651903"

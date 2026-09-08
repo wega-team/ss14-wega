@@ -29,7 +29,10 @@
       Steel: 100
   - type: StaticPrice
     price: 22
+    # Corvax-Wega-Edit-Start
   - type: Prying
+    speedModifier: 10
+    # Corvax-Wega-Edit-End
   - type: Sprite
     sprite: Objects/Tools/crowbar.rsi
   - type: Clothing

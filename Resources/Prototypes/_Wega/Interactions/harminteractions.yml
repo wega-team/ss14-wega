@@ -93,9 +93,7 @@
     specieses:
     - Moth
   - !type:HasItemInHandCondition
-    whitelist:
-      components:
-      - Sharp
+    tool: Slicing
   effects:
   - !type:PlaySoundEffect
     sound:
@@ -131,9 +129,7 @@
     specieses:
     - Moth
   - !type:HasItemInHandCondition
-    whitelist:
-      components:
-      - Sharp
+    tool: Slicing
   effects:
   - !type:PlaySoundEffect
     sound:
@@ -176,9 +172,7 @@
     - Reptilian
     - Moth
   - !type:HasItemInHandCondition
-    whitelist:
-      components:
-      - Sharp
+    tool: Slicing
   effects:
   - !type:PlaySoundEffect
     sound:
@@ -214,9 +208,7 @@
     specieses:
     - Moth
   - !type:HasItemInHandCondition
-    whitelist:
-      components:
-      - Sharp
+    tool: Slicing
   effects:
   - !type:PlaySoundEffect
     sound:

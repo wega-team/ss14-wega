@@ -21,8 +21,21 @@ linked-cube-paused-map = Связанный куб недоступен.
 
 dragon-blood-effect-1 = Кровь прожигает вашу плоть оставляя лишь кости. Ачк-Ачк!
 dragon-blood-effect-2 = Вы чувствуете себя необычайно зачарованно?
-dragon-blood-effect-3 = Вы всегда мечтали всем показать свое истинное я
+dragon-blood-effect-3 = Вы всегда мечтали всем показать свое истинное я!
 
 lava-staff-remove = Лава уходит вглубь
 lava-staff-create = Лава поднимается с песков
 lava-staff-cant-use = Лавы нет в этой местности
+
+storm-staff-no-charges = У посоха нет зарядов!
+storm-staff-weather-cancel-cooldown = Вы сможете отменить погоду только через { $time } минут.
+storm-staff-no-weather = В этом районе нет активной погоды.
+storm-staff-weather-canceled = Вы отменили погодное явление с помощью посоха!
+
+wendigo-blood-effect = Вы чувствуете себя на шаг ближе к родине.
+
+resurrection-crystal-effect = Вы впитали силу артефакта.
+resurrection-crystal-revive-effect = Магическая энергия уводит { $name } в неизвестном направлении.
+
+godslayer-armour-cooldown = Броня ещё не готова! Осталось { $time } секунд.
+godslayer-armour-revive = Броня вспыхивает демонической энергией! Вы чувствуете прилив сил!

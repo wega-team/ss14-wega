@@ -16,6 +16,41 @@
     - state: throwing_knife
 
 - type: entity
+  parent: BaseBullet
+  id: BulletHerald
+  name: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 10
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+
+- type: entity
+  parent: BaseBullet
+  id: BulletHeraldTele
+  name: "..."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ProjectileTeleport
+  - type: Projectile
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 0
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      color: Gold
+
+- type: entity
   id: BulletAshDrakeFire
   name: "how did you see this?"
   categories: [ HideSpawnMenu ]
@@ -51,3 +86,135 @@
     intervalSeconds: 0.1
   - type: TimedDespawn
     lifetime: 4
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileIceDemonBolt
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+  - type: PointLight
+    color: "#00ceff"
+    energy: 8
+    radius: 1.2
+  - type: ChangeTemperatureOnCollide
+    heat: -50000
+  - type: ProjectileSlowdown
+  - type: Projectile
+    ignoreTargeted: true
+    damage:
+      types:
+        Cold: 1
+  - type: TimedDespawn
+    lifetime: 3
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileIceWhelpBolt
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+  - type: PointLight
+    color: "#00ceff"
+    energy: 8
+    radius: 1.2
+  - type: ChangeTemperatureOnCollide
+    heat: -50000
+  - type: ProjectileSlowdown
+  - type: Projectile
+    ignoreTargeted: true
+    damage:
+      types:
+        Cold: 5
+  - type: TimedDespawn
+    lifetime: 3
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileWendigoDeathBolt
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+  - type: PointLight
+    color: "#00ceff"
+    energy: 8
+    radius: 1.2
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 20
+
+- type: entity
+  parent: BaseBullet
+  id: EffectFrostMinerIceOrb
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: iceorb
+  - type: PointLight
+    color: "#00ceff"
+    energy: 4
+    radius: 2.2
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Heat: 20
+  - type: TimedDespawn
+    lifetime: 15
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileFrostMinerShard
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: icebeam
+  - type: PointLight
+    color: "#00ceff"
+    energy: 8
+    radius: 1.2
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 15
+
+- type: entity
+  parent: BaseBullet
+  id: ProjectileFrostMinerSnowball
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: snowball
+  - type: Projectile
+    ignoreResistances: true
+    ignoreTargeted: true
+    damage:
+      types:
+        Blunt: 5

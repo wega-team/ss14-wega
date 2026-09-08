@@ -11,3 +11,10 @@
   femaleLastNames: NamesAriralLast
   minHeight: 180
   maxHeight: 250
+  defaultSoundsBySex:
+  - MaleAriral
+  - FemaleAriral
+  - MaleAriral
+  voices:
+  - MaleAriral
+  - FemaleAriral

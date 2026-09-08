@@ -1,6 +1,6 @@
 using Content.Shared.Item;
 using Robust.Shared.Containers;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Implants.Components;
 
@@ -34,12 +34,12 @@ public sealed partial class InternalStorageComponent : Component
     /// <summary>
     /// The maximum size of objects for the head
     /// </summary>
-    [DataField("headMaxSize", customTypeSerializer: typeof(PrototypeIdSerializer<ItemSizePrototype>))]
-    public string HeadMaxSize = "Tiny";
+    [DataField("headMaxSize")]
+    public ProtoId<ItemSizePrototype> HeadMaxSize = "Tiny";
 
     /// <summary>
     /// Maximum size of objects for the torso
     /// </summary>
-    [DataField("bodyMaxSize", customTypeSerializer: typeof(PrototypeIdSerializer<ItemSizePrototype>))]
-    public string BodyMaxSize = "Small";
+    [DataField("bodyMaxSize")]
+    public ProtoId<ItemSizePrototype> BodyMaxSize = "Small";
 }

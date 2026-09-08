@@ -2,7 +2,21 @@
   id: AdvencedMed
   recipes:
   - Hynospray
+  - Scalpel
+  - Retractor
+  - Cautery
+  - Drill
+  - Saw
+  - Hemostat
+  - FixOVein
+  - BoneSetter
+  - BoneGel
+  - Hemrevein
+  - Bonesaw
+  - ScalpelLaser
+  - BorgModuleSurgery
   - DefibrillatorCompact
+  - BodyScannerComputerCircuitboard
 
 - type: latheRecipePack
   id: ImplantMed

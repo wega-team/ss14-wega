@@ -18,7 +18,6 @@ namespace Content.Shared.DirtVisuals;
 public sealed partial class SharedDirtSystem : EntitySystem
 {
     [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private IPrototypeManager _prototype = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
@@ -177,7 +176,7 @@ public sealed partial class SharedDirtSystem : EntitySystem
             if (reagent.Reagent.Prototype == "Water")
                 continue;
 
-            if (!_prototype.TryIndex<ReagentPrototype>(reagent.Reagent.Prototype, out var proto))
+            if (!ProtoMan.TryIndex<ReagentPrototype>(reagent.Reagent.Prototype, out var proto))
                 continue;
 
             colors.Add(proto.SubstanceColor);

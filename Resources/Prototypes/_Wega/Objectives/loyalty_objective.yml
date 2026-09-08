@@ -5,7 +5,7 @@
   description: Follow the instructions. If there are none, proceed independently.
   components:
   - type: Objective
-    issuer: objective-issuer-syndicate
+    issuer: TheSyndicate
     difficulty: 1
     icon:
       sprite: Objects/Specific/Medical/syndi_implanter.rsi

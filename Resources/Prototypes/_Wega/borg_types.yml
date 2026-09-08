@@ -77,7 +77,6 @@
   - BorgModuleTool
   - BorgModuleArtifact
   - BorgModuleAnomaly
-  - BorgModuleSlime
 
   radioChannels:
   - Science
@@ -95,11 +94,11 @@
   # Pet
   petSuccessString: petting-success-science-cyborg
   petFailureString: petting-failure-science-cyborg
-  
+
   # Sounds
   footstepCollection:
     collection: FootstepHoverBorg
-    
+
   # tts
   voicePrototypeId: Glados
 

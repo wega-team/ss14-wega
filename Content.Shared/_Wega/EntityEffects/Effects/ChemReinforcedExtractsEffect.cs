@@ -23,5 +23,5 @@ public sealed partial class ChemReinforcedExtractsEntityEffectSystem : EntityEff
 public sealed partial class ChemReinforcedExtracts : EntityEffectBase<ChemReinforcedExtracts>
 {
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("reagent-effect-guidebook-reinforce-extracts");
+        => Loc.GetString("reagent-effect-guidebook-reinforced-extracts");
 }

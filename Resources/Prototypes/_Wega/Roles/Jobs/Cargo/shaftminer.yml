@@ -8,7 +8,7 @@
       department: Cargo
       time: 3h
   startingGear: ShaftMinerGear
-  icon: "JobIconShaftMiner"
+  icon: "JobIconShaftMinerAlt"
   supervisors: job-supervisors-qm
   access:
   - Cargo
@@ -29,3 +29,14 @@
     - SalvageVoucherCard
     - SurvivalMedipen
     - SurvivalKnife
+
+- type: chameleonOutfit
+  id: ShaftMinerChameleonOutfit
+  job: ShaftMiner
+  equipment:
+    head: ClothingHeadHatCargosoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskGasExplorer
+    outerClothing: ClothingOuterArmorExplorerSuit
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesColorBlack

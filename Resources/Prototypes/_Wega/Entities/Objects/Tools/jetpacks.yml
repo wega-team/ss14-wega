@@ -60,3 +60,40 @@
     weightlessModifier: 2.4
     friction: 0.125
     moleUsage: 0
+    
+- type: entity
+  id: JetpackBlackSyndicate
+  parent: BaseJetpack
+  name: jetpack
+  suffix: Empty
+  components:
+  - type: Item
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+  - type: Sprite
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+  - type: Clothing
+    sprite: Objects/Tanks/Jetpacks/black.rsi
+    slots:
+      - Back
+      - suitStorage
+  - type: Tag
+    tags:
+      - Jetpack
+  - type: StaticPrice
+    price: 2000
+
+- type: entity
+  id: JetpackBlackSyndicateFilled
+  parent: JetpackBlackSyndicate
+  name: jetpack
+  suffix: Filled
+  components:
+  - type: GasTank
+    releasePressure: 42.6
+    air:
+      # 26 minutes of thrust
+      volume: 10
+      temperature: 293.15
+      moles:
+        - 2.05 # oxygen
+        - 2.05 # nitrogen

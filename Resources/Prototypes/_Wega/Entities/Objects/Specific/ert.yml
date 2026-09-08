@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseItem, StorePresetTacticalInterface, BaseRestrictedContraband]
+  parent: [BaseItem, StorePresetTacticalInterface, BaseCentcommContraband]
   id: BaseTacticalInterface
   name: tactical interface
   abstract: true
@@ -26,7 +26,7 @@
     - ERTTacticalInterface
 
 - type: entity
-  parent: [BaseTacticalInterface]
+  parent: BaseTacticalInterface
   id: TacticalInterfacePatrol
   suffix: Patrol, 50
   components:
@@ -39,7 +39,7 @@
     - ERTTacticalInterfaceNotEVA
 
 - type: entity
-  parent: [BaseTacticalInterface]
+  parent: BaseTacticalInterface
   id: TacticalInterfaceScout
   suffix: Scout, 90
   components:
@@ -51,7 +51,7 @@
     - ERTTacticalInterface
 
 - type: entity
-  parent: [BaseTacticalInterface]
+  parent: BaseTacticalInterface
   id: TacticalInterfaceCombat
   suffix: Combat, 240
   components:
@@ -65,7 +65,7 @@
     - ERTTacticalInterfaceEVA
 
 - type: entity
-  parent: [BaseTacticalInterface]
+  parent: BaseTacticalInterface
   id: TacticalInterfaceSpecialist
   suffix: Specialist, 200
   components:
@@ -78,7 +78,7 @@
     - ERTTacticalInterfaceEVA
 
 - type: entity
-  parent: [BaseTacticalInterface]
+  parent: BaseTacticalInterface
   id: TacticalInterfaceCBURN
   suffix: CBURN, 185
   components:

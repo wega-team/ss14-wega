@@ -10,15 +10,15 @@ public enum SurgeryUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed partial class SurgeryProcedureDto : BoundUserInterfaceMessage
+public sealed partial class SurgeryProcedureDtoState : BoundUserInterfaceState
 {
     public List<SurgeryGroupDto> Groups;
-    public NetEntity PatientId;
+    public SurgerySterilityInfo SterilityInfo;
 
-    public SurgeryProcedureDto(List<SurgeryGroupDto> groups, NetEntity patientId)
+    public SurgeryProcedureDtoState(List<SurgeryGroupDto> groups, SurgerySterilityInfo sterilityInfo)
     {
         Groups = groups;
-        PatientId = patientId;
+        SterilityInfo = sterilityInfo;
     }
 }
 
@@ -70,16 +70,40 @@ public sealed partial class SurgeryStepDto
 }
 
 [Serializable, NetSerializable]
+public sealed partial class SurgerySterilityInfo
+{
+    public float Sterility;
+    public List<string> NegativeFactors;
+    public List<string> PositiveFactors;
+
+    public SurgerySterilityInfo(float sterility, List<string> negativeFactors, List<string> positiveFactors)
+    {
+        Sterility = sterility;
+        NegativeFactors = negativeFactors;
+        PositiveFactors = positiveFactors;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class SurgerySterilityUpdateMessage : BoundUserInterfaceMessage
+{
+    public SurgerySterilityInfo SterilityInfo;
+
+    public SurgerySterilityUpdateMessage(SurgerySterilityInfo sterilityInfo)
+    {
+        SterilityInfo = sterilityInfo;
+    }
+}
+
+[Serializable, NetSerializable]
 public sealed partial class SurgeryStartMessage : BoundUserInterfaceMessage
 {
-    public NetEntity User;
     public ProtoId<SurgeryNodePrototype> TargetNode;
     public int StepIndex;
     public bool IsParallel;
 
-    public SurgeryStartMessage(NetEntity user, ProtoId<SurgeryNodePrototype> targetNode, int stepIndex, bool isParallel)
+    public SurgeryStartMessage(ProtoId<SurgeryNodePrototype> targetNode, int stepIndex, bool isParallel)
     {
-        User = user;
         TargetNode = targetNode;
         StepIndex = stepIndex;
         IsParallel = isParallel;

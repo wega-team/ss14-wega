@@ -17,6 +17,13 @@
     },
     {
       "name": "goliath_dead"
+    },
+    {
+      "name": "goliathbaby",
+      "directions": 4
+    },
+    {
+      "name": "goliathbaby_dead"
     }
   ]
 }

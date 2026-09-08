@@ -14,23 +14,26 @@ public sealed partial class ModularSuitHiddenClothingSystem : SharedModularSuitH
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ModularSuitHiddenClothingComponent, InventoryRelayedEvent<ModifyChangedTemperatureEvent>>(OnModifyChangedTemperature);
+        Subs.SubscribeWithRelay<ModularSuitHiddenClothingComponent, BeforeHeatExchangeEvent>(OnBeforeHeatExchange, held: false);
     }
 
-    private void OnModifyChangedTemperature(Entity<ModularSuitHiddenClothingComponent> ent, ref InventoryRelayedEvent<ModifyChangedTemperatureEvent> args)
+    private void OnBeforeHeatExchange(Entity<ModularSuitHiddenClothingComponent> ent, ref BeforeHeatExchangeEvent args)
     {
         foreach (var (_, item) in ent.Comp.HiddenItems)
         {
             if (TryComp<TemperatureProtectionComponent>(item, out var tempProtection))
             {
-                var coefficient = args.Args.TemperatureDelta < 0
-                    ? tempProtection.CoolingCoefficient
-                    : tempProtection.HeatingCoefficient;
+                float coefficient;
+                if (args.HeatTransferModifier < 1f)
+                {
+                    coefficient = tempProtection.Coefficient;
+                }
+                else
+                {
+                    coefficient = tempProtection.Coefficient;
+                }
 
-                var ev = new GetTemperatureProtectionEvent(coefficient);
-                RaiseLocalEvent(ent.Owner, ref ev);
-
-                args.Args.TemperatureDelta *= ev.Coefficient;
+                args.HeatTransferModifier *= coefficient;
             }
         }
     }

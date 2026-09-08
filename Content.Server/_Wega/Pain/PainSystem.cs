@@ -9,7 +9,6 @@ using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Traits.Assorted;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Pain;
 
@@ -20,7 +19,6 @@ public sealed partial class PainSystem : EntitySystem
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private VomitSystem _vomit = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     public override void Initialize()
@@ -46,7 +44,7 @@ public sealed partial class PainSystem : EntitySystem
 
     private void OnInit(EntityUid uid, PainComponent component, ComponentInit args)
     {
-        if (!_proto.TryIndex(component.Profile, out var profile))
+        if (!ProtoMan.TryIndex(component.Profile, out var profile))
             return;
 
         foreach (var (type, level) in profile.PainTypes)

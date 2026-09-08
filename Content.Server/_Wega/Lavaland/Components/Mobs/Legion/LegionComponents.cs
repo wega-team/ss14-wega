@@ -3,6 +3,23 @@ using Robust.Shared.Prototypes;
 namespace Content.Server.Lavaland.Mobs.Components;
 
 [RegisterComponent, Access(typeof(LegionSystem))]
+public sealed partial class LegionnaireComponent : Component
+{
+    [ViewVariables]
+    public EntityUid? HeadEntity;
+
+    [ViewVariables]
+    public EntityUid? BoneCampfire;
+}
+
+[RegisterComponent, Access(typeof(LegionSystem))]
+public sealed partial class LegionnaireHeadComponent : Component
+{
+    [ViewVariables]
+    public EntityUid OwnerLegionnaire;
+}
+
+[RegisterComponent, Access(typeof(LegionSystem))]
 public sealed partial class LegionBossComponent : Component
 {
     [ViewVariables]
@@ -37,11 +54,11 @@ public sealed partial class LegionBossComponent : Component
     [DataField]
     public Dictionary<EntProtoId, float> LootPrototypes = new();
 
-    [DataField("rewards")]
+    [DataField("rewards")] // Specific
     public List<EntProtoId> RewardsProto = new();
 }
 
-[RegisterComponent]
+[RegisterComponent, Access(typeof(LegionSystem))]
 public sealed partial class LegionSplitComponent : Component
 {
     [DataField("nextSplit")]

@@ -47,9 +47,9 @@ public sealed partial class VoucherKitPrototype : IPrototype
 [DataRecord]
 public sealed partial record KitItem
 {
-    [DataField("id")]
-    public EntProtoId EntityId { get; init; }
+    [DataField]
+    public EntProtoId Id { get; init; }
 
-    [DataField("amount")]
+    [DataField]
     public int Amount { get; init; } = 1;
 }

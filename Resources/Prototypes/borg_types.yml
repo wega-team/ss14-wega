@@ -185,13 +185,12 @@
 
 # Corvax-Wega-start
   addComponents:
-  - type: SolutionContainerManager
-    solutions:
-      tank:
-        maxVol: 100
-        reagents:
-          - ReagentId: SpaceCleaner
-            Quantity: 100
+  - type: Solution
+    id: tank
+    solution:
+      reagents:
+      - ReagentId: SpaceCleaner
+        Quantity: 100
   - type: SolutionRegeneration
     generated:
       reagents:
@@ -299,8 +298,10 @@
 
 # Corvax-Wega-start
   addComponents:
-  - type: ShowThirstIcons
-  - type: ShowHungerIcons
+  - type: ShowSatiationIcons
+    shownTypes:
+    - Thirst
+    - Hunger
   - type: Instrument
     allowPercussion: false
   - type: UserInterface

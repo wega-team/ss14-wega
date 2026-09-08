@@ -6,6 +6,6 @@ namespace Content.Shared.Clothing.Upgrades;
 [RegisterComponent, NetworkedComponent, Access(typeof(ClothingUpgradeEffectsSystem))]
 public sealed partial class ClothingAccessoriesProtectionComponent : Component
 {
-    [DataField]
+    [DataField(required: true)]
     public DamageModifierSet Modifiers = new();
 }

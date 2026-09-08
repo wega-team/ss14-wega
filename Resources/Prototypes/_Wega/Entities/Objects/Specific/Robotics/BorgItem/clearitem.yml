@@ -1,6 +1,7 @@
 - type: entity
-  parent: BaseItem
+  parent: [ SolutionMopLarge, BaseItem ]
   name: mop
+  categories: [ HideSpawnMenu ]
   id: BorgMopItem
   suffix: Cyborg
   description: A mop that can't be stopped, viscera cleanup detail awaits.
@@ -35,10 +36,6 @@
     sprite: Objects/Specific/Janitorial/mop.rsi
   - type: Absorbent
     useAbsorberSolution: true
-  - type: SolutionContainerManager
-    solutions:
-      absorbed:
-        maxVol: 100
   - type: UseDelay
     delay: 1
   - type: PhysicalComposition
@@ -56,6 +53,7 @@
 - type: entity
   parent: BorgMopItem
   name: advanced mop
+  categories: [ HideSpawnMenu ]
   id: BorgAdvMopItem
   description: Motorized mop that has a bigger reservoir and quickly replaces reagents inside with water. Automatic Clown Countermeasure not included.
   components:
@@ -85,18 +83,12 @@
       tags:
         - Mop
         - MopAdv
+
 # Ubor rare
 - type: entity
   parent: LightReplacer
   id: LightReplacerBorg
   suffix: Borg
-  components:
-  - type: LightReplacer
-    contents:
-    - id: LightTube
-      amount: 1000
-    - id: LightBulb
-      amount: 1000
 
 - type: entity
   name: hydra borg

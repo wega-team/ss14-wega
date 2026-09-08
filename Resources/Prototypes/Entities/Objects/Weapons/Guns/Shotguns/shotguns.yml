@@ -1,6 +1,6 @@
 - type: entity
   name: BaseWeaponShotgun
-  parent: BaseItem
+  parent: [ BaseItem, BaseGunMeleeLarge ] # Corvax-Wega-Edit
   id: BaseWeaponShotgun
   description: A rooty tooty point and shooty.
   abstract: true
@@ -29,6 +29,9 @@
       path: /Audio/Weapons/Guns/Gunshots/shotgun.ogg
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: CustomSpriteAmmoCounter
+    loadedAmmoSprite: Interface/ItemStatus/Shotgun_Shells/not_spent.png
+    spentAmmoSprite: Interface/ItemStatus/Shotgun_Shells/spent.png
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -43,11 +46,11 @@
         ents: []
   - type: StaticPrice
     price: 500
-  # Corvax-Wega-Suicide-start
+  # Corvax-Wega-Suicide-Start
   - type: Execution
     doAfterDuration: 5.0
     canMeleeExecute: false
-  # Corvax-Wega-Suicide-end
+  # Corvax-Wega-Suicide-End
 
 - type: entity
   name: Bulldog
@@ -72,6 +75,9 @@
     - Back
     - suitStorage
   - type: AmmoCounter
+  - type: CustomSpriteAmmoCounter
+    loadedAmmoSprite: Interface/ItemStatus/Shotgun_Shells/not_spent.png
+    spentAmmoSprite: Interface/ItemStatus/Shotgun_Shells/spent.png
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
     fireRate: 2

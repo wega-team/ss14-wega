@@ -103,6 +103,7 @@ blood-cult-spell-failed = ничего не произошло
 
 rune-ritual-failed = ритуал не может быть начат
 rune-select-complete = надрезав свою руку вы начертали руну
+rune-cant-draw-in-locker = тут слишком мало места!
 ritual-activate-too-soon = РИТУАЛ МОЖНО БУДЕТ НАЧАТЬ ПОВТОРНО ЧЕРЕЗ { $time } СЕКУНД
 ritual-activate-failed = НЕВОЗМОЖНО НАЧАТЬ РИТУАЛ
 rune-activate-failed = невозможно активировать руну

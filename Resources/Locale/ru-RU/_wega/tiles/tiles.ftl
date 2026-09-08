@@ -1,2 +1,17 @@
 tiles-sepia-floor = плитка сепия
 tiles-necropolis-floor = каменный пол
+beautiful-grass-tile = красивая трава
+beautiful-light-grass-tile = красивая трава светлая
+beautiful-tall-grass-tile = красивая трава высокая
+dark-grass-tile = тёмная трава
+dark-light-grass-tile = тёмная трава светлая
+dark-tall-grass-tile = тёмная трава высокая
+autumn-grass-tile = осенняя трава
+autumn-light-grass-tile = осенняя трава светлая
+autumn-tall-grass-tile = осенняя трава высокая
+shadow-grass-tile = теневая трава
+shadow-light-grass-tile = теневая трава светлая
+shadow-tall-grass-tile = теневая трава высокая
+magic-grass-tile = магическая трава
+magic-light-grass-tile = магическая трава светлая
+magical-tall-grass-tile = магическая трава высокая

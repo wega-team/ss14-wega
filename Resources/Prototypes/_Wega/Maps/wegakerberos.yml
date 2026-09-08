@@ -2,7 +2,7 @@
   id: WegaKerberos
   mapName: 'Kerberos Station'
   mapPath: /Maps/_Wega/wegakerberos.yml
-  minPlayers: 60
+  minPlayers: 65
   stations:
     Kerberos:
       stationProto: StandardNanotrasenStation
@@ -15,14 +15,17 @@
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/kerberosemergency.yml
         - type: StationLavaland
-          lavalandAvanpost: "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
-          planets: [ Lavaland ]
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
         - type: StationJobs
           availableJobs:
             #service
             Captain: [ 1, 1 ]
             BlueShieldOfficer: [ 1, 1 ]
-            IAA: [ 1, 1 ] # Corvax-IAA
             HeadOfPersonnel: [ 1, 1 ]
             Bartender: [ 2, 2 ]
             Botanist: [ 3, 4 ]

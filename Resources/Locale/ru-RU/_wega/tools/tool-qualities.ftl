@@ -1,5 +1,6 @@
 tool-quality-dagger-name = Магическое скручивание
 tool-quality-dagger-tool-name = Ритуальный кинжал
+tool-quality-clockwork-slab-tool-name = Заводная плита
 tool-quality-scalpel-name = Вскрытие
 tool-quality-scalpel-tool-name = Скальпель
 tool-quality-hemostat-name = Остановку кровотечения

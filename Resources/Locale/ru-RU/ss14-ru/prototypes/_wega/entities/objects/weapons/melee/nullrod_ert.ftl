@@ -28,3 +28,6 @@ ent-WeaponHighFrequencyBladeERT = { ent-WeaponHighFrequencyBlade }
 ent-ArrhythmicKnifeERT = { ent-ArrhythmicKnife }
     .desc = { ent-ArrhythmicKnife.desc }
     .suffix = ОБР Священник
+ent-WeaponPossessedBladeERT = { ent-WeaponPossessedBlade }
+    .desc = { ent-WeaponPossessedBlade.desc }
+    .suffix = ОБР Священник

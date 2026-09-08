@@ -49,6 +49,7 @@
     - ChameleonControllerImplant
     - VoiceMaskImplant
     - LoyaltyImplant #Corvax-Wega-Edit
+    - ThermalVisionImplant # Corvax-Wega-Add
     deimplantFailureDamage:
       types:
         Cellular: 50

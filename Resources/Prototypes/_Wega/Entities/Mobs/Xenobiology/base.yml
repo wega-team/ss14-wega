@@ -39,7 +39,6 @@
     - FootstepSound
     - DoorBumpOpener
   - type: Butcherable
-    butcheringType: Knife
     spawned:
     - id: FoodMeatSlime
       amount: 2

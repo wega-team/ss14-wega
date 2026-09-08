@@ -8,8 +8,10 @@
   id: EndMuscleTearsTorsoOperation
   description: Завершить
   packages:
+    - DeconvertationPackage
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition
@@ -26,8 +28,10 @@
   id: EndMildBurnsTorsoOperation
   description: Завершить
   packages:
+    - DeconvertationPackage
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition
@@ -44,8 +48,10 @@
   id: EndClosedFractureTorsoOperation
   description: Завершить
   packages:
+    - DeconvertationPackage
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition
@@ -62,8 +68,10 @@
   id: EndOpenFractureTorsoOperation
   description: Завершить
   packages:
+    - DeconvertationPackage
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition
@@ -82,6 +90,8 @@
   packages:
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - DeconvertationPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition
@@ -100,6 +110,8 @@
   packages:
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - DeconvertationPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition
@@ -118,6 +130,8 @@
   packages:
     - TorsoImplantPackage
     - HealingTorsoPackage
+    - DeconvertationPackage
+    - MedicinalSurgeryPackage
   transitions:
     - OrganManipulationTransition
     - InternalTorsoTransition

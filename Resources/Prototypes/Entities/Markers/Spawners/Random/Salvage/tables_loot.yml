@@ -260,7 +260,7 @@
     - id: BlueprintFulton
     - id: BlueprintSeismicCharge
     - id: WeaponCrusherGlaive
-    - id: ClothingOuterHardsuitSalvage
+    - id: HardsuitAsteroidSelector # Corvax-Wega-ModularSuits-Edit
     - id: ChemistryBottleOmnizine
     - !type:GroupSelector
       children:

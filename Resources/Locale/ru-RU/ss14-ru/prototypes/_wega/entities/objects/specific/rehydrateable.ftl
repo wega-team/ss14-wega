@@ -20,3 +20,5 @@ ent-CatCube = кошачий кубик
     .desc = { ent-RehydratableAnimalCube.desc }
 ent-DionaNymphCube = нимфо дионовый кубик
     .desc = { ent-RehydratableAnimalCube.desc }
+ent-HeadcrabCube = кубик лицехвата
+    .desc = { ent-RehydratableAnimalCube.desc }

@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "storage Taken from tgstation at commit https://github.com/tgstation/tgstation, other created by zekins3366 (580828258124431370) on discord",
+    "copyright": "storage Taken from tgstation at commit https://github.com/tgstation/tgstation, other created by zekins3366 (580828258124431370) on discord, kinetic_holster-in and kinetic_holster-out modified from holster-in and holster-out by depsad",
     "size": {
         "x": 32,
         "y": 32
@@ -29,7 +29,13 @@
             "name": "holster-in"
         },
         {
+            "name": "kinetic_holster-in"
+        },
+        {
             "name": "holster-out"
+        },
+        {
+            "name": "kinetic_holster-out"
         },
         {
             "name": "storage"

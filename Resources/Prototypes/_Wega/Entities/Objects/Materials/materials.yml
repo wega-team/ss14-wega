@@ -126,6 +126,48 @@
 
 - type: entity
   parent: MaterialBase
+  id: MaterialPolarBearHide
+  name: polar bear hide
+  description: "It's warm and soft enough to wrap yourself up and keep warm."
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Materials/polar_bear_hide.rsi
+    layers:
+    - state: hide
+      map: [ "base" ]
+  - type: StaticPrice
+    price: 0
+  - type: StackPrice
+    price: 1000
+  - type: Appearance
+  - type: Stack
+    stackType: PolarBearHide
+    baseLayer: base
+    layerStates:
+    - hide
+    - hide_2
+    - hide_3
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Materials/polar_bear_hide.rsi
+    shape:
+    - 0,0,2,2
+  - type: Tag
+    tags:
+    - MaterialsThrophy
+    - PolarBearHide
+
+- type: entity
+  parent: MaterialPolarBearHide
+  id: MaterialPolarBearHide1
+  suffix: 1
+  components:
+  - type: Stack
+    count: 1
+
+- type: entity
+  parent: MaterialBase
   id: MaterialConsecratedIngot
   name: consecrated ingot
   description: "A piece of the old world."
@@ -139,7 +181,7 @@
   - type: StaticPrice
     price: 0
   - type: StackPrice
-    price: 1000
+    price: 7500
   - type: Appearance
   - type: Stack
     stackType: ConsecratedIngot

@@ -1,4 +1,3 @@
-using Content.Client.Shaders.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Shaders;
 using Robust.Client.Graphics;

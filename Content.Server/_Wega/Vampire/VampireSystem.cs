@@ -1,10 +1,7 @@
-using System.Linq;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
 using Content.Server.Atmos.Components;
 using Content.Server.Atmos.Rotting;
-using Content.Server.Bible.Components;
-using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.EUI;
 using Content.Server.GameTicking.Rules;
@@ -16,6 +13,7 @@ using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Atmos;
 using Content.Shared.Atmos.Rotting;
+using Content.Shared.Bible.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
@@ -25,7 +23,6 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
@@ -43,9 +40,11 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
 using Content.Shared.Shaders;
 using Content.Shared.SSDIndicator;
+using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Temperature.Components;
@@ -54,7 +53,6 @@ using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -72,7 +70,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private EuiManager _euiMan = default!;
     [Dependency] private IAdminLogManager _admin = default!;
     [Dependency] private IComponentFactory _componentFactory = default!;
-    [Dependency] private IMapManager _mapMan = default!;
     [Dependency] private InventorySystem _inventory = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ISharedPlayerManager _player = default!;
@@ -80,6 +77,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private NullDamageSystem _nullDamage = default!;
     [Dependency] private RottingSystem _rotting = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedActionsSystem _action = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
@@ -91,6 +89,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
     [Dependency] private SharedStunSystem _stun = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private StatusEffectsSystem _status = default!;
     [Dependency] private StomachSystem _stomach = default!;
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private TurfSystem _turf = default!;
@@ -101,13 +100,14 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
     private static readonly EntProtoId RejuvenateAdvanced = "ActionVampireRejuvenateAdvanced";
+    private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
     /// <summary>
     /// An array of "transparent" coatings that allow sunlight to reach the vampire.
     /// </summary>
     private static readonly ProtoId<ContentTileDefinition>[] FloorProto = new ProtoId<ContentTileDefinition>[]
     {
-        "Space", "Lattice", "TrainLattice", "FloorGlass", "FloorRGlass"
+        "Space", "Lattice", "FloorGlass", "FloorRGlass"
     };
 
     /// <summary>
@@ -167,6 +167,9 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private void OnRemove(Entity<VampireComponent> vampire, ref ComponentRemove args)
     {
+        if (TerminatingOrDeleted(vampire.Owner))
+            return;
+
         if (HasComp<PolymorphedEntityComponent>(vampire))
             return;
 
@@ -182,8 +185,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
     {
         var componentsToRemove = new[]
         {
-            typeof(PacifiedComponent), typeof(PerishableComponent), typeof(BarotraumaComponent),
-            typeof(TemperatureSpeedComponent), typeof(ThirstComponent), typeof(ClumsyComponent)
+            typeof(PacifiedComponent), typeof(PerishableComponent),
+            typeof(BarotraumaComponent), typeof(TemperatureSpeedComponent)
         };
 
         foreach (var type in componentsToRemove)
@@ -194,12 +197,23 @@ public sealed partial class VampireSystem : SharedVampireSystem
             }
         }
 
+        _status.TryRemoveStatusEffect(vampire.Owner, Clumsy);
         if (TryComp<BodyComponent>(vampire, out var body) && body.Organs != null)
         {
             foreach (var organ in body.Organs.ContainedEntities)
             {
                 if (TryComp<MetabolizerComponent>(organ, out var meta) && meta.MetabolizerTypes != null)
                     state.OriginalMetabolizerTypes[organ] = new(meta.MetabolizerTypes);
+            }
+        }
+
+        if (TryComp<SatiationComponent>(vampire, out var satiation))
+        {
+            var thirst = satiation.GetOrNull(SatiationSystem.Thirst);
+            if (thirst != null)
+            {
+                state.OriginalThirst = thirst;
+                _satiation.RemoveSatiationType(vampire.Owner, SatiationSystem.Thirst);
             }
         }
 
@@ -216,8 +230,8 @@ public sealed partial class VampireSystem : SharedVampireSystem
     {
         var toRemove = new[]
         {
-            typeof(PacifiedComponent), typeof(PerishableComponent), typeof(BarotraumaComponent),
-            typeof(TemperatureSpeedComponent), typeof(ThirstComponent), typeof(ClumsyComponent)
+            typeof(PacifiedComponent), typeof(PerishableComponent),
+            typeof(BarotraumaComponent), typeof(TemperatureSpeedComponent)
         };
 
         foreach (var type in toRemove)
@@ -236,7 +250,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
                         continue;
 
                     _metabolism.ClearMetabolizerTypes(meta);
-                    _metabolism.TryAddMetabolizerType(meta, VampireComponent.MetabolizerVampire);
+                    _metabolism.TryAddMetabolizerType(organ, VampireComponent.MetabolizerVampire);
                 }
             }
         }
@@ -297,10 +311,13 @@ public sealed partial class VampireSystem : SharedVampireSystem
                 _metabolism.ClearMetabolizerTypes(meta);
                 foreach (var type in types)
                 {
-                    _metabolism.TryAddMetabolizerType(meta, type);
+                    _metabolism.TryAddMetabolizerType(organ, type);
                 }
             }
         }
+
+        if (state.OriginalThirst != null && HasComp<SatiationComponent>(vampire))
+            _satiation.AddSatiation(vampire.Owner, SatiationSystem.Thirst, state.OriginalThirst);
 
         if (state.OriginalColdDamageThreshold is float cold && TryComp<TemperatureDamageComponent>(vampire, out var temp))
             temp.ColdDamageThreshold = cold;
@@ -606,7 +623,6 @@ public sealed partial class VampireSystem : SharedVampireSystem
             return;
 
         vampire.Comp.BloodConsumedFromVictim[target] = amount;
-        Dirty(vampire, vampire.Comp);
     }
 
     #endregion
@@ -720,7 +736,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
     private bool IsInSpace(EntityUid vampireUid)
     {
         var vampirePosition = _transform.GetMapCoordinates(Transform(vampireUid));
-        if (!_mapMan.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
+        if (!_map.TryFindGridAt(vampirePosition, out var gridUid, out var grid))
             return true;
 
         if (!_map.TryGetTileRef(gridUid, grid, vampirePosition.Position, out var tileRef))

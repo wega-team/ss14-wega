@@ -1,6 +1,5 @@
 using System.Numerics;
 using Content.Shared.Alert;
-using Content.Shared.Vehicle; // Corvax-Wega-Vehicles
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -10,7 +9,7 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Buckle.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBuckleSystem), typeof(SharedVehicleSystem))] // Corvax-Wega-Vehicles-Edit
+[Access(typeof(SharedBuckleSystem))]
 public sealed partial class StrapComponent : Component
 {
     /// <summary>
@@ -91,6 +90,12 @@ public sealed partial class StrapComponent : Component
     /// </summary>
     [DataField]
     public bool BuckleOnInteractHand = true;
+
+    /// <summary>
+    /// Whether being buckled to this entity should change the buckled ent's drawdepth.
+    /// </summary>
+    [DataField]
+    public bool ModifyBuckleDrawDepth = true;
 }
 
 public enum StrapPosition

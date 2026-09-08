@@ -13,7 +13,6 @@
     # - id: ZombieOutbreak
     # - id: LoneOpsSpawn
     # - id: DerelictCyborgSpawn
-    # - id: RadiationOutburst
     - id: VoidOccurrence
 
 # Events
@@ -51,6 +50,7 @@
   parent: BaseGameRule
   components:
   - type: StationEvent
+    startAnnouncement: station-event-radiation-outburst-announcement
     startAudio:
       path: /Audio/Announcements/attention.ogg
       weight: 4

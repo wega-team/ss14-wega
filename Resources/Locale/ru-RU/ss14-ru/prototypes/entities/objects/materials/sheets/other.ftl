@@ -1,4 +1,4 @@
-ent-SheetOtherBase = { ent-BaseItem }
+ent-SheetOtherBase = { ent-BaseSheet }
     .desc = Лист материала, широко применяемого на станции в различных целях.
 ent-SheetPaper = бумага
     .desc = { ent-SheetOtherBase.desc }
@@ -36,3 +36,6 @@ ent-MaterialSheetMeat = мясо
 ent-MaterialSheetMeat1 = { ent-MaterialSheetMeat }
     .desc = { ent-MaterialSheetMeat.desc }
     .suffix = Один
+ent-SheetPGlass10 = { ent-SheetPGlass }
+    .desc = { ent-SheetPGlass.desc }
+    .suffix = 10

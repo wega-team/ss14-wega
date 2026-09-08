@@ -10,7 +10,6 @@ using Content.Shared.Damage.Components;
 using Content.Shared.Doors.Components;
 using Content.Shared.EnergyShield;
 using Content.Shared.Humanoid;
-using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Weapons.Melee.Events;
@@ -21,7 +20,6 @@ using Content.Shared.Administration;
 using Content.Shared.Weapons.Reflect;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Stealth.Components;
-using Content.Shared.Flash.Components;
 using Content.Shared.Armor;
 using Content.Server.Atmos.Components;
 using Content.Shared.Weapons.Melee.Components;
@@ -32,7 +30,6 @@ using Content.Shared.Android;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Movement.Components;
 using Content.Shared.CombatMode.Pacification;
-using Content.Shared.Tag;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Maps;
 using Content.Shared.Doors.Systems;
@@ -41,20 +38,22 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Map.Components;
+using Content.Shared.StatusEffectNew;
+using Content.Shared.Wall;
 
 namespace Content.Server.Veil.Cult;
 
 public sealed partial class VeilCultSystem
 {
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private TagSystem _tag = default!;
     [Dependency] private SharedDoorSystem _door = default!;
     [Dependency] private SurgerySystem _surgery = default!;
     [Dependency] private TileSystem _tile = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private ITileDefinitionManager _tileDefinitionManager = default!;
+    [Dependency] private StatusEffectsSystem _statusEffects = default!;
 
-    private static readonly ProtoId<TagPrototype> WallTag = "Wall";
+    private static readonly EntProtoId Muted = "StatusEffectMuted";
 
     private void InitializeEnchantments()
     {
@@ -235,7 +234,7 @@ public sealed partial class VeilCultSystem
     {
         var effect = _random.Prob(0.75f) ? "AdminInstantEffectSmoke3" : "AdminInstantEffectSmoke10";
         Spawn(effect, Transform(uid).Coordinates);
-        
+
         RemComp<SmokeEnchantComponent>(uid);
         RemComp<EnchantedComponent>(uid);
 
@@ -334,7 +333,7 @@ public sealed partial class VeilCultSystem
             }
         }
     }
-    
+
     private void DismantlingOnMeleeHit(EntityUid uid, DismantlingEnchantComponent comp, MeleeHitEvent args)
     {
         if (TryComp<WieldableComponent>(uid, out var wield))
@@ -397,11 +396,8 @@ public sealed partial class VeilCultSystem
 
                 if (comp.Mute)
                 {
-                    if (!HasComp<MutedComponent>(target))
-                    {
-                        EnsureComp<MutedComponent>(target);
-                        Timer.Spawn(comp.MuteTime, () => RemComp<MutedComponent>(target));
-                    }
+                    if (!_statusEffects.HasEffectComp<MutedStatusEffectComponent>(target))
+                        _statusEffects.TryAddStatusEffectDuration(target, Muted, comp.MuteTime);
                 }
 
                 if (comp.EmpBorgs && HasComp<BorgChassisComponent>(target) || HasComp<AndroidComponent>(target))
@@ -508,7 +504,7 @@ public sealed partial class VeilCultSystem
         }
 
         var nearbyWalls = _entityLookup.GetEntitiesInRange<OccluderComponent>(Transform(uid).Coordinates, comp.Radius)
-            .Where(target => _tag.HasTag(target.Owner, WallTag))
+            .Where(target => HasComp<WallComponent>(target.Owner))
             .ToList();
 
         foreach (var wall in nearbyWalls)
@@ -624,7 +620,7 @@ public sealed partial class VeilCultSystem
             {
                 if (!HasComp<VeilCultistComponent>(target))
                     continue;
-                
+
                 var damage = new DamageSpecifier { DamageDict = { { "Blunt", -10 }, { "Slash", -10 }, { "Piercing", -15 }, { "Heat", -20 } } };
                 _damage.TryChangeDamage(target, damage, true);
 

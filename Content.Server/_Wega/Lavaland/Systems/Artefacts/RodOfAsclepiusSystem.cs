@@ -110,7 +110,10 @@ public sealed partial class RodOfAsclepiusSystem : EntitySystem
 
     private void OnShutdown(Entity<RodOfAsclepiusComponent> ent, ref ComponentShutdown args)
     {
-        Spawn("Ash", Transform(ent).Coordinates);
+        if (TerminatingOrDeleted(ent.Owner))
+            return;
+
+        SpawnAtPosition("Ash", Transform(ent).Coordinates);
         _popup.PopupEntity(Loc.GetString("lavaland-artefacts-rod-disintegrated", ("name", Name(ent))),
             ent, ent, PopupType.MediumCaution);
     }

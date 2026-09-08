@@ -40,6 +40,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
+    - Changeling
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -62,6 +63,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
+    - Changeling
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
@@ -83,7 +85,6 @@
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
   - BasicRoundstartVariation
-  - SubThiefExtended # Corvax-Wega-Testing
 
 - type: gamePreset
   id: Greenshift
@@ -146,7 +147,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesRuleNoWizard
+  - SubGamemodesTraitVampRule # Corvax-Wega-Edit
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -175,7 +176,7 @@
   rules:
   - Nukeops
   - DummyNonAntagChance
-  # - SubGamemodesRuleNoWizard # Corvax-Wega-Edit
+  - SubGamemodesRule # Corvax-Wega-Edit
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

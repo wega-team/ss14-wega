@@ -22,11 +22,11 @@ public sealed partial class HandItemImplantComponent : Component
 [DataRecord]
 public partial struct HandItemImplantSlot
 {
-    [DataField("prototype")]
+    [DataField]
     public string ItemPrototype;
     public EntityUid? ItemEntity;
 
-    [DataField("toggleAction")]
+    [DataField]
     public string ToggleActionPrototype;
     public EntityUid? ToggleActionEntity;
 

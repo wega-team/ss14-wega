@@ -9,6 +9,7 @@ using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
 using Content.Shared.Research.Systems;
 using Content.Shared.Research.TechnologyDisk.Components;
+using Content.Shared.Tag; // Corvax-Wega-add
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
@@ -17,13 +18,15 @@ namespace Content.Shared.Research.TechnologyDisk.Systems;
 
 public sealed partial class TechnologyDiskSystem : EntitySystem
 {
-    [Dependency] private IPrototypeManager _protoMan = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedResearchSystem _research = default!;
     [Dependency] private SharedLatheSystem _lathe = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private NameModifierSystem _nameModifier = default!;
+    [Dependency] private TagSystem _tagSystem = default!; // Corvax-Wega-add
+
+    private static readonly ProtoId<TagPrototype> TechnologyDiskT3Tag = "TechnologyDiskT3"; // Corvax-Wega-add
 
     public override void Initialize()
     {
@@ -58,14 +61,14 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
         }
         else
         {
-            var weightedRandom = _protoMan.Index(ent.Comp.TierWeightPrototype);
+            var weightedRandom = ProtoMan.Index(ent.Comp.TierWeightPrototype);
             tier = int.Parse(weightedRandom.Pick(_random));
             ent.Comp.Tier = tier;
         }
 
         // get a list of every distinct recipe in all the technologies.
         var bundles = new HashSet<(ProtoId<LatheRecipePrototype> recipe, ProtoId<TechDisciplinePrototype> discipline)>();
-        foreach (var tech in _protoMan.EnumeratePrototypes<TechnologyPrototype>())
+        foreach (var tech in ProtoMan.EnumeratePrototypes<TechnologyPrototype>())
         {
             if (tech.Tier != tier)
                 continue;
@@ -111,6 +114,11 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
             return;
 
         _appearance.SetData(ent.Owner, TechDiskVisuals.Tier, tier);
+
+		// Corvax-Wega-start
+        if (ent.Comp.Tier == 3)
+			_tagSystem.AddTag(ent, TechnologyDiskT3Tag);
+		// Corvax-Wega-End
     }
 
     /// <summary>
@@ -118,7 +126,7 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
     /// </summary>
     private void TrySetDisciplineVisuals(Entity<TechnologyDiskComponent> ent)
     {
-        if (!_protoMan.Resolve(ent.Comp.Discipline, out var discipline))
+        if (!ProtoMan.Resolve(ent.Comp.Discipline, out var discipline))
             return;
 
         _appearance.SetData(ent.Owner, TechDiskVisuals.Discipline, discipline.ID);
@@ -139,7 +147,7 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
                 _research.AddLatheRecipe(target, recipe, database);
             }
         }
-        _popup.PopupClient(Loc.GetString("tech-disk-inserted"), target, args.User);
+        _popup.PopupEntity(Loc.GetString("tech-disk-inserted"), target, args.User);
         PredictedQueueDel(ent.Owner);
         args.Handled = true;
     }
@@ -147,7 +155,7 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
     private void OnExamine(Entity<TechnologyDiskComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp is { Tier: not null, Discipline: not null }
-            && _protoMan.Resolve(ent.Comp.Discipline, out var disciplineProto))
+            && ProtoMan.Resolve(ent.Comp.Discipline, out var disciplineProto))
         {
             var desc = Loc.GetString("tech-disk-examine-desc",
                 ("tier", ent.Comp.Tier),
@@ -164,7 +172,7 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
         var message = Loc.GetString("tech-disk-examine-none");
         if (ent.Comp.Recipes != null && ent.Comp.Recipes.Count > 0)
         {
-            var prototype = _protoMan.Index(ent.Comp.Recipes[0]);
+            var prototype = ProtoMan.Index(ent.Comp.Recipes[0]);
             message = Loc.GetString("tech-disk-examine", ("result", _lathe.GetRecipeName(prototype)));
 
             if (ent.Comp.Recipes.Count > 1) //idk how to do this well. sue me.
@@ -191,7 +199,7 @@ public sealed partial class TechnologyDiskSystem : EntitySystem
         {
             foreach (var recipe in entity.Comp.Recipes)
             {
-                var proto = _protoMan.Index(recipe);
+                var proto = ProtoMan.Index(recipe);
                 args.AddModifier("tech-disk-name-format", extraArgs: ("technology", _lathe.GetRecipeName(proto)));
             }
         }

@@ -14,3 +14,18 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: SpellbookTimeStop
+  name: spellbook-staff-timestop-name
+  description: spellbook-staff-timestop-description
+  productAction: ActionTimeStop
+  icon:
+    sprite: _Wega/Interface/Actions/action_wizard.rsi
+    state: time_stop
+  cost:
+    WizCoin: 2
+  categories:
+  - SpellbookDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
