@@ -534,9 +534,9 @@
   - type: Xenoborg
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
-  - type: EmpResistance
-    strengthMultiplier: 0
   # Corvax-Wega-Start
+  # - type: EmpResistance
+    # strengthMultiplier: 0
   - type: MindLink
     channels: ["MindXenoborgs"]
   # Corvax-Wega-End

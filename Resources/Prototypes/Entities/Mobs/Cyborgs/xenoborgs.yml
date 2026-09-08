@@ -33,7 +33,7 @@
           True: { visible: True }
           False: { visible: False }
   - type: BorgChassis
-    maxModules: 5 #Corvax-Wega-add
+    maxModules: 7
     hasMindState: xenoborg_engi_e
     noMindState: xenoborg_engi_e_r
     moduleWhitelist:
@@ -47,20 +47,13 @@
       borg_module:
       - XenoborgModuleBasic
       - XenoborgModuleAdvancedTool
-      - XenoborgModuleConstruction
-    # Corvax-Wega-robots-start
-      # - BorgModuleAdvancedTool
-      # - BorgModuleConstruction
-      # - BorgModuleRCD
-      # - BorgModuleRCD
-      - XenoborgModuleAccessBreaker
-      - XenoborgModuleTileGun
-      - BorgModuleXenoConstruction
+# Corvax-Wega-Start
+      # - XenoborgModuleConstruction
+      # - XenoborgModuleAccessBreaker
       - XenoborgHoloprojector
-      # - BorgModuleCable
-      # - XenoborgModuleAccessBreaker  # Corvax-Wega-robots
-      # - XenoborgModuleFireExtinguisher # Corvax-Wega-robots
-  # Corvax-Wega-robots-end
+      - BorgModuleXenoConstruction
+# Corvax-Wega-End
+      - XenoborgModuleTileGun
   - type: ShowElectrocutionHUD
   - type: ShowHealthBars
     damageContainers:
@@ -73,6 +66,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   # Corvax-Wega-Start
+  - type: Stripping
   - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
     blacklist:
       null
@@ -327,21 +321,13 @@
       - MMI
       borg_module:
       - XenoborgModuleBasic
-      # Corvax-Wega-robots-start
-      # - BorgModuleAdvancedTool
-      # - BorgModuleConstruction
-      # - BorgModuleRCD
-      # - BorgModuleRCD
       - XenoborgModuleAdvancedTool
-      - XenoborgModuleConstruction
-      - XenoborgModuleAccessBreaker
-      - BorgModuleXenoConstruction
-      - XenoborgHoloprojector
-      # - BorgModuleCable
+# Corvax-Wega-Start
+      # - XenoborgModuleConstruction
       # - XenoborgModuleAccessBreaker
-      # - XenoborgModuleFireExtinguisher
-      # - XenoborgModuleFireExtinguisher
-      # Corvax-Wega-robots-end
+      - XenoborgHoloprojector
+      - BorgModuleXenoConstruction
+# Corvax-Wega-End
       - XenoborgModuleTileGun
   - type: ItemSlots
     slots:

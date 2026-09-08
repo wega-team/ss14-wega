@@ -146,11 +146,6 @@
 
 # Ubor rare
 - type: entity
-  parent: LightReplacer
-  id: LightReplacerBorg
-  suffix: Borg
-
-- type: entity
   name: hydra borg
   id: WeaponHydraBorg
   parent: BaseItem
@@ -174,7 +169,7 @@
       containers:
         ballistic-ammo: !type:Container
     - type: BallisticAmmoProvider
-      capacity: 5
+      capacity: 10
       proto: BulletGrenadeCleanade
       cycleable: false
     - type: BallisticAmmoSelfRefiller

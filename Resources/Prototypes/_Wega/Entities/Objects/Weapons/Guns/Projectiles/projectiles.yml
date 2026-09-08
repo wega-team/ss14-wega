@@ -52,7 +52,7 @@
         Shock: 5
   - type: HitscanEMP
     range: 0.25
-    energyConsumption: 1800
+    energyConsumption: 720
   - type: HitscanReflect
     reflectiveType: None
 
@@ -61,6 +61,9 @@
   id: IonScanDamage
   categories: [ HideSpawnMenu ]
   components:
+  - type: HitscanEMP
+    range: 0.25
+    energyConsumption: 1800
   - type: HitscanBasicDamage
     damage:
       types:
@@ -189,7 +192,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 90
+        Heat: 150
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi

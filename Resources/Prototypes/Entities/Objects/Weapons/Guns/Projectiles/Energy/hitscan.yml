@@ -104,7 +104,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 17
+        Heat: 20 # Corvax-Wega-Gun
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -169,7 +169,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 25
+        Heat: 35 # Corvax-Wega-Gun
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -223,7 +223,7 @@
   - type: HitscanBasicDamage
     damage:
       types:
-        Heat: 35
+        Heat: 45 # Corvax-Wega-Gun
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
