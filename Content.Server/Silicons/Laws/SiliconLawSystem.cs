@@ -177,8 +177,8 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
 			{
 				name = Name(args.user);
 			}
- // Corvax-Wega-end
         }
+ // Corvax-Wega-end
 
         // Add the first emag law before the others
         component.Lawset?.Laws.Insert(0, new SiliconLaw
