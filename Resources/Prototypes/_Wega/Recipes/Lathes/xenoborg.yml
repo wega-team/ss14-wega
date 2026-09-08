@@ -61,6 +61,15 @@
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleLexorinHypo
+  result: XenoborgModuleLexorinHypo
+  materials:
+    Steel: 1250
+    Glass: 250
+    Plastic: 750
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
   id: XenoborgModuleBurstFireLaser
   result: XenoborgModuleBurstFireLaser
   materials:

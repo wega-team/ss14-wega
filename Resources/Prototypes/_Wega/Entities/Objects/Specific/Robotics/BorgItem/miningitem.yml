@@ -91,10 +91,19 @@
   - type: PointsCard
   
 - type: entity
-  parent: TelescopicShieldBorg
-  id: TelescopicShieldBorgMining
+  name: plasma cutter adv
+  parent: WeaponPlasmaCutter
+  id: WeaponPlasmaCutterBorg
+  description: A good mining tool that can help to break through the rocks really fast
   components:
-    - type: Blocking
-      activeBlockFraction: 0.5
-      passiveBlockFraction: 0.2
-      
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/adv_cutter.rsi
+    state: icon
+  - type: Gun
+    fireRate: 2
+  - type: Battery
+    maxCharge: 2500
+    startingCharge: 2500
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterMagma
+    fireCost: 75

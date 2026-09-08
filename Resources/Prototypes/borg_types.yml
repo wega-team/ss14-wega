@@ -178,30 +178,11 @@
   - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
+  - BorgModuleRestock # Corvax-Wega-add
 
   radioChannels:
   - Science
   - Service
-
-# Corvax-Wega-start
-  addComponents:
-  - type: Solution
-    id: tank
-    solution:
-      reagents:
-      - ReagentId: SpaceCleaner
-        Quantity: 100
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: SpaceCleaner
-        Quantity: 1
-  - type: ReagentTank
-  - type: ExaminableSolution
-    solution: tank
-  - type: DrainableSolution
-    solution: tank
-# Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgShort

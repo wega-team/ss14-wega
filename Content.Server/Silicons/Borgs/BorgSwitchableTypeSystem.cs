@@ -59,6 +59,11 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
             }
         }
 
+        // Corvax-Wega-start
+        if (prototype.Lawset is { } law)
+            ChangeLaw(ent, law);
+        // Corvax-Wega-end
+
         // Configure special components
         if (ProtoMan.Resolve(ent.Comp.SelectedBorgType, out var previousPrototype))
         {

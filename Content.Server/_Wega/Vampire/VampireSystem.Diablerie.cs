@@ -42,7 +42,7 @@ public sealed partial class VampireSystem
 
         var name = Identity.Name(uid, EntityManager, args.Examiner);
 
-        if (component.DiablerieLevel >= 1 && HasComp<VampireComponent>(args.Examiner) || component.DiablerieLevel >= 3)
+        if (component.DiablerieLevel >= 1 && HasComp<VampireComponent>(args.Examiner) || component.DiablerieLevel >= 2)
             args.PushMarkup(Loc.GetString("vampire-diablerie-aura-visible", ("name", name)));
 
         if (component.DiablerieLevel >= 2)
@@ -202,13 +202,10 @@ public sealed partial class VampireSystem
                     break;
                 }
             case 3:
-                _popup.PopupEntity(Loc.GetString("vampire-diablerie-level-three"), ent, ent, PopupType.Medium);
-                break;
-            case 4:
                 {
                     AnnounceVampireAscended(ent);
                     GrantSacramentInitiationAbility(ent);
-                    _popup.PopupEntity(Loc.GetString("vampire-diablerie-level-four"), ent, ent, PopupType.Large);
+                    _popup.PopupEntity(Loc.GetString("vampire-diablerie-level-three"), ent, ent, PopupType.Large);
                     break;
                 }
 

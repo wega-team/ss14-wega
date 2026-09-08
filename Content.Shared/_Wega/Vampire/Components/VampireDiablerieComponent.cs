@@ -15,8 +15,8 @@ public sealed partial class VampireDiablerieComponent : Component
     public int DiablerieLevel = 0;
 
     [DataField]
-    public int MaxDiablerieLevel = 4;
+    public int MaxDiablerieLevel = 3;
 
     [DataField]
-    public float SuckingBonusPerLevel = 5f;
+    public float SuckingBonusPerLevel = 10f;
 }

@@ -6,10 +6,15 @@
   components:
   - type: Sprite
     sprite: Objects/Vehicles/secway.rsi
-    state: vehicle
+    drawdepth: Mobs # fixes layering like magic.
+    layers:
+    - state: vehicle
+      map: ["movement"]
   - type: Strap
-    buckleOffset: "0.15, -0.05"
+    buckleOffset: "0,0.1"
+    modifyBuckleDrawDepth: false
   - type: Vehicle
+  - type: VehicleHandBlocker
   - type: StrapVehicle
   - type: MovementSpeedModifier
     baseWalkSpeed: 4.5
@@ -20,6 +25,25 @@
         Blunt: 0.8
         Slash: 0.6
         Piercing: 0.85
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+  - type: GravityAffected
   - type: GenericKeyedVehicle
     containerId: key_slot
     keyWhitelist:
@@ -36,6 +60,11 @@
           path: /Audio/Effects/Vehicle/vehiclestartup.ogg
           params:
             volume: -3
+  - type: AmbientSound
+    sound: "/Audio/Effects/Vehicle/vehicleengineidle.ogg"
+    range: 10
+    volume: -10
+    enabled: true
 
 - type: entity
   id: VehicleATV
@@ -45,15 +74,20 @@
   components:
   - type: Sprite
     sprite: Objects/Vehicles/atv.rsi
-    state: vehicle
+    drawdepth: Mobs # fixes layering like magic.
+    layers:
+    - state: vehicle
+      map: ["movement"]
   - type: Strap
-    buckleOffset: "0.1, -0.05"
+    buckleOffset: "0,0.1"
+    modifyBuckleDrawDepth: false
   - type: Vehicle
   - type: StrapVehicle
   - type: MovementSpeedModifier
     baseWalkSpeed: 4.5
     baseSprintSpeed: 7
   - type: UnpoweredFlashlight
+  - type: VehicleHandBlocker
   - type: PointLight
     enabled: false
     radius: 3.5
@@ -76,6 +110,30 @@
           path: /Audio/Effects/Vehicle/vehiclestartup.ogg
           params:
             volume: -3
+  - type: GravityAffected
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+  - type: AmbientSound
+    sound: "/Audio/Effects/Vehicle/vehicleengineidle.ogg"
+    range: 10
+    volume: -10
+    enabled: true
 
 - type: entity
   id: VehicleSyndicateSegway
@@ -85,10 +143,15 @@
   components:
   - type: Sprite
     sprite: Objects/Vehicles/syndicatesegway.rsi
-    state: vehicle
+    drawdepth: Mobs # fixes layering like magic.
+    layers:
+    - state: vehicle
+      map: ["movement"]
   - type: Strap
-    buckleOffset: "0.15, -0.05"
+    buckleOffset: "0,0.1"
+    modifyBuckleDrawDepth: false
   - type: Vehicle
+  - type: VehicleHandBlocker
   - type: StrapVehicle
   - type: Armor
     modifiers:
@@ -112,6 +175,30 @@
           path: /Audio/Effects/Vehicle/vehiclestartup.ogg
           params:
             volume: -3
+  - type: GravityAffected
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+  - type: AmbientSound
+    sound: "/Audio/Effects/Vehicle/vehicleengineidle.ogg"
+    range: 10
+    volume: -10
+    enabled: true
 
 - type: entity
   id: VehicleSkeletonMotorcycle
@@ -121,9 +208,13 @@
   components:
   - type: Sprite
     sprite: Objects/Vehicles/motorbike.rsi
-    state: vehicle
+    drawdepth: Mobs # fixes layering like magic.
+    layers:
+    - state: vehicle
+      map: ["movement"]
   - type: Strap
-    buckleOffset: "0.1, -0.05"
+    buckleOffset: "0,0.1"
+    modifyBuckleDrawDepth: false
   - type: Vehicle
   - type: StrapVehicle
   - type: MovementSpeedModifier
@@ -152,6 +243,29 @@
           path: /Audio/Effects/Vehicle/vehiclestartup.ogg
           params:
             volume: -3
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalGlassBreak
+      - !type:ExplodeBehavior
+  - type: AmbientSound
+    sound: "/Audio/Effects/Vehicle/vehicleengineidle.ogg"
+    range: 10
+    volume: -10
+    enabled: true
 
 - type: entity
   id: VehicleUnicycle
@@ -168,7 +282,8 @@
       map: ["foldedLayer"]
       visible: false
   - type: Strap
-    buckleOffset: "0.1, -0.05"
+    buckleOffset: "0,0.1"
+    modifyBuckleDrawDepth: false
   - type: Vehicle
   - type: StrapVehicle
   - type: MovementSpeedModifier

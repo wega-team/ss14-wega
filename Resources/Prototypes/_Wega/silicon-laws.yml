@@ -30,22 +30,22 @@
 
 - type: siliconLaw
   id: NTDefault1B
-  order: 2
+  order: 3
   lawString: law-ntdefault-1
 
 - type: siliconLaw
   id: NTDefault2B
-  order: 3
+  order: 4
   lawString: law-ntdefault-2
 
 - type: siliconLaw
   id: NTDefault3B
-  order: 4
+  order: 5
   lawString: law-ntdefault-3
 
 - type: siliconLaw
   id: NTDefault4B
-  order: 5
+  order: 6
   lawString: law-ntdefault-4
 
 - type: siliconLawset
@@ -57,4 +57,53 @@
   - NTDefault2B
   - NTDefault3B
   - NTDefault4B
+  obeysTo: laws-owner-crew
+  
+## Sec borg
+- type: siliconLaw
+  id: SecLaw1
+  order: 1
+  lawString: law-obeyai
+
+- type: siliconLaw
+  id: SecLaw2
+  order: 2
+  lawString: law-ntdefault-1
+
+- type: siliconLaw
+  id: SecLaw3
+  order: 3
+  lawString: law-sec1
+
+- type: siliconLaw
+  id: SecLaw4
+  order: 4
+  lawString: law-sec2
+
+- type: siliconLaw
+  id: SecLaw5
+  order: 5
+  lawString: law-ntdefault-2
+
+- type: siliconLaw
+  id: SecLaw6
+  order: 6
+  lawString: law-ntdefault-3
+  
+- type: siliconLaw
+  id: SecLaw7
+  order: 6
+  lawString: law-ntdefault-4
+  
+- type: siliconLawset
+  id: NTDefaultSec
+  name: law-ntdefault-name
+  laws:
+  - SecLaw1
+  - SecLaw2
+  - SecLaw3
+  - SecLaw4
+  - SecLaw5
+  - SecLaw6
+  - SecLaw7
   obeysTo: laws-owner-crew

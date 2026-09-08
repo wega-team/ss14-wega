@@ -58,7 +58,7 @@ public abstract partial class SharedBorgSystem
     private void OnWhitelistExamine(Entity<BorgModuleWhitelistComponent> ent, ref ExaminedEvent args)
     {
         if (ent.Comp.WhitelistInfo is null)
-            return;
+            return;	
 
         using (args.PushGroup(nameof(BorgModuleComponent), 1))
         {

@@ -57,6 +57,8 @@
   # Pet
   petSuccessString: petting-success-security-cyborg
   petFailureString: petting-failure-security-cyborg
+  
+  lawset: NTDefaultSec
 
 # science borg
 - type: borgType

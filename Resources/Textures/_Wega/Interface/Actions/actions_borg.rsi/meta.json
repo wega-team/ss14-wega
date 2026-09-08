@@ -14,6 +14,9 @@
             "name": "cook-module"
         },
         {
+            "name": "restock-module"
+        },
+        {
             "name": "bar-module"
         },
         {
@@ -42,6 +45,9 @@
         },
         {
             "name": "pickaxe-common-module"
+        },
+        {
+            "name": "xenoborg-hypo-2-module"
         },
         {
             "name": "dec-module"
