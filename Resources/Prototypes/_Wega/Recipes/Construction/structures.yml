@@ -76,19 +76,19 @@
   conditions:
     - !type:TileNotBlocked
 
-# - type: construction
-  # id: SolidSecretDoorRe
-  # name: recipes-resecret-door-name
-  # description: recipes-resecret-door-desc
-  # graph: SecretDoorRe
-  # startNode: start
-  # targetNode: solidSecretDoor
-  # category: construction-category-structures
-  # objectType: Structure
-  # placementMode: SnapgridCenter
-  # canBuildInImpassable: false
-  # conditions:
-    # - !type:TileNotBlocked
+- type: construction
+  id: SolidSecretDoorRe
+  name: recipes-resecret-door-name
+  description: recipes-resecret-door-desc
+  graph: SecretDoorRe
+  startNode: start
+  targetNode: solidSecretDoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
 
 - type: construction
   id: VeilCultClockworkLathe
