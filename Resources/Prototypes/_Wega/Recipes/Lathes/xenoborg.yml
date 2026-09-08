@@ -5,98 +5,49 @@
   completetime: 5
   result: AntimovCircuitBoard
   materials:
-    Steel: 1500
-    Glass: 1500
+    XenoborgCrystal: 300
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: XenoborgModuleCommonRepeir
   result: XenoborgModuleCommonRepeir
   materials:
-    Steel: 1500
-    Glass: 1500
-    Plastic: 1500
+    XenoborgCrystal: 50
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: BorgModuleNightVisoXenoborg
   result: BorgModuleNightVisoXenoborg
   materials:
-    Steel: 500
-    Glass: 1000
+    XenoborgCrystal: 50
   
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: XenoborgModuleCommonSpeed
   result: XenoborgModuleCommonSpeed
   materials:
-    Steel: 1500
-    Plastic: 1000
+    XenoborgCrystal: 50
     
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: XenoborgModuleEMP
   result: XenoborgModuleEMP
   materials:
-    Steel: 1500
-    Glass: 1000
-
-- type: latheRecipe
-  parent: BaseXenoborgModulesRecipe
-  id: XenoborgModuleTileGun
-  result: XenoborgModuleTileGun
-  materials:
-    Steel: 500
-    Glass: 500
-    Plastic: 500
+    XenoborgCrystal: 300
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: ModuleXenoborgModule
   result: ModuleXenoborgModule
   materials:
-    Steel: 1000
-    Glass: 1000
-    Plastic: 750
+    XenoborgCrystal: 200
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
   id: XenoborgModuleLexorinHypo
   result: XenoborgModuleLexorinHypo
   materials:
-    Steel: 1250
-    Glass: 250
-    Plastic: 750
-
-- type: latheRecipe
-  parent: BaseXenoborgModulesRecipe
-  id: XenoborgModuleBurstFireLaser
-  result: XenoborgModuleBurstFireLaser
-  materials:
-    Steel: 2500
-    Glass: 500
-    
-- type: latheRecipe
-  parent: BaseXenoborgModulesRecipe
-  id: XenoborgModuleNaniteGun
-  result: XenoborgModuleNaniteGun
-  materials:
-    Steel: 750
-    Plastic: 750
-
-- type: latheRecipe
-  parent: BaseXenoborgModulesRecipe
-  id: XenoborgModuleZap
-  result: XenoborgModuleZap
-  materials:
-    Steel: 500
-
-- type: latheRecipe
-  parent: BaseXenoborgModulesRecipe
-  id: XenoborgModuleHeavyRadioactive
-  result: XenoborgModuleHeavyRadioactive
-  materials:
-    Steel: 500
+    XenoborgCrystal: 300
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
@@ -105,7 +56,7 @@
   id: XPositronicBrain
   result: UpgradeKitBrain
   materials:
-    Steel: 1500
+    XenoborgCrystal: 1
 
 - type: latheRecipe
   parent: BaseXenoborgModulesRecipe
@@ -114,4 +65,4 @@
   id: ClothingHeadHatChameleonXenoborg
   result: ClothingHeadHatChameleonXenoborg
   materials:
-    Steel: 10
+    Steel: 1

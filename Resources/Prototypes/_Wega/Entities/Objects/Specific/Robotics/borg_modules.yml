@@ -1292,9 +1292,8 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponHydraBorg
-    - item: LightReplacerBorg
-    - item: BorgTrashBag
-    - item: BorgTrashBag
+    - item: TrashBagHolding
+    - item: TrashBagHolding
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: ubor-rare }
 
@@ -1803,6 +1802,10 @@
     layers:
     - state: xenoborg_generic
     - state: icon-repeir
+  - type: BorgModuleWhitelist
+    moduleBlacklist:
+      tags:
+      - XenoborgModuleHeavyBalance
   - type: ItemBorgModule
     hands:
     - hand:
@@ -1827,6 +1830,10 @@
           Heat: -0.5
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: repeir-xenoborg-module }
+  - type: Tag
+    tags:
+    - XenoborgModuleHeavy
+    - XenoborgModuleHeavyBalance
 
 - type: entity
   id: BorgModuleNightVisoXenoborg
@@ -1896,7 +1903,7 @@
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
-      - XenoBorgModuleStalthWeapons
+      - XenoborgModulePrimaryWeapon
   - type: ItemBorgModule
     hands:
     - item: WeaponIonCarabineXenoborg
@@ -1906,7 +1913,7 @@
   - type: Tag
     tags:
     - XenoborgModuleStealth
-    - XenoBorgModuleStalthWeapons
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleStealth, BaseProviderBorgModule, BaseXenoborgContraband ]
@@ -1922,7 +1929,7 @@
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
-      - XenoBorgModuleStalthWeapons
+      - XenoborgModulePrimaryWeapon
   - type: ItemBorgModule
     hands:
     - item: LexorinHypo
@@ -1931,7 +1938,7 @@
   - type: Tag
     tags:
     - XenoborgModuleStealth
-    - XenoBorgModuleStalthWeapons
+    - XenoborgModulePrimaryWeapon
 
 - type: entity
   parent: [ BaseXenoborgModuleEngi, BaseProviderBorgModule, BaseXenoborgContraband ]

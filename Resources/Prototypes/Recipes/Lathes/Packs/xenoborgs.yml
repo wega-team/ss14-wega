@@ -18,7 +18,7 @@
   recipes:
   # engi xenoborg
   - XenoborgModuleDoorControlRecipe
-  - XenoborgModuleDeflectorFieldRecipe
+  # - XenoborgModuleDeflectorFieldRecipe # Corvax-Wega-Edit
   - XenoborgModuleZapRecipe
   - XenoborgModuleOilGunRecipe
   - XenoborgModuleNaniteGunRecipe
@@ -30,7 +30,7 @@
   - XenoborgModuleHeavyRadioactiveRecipe
   # scout xenoborg
   - XenoborgModuleEnergySwordRecipe
-  - XenoborgModuleJumpRecipe
+  # - XenoborgModuleJumpRecipe # Corvax-Wega-Edit
   - XenoborgModuleBioKinfeRecipe
   # stealth xenoborg
   - XenoborgModuleSuperCloakDeviceRecipe
@@ -39,11 +39,6 @@
   - XenoborgModuleCommonSpeed
   - XenoborgModuleEMP
   - BorgModuleNightVisoXenoborg
-  - XenoborgModuleTileGun
   - ModuleXenoborgModule
-  - XenoborgModuleBurstFireLaser
-  - XenoborgModuleNaniteGun
-  - XenoborgModuleZap
-  - XenoborgModuleHeavyRadioactive
   - XenoborgModuleLexorinHypo
 # Corvax-Wega-start

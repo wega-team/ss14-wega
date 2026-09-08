@@ -263,9 +263,8 @@
   - type: UseDelay
     delay: 120
   - type: Sprite
-    sprite: Structures/Wallmounts/air-alarm.rsi
-    layers:
-    - state: alarm0
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse

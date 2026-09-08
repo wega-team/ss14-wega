@@ -620,3 +620,6 @@
 
 - type: Tag
   id: XenoborgModuleStealthInvisible
+
+- type: Tag
+  id: XenoborgModuleHeavyBalance
