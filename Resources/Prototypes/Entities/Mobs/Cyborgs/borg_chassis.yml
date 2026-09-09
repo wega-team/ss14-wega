@@ -130,8 +130,6 @@
 # Corvax-Wega-Start
     - type: Inventory
       templateId: borgDutch
-    - type: EmpResistance
-      strengthMultiplier: 0
     - type: MobThresholds # tankier
       thresholds:
         0: Alive
@@ -204,6 +202,9 @@
         params:
           volume: -6
 # Corvax-Wega-Start
+    - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
+      blacklist:
+        null
     - type: Inventory
       templateId: borgDutch
     - type: EmpResistance
