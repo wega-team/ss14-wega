@@ -4,35 +4,377 @@
   name: loadout-group-top
   minLimit: 0
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraGrey # default
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: Bottom
   name: loadout-group-bottom
   loadouts:
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -40,55 +382,36 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomGrey # default
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: Socks
   name: loadout-group-socks
   minLimit: 0
   loadouts:
-  - ClothingUnderSocksHighMoo
-  - ClothingUnderSocksMoo
   - ClothingUnderSocksBeeKnee
   - ClothingUnderSocksBee
   - ClothingUnderSocksBlackKnee
@@ -121,6 +444,8 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+  - ClothingUnderSocksHighMoo
+  - ClothingUnderSocksMoo
 
 - type: loadoutGroup
   id: BaseShoose
@@ -157,51 +482,150 @@
   id: CaptainTop
   name: loadout-group-captain-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraCap # default
+  - ClothingUnderTopBraCapW
+  - ClothingUnderTopBraCapS
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraCap # default
-  - ClothingUnderTopBraCapW
-  - ClothingUnderTopBraCapS
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: CaptainBottom
   name: loadout-group-captain-bottom
   loadouts:
-  - ClothingUnderBottomEroWhith
-  - ClothingUnderBottomEroPink
-  - ClothingUnderBottomEroBlack
-  - ClothingUnderBottomEroOrange
-  - ClothingUnderBottomEroRed
-  - ClothingUnderBottomEroYellow
-  - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
-  - ClothingUnderBottomCuteBlue
-  - ClothingUnderBottomCuteRed
-  - ClothingUnderBottomCuteGreen
-  - ClothingUnderBottomCutePink
   - ClothingUnderBottomMCaptain # default
   - ClothingUnderBottomFCaptain
   - ClothingUnderBottomMCaptainS
@@ -328,36 +752,380 @@
   id: BlueShieldTop
   name: loadout-group-blue-shield-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraBso # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraBso # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: BlueShieldBottom
   name: loadout-group-blue-shield-bottom
   loadouts:
+  - ClothingUnderBottomMBso # default
+  - ClothingUnderBottomFBso
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -365,49 +1133,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMBso # default
-  - ClothingUnderBottomFBso
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: BlueShieldSocks
@@ -466,36 +1215,380 @@
   id: HoPTop
   name: loadout-group-hop-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraHop # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraHop # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: HoPBottom
   name: loadout-group-hop-bottom
   loadouts:
+  - ClothingUnderBottomMHop # default
+  - ClothingUnderBottomFHop
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -503,49 +1596,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMHop # default
-  - ClothingUnderBottomFHop
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: HoPSocks
@@ -596,36 +1670,380 @@
   id: QuartermasterTop
   name: loadout-group-quartermaster-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraQm # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraQm # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: QuartermasterBottom
   name: loadout-group-quartermaster-bottom
   loadouts:
+  - ClothingUnderBottomMQm # default
+  - ClothingUnderBottomFQm
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -633,49 +2051,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMQm # default
-  - ClothingUnderBottomFQm
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: QuartermasterSocks
@@ -726,36 +2125,380 @@
   id: ChiefEngineerTop
   name: loadout-group-chief-engineer-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraCe # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraCe # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: ChiefEngineerBottom
   name: loadout-group-chief-engineer-bottom
   loadouts:
+  - ClothingUnderBottomMCe # default
+  - ClothingUnderBottomFCe
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -763,49 +2506,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMCe # default
-  - ClothingUnderBottomFCe
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: ChiefEngineerSocks
@@ -886,6 +2610,238 @@
   id: ResearchDirectorBottom
   name: loadout-group-research-director-bottom
   loadouts:
+  - ClothingUnderBottomMRd # default
+  - ClothingUnderBottomFRd
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -893,49 +2849,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMRd # default
-  - ClothingUnderBottomFRd
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: ResearchDirectorSocks
@@ -986,36 +2923,380 @@
   id: HeadofSecurityTop
   name: loadout-group-head-of-security-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraHos # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraHos # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: HeadofSecurityBottom
   name: loadout-group-head-of-security-bottom
   loadouts:
+  - ClothingUnderBottomMHos # default
+  - ClothingUnderBottomFHos
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -1023,49 +3304,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMHos # default
-  - ClothingUnderBottomFHos
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: HeadofSecuritySocks
@@ -1116,36 +3378,380 @@
   id: ChiefMedicalOfficerTop
   name: loadout-group-chief-medical-officer-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraCmo # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraCmo # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerBottom
   name: loadout-group-chief-medical-officer-bottom
   loadouts:
+  - ClothingUnderBottomMCmo # default
+  - ClothingUnderBottomFCmo
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -1153,49 +3759,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomMCmo # default
-  - ClothingUnderBottomFCmo
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerSocks
@@ -1684,36 +4271,379 @@
   id: TopSecurity
   name: loadout-group-top
   loadouts:
-  - ClothingUnderTopCuteMooo
-  - ClothingUnderTopGold
+  - ClothingUnderTopBraSecurity # default
+  - ClothingUnderTopBraGrey # default
+# sport
+  - ClothingUnderTopBraSport
+  - ClothingUnderTopBraSportGrey
+  - ClothingUnderTopBraSportBlack
+  - ClothingUnderTopBraSportBlue
+  - ClothingUnderTopBraSportDarkBlue
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportDarkGreen
+  - ClothingUnderTopBraSportGreen
+  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportMaroon
+  - ClothingUnderTopBraSportOrange
+  - ClothingUnderTopBraSportPink
+  - ClothingUnderTopBraSportPurple
+  - ClothingUnderTopBraSportRed
+  - ClothingUnderTopBraSportTeal
+  - ClothingUnderTopBraSportYellow
+# neko
+  - ClothingUnderTopBraNekoWhite
+  - ClothingUnderTopBraNekoBlack
+  - ClothingUnderTopBraNekoGrey
+  - ClothingUnderTopBraNekoBlue
+  - ClothingUnderTopBraNekoDarkBlue
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoDarkGreen
+  - ClothingUnderTopBraNekoGreen
+  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoMaroon
+  - ClothingUnderTopBraNekoOrange
+  - ClothingUnderTopBraNekoPink
+  - ClothingUnderTopBraNekoPurple
+  - ClothingUnderTopBraNekoRed
+  - ClothingUnderTopBraNekoTeal
+  - ClothingUnderTopBraNekoYellow
+# bikini
+  - ClothingUnderTopBikini
+  - ClothingUnderTopBikiniGrey
+  - ClothingUnderTopBikiniBlack
+  - ClothingUnderTopBikiniBlue
+  - ClothingUnderTopBikiniDarkBlue
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniDarkGreen
+  - ClothingUnderTopBikiniGreen
+  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniMaroon
+  - ClothingUnderTopBikiniOrange
+  - ClothingUnderTopBikiniPink
+  - ClothingUnderTopBikiniPurple
+  - ClothingUnderTopBikiniRed
+  - ClothingUnderTopBikiniTeal
+  - ClothingUnderTopBikiniYellow
+# Fishnet
+  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraFishnetGrey
+  - ClothingUnderTopBraFishnetBlack
+  - ClothingUnderTopBraFishnetBlue
+  - ClothingUnderTopBraFishnetDarkBlue
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetDarkGreen
+  - ClothingUnderTopBraFishnetGreen
+  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetMaroon
+  - ClothingUnderTopBraFishnetOrange
+  - ClothingUnderTopBraFishnetPink
+  - ClothingUnderTopBraFishnetPurple
+  - ClothingUnderTopBraFishnetRed
+  - ClothingUnderTopBraFishnetTeal
+  - ClothingUnderTopBraFishnetYellow
+# Strapless
+  - ClothingUnderTopBraStrapless
+  - ClothingUnderTopBraStraplessGrey
+  - ClothingUnderTopBraStraplessBlack
+  - ClothingUnderTopBraStraplessBlue
+  - ClothingUnderTopBraStraplessDarkBlue
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessDarkGreen
+  - ClothingUnderTopBraStraplessGreen
+  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessMaroon
+  - ClothingUnderTopBraStraplessOrange
+  - ClothingUnderTopBraStraplessPink
+  - ClothingUnderTopBraStraplessPurple
+  - ClothingUnderTopBraStraplessRed
+  - ClothingUnderTopBraStraplessTeal
+  - ClothingUnderTopBraStraplessYellow
+# Thong 
+  - ClothingUnderTopBraThong
+  - ClothingUnderTopBraThongGrey
+  - ClothingUnderTopBraThongBlack
+  - ClothingUnderTopBraThongBlue
+  - ClothingUnderTopBraThongDarkBlue
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongDarkGreen
+  - ClothingUnderTopBraThongGreen
+  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongMaroon
+  - ClothingUnderTopBraThongOrange
+  - ClothingUnderTopBraThongPink
+  - ClothingUnderTopBraThongPurple
+  - ClothingUnderTopBraThongRed
+  - ClothingUnderTopBraThongTeal
+  - ClothingUnderTopBraThongYellow
+# Corset  
+  - ClothingUnderTopCorset
+  - ClothingUnderTopCorsetGrey
+  - ClothingUnderTopCorsetBlack
+  - ClothingUnderTopCorsetBlue
+  - ClothingUnderTopCorsetDarkBlue
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetDarkGreen
+  - ClothingUnderTopCorsetGreen
+  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetMaroon
+  - ClothingUnderTopCorsetOrange
+  - ClothingUnderTopCorsetPink
+  - ClothingUnderTopCorsetPurple
+  - ClothingUnderTopCorsetRed
+  - ClothingUnderTopCorsetTeal
+  - ClothingUnderTopCorsetYellow
+# donate
   - ClothingUnderTopCuteBlue
   - ClothingUnderTopCuteRed
   - ClothingUnderTopCuteGreen
   - ClothingUnderTopCutePink
-  - ClothingUnderTopBraSecurity # default
-  - ClothingUnderTopBraGrey
-  - ClothingUnderTopBraAssblastusa
-  - ClothingUnderTopBikini
   - ClothingUnderTopBraChast
   - ClothingUnderTopBraLatex
   - ClothingUnderTopBraStripped
   - ClothingUnderTopBraCommie
-  - ClothingUnderTopCorset
-  - ClothingUnderTopBraFishnet
+  - ClothingUnderTopBraAssblastusa
   - ClothingUnderTopBraKinky
   - ClothingUnderTopBraLace
   - ClothingUnderTopBraLizard
-  - ClothingUnderTopBraNekoBlack
-  - ClothingUnderTopBraNekoWhite
   - ClothingUnderTopBraPasties
-  - ClothingUnderTopBraSport
-  - ClothingUnderTopBraStrapless
-  - ClothingUnderTopBraThong
+  - ClothingUnderTopCuteMooo
+  - ClothingUnderTopGold
 
 - type: loadoutGroup
   id: BottomSecurity
   name: loadout-group-bottom
   loadouts:
+  - ClothingUnderBottomSecurity # default
+  - ClothingUnderBottomGrey # default
+# Boxer
+  - ClothingUnderBottomBoxers
+  - ClothingUnderBottomBoxersGrey
+  - ClothingUnderBottomBoxersBlack
+  - ClothingUnderBottomBoxersBlue
+  - ClothingUnderBottomBoxersDarkBlue
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersDarkGreen
+  - ClothingUnderBottomBoxersGreen
+  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersMaroon
+  - ClothingUnderBottomBoxersOrange
+  - ClothingUnderBottomBoxersPink
+  - ClothingUnderBottomBoxersPurple
+  - ClothingUnderBottomBoxersRed
+  - ClothingUnderBottomBoxersTeal
+  - ClothingUnderBottomBoxersYellow
+# Babydoll
+  - ClothingUnderBottomBabydoll
+  - ClothingUnderBottomBabydollGrey
+  - ClothingUnderBottomBabydollBlack
+  - ClothingUnderBottomBabydollBlue
+  - ClothingUnderBottomBabydollDarkBlue
+  - ClothingUnderBottomBabydollBrown
+  - ClothingUnderBottomBabydollDarkGreen
+  - ClothingUnderBottomBabydollGreen
+  - ClothingUnderBottomBabydollLightBrown
+  - ClothingUnderBottomBabydollMaroon
+  - ClothingUnderBottomBabydollOrange
+  - ClothingUnderBottomBabydollPink
+  - ClothingUnderBottomBabydollPurple
+  - ClothingUnderBottomBabydollRed
+  - ClothingUnderBottomBabydollTeal
+  - ClothingUnderBottomBabydollYellow
+# FBirief
+  - ClothingUnderBottomFBriefs
+  - ClothingUnderBottomFBriefsGrey
+  - ClothingUnderBottomFBriefsBlack
+  - ClothingUnderBottomFBriefsBlue
+  - ClothingUnderBottomFBriefsDarkBlue
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsDarkGreen
+  - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefsBrown
+  - ClothingUnderBottomFBriefsMaroon
+  - ClothingUnderBottomFBriefsOrange
+  - ClothingUnderBottomFBriefsPink
+  - ClothingUnderBottomFBriefsPurple
+  - ClothingUnderBottomFBriefsRed
+  - ClothingUnderBottomFBriefsTeal
+  - ClothingUnderBottomFBriefsYellow
+# MBirief
+  - ClothingUnderBottomMBriefs
+  - ClothingUnderBottomMBriefsGrey
+  - ClothingUnderBottomMBriefsBlack
+  - ClothingUnderBottomMBriefsBlue
+  - ClothingUnderBottomMBriefsDarkBlue
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsDarkGreen
+  - ClothingUnderBottomMBriefsGreen
+  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsMaroon
+  - ClothingUnderBottomMBriefsOrange
+  - ClothingUnderBottomMBriefsPink
+  - ClothingUnderBottomMBriefsPurple
+  - ClothingUnderBottomMBriefsRed
+  - ClothingUnderBottomMBriefsTeal
+  - ClothingUnderBottomMBriefsYellow
+# Sport
+  - ClothingUnderBottomSport
+  - ClothingUnderBottomSportGrey
+  - ClothingUnderBottomSportBlack
+  - ClothingUnderBottomSportBlue
+  - ClothingUnderBottomSportDarkBlue
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportDarkGreen
+  - ClothingUnderBottomSportGreen
+  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportMaroon
+  - ClothingUnderBottomSportOrange
+  - ClothingUnderBottomSportPink
+  - ClothingUnderBottomSportPurple
+  - ClothingUnderBottomSportRed
+  - ClothingUnderBottomSportTeal
+  - ClothingUnderBottomSportYellow
+# Thong
+  - ClothingUnderBottomThong
+  - ClothingUnderBottomThongGrey
+  - ClothingUnderBottomThongBlack
+  - ClothingUnderBottomThongBlue
+  - ClothingUnderBottomThongDarkBlue
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongDarkGreen
+  - ClothingUnderBottomThongGreen
+  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongMaroon
+  - ClothingUnderBottomThongOrange
+  - ClothingUnderBottomThongPink
+  - ClothingUnderBottomThongPurple
+  - ClothingUnderBottomThongRed
+  - ClothingUnderBottomThongTeal
+  - ClothingUnderBottomThongYellow
+# Panties
+  - ClothingUnderBottomPanties
+  - ClothingUnderBottomPantiesGrey
+  - ClothingUnderBottomPantiesBlack
+  - ClothingUnderBottomPantiesBlue
+  - ClothingUnderBottomPantiesDarkBlue
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesDarkGreen
+  - ClothingUnderBottomPantiesGreen
+  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesMaroon
+  - ClothingUnderBottomPantiesOrange
+  - ClothingUnderBottomPantiesPink
+  - ClothingUnderBottomPantiesPurple
+  - ClothingUnderBottomPantiesRed
+  - ClothingUnderBottomPantiesTeal
+  - ClothingUnderBottomPantiesYellow
+# Lizard
+  - ClothingUnderBottomLizard
+  - ClothingUnderBottomLizardGrey
+  - ClothingUnderBottomLizardBlack
+  - ClothingUnderBottomLizardBlue
+  - ClothingUnderBottomLizardDarkBlue
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardDarkGreen
+  - ClothingUnderBottomLizardGreen
+  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardMaroon
+  - ClothingUnderBottomLizardOrange
+  - ClothingUnderBottomLizardPink
+  - ClothingUnderBottomLizardPurple
+  - ClothingUnderBottomLizardRed
+  - ClothingUnderBottomLizardTeal
+  - ClothingUnderBottomLizardYellow
+# Mankiny
+  - ClothingUnderBottomMankiny
+  - ClothingUnderBottomMankinyGrey
+  - ClothingUnderBottomMankinyBlack
+  - ClothingUnderBottomMankinyBlue
+  - ClothingUnderBottomMankinyDarkBlue
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyDarkGreen
+  - ClothingUnderBottomMankinyGreen
+  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyMaroon
+  - ClothingUnderBottomMankinyOrange
+  - ClothingUnderBottomMankinyPink
+  - ClothingUnderBottomMankinyPurple
+  - ClothingUnderBottomMankinyRed
+  - ClothingUnderBottomMankinyTeal
+  - ClothingUnderBottomMankinyYellow
+# Stripe
+  - ClothingUnderBottomSwimStripe
+  - ClothingUnderBottomSwimStripeGrey
+  - ClothingUnderBottomSwimStripeBlack
+  - ClothingUnderBottomSwimStripeBlue
+  - ClothingUnderBottomSwimStripeDarkBlue
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeDarkGreen
+  - ClothingUnderBottomSwimStripeGreen
+  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeMaroon
+  - ClothingUnderBottomSwimStripeOrange
+  - ClothingUnderBottomSwimStripePink
+  - ClothingUnderBottomSwimStripePurple
+  - ClothingUnderBottomSwimStripeRed
+  - ClothingUnderBottomSwimStripeTeal
+  - ClothingUnderBottomSwimStripeYellow
+# Halter
+  - ClothingUnderBottomSwimHalter
+  - ClothingUnderBottomSwimHalterGrey
+  - ClothingUnderBottomSwimHalterBlack
+  - ClothingUnderBottomSwimHalterBlue
+  - ClothingUnderBottomSwimHalterDarkBlue
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterDarkGreen
+  - ClothingUnderBottomSwimHalterGreen
+  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterMaroon
+  - ClothingUnderBottomSwimHalterOrange
+  - ClothingUnderBottomSwimHalterPink
+  - ClothingUnderBottomSwimHalterPurple
+  - ClothingUnderBottomSwimHalterRed
+  - ClothingUnderBottomSwimHalterTeal
+  - ClothingUnderBottomSwimHalterYellow
+# One piece
+  - ClothingUnderBottomSwimOnePiece
+  - ClothingUnderBottomSwimOnePieceGrey
+  - ClothingUnderBottomSwimOnePieceBlack
+  - ClothingUnderBottomSwimOnePieceBlue
+  - ClothingUnderBottomSwimOnePieceDarkBlue
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceDarkGreen
+  - ClothingUnderBottomSwimOnePieceGreen
+  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceMaroon
+  - ClothingUnderBottomSwimOnePieceOrange
+  - ClothingUnderBottomSwimOnePiecePink
+  - ClothingUnderBottomSwimOnePiecePurple
+  - ClothingUnderBottomSwimOnePieceRed
+  - ClothingUnderBottomSwimOnePieceTeal
+  - ClothingUnderBottomSwimOnePieceYellow
+# Strapless
+  - ClothingUnderBottomSwimStrapless
+  - ClothingUnderBottomSwimStraplessGrey
+  - ClothingUnderBottomSwimStraplessBlack
+  - ClothingUnderBottomSwimStraplessBlue
+  - ClothingUnderBottomSwimStraplessDarkBlue
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessDarkGreen
+  - ClothingUnderBottomSwimStraplessGreen
+  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessMaroon
+  - ClothingUnderBottomSwimStraplessOrange
+  - ClothingUnderBottomSwimStraplessPink
+  - ClothingUnderBottomSwimStraplessPurple
+  - ClothingUnderBottomSwimStraplessRed
+  - ClothingUnderBottomSwimStraplessTeal
+  - ClothingUnderBottomSwimStraplessYellow
+# Swin
+  - ClothingUniformSwimBlack
+  - ClothingUniformSwimBlue
+  - ClothingUniformSwimDarkGreen
+  - ClothingUniformSwimGreen
+  - ClothingUniformSwimPurple
+  - ClothingUniformSwimRed
+# donate 1
   - ClothingUnderBottomEroWhith
   - ClothingUnderBottomEroPink
   - ClothingUnderBottomEroBlack
@@ -1721,48 +4651,30 @@
   - ClothingUnderBottomEroRed
   - ClothingUnderBottomEroYellow
   - ClothingUnderBottomEroGreen
-  - ClothingUnderBottomCuteMooo
-  - ClothingUnderBottomGold
+# donate 2
   - ClothingUnderBottomCuteBlue
   - ClothingUnderBottomCuteRed
   - ClothingUnderBottomCuteGreen
   - ClothingUnderBottomCutePink
-  - ClothingUnderBottomSecurity # default
-  - ClothingUnderBottomGrey
-  - ClothingUnderBottomBabydoll
-  - ClothingUnderBottomBoxers
+# Other
   - ClothingUnderBottomFAssblastusa
-  - ClothingUnderBottomFBriefs
   - ClothingUnderBottomFCommie
   - ClothingUnderBottomFishnet
   - ClothingUnderBottomFKinky
   - ClothingUnderBottomHearts
   - ClothingUnderBottomLace
   - ClothingUnderBottomLatex
-  - ClothingUnderBottomLizard
-  - ClothingUnderBottomMankiny
   - ClothingUnderBottomMAssblastusa
-  - ClothingUnderBottomMBriefs
   - ClothingUnderBottomMCommie
   - ClothingUnderBottomMKinky
   - ClothingUnderBottomNekoBlack
   - ClothingUnderBottomNekoWhite
-  - ClothingUnderBottomPanties
-  - ClothingUnderBottomSport
   - ClothingUnderBottomStripe
   - ClothingUnderBottomStrippedPanties
-  - ClothingUnderBottomThong
+# Donate
   - ClothingUnderBottomElegantVampire
-  - ClothingUnderBottomSwimHalter
-  - ClothingUnderBottomSwimStripe
-  - ClothingUnderBottomSwimOnePiece
-  - ClothingUnderBottomSwimStrapless
-  - ClothingUniformSwimBlack
-  - ClothingUniformSwimBlue
-  - ClothingUniformSwimDarkGreen
-  - ClothingUniformSwimGreen
-  - ClothingUniformSwimPurple
-  - ClothingUniformSwimRed
+  - ClothingUnderBottomCuteMooo
+  - ClothingUnderBottomGold
 
 - type: loadoutGroup
   id: BrigmedicHead
