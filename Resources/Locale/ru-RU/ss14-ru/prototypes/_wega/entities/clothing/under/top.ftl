@@ -85,6 +85,8 @@ ent-ClothingUnderTopBraSportTeal = { ent-ClothingUnderTopBraSport }
     .desc = { ent-ClothingUnderTopBraSport.desc }
 ent-ClothingUnderTopBraSportYellow = { ent-ClothingUnderTopBraSport }
     .desc = { ent-ClothingUnderTopBraSport.desc }
+ent-ClothingUnderTopBraSportLightBrown = { ent-ClothingUnderTopBraSport }
+    .desc = { ent-ClothingUnderTopBraSport.desc }
 
 ent-ClothingUnderTopBraNekoGrey = { ent-ClothingUnderTopBraNekoWhite }
     .desc = { ent-ClothingUnderTopBraNeko.desc }
@@ -111,6 +113,8 @@ ent-ClothingUnderTopBraNekoRed = { ent-ClothingUnderTopBraNekoWhite }
 ent-ClothingUnderTopBraNekoTeal = { ent-ClothingUnderTopBraNekoWhite }
     .desc = { ent-ClothingUnderTopBraNekoWhite.desc }
 ent-ClothingUnderTopBraNekoYellow = { ent-ClothingUnderTopBraNekoWhite }
+    .desc = { ent-ClothingUnderTopBraNekoWhite.desc }
+ent-ClothingUnderTopBraNekoLightBrown = { ent-ClothingUnderTopBraNekoWhite }
     .desc = { ent-ClothingUnderTopBraNekoWhite.desc }
 
 ent-ClothingUnderTopBikiniGrey = { ent-ClothingUnderTopBikini }
@@ -141,6 +145,8 @@ ent-ClothingUnderTopBikiniTeal = { ent-ClothingUnderTopBikini }
     .desc = { ent-ClothingUnderTopBikini.desc }
 ent-ClothingUnderTopBikiniYellow = { ent-ClothingUnderTopBikini }
     .desc = { ent-ClothingUnderTopBikini.desc }
+ent-ClothingUnderTopBikiniLightBrown = { ent-ClothingUnderTopBikini }
+    .desc = { ent-ClothingUnderTopBikini.desc }
 
 ent-ClothingUnderTopBraFishnetGrey = { ent-ClothingUnderTopBraFishnet }
     .desc = { ent-ClothingUnderTopBraFishnet.desc }
@@ -169,6 +175,8 @@ ent-ClothingUnderTopBraFishnetRed = { ent-ClothingUnderTopBraFishnet }
 ent-ClothingUnderTopBraFishnetTeal = { ent-ClothingUnderTopBraFishnet }
     .desc = { ent-ClothingUnderTopBraFishnet.desc }
 ent-ClothingUnderTopBraFishnetYellow = { ent-ClothingUnderTopBraFishnet }
+    .desc = { ent-ClothingUnderTopBraFishnet.desc }
+ent-ClothingUnderTopBraFishnetLightBrown = { ent-ClothingUnderTopBraFishnet }
     .desc = { ent-ClothingUnderTopBraFishnet.desc }
 
 ent-ClothingUnderTopBraStraplessGrey = { ent-ClothingUnderTopBraStrapless }
@@ -199,6 +207,8 @@ ent-ClothingUnderTopBraStraplessTeal = { ent-ClothingUnderTopBraStrapless }
     .desc = { ent-ClothingUnderTopBraStrapless.desc }
 ent-ClothingUnderTopBraStraplessYellow = { ent-ClothingUnderTopBraStrapless }
     .desc = { ent-ClothingUnderTopBraStrapless.desc }
+ent-ClothingUnderTopBraStraplessLightBrown = { ent-ClothingUnderTopBraStrapless }
+    .desc = { ent-ClothingUnderTopBraStrapless.desc }
 
 ent-ClothingUnderTopBraThongGrey = { ent-ClothingUnderTopBraThong }
     .desc = { ent-ClothingUnderTopBraThong.desc }
@@ -227,6 +237,8 @@ ent-ClothingUnderTopBraThongYellow = { ent-ClothingUnderTopBraThong }
 ent-ClothingUnderTopBraThongGreen = { ent-ClothingUnderTopBraThong }
     .desc = { ent-ClothingUnderTopBraThong.desc }
 ent-ClothingUnderTopBraThongDarkGreen = { ent-ClothingUnderTopBraThong }
+    .desc = { ent-ClothingUnderTopBraThong.desc }
+ent-ClothingUnderTopBraThongLightBrown = { ent-ClothingUnderTopBraThong }
     .desc = { ent-ClothingUnderTopBraThong.desc }
 
 ent-ClothingUnderTopCorsetGrey = { ent-ClothingUnderTopCorset }
@@ -257,6 +269,7 @@ ent-ClothingUnderTopCorsetGreen = { ent-ClothingUnderTopCorset }
     .desc = { ent-ClothingUnderTopCorset.desc }
 ent-ClothingUnderTopCorsetDarkGreen = { ent-ClothingUnderTopCorset }
     .desc = { ent-ClothingUnderTopCorset.desc }
-
+ent-ClothingUnderTopCorsetLightBrown = { ent-ClothingUnderTopCorset }
+    .desc = { ent-ClothingUnderTopCorset.desc }
 
 

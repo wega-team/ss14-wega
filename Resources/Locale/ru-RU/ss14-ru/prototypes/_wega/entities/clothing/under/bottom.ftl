@@ -135,6 +135,8 @@ ent-ClothingUnderBottomBoxersGreen = { ent-ClothingUnderBottomBoxers }
     .desc = { ent-ClothingUnderBottomBoxers.desc }
 ent-ClothingUnderBottomBoxersDarkGreen = { ent-ClothingUnderBottomBoxers }
     .desc = { ent-ClothingUnderBottomBoxers.desc }
+ent-ClothingUnderBottomBoxersLightBrown = { ent-ClothingUnderBottomBoxers }
+    .desc = { ent-ClothingUnderBottomBoxers.desc }
 
 ent-ClothingUnderBottomBabydollGrey = { ent-ClothingUnderBottomBabydoll }
     .desc = { ent-ClothingUnderBottomBabydoll.desc }
@@ -163,6 +165,8 @@ ent-ClothingUnderBottomBabydollYellow = { ent-ClothingUnderBottomBabydoll }
 ent-ClothingUnderBottomBabydollGreen = { ent-ClothingUnderBottomBabydoll }
     .desc = { ent-ClothingUnderBottomBabydoll.desc }
 ent-ClothingUnderBottomBabydollDarkGreen = { ent-ClothingUnderBottomBabydoll }
+    .desc = { ent-ClothingUnderBottomBabydoll.desc }
+ent-ClothingUnderBottomBabydollLightBrown = { ent-ClothingUnderBottomBabydoll }
     .desc = { ent-ClothingUnderBottomBabydoll.desc }
 
 ent-ClothingUnderBottomFBriefsGrey = { ent-ClothingUnderBottomFBriefs }
@@ -193,6 +197,8 @@ ent-ClothingUnderBottomFBriefsGreen = { ent-ClothingUnderBottomFBriefs }
     .desc = { ent-ClothingUnderBottomFBriefs.desc }
 ent-ClothingUnderBottomFBriefsDarkGreen = { ent-ClothingUnderBottomFBriefs }
     .desc = { ent-ClothingUnderBottomFBriefs.desc }
+ent-ClothingUnderBottomFBriefsLightBrown = { ent-ClothingUnderBottomFBriefs }
+    .desc = { ent-ClothingUnderBottomFBriefs.desc }
 
 ent-ClothingUnderBottomMBriefsGrey = { ent-ClothingUnderBottomMBriefs }
     .desc = { ent-ClothingUnderBottomMBriefs.desc }
@@ -221,6 +227,8 @@ ent-ClothingUnderBottomMBriefsYellow = { ent-ClothingUnderBottomMBriefs }
 ent-ClothingUnderBottomMBriefsGreen = { ent-ClothingUnderBottomMBriefs }
     .desc = { ent-ClothingUnderBottomMBriefs.desc }
 ent-ClothingUnderBottomMBriefsDarkGreen = { ent-ClothingUnderBottomMBriefs }
+    .desc = { ent-ClothingUnderBottomMBriefs.desc }
+ent-ClothingUnderBottomMBriefsLightBrown = { ent-ClothingUnderBottomMBriefs }
     .desc = { ent-ClothingUnderBottomMBriefs.desc }
 
 ent-ClothingUnderBottomSportGrey = { ent-ClothingUnderBottomSport }
@@ -251,6 +259,8 @@ ent-ClothingUnderBottomSportGreen = { ent-ClothingUnderBottomSport }
     .desc = { ent-ClothingUnderBottomSport.desc }
 ent-ClothingUnderBottomSportDarkGreen = { ent-ClothingUnderBottomSport }
     .desc = { ent-ClothingUnderBottomSport.desc }
+ent-ClothingUnderBottomSportLightBrown = { ent-ClothingUnderBottomSport }
+    .desc = { ent-ClothingUnderBottomSport.desc }
 
 ent-ClothingUnderBottomThongGrey = { ent-ClothingUnderBottomThong }
     .desc = { ent-ClothingUnderBottomThong.desc }
@@ -279,6 +289,8 @@ ent-ClothingUnderBottomThongYellow = { ent-ClothingUnderBottomThong }
 ent-ClothingUnderBottomThongGreen = { ent-ClothingUnderBottomThong }
     .desc = { ent-ClothingUnderBottomThong.desc }
 ent-ClothingUnderBottomThongDarkGreen = { ent-ClothingUnderBottomThong }
+    .desc = { ent-ClothingUnderBottomThong.desc }
+ent-ClothingUnderBottomThongLightBrown = { ent-ClothingUnderBottomThong }
     .desc = { ent-ClothingUnderBottomThong.desc }
 
 ent-ClothingUnderBottomPantiesGrey = { ent-ClothingUnderBottomPanties }
@@ -309,6 +321,8 @@ ent-ClothingUnderBottomPantiesGreen = { ent-ClothingUnderBottomPanties }
     .desc = { ent-ClothingUnderBottomPanties.desc }
 ent-ClothingUnderBottomPantiesDarkGreen = { ent-ClothingUnderBottomPanties }
     .desc = { ent-ClothingUnderBottomPanties.desc }
+ent-ClothingUnderBottomPantiesLightBrown = { ent-ClothingUnderBottomPanties }
+    .desc = { ent-ClothingUnderBottomPanties.desc }
 
 ent-ClothingUnderBottomLizardGrey = { ent-ClothingUnderBottomLizard }
     .desc = { ent-ClothingUnderBottomLizard.desc }
@@ -337,6 +351,8 @@ ent-ClothingUnderBottomLizardYellow = { ent-ClothingUnderBottomLizard }
 ent-ClothingUnderBottomLizardGreen = { ent-ClothingUnderBottomLizard }
     .desc = { ent-ClothingUnderBottomLizard.desc }
 ent-ClothingUnderBottomLizardDarkGreen = { ent-ClothingUnderBottomLizard }
+    .desc = { ent-ClothingUnderBottomLizard.desc }
+ent-ClothingUnderBottomLizardLightBrown = { ent-ClothingUnderBottomLizard }
     .desc = { ent-ClothingUnderBottomLizard.desc }
 
 ent-ClothingUnderBottomMankinyGrey = { ent-ClothingUnderBottomMankiny }
@@ -367,6 +383,8 @@ ent-ClothingUnderBottomMankinyGreen = { ent-ClothingUnderBottomMankiny }
     .desc = { ent-ClothingUnderBottomMankiny.desc }
 ent-ClothingUnderBottomMankinyDarkGreen = { ent-ClothingUnderBottomMankiny }
     .desc = { ent-ClothingUnderBottomMankiny.desc }
+ent-ClothingUnderBottomMankinyLightBrown = { ent-ClothingUnderBottomMankiny }
+    .desc = { ent-ClothingUnderBottomMankiny.desc }
 
 ent-ClothingUnderBottomSwimStripeGrey = { ent-ClothingUnderBottomSwimStripe }
     .desc = { ent-ClothingUnderBottomSwimStripe.desc }
@@ -395,6 +413,8 @@ ent-ClothingUnderBottomSwimStripeYellow = { ent-ClothingUnderBottomSwimStripe }
 ent-ClothingUnderBottomSwimStripeGreen = { ent-ClothingUnderBottomSwimStripe }
     .desc = { ent-ClothingUnderBottomSwimStripe.desc }
 ent-ClothingUnderBottomSwimStripeDarkGreen = { ent-ClothingUnderBottomSwimStripe }
+    .desc = { ent-ClothingUnderBottomSwimStripe.desc }
+ent-ClothingUnderBottomSwimStripeLightBrown = { ent-ClothingUnderBottomSwimStripe }
     .desc = { ent-ClothingUnderBottomSwimStripe.desc }
 
 ent-ClothingUnderBottomSwimHalterGrey = { ent-ClothingUnderBottomSwimHalter }
@@ -425,6 +445,8 @@ ent-ClothingUnderBottomSwimHalterGreen = { ent-ClothingUnderBottomSwimHalter }
     .desc = { ent-ClothingUnderBottomSwimHalter.desc }
 ent-ClothingUnderBottomSwimHalterDarkGreen = { ent-ClothingUnderBottomSwimHalter }
     .desc = { ent-ClothingUnderBottomSwimHalter.desc }
+ent-ClothingUnderBottomSwimHalterLightBrown = { ent-ClothingUnderBottomSwimHalter }
+    .desc = { ent-ClothingUnderBottomSwimHalter.desc }
 
 ent-ClothingUnderBottomSwimOnePieceGrey = { ent-ClothingUnderBottomSwimOnePiece }
     .desc = { ent-ClothingUnderBottomSwimOnePiece.desc }
@@ -453,6 +475,8 @@ ent-ClothingUnderBottomSwimOnePieceYellow = { ent-ClothingUnderBottomSwimOnePiec
 ent-ClothingUnderBottomSwimOnePieceGreen = { ent-ClothingUnderBottomSwimOnePiece }
     .desc = { ent-ClothingUnderBottomSwimOnePiece.desc }
 ent-ClothingUnderBottomSwimOnePieceDarkGreen = { ent-ClothingUnderBottomSwimOnePiece }
+    .desc = { ent-ClothingUnderBottomSwimOnePiece.desc }
+ent-ClothingUnderBottomSwimOnePieceLightBrown = { ent-ClothingUnderBottomSwimOnePiece }
     .desc = { ent-ClothingUnderBottomSwimOnePiece.desc }
 
 ent-ClothingUnderBottomSwimStraplessGrey = { ent-ClothingUnderBottomSwimStrapless }
@@ -483,4 +507,5 @@ ent-ClothingUnderBottomSwimStraplessGreen = { ent-ClothingUnderBottomSwimStraple
     .desc = { ent-ClothingUnderBottomSwimStrapless.desc }
 ent-ClothingUnderBottomSwimStraplessDarkGreen = { ent-ClothingUnderBottomSwimStrapless }
     .desc = { ent-ClothingUnderBottomSwimStrapless.desc }
-
+ent-ClothingUnderBottomSwimStraplessLightBrown = { ent-ClothingUnderBottomSwimStrapless }
+    .desc = { ent-ClothingUnderBottomSwimStrapless.desc }

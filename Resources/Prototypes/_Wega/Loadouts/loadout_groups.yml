@@ -3389,7 +3389,7 @@
   - ClothingUnderTopBraSportBrown
   - ClothingUnderTopBraSportDarkGreen
   - ClothingUnderTopBraSportGreen
-  - ClothingUnderTopBraSportBrown
+  - ClothingUnderTopBraSportLightBrown
   - ClothingUnderTopBraSportMaroon
   - ClothingUnderTopBraSportOrange
   - ClothingUnderTopBraSportPink
@@ -3406,7 +3406,7 @@
   - ClothingUnderTopBraNekoBrown
   - ClothingUnderTopBraNekoDarkGreen
   - ClothingUnderTopBraNekoGreen
-  - ClothingUnderTopBraNekoBrown
+  - ClothingUnderTopBraNekoLightBrown
   - ClothingUnderTopBraNekoMaroon
   - ClothingUnderTopBraNekoOrange
   - ClothingUnderTopBraNekoPink
@@ -3423,7 +3423,7 @@
   - ClothingUnderTopBikiniBrown
   - ClothingUnderTopBikiniDarkGreen
   - ClothingUnderTopBikiniGreen
-  - ClothingUnderTopBikiniBrown
+  - ClothingUnderTopBikiniLightBrown
   - ClothingUnderTopBikiniMaroon
   - ClothingUnderTopBikiniOrange
   - ClothingUnderTopBikiniPink
@@ -3440,7 +3440,7 @@
   - ClothingUnderTopBraFishnetBrown
   - ClothingUnderTopBraFishnetDarkGreen
   - ClothingUnderTopBraFishnetGreen
-  - ClothingUnderTopBraFishnetBrown
+  - ClothingUnderTopBraFishnetLightBrown
   - ClothingUnderTopBraFishnetMaroon
   - ClothingUnderTopBraFishnetOrange
   - ClothingUnderTopBraFishnetPink
@@ -3457,7 +3457,7 @@
   - ClothingUnderTopBraStraplessBrown
   - ClothingUnderTopBraStraplessDarkGreen
   - ClothingUnderTopBraStraplessGreen
-  - ClothingUnderTopBraStraplessBrown
+  - ClothingUnderTopBraStraplessLightBrown
   - ClothingUnderTopBraStraplessMaroon
   - ClothingUnderTopBraStraplessOrange
   - ClothingUnderTopBraStraplessPink
@@ -3474,7 +3474,7 @@
   - ClothingUnderTopBraThongBrown
   - ClothingUnderTopBraThongDarkGreen
   - ClothingUnderTopBraThongGreen
-  - ClothingUnderTopBraThongBrown
+  - ClothingUnderTopBraThongLightBrown
   - ClothingUnderTopBraThongMaroon
   - ClothingUnderTopBraThongOrange
   - ClothingUnderTopBraThongPink
@@ -3491,7 +3491,7 @@
   - ClothingUnderTopCorsetBrown
   - ClothingUnderTopCorsetDarkGreen
   - ClothingUnderTopCorsetGreen
-  - ClothingUnderTopCorsetBrown
+  - ClothingUnderTopCorsetLightBrown
   - ClothingUnderTopCorsetMaroon
   - ClothingUnderTopCorsetOrange
   - ClothingUnderTopCorsetPink
@@ -3532,7 +3532,7 @@
   - ClothingUnderBottomBoxersBrown
   - ClothingUnderBottomBoxersDarkGreen
   - ClothingUnderBottomBoxersGreen
-  - ClothingUnderBottomBoxersBrown
+  - ClothingUnderBottomBoxersLightBrown
   - ClothingUnderBottomBoxersMaroon
   - ClothingUnderBottomBoxersOrange
   - ClothingUnderBottomBoxersPink
@@ -3566,6 +3566,7 @@
   - ClothingUnderBottomFBriefsBrown
   - ClothingUnderBottomFBriefsDarkGreen
   - ClothingUnderBottomFBriefsGreen
+  - ClothingUnderBottomFBriefslLightBrown
   - ClothingUnderBottomFBriefsBrown
   - ClothingUnderBottomFBriefsMaroon
   - ClothingUnderBottomFBriefsOrange
@@ -3583,7 +3584,7 @@
   - ClothingUnderBottomMBriefsBrown
   - ClothingUnderBottomMBriefsDarkGreen
   - ClothingUnderBottomMBriefsGreen
-  - ClothingUnderBottomMBriefsBrown
+  - ClothingUnderBottomMBriefsLightBrown
   - ClothingUnderBottomMBriefsMaroon
   - ClothingUnderBottomMBriefsOrange
   - ClothingUnderBottomMBriefsPink
@@ -3600,7 +3601,7 @@
   - ClothingUnderBottomSportBrown
   - ClothingUnderBottomSportDarkGreen
   - ClothingUnderBottomSportGreen
-  - ClothingUnderBottomSportBrown
+  - ClothingUnderBottomSportLightBrown
   - ClothingUnderBottomSportMaroon
   - ClothingUnderBottomSportOrange
   - ClothingUnderBottomSportPink
@@ -3617,7 +3618,7 @@
   - ClothingUnderBottomThongBrown
   - ClothingUnderBottomThongDarkGreen
   - ClothingUnderBottomThongGreen
-  - ClothingUnderBottomThongBrown
+  - ClothingUnderBottomThongLightBrown
   - ClothingUnderBottomThongMaroon
   - ClothingUnderBottomThongOrange
   - ClothingUnderBottomThongPink
@@ -3634,7 +3635,7 @@
   - ClothingUnderBottomPantiesBrown
   - ClothingUnderBottomPantiesDarkGreen
   - ClothingUnderBottomPantiesGreen
-  - ClothingUnderBottomPantiesBrown
+  - ClothingUnderBottomPantiesLightBrown
   - ClothingUnderBottomPantiesMaroon
   - ClothingUnderBottomPantiesOrange
   - ClothingUnderBottomPantiesPink
@@ -3651,7 +3652,7 @@
   - ClothingUnderBottomLizardBrown
   - ClothingUnderBottomLizardDarkGreen
   - ClothingUnderBottomLizardGreen
-  - ClothingUnderBottomLizardBrown
+  - ClothingUnderBottomLizardLightBrown
   - ClothingUnderBottomLizardMaroon
   - ClothingUnderBottomLizardOrange
   - ClothingUnderBottomLizardPink
@@ -3668,7 +3669,7 @@
   - ClothingUnderBottomMankinyBrown
   - ClothingUnderBottomMankinyDarkGreen
   - ClothingUnderBottomMankinyGreen
-  - ClothingUnderBottomMankinyBrown
+  - ClothingUnderBottomMankinyLightBrown
   - ClothingUnderBottomMankinyMaroon
   - ClothingUnderBottomMankinyOrange
   - ClothingUnderBottomMankinyPink
@@ -3685,7 +3686,7 @@
   - ClothingUnderBottomSwimStripeBrown
   - ClothingUnderBottomSwimStripeDarkGreen
   - ClothingUnderBottomSwimStripeGreen
-  - ClothingUnderBottomSwimStripeBrown
+  - ClothingUnderBottomSwimStripeLightBrown
   - ClothingUnderBottomSwimStripeMaroon
   - ClothingUnderBottomSwimStripeOrange
   - ClothingUnderBottomSwimStripePink
@@ -3702,7 +3703,7 @@
   - ClothingUnderBottomSwimHalterBrown
   - ClothingUnderBottomSwimHalterDarkGreen
   - ClothingUnderBottomSwimHalterGreen
-  - ClothingUnderBottomSwimHalterBrown
+  - ClothingUnderBottomSwimHalterLightBrown
   - ClothingUnderBottomSwimHalterMaroon
   - ClothingUnderBottomSwimHalterOrange
   - ClothingUnderBottomSwimHalterPink
@@ -3719,7 +3720,7 @@
   - ClothingUnderBottomSwimOnePieceBrown
   - ClothingUnderBottomSwimOnePieceDarkGreen
   - ClothingUnderBottomSwimOnePieceGreen
-  - ClothingUnderBottomSwimOnePieceBrown
+  - ClothingUnderBottomSwimOnePieceLightBrown
   - ClothingUnderBottomSwimOnePieceMaroon
   - ClothingUnderBottomSwimOnePieceOrange
   - ClothingUnderBottomSwimOnePiecePink
@@ -3736,7 +3737,7 @@
   - ClothingUnderBottomSwimStraplessBrown
   - ClothingUnderBottomSwimStraplessDarkGreen
   - ClothingUnderBottomSwimStraplessGreen
-  - ClothingUnderBottomSwimStraplessBrown
+  - ClothingUnderBottomSwimStraplessLightBrown
   - ClothingUnderBottomSwimStraplessMaroon
   - ClothingUnderBottomSwimStraplessOrange
   - ClothingUnderBottomSwimStraplessPink
