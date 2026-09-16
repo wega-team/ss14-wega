@@ -1,20 +1,3 @@
-## Color
-# "#b3b3b3" - greyв
-# "#3f3f3f" - black
-# "#52aecc" - blue
-# "#3285ba" - dark blue
-# "#77f3b7" - teal
-# "#9ed63a" - green
-# "#007923" - dark green
-# "#ff8c19" - orange
-# "#ffa69b" - pink
-# "#eb0c07" - red
-# "#ffe14d" - yellow
-# "#9f70cc" - purple
-# "#c59431" - light brown
-# "#a17229" - brown
-# "#cc295f" - maroon
-
 ## bottom
 - type: entity
   parent: ClothingUnderBottomBoxers
