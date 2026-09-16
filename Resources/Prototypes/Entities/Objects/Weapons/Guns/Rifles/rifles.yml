@@ -205,7 +205,10 @@
     availableModes:
     - Burst
     - SemiAuto
-    burstFireRate: 14
+    # Corvax-Wega-Guns-Buff-Start
+    burstFireRate: 15
+    burstCooldown: 0.175
+    # Corvax-Wega-Guns-Buff-End
   - type: ItemSlots
     slots:
       gun_magazine:
@@ -228,9 +231,6 @@
   - type: EyeCursorOffset
     maxOffset: 2
     pvsIncrease: 0.2
-  - type: SpeedModifiedOnWield
-    walkModifier: 0.9
-    sprintModifier: 0.9
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
