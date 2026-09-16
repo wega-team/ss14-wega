@@ -32,7 +32,7 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineRifle
+            - MagazineLightRifle
             - ExtMagazineRifle
       gun_chamber:
         name: Chamber
