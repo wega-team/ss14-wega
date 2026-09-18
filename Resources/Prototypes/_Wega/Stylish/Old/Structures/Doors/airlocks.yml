@@ -1,0 +1,601 @@
+# Standard
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-base.rsi
+  entities:
+  - Airlock
+  - AirlockServiceLocked
+  - AirlockLawyerLocked
+  - AirlockTheatreLocked
+  - AirlockServiceTheatreLocked
+  - AirlockChapelLocked
+  - AirlockJanitorLocked
+  - AirlockKitchenLocked
+  - AirlockBarLocked
+  - AirlockBarKitchenLocked
+
+#- type: stylishPreset
+#  parent: BaseStylishAirlockOld
+#  id: StylishAirlocksServiceOld
+#  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/service-base.rsi
+#  entities:
+#  - AirlockServiceLocked
+#  - AirlockLawyerLocked
+#  - AirlockTheatreLocked
+#  - AirlockServiceTheatreLocked
+#  - AirlockChapelLocked
+#  - AirlockJanitorLocked
+#  - AirlockKitchenLocked
+#  - AirlockBarLocked
+#  - AirlockBarKitchenLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksFreezerOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/service-freezer.rsi
+  entities:
+  - AirlockFreezer
+  - AirlockFreezerLocked
+  - AirlockFreezerKitchenHydroLocked
+  - AirlockFreezerHydroponicsLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-freezer.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-freezer.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-freezer.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-freezer.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-freezer.rsi
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksEngineeringOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/engineering-base.rsi
+  entities:
+  - AirlockEngineering
+  - AirlockEngineeringLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksAtmosphericsOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/engineering-atmos.rsi
+  entities:
+  - AirlockAtmospherics
+  - AirlockAtmosphericsLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksCargoOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/cargo-base.rsi
+  entities:
+  - AirlockCargo
+  - AirlockCargoLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksSalvageOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/cargo-salvage.rsi
+  entities:
+  - AirlockSalvage
+  - AirlockSalvageLocked
+  # Wega
+  - AirlockLavalandAvanpostLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksHydroponicsOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/service-botany.rsi
+  entities:
+  - AirlockHydroponics
+  - AirlockHydroponicsLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksMedicalOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/medical-base.rsi
+  entities:
+  - AirlockMedical
+  - AirlockMedicalLocked
+  - AirlockMedicalMorgueLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksVirologyOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/medical-viro.rsi
+  entities:
+  - AirlockVirology
+  - AirlockVirologyLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksChemistryOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/medical-chem.rsi
+  entities:
+  - AirlockChemistry
+  - AirlockChemistryLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksScienceOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/science-base.rsi
+  entities:
+  - AirlockScience
+  - AirlockScienceLocked
+  - AirlockMedicalScienceLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksCommandOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/command-base.rsi
+  entities:
+  - AirlockCommand
+  - AirlockCommandLocked
+  - AirlockEVALocked
+#  - AirlockCaptainLocked
+#  - AirlockChiefMedicalOfficerLocked
+#  - AirlockChiefEngineerLocked
+#  - AirlockHeadOfSecurityLocked
+#  - AirlockResearchDirectorLocked
+#  - AirlockHeadOfPersonnelLocked
+#  - AirlockQuartermasterLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksSecurityOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/security-base.rsi
+  entities:
+  - AirlockSecurity
+  - AirlockSecurityLocked
+  - AirlockDetectiveLocked
+  - AirlockBrigLocked
+  - AirlockSecurityLawyerLocked
+  - AirlockArmoryLocked
+  - AirlockVaultLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksMaintOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-maints.rsi
+  entities:
+  # holy shit
+  - AirlockMaint
+  - AirlockMaintLocked
+  - AirlockMaintSalvageLocked
+  - AirlockMaintCargoLocked
+  - AirlockMaintCommandLocked
+  - AirlockMaintEngiLocked
+  - AirlockMaintBarLocked
+  - AirlockMaintBarKitchenLocked
+  - AirlockMaintChapelLocked
+  - AirlockMaintHydroLocked
+  - AirlockMaintJanitorLocked
+  - AirlockMaintLawyerLocked
+  - AirlockMaintServiceLocked
+  - AirlockMaintTheatreLocked
+  - AirlockMaintServiceTheatreLocked
+  - AirlockMaintKitchenLocked
+  - AirlockMaintKitchenHydroLocked
+  - AirlockMaintMedLocked
+  - AirlockMedicalMorgueMaintLocked
+  - AirlockMaintChemLocked
+  - AirlockMaintRnDLocked
+  - AirlockMaintRnDMedLocked
+  - AirlockMaintSecLocked
+  - AirlockMaintDetectiveLocked
+  - AirlockMaintHOPLocked
+  - AirlockMaintCaptainLocked
+  - AirlockMaintChiefEngineerLocked
+  - AirlockMaintChiefMedicalOfficerLocked
+  - AirlockMaintHeadOfSecurityLocked
+  - AirlockMaintResearchDirectorLocked
+  - AirlockMaintQuartermasterLocked
+  - AirlockMaintArmoryLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksSyndicateOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/syndicate-base.rsi
+  entities:
+  - AirlockSyndicate
+  - AirlockSyndicateLocked
+  - AirlockSyndicateNukeopLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksMiningOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/cargo-mining.rsi
+  entities:
+  - AirlockMining
+  - AirlockMiningLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksCentralCommandOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/centcomm-base.rsi
+  entities:
+  - AirlockCentralCommand
+  - AirlockCentralCommandLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksHatchOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-hatch.rsi
+  entities:
+  - AirlockHatch
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-hatch.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-hatch.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-hatch.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-hatch.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-hatch.rsi
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksXenoborgOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/exo-xenoborg.rsi
+  entities:
+  - AirlockXenoborg
+  - AirlockXenoborgLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo-xenoborg.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo-xenoborg.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo-xenoborg.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo-xenoborg.rsi
+
+- type: stylishPreset
+  parent: StylishAirlocksHatchOld
+  id: StylishAirlocksHatchMaintenanceOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-hatch-maints.rsi
+  entities:
+  - AirlockHatchMaintenance
+  - AirlockHatchMaintenanceLocked
+
+- type: stylishPreset
+  parent: StylishAirlocksHatchOld
+  id: StylishAirlocksHatchSyndicateOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-hatch-syndicate.rsi
+  entities:
+  - AirlockHatchSyndicate
+  - AirlockHatchSyndicateLocked
+
+# External
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksExternalOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-external.rsi
+  entities:
+  - AirlockExternal
+  - AirlockExternalLocked
+  - AirlockExternalCargoLocked
+  - AirlockExternalEngineeringLocked
+  - AirlockExternalCommandLocked
+  - AirlockExternalAtmosphericsLocked
+  - AirlockExternalSyndicateLocked
+  - AirlockExternalNukeopLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-external.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-external.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-external.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-external.rsi
+
+# Shuttle
+- type: stylishPreset
+  parent: BaseStylishOld # Shuttle must rotate
+  id: StylishAirlocksShuttleOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/shuttle-base.rsi
+  entities:
+  - AirlockShuttle
+  - AirlockExternalShuttleLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+
+- type: stylishPreset
+  parent: StylishAirlocksShuttleOld
+  id: StylishAirlocksShuttleSyndicateOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/shuttle-syndicate.rsi
+  entities:
+  - AirlockShuttleSyndicate
+  - AirlockExternalShuttleSyndicateLocked
+  - AirlockExternalShuttleNukeopLocked
+
+- type: stylishPreset
+  parent: StylishAirlocksShuttleOld
+  id: StylishAirlocksShuttleXenoborgOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/shuttle-xenoborg.rsi
+  entities:
+  - AirlockShuttleXenoborg
+  - AirlockGlassShuttleXenoborgLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle-xenoborg.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle-xenoborg.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle-xenoborg.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-shuttle.rsi
+
+# HighSec
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishHighSecDoorOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-vault.rsi
+  entities:
+  - HighSecDoor
+  - HighSecCentralCommandLocked
+  - HighSecCommandLocked
+  - HighSecCaptainLocked
+  - HighSecArmoryLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-vault.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-vault.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-vault.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-vault.rsi
+
+# Glass
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksGlassGlassOld # :3
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-glass.rsi
+  entities:
+  - AirlockGlass
+  - AirlockChapelGlassLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-glass.rsi
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-base.rsi
+  entities:
+#  - AirlockGlass
+  - AirlockStandardGlass
+  - AirlockServiceGlassLocked
+  - AirlockLawyerGlassLocked
+  - AirlockTheatreGlassLocked
+  - AirlockServiceTheatreGlassLocked
+  - AirlockBarGlassLocked
+  - AirlockBarKitchenGlassLocked
+  - AirlockKitchenGlassLocked
+  - AirlockJanitorGlassLocked
+#  - AirlockChapelGlassLocked
+  - AirlockChapelStandardGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksEngineeringGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/engineering-base.rsi
+  entities:
+  - AirlockEngineeringGlass
+  - AirlockEngineeringGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksMaintGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-maints.rsi
+  entities:
+  - AirlockMaintGlass
+  - AirlockMaintGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksAtmosphericsGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/engineering-atmos.rsi
+  entities:
+  - AirlockAtmosphericsGlass
+  - AirlockAtmosphericsGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksCargoGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/cargo-base.rsi
+  entities:
+  - AirlockCargoGlass
+  - AirlockCargoGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksSalvageGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/cargo-salvage.rsi
+  entities:
+  - AirlockSalvageGlass
+  - AirlockSalvageGlassLocked
+  # Wega
+  - AirlockLavalandAvanpostGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksHydroponicsGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/service-botany.rsi
+  entities:
+  - AirlockHydroponicsGlass
+  - AirlockHydroGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksMedicalGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/medical-base.rsi
+  entities:
+  - AirlockMedicalGlass
+  - AirlockMedicalGlassLocked
+  - AirlockMedicalMorgueGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksChemistryGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/medical-chem.rsi
+  entities:
+  - AirlockChemistryGlass
+  - AirlockChemistryGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksVirologyGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/medical-viro.rsi
+  entities:
+  - AirlockVirologyGlass
+  - AirlockVirologyGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksScienceGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/science-base.rsi
+  entities:
+  - AirlockScienceGlass
+  - AirlockScienceGlassLocked
+  - AirlockMedicalScienceGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksCommandGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/command-base.rsi
+  entities:
+  - AirlockCommandGlass
+  - AirlockCommandGlassLocked
+  - AirlockEVAGlassLocked
+#  - AirlockCaptainGlassLocked
+#  - AirlockChiefMedicalOfficerGlassLocked
+#  - AirlockChiefEngineerGlassLocked
+#  - AirlockHeadOfSecurityGlassLocked
+#  - AirlockResearchDirectorGlassLocked
+#  - AirlockHeadOfPersonnelGlassLocked
+#  - AirlockQuartermasterGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksSecurityGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/security-base.rsi
+  entities:
+  - AirlockSecurityGlass
+  - AirlockSecurityGlassLocked
+  - AirlockDetectiveGlassLocked
+  - AirlockBrigGlassLocked
+  - AirlockSecurityLawyerGlassLocked
+  - AirlockArmoryGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksSyndicateGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/syndicate-base.rsi
+  entities:
+  - AirlockSyndicateGlass
+  - AirlockSyndicateGlassLocked
+  - AirlockSyndicateNukeopGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksMiningGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/cargo-mining.rsi
+  entities:
+  - AirlockMiningGlass
+  - AirlockMiningGlassLocked
+
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksCentralCommandGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/centcomm-base.rsi
+  entities:
+  - AirlockCentralCommandGlass
+  - AirlockCentralCommandGlassLocked
+
+# External
+- type: stylishPreset
+  parent: StylishAirlocksExternalOld
+  id: StylishAirlocksExternalGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-external.rsi
+  entities:
+  - AirlockExternalGlass
+  - AirlockExternalGlassLocked
+  - AirlockExternalGlassCargoLocked
+  - AirlockExternalGlassCommandLocked
+  - AirlockExternalGlassSyndicateLocked
+  - AirlockExternalGlassNukeopLocked
+  - AirlockExternalGlassEngineeringLocked
+  - AirlockExternalGlassAtmosphericsLocked
+
+# Shuttle
+- type: stylishPreset
+  parent: StylishAirlocksShuttleOld
+  id: StylishAirlocksShuttleGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/shuttle-base.rsi
+  entities:
+  - AirlockGlassShuttle
+  - AirlockExternalGlassShuttleLocked
+  - AirlockExternalGlassShuttleEmergencyLocked
+  - AirlockExternalGlassShuttleArrivals
+  - AirlockExternalGlassShuttleCargo
+  - AirlockExternalGlassShuttleEscape
+  # Wega
+  - AirlockExternalGlassShuttleLavalandStation
+  - AirlockExternalGlassShuttleLavalandOutpost
+  - AirlockExternalGlassPenalServitudeShuttleLavalandStation
+  - AirlockExternalGlassPenalServitudeShuttleLavaland
+
+- type: stylishPreset
+  parent: StylishAirlocksShuttleOld
+  id: StylishAirlocksShuttleSyndicateGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/shuttle-syndicate.rsi
+  entities:
+  - AirlockGlassShuttleSyndicate
+  - AirlockExternalGlassShuttleSyndicateLocked
+  - AirlockExternalGlassShuttleNukeopLocked
+
+# Xeno
+- type: stylishPreset
+  parent: BaseStylishAirlockOld
+  id: StylishAirlocksXenoOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/exo-base.rsi
+  entities:
+  - AirlockXeno
+  - AirlockXenoMaintLocked
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-exo.rsi
+
+- type: stylishPreset
+  parent: StylishAirlocksXenoOld
+  id: StylishAirlocksXenoGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/exo-base.rsi
+  entities:
+  - AirlockGlassXeno
+
+# Firelock
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishFirelocksOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/firelock-base.rsi
+  entities:
+  - Firelock
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-firelock.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-firelock.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-freezer.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-firelock.rsi
+    enum.FirelockVisualLayersPressure.Base: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-firelock.rsi
+    enum.FirelockVisualLayersTemperature.Base: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects-firelock.rsi
+
+- type: stylishPreset
+  parent: StylishFirelocksOld
+  id: StylishFirelocksGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/firelock-base.rsi
+  entities:
+  - FirelockGlass

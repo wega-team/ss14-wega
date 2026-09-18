@@ -151,3 +151,4 @@
     mode: NoSprite
   - type: StructureAligner
   - type: StructureAlignerPylon
+  - type: StylishSprite # Corvax-Wega-Stylish

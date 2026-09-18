@@ -51,6 +51,7 @@
     pylons:
     - Door
     - Firelock
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   id: PlastitaniumWindowSquareBase

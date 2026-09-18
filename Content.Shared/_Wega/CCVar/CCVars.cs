@@ -1,3 +1,4 @@
+using Content.Shared.Visuals;
 using Robust.Shared.Configuration;
 
 namespace Content.Shared.CCVar;
@@ -8,6 +9,7 @@ public sealed partial class WegaCVars
     /*
         Ghost Respawn CVars
     */
+
     /// <summary>
     /// Whether or not respawning is enabled.
     /// </summary>
@@ -23,6 +25,7 @@ public sealed partial class WegaCVars
     /*
         Barks CVars
     */
+
     /// <summary>
     /// Responsible for turning on and off the bark system.
     /// </summary>
@@ -38,6 +41,7 @@ public sealed partial class WegaCVars
     /*
         Night Light System CVars
     */
+
     /// <summary>
     /// Responsible for switching the night light system.
     /// </summary>
@@ -65,6 +69,7 @@ public sealed partial class WegaCVars
     /*
         Sound insulation CVars
     */
+
     /// <summary>
     /// If you enable this mode, it will process the sound with sound isolation.
     /// </summary>
@@ -74,6 +79,7 @@ public sealed partial class WegaCVars
     /*
         Vote CVars
     */
+
     /// <summary>
     /// If enabled forcibly, it will trigger a vote for the mode at the end of the round.
     /// </summary>
@@ -83,6 +89,7 @@ public sealed partial class WegaCVars
     /*
         Ic Flavors
     */
+
     /// <summary>
     ///     Sets the maximum length for OOC flavor text.
     /// </summary>
@@ -134,6 +141,7 @@ public sealed partial class WegaCVars
     /*
         Lavaland CVars
     */
+
     public static readonly CVarDef<bool> LavalandEnabled =
         CVarDef.Create("lavaland.enabled", false, CVar.SERVERONLY);
 
@@ -155,4 +163,10 @@ public sealed partial class WegaCVars
 
     public static readonly CVarDef<bool> PostProcess =
         CVarDef.Create("graphics.post_process", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    ///     Sets which texture style format will be used. <see cref="StylishType"/>
+    /// </summary>
+    public static readonly CVarDef<int> StylishVisual =
+        CVarDef.Create("graphics.stylish_visual", (int)StylishType.Current, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

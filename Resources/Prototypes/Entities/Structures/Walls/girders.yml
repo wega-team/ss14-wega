@@ -20,6 +20,7 @@
         layer:
         - GlassAirlockLayer
   - type: InteractionOutline
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   parent: [ BaseGirder, StructureHealthBarrier ]

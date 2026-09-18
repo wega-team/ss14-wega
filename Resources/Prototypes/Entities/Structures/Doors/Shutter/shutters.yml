@@ -101,6 +101,7 @@
   - type: StructureAlignerPylon
   - type: SoundInsulator # Corvax-Wega-SoundInsolation
     insulationFactor: 0.4 # Corvax-Wega-SoundInsolation
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   id: ShuttersNormal

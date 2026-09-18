@@ -97,6 +97,7 @@
   - type: Construction
     graph: Grille
     node: grille
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 ### DIAGONAL
 - type: entity
@@ -179,3 +180,4 @@
       - !type:PlaySoundBehavior
         sound:
           path: "/Audio/Weapons/grille_hit.ogg"
+  - type: StylishSprite # Corvax-Wega-Stylish

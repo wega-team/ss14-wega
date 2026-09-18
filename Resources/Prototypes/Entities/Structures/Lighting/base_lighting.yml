@@ -54,6 +54,7 @@
         - TabletopMachineLayer
   - type: PlacementReplacement
     key: lights
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   abstract: true

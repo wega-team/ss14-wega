@@ -45,3 +45,4 @@
         layer:
         - HighImpassable
         - MidImpassable
+  - type: StylishSprite # Corvax-Wega-Stylish

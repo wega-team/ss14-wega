@@ -48,5 +48,6 @@
   - type: Construction
     graph: Airlock
     node: assembly
+  - type: StylishSprite # Corvax-Wega-Stylish
   placement:
     mode: SnapgridCenter
