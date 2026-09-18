@@ -1,0 +1,173 @@
+# Basic
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsSolidOld
+  rsiPath: _Wega/Stylish/Old/Walls/solid.rsi
+  entities:
+  - WallReinforced
+  - WallSolid
+  - Girder
+  - ReinforcedGirder
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsSolidRustOld
+  rsiPath: _Wega/Stylish/Old/Walls/solid-rust.rsi
+  entities:
+  - WallReinforcedRust
+  - WallSolidRust
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsReinforcedDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/reinforced_diagonal.rsi
+  entities:
+  - WallReinforcedDiagonal
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsSolidDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/solid_diagonal.rsi
+  entities:
+  - WallSolidDiagonal
+
+# Brick
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsBrickOld
+  rsiPath: _Wega/Stylish/Old/Walls/brick.rsi
+  entities:
+  - WallBrick
+
+# Brass
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsBrassOld
+  rsiPath: _Wega/Stylish/Old/Walls/brass.rsi
+  entities:
+  - WallBrass
+
+# Meat
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsMeatOld
+  rsiPath: _Wega/Stylish/Old/Walls/meat.rsi
+  entities:
+  - WallMeat
+
+# Gold
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsGoldOld
+  rsiPath: _Wega/Stylish/Old/Walls/gold.rsi
+  entities:
+  - WallGold
+
+# Plasma
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsPlasmaOld
+  rsiPath: _Wega/Stylish/Old/Walls/plasma.rsi
+  entities:
+  - WallPlasma
+
+# Plastitanium
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsPlastitaniumOld
+  rsiPath: _Wega/Stylish/Old/Walls/plastitanium.rsi
+  entities:
+  - WallPlastitaniumIndestructible
+  - WallPlastitanium
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsPlastitaniumDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/plastitanium-diagonal.rsi
+  entities:
+  - WallPlastitaniumDiagonal
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsSilverOld
+  rsiPath: _Wega/Stylish/Old/Walls/silver.rsi
+  entities:
+  - WallSilver
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsShuttleOld
+  rsiPath: _Wega/Stylish/Old/Walls/shuttle.rsi
+  entities:
+  - WallShuttle
+
+# Xeno
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsChitinOld
+  rsiPath: _Wega/Stylish/Old/Walls/exo.rsi
+  entities:
+  - WallSolidChitin
+  - WallReinforcedChitin
+
+# Xenoborg
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsXenoborgOld
+  rsiPath: _Wega/Stylish/Old/Walls/exo-borg.rsi
+  entities:
+  - WallXenoborg
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsXenoborgDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/exo-borg-diagonal.rsi
+  entities:
+  - WallXenoborgDiagonal
+
+# Uranium
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsUraniumOld
+  rsiPath: _Wega/Stylish/Old/Walls/uranium.rsi
+  entities:
+  - WallUranium
+
+# Wood
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsWoodOld
+  rsiPath: _Wega/Stylish/Old/Walls/wood.rsi
+  entities:
+  - WallWood
+
+# Web
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsWebOld
+  rsiPath: _Wega/Stylish/Old/Walls/web.rsi
+  entities:
+  - WallWeb
+
+# Mining
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsMiningOld
+  rsiPath: _Wega/Stylish/Old/Walls/mining.rsi
+  entities:
+  - WallMining
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsMiningDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/mining-diagonal.rsi
+  entities:
+  - WallMiningDiagonal
+
+# Card
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsCardOld
+  rsiPath: _Wega/Stylish/Old/Walls/card.rsi
+  entities:
+  - Cardwall

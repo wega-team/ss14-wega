@@ -166,6 +166,7 @@
     - Firelock
   - type: SoundInsulator # Corvax-Wega-SoundInsolation
     insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   id: Firelock

@@ -57,6 +57,7 @@
     key: walls
   - type: StructureAligner
   - type: StructureAlignerPylon
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   abstract: true

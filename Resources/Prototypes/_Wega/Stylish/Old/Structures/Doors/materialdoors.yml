@@ -1,0 +1,48 @@
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorPlasmaOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/plasma-door.rsi
+  entities:
+  - PlasmaDoor
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorGoldOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/gold-door.rsi
+  entities:
+  - GoldDoor
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorSilverOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/silver-door.rsi
+  entities:
+  - SilverDoor
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorWoodOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/wood-door.rsi
+  entities:
+  - WoodDoor
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorPaperOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/paper-door.rsi
+  entities:
+  - PaperDoor
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorWebOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/web-door.rsi
+  entities:
+  - WebDoor
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: StylishDoorCardOld
+  rsiPath: _Wega/Stylish/Old/Doors/MaterialDoors/card-door.rsi
+  entities:
+  - CardDoor

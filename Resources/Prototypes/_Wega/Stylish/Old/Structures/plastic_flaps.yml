@@ -1,0 +1,9 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishPlasticFlapsOld
+  rsiPath: _Wega/Stylish/Old/Specific/plastic-flaps.rsi
+  entities:
+  - PlasticFlapsClear
+  - PlasticFlapsOpaque
+  - PlasticFlapsAirtightClear
+  - PlasticFlapsAirtightOpaque

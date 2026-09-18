@@ -1,0 +1,16 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallmountsCameraOld
+  offset: 0, -0.05
+  rsiPath: _Wega/Stylish/Old/Wallmounts/camera.rsi
+  entities:
+  - SurveillanceCameraConstructed
+  - SurveillanceCameraEngineering
+  - SurveillanceCameraSecurity
+  - SurveillanceCameraScience
+  - SurveillanceCameraSupply
+  - SurveillanceCameraCommand
+  - SurveillanceCameraService
+  - SurveillanceCameraMedical
+  - SurveillanceCameraGeneral
+  - SurveillanceCameraAssembly

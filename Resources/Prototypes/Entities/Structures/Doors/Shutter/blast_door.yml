@@ -64,6 +64,8 @@
     mode: NoSprite
   - type: PlacementReplacement
     key: blastdoors
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+    insulationFactor: 1 # Corvax-Wega-SoundInsolation
 
 - type: entity
   parent: BlastDoor

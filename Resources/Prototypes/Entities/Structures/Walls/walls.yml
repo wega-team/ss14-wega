@@ -51,6 +51,7 @@
   - type: BlockWeather
   - type: SunShadowCast
   - type: SoundInsulator # Corvax-Wega-SoundInsolation
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   abstract: true
