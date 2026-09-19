@@ -1,6 +1,9 @@
 [game]
 contraband_examine = false
 
+[net]
+connection_timeout = 60.0
+
 [admin]
 admins_count_in_playercount = true
 
