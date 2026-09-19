@@ -1,5 +1,18 @@
 - type: entity
   parent: ClothingNeckBase
+  id: ClothingNeckHangedMan
+  name: noose
+  description: A tight noose of cables. There is no getting comfortable in this.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Neck/Cloaks/hangedman.rsi
+  - type: Clothing
+    # Taking the noose off yourself takes a while.
+    unequipDelay: 5
+  - type: HangedMan
+
+- type: entity
+  parent: ClothingNeckBase
   id: ClothingNeckCloakChaplainBlack
   name: chaplain black cloak
   description: "Reflects your faith and determination to beat the undead."
