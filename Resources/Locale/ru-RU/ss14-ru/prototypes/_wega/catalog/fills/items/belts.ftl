@@ -14,3 +14,5 @@ ent-ClothingBeltSheathChaplinFilled = { ent-ClothingBeltSheathChaplin }
 ent-ClothingBeltSheathChaplinFilledERT = { ent-ClothingBeltSheathChaplin }
     .suffix = Заполненый, ОБР
     .desc = { ent-ClothingBeltSheathChaplin.desc }
+ent-ClothingBeltHolsterFilledChaplain = пояс священного вооружения
+    .desc = Наплечная кобура от богов. Содержит два пистолета.
