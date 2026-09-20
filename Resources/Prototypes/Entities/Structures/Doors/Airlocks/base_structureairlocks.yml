@@ -158,6 +158,8 @@
     price: 150
   - type: StructureAligner
   - type: StructureAlignerPylon
+  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   parent: [ BaseAirlockIndestructible, StructureHealthDoor ]
@@ -215,8 +217,6 @@
     - Airlocks
     - WirePanels
     - Networking
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   abstract: true

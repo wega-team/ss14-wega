@@ -76,6 +76,7 @@
   categories:
   - UplinkWeaponry
   # Corvax-Wega-Syndi-start
+  conditions:
   - !type:StoreWhitelistCondition
     blacklist:
       tags:

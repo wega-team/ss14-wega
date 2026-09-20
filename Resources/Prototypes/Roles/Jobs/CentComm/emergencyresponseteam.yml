@@ -25,24 +25,23 @@
     head: ClothingHeadHelmetERTLeader
     outerClothing: ClothingOuterArmorBasic
     pocket2: FlashlightSeclite
-    # Corvax-Wega-ERT-start
-    underwearbottom: ClothingUnderBottomHearts
+    underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+  # Corvax-Wega-ERT-start
   storage:
     back:
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
-    # Corvax-Wega-ERT-end
+  # Corvax-Wega-ERT-end
 
 - type: startingGear
   id: ERTLeaderGearEVA
   equipment:
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
-    # Corvax-Wega-ERT-start
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingERTHud # Corvax-Wega-ERT
@@ -57,11 +56,12 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
     - EmergencyMedipen
     # Corvax-Wega-ERT-end
@@ -70,17 +70,17 @@
   parent: ERTLeaderGearEVA
   id: ERTLeaderGearArmed
   equipment:
-    # Corvax-Wega-ERT-start
     pocket2: WeaponDisabler # Corvax-Wega
     suitstorage: WeaponRifleLecterXL8 # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
     - BoxZiptie
-    - CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - MagazineMagnum
     - EmergencyMedipen
     # Corvax-Wega-ERT-end
@@ -122,17 +122,15 @@
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHatFez
     neck: ClothingNeckStoleChaplain
-    outerClothing: ClothingOuterArmorBasic
-    pocket2: FlashlightSeclite
-    # Corvax-Wega-ERT-start
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorBasicSlim
-    id: ERTChaplainPDA
-    ears: ClothingHeadsetAltCentCom
-    belt: ClothingBeltSheathChaplinFilledERT
-    pocket1: WeaponPistolMk58
-    pocket2: DrinkWaterBottleFull
-    underwearbottom: ClothingUnderBottomHearts
+    outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
+    gloves: ClothingHandsGlovesCombat # Corvax-Wega
+    id: ERTChaplainPDA # Corvax-Wega
+    ears: ClothingHeadsetAltCentCom # Corvax-Wega
+    belt: ClothingBeltSheathChaplinFilledERT # Corvax-Wega
+    pocket1: WeaponPistolMk58 # Corvax-Wega
+    pocket2: DrinkWaterBottleFull # Corvax-Wega
+    underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+  # Corvax-Wega-ERT-start
   storage:
     back:
     - BoxCandle
@@ -144,18 +142,17 @@
     - Lantern
     - Lantern
     - Bible
-    - CombatCrowbar
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - FoodBakedBunHotX
     - Lighter
-    # Corvax-Wega-ERT-end
+  # Corvax-Wega-ERT-end
 
 - type: startingGear
   id: ERTChaplainGearEVA
   equipment:
-    # Corvax-Wega-ERT-start
     jumpsuit: ClothingUniformJumpsuitERTChaplain
     back: ClothingBackpackERTChaplain
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
@@ -171,6 +168,7 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - BoxCandle
     - DrinkWaterBottleFull
     - DrinkWaterBottleFull
@@ -223,18 +221,16 @@
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTEngineer
-    outerClothing: ClothingOuterArmorBasic
-    pocket2: FlashlightSeclite
-    # Corvax-Wega-ERT-start
+    outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesCombat # Corvax-Wega
-    outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     id: ERTEngineerPDA # Corvax-Wega
     ears: ClothingHeadsetAltCentCom # Corvax-Wega
     belt: ClothingBeltChiefEngineerFilled # Corvax-Wega
     pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: GasAnalyzer # Corvax-Wega
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+  # Corvax-Wega-ERT-start
   storage:
     back:
     - trayScanner
@@ -249,12 +245,11 @@
     - SheetPlasteel
     - SheetSteel
     - SheetGlass
-    # Corvax-Wega-ERT-end
+  # Corvax-Wega-ERT-end
 
 - type: startingGear
   id: ERTEngineerGearEVA
   equipment:
-    # Corvax-Wega-ERT-start
     jumpsuit: ClothingUniformJumpsuitERTEngineer
     back: ClothingBackpackERTEngineer
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
@@ -270,6 +265,7 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - trayScanner
     - CombatRCDExperimental
     - BorgGeneratorMaterialSteal
@@ -337,21 +333,20 @@
     head: ClothingHeadHelmetERTSecurity
     outerClothing: ClothingOuterArmorBasic
     pocket2: FlashlightSeclite
-    # Corvax-Wega-ERT-start
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+  # Corvax-Wega-ERT-start
   storage:
     back:
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - CombatCrowbar
-    - MagazinePistol
-    # Corvax-Wega-ERT-end
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    - MagazinePistol # Corvax-Wega-ERT
+  # Corvax-Wega-ERT-end
 
 - type: startingGear
   id: ERTSecurityGearEVA
   equipment:
-    # Corvax-Wega-ERT-start
     jumpsuit: ClothingUniformJumpsuitERTSecurity
     back: ClothingBackpackERTSecurity
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
@@ -367,20 +362,20 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
-    - CombatCrowbar
-    - MagazinePistol
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    - MagazinePistol # Corvax-Wega-ERT
     - EmergencyMedipen
     # Corvax-Wega-ERT-end
 
 - type: startingGear
   id: ERTSecurityGearArmedRifle
   equipment:
-    # Corvax-Wega-ERT-start
     jumpsuit: ClothingUniformJumpsuitERTSecurity
-    back: ClothingBackpackERTSecurity
+    back: ClothingBackpackERTSecurity # Corvax-Wega
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
     mask: ClothingMaskGasERT
     eyes: ClothingERTHud # Corvax-Wega-ERT
@@ -392,14 +387,15 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - WeaponDisabler
     - MedicatedSuture
     - RegenerativeMesh
     - WeaponRifleLecter
     - MagazineRifle
     - MagazineRifle
-    - CombatCrowbar
-    - MagazinePistol
+    - CombatCrowbar # Corvax-Wega-CombatCrowbar
+    - MagazinePistol # Corvax-Wega-ERT
     - EmergencyMedipen
     # Corvax-Wega-ERT-end
 
@@ -519,18 +515,16 @@
   equipment:
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHeadHelmetERTMedic
-    outerClothing: ClothingOuterArmorBasic
-    pocket2: FlashlightSeclite
-    # Corvax-Wega-ERT-start
+    outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     eyes: ClothingERTHud # Corvax-Wega-ERT
     gloves: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
-    outerClothing: ClothingOuterArmorBasicSlim # Corvax-Wega
     id: ERTMedicPDA # Corvax-Wega
     ears: ClothingHeadsetAltCentCom # Corvax-Wega
     belt: ClothingBeltMedicalFilled # Corvax-Wega
     pocket1: WeaponPistolMk58 # Corvax-Wega
     pocket2: Hypospray # Corvax-Wega-ERT
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
+  # Corvax-Wega-ERT-start
   storage:
     back:
     - SurgerykitFilledPro
@@ -540,12 +534,11 @@
     - ChemistryBottleOmnizine
     - ChemistryBottleEpinephrine
     - ChemistryBottleEpinephrine
-    # Corvax-Wega-ERT-end
+  # Corvax-Wega-ERT-end
 
 - type: startingGear
   id: ERTMedicalGearEVA
   equipment:
-    # Corvax-Wega-ERT-start
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedical
     shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
@@ -561,6 +554,7 @@
     underwearbottom: ClothingUnderBottomHearts # Corvax-Wega
   storage:
     back:
+    # Corvax-Wega-ERT-start
     - SurgerykitFilledPro
     - SyringeBluespace
     - MedkitCombatFilled
@@ -569,6 +563,34 @@
     - ChemistryBottleEpinephrine
     - ChemistryBottleEpinephrine
     # Corvax-Wega-ERT-end
+
+- type: startingGear
+  parent: ERTMedicalGearEVA
+  id: ERTMedicalGearArmed
+  equipment:
+    suitstorage: WeaponRifleLecter
+    pocket2: WeaponDisabler
+  storage:
+    back:
+    - Hypospray
+    - JugPunctTranex
+    - JugPyraDerma
+    - JugDexPlusSaline
+    - JugTrico # End of first line
+    - BeakerSmallArith
+    - DefibrillatorCompact
+    - MedkitCombatFilled
+    - ClothingEyesGlassesChemical
+    - ChemistryBottleOmnizine
+    - Truncheon
+    belt:
+    - Zipties
+    - CrowbarRed
+    - MagazineRifle
+    - MagazineRifle
+    - MagazineRifleIncendiary
+    - MagazineRifleUranium # End of first line
+    - Zipties
 
 - type: chameleonOutfit
   id: ERTMedicalChameleonOutfit

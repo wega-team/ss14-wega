@@ -3,7 +3,6 @@ using System.Numerics;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
-using Content.Server.Station.Systems; // Corvax-Wega-GhostBar
 using Content.Server.Mind;
 using Content.Server.Roles.Jobs;
 using Content.Shared.Actions;
@@ -47,9 +46,9 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Content.Shared.Traits; // Corvax-Wega-GhostBar
 using Content.Shared.Hands.Components; // Corvax-Wega-GhostBar
-using Content.Shared.Hands.EntitySystems; // Corvax-Wega-GhostBar
+using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Station.Systems; // Corvax-Wega-GhostBar
 using Content.Shared.Whitelist; // Corvax-Wega-GhostBar
 
 namespace Content.Server.Ghost

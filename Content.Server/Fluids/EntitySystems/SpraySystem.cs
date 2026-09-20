@@ -139,7 +139,7 @@ public sealed partial class SpraySystem : SharedSpraySystem
         _audio.PlayPvs(entity.Comp.SpraySound, entity, entity.Comp.SpraySound.Params.WithVariation(0.125f));
         _popupSystem.PopupEntity(Loc.GetString("spray-self-message", ("user", user)), user, user);
 
-        _useDelay.TryResetDelay(entity);
+        _useDelay.TryResetDelay(entity.Owner);
     }
 
     private void CreateSelfVapor(Entity<SprayComponent> entity, EntityUid user, Solution selfSolution)

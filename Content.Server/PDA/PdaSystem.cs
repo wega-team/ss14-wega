@@ -134,15 +134,6 @@ namespace Content.Server.PDA
             UpdatePdaUi(uid, pda);
         }
 
-        public void SetOwner(EntityUid uid, PdaComponent pda, EntityUid owner, string ownerName)
-        {
-            pda.OwnerName = ownerName;
-            pda.PdaOwner = owner;
-            var ev = new OwnerNameChangedEvent(); // Corvax-Wega-NanoChat
-            RaiseLocalEvent(uid, ref ev); // Corvax-Wega-NanoChat
-            UpdatePdaUi(uid, pda);
-        }
-
         private void OnStationRenamed(StationRenamedEvent ev)
         {
             UpdateAllPdaUisOnStation();
@@ -353,6 +344,3 @@ namespace Content.Server.PDA
         }
     }
 }
-
-[ByRefEvent] // Corvax-Wega-NanoChat
-public record struct OwnerNameChangedEvent(); // Corvax-Wega-NanoChat

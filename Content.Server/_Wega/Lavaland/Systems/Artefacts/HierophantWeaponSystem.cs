@@ -6,7 +6,7 @@ using Content.Shared.Lavaland.Events;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Random;

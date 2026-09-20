@@ -32,7 +32,7 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
     protected override void Started(EntityUid uid, RadiationOutburstRuleComponent component,
         GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
-        if (!TryGetRandomStation(out var station))
+        if (!Station.TryGetRandomStation(out var station))
             return;
 
         var candidates = new List<EntityUid>();
@@ -41,7 +41,7 @@ public sealed partial class RadiationOutburstRuleSystem : StationEventSystem<Rad
         while (query.MoveNext(out var targetUid, out _, out var xform))
         {
             // не на обломке каком-нибудь
-            if (StationSystem.GetOwningStation(targetUid, xform) != station)
+            if (Station.GetOwningStation(targetUid, xform) != station.Value.Owner)
                 continue;
 
             // анти вещи плееров

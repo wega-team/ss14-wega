@@ -96,7 +96,12 @@ namespace Content.Shared.PDA
         {
             pda.OwnerName = ownerName;
             pda.PdaOwner = owner;
+            var ev = new OwnerNameChangedEvent(); // Corvax-Wega-NanoChat
+            RaiseLocalEvent(uid, ref ev); // Corvax-Wega-NanoChat
             UpdatePdaUi(uid, pda);
         }
     }
+
+    [ByRefEvent] // Corvax-Wega-NanoChat
+    public record struct OwnerNameChangedEvent(); // Corvax-Wega-NanoChat
 }

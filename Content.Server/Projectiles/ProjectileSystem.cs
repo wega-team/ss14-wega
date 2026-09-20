@@ -63,7 +63,12 @@ public sealed partial class ProjectileSystem : SharedProjectileSystem
 
         if (_damageableSystem.TryChangeDamage((target, damageableComponent), ev.Damage, out var damage, component.IgnoreResistances, origin: component.Shooter))
         {
-            _dirt.AddBloodDirtFromDamage(target, component.Shooter.Value, damage, true); // Corvax-Wega-Dirtable
+            // Corvax-Wega-Dirtable-start
+            if (component.Shooter != null)
+            {
+                _dirt.AddBloodDirtFromDamage(target, component.Shooter.Value, damage, true);
+            }
+            // Corvax-Wega-Dirtable-end
 
             if (!Deleted(target))
             {
