@@ -43,7 +43,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpsuit/centcom_admiral.rsi
 
 - type: entity
-  parent: ClothingUniformBase
+  parent: [BaseCorvaxContraband431JobsCaptain, ClothingUniformBase] # Corvax-Contraband
   id: ClothingUniformJumpsuitCapTurtleneck
   name: captain's turtleneck
   description: True captain's turtleneck.
@@ -54,7 +54,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpsuit/cap_turtleneck.rsi
 
 - type: entity
-  parent: ClothingUniformToggleableBase
+  parent: [BaseCorvaxContraband431JobsHeadOfPersonnel, ClothingUniformToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitHoPTurtleneck
   name: head of personal's turtleneck
   description: It's Head of Personal's turtleneck.
@@ -65,7 +65,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpsuit/hop_turtleneck.rsi
 
 - type: entity
-  parent: [ ClothingUniformToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431JobsHeadOfSecurity, ClothingUniformToggleableBase, ClothingSecurityUniformBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitHoSBlack
   name: head of security's black suit
   description: It's Head of Security's black suit.
@@ -76,7 +76,7 @@
       sprite: Corvax/Clothing/Uniforms/Jumpsuit/hos_black.rsi
 
 - type: entity
-  parent: ClothingUniformToggleableBase
+  parent: [BaseCorvaxContraband431JobsResearchDirector, ClothingUniformToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitRDClassical
   name: research director's classical suit
   description: It's Research Director's сlassical suit.

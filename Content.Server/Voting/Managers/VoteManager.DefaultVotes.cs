@@ -1,16 +1,15 @@
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using Content.Server.Administration;
 using Content.Server.Administration.Managers;
 using Content.Server.Discord.WebhookMessages;
 using Content.Server.GameTicking;
-using Content.Server.GameTicking.Presets;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Prototypes;
 using Content.Shared.Maps;
 using Content.Shared.Players;
 using Content.Shared.Players.PlayTimeTracking;
@@ -33,7 +32,7 @@ namespace Content.Server.Voting.Managers
         private List<string> _lastPickedMaps = new(); // Corvax-Wega-Vote
         private VotingSystem? _votingSystem;
         private RoleSystem? _roleSystem;
-        private GameTicker? _gameTicker;
+        private ServerGameTicker? _gameTicker;
 
         private static readonly Dictionary<StandardVoteType, CVarDef<bool>> VoteTypesToEnableCVars = new()
         {
@@ -52,7 +51,7 @@ namespace Content.Server.Voting.Managers
             else
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Initiated a {voteType.ToString()} vote");
 
-            _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+            _gameTicker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
 
             bool timeoutVote = true;
 
@@ -278,7 +277,7 @@ namespace Content.Server.Voting.Managers
                     _lastPickedPresets.RemoveAt(0);
                 // Corvax-Wega-Vote-end
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Preset vote finished: {picked}");
-                var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+                var ticker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
                 ticker.SetGamePreset(picked);
             };
         }
@@ -331,7 +330,7 @@ namespace Content.Server.Voting.Managers
                 }
 
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Map vote finished: {picked.MapName}");
-                var ticker = _entityManager.EntitySysManager.GetEntitySystem<GameTicker>();
+                var ticker = _entityManager.EntitySysManager.GetEntitySystem<ServerGameTicker>();
                 if (ticker.CanUpdateMap())
                 {
                     if (_gameMapManager.CheckMapExists(picked.ID))

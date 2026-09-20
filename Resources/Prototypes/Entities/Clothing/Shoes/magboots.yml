@@ -45,7 +45,7 @@
   # Corvax-Wega-Dirtable-end
 
 - type: entity
-  parent: [ClothingShoesBootsMagBase]
+  parent: [BaseCorvaxContraband431DepartmentsEngineering, ClothingShoesBootsMagBase] # Corvax-Contraband
   id: ClothingShoesBootsMag
 
 - type: entity
@@ -76,7 +76,7 @@
     disabledAutoOff: true # Corvax-Wega-AdvMagboots
 
 - type: entity
-  parent: [ClothingShoesBootsMagBase]
+  parent: [BaseCorvaxContraband431DepartmentsScience, ClothingShoesBootsMagBase] # Corvax-Contraband
   id: ClothingShoesBootsMagSci
   components:
   - type: Sprite
@@ -99,7 +99,7 @@
     price: 3000
 
 - type: entity
-  parent: [ClothingShoesBootsMagBase, BaseJetpack, BaseSyndicateContraband]
+  parent: [ClothingShoesBootsMagBase, BaseJetpack] # Corvax-Contraband BaseSyndicateContraband
   id: ClothingShoesBootsMagSyndie
   name: blood-red magboots
   description: Reverse-engineered from ERT magboots, they have a heavy magnetic pull and integrated thrusters. It can hold 0.75 L of gas.
@@ -139,12 +139,10 @@
     sprite: Clothing/Shoes/Boots/magboots-ert.rsi
 
 - type: entity
-  parent: BaseAction
+  parent: BaseToggleAction
   id: ActionToggleMagboots
   name: Toggle Magboots
   description: Toggles the magboots on and off.
   components:
   - type: Action
     itemIconStyle: BigItem
-  - type: InstantAction
-    event: !type:ToggleActionEvent

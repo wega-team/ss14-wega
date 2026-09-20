@@ -6,7 +6,7 @@
   flavor: bitter
   color: "#cf3600"
   physicalDesc: reagent-physical-desc-opaque
-  contrabandSeverity: Minor
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   plantMetabolism:
   - !type:PlantAdjustToxins
     amount: 10
@@ -22,6 +22,7 @@
 
 - type: reagent
   id: CarpoToxin
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-carpotoxin
   group: Toxins
   desc: reagent-desc-carpotoxin
@@ -50,6 +51,7 @@
 
 - type: reagent
   id: ChloralHydrate
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-chloral-hydrate
   group: Toxins
   desc: reagent-desc-chloral-hydrate
@@ -82,6 +84,7 @@
 
 - type: reagent
   id: GastroToxin
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-gastrotoxin
   group: Toxins
   desc: reagent-desc-gastrotoxin
@@ -104,6 +107,7 @@
 
 - type: reagent
   id: Mold
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-mold
   group: Toxins
   desc: reagent-desc-mold
@@ -140,7 +144,7 @@
   group: Toxins
   desc: reagent-desc-polytrinic-acid
   physicalDesc: reagent-physical-desc-strong-smelling
-  contrabandSeverity: Major
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   flavor: acid
   color: "#a1000b"
   boilingPoint: 78.2 # This isn't a real chemical...
@@ -183,6 +187,7 @@
 
 - type: reagent
   id: FerrochromicAcid
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-ferrochromic-acid
   group: Toxins
   desc: reagent-desc-ferrochromic-acid
@@ -208,7 +213,7 @@
   group: Toxins
   desc: reagent-desc-fluorosulfuric-acid
   physicalDesc: reagent-physical-desc-strong-smelling
-  contrabandSeverity: Minor
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   flavor: acid
   color: "#5050ff"
   boilingPoint: 165
@@ -244,6 +249,7 @@
 
 - type: reagent
   id: SulfuricAcid
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-sulfuric-acid
   group: Toxins
   desc: reagent-desc-sulfuric-acid
@@ -293,6 +299,7 @@
 
 - type: reagent
   id: UnstableMutagen
+  contrabandSeverity: Corvax442 # Corvax-Contraband
   name: reagent-name-unstable-mutagen
   group: Toxins
   desc: reagent-desc-unstable-mutagen
@@ -307,6 +314,7 @@
   plantMetabolism:
   - !type:PlantAdjustMutationLevel
     amount: 1
+    mutationTable: RandomPlantMutations
   metabolisms:
     Bloodstream:
       effects:
@@ -328,7 +336,7 @@
   group: Toxins
   desc: reagent-desc-heartbreaker-toxin
   physicalDesc: reagent-physical-desc-strong-smelling
-  contrabandSeverity: Major
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   color: "#5f959c"
   metabolisms:
     Bloodstream:
@@ -347,7 +355,7 @@
   group: Toxins
   desc: reagent-desc-lexorin
   physicalDesc: reagent-physical-desc-pungent
-  contrabandSeverity: Syndicate
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   color: "#6b0007"
   metabolisms:
     Bloodstream:
@@ -360,6 +368,7 @@
 
 - type: reagent
   id: MindbreakerToxin
+  contrabandSeverity: Corvax442 # Corvax-Contraband
   name: reagent-name-mindbreaker-toxin
   group: Toxins
   desc: reagent-desc-mindbreaker-toxin
@@ -380,6 +389,7 @@
 
 - type: reagent
   id: Histamine
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-histamine
   group: Toxins
   desc: reagent-desc-histamine
@@ -450,7 +460,7 @@
   group: Toxins
   desc: reagent-desc-amatoxin
   physicalDesc: reagent-physical-desc-nondescript
-  contrabandSeverity: Major
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   color: "#D6CE7B"
   metabolisms:
     Bloodstream:
@@ -463,6 +473,7 @@
 
 - type: reagent
   id: VentCrud
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-vent-crud
   group: Toxins
   desc: reagent-desc-vent-crud
@@ -488,7 +499,7 @@
   group: Toxins
   desc: reagent-desc-romerol
   physicalDesc: reagent-physical-desc-necrotic
-  contrabandSeverity: Syndicate
+  contrabandSeverity: Corvax436 # Corvax-Contraband
   flavor: bitter
   color: "#7e916e"
   worksOnTheDead: true
@@ -620,7 +631,7 @@
   group: Toxins
   desc: reagent-desc-lead
   physicalDesc: reagent-physical-desc-metallic
-  contrabandSeverity: Major
+  contrabandSeverity: Corvax442 # Corvax-Contraband
   color: "#5C6274"
   metabolisms:
     Bloodstream:
@@ -637,7 +648,7 @@
   group: Toxins
   desc: reagent-desc-bungotoxin
   physicalDesc: reagent-physical-desc-nondescript
-  contrabandSeverity: Major
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   color: "#EBFF8E"
   metabolisms:
     Bloodstream:
@@ -654,12 +665,13 @@
   group: Toxins
   desc: reagent-desc-vestine
   physicalDesc: reagent-physical-desc-shiny
-  contrabandSeverity: Syndicate
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   flavor: medicine
   color: "#435166"
   plantMetabolism:
-  - !type:PlantMutateChemicals
-    randomPickBotanyReagent: EvilRandomFillSolution
+  - !type:PlantAdjustMutationLevel
+    amount: 1
+    mutationTable: EvilPlantMutations
   - !type:PlantAdjustToxins
     amount: 10
   metabolisms:
@@ -685,7 +697,7 @@
   group: Toxins
   desc: reagent-desc-tazinide
   physicalDesc: reagent-physical-desc-metallic
-  contrabandSeverity: Syndicate
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   flavor: shocking
   color: "#FDD023"
   metabolisms:
@@ -698,6 +710,7 @@
 
 - type: reagent
   id: Lipolicide
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-lipolicide
   group: Toxins
   desc: reagent-desc-lipolicide
@@ -725,6 +738,7 @@
 # poisons non-spiders and slows you down at high doses
 - type: reagent
   id: Mechanotoxin
+  contrabandSeverity: Corvax444 # Corvax-Contraband
   name: reagent-name-mechanotoxin
   group: Toxins
   desc: reagent-desc-mechanotoxin
@@ -890,3 +904,33 @@
       - !type:Emote
         emote: Scream
         probability: 0.1
+
+- type: reagent
+  id: HardlightToxin
+  name: reagent-name-hardlight-toxin
+  group: Toxins
+  desc: reagent-desc-hardlight-toxin
+  evaporationSpeed: 100 # Dissolves basically instantly if you *somehow* spill it
+  color: "#00FF00"
+  physicalDesc: reagent-physical-desc-glowing
+  contrabandSeverity: Syndicate
+  metabolisms:
+    Bloodstream: # TODO Make this a metabolite!!!
+      metabolismRate: 2.5 # It's basically pure energy so it metabolizes very fast
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: 1
+      - !type:StaminaDamage
+        damage: 10
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectKnockdown
+        time: 1.5
+        delay: 2.5
+      - !type:MovementSpeedModifier
+        effectProto: TaserSlowdownStatusEffect
+        time: 1.5
+        delay: 2.5
+        walkSpeedModifier: 0.5
+        sprintSpeedModifier: 0.5

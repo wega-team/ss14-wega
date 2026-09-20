@@ -1,4 +1,4 @@
-﻿using Content.Shared.Drunk;
+using Content.Shared.Drunk;
 using Content.Shared.Genetics; // Corvax-Wega-Genetics
 using Robust.Shared.Prototypes;
 

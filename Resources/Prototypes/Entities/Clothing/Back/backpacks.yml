@@ -288,7 +288,7 @@
 
 #Syndicate
 - type: entity
-  parent: [ClothingBackpack, BaseSyndicateContraband, BaseChameleon] # Corvax-wega-add
+  parent: [ClothingBackpack, BaseChameleon] # Corvax-Wega-Kryche-Edit Chamelion # Corvax-Contraband BaseSyndicateContraband
   id: ClothingBackpackSyndicate
   name: syndicate backpack
   description:

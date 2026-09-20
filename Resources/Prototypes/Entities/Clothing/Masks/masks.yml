@@ -28,7 +28,7 @@
   # Corvax-Wega-Dirtable-end
 
 - type: entity
-  parent: [ClothingMaskGas, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingMaskGas, BaseSecurityContraband] # Corvax-Contraband
   id: ClothingMaskGasSecurity
   name: security gas mask
   description: A standard issue Security gas mask.
@@ -48,7 +48,7 @@
         Heat: 0.95
 
 - type: entity
-  parent: [ClothingMaskGas, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingMaskGas, BaseSyndicateContraband] # Corvax-Contraband
   id: ClothingMaskGasSyndicate
   name: syndicate gas mask
   description: A close-fitting tactical mask that can be connected to an air supply.
@@ -438,7 +438,7 @@
     relayAccent: true
 
 - type: entity
-  parent: [ ClothingMaskGas, BaseSecurityContraband ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingMaskGas, BaseSecurityContraband] # Corvax-Contraband
   id: ClothingMaskGasSwat
   name: swat gas mask
   description: A elite issue Security gas mask.
@@ -774,7 +774,7 @@
   - type: IdentityBlocker
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, WeldingMaskBase]
   id: ClothingMaskWeldingGas
   name: welding gas mask
   description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.
@@ -784,17 +784,14 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
-  - type: PhysicalComposition
-    materialComposition:
-      Steel: 200
-      Glass: 100
   - type: StaticPrice
     price: 100
   - type: Tag
     tags:
     - WhitelistChameleon
+  - type: ImageOverlay
+    pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
+    additionalColorOverlay: "#00000050"
 
 # Entity tables
 - type: entityTable

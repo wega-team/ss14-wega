@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431JobsDetective, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtDetective
   name: hard-worn suitskirt
   description: Someone who wears this means business.
@@ -10,7 +10,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/detective.rsi
 
 - type: entity
-  parent: [ ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431JobsDetective, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtDetectiveGrey
   name: noir suitskirt
   description: A hard-boiled private investigator's grey suit, complete with tie clip.
@@ -21,7 +21,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/detective_grey.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsHeadOfSecurity, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtHoS
   name: head of security's jumpskirt
   description: It's bright red and rather crisp, much like security's victims tend to be.
@@ -46,7 +46,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/hos.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsHeadOfSecurity, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtHoSAlt
   name: head of security's turtleneck
   description: It's a turtleneck worn by those strong and disciplined enough to achieve the position of Head of Security.
@@ -68,7 +68,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/hos_parade.rsi
 
 - type: entity
-  parent: [ ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase ] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431JobsBrigmedic, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtBrigmedic
   name: brigmedic jumpskirt
   description: This uniform is issued to qualified personnel who have been trained. No one cares that the training took half a day.
@@ -122,7 +122,7 @@
     - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsSecurityJobsSecurityOfficer, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtSec
   name: security jumpskirt
   description: A jumpskirt made of strong material, providing robust protection.
@@ -147,7 +147,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/security.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsSecurityJobsWarden, ClothingUniformSkirtToggleableBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Contraband
   id: ClothingUniformJumpskirtWarden
   name: warden's uniform
   description: A formal security suit for officers complete with Nanotrasen belt buckle.
@@ -172,7 +172,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/warden.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsHeadOfSecurity, ClothingUniformSkirtBase, ClothingSecurityUniformBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtHosFormal
   name: hos's formal dress
   description: A dress for special occasions.
@@ -183,7 +183,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/hosformaldress.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsSecurityJobsSecurityOfficerSeniorOfficer, ClothingUniformSkirtBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtSeniorOfficer
   name: senior officer jumpskirt
   description: A sign of skill and prestige within the security department.
@@ -194,7 +194,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Security/senior_officer.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Wega-Edit
+  parent: [BaseCorvaxContraband431DepartmentsSecurityJobsSecurityCadetSecurityOfficer, ClothingUniformSkirtBase, ClothingSecurityUniformBase, BaseSecurityContraband] # Corvax-Contraband + Corvax-Wega
   id: ClothingUniformJumpskirtSecGrey
   name: grey security jumpskirt
   description: A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood.
