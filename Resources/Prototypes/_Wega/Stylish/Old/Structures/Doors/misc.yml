@@ -6,7 +6,7 @@
   - BaseSecretDoorAssembly
 
 - type: stylishPreset
-  parent: BaseStylishDoorOld
+  parent: BaseStylishOld # SecretDoor is rotaded
   id: StylishSecretDoorOld
   rsiPath: _Wega/Stylish/Old/Doors/Misc/secret-door.rsi
   entities:
@@ -21,7 +21,7 @@
   - BaseSecretDoorAssemblyReinforced
 
 - type: stylishPreset
-  parent: BaseStylishDoorOld
+  parent: BaseStylishOld # SecretDoor is rotaded
   id: StylishSecretDoorReinforcedOld
   rsiPath: _Wega/Stylish/Old/Doors/Misc/secret-door-reinf.rsi
   entities:
