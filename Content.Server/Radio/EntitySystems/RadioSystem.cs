@@ -1,8 +1,6 @@
 using Content.Server.Administration.Logs;
 using Content.Shared.Access.Components; // Corvax-Wega
-using Content.Server.Chat.Managers;
 using Content.Server.Chat.Systems;
-using Content.Server.Ghost;
 using Content.Server.Power.Components;
 using Content.Shared.PDA; // Corvax-Wega
 using Content.Shared.Chat;
@@ -30,8 +28,6 @@ public sealed partial class RadioSystem : SharedRadioSystem
     [Dependency] private IAdminLogManager _adminLogger = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private ChatSystem _chat = default!;
-    [Dependency] private IChatManager _chatManager = default!;
-    [Dependency] private GhostSystem _ghost = default!;
     [Dependency] private InventorySystem _inventory = default!; // Corvax-Wega
     [Dependency] private EntityQuery<TelecomExemptComponent> _exemptQuery = default!;
 
@@ -56,25 +52,8 @@ public sealed partial class RadioSystem : SharedRadioSystem
 
     private void OnIntrinsicReceive(EntityUid uid, IntrinsicRadioReceiverComponent component, ref RadioReceiveEvent args)
     {
-        if (!TryComp(uid, out ActorComponent? actor))
-            return;
-
-        var msg = args.ChatMsg;
-        if (_ghost.CanGhostWarp(actor.PlayerSession, out _))
-        {
-            msg = new MsgChatMessage
-            {
-                Message = new ChatMessage(args.ChatMsg.Message)
-                {
-                    WrappedMessage = _chatManager.PrependFollowButtonIfAppropriate(
-                        args.ChatMsg.Message.WrappedMessage,
-                        args.MessageSource,
-                        actor.PlayerSession.Channel),
-                },
-            };
-        }
-
-        _netMan.ServerSendMessage(msg, actor.PlayerSession.Channel);
+        if (TryComp(uid, out ActorComponent? actor))
+            _netMan.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
     }
 
     /// <inheritdoc/>
@@ -88,7 +67,7 @@ public sealed partial class RadioSystem : SharedRadioSystem
         RaiseLocalEvent(messageSource, evt);
 
         var name = evt.VoiceName;
-        name = FormattedMessage.EscapeText(name);
+        name = _chat.ChatNameLinks ? $"[textlink=\"{FormattedMessage.EscapeStringParameter(name)}\" entity=\"{GetNetEntity(messageSource)}\" color=\"{channel.Color.ToHex()}\"]" : FormattedMessage.EscapeText(name);
 
         var job = GetJobName(messageSource); // Corvax-Wega
         var depColor = GetDepartmentColor(messageSource); // Corvax-Wega

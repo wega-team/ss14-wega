@@ -267,7 +267,7 @@ public sealed partial class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
                         maturation: plant.Maturation,
                         dead: holder.Dead,
                         viable: true,
-                        mutating: holder.MutationLevel > 0f,
+                        mutating: holder.MutationMod > 0f,
                         kudzu: false
                     );
 

@@ -182,6 +182,7 @@ SpyCrewMonitorEmpty: null
 SyndiCrewMonitor: null
 SyndiCrewMonitorEmpty: null
 
+# Corvax-Wega-Edit-start
 # SpawnVehicleWheelchair: null
 # SpawnVehicleWheelchairFolded: null
 # VehicleWheelchair: null
@@ -210,6 +211,7 @@ SyndiCrewMonitorEmpty: null
 # SpawnVehicleJanicart: null
 # VehicleJanicart: null
 # VehicleJanicartDestroyed: null
+# Corvax-Wega-Edit-end
 
 # 2024-02-01
 YellowOxygenTank: OxygenTank
@@ -806,7 +808,7 @@ HandheldHealthAnalyzerEmpty: HandheldHealthAnalyzer
 #2026-01-09
 BorgModuleAdvancedChemical: BorgModuleAdvancedTopical
 
-#2026-03-11 - CW
+#2026-03-11 - Corvax-Wega
 SpawnMobSlimeGray: null
 
 # 2026-01-14
@@ -1193,11 +1195,18 @@ DrinkNeurotoxinGlass: null
 FloorAzureWaterEntity: FloorWaterEntity
 XenoborgModuleFireExtinguisher: BorgModuleFireExtinguisher
 LightReplacerEmpty: LightReplacer
+ArmBlade: Armblade # https://github.com/space-wizards/space-station-14/pull/45724/
 
 #2026-08-19
 JanitorServiceLight: null
 
-#2026-09-06 Wega
+#2026-08-31
+DrinkWaterJug: JugWater
+
+#2026-09-05
+AsimovCircuitBoard: CrewsimovCircuitBoard
+
+#2026-09-06 Corvax-Wega
 WallRockBasaltIndestructible: WallRockChromiteIndestructible
 WallRockBasaltLavalandCoal: WallRockChromiteLavalandCoal
 WallRockBasaltLavalandGold: WallRockChromiteLavalandGold

@@ -1,6 +1,5 @@
 ﻿<controls:FancyWindow xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     Title="{Loc 'cell-sequencer-menu-title'}"
     MinSize="750 400">
@@ -12,7 +11,7 @@
                     ToolTip="{Loc 'cell-sequencer-menu-sync-tooltip-info'}"
                     Margin="0 0 0 4" />
 
-            <customControls:HSeparator Margin="0 0 0 4" StyleClasses="LowDivider" />
+            <controls:Separator Margin="0 0 0 4" StyleClasses="LowDivider" />
 
             <Button Name="AddButton"
                     Text="{Loc 'cell-sequencer-menu-add-button'}"
@@ -27,12 +26,12 @@
                     ToolTip="{Loc 'cell-sequencer-replace-tooltip-info'}"
                     Margin="0 0 0 4" />
 
-            <customControls:HSeparator Margin="0 0 0 4" StyleClasses="LowDivider" />
+            <controls:Separator Margin="0 0 0 4" StyleClasses="LowDivider" />
 
             <Label Name="MaterialLabel" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
         </BoxContainer>
 
-        <customControls:VSeparator Margin="4 0" StyleClasses="LowDivider" />
+        <controls:Separator Orientation="Vertical" Margin="4 0" StyleClasses="LowDivider" />
 
         <!-- Selection -->
         <ScrollContainer MinWidth="175" VerticalExpand="True" HorizontalExpand="True">
@@ -43,17 +42,17 @@
 
                 <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
                         <Label Margin="0 0 0 2" Text="{Loc 'cell-sequencer-menu-inside-label'}" HorizontalAlignment="Center" />
-                        <customControls:HSeparator Margin="8 0" StyleClasses="LowDivider" />
+                        <controls:Separator Margin="8 0" StyleClasses="LowDivider" />
                         <BoxContainer Name="InsideCellContainer" Orientation="Vertical" />
 
                         <Label Margin="0 0 0 2" Text="{Loc 'cell-sequencer-menu-remote-label'}" HorizontalAlignment="Center" />
-                        <customControls:HSeparator Margin="8 0" StyleClasses="LowDivider" />
+                        <controls:Separator Margin="8 0" StyleClasses="LowDivider" />
                         <BoxContainer Name="RemoteCellContainer" Orientation="Vertical" />
                 </BoxContainer>
             </PanelContainer>
         </ScrollContainer>
 
-        <customControls:VSeparator Margin="4 0" StyleClasses="LowDivider" />
+        <controls:Separator Orientation="Vertical" Margin="4 0" StyleClasses="LowDivider" />
 
         <!-- Info panel -->
         <BoxContainer Margin="8" MinWidth="175" Orientation="Vertical" VerticalExpand="True">
@@ -66,12 +65,12 @@
 
                 <BoxContainer Name="CellInfoContainer" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="8" Visible="False">
                     <Label Name="CellNameLabel"/>
-                    <customControls:HSeparator Margin="4 0" StyleClasses="LowDivider" />
+                    <controls:Separator Margin="4 0" StyleClasses="LowDivider" />
                     <RichTextLabel Name="CellColorLabel"/>
                     <Label Name="CellStabilityLabel"/>
                     <Label Name="CellRemoteLabel"/>
                     <Label Name="CellCostLabel"/>
-                    <customControls:HSeparator Margin="4 0" StyleClasses="LowDivider" />
+                    <controls:Separator Margin="4 0" StyleClasses="LowDivider" />
                     <Label Text="{Loc 'cell-sequencer-menu-cell-modifiers-label'}"/>
                     <RichTextLabel Name="CellModifiersText" />
                 </BoxContainer>

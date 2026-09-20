@@ -231,7 +231,7 @@
     - id: SheetSteel1
 
 - type: entity
-  parent: ProduceBaseRuminant
+  parent: [ProduceBaseRuminant]
   id: Nettle
   name: nettle
   description: Stingy little prick.
@@ -262,7 +262,7 @@
     grindableSolutionName: food
 
 - type: entity
-  parent: [ ProduceBase, BaseMajorContraband ]
+  parent: [BaseCorvaxContraband432JobsBotanist, ProduceBase, BaseMajorContraband] # Corvax-Contraband
   id: DeathNettle
   name: death nettle
   description: This nettle's out for blood.
@@ -354,8 +354,7 @@
     trash:
     - TrashBananaPeel
   - type: ToolRefinable
-    refineResult:
-    - id: TrashBananaPeel
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -399,8 +398,7 @@
     trash:
     - TrashMimanaPeel
   - type: ToolRefinable
-    refineResult:
-    - id: TrashMimanaPeel
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -1202,8 +1200,7 @@
     trash:
     - FoodCornTrash
   - type: ToolRefinable
-    refineResult:
-    - id: FoodCornTrash #no idea why you'd ever do this, but it's just here for consistency
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -1746,7 +1743,7 @@
   - type: Tag
     tags:
     - Galaxythistle
-    - Fruit # Probably?
+    - Flower
   - type: FoodSequenceElement
     entries:
       Taco: Galaxythistle
@@ -1823,7 +1820,7 @@
 
 - type: entity
   name: fly amanita
-  parent: FoodProduceBase
+  parent: [BaseCorvaxContraband432JobsBotanist, FoodProduceBase] # Corvax-Contraband
   id: FoodFlyAmanita
   description: A delicious-looking mushroom like you see in those cartoons.
   components:
@@ -1856,7 +1853,7 @@
 
 - type: entity
   name: gatfruit
-  parent: [ FoodProduceBase, BaseSyndicateContraband, BaseSlicingRefinable ]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, FoodProduceBase, BaseSyndicateContraband, BaseSlicingRefinable] # Corvax-Contraband
   id: FoodGatfruit
   description: A delicious, gun-shaped fruit with a thick wooden stem.
   components:
@@ -1880,8 +1877,7 @@
     trash:
     - WeaponRevolverPython
   - type: ToolRefinable
-    refineResult:
-    - id: WeaponRevolverPython
+    refineResult: [] # Spawns trash on refine
   - type: Tag
     tags:
     - Fruit # It's in the name
@@ -1918,8 +1914,7 @@
     trash:
     - RevolverCapGun
   - type: ToolRefinable
-    refineResult:
-    - id: RevolverCapGun
+    refineResult: [] # Spawns trash on refine
   - type: Tag
     tags:
     - Fruit
@@ -1940,8 +1935,7 @@
     trash:
     - RevolverCapGunFake
   - type: ToolRefinable
-    refineResult:
-    - id: RevolverCapGunFake
+    refineResult: [] # Spawns trash on refine
 
 - type: entity
   name: rice bushel
@@ -2029,7 +2023,7 @@
   name: koibean
   description: These beans seem a little bit fishy.
   id: FoodKoibean
-  parent: ProduceBaseRuminant
+  parent: [ProduceBaseRuminant]
   components:
   - type: Sprite
     sprite: Objects/Specific/Hydroponics/koibean.rsi
@@ -2352,8 +2346,7 @@
     trash:
     - FoodBungoPit
   - type: ToolRefinable
-    refineResult:
-    - id: FoodBungoPit
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       reagents:
@@ -2436,7 +2429,7 @@
       Burger: Pea
 
 - type: entity
-  parent: FoodProduceBase
+  parent: [BaseCorvaxContraband432JobsBotanist, FoodProduceBase] # Corvax-Contraband
   id: FoodWorldPeas
   name: cluster of world peas
   description: It's rumored to bring peace to any who consume it.
@@ -2656,8 +2649,7 @@
     trash:
     - TrashCherryPit
   - type: ToolRefinable
-    refineResult:
-    - id: TrashCherryPit
+    refineResult: [] # Spawns trash on refine
   - type: Solution
     solution:
       maxVol: 15

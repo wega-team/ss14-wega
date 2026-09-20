@@ -28,7 +28,7 @@ using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Standing;
 using Content.Shared.Surgery.Components;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Console;
 using Robust.Shared.Map;

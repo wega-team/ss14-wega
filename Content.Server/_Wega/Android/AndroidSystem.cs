@@ -5,7 +5,6 @@ using Content.Server.Power.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Shared.Android;
-using Content.Shared.Blood.Cult;
 using Content.Shared.Body;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
@@ -235,15 +234,15 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
             return false;
         }
 
-        if (_battery.GetCharge(source) == 0)
+        if (_battery.GetCharge(source).Charge == 0)
         {
             _popup.PopupEntity(Loc.GetString("android-charging-no-charge"), uid, uid);
             return false;
         }
 
-        float needCharge = Math.Max(0f, battery.Value.Comp.MaxCharge * component.ChargeLimit - _battery.GetCharge(battery.Value.Owner));
+        float needCharge = Math.Max(0f, battery.Value.Comp.MaxCharge * component.ChargeLimit - _battery.GetCharge(battery.Value.Owner).Charge);
         float transferAmount = Math.Min(Math.Min(component.ChargeSpeed / component.ChargeEfficency,
-                                      needCharge / component.ChargeEfficency), _battery.GetCharge(source));
+                                      needCharge / component.ChargeEfficency), _battery.GetCharge(source).Charge);
 
         _battery.TryUseCharge(source, transferAmount);
         _battery.ChangeCharge(battery.Value.Owner, transferAmount * component.ChargeEfficency);

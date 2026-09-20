@@ -4,7 +4,7 @@
   name: welding mask
   abstract: true
   components:
-  - type: Mask
+  - type: Mask # Corvax-Wega-Add
   - type: Item
     storedRotation: 0
   - type: IngestionBlocker
@@ -24,6 +24,9 @@
   - type: HideLayerClothing
     slots:
     - Snout
+  - type: ImageOverlay
+    pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
+    additionalColorOverlay: "#000000A0"
   # Corvax-Wega-Dirtable-start
   - type: Dirtable
     dirtState: welding
@@ -31,7 +34,7 @@
   # Corvax-Wega-Dirtable-end
 
 - type: entity
-  parent: WeldingMaskBase
+  parent: [BaseCorvaxContraband431DepartmentsEngineering, WeldingMaskBase] # Corvax-Contraband
   id: ClothingHeadHatWelding
   name: welding mask
   description: A head-mounted face cover designed to protect the wearer completely from space-arc eye.

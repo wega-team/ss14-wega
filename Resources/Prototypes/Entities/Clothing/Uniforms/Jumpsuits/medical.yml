@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431JobsChemist, ClothingUniformToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitChemistry
   name: chemistry jumpsuit
   description: There's some odd stains on this jumpsuit. Hm.
@@ -30,7 +30,7 @@
     sprite: Clothing/Uniforms/Jumpsuits/Medical/genetics.rsi
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsChiefMedicalOfficer, ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitCMO
   name: chief medical officer's jumpsuit
   description: It's a jumpsuit worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
@@ -41,7 +41,7 @@
     protection: 0.15 # Corvax-Wega-Disease
 
 - type: entity
-  parent: [ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsChiefMedicalOfficer, ClothingUniformToggleableBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitCMOTurtle
   name: chief medical officer's turtleneck jumpsuit
   description: It's a turtleneck worn by those with the experience to be Chief Medical Officer. It provides minor biological protection.
@@ -54,7 +54,7 @@
     protection: 0.15 # Corvax-Wega-Disease
 
 - type: entity
-  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431JobsMedicalDoctor, ClothingUniformToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitMedicalDoctor
   name: medical doctor jumpsuit
   description: It's made of a special fiber that provides minor protection against biohazards. It has a cross on the chest denoting that the wearer is trained medical personnel.
@@ -65,7 +65,7 @@
     protection: 0.1 # Corvax-Wega-Disease
 
 - type: entity
-  parent: ClothingUniformToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431JobsParamedic, ClothingUniformToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpsuitParamedic
   name: paramedic jumpsuit
   description: It's got a plus on it, that's a good thing right?

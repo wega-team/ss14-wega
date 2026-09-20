@@ -62,7 +62,7 @@ namespace Content.Server.Vampire;
 public sealed partial class VampireSystem : SharedVampireSystem
 {
     [Dependency] private AlertsSystem _alerts = default!;
-    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ServerAntagSelectionSystem _antag = default!;
     [Dependency] private BloodstreamSystem _blood = default!;
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private DamageableSystem _damage = default!;
