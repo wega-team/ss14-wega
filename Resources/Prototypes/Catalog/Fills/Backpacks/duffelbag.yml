@@ -79,8 +79,10 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: WeaponSubMachineGunC20r
-        - id: MagazinePistolSubMachineGun
+        # Corvax-Wega-Guns-Buff-Start
+        - id: WeaponSubMachineGunExtC20r
+        - id: ExtMagazinePistolSubMachineGun
+        # Corvax-Wega-Guns-Buff-End 
           amount: 2
 #       - id: SMGSuppressor
 
@@ -124,6 +126,7 @@
         children:
         - id: WeaponLightMachineGunL6
         - id: MagazineLightRifleBox
+          amount: 2 # Corvax-Wega-Guns-Buff
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -151,7 +154,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: MagazinePistolSubMachineGun
+        - id: ExtMagazinePistolSubMachineGun # Corvax-Wega-Guns-Buff
           amount: 4
         - id: MagazineShotgun
           amount: 4
