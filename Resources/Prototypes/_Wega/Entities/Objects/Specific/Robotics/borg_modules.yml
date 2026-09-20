@@ -1257,6 +1257,12 @@
           - Gems
     - item: BorgOreBagOfHolding
     - item: BorgOreBagOfHolding
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: cheflava
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: mining-rare }
 
@@ -1292,8 +1298,8 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponHydraBorg
-    - item: TrashBagHolding
-    - item: TrashBagHolding
+    - item: BorgTrashBagHolding
+    - item: BorgTrashBagHolding
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: ubor-rare }
 
@@ -1334,6 +1340,12 @@
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal
     - item: BorgGeneratorMaterialPlasteel
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: chefce
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: rcd-rare }
 
@@ -1448,6 +1460,12 @@
           - FitsInDispenser
           tags:
           - ChemDispensable
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: chefcmo
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: med-rare }
 

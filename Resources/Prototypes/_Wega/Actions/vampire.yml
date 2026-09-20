@@ -123,6 +123,40 @@
 
 #region Hemomancer
 - type: entity
+  id: ActionVampireRejuvenateNoHeal
+  parent: BaseAction
+  name: "[color=purple]Rejuvenate[/color]"
+  description: "Your second chance, your second wind."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    checkCanInteract: false
+    checkConsciousness: false
+    useDelay: 5
+    priority: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_vampire.rsi
+    layers:
+    - state: rejuvenate
+      map: ["enum.ActionVisuals.Icon"]
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: AutoRecharge
+    rechargeDuration: 20
+  - type: InstantAction
+    event: !type:VampireRejuvenateActionEvent
+      bloodCost: 200
+      noHeal: true
+      heal:
+        types:
+          Asphyxiation: -5
+          Heat: -2
+          Poison: -2
+      healGroups:
+        groups:
+          Brute: -2
+
+- type: entity
   id: ActionVampireClaws
   parent: BaseAction
   name: "[color=purple]Vampire claws[/color]"

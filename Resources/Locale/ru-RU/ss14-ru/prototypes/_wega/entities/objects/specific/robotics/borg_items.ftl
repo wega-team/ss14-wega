@@ -125,6 +125,9 @@ ent-BorgGeneratorBoxLight = генератор коробок с лампочк�
     .desc = Специальный генератор материи, производящий целую коробку с лампочками.
 ent-BorgGeneratorRestock = генератор пополняшек еды
     .desc = Генератор пополняшек для торговых автоматов с едой.
+ent-BorgTrashBagHolding = встроенный бездонный мешок для мусора
+    .desc = { ent-TrashBagHolding.desc }
+    .suffix = Киборг
 
 
 # Инженер

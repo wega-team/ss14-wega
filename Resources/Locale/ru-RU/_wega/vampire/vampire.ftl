@@ -63,6 +63,7 @@ vampire-teleport-failed = Перемещение не возможно
 
 # Gargantua
 vampire-legs-ensnared = Ваши ноги связаны!
+vampire-blood-swell-end = Ваши силы угасают
 
 # Dantalion
 vampire-trall-count-update = Ваше максимальное количество слуг теперь { $count }

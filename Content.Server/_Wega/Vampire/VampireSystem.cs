@@ -100,6 +100,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
 
     private static readonly ProtoId<EmotePrototype> Scream = "Scream";
     private static readonly EntProtoId RejuvenateAdvanced = "ActionVampireRejuvenateAdvanced";
+    private static readonly EntProtoId RejuvenateNoHeal = "ActionVampireRejuvenateNoHeal";
     private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
     /// <summary>
@@ -407,6 +408,13 @@ public sealed partial class VampireSystem : SharedVampireSystem
                 {
                     _action.RemoveAction(uid, vampire.RejuvenateActionEntity);
                     vampire.RejuvenateActionEntity = _action.AddAction(uid, RejuvenateAdvanced);
+                    break;
+                }
+
+            case VampireClassEnum.Hemomancer:
+                {
+                    _action.RemoveAction(uid, vampire.RejuvenateActionEntity);
+                    vampire.RejuvenateActionEntity = _action.AddAction(uid, RejuvenateNoHeal);
                     break;
                 }
 

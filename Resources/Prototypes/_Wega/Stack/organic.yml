@@ -4,6 +4,7 @@
   name: stack-sinew
   icon: { sprite: _Wega/Objects/Materials/sinew.rsi, state: sinew }
   spawn: MaterialSinew1
+  price: 0.05
 
 - type: stack
   parent: BaseMediumStack

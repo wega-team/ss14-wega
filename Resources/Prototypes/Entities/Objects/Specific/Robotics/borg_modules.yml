@@ -699,8 +699,8 @@
           - ArtifactFragment
           - MagmiteAlloy
           - Gems
+    - item: OreBagIndastrilBorg
     # Corvax-Wega-Robot-end
-    - item: BorgOreBag
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -994,7 +994,7 @@
   - type: ItemBorgModule
     hands:
     - item: BorgAdvMopItem # Corvax-Wega-Robot-Edit
-    - item: TrashBagHolding # Corvax-Wega-Robot
+    - item: BorgTrashBagHolding # Corvax-Wega-Robot
     - item: WireBrushElectrical
     - item: BorgMegaSprayBottle
     - item: HoloprojectorBorg

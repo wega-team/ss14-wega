@@ -27,7 +27,16 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        args.AddMarkup(Loc.GetString("ore-processor-points", ("points", entity.Comp.AccumulatedPoints)) + "\n");
+		var prompoints = entity.Comp.AccumulatedPoints * entity.Comp.Multiplay;
+
+		if (entity.Comp.IsProm)
+		{
+			args.AddMarkup(Loc.GetString("ore-processor-points", ("points", prompoints)) + "\n");
+		}
+		else
+		{
+			args.AddMarkup(Loc.GetString("ore-processor-points", ("points", entity.Comp.AccumulatedPoints)) + "\n");
+		}
     }
 
     private void OnMaterialInserted(EntityUid uid, OreProcessorPointsComponent component, ref MaterialEntityInsertedEvent args)
@@ -80,6 +89,10 @@ public sealed partial class OreProcessorPointsSystem : EntitySystem
             return false;
 
         var points = entity.Comp.AccumulatedPoints;
+		
+		if (entity.Comp.IsProm)
+			points *= entity.Comp.Multiplay;
+		
         pointsCard.Points += points;
         entity.Comp.AccumulatedPoints = 0;
 

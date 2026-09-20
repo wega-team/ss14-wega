@@ -647,12 +647,16 @@
   - type: Machine
     board: OreProcessorIndustrialMachineCircuitboard
   - type: Lathe
-    materialUseMultiplier: 0.75
+    # materialUseMultiplier: 0.75
     timeMultiplier: 0.5
     staticPacks:
     - OreSmelting
     - RGlassSmelting
     - AdvancedSmelting
+  # Corvax-Wega-Start
+  - type: OreProcessorPoints
+    isProm: true
+  # Corvax-Wega-End
 
 - type: entity
   parent: BaseLathe
