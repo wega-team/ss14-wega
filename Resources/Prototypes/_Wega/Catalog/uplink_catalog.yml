@@ -539,42 +539,6 @@
     blacklist:
       tags:
       - NukeOpsUplink
-      
-- type: listing
-  id: UplinkClothingOuterVestWebAgent
-  name: uplink-clothing-outer-vest-web-name
-  description: uplink-clothing-outer-vest-web-desc
-  productEntity: ClothingOuterVestWeb
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 2
-  cost:
-    Telecrystal: 3
-  categories:
-  - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
-
-- type: listing
-  id: UplinkClothingOuterVestWebEliteAgent
-  name: uplink-clothing-outer-vest-web-elite-name
-  description: uplink-clothing-outer-vest-web-elite-desc
-  productEntity: ClothingOuterVestWebElite
-  discountCategory: usualDiscounts
-  discountDownTo:
-    Telecrystal: 3 # Corwax-Wega-Stamin-Resistace
-  cost:
-    Telecrystal: 5 # Corwax-Wega-Stamin-Resistace
-  categories:
-  - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    blacklist:
-      tags:
-      - NukeOpsUplink
 
 - type: listing
   id: UplinkThievingGloves
