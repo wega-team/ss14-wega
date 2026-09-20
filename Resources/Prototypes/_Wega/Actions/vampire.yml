@@ -185,7 +185,7 @@
   - type: Action
     itemIconStyle: BigAction
     raiseOnUser: true
-    useDelay: 10
+    useDelay: 20
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_vampire.rsi
     layers:
@@ -228,7 +228,7 @@
   components:
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 25
+    useDelay: 45
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_vampire.rsi
     layers:
@@ -303,7 +303,7 @@
           Heat: -1.5
       healGroups:
         groups:
-          Brute: -8
+          Brute: -3
       sound:
         path: "/Audio/Effects/Fluids/splat.ogg"
 #endregion
@@ -690,7 +690,7 @@
   components:
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 10
+    useDelay: 45
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_vampire.rsi
     layers:
@@ -711,7 +711,7 @@
   components:
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 5
+    useDelay: 10
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_vampire.rsi
     layers:
@@ -721,7 +721,7 @@
     range: 16
   - type: EntityTargetAction
     event: !type:VampireSubspaceSwapActionEvent
-      bloodCost: 15
+      bloodCost: 5
 
 - type: entity
   id: ActionDeployDecoy
