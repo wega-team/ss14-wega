@@ -159,7 +159,7 @@
   - type: Solution
     solution:
       reagents:
-      - ReagentId: HardlightToxin
+      - ReagentId: HardlightToxinSec
         Quantity: 7.5
   - type: SolutionInjectOnProjectileHit
     transferAmount: 7.5
