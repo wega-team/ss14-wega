@@ -1,5 +1,6 @@
-using Content.Shared.Mobs.Components;
 using Content.Shared.Modular.Suit;
+using Content.Shared.Stealth;
+using Content.Shared.Stealth.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
 using Robust.Shared.Serialization;
@@ -7,19 +8,19 @@ using Robust.Shared.Map;
 
 namespace Content.Server.Modular.Suit;
 
-public sealed partial class TeleporterModuleHandler : ModuleActionHandler
+public sealed partial class StealthModuleHandler : ModuleActionHandler
 {
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private SharedStealthSystem _stealth = default!;
 
-    public const float TeleportRadius = 5f;
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<ModularSuitActionHolderComponent, ActivateTeleporterModuleEvent>(OnActivate);
+        SubscribeLocalEvent<ModularSuitActionHolderComponent, ModuleStealthEvent>(OnActivate);
     }
 
-    private void OnActivate(Entity<ModularSuitActionHolderComponent> ent, ref ActivateTeleporterModuleEvent args)
+    private void OnActivate(Entity<ModularSuitActionHolderComponent> ent, ref ModuleStealthEvent args)
     {
         if (args.Handled)
             return;
@@ -36,23 +37,31 @@ public sealed partial class TeleporterModuleHandler : ModuleActionHandler
         if (attemptEvent.Cancelled)
             return;
 
-        if (PerformTeleport(args.Performer, args.Target))
+        if (PerformStealth(args.Performer, args.Coefficient))
         {
-            Audio.PlayPvs(args.ActivationSound, args.Performer);
             ModularSuit.UseCoreCharge(ent.Owner, moduleComp.PowerInstanceUsage);
         }
 
         args.Handled = true;
     }
 
-    private bool PerformTeleport(EntityUid user, EntityCoordinates coordinates)
+    private bool PerformStealth(EntityUid user, float strong)
     {
-        var transform = Transform(user);
-        if (transform.MapID != _transform.GetMapId(coordinates) || !_interaction.InRangeUnobstructed(user, coordinates, range: 1000F, collisionMask: CollisionGroup.Opaque, popup: true))
-            return false;
+        if (!TryComp<StealthComponent>(user, out var stealth))
+        {
+            stealth = EnsureComp<StealthComponent>(user);
+            _stealth.SetVisibility(user, strong, stealth);
+            _stealth.SetEnabled(user, false, stealth);
+        }
 
-        _transform.SetCoordinates(user, coordinates);
-        _transform.AttachToGridOrMap(user, transform);
+        if (stealth.Enabled)
+        {
+            _stealth.SetEnabled(user, false, stealth);
+        }
+        else
+        {
+            _stealth.SetEnabled(user, true, stealth);
+        }
 
         return true;
     }

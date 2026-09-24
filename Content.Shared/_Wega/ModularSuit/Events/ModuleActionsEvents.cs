@@ -1,5 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using Content.Shared.Magic;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -15,7 +16,7 @@ public sealed partial class ToggleLightModuleEvent : InstantActionEvent
     public SoundSpecifier TurnOffSound = new SoundPathSpecifier("/Audio/Items/flashlight_off.ogg");
 }
 
-public sealed partial class ActivateTeleporterModuleEvent : InstantActionEvent
+public sealed partial class ActivateTeleporterModuleEvent : WorldTargetActionEvent
 {
     [DataField]
     public SoundSpecifier ActivationSound = new SoundCollectionSpecifier("RadiationPulse");
@@ -56,8 +57,24 @@ public sealed partial class ActivateAtrocinatorModuleEvent : InstantActionEvent
 
 public sealed partial class ActivateTanningModuleEvent : InstantActionEvent { }
 
+public sealed partial class AntiGravitationEvent : InstantActionEvent
+{
+    [DataField]
+    public SoundSpecifier ActivationSound = new SoundCollectionSpecifier("RadiationPulse");
+}
+
 [Serializable, NetSerializable]
 public sealed partial class ModuleGrabberDoAfterEvent : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class ModuleMicrowaveDoAfterEvent : SimpleDoAfterEvent;
+
+public sealed partial class ModuleHealSurgeyEvent : InstantActionEvent;
+
+public sealed partial class ModuleEMPEvent : InstantActionEvent;
+
+public sealed partial class ModuleStealthEvent : InstantActionEvent
+{
+    [DataField]
+    public float Coefficient = 0.3f;
+}

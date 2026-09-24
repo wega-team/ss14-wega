@@ -104,8 +104,9 @@
       sprite: *modules-rsi
       state: storage_holding
   - type: Storage
+    maxItemSize: Ginormous
     grid:
-    - 0,0,19,9
+    - 0,0,11,7
 
 # Flashlight
 - type: entity
@@ -387,11 +388,12 @@
   - type: ModularSuitModuleContainerRequirement
     failureMessage: modsuit-module-requires-gravity-core
     requiredContainerId: module_core
-  - type: ModularSuitModuleEffect
-    activeComponents:
-    - type: AntiGravityClothing
+  - type: ModularSuitActionModule
+    action: ActivateAntiGravitationModuleAction
   - type: ModularSuitModule
-    powerUsage: 0.45
+    powerInstanceUsage: 25
+    canBeDisabled: false
+    active: true
     verbIcon:
       sprite: *modules-rsi
       state: antigrav
@@ -405,12 +407,14 @@
         whitelist:
           tags:
           - GravityCore
+          - Synthcore
   - type: ItemMapper
     mapLayers:
       antigrav_core:
         whitelist:
           tags:
           - GravityCore
+          - Synthcore
   - type: Appearance
 
 - type: entity
@@ -443,13 +447,536 @@
         whitelist:
           tags:
           - BluespaceCore
+          - Synthcore
   - type: ItemMapper
     mapLayers:
       teleporter_core:
         whitelist:
           tags:
           - BluespaceCore
+          - Synthcore
   - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: FlameSuitModule
+  name: antigravity suit module
+  description: "A module that uses a gravitational core to make the user completely weightless."
+  components:
+  - type: Sprite
+    state: antigrav
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-gravity-core
+    requiredContainerId: module_core
+  - type: ModularSuitItemModule
+    handId: flame-hand
+    item: FlamecoreItem
+  - type: ModularSuitModule
+    modulePart: Gloves
+    powerUsage: 2
+    verbIcon:
+      sprite: *modules-rsi
+      state: defibrillator
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - FlameCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - FlameCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: IceSuitModule
+  name: ice suit module
+  description: "A module that uses a gravitational core to make the user completely weightless."
+  components:
+  - type: Sprite
+    state: antigrav
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-gravity-core
+    requiredContainerId: module_core
+  - type: ModularSuitItemModule
+    handId: ice-hand
+    item: FlamecoreItem
+  - type: ModularSuitModule
+    modulePart: Gloves
+    powerUsage: 2
+    verbIcon:
+      sprite: *modules-rsi
+      state: defibrillator
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - IceCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - IceCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: ChemSuitModule
+  name: chem suit module
+  description: "A module that uses a gravitational core to make the user completely weightless."
+  components:
+  - type: Sprite
+    state: antigrav
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-gravity-core
+    requiredContainerId: module_core
+  - type: ModularSuitItemModule
+    handId: chem-hand
+    item: BorgHypoGeneratedAdvensed
+  - type: ModularSuitModule
+    modulePart: Gloves
+    powerUsage: 2
+    verbIcon:
+      sprite: *modules-rsi
+      state: defibrillator
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - ChemCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - ChemCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: ElecSuitModule
+  name: elec suit module
+  description: "A module that uses a gravitational core to make the user completely weightless."
+  components:
+  - type: Sprite
+    state: antigrav
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-gravity-core
+    requiredContainerId: module_core
+  - type: ModularSuitActionModule
+    action: ActivateEMPModuleAction
+  - type: ModularSuitModule
+    powerInstanceUsage: 200
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: teleporter
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - ElecCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - ElecCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: ShadowSuitModule
+  name: shadow suit module
+  description: "A module that uses a gravitational core to make the user completely weightless."
+  components:
+  - type: Sprite
+    state: antigrav
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-gravity-core
+    requiredContainerId: module_core
+  - type: ModularSuitActionModule
+    action: ActivateShadowModuleAction
+  - type: ModularSuitModule
+    powerInstanceUsage: 25
+    powerUsage: 1
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: teleporter
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - ShadowCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - ShadowCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: FloraSuitModule
+  name: flora suit module
+  description: "A module that uses a gravitational core to make the user completely weightless."
+  components:
+  - type: Sprite
+    state: antigrav
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-gravity-core
+    requiredContainerId: module_core
+  - type: ModularSuitActionModule
+    action: ActivateFloraModuleAction
+  - type: ModularSuitModule
+    powerInstanceUsage: 600
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: teleporter
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - FloraCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      antigrav_core:
+        whitelist:
+          tags:
+          - FloraCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
+  id: RockModuleSuitModule
+  name: rock suit module
+  description: "A module that uses a bluespace core to let the user transport their particles elsewhere."
+  components:
+  - type: Sprite
+    state: teleporter
+  - type: ModularSuitModuleEffect
+    targetSlot: outerClothing
+    activeComponents:
+    - type: AffectedModuleArmorBooster
+      modifiers:
+        coefficients:
+          Blunt: 0.5
+          Slash: 0.5
+          Piercing: 0.5
+          Heat: 0.5
+          Shock: 0.5
+          Caustic: 0.5
+    - type: ClothingSpeedModifier
+      walkModifier: 0.8
+      sprintModifier: 0.8
+  - type: ModularSuitModule
+    tags: [ ArmorBoosterSuitModule, CompressionModuleConflict ]
+    modulePart: Torso
+    powerUsage: 1
+    verbIcon:
+      sprite: *modules-rsi
+      state: armor_booster
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-bluespace-core
+    requiredContainerId: module_core
+  - type: Tag
+    tags:
+    - ArmorBoosterSuitModule
+    - CompressionModuleConflict
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - RockCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      teleporter_core:
+        whitelist:
+          tags:
+          - RockCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseVisorSuitModule
+  id: TechVisorSuitModule
+  name: tech visor suit module
+  description: "A heads-up display installed into the visor of the suit. This cross-references suit sensor data with a modern biological scanning suite, allowing the user to visualize the current health of organic lifeforms, as well as access data such as patient files in a convenient readout. They say these also let you see behind you."
+  components:
+  - type: Sprite
+    state: medhud_visor
+  - type: ModularSuitModuleEffect
+    activeComponents:
+    - type: ShowHealthBars
+      damageContainers:
+      - Inorganic
+      - Silicon
+      - Android #Corvax-Wega-android-health-display
+      - Biological
+    - type: ShowHealthIcons
+    - type: ShowJobIcons
+    - type: ShowSquadIcons # Corvax-SecApartment
+    - type: ShowMindShieldIcons
+    - type: ShowCriminalRecordIcons
+    - type: ShowContrabandDetails
+    - type: SolutionScanner
+    - type: EyeProtection
+  - type: ModularSuitModule
+    verbIcon:
+      sprite: *modules-rsi
+      state: medhud_visor
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-bluespace-core
+    requiredContainerId: module_core
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - TechCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      teleporter_core:
+        whitelist:
+          tags:
+          - TechCore
+          - Synthcore
+  - type: Appearance
+
+# Core selector
+
+- type: entity
+  parent: AntiGravitySuitModule
+  id: AntiGravitySuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreGravity
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - GravityCore
+          - Synthcore
+
+- type: entity
+  parent: TeleporterSuitModule
+  id: TeleporterSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreBluespace
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - BluespaceCore
+          - Synthcore
+
+- type: entity
+  parent: FlameSuitModule
+  id: FlameSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCorePyroclastic
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - FlameCore
+          - Synthcore
+
+
+- type: entity
+  parent: IceSuitModule
+  id: IceSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreIce
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - IceCore
+          - Synthcore
+
+- type: entity
+  parent: ChemSuitModule
+  id: ChemSuitModuleSelector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreLiquid
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - ChemCore
+          - Synthcore
+
+- type: entity
+  parent: ElecSuitModule
+  id: ElecSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreElectricity
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - ElecCore
+          - Synthcore
+
+- type: entity
+  parent: ShadowSuitModule
+  id: ShadowSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreShadow
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - ShadowCore
+          - Synthcore
+
+- type: entity
+  parent: FloraSuitModule
+  id: FloraSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreFlora
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - FloraCore
+          - Synthcore
+
+- type: entity
+  parent: RockModuleSuitModule
+  id: RockModuleSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreRock
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - RockCore
+          - Synthcore
+
+- type: entity
+  parent: TechVisorSuitModule
+  id: TechVisorSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreTech
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - TechCore
+          - Synthcore
 
 # Printed
 - type: entity
@@ -1261,3 +1788,21 @@
       disabledAutoOff: true
   - type: ModularSuitModule
     powerUsage: 0
+
+- type: entity
+  parent: BaseSuitModule
+  id: GunSuitModule
+  name: gun suit module
+  description: "An oddly domestic device, this module is installed into the user's palm, hooking up with culinary scanners located in the helmet to blast food with precise microwave radiation, allowing them to cook food from a distance, with the greatest of ease. Not recommended for use against grapes."
+  components:
+  - type: Sprite
+    state: microwave_beam
+  - type: ModularSuitItemModule
+    handId: laser-gun-hand
+    item: WeaponLaserSuitModule
+  - type: ModularSuitModule
+    modulePart: Gloves
+    powerUsage: 5
+    verbIcon:
+      sprite: *modules-rsi
+      state: microwave_beam

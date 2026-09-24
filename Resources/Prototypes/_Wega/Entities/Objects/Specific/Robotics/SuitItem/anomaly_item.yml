@@ -1,0 +1,53 @@
+- type: entity
+  parent: BaseItem
+  id: BaseItemTogglerSuit
+  name: magboots mode device
+  description: A device that allows go speed.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Research/anomalyscanner.rsi
+    state: icon
+  - type: ItemToggle
+  - type: PowerCellDraw
+    drawRate: 3,6 # 100 seconds
+  - type: ToggleCellDraw
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellSmallNuclear
+        disableEject: true
+        swap: false
+        
+- type: entity
+  parent: BaseItemTogglerSuit
+  id: FlamecoreItem
+  name: flame mode device
+  description: A device that allows go speed.
+  components:
+  - type: ComponentToggler
+    components:
+    - type: CoreTempChange
+      tempChangePerSecond: 500
+  - type: PowerCellDraw
+    drawRate: 36 # 10 seconds
+    
+- type: entity
+  parent: BaseItemTogglerSuit
+  id: IcecoreItem
+  name: ice mode device
+  description: A device that allows go speed.
+  components:
+  - type: ComponentToggler
+    components:
+    - type: CoreTempChange
+      tempChangePerSecond: -500
+  - type: PowerCellDraw
+    drawRate: 36 # 10 seconds
+
+

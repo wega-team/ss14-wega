@@ -54,9 +54,55 @@ ent-SolutionScannerSuitModule = модуль сканера реагентов
 
 # Core
 ent-AntiGravitySuitModule = антигравитационный модуль
-    .desc = Модуль, использующий гравитационное ядро, чтобы сделать пользователя полностью невесомым.
+    .desc = Модуль, использующий гравитационное ядро, чтобы сделать пользоватей вокруг полностью невесомыми.
 ent-TeleporterSuitModule = телепортационный модуль
     .desc = Модуль, использующий блюспейс-ядро для транспортировки частиц пользователя в другое место.
+ent-FlameSuitModule = нагревательный модуль
+    .desc = Модуль, использующий огненное ядро, чтобы резко нагревать температуру вокруг.
+ent-IceSuitModule = охладительный модуль
+    .desc = Модуль, использующий ледянное ядро, чтобы резко охладить температуру вокруг.
+ent-ChemSuitModule = модуль генератора реагентов
+    .desc = Модуль, использующий химическое ядро, чтобы генерировать различные реагенты в гипоспрей.
+ent-ElecSuitModule = ЭМИ-взрыв модуль
+    .desc = Модуль, использующий электро-ядро для создания ЭМИ импульсов.
+ent-ShadowSuitModule = модуль маскировки
+    .desc = Модуль, использующий теневое ядро дающий маскировку для носителя.
+ent-FloraSuitModule = модуль хирургического лечения
+    .desc = Модуль, использующий ядро флоры излечивающий все внутренние травмы.
+ent-RockModuleSuitModule = модуль каменной брони
+    .desc = Модуль, использующий рудную ядро обеспечивающий неплохую защиту, слегка замедляя пользователя.
+ent-TechVisorSuitModule = модуль омнивизора
+    .desc = Модуль, использующий техническое ядро дающее всю возможную аналитическую информацию с визоров.
+ent-AntiGravitySuitModuleSelector = { ent-AntiGravitySuitModule }
+    .desc = { ent-AntiGravitySuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-TeleporterSuitModuleSelector = { ent-TeleporterSuitModule }
+    .desc = { ent-TeleporterSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-FlameSuitModuleSelector = { ent-FlameSuitModule }
+    .desc = { ent-FlameSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-IceSuitModuleSelector = { ent-IceSuitModule }
+    .desc = { ent-IceSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-ChemSuitModuleSelector = { ent-ChemSuitModule }
+    .desc = { ent-ChemSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-ElecSuitModuleSelector = { ent-ElecSuitModule }
+    .desc = { ent-ElecSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-ShadowSuitModuleSelector = { ent-ShadowSuitModule }
+    .desc = { ent-ShadowSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-FloraSuitModuleSelector = { ent-FloraSuitModule }
+    .desc = { ent-FloraSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-RockModuleSuitModuleSelector = { ent-RockModuleSuitModule }
+    .desc = { ent-RockModuleSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-TechVisorSuitModuleSelector = { ent-TechVisorSuitModule }
+    .desc = { ent-TechVisorSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
 
 # Printed
 ent-WeldingSuitModule = сварочный модуль
@@ -137,6 +183,8 @@ ent-JetpackAdvancedSuitModule = улучшенный модуль ионного
     .desc = Высокопроизводительная ионная двигательная установка, используемая силами безопасности Nanotrasen. Отличается повышенной тягой и улучшенной эффективностью по сравнению со стандартной моделью. Идеально подходит для операций преследования и быстрого реагирования.
 ent-MagnetAdvancedSuitModule = улучшенный магнитный модуль
     .desc = Сложное улучшение системы магнитной стабильности Nakamura Engineering с компьютерной автоматической настройкой и улучшенной калибровкой сцепления. В отличие от базовой модели, эти электромагниты интеллектуально регулируют силу поля в зависимости от условий поверхности и намерений пользователя, устраняя «липкость», о которой сообщалось в старых версиях. Включает нейро-интерфейс, который интуитивно активирует магнитное сцепление только при необходимости, обеспечивая плавное движение. Изначально разработан для продвинутого костюма старшего инженера, но впоследствии стал доступен инженерному персоналу, требующему наилучшего контроля мобильности.
+ent-GunSuitModule = модуль встроенного вооружения
+    .desc = Аварийный модуль вооружения, позволяющий вам оброняться даже в том случае, когда ваше оружие выпало.
 
 # Entities
 ent-ModularSuitGrabberTool = манипулятор

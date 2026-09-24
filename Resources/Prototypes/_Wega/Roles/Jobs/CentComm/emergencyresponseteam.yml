@@ -6,6 +6,7 @@
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHatERTLeaderBeret
     eyes: ClothingERTHud
+    mask: ClothingMaskGasERT
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
@@ -29,11 +30,11 @@
     jumpsuit: ClothingUniformJumpsuitERTLeader
     back: ClothingBackpackERTLeader
     shoes: ClothingShoesBootsMagCombat
+    mask: ClothingMaskGasERT
     head: ClothingHeadHatERTLeaderBeret
     eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
@@ -46,6 +47,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - PinpointerNuclear
+    - HardsuitERTLeaderSelector
 
 - type: startingGear
   id: ERTLeaderGearCombat
@@ -57,7 +59,6 @@
     eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
@@ -70,6 +71,7 @@
     - RegenerativeMesh
     - BoxZiptie
     - PinpointerNuclear
+    - HardsuitERTLeaderSelector
 
 - type: startingGear
   id: ERTLeaderGearSpecialist
@@ -81,7 +83,6 @@
     eyes: ClothingERTHud
     neck: ClothingNeckMantleERTLeader
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
@@ -94,3 +95,4 @@
     - RegenerativeMesh
     - BoxZiptie
     - PinpointerNuclear
+    - HardsuitERTLeaderSelector
