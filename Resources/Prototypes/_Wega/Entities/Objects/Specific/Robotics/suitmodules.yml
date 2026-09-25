@@ -516,7 +516,7 @@
     powerUsage: 2
     verbIcon:
       sprite: *modules-rsi
-      state: firewall
+      state: firewall-core
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -556,7 +556,7 @@
     powerUsage: 2
     verbIcon:
       sprite: *modules-rsi
-      state: cryogrenade
+      state: cryogrenade-core
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
