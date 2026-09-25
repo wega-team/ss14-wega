@@ -222,7 +222,7 @@ namespace Content.Server.Voting.Managers
 
             // Corvax-Wega-Vote-start
             string? presetToExclude = null;
-            if (_lastPickedPresets.Count == 2 && _lastPickedPresets[0] == _lastPickedPresets[1])
+            if (_lastPickedPresets.Count == 1)
                 presetToExclude = _lastPickedPresets[0];
 
             var filteredPresets = presets
@@ -273,7 +273,7 @@ namespace Content.Server.Voting.Managers
                 }
                 // Corvax-Wega-Vote-start
                 _lastPickedPresets.Add(picked);
-                if (_lastPickedPresets.Count > 2)
+                if (_lastPickedPresets.Count > 1)
                     _lastPickedPresets.RemoveAt(0);
                 // Corvax-Wega-Vote-end
                 _adminLogger.Add(LogType.Vote, LogImpact.Medium, $"Preset vote finished: {picked}");
