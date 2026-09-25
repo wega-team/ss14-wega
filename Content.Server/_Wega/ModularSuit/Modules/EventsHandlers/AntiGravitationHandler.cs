@@ -2,7 +2,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Modular.Suit;
 using Content.Shared.Interaction;
 using Content.Shared.Physics;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Gravity;
 using Content.Shared.Movement.Components;
 using Robust.Shared.Serialization;
