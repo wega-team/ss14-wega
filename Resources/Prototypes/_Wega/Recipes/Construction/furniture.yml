@@ -318,9 +318,6 @@
   startNode: start
   targetNode: CounterHedge
   category: construction-category-furniture
-  icon:
-    sprite: _Wega/Structures/Decoration/hedge.rsi
-    state: full
   objectType: Structure
   canBuildInImpassable: false
   placementMode: SnapgridCenter

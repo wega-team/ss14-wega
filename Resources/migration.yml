@@ -1220,3 +1220,6 @@ WallRockBasaltLavalandBananium: WallRockChromiteLavalandBananium
 WallRockBasaltLavalandGems: WallRockChromiteLavalandGems
 WallRockBasaltLavalandMagmite: WallRockChromiteLavalandMagmite
 WallRockBasaltLavalandGibtonite: WallRockChromiteLavalandGibtonite
+
+#2026-09-25 Corvax-Wega
+FloorTileItemSepia: FloorTileItemWegaSepia

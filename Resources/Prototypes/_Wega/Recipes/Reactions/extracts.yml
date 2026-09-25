@@ -48,7 +48,7 @@
   products:
     Phlogiston: 3
     Napalm: 3
-    
+
 - type: reaction
   id: FireEffect
   reactants:
@@ -295,7 +295,7 @@
       amount: 2
   effects:
     - !type:SpawnEntity
-      entity: FloorTileItemSepia
+      entity: FloorTileItemWegaSepia
 
 - type: reaction
   id: TimeStopEffect

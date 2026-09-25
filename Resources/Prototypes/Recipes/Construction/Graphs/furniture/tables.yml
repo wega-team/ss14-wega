@@ -115,7 +115,7 @@
         - to: CounterHedge
           steps:
             - tag: SoilBag
-              name: soil bag
+              name: construction-graph-tag-soil-bag
               doAfter: 1
         #Corvax-Wega-Added-end
 

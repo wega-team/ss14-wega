@@ -13,7 +13,7 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSepia
+  itemDrop: FloorTileItemWegaSepia
   mobAcceleration: 3
   heatCapacity: 10000
 
@@ -21,7 +21,6 @@
   id: FloorNecropolis
   name: tiles-necropolis-floor
   sprite: /Textures/_Wega/Tiles/necropolis.png
-  itemDrop: FloorTileItemWegaNecropolis
   isSubfloor: true
   footstepSounds:
     collection: FootstepFloor

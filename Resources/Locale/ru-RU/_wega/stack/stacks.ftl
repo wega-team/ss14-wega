@@ -130,7 +130,6 @@ stack-kitchen-diagonal-floor = кухонная диагональная пли�
 stack-kitchen-herringbone-floor = кухонная плитка ёлочкой
 stack-kitchen-small-floor = малая кухонная плитка
 stack-materialfloor-floor = материальная напольная плитка
-stack-necropolis-floor = плитка некрополя
 stack-pinkblack-floor = розово-чёрная плитка
 stack-plaque-floor = плитка с табличкой
 stack-plastic-floor = пластиковая плитка

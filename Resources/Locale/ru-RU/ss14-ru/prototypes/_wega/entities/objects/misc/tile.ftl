@@ -1,5 +1,3 @@
-ent-FloorTileItemSepia = стальная темная клетчатая плитка
-    .desc = { ent-FloorTileItemWhite.desc }
 ent-FloorTileItemWegaDark = тёмная плитка
     .desc = { ent-FloorTileItemWhite.desc }
 ent-FloorTileItemWegaDarkCorner = тёмная угловая плитка
@@ -101,8 +99,6 @@ ent-FloorTileItemWegaKitchenHerringbone = кухонная плитка ёлоч
 ent-FloorTileItemWegaKitchenSmall = малая кухонная плитка
     .desc = { ent-FloorTileItemWhite.desc }
 ent-FloorTileItemWegaMaterialfloor = материальная напольная плитка
-    .desc = { ent-FloorTileItemWhite.desc }
-ent-FloorTileItemWegaNecropolis = плитка некрополя
     .desc = { ent-FloorTileItemWhite.desc }
 ent-FloorTileItemWegaPinkblack = розово-чёрная плитка
     .desc = { ent-FloorTileItemWhite.desc }

@@ -305,12 +305,6 @@
   maxCount: 30
 
 - type: stack
-  id: FloorTileItemWegaNecropolis
-  name: stack-necropolis-floor
-  spawn: FloorTileItemWegaNecropolis
-  maxCount: 30
-
-- type: stack
   id: FloorTileItemWegaPinkblack
   name: stack-pinkblack-floor
   spawn: FloorTileItemWegaPinkblack
