@@ -40,7 +40,7 @@
   id: Vampire
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 5
     delay:
       min: 240
       max: 420
@@ -61,7 +61,7 @@
   id: BloodCult
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 15
   - type: BloodCultRule
   - type: AntagObjectives
     objectives:
@@ -81,7 +81,7 @@
   id: BloodBrothers
   components:
   - type: GameRule
-    minPlayers: 20
+    minPlayers: 5
   - type: BloodBrotherRule
     requiredObjectives:
     - BloodBrotherSharedEscapeObjective
@@ -104,7 +104,7 @@
   id: VeilCult
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 15
   - type: VeilCultRule
   - type: AntagObjectives
     objectives:
