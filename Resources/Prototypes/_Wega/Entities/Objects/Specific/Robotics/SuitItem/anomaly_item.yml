@@ -3,6 +3,7 @@
   id: BaseItemTogglerSuit
   name: magboots mode device
   description: A device that allows go speed.
+  abstract: true
   components:
   - type: Sprite
     sprite: Objects/Specific/Research/anomalyscanner.rsi
@@ -50,4 +51,50 @@
   - type: PowerCellDraw
     drawRate: 36 # 10 seconds
 
+- type: entity
+  parent: BorgHypo
+  id: HypoGeneratedAdvensed
+  components:
+  - type: Solution
+    solution:
+      maxVol: 15
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Beer
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Tricordrazine
+        Quantity: 1
+      name: reagent-name-tricordrazine
+    - reagent:
+      - ReagentId: Epinephrine
+        Quantity: 1
+      name: reagent-name-epinephrine
+    - reagent:
+      - ReagentId: Bicaridine
+        Quantity: 1
+      name: reagent-name-bicaridine
+    - reagent:
+      - ReagentId: Dermaline
+        Quantity: 1
+      name: reagent-name-dermaline
+    - reagent:
+      - ReagentId: Dylovene
+        Quantity: 1
+      name: reagent-name-dylovene
+    - reagent:
+      - ReagentId: Hyronalin
+        Quantity: 1
+      name: reagent-name-hyronalin
+    - reagent:
+      - ReagentId: Dexalin
+        Quantity: 1
+      name: reagent-name-dexalin
 

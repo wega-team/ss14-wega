@@ -471,6 +471,9 @@
   id: TechCore
 
 - type: Tag
+  id: FleshCore
+
+- type: Tag
   id: Synthcore
 
 - type: Tag

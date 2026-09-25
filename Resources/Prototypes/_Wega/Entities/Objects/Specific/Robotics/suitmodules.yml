@@ -426,7 +426,7 @@
   - type: Sprite
     state: teleporter
   - type: ModularSuitActionModule
-    action: ActivateTeleporterModuleAction
+    action: ActivateFleshModuleAction
   - type: ModularSuitModuleContainerRequirement
     failureMessage: modsuit-module-requires-bluespace-core
     requiredContainerId: module_core
@@ -459,14 +459,54 @@
 
 - type: entity
   parent: BaseSuitModule
+  id: FleshSuitModule
+  name: flesh suit module
+  description: "A module that uses a bluespace core to let the user transport their particles elsewhere."
+  components:
+  - type: Sprite
+    state: flash
+  - type: ModularSuitActionModule
+    action: ActivateFleshModuleAction
+  - type: ModularSuitModuleContainerRequirement
+    failureMessage: modsuit-module-requires-flesh-core
+    requiredContainerId: module_core
+  - type: ModularSuitModule
+    powerInstanceUsage: 60
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: flash
+  - type: ContainerContainer
+    containers:
+      module_core: !type:ContainerSlot { }
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        whitelist:
+          tags:
+          - FleshCore
+          - Synthcore
+  - type: ItemMapper
+    mapLayers:
+      flash_core:
+        whitelist:
+          tags:
+          - FleshCore
+          - Synthcore
+  - type: Appearance
+
+- type: entity
+  parent: BaseSuitModule
   id: FlameSuitModule
   name: antigravity suit module
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav
+    state: grenade
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-gravity-core
+    failureMessage: modsuit-module-requires-flame-core
     requiredContainerId: module_core
   - type: ModularSuitItemModule
     handId: flame-hand
@@ -476,7 +516,7 @@
     powerUsage: 2
     verbIcon:
       sprite: *modules-rsi
-      state: defibrillator
+      state: firewall
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -490,7 +530,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      antigrav_core:
+      firewall_core:
         whitelist:
           tags:
           - FlameCore
@@ -504,9 +544,9 @@
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav
+    state: grenade
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-gravity-core
+    failureMessage: modsuit-module-requires-ice-core
     requiredContainerId: module_core
   - type: ModularSuitItemModule
     handId: ice-hand
@@ -516,7 +556,7 @@
     powerUsage: 2
     verbIcon:
       sprite: *modules-rsi
-      state: defibrillator
+      state: cryogrenade
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -530,7 +570,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      antigrav_core:
+      cryogrenade_core:
         whitelist:
           tags:
           - IceCore
@@ -544,19 +584,19 @@
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav
+    state: chem
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-gravity-core
+    failureMessage: modsuit-module-requires-chem-core
     requiredContainerId: module_core
   - type: ModularSuitItemModule
     handId: chem-hand
-    item: BorgHypoGeneratedAdvensed
+    item: HypoGeneratedAdvensed
   - type: ModularSuitModule
     modulePart: Gloves
     powerUsage: 2
     verbIcon:
       sprite: *modules-rsi
-      state: defibrillator
+      state: chem
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -570,7 +610,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      antigrav_core:
+      chem_core:
         whitelist:
           tags:
           - ChemCore
@@ -584,9 +624,9 @@
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav
+    state: electro
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-gravity-core
+    failureMessage: modsuit-module-requires-elec-core
     requiredContainerId: module_core
   - type: ModularSuitActionModule
     action: ActivateEMPModuleAction
@@ -596,7 +636,7 @@
     active: true
     verbIcon:
       sprite: *modules-rsi
-      state: teleporter
+      state: electro
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -610,7 +650,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      antigrav_core:
+      electro_core:
         whitelist:
           tags:
           - ElecCore
@@ -624,9 +664,9 @@
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav
+    state: shadow
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-gravity-core
+    failureMessage: modsuit-module-requires-shadow-core
     requiredContainerId: module_core
   - type: ModularSuitActionModule
     action: ActivateShadowModuleAction
@@ -637,7 +677,7 @@
     active: true
     verbIcon:
       sprite: *modules-rsi
-      state: teleporter
+      state: shadow
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -651,7 +691,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      antigrav_core:
+      shadow_core:
         whitelist:
           tags:
           - ShadowCore
@@ -665,9 +705,9 @@
   description: "A module that uses a gravitational core to make the user completely weightless."
   components:
   - type: Sprite
-    state: antigrav
+    state: flora
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-gravity-core
+    failureMessage: modsuit-module-requires-flora-core
     requiredContainerId: module_core
   - type: ModularSuitActionModule
     action: ActivateFloraModuleAction
@@ -677,7 +717,7 @@
     active: true
     verbIcon:
       sprite: *modules-rsi
-      state: teleporter
+      state: flora
   - type: ContainerContainer
     containers:
       module_core: !type:ContainerSlot { }
@@ -691,7 +731,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      antigrav_core:
+      flora_core:
         whitelist:
           tags:
           - FloraCore
@@ -705,7 +745,7 @@
   description: "A module that uses a bluespace core to let the user transport their particles elsewhere."
   components:
   - type: Sprite
-    state: teleporter
+    state: rock
   - type: ModularSuitModuleEffect
     targetSlot: outerClothing
     activeComponents:
@@ -727,9 +767,9 @@
     powerUsage: 1
     verbIcon:
       sprite: *modules-rsi
-      state: armor_booster
+      state: rock
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-bluespace-core
+    failureMessage: modsuit-module-requires-rock-core
     requiredContainerId: module_core
   - type: Tag
     tags:
@@ -748,7 +788,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      teleporter_core:
+      rock_core:
         whitelist:
           tags:
           - RockCore
@@ -762,7 +802,7 @@
   description: "A heads-up display installed into the visor of the suit. This cross-references suit sensor data with a modern biological scanning suite, allowing the user to visualize the current health of organic lifeforms, as well as access data such as patient files in a convenient readout. They say these also let you see behind you."
   components:
   - type: Sprite
-    state: medhud_visor
+    state: omnivisor
   - type: ModularSuitModuleEffect
     activeComponents:
     - type: ShowHealthBars
@@ -782,9 +822,9 @@
   - type: ModularSuitModule
     verbIcon:
       sprite: *modules-rsi
-      state: medhud_visor
+      state: omnivisor
   - type: ModularSuitModuleContainerRequirement
-    failureMessage: modsuit-module-requires-bluespace-core
+    failureMessage: modsuit-module-requires-tech-core
     requiredContainerId: module_core
   - type: ContainerContainer
     containers:
@@ -799,7 +839,7 @@
           - Synthcore
   - type: ItemMapper
     mapLayers:
-      teleporter_core:
+      omnivisor_core:
         whitelist:
           tags:
           - TechCore
@@ -823,6 +863,23 @@
         whitelist:
           tags:
           - GravityCore
+          - Synthcore
+
+- type: entity
+  parent: FleshSuitModule
+  id: FleshSuitModuleSelector
+  suffix: Selector
+  components:
+  - type: ItemSlots
+    slots:
+      module_core:
+        name: module-core-slot-name-default
+        startingItem: AnomalyCoreFlesh
+        disableEject: true
+        swap: false
+        whitelist:
+          tags:
+          - FleshCore
           - Synthcore
 
 - type: entity
@@ -1796,7 +1853,7 @@
   description: "An oddly domestic device, this module is installed into the user's palm, hooking up with culinary scanners located in the helmet to blast food with precise microwave radiation, allowing them to cook food from a distance, with the greatest of ease. Not recommended for use against grapes."
   components:
   - type: Sprite
-    state: microwave_beam
+    state: gun
   - type: ModularSuitItemModule
     handId: laser-gun-hand
     item: WeaponLaserSuitModule
@@ -1805,4 +1862,4 @@
     powerUsage: 5
     verbIcon:
       sprite: *modules-rsi
-      state: microwave_beam
+      state: gun

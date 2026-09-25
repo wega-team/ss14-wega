@@ -73,6 +73,8 @@ ent-RockModuleSuitModule = модуль каменной брони
     .desc = Модуль, использующий рудную ядро обеспечивающий неплохую защиту, слегка замедляя пользователя.
 ent-TechVisorSuitModule = модуль омнивизора
     .desc = Модуль, использующий техническое ядро дающее всю возможную аналитическую информацию с визоров.
+ent-FleshSuitModule = модуль пищевого лечения
+    .desc = Модуль, использующий ядро плоти дающее возможность лечения организма за счет пищи, что ранее вы съели.
 ent-AntiGravitySuitModuleSelector = { ent-AntiGravitySuitModule }
     .desc = { ent-AntiGravitySuitModule.desc }
     .suffix = Собранный, НЕ МАППИТЬ
@@ -102,6 +104,9 @@ ent-RockModuleSuitModuleSelector = { ent-RockModuleSuitModule }
     .suffix = Собранный, НЕ МАППИТЬ
 ent-TechVisorSuitModuleSelector = { ent-TechVisorSuitModule }
     .desc = { ent-TechVisorSuitModule.desc }
+    .suffix = Собранный, НЕ МАППИТЬ
+ent-FleshSuitModuleSelector = { ent-FleshSuitModule }
+    .desc = { ent-FleshSuitModule.desc }
     .suffix = Собранный, НЕ МАППИТЬ
 
 # Printed

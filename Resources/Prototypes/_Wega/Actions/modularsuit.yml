@@ -63,13 +63,12 @@
   components:
   - type: Action
     startDelay: true
-    itemIconStyle: BigItem
+    itemIconStyle: BigAction
     useDelay: 20
   - type: Sprite
-    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
     layers:
     - state: teleporter
-      map: ["enum.ActionVisuals.Icon"]
   - type: TargetAction
     range: 16 # default examine-range.
     # ^ should probably add better validation that the clicked location is on the users screen somewhere,
@@ -89,12 +88,41 @@
     itemIconStyle: BigItem
     useDelay: 60
   - type: Sprite
-    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
     layers:
     - state: antigrav_core
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:AntiGravitationEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateFleshModuleAction
+  name: "[color=#58c4e8]Activate damage[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:DamageOnActionModuleEvent
+      hungerPerUse: 100
+      damage:
+        types:
+          Blunt: -10
+          Slash: -10
+          Piercing: -10
+          Heat: -10
+          Cold: -10
+          Poison: -10
+          Asphyxiation: -20
+          Bloodloss: -20
 
 - type: entity
   parent: BaseAction
@@ -107,9 +135,9 @@
     itemIconStyle: BigItem
     useDelay: 120
   - type: Sprite
-    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
     layers:
-    - state: antigrav_core
+    - state: electro_core
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ModuleEMPEvent
@@ -125,9 +153,9 @@
     itemIconStyle: BigItem
     useDelay: 120
   - type: Sprite
-    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
     layers:
-    - state: antigrav_core
+    - state: flora_core
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ModuleHealSurgeyEvent
@@ -140,12 +168,11 @@
   components:
   - type: Action
     startDelay: true
-    itemIconStyle: BigItem
     useDelay: 5
   - type: Sprite
-    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
     layers:
-    - state: antigrav_core
+    - state: shadow_core
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
     event: !type:ModuleStealthEvent

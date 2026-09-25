@@ -3,6 +3,8 @@ using Content.Shared.DoAfter;
 using Content.Shared.Magic;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
+using Content.Shared.Damage;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Modular.Suit;
@@ -77,4 +79,13 @@ public sealed partial class ModuleStealthEvent : InstantActionEvent
 {
     [DataField]
     public float Coefficient = 0.3f;
+}
+
+public sealed partial class DamageOnActionModuleEvent : InstantActionEvent
+{
+    [DataField]
+    public DamageSpecifier Damage = default!;
+
+    [DataField]
+    public float HungerPerUse = 35f;
 }

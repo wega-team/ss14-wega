@@ -14,13 +14,8 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 50
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/tesla_gun.rsi
-    layers:
-      - state: base
-        map: ["enum.GunVisualLayers.Base"]
-      - state: mag-unshaded-4
-        map: ["enum.GunVisualLayers.MagUnshaded"]
-        shader: unshaded
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    state: gun
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg

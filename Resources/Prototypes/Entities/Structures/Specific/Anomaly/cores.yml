@@ -172,6 +172,11 @@
       params:
         volume: 1.0
         variation: 0.125
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FleshCore
 
 - type: entity
   parent: BaseAnomalyCore
@@ -530,6 +535,13 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FleshCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore

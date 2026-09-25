@@ -1,5 +1,22 @@
 - type: entity
-  parent: BaseSelector
+  parent: BaseItem
+  id: BaseOtherSelector
+  abstract: true
+  components:
+  - type: Sprite
+    state: icon
+  - type: Item
+    size: Normal
+  - type: ItemSelector
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseOtherSelector
   id: OtherCrashSelector
   name: crasher converter
   description: What kind of crusher are you today?
@@ -32,7 +49,7 @@
     - WeaponProtoKineticPistol
 
 - type: entity
-  parent: BaseSelector
+  parent: BaseOtherSelector
   id: OtherCoreSuitModuleNoCoreSelector
   name: core suit module converter
   description: What kind of crusher are you today?
@@ -52,9 +69,10 @@
     - FloraSuitModuleS
     - RockModuleSuitModule
     - TechVisorSuitModule
+    - FleshSuitModule
 
 - type: entity
-  parent: BaseSelector
+  parent: BaseOtherSelector
   id: OtherCoreSuitModuleSelector
   name: core suit module converter
   description: What kind of crusher are you today?
@@ -74,3 +92,4 @@
     - FloraSuitModuleSelector
     - RockModuleSuitModuleSelector
     - TechVisorSuitModuleSelector
+    - FleshSuitModuleSelector
