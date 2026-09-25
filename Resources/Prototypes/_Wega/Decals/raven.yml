@@ -13,151 +13,151 @@
     state: diagonal_edge
 
 - type: decal
-  id: RAVEN1
+  id: RavenBotLeft
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN1
+    state: raven_bot_left
 
 - type: decal
-  id: RAVEN2
+  id: RavenBotCentre
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN2
+    state: raven_bot_centre
 
 - type: decal
-  id: RAVEN3
+  id: RavenBotRight
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN3
+    state: raven_bot_right
 
 - type: decal
-  id: RAVEN4
+  id: RavenCentreLeft
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN4
+    state: raven_centre_left
 
 - type: decal
-  id: RAVEN5
+  id: RavenCentre
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN5
+    state: raven_centre
 
 - type: decal
-  id: RAVEN6
+  id: RavenCentreRight
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN6
+    state: raven_centre_right
 
 - type: decal
-  id: RAVEN7
+  id: RavenTopLeft
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN7
+    state: raven_top_left
 
 - type: decal
-  id: RAVEN8
+  id: RavenTopCentre
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN8
+    state: raven_top_centre
 
 - type: decal
-  id: RAVEN9
+  id: RavenTopRight
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: RAVEN9
+    state: raven_top_right
 
 - type: decal
-  id: TileAnticorner1
+  id: TileAnticornerNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner-1
+    state: tile_anticorner_nw
 
 - type: decal
-  id: TileAnticorner2
+  id: TileAnticornerSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner-2
+    state: tile_anticorner_se
 
 - type: decal
-  id: TileAnticorner3
+  id: TileAnticornerSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner-3
+    state: tile_anticorner_sw
 
 - type: decal
-  id: TileAnticorner4
+  id: TileAnticornerNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner-4
+    state: tile_anticorner_ne
 
 - type: decal
-  id: TileAnticornerContrasted1
+  id: TileAnticornerContrastedNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner_contrasted-1
+    state: tile_anticorner_contrasted_nw
 
 - type: decal
-  id: TileAnticornerContrasted2
+  id: TileAnticornerContrastedSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner_contrasted-2
+    state: tile_anticorner_contrasted_se
 
 - type: decal
-  id: TileAnticornerContrasted3
+  id: TileAnticornerContrastedSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner_contrasted-3
+    state: tile_anticorner_contrasted_sw
 
 - type: decal
-  id: TileAnticornerContrasted4
+  id: TileAnticornerContrastedNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_anticorner_contrasted-4
+    state: tile_anticorner_contrasted_ne
 
 - type: decal
-  id: TileCorner1
+  id: TileCornerSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_corner-1
+    state: tile_corner_se
 
 - type: decal
-  id: TileCorner2
+  id: TileCornerNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_corner-2
+    state: tile_corner_nw
 
 - type: decal
-  id: TileCorner3
+  id: TileCornerNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_corner-3
+    state: tile_corner_ne
 
 - type: decal
-  id: TileCorner4
+  id: TileCornerSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_corner-4
+    state: tile_corner_sw
 
 - type: decal
   id: TileFourcorners
@@ -174,326 +174,326 @@
     state: tile_full
 
 - type: decal
-  id: TileHalf1
+  id: TileHalfS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half-1
+    state: tile_half_s
 
 - type: decal
-  id: TileHalf2
+  id: TileHalfN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half-2
+    state: tile_half_n
 
 - type: decal
-  id: TileHalf3
+  id: TileHalfE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half-3
+    state: tile_half_e
 
 - type: decal
-  id: TileHalf4
+  id: TileHalfW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half-4
+    state: tile_half_w
 
 - type: decal
-  id: TileHalfContrasted1
+  id: TileHalfContrastedS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half_contrasted-1
+    state: tile_half_contrasted_s
 
 - type: decal
-  id: TileHalfContrasted2
+  id: TileHalfContrastedN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half_contrasted-2
+    state: tile_half_contrasted_n
 
 - type: decal
-  id: TileHalfContrasted3
+  id: TileHalfContrastedE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half_contrasted-3
+    state: tile_half_contrasted_e
 
 - type: decal
-  id: TileHalfContrasted4
+  id: TileHalfContrastedW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_half_contrasted-4
+    state: tile_half_contrasted_w
 
 - type: decal
-  id: TileOpposingCorners1
+  id: TileOpposingCornersNwSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_opposing_corners-1
+    state: tile_opposing_corners_nw_se
 
 - type: decal
-  id: TileOpposingCorners2
+  id: TileOpposingCornersNeSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_opposing_corners-2
+    state: tile_opposing_corners_ne_sw
 
 - type: decal
-  id: TileTram1
+  id: TileTramS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_tram-1
+    state: tile_tram_s
 
 - type: decal
-  id: TileTram2
+  id: TileTramN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_tram-2
+    state: tile_tram_n
 
 - type: decal
-  id: TileTram3
+  id: TileTramE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_tram-3
+    state: tile_tram_e
 
 - type: decal
-  id: TileTram4
+  id: TileTramW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: tile_tram-4
+    state: tile_tram_w
 
 - type: decal
-  id: Trimline1
+  id: TrimlineS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-1
+    state: trimline_s
 
 - type: decal
-  id: Trimline2
+  id: TrimlineN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-2
+    state: trimline_n
 
 - type: decal
-  id: Trimline3
+  id: TrimlineE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-3
+    state: trimline_e
 
 - type: decal
-  id: Trimline4
+  id: TrimlineW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-4
+    state: trimline_w
 
 - type: decal
-  id: Trimline5
+  id: TrimlineSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-5
+    state: trimline_se
 
 - type: decal
-  id: Trimline6
+  id: TrimlineSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-6
+    state: trimline_sw
 
 - type: decal
-  id: Trimline7
+  id: TrimlineNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-7
+    state: trimline_ne
 
 - type: decal
-  id: Trimline8
+  id: TrimlineNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline-8
+    state: trimline_nw
 
 - type: decal
-  id: TrimlineArrowCcw1
+  id: TrimlineArrowCcwS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-1
+    state: trimline_arrow_ccw_s
 
 - type: decal
-  id: TrimlineArrowCcw2
+  id: TrimlineArrowCcwN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-2
+    state: trimline_arrow_ccw_n
 
 - type: decal
-  id: TrimlineArrowCcw3
+  id: TrimlineArrowCcwE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-3
+    state: trimline_arrow_ccw_e
 
 - type: decal
-  id: TrimlineArrowCcw4
+  id: TrimlineArrowCcwW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-4
+    state: trimline_arrow_ccw_w
 
 - type: decal
-  id: TrimlineArrowCcw5
+  id: TrimlineArrowCcwSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-5
+    state: trimline_arrow_ccw_se
 
 - type: decal
-  id: TrimlineArrowCcw6
+  id: TrimlineArrowCcwSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-6
+    state: trimline_arrow_ccw_sw
 
 - type: decal
-  id: TrimlineArrowCcw7
+  id: TrimlineArrowCcwNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-7
+    state: trimline_arrow_ccw_ne
 
 - type: decal
-  id: TrimlineArrowCcw8
+  id: TrimlineArrowCcwNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw-8
+    state: trimline_arrow_ccw_nw
 
 - type: decal
-  id: TrimlineArrowCcwFill1
+  id: TrimlineArrowCcwFillS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-1
+    state: trimline_arrow_ccw_fill_s
 
 - type: decal
-  id: TrimlineArrowCcwFill2
+  id: TrimlineArrowCcwFillN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-2
+    state: trimline_arrow_ccw_fill_n
 
 - type: decal
-  id: TrimlineArrowCcwFill3
+  id: TrimlineArrowCcwFillE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-3
+    state: trimline_arrow_ccw_fill_e
 
 - type: decal
-  id: TrimlineArrowCcwFill4
+  id: TrimlineArrowCcwFillW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-4
+    state: trimline_arrow_ccw_fill_w
 
 - type: decal
-  id: TrimlineArrowCcwFill5
+  id: TrimlineArrowCcwFillSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-5
+    state: trimline_arrow_ccw_fill_se
 
 - type: decal
-  id: TrimlineArrowCcwFill6
+  id: TrimlineArrowCcwFillSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-6
+    state: trimline_arrow_ccw_fill_sw
 
 - type: decal
-  id: TrimlineArrowCcwFill7
+  id: TrimlineArrowCcwFillNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-7
+    state: trimline_arrow_ccw_fill_ne
 
 - type: decal
-  id: TrimlineArrowCcwFill8
+  id: TrimlineArrowCcwFillNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_ccw_fill-8
+    state: trimline_arrow_ccw_fill_nw
 
 - type: decal
-  id: TrimlineArrowCwFill1
+  id: TrimlineArrowCwFillS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-1
+    state: trimline_arrow_cw_fill_s
 
 - type: decal
-  id: TrimlineArrowCwFill2
+  id: TrimlineArrowCwFillN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-2
+    state: trimline_arrow_cw_fill_n
 
 - type: decal
-  id: TrimlineArrowCwFill3
+  id: TrimlineArrowCwFillE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-3
+    state: trimline_arrow_cw_fill_e
 
 - type: decal
-  id: TrimlineArrowCwFill4
+  id: TrimlineArrowCwFillW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-4
+    state: trimline_arrow_cw_fill_w
 
 - type: decal
-  id: TrimlineArrowCwFill5
+  id: TrimlineArrowCwFillSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-5
+    state: trimline_arrow_cw_fill_se
 
 - type: decal
-  id: TrimlineArrowCwFill6
+  id: TrimlineArrowCwFillSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-6
+    state: trimline_arrow_cw_fill_sw
 
 - type: decal
-  id: TrimlineArrowCwFill7
+  id: TrimlineArrowCwFillNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-7
+    state: trimline_arrow_cw_fill_ne
 
 - type: decal
-  id: TrimlineArrowCwFill8
+  id: TrimlineArrowCwFillNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_arrow_cw_fill-8
+    state: trimline_arrow_cw_fill_nw
 
 - type: decal
   id: TrimlineBox
@@ -510,449 +510,449 @@
     state: trimline_box_fill
 
 - type: decal
-  id: TrimlineCorner1
+  id: TrimlineCornerSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner-1
+    state: trimline_corner_se
 
 - type: decal
-  id: TrimlineCorner2
+  id: TrimlineCornerNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner-2
+    state: trimline_corner_nw
 
 - type: decal
-  id: TrimlineCorner3
+  id: TrimlineCornerNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner-3
+    state: trimline_corner_ne
 
 - type: decal
-  id: TrimlineCorner4
+  id: TrimlineCornerSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner-4
+    state: trimline_corner_sw
 
 - type: decal
-  id: TrimlineCornerFill1
+  id: TrimlineCornerFillSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_fill-1
+    state: trimline_corner_fill_se
 
 - type: decal
-  id: TrimlineCornerFill2
+  id: TrimlineCornerFillNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_fill-2
+    state: trimline_corner_fill_nw
 
 - type: decal
-  id: TrimlineCornerFill3
+  id: TrimlineCornerFillNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_fill-3
+    state: trimline_corner_fill_ne
 
 - type: decal
-  id: TrimlineCornerFill4
+  id: TrimlineCornerFillSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_fill-4
+    state: trimline_corner_fill_sw
 
 - type: decal
-  id: TrimlineCornerWarnFill1
+  id: TrimlineCornerWarnFillSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_warn_fill-1
+    state: trimline_corner_warn_fill_se
 
 - type: decal
-  id: TrimlineCornerWarnFill2
+  id: TrimlineCornerWarnFillNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_warn_fill-2
+    state: trimline_corner_warn_fill_nw
 
 - type: decal
-  id: TrimlineCornerWarnFill3
+  id: TrimlineCornerWarnFillNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_warn_fill-3
+    state: trimline_corner_warn_fill_ne
 
 - type: decal
-  id: TrimlineCornerWarnFill4
+  id: TrimlineCornerWarnFillSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_corner_warn_fill-4
+    state: trimline_corner_warn_fill_sw
 
 - type: decal
-  id: TrimlineEnd1
+  id: TrimlineEndS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end-1
+    state: trimline_end_s
 
 - type: decal
-  id: TrimlineEnd2
+  id: TrimlineEndN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end-2
+    state: trimline_end_n
 
 - type: decal
-  id: TrimlineEnd3
+  id: TrimlineEndE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end-3
+    state: trimline_end_e
 
 - type: decal
-  id: TrimlineEnd4
+  id: TrimlineEndW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end-4
+    state: trimline_end_w
 
 - type: decal
-  id: TrimlineEndFill1
+  id: TrimlineEndFillS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end_fill-1
+    state: trimline_end_fill_s
 
 - type: decal
-  id: TrimlineEndFill2
+  id: TrimlineEndFillN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end_fill-2
+    state: trimline_end_fill_n
 
 - type: decal
-  id: TrimlineEndFill3
+  id: TrimlineEndFillE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end_fill-3
+    state: trimline_end_fill_e
 
 - type: decal
-  id: TrimlineEndFill4
+  id: TrimlineEndFillW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_end_fill-4
+    state: trimline_end_fill_w
 
 - type: decal
-  id: TrimlineFill1
+  id: TrimlineFillS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-1
+    state: trimline_fill_s
 
 - type: decal
-  id: TrimlineFill2
+  id: TrimlineFillN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-2
+    state: trimline_fill_n
 
 - type: decal
-  id: TrimlineFill3
+  id: TrimlineFillE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-3
+    state: trimline_fill_e
 
 - type: decal
-  id: TrimlineFill4
+  id: TrimlineFillW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-4
+    state: trimline_fill_w
 
 - type: decal
-  id: TrimlineFill5
+  id: TrimlineFillSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-5
+    state: trimline_fill_se
 
 - type: decal
-  id: TrimlineFill6
+  id: TrimlineFillSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-6
+    state: trimline_fill_sw
 
 - type: decal
-  id: TrimlineFill7
+  id: TrimlineFillNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-7
+    state: trimline_fill_ne
 
 - type: decal
-  id: TrimlineFill8
+  id: TrimlineFillNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_fill-8
+    state: trimline_fill_nw
 
 - type: decal
-  id: TrimlineMid1
+  id: TrimlineMidS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid-1
+    state: trimline_mid_s
 
 - type: decal
-  id: TrimlineMid2
+  id: TrimlineMidN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid-2
+    state: trimline_mid_n
 
 - type: decal
-  id: TrimlineMid3
+  id: TrimlineMidE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid-3
+    state: trimline_mid_e
 
 - type: decal
-  id: TrimlineMid4
+  id: TrimlineMidW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid-4
+    state: trimline_mid_w
 
 - type: decal
-  id: TrimlineMidFill1
+  id: TrimlineMidFillS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid_fill-1
+    state: trimline_mid_fill_s
 
 - type: decal
-  id: TrimlineMidFill2
+  id: TrimlineMidFillN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid_fill-2
+    state: trimline_mid_fill_n
 
 - type: decal
-  id: TrimlineMidFill3
+  id: TrimlineMidFillE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid_fill-3
+    state: trimline_mid_fill_e
 
 - type: decal
-  id: TrimlineMidFill4
+  id: TrimlineMidFillW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_mid_fill-4
+    state: trimline_mid_fill_w
 
 - type: decal
-  id: TrimlineShrinkCcw1
+  id: TrimlineShrinkCcwS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_ccw-1
+    state: trimline_shrink_ccw_s
 
 - type: decal
-  id: TrimlineShrinkCcw2
+  id: TrimlineShrinkCcwN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_ccw-2
+    state: trimline_shrink_ccw_n
 
 - type: decal
-  id: TrimlineShrinkCcw3
+  id: TrimlineShrinkCcwE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_ccw-3
+    state: trimline_shrink_ccw_e
 
 - type: decal
-  id: TrimlineShrinkCcw4
+  id: TrimlineShrinkCcwW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_ccw-4
+    state: trimline_shrink_ccw_w
 
 - type: decal
-  id: TrimlineShrinkCw1
+  id: TrimlineShrinkCwS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_cw-1
+    state: trimline_shrink_cw_s
 
 - type: decal
-  id: TrimlineShrinkCw2
+  id: TrimlineShrinkCwN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_cw-2
+    state: trimline_shrink_cw_n
 
 - type: decal
-  id: TrimlineShrinkCw3
+  id: TrimlineShrinkCwE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_cw-3
+    state: trimline_shrink_cw_e
 
 - type: decal
-  id: TrimlineShrinkCw4
+  id: TrimlineShrinkCwW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_shrink_cw-4
+    state: trimline_shrink_cw_w
 
 - type: decal
-  id: TrimlineTram1
+  id: TrimlineTramS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_tram-1
+    state: trimline_tram_s
 
 - type: decal
-  id: TrimlineTram2
+  id: TrimlineTramN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_tram-2
+    state: trimline_tram_n
 
 - type: decal
-  id: TrimlineTram3
+  id: TrimlineTramE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_tram-3
+    state: trimline_tram_e
 
 - type: decal
-  id: TrimlineTram4
+  id: TrimlineTramW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_tram-4
+    state: trimline_tram_w
 
 - type: decal
-  id: TrimlineWarn1
+  id: TrimlineWarnS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-1
+    state: trimline_warn_s
 
 - type: decal
-  id: TrimlineWarn2
+  id: TrimlineWarnN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-2
+    state: trimline_warn_n
 
 - type: decal
-  id: TrimlineWarn3
+  id: TrimlineWarnE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-3
+    state: trimline_warn_e
 
 - type: decal
-  id: TrimlineWarn4
+  id: TrimlineWarnW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-4
+    state: trimline_warn_w
 
 - type: decal
-  id: TrimlineWarn5
+  id: TrimlineWarnSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-5
+    state: trimline_warn_se
 
 - type: decal
-  id: TrimlineWarn6
+  id: TrimlineWarnSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-6
+    state: trimline_warn_sw
 
 - type: decal
-  id: TrimlineWarn7
+  id: TrimlineWarnNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-7
+    state: trimline_warn_ne
 
 - type: decal
-  id: TrimlineWarn8
+  id: TrimlineWarnNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn-8
+    state: trimline_warn_nw
 
 - type: decal
-  id: TrimlineWarnFill1
+  id: TrimlineWarnFillS
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-1
+    state: trimline_warn_fill_s
 
 - type: decal
-  id: TrimlineWarnFill2
+  id: TrimlineWarnFillN
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-2
+    state: trimline_warn_fill_n
 
 - type: decal
-  id: TrimlineWarnFill3
+  id: TrimlineWarnFillE
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-3
+    state: trimline_warn_fill_e
 
 - type: decal
-  id: TrimlineWarnFill4
+  id: TrimlineWarnFillW
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-4
+    state: trimline_warn_fill_w
 
 - type: decal
-  id: TrimlineWarnFill5
+  id: TrimlineWarnFillSe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-5
+    state: trimline_warn_fill_se
 
 - type: decal
-  id: TrimlineWarnFill6
+  id: TrimlineWarnFillSw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-6
+    state: trimline_warn_fill_sw
 
 - type: decal
-  id: TrimlineWarnFill7
+  id: TrimlineWarnFillNe
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-7
+    state: trimline_warn_fill_ne
 
 - type: decal
-  id: TrimlineWarnFill8
+  id: TrimlineWarnFillNw
   tags: ["station", "markings"]
   sprite:
     sprite: _Wega/Decals/raven.rsi
-    state: trimline_warn_fill-8
+    state: trimline_warn_fill_nw
