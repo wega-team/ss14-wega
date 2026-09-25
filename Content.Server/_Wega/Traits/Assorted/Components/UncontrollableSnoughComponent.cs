@@ -1,6 +1,6 @@
 using System.Numerics;
 using Content.Shared.Chat.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Traits.Assorted;
 
@@ -13,8 +13,8 @@ public sealed partial class UncontrollableSnoughComponent : Component
     /// <summary>
     /// Emote to play when snoughing
     /// </summary>
-    [DataField("emote", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EmotePrototype>))]
-    public string EmoteId = string.Empty;
+    [DataField("emote")]
+    public ProtoId<EmotePrototype> EmoteId = string.Empty;
 
     /// <summary>
     /// The random time between incidents, (min, max).

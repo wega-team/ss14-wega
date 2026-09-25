@@ -1,0 +1,8 @@
+- type: marking
+  id: VulpakiBreastBig
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
+  groupWhitelist: [Vulpkanin]
+  sexRestriction: [Female]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi 
+    state: big_breasts

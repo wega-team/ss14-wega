@@ -98,7 +98,7 @@
 
 - type: entity
   id: BorgChassisSyndicateAssault
-  parent: BaseBorgChassisSyndicate
+  parent: [BaseCorvaxContraband436, BaseBorgChassisSyndicate] # Corvax-Contraband
   name: syndicate assault cyborg
   description: A lean, mean killing machine with access to a variety of deadly modules.
   components:
@@ -130,8 +130,6 @@
 # Corvax-Wega-Start
     - type: Inventory
       templateId: borgDutch
-    - type: EmpResistance
-      strengthMultiplier: 0
     - type: MobThresholds # tankier
       thresholds:
         0: Alive
@@ -204,6 +202,9 @@
         params:
           volume: -6
 # Corvax-Wega-Start
+    - type: LockingWhitelist # so it can help the mothership borging other xenoborgs
+      blacklist:
+        null
     - type: Inventory
       templateId: borgDutch
     - type: EmpResistance

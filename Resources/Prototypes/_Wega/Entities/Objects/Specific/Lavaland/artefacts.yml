@@ -135,8 +135,6 @@
     actions:
     - ActionHierophantBeacon
   - type: ItemActionGrant
-    actions:
-    - ActionHierophantBeacon
   - type: StaticPrice
     price: 5000
 

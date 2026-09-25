@@ -1,4 +1,4 @@
-# heavy
+# Heavy
 - type: entity
   parent: Holoprojector
   id: XenoborgHoloprojectorForcefield
@@ -46,7 +46,7 @@
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
 
-# eng
+# Eng
 - type: entity
   id: XenoRCD
   parent: [ BaseItem, BaseXenoborgContraband ]
@@ -89,7 +89,7 @@
   - type: AutoRecharge
     rechargeDuration: 10
 
-# stels
+# Stels
 - type: entity
   parent: MiniSyringe
   id: MiniSyringePax
@@ -153,7 +153,8 @@
       - id: MiniSyringePax
     sound:
       path: /Audio/Machines/phasein.ogg
-# mothership
+
+# Mothership
 - type: entity
   parent: XenoborgHoloprojectorForcefield
   id: XenoborgHoloprojectorForcefieldMother
@@ -181,7 +182,7 @@
     sprite: _Wega/Objects/Tools/xeno_access_breaker.rsi
     state: icon
 
-# xenoborgs
+# Xenoborgs
 - type: entity
   parent: RepeirModeDevice
   id: RepeirModeDeviceXenoborg
@@ -222,7 +223,7 @@
   description: Creates an impassable forcefield that won't let anything through. Close proximity may or may not cause cancer.
   components:
     - type: HolosignProjector
-      signProto: FloorTrapEMPXenoborg
+      signProto: FloorTrapEMPXenoborgStart
       chargeUse: 360
     - type: Sprite
       sprite:  _Wega/Objects/Devices/Holoprojectors/xfield.rsi
@@ -262,9 +263,8 @@
   - type: UseDelay
     delay: 120
   - type: Sprite
-    sprite: Structures/Wallmounts/air_monitors_xeno.rsi
-    layers:
-    - state: fire_b1
+    sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: alarm0
   - type: Item
     size: Tiny
   - type: SpawnItemsOnUse
@@ -316,9 +316,10 @@
       charger_slot:
         ejectOnInteract: false
         whitelist:
+          tags:
+          - Stunbaton
           components:
           - BatteryAmmoProvider
-          - Stunbaton
           - PowerCell
         blacklist:
           tags:
@@ -374,8 +375,8 @@
   - type: Dirtable
     dirtState: beret
     equippedDirtState: equipped-beret
-    # Corvax-Wega-Dirtable-end
-    
+  # Corvax-Wega-Dirtable-end
+
 - type: entity
   name: ion carabine
   parent: BaseWeaponBatterySmall
@@ -410,9 +411,9 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 50
   - type: BatteryAmmoProvider
-    proto: IonScan
-    fireCost: 250
-    
+    proto: IonScanDamage
+    fireCost: 500
+
 - type: entity
   name: upgradebrain
   parent: BaseItem
@@ -451,3 +452,20 @@
       components:
         - FloorTile
 
+- type: entity
+  parent: [ BorgHypo, BaseXenoborgContraband ]
+  id: LexorinHypo
+  name: lexorin hypo
+  description: A self-refilling injector for rapid administration of nocturine to victms.
+  components:
+  - type: Solution
+    solution:
+      maxVol: 10
+      reagents:
+      - ReagentId: Lexorin
+        Quantity: 10
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Lexorin
+        Quantity: 0.2

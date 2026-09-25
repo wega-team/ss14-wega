@@ -1,4 +1,4 @@
-﻿// Corvax-Wega-Full-Edit-start
+// Corvax-Wega-Full-Edit-start
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Input;
 using Robust.Shared.Input.Binding;

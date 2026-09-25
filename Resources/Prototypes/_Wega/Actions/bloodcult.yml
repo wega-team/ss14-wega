@@ -342,7 +342,7 @@
     itemIconStyle: BigAction
     useDelay: 60
   - type: Sprite
-    sprite: Structures/Walls/cult.rsi
+    sprite: Structures/Walls/brick.rsi
     layers:
     - state: full
       map: ["enum.ActionVisuals.Icon"]
@@ -352,7 +352,7 @@
   - type: WorldTargetAction
     event: !type:WorldSpawnSpellEvent
       prototypes:
-      - id: WallCult
+      - id: WallBrick
         amount: 1
 
 - type: entity

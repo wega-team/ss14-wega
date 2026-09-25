@@ -1,15 +1,15 @@
-- type: construction
-  id: CultGirder
-  graph: CultGirder
-  startNode: start
-  targetNode: cultgirder
-  category: construction-category-bloodcult
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
+#- type: construction
+#  id: CultGirder
+#  graph: CultGirder
+#  startNode: start
+#  targetNode: cultgirder
+#  category: construction-category-bloodcult
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canRotate: false
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
 
 - type: construction
   id: BloodCultStructureAltar
@@ -77,10 +77,10 @@
     - !type:TileNotBlocked
 
 - type: construction
-  id: SolidSecretDoorRe
+  id: SolidSecretDoorReinforced
   name: recipes-resecret-door-name
   description: recipes-resecret-door-desc
-  graph: SecretDoorRe
+  graph: SecretDoorReinforced
   startNode: start
   targetNode: solidSecretDoor
   category: construction-category-structures
@@ -89,7 +89,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
-    
+
 - type: construction
   id: VeilCultClockworkLathe
   graph: VeilCultStructureLatheGraph
@@ -102,7 +102,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
-    
+
 - type: construction
   id: VeilCultStructureAltar
   graph: VeilCultStructureAltarGraph
@@ -115,7 +115,7 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
-    
+
 - type: construction
   id: VeilCultBeacon
   graph: VeilCultStructureBeaconGraph

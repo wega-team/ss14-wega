@@ -80,8 +80,8 @@
       - CombatKnife
       - Truncheon
       - HandGrenade
-      components:
       - Stunbaton
+      components:
       - FlashOnTrigger
       - SmokeOnTrigger
       - Flash

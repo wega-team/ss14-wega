@@ -1,0 +1,28 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishSecretDoorAssemblyOld
+  rsiPath: _Wega/Stylish/Old/Doors/Misc/secret-door.rsi
+  entities:
+  - BaseSecretDoorAssembly
+
+- type: stylishPreset
+  parent: BaseStylishOld # SecretDoor is rotaded
+  id: StylishSecretDoorOld
+  rsiPath: _Wega/Stylish/Old/Doors/Misc/secret-door.rsi
+  entities:
+  - SolidSecretDoor
+
+# Wega
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishSecretDoorAssemblyReinforcedOld
+  rsiPath: _Wega/Stylish/Old/Doors/Misc/secret-door-reinf.rsi
+  entities:
+  - BaseSecretDoorAssemblyReinforced
+
+- type: stylishPreset
+  parent: BaseStylishOld # SecretDoor is rotaded
+  id: StylishSecretDoorReinforcedOld
+  rsiPath: _Wega/Stylish/Old/Doors/Misc/secret-door-reinf.rsi
+  entities:
+  - SolidSecretDoorReinforced

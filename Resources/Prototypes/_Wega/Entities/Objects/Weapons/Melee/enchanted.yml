@@ -17,10 +17,7 @@
     actions:
     - ActionVeilCultActivateSwordsmen
   - type: ItemActionGrant
-    actions:
-    - ActionVeilCultActivateSwordsmen
-    activeIfWorn: false
-    
+
 - type: entity
   id: WeaponClockworkSwordBloodshed
   parent: WeaponClockworkSword
@@ -38,12 +35,9 @@
     actions:
     - ActionVeilCultActivateBloodshed
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateBloodshed
-    activeIfWorn: false
-    
+
 # SPEAR
-   
+
 - type: entity
   parent: WeaponRatvarianSpear
   id: WeaponRatvarianSpearConfusion
@@ -61,10 +55,7 @@
     actions:
     - ActionVeilCultActivateConfusion
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateConfusion
-    activeIfWorn: false
-    
+
 - type: entity
   parent: WeaponRatvarianSpear
   id: WeaponRatvarianSpearElectricalTouch
@@ -79,9 +70,9 @@
       visible: true
   - type: Enchanted
   - type: ElectricalTouchEnchant
-    
+
 # HAMMER
-    
+
 - type: entity
   id: WeaponClockHammerKnockback
   parent: WeaponClockHammer
@@ -100,10 +91,7 @@
     actions:
     - ActionVeilCultActivateKnockback
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateKnockback
-    activeIfWorn: false
-    
+
 - type: entity
   id: WeaponClockHammerCrusher
   parent: WeaponClockHammer
@@ -121,10 +109,7 @@
     actions:
     - ActionVeilCultActivateCrusher
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateCrusher
-    activeIfWorn: false
-    
+
 - type: entity
   id: WeaponClockHammerDismantling
   parent: WeaponClockHammer
@@ -142,12 +127,9 @@
     actions:
     - ActionVeilCultActivateDismantling
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateDismantling
-    activeIfWorn: false
-    
+
 # GLOVES
-    
+
 - type: entity
   parent: ClothingHandsClockworkGauntlets
   id: ClothingHandsClockworkGauntletsNorthStar
@@ -166,10 +148,7 @@
     actions:
     - ActionVeilCultActivateNorthStar
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateNorthStar
-    activeIfWorn: true
-    
+
 - type: entity
   parent: ClothingHandsClockworkGauntlets
   id: ClothingHandsClockworkGauntletsRedFlame
@@ -188,10 +167,7 @@
     actions:
     - ActionVeilCultActivateRedFlame
   - type: ItemActionGrant
-    actions: 
-    - ActionVeilCultActivateRedFlame
-    activeIfWorn: true
-    
+
 - type: entity
   parent: ClothingHandsClockworkGauntlets
   id: ClothingHandsClockworkGauntletsStun

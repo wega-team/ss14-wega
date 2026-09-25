@@ -1,4 +1,5 @@
 using Content.Client.Movement.Systems;
+using Content.Shared.Corvax.Events;
 using Content.Shared.Actions;
 using Content.Shared.Ghost.Components;
 using Content.Shared.Ghost.Systems;
@@ -8,10 +9,6 @@ using Robust.Client.Console;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Player;
-using Content.Client.UserInterface.Systems.Ghost.Widgets; // Corvax-Wega-GhostRespawn
-using Content.Shared.Mind; // Corvax-Wega-GhostRespawn
-using Robust.Client.UserInterface; // Corvax-Wega-GhostRespawn
-using Content.Client.Wega.Ghost.Respawn; // Corvax-Wega-GhostRespawn
 
 namespace Content.Client.Ghost
 {
@@ -23,8 +20,6 @@ namespace Content.Client.Ghost
         [Dependency] private ContentEyeSystem _contentEye = default!;
         [Dependency] private SpriteSystem _sprite = default!;
         [Dependency] private SharedNightVisionSystem _nv = default!;
-        [Dependency] private IUserInterfaceManager _uiManager = default!; // Corvax-Wega-GhostRespawn
-        [Dependency] private GhostRespawnSystem _respawn = default!; // Corvax-Wega-GhostRespawn
 
         public int AvailableGhostRoleCount { get; private set; }
 
@@ -49,18 +44,6 @@ namespace Content.Client.Ghost
                 }
             }
         }
-
-        // Corvax-Wega-GhostRespawn-start
-        public override void Update(float frameTime)
-        {
-            foreach (var ghost in EntityQuery<GhostComponent, MindComponent>(true))
-            {
-                var ui = _uiManager.GetActiveUIWidgetOrNull<GhostGui>();
-                if (ui != null && Player != null)
-                    ui.UpdateGhostRespawn(_respawn.GhostRespawnTime);
-            }
-        }
-        // Corvax-Wega-GhostRespawn-end
 
         public GhostComponent? Player => CompOrNull<GhostComponent>(_playerManager.LocalEntity);
         public bool IsGhost => Player != null;
@@ -204,6 +187,11 @@ namespace Content.Client.Ghost
         public void RequestWarps()
         {
             RaiseNetworkEvent(new GhostWarpsRequestEvent());
+        }
+
+        public void GhostGoLobby() // Corvax-GoLobby
+        {
+            RaiseNetworkEvent(new GhostGoLobbyEvent());
         }
 
         public void ReturnToBody()

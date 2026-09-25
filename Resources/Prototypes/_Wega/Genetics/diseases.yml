@@ -20,7 +20,9 @@
   typeDeviation: Disease
   costInstability: -5
   addComponent:
-  - type: Clumsy
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectClumsyClown
 
 - type: structuralEnzymes
   id: GeneticsColourblindnessDisease

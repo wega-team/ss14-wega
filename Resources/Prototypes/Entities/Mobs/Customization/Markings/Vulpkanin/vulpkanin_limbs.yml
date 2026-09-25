@@ -3,7 +3,7 @@
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: claws_l_hand
 
 - type: marking
@@ -11,7 +11,7 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: claws_r_hand
 
 - type: marking
@@ -19,7 +19,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: claws_l_foot
 
 - type: marking
@@ -27,7 +27,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: claws_r_foot
 
 # Crest
@@ -38,23 +38,25 @@
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: crest-leg-l
 
-- type: marking
-  id: VulpPointsCrestArmLeft
-  bodyPart: LArm
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: crest-arm-l
+# Corvax-Wega-Marking-Edit-start
+#- type: marking
+#  id: VulpPointsCrestArmLeft
+#  bodyPart: LArm
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+#      state: crest-arm-l
+# Corvax-Wega-Marking-Edit-end
 
 - type: marking
   id: VulpPointsCrestFootLeft
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: crest-foot-l
 
 - type: marking
@@ -62,7 +64,7 @@
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: crest-hand-l
 
 ## Right Side
@@ -72,23 +74,25 @@
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: crest-leg-r
 
-- type: marking
-  id: VulpPointsCrestArmRight
-  bodyPart: RArm
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: crest-arm-r
+# Corvax-Wega-Marking-Edit-start
+#- type: marking
+#  id: VulpPointsCrestArmRight
+#  bodyPart: RArm
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+#      state: crest-arm-r
+# Corvax-Wega-Marking-Edit-end
 
 - type: marking
   id: VulpPointsCrestFootRight
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: crest-foot-r
 
 - type: marking
@@ -96,78 +100,82 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: crest-hand-r
 
 # Fade
 
 ## Left Side
 
-- type: marking
-  id: VulpPointsFadeLegLeft
-  bodyPart: LLeg
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-leg-l
+# Corvax-Wega-Marking-Edit-start
+#- type: marking
+#  id: VulpPointsFadeLegLeft
+#  bodyPart: LLeg
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+#      state: points_fade-leg-l
 
-- type: marking
-  id: VulpPointsFadeArmLeft
-  bodyPart: LArm
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-arm-l
+#- type: marking
+#  id: VulpPointsFadeArmLeft
+#  bodyPart: LArm
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+#      state: points_fade-arm-l
+# Corvax-Wega-Marking-Edit-end
 
 - type: marking
   id: VulpPointsFadeFootLeft
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-foot-l
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
+      state: gradient-foot-l # Corvax-Wega-Marking-Edit
 
 - type: marking
   id: VulpPointsFadeHandLeft
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-hand-l
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
+      state: gradient-arm-l # Corvax-Wega-Marking-Edit
 
 ## Right Side
 
-- type: marking
-  id: VulpPointsFadeLegRight
-  bodyPart: RLeg
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-leg-r
+# Corvax-Wega-Marking-Edit-start
+#- type: marking
+#  id: VulpPointsFadeLegRight
+#  bodyPart: RLeg
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+#      state: points_fade-leg-r
 
-- type: marking
-  id: VulpPointsFadeArmRight
-  bodyPart: RArm
-  groupWhitelist: [ Vulpkanin ]
-  sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-arm-r
+#- type: marking
+#  id: VulpPointsFadeArmRight
+#  bodyPart: RArm
+#  groupWhitelist: [ Vulpkanin ]
+#  sprites:
+#    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+#      state: points_fade-arm-r
+# Corvax-Wega-Marking-Edit-end
 
 - type: marking
   id: VulpPointsFadeFootRight
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-foot-r
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
+      state: gradient-foot-r # Corvax-Wega-Marking-Edit
 
 - type: marking
   id: VulpPointsFadeHandRight
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
-      state: points_fade-hand-r
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
+      state: gradient-arm-r # Corvax-Wega-Marking-Edit
 
 # Sharp
 
@@ -178,7 +186,7 @@
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-leg-l
 
 - type: marking
@@ -186,7 +194,7 @@
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-arm-l
 
 - type: marking
@@ -194,7 +202,7 @@
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-arm-long-l
 
 - type: marking
@@ -202,7 +210,7 @@
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-foot-l
 
 - type: marking
@@ -210,7 +218,7 @@
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-hand-l
 
 ## Right Side
@@ -220,7 +228,7 @@
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-leg-r
 
 - type: marking
@@ -228,7 +236,7 @@
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-arm-r
 
 - type: marking
@@ -236,7 +244,7 @@
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-arm-long-r
 
 - type: marking
@@ -244,7 +252,7 @@
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-foot-r
 
 - type: marking
@@ -252,5 +260,5 @@
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: points_sharp-hand-r

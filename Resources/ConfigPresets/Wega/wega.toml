@@ -10,6 +10,9 @@ soft_max_players = 100
 lobbyduration = 360
 map_rotation = false
 
+[lobby]
+server_hub_enabled = true
+
 [events]
 enabled = true
 

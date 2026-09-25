@@ -1,5 +1,4 @@
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Disease.Components
 {
@@ -24,7 +23,7 @@ namespace Content.Shared.Disease.Components
         /// <summary>
         /// What the machine will spawn
         /// </summary>
-        [DataField("machineOutput", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>), required: true)]
-        public string MachineOutput = string.Empty;
+        [DataField("machineOutput", required: true)]
+        public EntProtoId MachineOutput = default!;
     }
 }

@@ -38,7 +38,7 @@ public sealed partial class DiceOfFateSystem : EntitySystem
 {
     [Dependency] private SharedAccessSystem _access = default!;
     [Dependency] private IAdminLogManager _admin = default!;
-    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ServerAntagSelectionSystem _antag = default!;
     [Dependency] private DamageableSystem _damage = default!;
     [Dependency] private SharedDiseaseSystem _disease = default!;
     [Dependency] private ExplosionSystem _explosion = default!;

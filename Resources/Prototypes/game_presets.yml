@@ -40,6 +40,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
+    - Changeling
     - KesslerSyndromeScheduler
     - RampingStationEventScheduler
     - SpaceTrafficControlEventScheduler
@@ -62,6 +63,7 @@
     - Zombie
     - Wizard
     - Xenoborgs
+    - Changeling
     - BasicStationEventScheduler
     - KesslerSyndromeScheduler
     - MeteorSwarmMildScheduler
@@ -145,7 +147,7 @@
   rules:
   - DummyNonAntagChance
   - Traitor
-  - SubGamemodesTraitVampRule # Corvax-Wega-Edit
+  - SubGamemodesRule # Corvax-Wega-Edit
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler
@@ -174,7 +176,7 @@
   rules:
   - Nukeops
   - DummyNonAntagChance
-  - SubGamemodesRule # Corvax-Wega-Edit
+  - SubGamemodesNoMinor # Corvax-Wega-Edit
   - BasicStationEventScheduler
   - MeteorSwarmScheduler
   - SpaceTrafficControlEventScheduler

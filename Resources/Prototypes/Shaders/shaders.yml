@@ -171,4 +171,19 @@
   id: NullDamage
   kind: source
   path: "/Textures/_Wega/Shaders/nulldamage.swsl"
+
+- type: shader
+  id: Postprocess
+  kind: source
+  path: "/Textures/_Wega/Shaders/postprocess.swsl"
+  params:
+    CircleRadius: 420.0
+    CircleMinDist: 0.0
+    CirclePow: 1.0
+    CircleMax: 4.0
+    CircleMult: 0.25
+    FalloffClampMin: 0.075
+    FalloffClampMax: 1.0
+    FalloffPow: 3.0
+    
 # Corvax-Wega-Shaders-end

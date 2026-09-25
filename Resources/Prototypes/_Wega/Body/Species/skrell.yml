@@ -72,8 +72,12 @@
   name: Urist McSkrell
   components:
   - type: Skrell
-  - type: Thirst
-    baseDecayRate: 0.15
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: NormalSatiationHunger
+      Thirst:
+        prototype: SkrellThirst
   - type: SolutionScanner
   - type: Damageable
     damageModifierSet: Skrell

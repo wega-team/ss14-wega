@@ -6,6 +6,7 @@
   components:
   - type: IgnitionSource
     ignited: false
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     predictable: false
     soundActivate:
@@ -282,7 +283,7 @@
     stealGroup: FlippoEngravedLighter
 
 - type: entity
-  parent: [BaseBrandedLighter, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband131, BaseBrandedLighter, BaseSyndicateContraband] # Corvax-Contraband
   id: SyndicateFlippo
   name: Blood-red flippo
   description: "A 'Valid' choice in lighters. Contains no copper."
@@ -295,7 +296,7 @@
     color: green
 
 - type: entity
-  parent: [BaseBrandedLighter, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband131, BaseBrandedLighter, BaseSyndicateContraband] # Corvax-Contraband
   id: CybersunFlippo
   name: CyberSun Flippo
   description: A sleek black and magenta flippo lighter, bearing the logo and iconography of CyberSun Industries.
@@ -308,7 +309,7 @@
     color: magenta
 
 - type: entity
-  parent: [BaseBrandedLighter, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband131, BaseBrandedLighter, BaseSyndicateContraband] # Corvax-Contraband
   id: InterdyneFlippo
   name: Interdyne Flippo
   description: "A deep blue flippo lighter, decorated with the logo of Interdyne Pharmaceuticals' 'Gene Clean' clinics. Become the master of your own cigarette."
@@ -369,7 +370,7 @@
   - type: Tool
     useSound:
       collection: Welder
-    qualities: Welding
+    qualities: [ Welding ]
   - type: Lock
   - type: AccessReader
     access: [["CentralCommand"]]

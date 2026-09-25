@@ -1,4 +1,4 @@
-﻿using Content.Server.Inventory;
+using Content.Server.Inventory;
 using Content.Shared.Inventory;
 using Content.Shared.Radio.Components;
 using Content.Shared.Silicons.Borgs;
@@ -58,6 +58,11 @@ public sealed partial class BorgSwitchableTypeSystem : SharedBorgSwitchableTypeS
                 _borgSystem.InsertModule(chassisEnt, moduleEntity);
             }
         }
+
+        // Corvax-Wega-start
+        if (prototype.Lawset is { } law)
+            ChangeLaw(ent, law);
+        // Corvax-Wega-end
 
         // Configure special components
         if (ProtoMan.Resolve(ent.Comp.SelectedBorgType, out var previousPrototype))

@@ -99,6 +99,11 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleCommonSpeed
   result: BorgModuleCommonSpeed
+  materials:
+    Steel: 500
+    Glass: 500
+    Plastic: 250
+    Diamond: 50
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
@@ -132,8 +137,8 @@
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
-  id: BorgModuleSheild
-  result: BorgModuleSheild
+  id: ModuleSelectorSheild
+  result: ModuleSelectorSheild
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe

@@ -1,0 +1,82 @@
+# Blast Door
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishBlastDoorFrameOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-blastdoor.rsi
+  entities:
+  - BlastDoorFrame
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishBlastDoorOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-blastdoor.rsi
+  entities:
+  - BlastDoor
+  - BlastDoorOpen
+  - BlastDoorXenoborg
+  - BlastDoorXenoborgOpen
+  - BlastDoorCentralCommand
+  - BlastDoorExterior1
+  - BlastDoorExterior1Open
+  - BlastDoorExterior2
+  - BlastDoorExterior2Open
+  - BlastDoorExterior3
+  - BlastDoorExterior3Open
+  - BlastDoorBridge
+  - BlastDoorBridgeOpen
+  - BlastDoorEngineering
+  - BlastDoorEngineeringOpen
+  - BlastDoorScience
+  - BlastDoorScienceOpen
+  - BlastDoorWindows
+  - BlastDoorWindowsOpen
+  layers:
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishBlastDoorFrameXenoOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/exo-blastdoor.rsi
+  entities:
+  - BlastDoorXenoFrame
+
+- type: stylishPreset
+  parent: StylishBlastDoorOld
+  id: StylishBlastDoorXenoOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/exo-blastdoor.rsi
+  entities:
+  - BlastDoorXeno
+  - BlastDoorXenoOpen
+
+# Shutters
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishShuttersFrameOld
+  rsiPath: _Wega/Stylish/Old/Doors/Shutters/shutters.rsi
+  entities:
+  - ShuttersFrame
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishShuttersOld
+  rsiPath: _Wega/Stylish/Old/Doors/Shutters/shutters.rsi
+  entities:
+  - ShuttersNormal
+  - ShuttersNormalOpen
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishShuttersRadiationOld
+  rsiPath: _Wega/Stylish/Old/Doors/Shutters/shutters-radiation.rsi
+  entities:
+  - ShuttersRadiation
+  - ShuttersRadiationOpen
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishShuttersWindowOld
+  rsiPath: _Wega/Stylish/Old/Doors/Shutters/shutters-window.rsi
+  entities:
+  - ShuttersWindow
+  - ShuttersWindowOpen
+  - ShuttersWindowCentralCommand

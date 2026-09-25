@@ -236,7 +236,7 @@ public sealed partial class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
                 toxins: tray.ToxinLevel,
                 pestLevel: tray.PestLevel,
                 weedLevel: tray.WeedLevel,
-                chemicals: tray.SoilSolution?.Comp.Solution.Contents.Select(r => r.Reagent.Prototype).ToList()
+                chemicals: tray.SoilSolution?.Comp.Solution.Contents.Select(r => r.Reagent.Prototype.Id).ToList()
             );
 
             // If there's a plant, get plant data
@@ -267,7 +267,7 @@ public sealed partial class PlantAnalyzerSystem : SharedPlantAnalyzerSystem
                         maturation: plant.Maturation,
                         dead: holder.Dead,
                         viable: true,
-                        mutating: holder.MutationLevel > 0f,
+                        mutating: holder.MutationMod > 0f,
                         kudzu: false
                     );
 

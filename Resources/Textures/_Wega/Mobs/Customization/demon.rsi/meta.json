@@ -24,7 +24,11 @@
             "directions": 4
         },
         {
-            "name": "cow_spots",
+            "name": "cow_spots-f",
+            "directions": 4
+        },
+        {
+            "name": "cow_spots-m",
             "directions": 4
         },
         {

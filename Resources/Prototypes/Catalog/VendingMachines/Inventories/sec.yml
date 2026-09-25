@@ -25,6 +25,7 @@
     RiotBulletShield: 2
     RadioHandheldSecurity: 5
     SecurityBola: 6
+    SecutiryBola: 6 # Corvax-Wega-Edit-End
   # security officers need to follow a diet regimen!
   contrabandInventory:
     WeaponMeleeNeedle: 2

@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Pinpointer;
-using Content.Server.Station.Components;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
@@ -29,7 +28,7 @@ using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Standing;
 using Content.Shared.Surgery.Components;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Console;
 using Robust.Shared.Map;
@@ -42,6 +41,7 @@ using Robust.Shared.Utility;
 using Content.Shared.Bible.Components;
 using Content.Shared.Ghost.Systems;
 using Content.Shared.Ghost.Components;
+using Content.Shared.Station.Components;
 
 namespace Content.Server.Blood.Cult;
 
@@ -376,9 +376,15 @@ public sealed partial class BloodCultSystem
         }
     }
 
+    private bool IsMindshielded(EntityUid target)
+    {
+        return TryComp<MindShieldStatusComponent>(target, out var shield)
+            && shield.IsMindshielded; // changelings or fake shields
+    }
+
     private bool IsSpecialTarget(EntityUid target)
     {
-        return HasComp<MindShieldComponent>(target)
+        return IsMindshielded(target)
             || HasComp<BibleUserComponent>(target)
             || HasComp<BloodCultObjectComponent>(target)
             || HasComp<VeilCultistComponent>(target);
@@ -386,15 +392,16 @@ public sealed partial class BloodCultSystem
 
     private bool IsConvertibleTarget(EntityUid target)
     {
-        return !HasComp<MindShieldComponent>(target)
+        return !IsMindshielded(target)
             && !HasComp<BibleUserComponent>(target)
             && !HasComp<SyntheticOperatedComponent>(target)
-            && !HasComp<VeilCultistComponent>(target);
+            && !HasComp<VeilCultistComponent>(target)
+            && !HasComp<BloodCultObjectComponent>(target);
     }
 
     private bool IsRegularTarget(EntityUid target)
     {
-        return !HasComp<MindShieldComponent>(target)
+        return !IsMindshielded(target)
             && !HasComp<BibleUserComponent>(target)
             && !HasComp<SyntheticOperatedComponent>(target)
             && !HasComp<VeilCultistComponent>(target);

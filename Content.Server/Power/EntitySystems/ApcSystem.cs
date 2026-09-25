@@ -10,17 +10,19 @@ using Content.Shared.Emp;
 using Content.Shared.Popups;
 using Content.Shared.Power;
 using Content.Shared.Rounding;
-using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Wires;
-using Content.Shared.Veil.Cult.Components; // Corvax-Wega-VeilCult
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Timing;
-using Robust.Shared.Containers; // Corvax-Wega-VeilCult
 
 namespace Content.Server.Power.EntitySystems;
 
+/// <summary>
+/// A system for interactions with APCs.
+/// APCs are wall-mounted battery banks and breakers for stepping down MV to LV power.
+/// </summary>
+/// <seealso cref="ApcComponent"/>
 public sealed partial class ApcSystem : EntitySystem
 {
     [Dependency] private AccessReaderSystem _accessReader = default!;
@@ -32,28 +34,16 @@ public sealed partial class ApcSystem : EntitySystem
     [Dependency] private SharedAudioSystem _audio = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
     [Dependency] private SharedContainerSystem _container = default!; // Corvax-Wega-VeilCult
-    [Dependency] private ItemSlotsSystem _itemSlots = default!; // Corvax-Wega-VeilCult
 
+    /// <inheritdoc />
     public override void Initialize()
     {
         base.Initialize();
 
         UpdatesAfter.Add(typeof(PowerNetSystem));
-
-        SubscribeLocalEvent<ApcComponent, BoundUIOpenedEvent>(OnBoundUiOpen);
-        SubscribeLocalEvent<ApcComponent, ComponentStartup>(OnApcStartup);
-        SubscribeLocalEvent<ApcComponent, ChargeChangedEvent>(OnBatteryChargeChanged);
-        SubscribeLocalEvent<ApcComponent, ApcToggleMainBreakerMessage>(OnToggleMainBreaker);
-        SubscribeLocalEvent<ApcComponent, GotEmaggedEvent>(OnEmagged);
-
-        SubscribeLocalEvent<ApcComponent, EmpPulseEvent>(OnEmpPulse);
-
-        SubscribeLocalEvent<ApcComponent, ItemSlotInsertAttemptEvent>(OnItemSlotInsertAttempt); // Corvax-Wega-VeilCult
-        SubscribeLocalEvent<ApcComponent, ItemSlotEjectAttemptEvent>(OnItemSlotEjectAttempt); // Corvax-Wega-VeilCult
-        SubscribeLocalEvent<ApcComponent, EntInsertedIntoContainerMessage>(OnInserted); // Corvax-Wega-VeilCult
-        SubscribeLocalEvent<ApcComponent, EntRemovedFromContainerMessage>(OnRemoved); // Corvax-Wega-VeilCult
     }
 
+    /// <inheritdoc />
     public override void Update(float deltaTime)
     {
         var query = EntityQueryEnumerator<ApcComponent, PowerNetworkBatteryComponent, UserInterfaceComponent>();
@@ -66,12 +56,8 @@ public sealed partial class ApcSystem : EntitySystem
                 UpdateUIState(uid, apc, battery);
             }
 
-            if (apc.NeedStateUpdate)
-            {
-                UpdateApcState(uid, apc, battery);
-            }
-
             // Overload
+            var tripped = false;
             if (apc.MainBreakerEnabled && battery.CurrentSupply > apc.MaxLoad)
             {
                 // Not already overloaded, start timer
@@ -79,52 +65,68 @@ public sealed partial class ApcSystem : EntitySystem
                 {
                     apc.TripStartTime = curTime;
                 }
-                else
+                else if (curTime - apc.TripStartTime > apc.TripTime)
                 {
-                    if (curTime - apc.TripStartTime > apc.TripTime)
-                    {
-                        apc.TripFlag = true;
-                        ApcToggleBreaker(uid, apc, battery); // off, we already checked MainBreakerEnabled above
-                    }
+                    apc.TripFlag = true;
+                    ApcToggleBreaker(uid, apc, battery); // off, we already checked MainBreakerEnabled above
+                    apc.NeedStateUpdate = true; // Force an update.
+                    tripped = true;
                 }
             }
             else
             {
                 apc.TripStartTime = null;
             }
+
+            // Check battery update (more frequent changes)
+            if (!apc.NeedStateUpdate &&
+                CalcChannelState((uid, apc), battery.NetworkBattery) != apc.LastChannelState)
+            {
+                apc.NeedStateUpdate = true;
+            }
+
+            if (apc.NeedStateUpdate)
+            {
+                UpdateApcState(uid, apc, battery, forceChargeCheck: tripped);
+            }
         }
     }
 
+    #region Event Handlers
     // Change the APC's state only when the battery state changes, or when it's first created.
-    private void OnBatteryChargeChanged(EntityUid uid, ApcComponent component, ref ChargeChangedEvent args)
+    [SubscribeLocalEvent]
+    private void OnBatteryChargeChanged(Entity<ApcComponent> ent, ref ChargeChangedEvent args)
     {
         // Defer until the next tick.
-        component.NeedStateUpdate = true;
+        ent.Comp.NeedStateUpdate = true;
     }
 
-    private void OnApcStartup(EntityUid uid, ApcComponent component, ComponentStartup args)
+    [SubscribeLocalEvent]
+    private void OnApcStartup(Entity<ApcComponent> ent, ref ComponentStartup args)
     {
         // We cannot update immediately, as various network/battery state is not valid yet.
         // Defer until the next tick.
-        component.NeedStateUpdate = true;
+        ent.Comp.NeedStateUpdate = true;
 
         // Corvax-Wega-VeilCult-Start
-        if (!TryComp<ContainerManagerComponent>(uid, out var containerManager))
+        if (!TryComp<ContainerManagerComponent>(ent.Owner, out var containerManager))
             return;
 
-        component.CogSlot = _container.EnsureContainer<ContainerSlot>(uid, component.CogSlotId, containerManager);
+        ent.Comp.CogSlot = _container.EnsureContainer<ContainerSlot>(ent.Owner, ent.Comp.CogSlotId, containerManager);
         // Corvax-Wega-VeilCult-End
     }
 
-    private void OnBoundUiOpen(EntityUid uid, ApcComponent component, BoundUIOpenedEvent args)
+    [SubscribeLocalEvent]
+    private void OnBoundUiOpen(Entity<ApcComponent> ent, ref BoundUIOpenedEvent args)
     {
-        UpdateApcState(uid, component);
+        UpdateApcState(ent, ent.Comp);
     }
 
-    private void OnToggleMainBreaker(EntityUid uid, ApcComponent component, ApcToggleMainBreakerMessage args)
+    [SubscribeLocalEvent]
+    private void OnToggleMainBreaker(Entity<ApcComponent> ent, ref ApcToggleMainBreakerMessage args)
     {
         var attemptEv = new ApcToggleMainBreakerAttemptEvent();
-        RaiseLocalEvent(uid, ref attemptEv);
+        RaiseLocalEvent(ent, ref attemptEv);
         if (attemptEv.Cancelled)
         {
             _popup.PopupCursor(Loc.GetString("apc-component-on-toggle-cancel"),
@@ -132,9 +134,9 @@ public sealed partial class ApcSystem : EntitySystem
             return;
         }
 
-        if (_accessReader.IsAllowed(args.Actor, uid))
+        if (_accessReader.IsAllowed(args.Actor, ent))
         {
-            ApcToggleBreaker(uid, component, user: args.Actor);
+            ApcToggleBreaker(ent, ent.Comp, user: args.Actor);
         }
         else
         {
@@ -143,7 +145,37 @@ public sealed partial class ApcSystem : EntitySystem
         }
     }
 
-    /// <summary>Toggles the enabled state of the APC's main breaker.</summary>
+    [SubscribeLocalEvent]
+    private void OnEmagged(Entity<ApcComponent> ent, ref GotEmaggedEvent args)
+    {
+        if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
+            return;
+
+        if (_emag.CheckFlag(ent, EmagType.Interaction))
+            return;
+
+        args.Handled = true;
+    }
+
+    // TODO: This subscription should be in shared.
+    // But I am not moving ApcComponent to shared, this PR already got soaped enough and that component uses several layers of OOP.
+    // At least the EMP visuals won't mispredict, since all APCs also have the BatteryComponent, which also has a EMP effect and is in shared.
+    [SubscribeLocalEvent]
+    private void OnEmpPulse(Entity<ApcComponent> ent, ref EmpPulseEvent args)
+    {
+        if (ent.Comp.MainBreakerEnabled)
+        {
+            args.Affected = true;
+            args.Disabled = true;
+            ApcToggleBreaker(ent, ent.Comp);
+        }
+    }
+    #endregion Event Handlers
+
+    #region Public API
+    /// <summary>
+    /// Toggles the enabled state of the APC's main breaker.
+    /// </summary>
     public void ApcToggleBreaker(
         EntityUid uid,
         ApcComponent? apc = null,
@@ -159,9 +191,10 @@ public sealed partial class ApcSystem : EntitySystem
         if (apc.MainBreakerEnabled)
             apc.TripFlag = false;
 
+        UpdateApcState(uid, apc, battery);
         UpdateUIState(uid, apc);
-        var audioParams = apc.OnReceiveMessageSound?.Params ?? AudioParams.Default;
-        audioParams = audioParams.AddVolume(-2f);
+
+        var audioParams = (apc.OnReceiveMessageSound?.Params ?? AudioParams.Default).AddVolume(-2f);
         _audio.PlayPvs(apc.OnReceiveMessageSound, uid, audioParams);
 
         if (user != null)
@@ -172,37 +205,34 @@ public sealed partial class ApcSystem : EntitySystem
         }
     }
 
-    private void OnEmagged(EntityUid uid, ApcComponent comp, ref GotEmaggedEvent args)
-    {
-        if (!_emag.CompareFlag(args.Type, EmagType.Interaction))
-            return;
-
-        if (_emag.CheckFlag(uid, EmagType.Interaction))
-            return;
-
-        args.Handled = true;
-    }
-
+    /// <summary>
+    /// Updates the UI and appearance of the given APC based on its status in the power network.
+    /// </summary>
     public void UpdateApcState(EntityUid uid,
-        ApcComponent? apc=null,
-        PowerNetworkBatteryComponent? battery = null)
+        ApcComponent? apc = null,
+        PowerNetworkBatteryComponent? battery = null,
+        bool forceChargeCheck = false)
     {
         if (!Resolve(uid, ref apc, ref battery, false))
             return;
 
-        if (apc.LastChargeStateTime == null || apc.LastChargeStateTime + ApcComponent.VisualsChangeDelay < _gameTiming.CurTime)
+        if (apc.LastChargeStateTime == null || forceChargeCheck || apc.LastChargeStateTime + ApcComponent.VisualsChangeDelay < _gameTiming.CurTime)
         {
-            var newState = CalcChargeState(uid, battery.NetworkBattery);
+            var newState = CalcChargeState((uid, apc), battery.NetworkBattery);
             if (newState != apc.LastChargeState)
             {
                 apc.LastChargeState = newState;
                 apc.LastChargeStateTime = _gameTiming.CurTime;
 
-                if (TryComp(uid, out AppearanceComponent? appearance))
-                {
-                    _appearance.SetData(uid, ApcVisuals.ChargeState, newState, appearance);
-                }
+                _appearance.SetData(uid, ApcVisuals.ChargeState, newState);
             }
+        }
+
+        var channelState = CalcChannelState((uid, apc), battery.NetworkBattery);
+        if (channelState != apc.LastChannelState)
+        {
+            apc.LastChannelState = channelState;
+            _appearance.SetData(uid, ApcVisuals.ChannelState, channelState);
         }
 
         var extPowerState = CalcExtPowerState(uid, battery.NetworkBattery);
@@ -215,6 +245,10 @@ public sealed partial class ApcSystem : EntitySystem
         apc.NeedStateUpdate = false;
     }
 
+    /// <summary>
+    /// Updates the UI of the given API.
+    /// Sends off a new ApcBoundInterfaceState to anyone with the UI open.
+    /// </summary>
     public void UpdateUIState(EntityUid uid,
         ApcComponent? apc = null,
         PowerNetworkBatteryComponent? netBat = null,
@@ -224,29 +258,32 @@ public sealed partial class ApcSystem : EntitySystem
             return;
 
         var battery = netBat.NetworkBattery;
-        const int ChargeAccuracy = 5;
+        const int chargeAccuracy = 5;
 
         // TODO: Fix ContentHelpers or make a new one coz this is cooked.
-        var charge = ContentHelpers.RoundToNearestLevels(battery.CurrentStorage / battery.Capacity, 1.0, 100 / ChargeAccuracy) / 100f * ChargeAccuracy;
+        var charge = ContentHelpers.RoundToNearestLevels(battery.CurrentStorage / battery.Capacity, 1.0, 100 / chargeAccuracy) / 100f * chargeAccuracy;
 
         var state = new ApcBoundInterfaceState(apc.MainBreakerEnabled,
-            (int) MathF.Ceiling(battery.CurrentSupply), apc.LastExternalState,
+            (int)MathF.Ceiling(battery.CurrentSupply), apc.LastExternalState,
             charge,
             apc.MaxLoad,
             apc.TripFlag);
 
         _ui.SetUiState((uid, ui), ApcUiKey.Key, state);
     }
+    #endregion Public API
 
-    private ApcChargeState CalcChargeState(EntityUid uid, PowerState.Battery battery)
+    #region Internal
+    private ApcChargeState CalcChargeState(Entity<ApcComponent> ent, PowerState.Battery battery)
     {
-        if (_emag.CheckFlag(uid, EmagType.Interaction))
+        if (_emag.CheckFlag(ent, EmagType.Interaction))
             return ApcChargeState.Emag;
 
+        if (ent.Comp.TripFlag)
+            return ApcChargeState.Tripped;
+
         if (battery.CurrentStorage / battery.Capacity > ApcComponent.HighPowerThreshold)
-        {
             return ApcChargeState.Full;
-        }
 
         var delta = battery.CurrentSupply - battery.CurrentReceiving;
         return delta < 0 ? ApcChargeState.Charging : ApcChargeState.Lack;
@@ -268,66 +305,23 @@ public sealed partial class ApcSystem : EntitySystem
         return ApcExternalPowerState.Good;
     }
 
-    // TODO: This subscription should be in shared.
-    // But I am not moving ApcComponent to shared, this PR already got soaped enough and that component uses several layers of OOP.
-    // At least the EMP visuals won't mispredict, since all APCs also have the BatteryComponent, which also has a EMP effect and is in shared.
-    private void OnEmpPulse(EntityUid uid, ApcComponent component, ref EmpPulseEvent args)
+    /// <summary>
+    /// Generates the channel state for a given APC - whether the APC is providing (or can provide) power to the network.
+    /// </summary>
+    private ApcChannelState CalcChannelState(Entity<ApcComponent> ent, PowerState.Battery battery)
     {
-        if (component.MainBreakerEnabled)
-        {
-            args.Affected = true;
-            args.Disabled = true;
-            ApcToggleBreaker(uid, component);
-        }
+        if (ent.Comp.TripFlag)
+            return ApcChannelState.BreakerTripped;
+        else if (!ent.Comp.MainBreakerEnabled)
+            return ApcChannelState.BreakerOpen;
+
+        return battery.CurrentSupply > 0 ? ApcChannelState.On : ApcChannelState.Off;
     }
-
-    // Corvax-Wega-VeilCult-Start
-    private void OnItemSlotInsertAttempt(Entity<ApcComponent> uid, ref ItemSlotInsertAttemptEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        if (!TryComp<WiresPanelComponent>(uid, out var panel))
-            return;
-
-        if (!_itemSlots.TryGetSlot(uid.Owner, uid.Comp.CogSlotId, out var cogSlot) || cogSlot != args.Slot)
-            return;
-
-        if (!panel.Open || args.User == uid.Owner)
-            args.Cancelled = true;
-    }
-
-    private void OnItemSlotEjectAttempt(Entity<ApcComponent> uid, ref ItemSlotEjectAttemptEvent args)
-    {
-        if (args.Cancelled)
-            return;
-
-        if (!TryComp<WiresPanelComponent>(uid, out var panel))
-            return;
-
-        if (!_itemSlots.TryGetSlot(uid.Owner, uid.Comp.CogSlotId, out var cogSlot) || cogSlot != args.Slot)
-            return;
-
-        if (!panel.Open || args.User == uid.Owner)
-            args.Cancelled = true;
-    }
-
-    private void OnInserted(Entity<ApcComponent> uid, ref EntInsertedIntoContainerMessage args)
-    {
-
-        if (args.Container == uid.Comp.CogSlot)
-            EnsureComp<InteractionCogInfectedComponent>(uid);
-    }
-
-    private void OnRemoved(Entity<ApcComponent> uid, ref EntRemovedFromContainerMessage args)
-    {
-
-        if (args.Container == uid.Comp.CogSlot && HasComp<InteractionCogInfectedComponent>(uid))
-            RemComp<InteractionCogInfectedComponent>(uid);
-    }
-    // Corvax-Wega-VeilCult-End
-
+    #endregion Internal
 }
 
+/// <summary>
+/// A cancellable event raised to check if the main breaker of an APC can be toggled.
+/// </summary>
 [ByRefEvent]
 public record struct ApcToggleMainBreakerAttemptEvent(bool Cancelled);

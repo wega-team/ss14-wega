@@ -1,5 +1,6 @@
 - type: reagent
   id: Cryptobiolin
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-cryptobiolin
   group: Medicine
   desc: reagent-desc-cryptobiolin
@@ -209,6 +210,7 @@
 
 - type: reagent
   id: Doxarubixadone
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-doxarubixadone
   group: Medicine
   desc: reagent-desc-doxarubixadone
@@ -494,7 +496,8 @@
             Heat: -0.33
             Shock: -0.33
             Cold: -0.33
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: -10
         conditions:
         - !type:ReagentCondition
@@ -603,7 +606,9 @@
   plantMetabolism:
     - !type:PlantAdjustToxins
       amount: 6
-    - !type:PlantPhalanximine
+    - !type:PlantChangeTraits
+      trait: PlantTraitUnviable
+      type: Remove
       minScale: 4
   metabolisms:
     Bloodstream:
@@ -673,14 +678,14 @@
           conditions:
             - !type:ReagentCondition
               reagent: Ambuzol
-              min: 10
+              min: 15
     Digestion:
       effects:
         - !type:CureZombieInfection
           conditions:
             - !type:ReagentCondition
               reagent: Ambuzol
-              min: 10
+              min: 15
 
 - type: reagent
   id: AmbuzolPlus
@@ -733,7 +738,8 @@
   metabolisms:
     Bloodstream:
       effects:
-        - !type:SatiateThirst
+        - !type:Satiate
+          satiationType: Thirst
           factor: 6
         - !type:ModifyBloodLevel
           amount: 6
@@ -871,7 +877,8 @@
     Bloodstream:
       effects:
       # what the hell, this isn't satiating at all!!
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         factor: -1
 
   # Should heal quite literally everything, use in very small amounts
@@ -929,7 +936,7 @@
           min: 20
         damage:
           Toxin: -2
-      - !type:HealthChange # Corvax-Wega-Change
+      - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Ultravasculine
@@ -984,6 +991,7 @@
 
 - type: reagent
   id: Ethyloxyephedrine
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-ethyloxyephedrine
   desc: reagent-desc-ethyloxyephedrine
   group: Medicine
@@ -1166,10 +1174,10 @@
       - !type:HealthChange
         damage:
           types:
-  #          Blunt: -2.25 # 9 per u  # Corvax-Wega-Change
- #     - !type:SatiateHunger  # Corvax-Wega-Change
-#        factor: -1  # Corvax-Wega-Change
-            Blunt: -3.5  # Corvax-Wega-Change
+            Blunt: -2.25 # 9 per u
+      - !type:Satiate
+        satiationType: Hunger
+        factor: -1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -1195,7 +1203,8 @@
   metabolisms:
     Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
     Bloodstream:
       effects:
@@ -1252,6 +1261,7 @@
 
 - type: reagent
   id: Pyrazine
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-pyrazine
   group: Medicine
   desc: reagent-desc-pyrazine
@@ -1296,6 +1306,7 @@
 
 - type: reagent
   id: Insuzine
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-insuzine
   group: Medicine
   desc: reagent-desc-insuzine
@@ -1343,6 +1354,7 @@
 
 - type: reagent
   id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine"
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-opporozidone
   group: Medicine
   desc: reagent-desc-opporozidone
@@ -1353,12 +1365,14 @@
   metabolisms:
     Bloodstream:
       effects:
+        - !type:AdjustTemperature
+         amount: 80000
         - !type:ReduceRotting
           seconds: 20
           conditions:
           #Patient must be dead and in a cryo tube (or something cold)
           - !type:TemperatureCondition
-            max: 150.0
+            max: 273.15
           - !type:MobStateCondition
             mobstate: Dead
 
@@ -1385,7 +1399,7 @@
           Burn: -3
 
 - type: reagent
-  id : Aloxadone
+  id: Aloxadone
   name: reagent-name-aloxadone
   group: Medicine
   desc: reagent-desc-aloxadone
@@ -1396,12 +1410,14 @@
   metabolisms:
     Bloodstream:
       effects:
+      - !type:AdjustTemperature
+        amount: 80000
       - !type:EvenHealthChange
         conditions:
         - !type:TemperatureCondition
-          max: 213.0
+          max: 273.15
         damage:
-          Burn: -4.5
+          Burn: -6
 
 - type: reagent
   id : Mannitol # currently this is just a way to create psicodine
@@ -1426,6 +1442,7 @@
 
 - type: reagent
   id: Psicodine
+  contrabandSeverity: Corvax442 # Corvax-Contraband
   name: reagent-name-psicodine
   group: Medicine
   desc: reagent-desc-psicodine
@@ -1477,7 +1494,7 @@
   flavor: medicine
   color: "#baa15d"
   metabolisms:
-    Bloodstream:
+    Digestion:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectRadiationProtection
@@ -1505,7 +1522,6 @@
       effects:
       - !type:Emote
         emote: Yawn
-        showInChat: true
         probability: 0.1
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness

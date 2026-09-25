@@ -1,5 +1,31 @@
 - type: entity
   parent: CollideFloorTrap
+  id: FloorTrapEMPXenoborgStart
+  name: EMP floor trap
+  components:
+    - type: Sprite
+      drawdepth: Items
+      sprite: Objects/Misc/landmine.rsi
+      layers:
+      - state: landmine
+      - state: landmine-unshaded
+    - type: TriggerOnCollide
+      fixtureID: floortrap
+      maxTriggers: 1
+    - type: TimedDespawn
+      lifetime: 1.5
+    - type: SpawnOnDespawn
+      prototype: FloorTrapEMPXenoborg
+    - type: EmitSoundOnSpawn
+      sound:
+        path: /Audio/Weapons/flash.ogg
+        params:
+          variation: 0.3
+    - type: Stealth
+      lastVisibility: 0.1
+
+- type: entity
+  parent: [CollideFloorTrap, BaseShadow]
   id: FloorTrapEMPXenoborg
   name: EMP floor trap
   components:
@@ -12,6 +38,7 @@
     - type: TriggerOnCollide
       fixtureID: floortrap
       maxTriggers: 1
+    - type: FlashOnTrigger
     - type: EmpOnTrigger
       range: 0.5
       energyConsumption: 1080
@@ -25,7 +52,7 @@
       ignoreResistances: true
       damage:
         types:
-          Shock: 20
+          Shock: 65
       blacklist:
         components:
         - Xenoborg

@@ -1,6 +1,9 @@
 [game]
 contraband_examine = false
 
+[net]
+connection_timeout = 60.0
+
 [admin]
 admins_count_in_playercount = true
 
@@ -26,4 +29,7 @@ max_explosion_range = 5
 space_wind = true
 
 [lavaland]
+enabled = true
+
+[ghost.go_lobby]
 enabled = true

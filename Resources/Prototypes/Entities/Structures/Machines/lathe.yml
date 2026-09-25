@@ -377,7 +377,7 @@
 
 - type: entity
   id: SecurityTechFab
-  parent: BaseLatheLube
+  parent: [BaseCorvaxContraband433DepartmentsSecurity, BaseLatheLube] # Corvax-Contraband
   name: security techfab
   description: Prints equipment for use by security crew.
   components:
@@ -430,7 +430,7 @@
 
 - type: entity
   id: AmmoTechFab
-  parent: BaseLatheLube
+  parent: [BaseCorvaxContraband433DepartmentsSecurity, BaseLatheLube] # Corvax-Contraband
   name: ammo techfab
   description: Prints the bare minimum of bullets that any budget military or armory could need. Nothing fancy.
   components:

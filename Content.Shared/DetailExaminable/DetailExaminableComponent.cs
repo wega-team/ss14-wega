@@ -1,4 +1,4 @@
-﻿using Content.Shared.Preferences;
+using Content.Shared.Preferences;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.DetailExaminable;

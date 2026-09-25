@@ -107,7 +107,7 @@
   - type: MultipleTool
     statusShowBehavior: true
     entries:
-      - behavior: FixOVein
+      - behavior: [ FixOVein ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_v
@@ -115,7 +115,7 @@
           path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
-      - behavior: Retractor
+      - behavior: [ Retractor ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_r
@@ -123,7 +123,7 @@
           path: /Audio/_Wega/Medical/Surgery/retractor1.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
-      - behavior: Hemostat
+      - behavior: [ Hemostat ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_h

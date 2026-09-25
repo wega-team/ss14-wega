@@ -27,10 +27,10 @@ public sealed partial class UtilityVendorSystem : EntitySystem
     private void OnMapInit(EntityUid uid, UtilityVendorComponent component, MapInitEvent args)
     {
         var itemSlots = EnsureComp<ItemSlotsComponent>(uid);
-        if (!_itemSlots.TryGetSlot(uid, UtilityVendorComponent.VendorSlotId, out var slot, itemSlots))
+        if (!_itemSlots.TryGetSlot((uid, itemSlots), UtilityVendorComponent.VendorSlotId, out var slot))
         {
             slot = new ItemSlot();
-            _itemSlots.AddItemSlot(uid, UtilityVendorComponent.VendorSlotId, slot, itemSlots);
+            _itemSlots.AddItemSlot((uid, itemSlots), UtilityVendorComponent.VendorSlotId, slot);
 
             slot.Whitelist = new EntityWhitelist
             {

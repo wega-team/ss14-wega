@@ -78,7 +78,7 @@ public sealed partial class CellMutagenicInjectorSystem : EntitySystem
     private bool TryDish(Entity<CellMutagenicInjectorComponent> ent, out EntityUid? itemUid)
     {
         itemUid = null;
-        if (_itemSlots.TryGetSlot(ent, ent.Comp.DishSlot, out var slot))
+        if (_itemSlots.TryGetSlot(ent.Owner, ent.Comp.DishSlot, out var slot))
         {
             if (!TryComp<CellContainerComponent>(slot.Item, out var cell) || cell.Empty)
                 return false;

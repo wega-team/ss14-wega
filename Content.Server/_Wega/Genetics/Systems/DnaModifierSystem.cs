@@ -21,6 +21,8 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -42,6 +44,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     [Dependency] private MarkingPrototypesIndexerSystem _markingIndexer = default!;
     [Dependency] private MetaDataSystem _metaData = default!;
     [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private PrayerSystem _prayerSystem = default!;
@@ -76,8 +79,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             if (instabilityComponent.NextTimeTick <= 0)
             {
                 instabilityComponent.NextTimeTick = 10;
-                if (!TryComp<MobThresholdsComponent>(uid, out var uidThresholds)
-                    || uidThresholds.CurrentThresholdState is MobState.Dead)
+                if (_mobState.IsDead(uid))
                     return;
 
                 switch (instabilityComponent.Stage)
@@ -525,20 +527,48 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
-            bool hasComponent = enzymePrototype.AddComponent != null && enzymePrototype.AddComponent
-                .Any(componentEntry =>
+            bool hasComponent = false;
+            if (enzymePrototype.AddComponent != null)
+            {
+                foreach (var componentEntry in enzymePrototype.AddComponent)
                 {
                     var componentType = componentEntry.Value.Component?.GetType();
-                    return componentType != null && HasComp(uid, componentType);
-                });
+                    if (componentType == null)
+                        continue;
+
+                    if (componentType == typeof(PermanentStatusEffectsComponent))
+                    {
+                        var permComp = componentEntry.Value.Component as PermanentStatusEffectsComponent;
+                        if (permComp?.StatusEffects != null)
+                        {
+                            foreach (var effect in permComp.StatusEffects)
+                            {
+                                if (HasPermanentStatusEffect(uid, effect.Id))
+                                {
+                                    hasComponent = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (HasComp(uid, componentType))
+                            hasComponent = true;
+                    }
+
+                    if (hasComponent)
+                        break;
+                }
+            }
 
             if (hasComponent)
             {
                 enzyme.HexCode = GetHexCodeForType(enzymePrototype.TypeDeviation);
                 totalInstability += enzymePrototype.CostInstability;
 
-                if (enzymePrototype.TypeDeviation != EnzymesType.Disease
-                    && enzymePrototype.AddComponent != null)
+                if (enzymePrototype.TypeDeviation != EnzymesType.Disease &&
+                    enzymePrototype.AddComponent != null)
                 {
                     foreach (var componentEntry in enzymePrototype.AddComponent)
                     {
@@ -813,15 +843,78 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 continue;
 
             bool meetsCondition = CheckHexCodeCondition(enzyme.HexCode, enzymePrototype.TypeDeviation);
-            if (enzymePrototype.AddComponent != null)
+            if (enzymePrototype.AddComponent == null)
+                continue;
+
+            foreach (var componentEntry in enzymePrototype.AddComponent)
             {
+                var componentType = componentEntry.Value.Component?.GetType();
+                if (componentType == null)
+                    continue;
+
+                if (componentType == typeof(PermanentStatusEffectsComponent))
+                {
+                    var permComp = componentEntry.Value.Component as PermanentStatusEffectsComponent;
+                    if (permComp?.StatusEffects == null)
+                        continue;
+
+                    if (meetsCondition)
+                    {
+                        if (_random.NextFloat() <= enzymePrototype.ChanceAssimilation)
+                        {
+                            foreach (var effect in permComp.StatusEffects)
+                            {
+                                if (!HasPermanentStatusEffect(ent, effect.Id))
+                                    AddPermanentStatusEffect(ent, effect.Id);
+                            }
+                            totalInstability += enzymePrototype.CostInstability;
+
+                            if (!string.IsNullOrEmpty(enzymePrototype.Message))
+                                messagesToShow.Add(enzymePrototype.Message);
+
+                            _admin.Add(LogType.Action, LogImpact.Medium,
+                                $"{ToPrettyString(ent):user} acquires gene type: '{enzymePrototype.ID}'.");
+                        }
+                    }
+                    else
+                    {
+                        foreach (var effect in permComp.StatusEffects)
+                        {
+                            if (HasPermanentStatusEffect(ent, effect.Id) &&
+                                !ent.Comp.InitialAbilities.Contains(componentType))
+                            {
+                                RemovePermanentStatusEffect(ent, effect.Id);
+                            }
+                        }
+
+                        bool removedAny = false;
+                        foreach (var effect in permComp.StatusEffects)
+                        {
+                            if (HasPermanentStatusEffect(ent, effect.Id) &&
+                                !ent.Comp.InitialAbilities.Contains(componentType))
+                            {
+                                RemovePermanentStatusEffect(ent, effect.Id);
+                                removedAny = true;
+                            }
+                        }
+                        if (removedAny)
+                        {
+                            totalInstability -= enzymePrototype.CostInstability;
+                            _admin.Add(LogType.Action, LogImpact.Medium,
+                                $"{ToPrettyString(ent):user} loses gene type: '{enzymePrototype.ID}'.");
+                        }
+                    }
+
+                    continue;
+                }
+
                 if (meetsCondition)
                 {
                     bool hasAnyComponent = enzymePrototype.AddComponent
-                        .Any(componentEntry =>
+                        .Any(entry =>
                         {
-                            var componentType = componentEntry.Value.Component?.GetType();
-                            return componentType != null && HasComp(ent, componentType);
+                            var t = entry.Value.Component?.GetType();
+                            return t != null && HasComp(ent, t);
                         });
 
                     if (!hasAnyComponent && _random.NextFloat() <= enzymePrototype.ChanceAssimilation)
@@ -832,22 +925,19 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                         if (!string.IsNullOrEmpty(enzymePrototype.Message))
                             messagesToShow.Add(enzymePrototype.Message);
 
-                        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):user} acquires a gene type: '{enzymePrototype.ID}'.");
+                        _admin.Add(LogType.Action, LogImpact.Medium,
+                            $"{ToPrettyString(ent):user} acquires a gene type: '{enzymePrototype.ID}'.");
                     }
                 }
                 else
                 {
-                    foreach (var componentEntry in enzymePrototype.AddComponent)
+                    if (HasComp(ent, componentType) && !ent.Comp.InitialAbilities.Contains(componentType))
                     {
-                        var componentType = componentEntry.Value.Component?.GetType();
-                        if (componentType != null && HasComp(ent, componentType)
-                            && !ent.Comp.InitialAbilities.Contains(componentType))
-                        {
-                            RemComp(ent, componentType);
-                            totalInstability -= enzymePrototype.CostInstability;
+                        RemComp(ent, componentType);
+                        totalInstability -= enzymePrototype.CostInstability;
 
-                            _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):user} loses the gene type: '{enzymePrototype.ID}'.");
-                        }
+                        _admin.Add(LogType.Action, LogImpact.Medium,
+                            $"{ToPrettyString(ent):user} loses the gene type: '{enzymePrototype.ID}'.");
                     }
                 }
             }
@@ -1155,4 +1245,40 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             Dirty(uid, component);
         }
     }
+
+    #region Temp
+    private bool HasPermanentStatusEffect(EntityUid uid, EntProtoId effect)
+    {
+        return TryComp<PermanentStatusEffectsComponent>(uid, out var perm)
+               && perm.StatusEffects?.Contains(effect.Id) == true;
+    }
+
+    private void AddPermanentStatusEffect(EntityUid uid, EntProtoId effect)
+    {
+        var perm = EnsureComp<PermanentStatusEffectsComponent>(uid);
+        perm.StatusEffects ??= new HashSet<EntProtoId>();
+        if (!perm.StatusEffects.Contains(effect.Id))
+        {
+            perm.StatusEffects.Add(effect.Id);
+            Dirty(uid, perm);
+        }
+    }
+
+    private void RemovePermanentStatusEffect(EntityUid uid, EntProtoId effect)
+    {
+        if (!TryComp<PermanentStatusEffectsComponent>(uid, out var perm))
+            return;
+
+        if (perm.StatusEffects?.Remove(effect.Id) == true)
+        {
+            if (perm.StatusEffects.Count == 0)
+            {
+                RemComp<PermanentStatusEffectsComponent>(uid);
+                return;
+            }
+
+            Dirty(uid, perm);
+        }
+    }
+    #endregion
 }

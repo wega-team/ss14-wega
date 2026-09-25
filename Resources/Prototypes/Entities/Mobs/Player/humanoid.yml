@@ -21,6 +21,7 @@
   id: EventHumanoidCentcomm
   parent: EventHumanoidMindShielded
   randomizeName: false
+  speciesBlacklist: ["Diona", "Vox", "Moth", "Arachnid", "Dwarf", "Vulpkanin", "Tajaran", "Android", "Ariral", "Demon", "Felinid", "Harpy", "Phantom", "Resomi", "Skrell"] # Corvax-MRP + Corvax-Wega-Species
   components:
   - type: AutoImplant
     implants:
@@ -50,7 +51,7 @@
   id: DeathSquad
   parent: EventHumanoidCentcomm
   randomizeName: false
-  speciesBlacklist: ['Diona'] # Corvax-MRP
+  speciesBlacklist: ["Diona", "Vox", "Moth", "Arachnid", "Dwarf", "Vulpkanin", "Tajaran", "SlimePerson", "Ipc", "Reptilian"] # Corvax-MRP
   components:
     - type: GhostRole
       name: ghost-role-information-Death-Squad-name
@@ -335,10 +336,12 @@
 
 - type: randomHumanoidSettings
   id: ERTSecurity
-  speciesBlacklist: # Corvax-wega-ERT
+  # Corvax-Wega-ERT-start
+  speciesBlacklist:
     - Diona
     - Felinid
     - Resomi
+  # Corvax-Wega-ERT-end
   parent: ERTLeader
   components:
     - type: GhostRole
@@ -422,7 +425,7 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert-grenade
   - type: Loadout
-    prototypes: [ ERTSecurityGearArmedRifle ]
+    prototypes: [ ERTSecurityGearArmedGrenade ]
     roleLoadout: [ RoleSurvivalMilitaryDouble ]
 
 - type: entity
@@ -443,7 +446,7 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert-vanguard
   - type: Loadout
-    prototypes: [ ERTSecurityGearArmedRifle ]
+    prototypes: [ ERTSecurityGearArmedVanguard ]
     roleLoadout: [ RoleSurvivalMilitaryDouble ]
 
 - type: entity
@@ -464,7 +467,7 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert-pointman
   - type: Loadout
-    prototypes: [ ERTSecurityGearArmedRifle ]
+    prototypes: [ ERTSecurityGearArmedShotgun ]
     roleLoadout: [ RoleSurvivalMilitaryDouble ]
 
 ## ERT Medic
@@ -538,7 +541,7 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert-corpsman
   - type: Loadout
-    prototypes: [ ERTMedicalGearEVA ]
+    prototypes: [ ERTMedicalGearArmed ]
     roleLoadout: [ RoleSurvivalMilitaryDouble ]
 
 ## CBURN
@@ -555,10 +558,12 @@
       settings: CBURNAgent
 
 - type: randomHumanoidSettings
-  speciesBlacklist: # Corvax-wega-ERT
+  # Corvax-Wega-ERT-start
+  speciesBlacklist:
     - Diona
     - Felinid
     - Resomi
+  # Corvax-Wega-ERT-end
   id: CBURNAgent
   parent: EventHumanoidCentcomm
   components:

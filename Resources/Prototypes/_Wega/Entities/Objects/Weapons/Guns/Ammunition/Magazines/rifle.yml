@@ -15,7 +15,7 @@
     mayTransfer: true
     whitelist:
       tags:
-        - CartridgeRifle
+        - CartridgeLightRifle
     capacity: 45
   - type: ContainerContainer
     containers:
@@ -41,7 +41,7 @@
   parent: BaseExtMagazineRifle
   components:
   - type: BallisticAmmoProvider
-    proto: CartridgeRifle
+    proto: CartridgeLightRifle
   - type: Sprite
     layers:
     - state: base

@@ -29,8 +29,6 @@ using Content.Client.UserInterface;
 using Content.Client.Viewport;
 using Content.Client.Voting;
 using Content.Shared.Ame.Components;
-using Content.Shared.FeedbackSystem;
-using Content.Shared.Gravity;
 using Content.Shared.Localizations;
 using Robust.Client;
 using Robust.Client.Graphics;
@@ -133,8 +131,6 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("nukeopsRole");
             _prototypeManager.RegisterIgnore("stationGoal"); // Corvax-StationGoal
             _prototypeManager.RegisterIgnore("ghostRoleRaffleDecider");
-            _prototypeManager.RegisterIgnore("codewordGenerator");
-            _prototypeManager.RegisterIgnore("codewordFaction");
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
@@ -168,6 +164,7 @@ namespace Content.Client.Entry
 
             _parallaxManager.LoadDefaultParallax();
 
+            _overlayManager.AddOverlay(new BasePostProcessOverlay()); // Corvax-Wega-Postprocess
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
             _overlayManager.AddOverlay(new ScreechShockWaveOverlay());

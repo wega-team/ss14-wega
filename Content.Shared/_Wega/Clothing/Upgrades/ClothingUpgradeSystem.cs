@@ -94,7 +94,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
         }
 
         _popup.PopupEntity(Loc.GetString("clothing-upgrade-popup-insert",
-            ("upgrade", args.Used), ("clothing", ent.Owner)), args.User);
+            ("upgrade", args.Used), ("clothing", ent.Owner)), ent, args.User);
 
         args.Handled = _container.Insert(args.Used, _container.GetContainer(ent, ent.Comp.UpgradesContainerId));
 

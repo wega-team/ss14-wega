@@ -1,5 +1,5 @@
 ﻿<!-- Corvax-Wega-OOCFlavor-Edit-->
-<Control Name="CFlavorText" xmlns="https://spacestation14.io" xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client" xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls">
+<Control Name="CFlavorText" xmlns="https://spacestation14.io" xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client" xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
     <TabContainer Name="FlavorTabs" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
             <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
@@ -183,7 +183,7 @@
                 </BoxContainer>
             </PanelContainer>
 
-            <customControls:VSeparator StyleClasses="LowDivider" Margin="0 0 0 0"/>
+            <controls:Separator Orientation="Vertical" StyleClasses="LowDivider" Margin="0 0 0 0"/>
 
             <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True" Margin="10,0,0,0">
                 <TabContainer Name="PreviewTabs" HorizontalExpand="True" VerticalExpand="True" MinSize="0 150">
@@ -258,7 +258,7 @@
                     </BoxContainer>
                 </BoxContainer>
 
-                <customControls:HSeparator StyleClasses="LowDivider" Margin="0 10 0 10"/>
+                <controls:Separator StyleClasses="LowDivider" Margin="0 10 0 10"/>
 
                 <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="False">
                     <PanelContainer HorizontalExpand="True" VerticalExpand="False" Margin="0,5,0,0">

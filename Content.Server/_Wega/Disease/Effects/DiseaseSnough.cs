@@ -1,7 +1,7 @@
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Disease;
 using JetBrains.Annotations;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Disease
 {
@@ -15,8 +15,8 @@ namespace Content.Server.Disease
         /// <summary>
         /// Emote to play when snoughing
         /// </summary>
-        [DataField("emote", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EmotePrototype>))]
-        public string EmoteId = string.Empty;
+        [DataField("emote", required: true)]
+        public ProtoId<EmotePrototype> EmoteId = string.Empty;
 
         /// <summary>
         /// Whether to spread the disease through the air

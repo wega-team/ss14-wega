@@ -234,7 +234,7 @@
   - type: OfferGiver # Corvax-Wega-Offer
   - type: SpeechSynthesis # Corvax-Wega-Barks
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
-  - type: StatusIcon
+  - type: StatusIcon # Corvax-Wega-Corvax-Wega <- Саси
 
 - type: entity
   abstract: true
@@ -535,6 +535,8 @@
   - type: BypassLock
     bypassDelay: 15 # We don't want people to easily be able to remove xenoborg brains.
   # Corvax-Wega-Start
+  # - type: EmpResistance
+    # strengthMultiplier: 0
   - type: MindLink
     channels: ["MindXenoborgs"]
   # Corvax-Wega-End

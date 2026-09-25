@@ -32,7 +32,7 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
     [Dependency] private IChatManager _chatManager = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedRoleSystem _roles = default!;
-    [Dependency] private StationSystem _station = default!;
+    [Dependency] private ServerStationSystem _station = default!;
     [Dependency] private UserInterfaceSystem _userInterface = default!;
     [Dependency] private EmagSystem _emag = default!;
     [Dependency] private ISharedAdminLogManager _adminLogger = default!;
@@ -165,10 +165,25 @@ public sealed partial class SiliconLawSystem : SharedSiliconLawSystem
         // Show the silicon has been subverted.
         component.Subverted = true;
 
+ // Corvax-Wega-start
+		var name = "";
+        if (TryComp<EmagSiliconLawComponent>(uid, out var emag))
+        {
+			if (emag.OwnerName != null)
+			{
+				name = emag.OwnerName;
+			}
+			else
+			{
+				name = Name(args.user);
+			}
+        }
+ // Corvax-Wega-end
+
         // Add the first emag law before the others
         component.Lawset?.Laws.Insert(0, new SiliconLaw
         {
-            LawString = Loc.GetString("law-emag-custom", ("name", Name(args.user)), ("title", Loc.GetString(component.Lawset.ObeysTo))),
+            LawString = Loc.GetString("law-emag-custom", ("name", name), ("title", Loc.GetString(component.Lawset.ObeysTo))), //  Corvax-Wega-Change
             Order = 0
         });
 

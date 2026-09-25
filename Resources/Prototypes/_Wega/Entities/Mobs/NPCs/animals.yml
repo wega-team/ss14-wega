@@ -55,14 +55,9 @@
       visible: false
   - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
-  - type: Clumsy
-    gunShootFailDamage:
-      types:
-        Blunt: 5
-        Piercing: 4
-        Heat: 3
-    clumsySound:
-      path: /Audio/Animals/monkey_scream.ogg
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectClumsyMonkey
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-skrellkey
   - type: GhostRole
@@ -142,14 +137,9 @@
       visible: false
   - type: AlwaysRevolutionaryConvertible
   - type: GhostTakeoverAvailable
-  - type: Clumsy
-    gunShootFailDamage:
-      types:
-        Blunt: 5
-        Piercing: 4
-        Heat: 3
-    clumsySound:
-      path: /Audio/Animals/monkey_scream.ogg
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectClumsyMonkey
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-stokkey
   - type: GhostRole
@@ -219,14 +209,9 @@
     description: ghost-role-information-wolfling-description
     rules: ghost-role-information-nonantagonist-rules
   - type: GhostTakeoverAvailable
-  - type: Clumsy
-    gunShootFailDamage:
-      types:
-        Blunt: 5
-        Piercing: 4
-        Heat: 3
-    clumsySound:
-      path: /Audio/Animals/monkey_scream.ogg
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectClumsyMonkey
   - type: DnaModifier
     upper: MobVulpkanin
     lowest: MobWolfling

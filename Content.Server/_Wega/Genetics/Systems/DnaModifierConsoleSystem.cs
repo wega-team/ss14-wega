@@ -238,7 +238,7 @@ namespace Content.Server.Genetics.System
                 EntityUid? scanBody = scanner.BodyContainer.ContainedEntity;
                 inputContainer = _itemSlotsSystem.GetItemOrNull(ent.Comp.GeneticScanner.Value, SharedDnaModifier.InputSlotName);
 
-                if (_itemSlotsSystem.TryGetSlot(ent, SharedDnaModifier.DiskSlotName, out var diskSlot)
+                if (_itemSlotsSystem.TryGetSlot(ent.Owner, SharedDnaModifier.DiskSlotName, out var diskSlot)
                     && diskSlot.HasItem && diskSlot.Item != null)
                 {
                     hasDisk = true;

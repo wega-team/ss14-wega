@@ -8,8 +8,17 @@
   - type: BreathMask
   - type: Sprite
     sprite: _Wega/Clothing/Head/Hardsuits/voidhardsuit.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      map: [ "light" ]
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hardsuits/voidhardsuit.rsi
+    equippedPrefix: off
+    clothingVisuals:
+      head:
+      - state: equipped-head
   - type: PointLight
     color: "#8b00ff"
   - type: PressureProtection
@@ -37,8 +46,17 @@
   - type: BreathMask
   - type: Sprite
     sprite: _Wega/Clothing/Head/Hardsuits/advancedvoidhardsuit.rsi
+    layers:
+    - state: icon
+    - state: icon-flash
+      visible: false
+      map: [ "light" ]
   - type: Clothing
     sprite: _Wega/Clothing/Head/Hardsuits/advancedvoidhardsuit.rsi
+    equippedPrefix: off
+    clothingVisuals:
+      head:
+      - state: equipped-head
   - type: PointLight
     color: "#42aaff"
   - type: PressureProtection

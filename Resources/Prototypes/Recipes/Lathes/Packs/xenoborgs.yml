@@ -1,6 +1,11 @@
 ## Static
 
 - type: latheRecipePack
+  id: XenoborgMachines
+  recipes:
+  - XenoborgExtractorRecipe
+
+- type: latheRecipePack
   id: EmptyXenoborgs
   recipes:
   - XenoborgEngiRecipe
@@ -13,10 +18,20 @@
   recipes:
   # engi xenoborg
   - XenoborgModuleDoorControlRecipe
+  # - XenoborgModuleDeflectorFieldRecipe # Corvax-Wega-Edit
+  - XenoborgModuleZapRecipe
+  - XenoborgModuleOilGunRecipe
+  - XenoborgModuleNaniteGunRecipe
   # heavy xenoborg
   - XenoborgModuleHeavyLaserRecipe
+  - XenoborgModuleGuidedMissileLauncherRecipe
+  - XenoborgModuleRocketRecipe
+  - XenoborgModuleBurstFireLaserRecipe
+  - XenoborgModuleHeavyRadioactiveRecipe
   # scout xenoborg
   - XenoborgModuleEnergySwordRecipe
+  # - XenoborgModuleJumpRecipe # Corvax-Wega-Edit
+  - XenoborgModuleBioKinfeRecipe
   # stealth xenoborg
   - XenoborgModuleSuperCloakDeviceRecipe
 # Corvax-Wega-start
@@ -24,10 +39,6 @@
   - XenoborgModuleCommonSpeed
   - XenoborgModuleEMP
   - BorgModuleNightVisoXenoborg
-  - XenoborgModuleTileGun
   - ModuleXenoborgModule
-  - XenoborgModuleBurstFireLaser
-  - XenoborgModuleNaniteGun
-  - XenoborgModuleZap
-  - XenoborgModuleHeavyRadioactive
+  - XenoborgModuleLexorinHypo
 # Corvax-Wega-start

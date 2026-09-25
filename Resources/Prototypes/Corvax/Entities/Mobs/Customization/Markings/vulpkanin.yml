@@ -1,6 +1,6 @@
 - type: marking
   id: PawSocks
-  bodyPart: RFoot #highest possible layer
+  bodyPart: Special # Corvax-Wega-Marking-Edit
   groupWhitelist: [Vulpkanin]
   # sponsorOnly: true # Corvax-Wega-Temporarily
   sprites:
