@@ -41,12 +41,25 @@
   id: FloorWood
   parent: BaseStationTile
   name: tiles-wood
-  sprite: /Textures/Tiles/Wood/wood.png
+  sprite: /Textures/_Wega/Tiles/wood.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
   footstepSounds:
     collection: FootstepWood
   barestepSounds:
     collection: BarestepWood
   itemDrop: FloorTileItemWood
+
+- type: tile
+  id: FloorWoodLarge
+  parent: BaseStationTile
+  name: tiles-wood-large
+  sprite: /Textures/_Wega/Tiles/wood_large.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: FloorTileItemWoodLarge
 
 - type: tile
   id: FloorReinforced
@@ -280,7 +293,8 @@
   id: FloorWoodTile
   parent: BaseStationTile
   name: tiles-wood2
-  sprite: /Textures/Tiles/Wood/wood-tile.png
+  sprite: /Textures/_Wega/Tiles/wood_tile.png # Corvax-Wega-Edit
+  variants: 1 # Corvax-Wega-Edit
   footstepSounds:
     collection: FootstepWood
   barestepSounds:
@@ -298,17 +312,6 @@
   barestepSounds:
     collection: BarestepWood
   itemDrop: MaterialWoodPlank1
-
-- type: tile
-  id: FloorWoodLarge
-  parent: BaseStationTile
-  name: tiles-wood-large
-  sprite: /Textures/Tiles/Wood/wood-large.png
-  footstepSounds:
-    collection: FootstepWood
-  barestepSounds:
-    collection: BarestepWood
-  itemDrop: FloorTileItemWoodLarge
 
 - type: tile
   id: FloorWebTile
@@ -359,4 +362,3 @@
   footstepSounds:
     collection: FootstepHull
   itemDrop: PartRodMetal1 #same case as FloorHull
-

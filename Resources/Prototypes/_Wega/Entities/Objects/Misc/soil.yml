@@ -1,7 +1,7 @@
 - type: entity
   parent: BaseItem
   id: SoilBag
-  name: bag soil
+  name: construction-graph-tag-soil-bag
   description: "Mud."
   components:
   - type: Sprite
