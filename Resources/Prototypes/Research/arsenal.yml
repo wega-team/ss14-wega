@@ -67,7 +67,6 @@
   - BoxBeanbag
   - WeaponDisabler
   - WeaponDisablerSMG
-  - ExmFlash # Corvax-Wega-Arsenal
 
 - type: technology
   id: UraniumMunitions
@@ -126,6 +125,7 @@
   - SecurityPlating
   - ArmorBossterSuitModule
   - EMPShieldSuitModule
+  - ModuleSelectorSheild
 # Corvax-Wega-End
 
 # Tier 2
@@ -143,7 +143,7 @@
   - Truncheon
   - TelescopicShield
   - HoloprojectorSecurity
-  - ModuleSelectorSheild # Corvax-Wega
+  - ExmFlash # Corvax-Wega-Arsenal
 
 # Corvax-Wega-Arsenal-start
 # - type: technology

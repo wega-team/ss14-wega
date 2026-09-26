@@ -76,6 +76,7 @@
   - type: ChangelingSlug
   - type: Puller
     needsHands: false
+  - type: VentCrawler # Corvax-Wega-VentCrawling
   - type: Tag # Removes DoorBumpOpener
     tags:
       [ ]
