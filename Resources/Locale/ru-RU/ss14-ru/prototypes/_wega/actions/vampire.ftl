@@ -13,6 +13,8 @@ ent-ActionVampireSacramentInitiation = [color=purple]Таинство посвя
     .desc = Вы достигли пика своей силы. За 50 крови вы можете воскрешать мёртвых как свободных вампиров. Они не являются вашими рабами.
 
 # Hemomancer
+ent-ActionVampireRejuvenateNoHeal = { ent-ActionVampireRejuvenate }
+    .desc = { ent-ActionVampireRejuvenate.desc }
 ent-ActionVampireClaws = [color=purple]Когти вампира[/color]
     .desc = Обножи свои когти и наноси вред своим врагам.
 ent-ActionVampireBloodTendrils = [color=purple]Щупальца из крови[/color]
