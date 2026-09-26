@@ -1,0 +1,36 @@
+- type: entity
+  parent: BaseItem
+  id: SynthCore
+  name: synt core
+  description: omg
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Specific/Anomalies/Core/sinth_core.rsi
+    noRot: true
+    layers:
+    - state: core
+    - state: pulse
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AnomalyCoreVisuals.Decaying:
+        decay:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Item
+    size: Tiny
+  - type: TriggerOnUse
+  - type: EmitSoundOnTrigger
+    sound:
+      collection: RadiationPulse
+  - type: UseDelay
+    delay: 2
+  - type: AnomalyCore
+    timeToDecay: 0
+    startPrice: 10000
+    endPrice: 200
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - Synthcore

@@ -109,6 +109,15 @@ modsuit-atrocinator-no-targets = Ничего не происходит...
 modsuit-module-requires-item = Для работы модуля требуется установленный элемент.
 modsuit-module-requires-gravity-core = Для работы модуля требуется гравитационное ядро.
 modsuit-module-requires-bluespace-core = Для работы модуля требуется блюспейс ядро.
+modsuit-module-requires-elec-core = Для работы модуля требуется электрическое ядро.
+modsuit-module-requires-flesh-core = Для работы модуля требуется ядро плоти.
+modsuit-module-requires-flora-core = Для работы модуля требуется ядро флоры.
+modsuit-module-requires-chem-core = Для работы модуля требуется химическое ядро.
+modsuit-module-requires-flame-core = Для работы модуля требуется пламенное ядро.
+modsuit-module-requires-ice-core = Для работы модуля требуется ледянное ядро.
+modsuit-module-requires-tech-core = Для работы модуля требуется технологическое ядро.
+modsuit-module-requires-shadow-core = Для работы модуля требуется ядро теней.
+modsuit-module-requires-rock-core = Для работы модуля требуется каменное ядро.
 
 # Verbs
 modsuit-grabber-eject-all = Извлечь все предметы

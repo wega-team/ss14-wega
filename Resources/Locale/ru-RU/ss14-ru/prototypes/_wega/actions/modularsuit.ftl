@@ -4,7 +4,7 @@ ent-ToggleModularSuitUiAction = [color=#58c4e8]Открыть интерфейс
 ent-ToggleLightModuleAction = [color=#58c4e8]Переключить свет[/color]
     .desc = Включает или выключает встроенную систему освещения костюма.
 ent-ActivateTeleporterModuleAction = [color=#58c4e8]Активировать телепортатор[/color]
-    .desc = Мгновенно телепортирует пользователя на место случайного существа поблизости. Требует блюспейс-ядро.
+    .desc = Мгновенно телепортирует пользователя по направлению взгляда. Требует блюспейс-ядро.
 ent-ToggleHolsterModuleAction = [color=#58c4e8]Переключить кобуру[/color]
     .desc = Выдвигает или убирает кобуру для быстрого доступа к оружию.
 ent-ToggleKineticHolsterModuleAction = [color=#58c4e8]Переключить кинетическую кобуру[/color]
@@ -19,3 +19,13 @@ ent-ActivateTanningModuleAction = [color=#58c4e8]Активировать заг
     .desc = Включает ультрафиолетовое излучение для безопасного загара. Наличие функции "рак кожи" не доказано.
 ent-ActivateAtrocinatorModuleAction = [color=#58c4e8]Активировать атроцинатор[/color]
     .desc = Активирует таинственную сферу с непредсказуемыми эффектами. Смотрите под ноги!
+ent-ActivateEMPModuleAction = [color=#58c4e8]Активировать ЭМИ взрыв[/color]
+    .desc = Активировать ЭМИ взрыв. Требует электро-ядро. 
+ent-ActivateFloraModuleAction = [color=#58c4e8]Заживить внутренние повреждения[/color]
+    .desc = Активация модуля залечит внутренние кровотечение. Требует ядро флоры.
+ent-ActivateShadowModuleAction = [color=#58c4e8]Активировать маскировку[/color]
+    .desc = Покрывает скафандр невидимыми нанитами, маскируя Вас. Требует теневое ядро.
+ent-ActivateAntiGravitationModuleAction = [color=#58c4e8]Вызвать анти-гравитационный эффект[/color]
+    .desc = Вокруг пользователя нарушает гравитационное поле всех вокруг, обнуляя их гравитацию если нету у них магнитных ботинок. Требует гравитационное ядро.
+ent-ActivateFleshModuleAction = [color=#58c4e8]Лечение плоти[/color]
+    .desc = Вы получаете лечение наподобии арканьего засчет голода.

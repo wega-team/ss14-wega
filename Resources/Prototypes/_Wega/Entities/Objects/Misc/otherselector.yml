@@ -47,3 +47,49 @@
     - WeaponProtoKineticShotgun
     - WeaponProtoKineticRifle
     - WeaponProtoKineticPistol
+
+- type: entity
+  parent: BaseOtherSelector
+  id: OtherCoreSuitModuleNoCoreSelector
+  name: core suit module converter
+  description: What kind of crusher are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: core
+  - type: ItemSelector
+    items:
+    - AntiGravitySuitModule
+    - TeleporterSuitModule
+    - FlameSuitModule
+    - IceSuitModule
+    - ChemSuitModule
+    - ElecSuitModule
+    - ShadowSuitModule
+    - FloraSuitModule
+    - RockModuleSuitModule
+    - TechVisorSuitModule
+    - FleshSuitModule
+
+- type: entity
+  parent: BaseOtherSelector
+  id: OtherCoreSuitModuleSelector
+  name: core suit module converter
+  description: What kind of crusher are you today?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: core
+  - type: ItemSelector
+    items:
+    - AntiGravitySuitModuleSelector
+    - TeleporterSuitModuleSelector
+    - FlameSuitModuleSelector
+    - IceSuitModuleSelector
+    - ChemSuitModuleSelector
+    - ElecSuitModuleSelector
+    - ShadowSuitModuleSelector
+    - FloraSuitModuleSelector
+    - RockModuleSuitModuleSelector
+    - TechVisorSuitModuleSelector
+    - FleshSuitModuleSelector

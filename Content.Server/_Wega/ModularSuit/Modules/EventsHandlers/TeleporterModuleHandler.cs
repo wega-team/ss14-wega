@@ -1,14 +1,16 @@
 using Content.Shared.Mobs.Components;
 using Content.Shared.Modular.Suit;
-using Robust.Shared.Random;
+using Content.Shared.Interaction;
+using Content.Shared.Physics;
+using Robust.Shared.Serialization;
+using Robust.Shared.Map;
 
 namespace Content.Server.Modular.Suit;
 
 public sealed partial class TeleporterModuleHandler : ModuleActionHandler
 {
-    [Dependency] private EntityLookupSystem _lookup = default!;
-    [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
 
     public const float TeleportRadius = 5f;
 
@@ -34,7 +36,7 @@ public sealed partial class TeleporterModuleHandler : ModuleActionHandler
         if (attemptEvent.Cancelled)
             return;
 
-        if (PerformTeleport(args.Performer))
+        if (PerformTeleport(args.Performer, args.Target))
         {
             Audio.PlayPvs(args.ActivationSound, args.Performer);
             ModularSuit.UseCoreCharge(ent.Owner, moduleComp.PowerInstanceUsage);
@@ -43,23 +45,14 @@ public sealed partial class TeleporterModuleHandler : ModuleActionHandler
         args.Handled = true;
     }
 
-    private bool PerformTeleport(EntityUid user)
+    private bool PerformTeleport(EntityUid user, EntityCoordinates coordinates)
     {
-        var userCoords = Transform(user).Coordinates;
-
-        var mobs = new HashSet<Entity<MobStateComponent>>();
-        _lookup.GetEntitiesInRange(userCoords, TeleportRadius, mobs, LookupFlags.Uncontained);
-
-        if (mobs.Count == 0)
-        {
-            Popup.PopupEntity(Loc.GetString("modsuit-teleporter-no-targets"), user, user);
+        var transform = Transform(user);
+        if (transform.MapID != _transform.GetMapId(coordinates) || !_interaction.InRangeUnobstructed(user, coordinates, range: 1000F, collisionMask: CollisionGroup.Opaque, popup: true))
             return false;
-        }
 
-        var target = _random.Pick(mobs).Owner;
-
-        _transform.SetCoordinates(user, Transform(target).Coordinates);
-        _transform.SetCoordinates(target, userCoords);
+        _transform.SetCoordinates(user, coordinates);
+        _transform.AttachToGridOrMap(user, transform);
 
         return true;
     }

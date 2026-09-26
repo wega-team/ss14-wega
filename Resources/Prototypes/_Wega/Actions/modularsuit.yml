@@ -60,18 +60,122 @@
   id: ActivateTeleporterModuleAction
   name: "[color=#58c4e8]Activate Teleporter[/color]"
   description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
-  categories: [ HideSpawnMenu ]
   components:
   - type: Action
     startDelay: true
+    itemIconStyle: BigAction
     useDelay: 20
   - type: Sprite
-    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
     layers:
     - state: teleporter
+  - type: TargetAction
+    range: 16 # default examine-range.
+    # ^ should probably add better validation that the clicked location is on the users screen somewhere,
+    repeat: false
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:ActivateTeleporterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateAntiGravitationModuleAction
+  name: "[color=#58c4e8]Activate Antigrav[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: antigrav_core
       map: ["enum.ActionVisuals.Icon"]
   - type: InstantAction
-    event: !type:ActivateTeleporterModuleEvent
+    event: !type:AntiGravitationEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateFleshModuleAction
+  name: "[color=#58c4e8]Activate damage[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:DamageOnActionModuleEvent
+      hungerPerUse: 100
+      damage:
+        types:
+          Blunt: -10
+          Slash: -10
+          Piercing: -10
+          Heat: -10
+          Cold: -10
+          Poison: -10
+          Asphyxiation: -20
+          Bloodloss: -20
+
+- type: entity
+  parent: BaseAction
+  id: ActivateEMPModuleAction
+  name: "[color=#58c4e8]Activate EMP[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: electro_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleEMPEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateFloraModuleAction
+  name: "[color=#58c4e8]Activate Flora[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: flora_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleHealSurgeyEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateShadowModuleAction
+  name: "[color=#58c4e8]Activate Stealth[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: shadow_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleStealthEvent
 
 - type: entity
   parent: BaseAction

@@ -447,6 +447,36 @@
   id: BluespaceCore
 
 - type: Tag
+  id: FlameCore
+
+- type: Tag
+  id: IceCore
+
+- type: Tag
+  id: ChemCore
+
+- type: Tag
+  id: ElecCore
+
+- type: Tag
+  id: ShadowCore
+
+- type: Tag
+  id: FloraCore
+
+- type: Tag
+  id: RockCore
+
+- type: Tag
+  id: TechCore
+
+- type: Tag
+  id: FleshCore
+
+- type: Tag
+  id: Synthcore
+
+- type: Tag
   id: BorgScience
 
 - type: Tag
