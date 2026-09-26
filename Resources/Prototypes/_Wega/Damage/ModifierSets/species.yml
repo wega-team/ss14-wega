@@ -38,3 +38,11 @@
     Slash: 0.9
     Piercing: 0.9
     Cold: 1.25
+
+- type: damageModifierSet
+  id: Feroxi
+  coefficients:
+    Blunt: 1.2
+    Slash: 0.8
+    Piercing: 0.9
+    Shock: 1.2

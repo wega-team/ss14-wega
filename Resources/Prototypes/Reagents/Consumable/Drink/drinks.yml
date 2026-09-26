@@ -456,6 +456,22 @@
         factor: 4
     Respiration:
       effects:
+      - !type:EvenHealthChange #Corvax-Wega-Sharks
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+        - !type:ReagentCondition
+          reagent: Water
+          max: 6
+        damage:
+          Brute: -1
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+        effectProto: StatusEffectSeeingRainbow
+        type: Update
+        time: 1
       - !type:HealthChange
         ignoreResistances: true
         conditions:
