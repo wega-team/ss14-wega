@@ -21,7 +21,7 @@
   id: EventHumanoidCentcomm
   parent: EventHumanoidMindShielded
   randomizeName: false
-  speciesBlacklist: ["Diona", "Vox", "Moth", "Arachnid", "Dwarf", "Vulpkanin", "Tajaran", "Android", "Ariral", "Demon", "Felinid", "Harpy", "Phantom", "Resomi", "Skrell"] # Corvax-MRP + Corvax-Wega-Species
+  speciesBlacklist: ["Diona", "Vox", "Moth", "Arachnid", "Dwarf", "Vulpkanin", "Tajaran", "Android", "Ariral", "Demon", "Felinid", "Harpy", "Phantom", "Resomi", "Skrell", "Feroxi"] # Corvax-MRP + Corvax-Wega-Species
   components:
   - type: AutoImplant
     implants:
