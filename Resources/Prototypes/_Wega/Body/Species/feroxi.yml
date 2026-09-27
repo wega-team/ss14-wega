@@ -167,6 +167,39 @@
   - type: HumanoidProfile
     species: Feroxi
     height: 160
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
 
 - type: entity
   id: MobFeroxi
@@ -196,6 +229,10 @@
           Parched:
             types:
               Asphyxiation: 1
+  - type: ActionGrant
+    actions:
+    - SwitchBloodSenseAction
+  - type: BloodSense
 
 
 

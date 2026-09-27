@@ -472,6 +472,10 @@
         effectProto: StatusEffectSeeingRainbow
         type: Update
         time: 1
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
       - !type:HealthChange
         ignoreResistances: true
         conditions:
