@@ -1,3 +1,5 @@
+using Content.Shared.Nutrition.Prototypes;
+
 namespace Content.Shared.Feroxi;
 
 [RegisterComponent]
@@ -17,6 +19,14 @@ public sealed partial class BloodSenseComponent : Component
 
     [DataField]
     public TimeSpan UpdateInterval = TimeSpan.FromSeconds(0.5);
+
+    [DataField]
+    public float ThirstCost = 0.2f;
+
+    [DataField]
+    public SatiationValue AutoOffThreshold = "Parched";
+
+    public EntityUid? ActionEntity;
 
     [DataField]
     public float FullStrength = 6f;

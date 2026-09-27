@@ -4,7 +4,11 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Feroxi;
+using Content.Shared.Actions;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Nutrition.Components;
+using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Popups;
 using Content.Shared.Physics;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
@@ -22,6 +26,10 @@ public sealed partial class BloodSenseScentSystem : EntitySystem
     [Dependency] private SharedInternalsSystem _internals = default!;
     [Dependency] private SharedPhysicsSystem _physics = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private BloodSenseSystem _bloodSense = default!;
+    [Dependency] private SatiationSystem _satiation = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private readonly HashSet<Entity<BloodstreamComponent>> _candidates = new();
 
@@ -37,6 +45,15 @@ public sealed partial class BloodSenseScentSystem : EntitySystem
 
             active.NextUpdate = _timing.CurTime + sense.UpdateInterval;
 
+            if (_bloodSense.IsTooThirsty((uid, sense)))
+            {
+                TurnOff(uid, sense);
+                continue;
+            }
+
+            if (TryComp<SatiationComponent>(uid, out var satiation))
+                _satiation.ModifyValue((uid, satiation), SatiationSystem.Thirst, -sense.ThirstCost * (float) sense.UpdateInterval.TotalSeconds);
+
             active.Targets.Clear();
 
             if (CanSmell(uid, sense))
@@ -44,6 +61,13 @@ public sealed partial class BloodSenseScentSystem : EntitySystem
 
             Dirty(uid, active);
         }
+    }
+
+    private void TurnOff(EntityUid uid, BloodSenseComponent sense)
+    {
+        RemCompDeferred<BloodSenseActiveComponent>(uid);
+        _actions.SetToggled(sense.ActionEntity, false);
+        _popup.PopupEntity(Loc.GetString("blood-sense-too-thirsty"), uid, uid, PopupType.SmallCaution);
     }
 
     private bool CanSmell(EntityUid uid, BloodSenseComponent sense) // проверка на намордники
