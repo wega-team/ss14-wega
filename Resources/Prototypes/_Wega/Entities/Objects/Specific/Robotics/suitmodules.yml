@@ -426,7 +426,7 @@
   - type: Sprite
     state: teleporter
   - type: ModularSuitActionModule
-    action: ActivateFleshModuleAction
+    action: ActivateTeleporterModuleAction
   - type: ModularSuitModuleContainerRequirement
     failureMessage: modsuit-module-requires-bluespace-core
     requiredContainerId: module_core
@@ -765,6 +765,7 @@
     tags: [ ArmorBoosterSuitModule, CompressionModuleConflict ]
     modulePart: Torso
     powerUsage: 1
+    canBeDisabled: false
     verbIcon:
       sprite: *modules-rsi
       state: rock
