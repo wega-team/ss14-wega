@@ -456,7 +456,8 @@
         factor: 4
     Respiration:
       effects:
-      - !type:EvenHealthChange #Corvax-Wega-Sharks
+      # Corvax-Wega-Sharks-start
+      - !type:EvenHealthChange
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Feroxi ]
@@ -476,6 +477,7 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Feroxi ]
+      # Corvax-Wega-Sharks-end
       - !type:HealthChange
         ignoreResistances: true
         conditions:
