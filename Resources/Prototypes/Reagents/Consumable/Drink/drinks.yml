@@ -471,7 +471,7 @@
         - !type:MetabolizerTypeCondition
           type: [ Feroxi ]
         effectProto: StatusEffectSeeingRainbow
-        type: Update
+        type: Add
         time: 1
       - !type:Oxygenate
         conditions:
