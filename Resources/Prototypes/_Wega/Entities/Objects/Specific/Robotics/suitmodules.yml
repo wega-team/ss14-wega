@@ -550,7 +550,7 @@
     requiredContainerId: module_core
   - type: ModularSuitItemModule
     handId: ice-hand
-    item: FlamecoreItem
+    item: IcecoreItem
   - type: ModularSuitModule
     modulePart: Gloves
     powerUsage: 2
@@ -628,10 +628,21 @@
   - type: ModularSuitModuleContainerRequirement
     failureMessage: modsuit-module-requires-elec-core
     requiredContainerId: module_core
+  - type: ModularSuitModuleWearerEffect
+    activeComponents:
+    - type: EmpResistance
+      strengthMultiplier: 0
+  - type: ModularSuitModuleEffect
+    activeComponents:
+    - type: EmpResistance
+      strengthMultiplier: 0
   - type: ModularSuitActionModule
+    tags: [ EMPShieldSuitModule ]
+    modulePart: Torso
     action: ActivateEMPModuleAction
   - type: ModularSuitModule
-    powerInstanceUsage: 200
+    powerInstanceUsage: 20
+    powerUsage: 0.25
     canBeDisabled: false
     active: true
     verbIcon:
