@@ -467,9 +467,23 @@
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Feroxi ]
+        - !type:ReagentCondition
+          reagent: Water
+          max: 12
         effectProto: StatusEffectSeeingRainbow
         type: Update
         time: 15
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+        - !type:ReagentCondition
+          reagent: Water
+          min: 12
+        effectProto: StatusEffectSeeingRainbow
+        type: Update
+        time: 180
+        scaling: false
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
