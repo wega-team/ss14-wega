@@ -1,3 +1,4 @@
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Popups;
@@ -8,6 +9,7 @@ public sealed partial class BloodSenseSystem : EntitySystem
 {
     [Dependency] private SatiationSystem _satiation = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     public override void Initialize()
     {
@@ -28,6 +30,12 @@ public sealed partial class BloodSenseSystem : EntitySystem
         }
         else
         {
+            if (!_mobState.IsAlive(ent.Owner))
+            {
+                args.Handled = true;
+                return;
+            }
+
             if (IsTooThirsty(ent))
             {
                 _popup.PopupEntity(Loc.GetString("blood-sense-too-thirsty"), ent.Owner, ent.Owner, PopupType.SmallCaution);

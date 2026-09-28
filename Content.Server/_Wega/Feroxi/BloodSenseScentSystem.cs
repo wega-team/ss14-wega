@@ -45,9 +45,15 @@ public sealed partial class BloodSenseScentSystem : EntitySystem
 
             active.NextUpdate = _timing.CurTime + sense.UpdateInterval;
 
+            if (!_mobState.IsAlive(uid))
+            {
+                TurnOff(uid, sense, null);
+                continue;
+            }
+
             if (_bloodSense.IsTooThirsty((uid, sense)))
             {
-                TurnOff(uid, sense);
+                TurnOff(uid, sense, "blood-sense-too-thirsty");
                 continue;
             }
 
@@ -63,18 +69,17 @@ public sealed partial class BloodSenseScentSystem : EntitySystem
         }
     }
 
-    private void TurnOff(EntityUid uid, BloodSenseComponent sense)
+    private void TurnOff(EntityUid uid, BloodSenseComponent sense, string? popup)
     {
         RemCompDeferred<BloodSenseActiveComponent>(uid);
         _actions.SetToggled(sense.ActionEntity, false);
-        _popup.PopupEntity(Loc.GetString("blood-sense-too-thirsty"), uid, uid, PopupType.SmallCaution);
+
+        if (popup != null)
+            _popup.PopupEntity(Loc.GetString(popup), uid, uid, PopupType.SmallCaution);
     }
 
     private bool CanSmell(EntityUid uid, BloodSenseComponent sense) // проверка на намордники
     {
-        if (_mobState.IsIncapacitated(uid))
-            return false;
-
         if (_internals.AreInternalsWorking(uid))
             return false;
 

@@ -457,22 +457,19 @@
     Respiration:
       effects:
       # Corvax-Wega-Sharks-start
-      - !type:EvenHealthChange
+      - !type:FeroxiVaporHeal
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Feroxi ]
-        - !type:ReagentCondition
-          reagent: Water
-          max: 6
-        damage:
-          Brute: -1
+        heal: 0.15
+        saturation: 5
       - !type:ModifyStatusEffect
         conditions:
         - !type:MetabolizerTypeCondition
           type: [ Feroxi ]
         effectProto: StatusEffectSeeingRainbow
-        type: Add
-        time: 1
+        type: Update
+        time: 15
       - !type:Oxygenate
         conditions:
         - !type:MetabolizerTypeCondition
