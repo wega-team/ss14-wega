@@ -470,7 +470,7 @@
         - !type:ReagentCondition
           reagent: Water
           max: 12
-        effectProto: StatusEffectSeeingRainbow
+        effectProto: StatusEffectFeroxiNarcosis
         type: Update
         time: 15
       - !type:ModifyStatusEffect
@@ -480,7 +480,7 @@
         - !type:ReagentCondition
           reagent: Water
           min: 12
-        effectProto: StatusEffectSeeingRainbow
+        effectProto: StatusEffectFeroxiNarcosis
         type: Update
         time: 180
         scaling: false

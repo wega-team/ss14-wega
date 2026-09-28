@@ -190,5 +190,10 @@
   id: BloodSense
   kind: source
   path: "/Textures/_Wega/Shaders/blood_sense.swsl"
+
+- type: shader
+  id: FeroxiNarcosis
+  kind: source
+  path: "/Textures/_Wega/Shaders/feroxi_narcosis.swsl"
     
 # Corvax-Wega-Shaders-end
