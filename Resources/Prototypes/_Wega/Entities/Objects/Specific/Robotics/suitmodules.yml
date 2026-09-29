@@ -637,10 +637,10 @@
     - type: EmpResistance
       strengthMultiplier: 0
   - type: ModularSuitActionModule
-    tags: [ EMPShieldSuitModule ]
-    modulePart: Torso
     action: ActivateEMPModuleAction
   - type: ModularSuitModule
+    tags: [ EMPShieldSuitModule ]
+    modulePart: Torso
     powerInstanceUsage: 20
     powerUsage: 0.25
     canBeDisabled: false
