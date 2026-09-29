@@ -369,7 +369,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractPyrite
         Quantity: 5
-      - ReagentId: Ihor
+      - ReagentId: Ichor
         Quantity: 5
 
 - type: entity
