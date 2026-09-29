@@ -1,0 +1,5 @@
+- type: localizedDataset
+  id: NamesFeroxiLastMale
+  values:
+    prefix: names_feroxi_last_male-
+    count: 50

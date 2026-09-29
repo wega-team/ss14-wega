@@ -6,11 +6,16 @@
   defaultSkinTone: "#31374c"
   dollPrototype: AppearanceFeroxi
   skinColoration: Hues
-  #maleFirstNames: NamesFeroxiFirstMale
-  #femaleFirstNames: NamesFeroxiFirstFemale
-  #maleLastNames: NamesFeroxi
-  #femaleLastNames: NamesFeroxi
+  maleFirstNames: NamesFeroxiFirstMale
+  femaleFirstNames: NamesFeroxiFirstFemale
+  maleLastNames: NamesFeroxiLastMale
+  femaleLastNames: NamesFeroxiLastFemale
   minHeight: 160
   maxHeight: 250
-  #defaultSoundsBySex:
-  #voices:
+  defaultSoundsBySex:
+  - MaleFeroxi
+  - FemaleFeroxi
+  - MaleFeroxi
+  voices:
+  - MaleFeroxi
+  - FemaleFeroxi

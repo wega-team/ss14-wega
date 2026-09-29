@@ -1,0 +1,13 @@
+- type: emoteSounds
+  id: MaleFeroxi
+  parent: MaleHuman
+  sounds:
+    Scream:
+      path: /Audio/_Wega/Voice/Feroxi/scream.ogg
+
+- type: emoteSounds
+  id: FemaleFeroxi
+  parent: FemaleHuman
+  sounds:
+    Scream:
+      path: /Audio/_Wega/Voice/Feroxi/scream.ogg
