@@ -1,3 +1,4 @@
+using Content.Shared.Inventory; // Corvax-Wega-UnremoveableOnlyInSlots
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Interaction.Components;
@@ -11,4 +12,12 @@ public sealed partial class UnremoveableComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool DeleteOnDrop = true;
+
+    // Corvax-Wega-UnremoveableOnlyInSlots-start
+    /// <summary>
+    /// If set, the item is unremovable only in an inventory slot with these flags.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SlotFlags OnlyInSlots = SlotFlags.NONE;
+    // Corvax-Wega-UnremoveableOnlyInSlots-end
 }
