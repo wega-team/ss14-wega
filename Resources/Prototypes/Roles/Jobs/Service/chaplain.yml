@@ -7,11 +7,11 @@
   icon: "JobIconChaplain"
   supervisors: job-supervisors-hop
   guides: [ Service ] # TODO: should have a more specific guidebook page instead of using the department itself
-# Corvax-Wega-Start
+  # Corvax-Wega-Start
   requirements:
   - !type:OverallPlaytimeRequirement
       time: 20h
-# Corvax-Wega-End
+  # Corvax-Wega-End
   access:
   - Chapel
   - Maintenance
@@ -23,7 +23,6 @@
 - type: startingGear
   id: ChaplainGear
   equipment:
-    # shoes: ClothingShoesColorBlack # Corvax-Wega-Edit
     id: ChaplainPDA
     ears: ClothingHeadsetService
     belt: ClothingBeltSheathChaplinFilled # Corvax-Wega-NullRod

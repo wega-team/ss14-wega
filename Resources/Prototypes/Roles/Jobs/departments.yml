@@ -12,40 +12,33 @@
   - ShaftMinerMedic # Corvax-Wega-Lavaland
 
 - type: department
+  id: CentralCommand
+  name: department-CentralCommand
+  description: department-CentralCommand-description
+  color: "#0c344d"
+  weight: 120 # Highest weight of all NT departments; Central Command's authority is absolute
+  editorHidden: true
+  roles:
+  - CentralCommandOfficial
+
+- type: department
   id: Civilian
   name: department-Civilian
   description: department-Civilian-description
-  color: "#7F7F7F"
-  weight: -10
+  color: "#2681A5" # Corvax-Wega-Edit
+  weight: -10 # Lowest weight of all "regular" crew departments
   ignoreForDepartmentFallback: true
   roles:
   - Passenger
   - Visitor
-
-# Please kill this
-- type: department
-  id: CentralCommand
-  name: department-CentralCommand
-  description: department-CentralCommand-description
-  color: "#2681A5" # Corvax-Wega-Edit
-  roles:
-  - CentralCommandOfficial
-  - CBURN
-  - ERTLeader
-  - ERTChaplain
-  - ERTJanitor
-  - ERTMedical
-  - ERTSecurity
-  - ERTEngineer
-  - DeathSquad
-  editorHidden: true
-  weight: 120
 
 - type: department
   id: Command
   name: department-Command
   description: department-Command-description
   color: "#FCDF03" # Corvax-Wega-Edit
+  weight: 100 # Highest weight of all "regular" crew departments
+  primary: false
   roles:
   - Captain
   - IAA # Corvax-Wega-IAA
@@ -56,18 +49,6 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
-  # Please kill these
-  - CentralCommandOfficial
-  - CBURN
-  - ERTLeader
-  - ERTChaplain
-  - ERTJanitor
-  - ERTMedical
-  - ERTSecurity
-  - ERTEngineer
-  - DeathSquad
-  primary: false
-  weight: 100
 
 - type: department
   id: Engineering
@@ -89,14 +70,14 @@
   roles:
   - Chemist
   - ChiefMedicalOfficer
-  - Geneticist # Corvax-Wega-Genetics
-  - Surgeon # Corvax-Wega-Surgery
-  - Coroner # Corvax-Wega-Surgery
   - MedicalDoctor
   - MedicalIntern
   - Psychologist
   - Paramedic
   - SeniorPhysician # Corvax-MentorRoles
+  - Geneticist # Corvax-Wega-Genetics
+  - Surgeon # Corvax-Wega-Surgery
+  - Coroner # Corvax-Wega-Surgery
 
 - type: department
   id: Science
@@ -114,7 +95,7 @@
   name: department-Security
   description: department-Security-description
   color: "#FF4242" # Corvax-Wega-Edit
-  weight: 20
+  weight: 20 # Raised priority compared to most other crew departments
   roles:
   - HeadOfSecurity
   - SecurityCadet
@@ -153,16 +134,34 @@
   name: department-Silicon
   description: department-Silicon-description
   color: "#D381C9"
+  weight: -20 # Displays after all regular crew departments, including Civilian, both because they're mechanically distinct and because they're subordinate to all crew by default
   roles:
   - Borg
   - StationAi
+
+- type: department
+  id: TaskForce
+  name: department-Task-Force
+  description: department-Task-Force-description
+  color: "#0c344d"
+  weight: 110 # Higher weight than Command, but below Central Command
+  editorHidden: true
+  roles:
+  - CBURN
+  - ERTLeader
+  - ERTChaplain
+  - ERTJanitor
+  - ERTMedical
+  - ERTSecurity
+  - ERTEngineer
+  - DeathSquad
 
 - type: department
   id: Specific
   name: department-Specific
   description: department-Specific-description
   color: "#9FED58"
-  weight: 10
+  weight: -100 # Displays after all other departments, since that makes them obviously distinct in the lobby's jobs list
   ignoreForDepartmentFallback: true
   roles:
   - Reporter

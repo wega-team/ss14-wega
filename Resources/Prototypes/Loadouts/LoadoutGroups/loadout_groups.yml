@@ -162,6 +162,11 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  # Corvax-Loadouts-Start
+  - CaptainBeret
+  - CaptainBicorn
+  - CaptainHat
+    # Corvax-Loadouts-End
   # Corvax-Wega-Sponsors-start
   - ClothingEyesGlassesGarGigaSponsor
   # Corvax-Wega-Sponsors-end
@@ -183,6 +188,7 @@
   # Corvax-Loadouts-Start
   - CaptainJumpsuitTurtleneck
   - CaptainJumpskirtTurtleneck
+  - CaptainJumpsuitRoyal
   # Corvax-Loadouts-End
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtElegantCaptain
@@ -237,6 +243,8 @@
   name: loadout-group-captain-outerclothing
   loadouts:
   - CaptainOuterClothing
+  - CaptainCoat # Corvax-Loadouts
+  - CaptainWintercoat
   - ClothingOuterCoatCaptain  # Corvax-Wega
 # Corvax-Wega-start
   - ClothingOuterArmorCaptainCarapaceWhite
@@ -1412,6 +1420,14 @@
   - ClothingNeckCloakSponsorBlue
   - ClothingNeckChocerMoo
   # Corvax-Wega-Sponsors-end
+
+- type: loadoutGroup
+  id: ChaplainShoes
+  name: loadout-group-chaplain-shoes
+  loadouts:
+  - BlackShoes
+  - BlackSandals
+  - BrownSandals
 
 #- type: loadoutGroup
 #  id: ChaplainJobTrinkets
@@ -4205,6 +4221,7 @@
   name: loadout-group-head-of-security-outerclothing
   loadouts:
   - HeadofSecurityCoat
+  - HeadofSecurityGreatcoat # Corvax-Loadouts
   - HeadofSecurityWinterCoat
 
   # Corvax-Wega-Sponsors-start
