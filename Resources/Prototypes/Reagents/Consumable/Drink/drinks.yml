@@ -456,6 +456,39 @@
         factor: 4
     Respiration:
       effects:
+      # Corvax-Wega-Sharks-start
+      - !type:FeroxiVaporHeal
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+        heal: 0.15
+        saturation: 5
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+        - !type:ReagentCondition
+          reagent: Water
+          max: 12
+        effectProto: StatusEffectFeroxiNarcosis
+        type: Update
+        time: 15
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+        - !type:ReagentCondition
+          reagent: Water
+          min: 12
+        effectProto: StatusEffectFeroxiNarcosis
+        type: Update
+        time: 180
+        scaling: false
+      - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Feroxi ]
+      # Corvax-Wega-Sharks-end
       - !type:HealthChange
         ignoreResistances: true
         conditions:

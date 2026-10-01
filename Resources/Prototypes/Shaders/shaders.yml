@@ -185,5 +185,15 @@
     FalloffClampMin: 0.075
     FalloffClampMax: 1.0
     FalloffPow: 3.0
+
+- type: shader
+  id: BloodSense
+  kind: source
+  path: "/Textures/_Wega/Shaders/blood_sense.swsl"
+
+- type: shader
+  id: FeroxiNarcosis
+  kind: source
+  path: "/Textures/_Wega/Shaders/feroxi_narcosis.swsl"
     
 # Corvax-Wega-Shaders-end

@@ -1,0 +1,21 @@
+- type: species
+  id: Feroxi
+  name: species-name-feroxi
+  roundStart: True
+  prototype: MobFeroxi
+  defaultSkinTone: "#31374c"
+  dollPrototype: AppearanceFeroxi
+  skinColoration: Hues
+  maleFirstNames: NamesFeroxiFirstMale
+  femaleFirstNames: NamesFeroxiFirstFemale
+  maleLastNames: NamesFeroxiLastMale
+  femaleLastNames: NamesFeroxiLastFemale
+  minHeight: 160
+  maxHeight: 250
+  defaultSoundsBySex:
+  - MaleFeroxi
+  - FemaleFeroxi
+  - MaleFeroxi
+  voices:
+  - MaleFeroxi
+  - FemaleFeroxi

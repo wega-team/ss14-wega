@@ -1,0 +1,8 @@
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: StatusEffectFeroxiNarcosis
+  name: vapor narcosis
+  components:
+  - type: NarcosisStatusEffect
+  - type: ExaminableStatusEffect
+    messageId: status-effect-examine-feroxi-narcosis
