@@ -35,7 +35,7 @@
     heldPrefix: scanner
   - type: Sprite
     sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
-    state: scanner
+    state: icon
   - type: ActivatableUI
     key: enum.CrewMonitoringUIKey.Key
   - type: UserInterface

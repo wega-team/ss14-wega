@@ -238,8 +238,6 @@
         Quantity: 10
       - ReagentId: SlimeExtractGold
         Quantity: 5
-      - ReagentId: Gold
-        Quantity: 10
       - ReagentId: FrostOil
         Quantity: 5
 
@@ -259,8 +257,6 @@
         Quantity: 10
       - ReagentId: SlimeExtractSilver
         Quantity: 5
-      - ReagentId: Silver
-        Quantity: 10
       - ReagentId: FrostOil
         Quantity: 5
 

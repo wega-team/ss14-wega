@@ -17,7 +17,7 @@
         - id: ClothingUnderBottomMCaptain # Corvax-Wega
         # Corvax-Clothing-Start
         - id: ClothingHeadHatCaptainBeret
-        - id: ClothingHeadCaptainHat
+        # - id: ClothingHeadCaptainHat # Corvax-Wega-Edit
         - id: ClothingUniformJumpsuitCaptain
         - id: ClothingUniformJumpskirtCaptain
         # Corvax-Clothing-End
@@ -61,8 +61,8 @@
         - id: ClothingCloakCmo
         - id: ClothingUnderBottomMCmo # Corvax-Wega
         # Corvax-Clothing-Start
-        - id: ClothingUniformJumpsuitCMO
-        - id: ClothingUniformJumpskirtCMO
+        # - id: ClothingUniformJumpsuitCMO # Corvax-Wega-Edit
+        # - id: ClothingUniformJumpskirtCMO # Corvax-Wega-Edit
         # Corvax-Clothing-End
 
 - type: entity
@@ -142,8 +142,8 @@
         - id: ClothingNeckCloakRd
         - id: ClothingUnderBottomMRd # Corvax-Wega
         # Corvax-Clothing-Start
-        - id: ClothingUniformJumpsuitRDClassical
-        - id: ClothingUniformJumpskirtRDClassical
+        # - id: ClothingUniformJumpsuitRDClassical # Corvax-Wega-Edit
+        # - id: ClothingUniformJumpskirtRDClassical # Corvax-Wega-Edit
         - id: ClothingUniformJumpsuitResearchDirector
         - id: ClothingUniformJumpskirtResearchDirector
         # Corvax-Clothing-End

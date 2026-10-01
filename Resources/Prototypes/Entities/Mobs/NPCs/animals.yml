@@ -2843,7 +2843,7 @@
     drawdepth: Mobs
     sprite: Mobs/Animals/raccoon.rsi
     layers:
-    - map: ["enum.DamageStateVisualLayers.Base"]
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: raccoon
   - type: Physics
   - type: Fixtures

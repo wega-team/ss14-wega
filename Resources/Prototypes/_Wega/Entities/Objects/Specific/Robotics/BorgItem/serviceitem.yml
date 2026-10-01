@@ -228,7 +228,6 @@
         type: ItemSelectorBoundUserInterface
   - type: Tag
     tags:
-    - Hoe
     - Itemborg
 
 - type: entity

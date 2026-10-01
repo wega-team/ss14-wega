@@ -318,16 +318,6 @@
     folded: true
 
 - type: entity
-  parent: VehicleWheelchair
-  id: VehicleWheelchairFolded
-  suffix: folded
-  components:
-  - type: Strap
-    enabled: False
-  - type: Foldable
-    folded: true
-
-- type: entity
   id: VehicleJanicartDestroyed
   parent: MachineFrameDestroyed
   name: destroyed janicart

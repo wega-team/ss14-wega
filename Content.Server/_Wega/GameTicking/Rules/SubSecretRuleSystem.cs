@@ -20,23 +20,15 @@ public sealed partial class SubSecretRuleSystem : GameRuleSystem<SubSecretRuleCo
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private IAdminLogManager _adminLogger = default!;
 
-    private string _ruleCompName = default!;
-
-    public override void Initialize()
+    protected override void Added(Entity<SubSecretRuleComponent, GameRuleComponent> ent, ref GameRuleAddedEvent args)
     {
-        base.Initialize();
-        _ruleCompName = Factory.GetComponentName<GameRuleComponent>();
-    }
-
-    protected override void Added(EntityUid uid, SubSecretRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
-    {
-        base.Added(uid, component, gameRule, args);
-        var weights = component.Secret;
+        base.Added(ent, ref args);
+        var weights = ent.Comp1.Secret;
 
         if (!TryPickPreset(weights, out var preset))
         {
-            Log.Error($"{ToPrettyString(uid)} failed to pick any preset. Removing rule.");
-            Del(uid);
+            Log.Error($"{ToPrettyString(ent.Owner)} failed to pick any preset. Removing rule.");
+            Del(ent.Owner);
             return;
         }
 
@@ -61,7 +53,7 @@ public sealed partial class SubSecretRuleSystem : GameRuleSystem<SubSecretRuleCo
             if (ruleEnt == null)
                 continue;
 
-            component.AdditionalGameRules.Add(ruleEnt.Value);
+            ent.Comp1.AdditionalGameRules.Add(ruleEnt.Value);
         }
     }
 
@@ -95,7 +87,10 @@ public sealed partial class SubSecretRuleSystem : GameRuleSystem<SubSecretRuleCo
                     continue;
 
                 if (!ProtoMan.TryIndex(key, out selectedPreset))
-                    Log.Error($"Invalid preset {selectedPreset} in secret rule weights: {weights}");
+                {
+                    Log.Error($"Invalid preset {key} in secret rule weights: {weights}");
+                    continue;
+                }
 
                 options.Remove(key);
                 sum -= weight;
@@ -116,16 +111,10 @@ public sealed partial class SubSecretRuleSystem : GameRuleSystem<SubSecretRuleCo
         return false;
     }
 
-    public bool CanPickAny(SubSecretRuleComponent component)
-    {
-        var secretPresetId = component.Secret;
-        return CanPickAny(secretPresetId);
-    }
-
     /// <summary>
     /// Can any of the given presets be picked, taking into account the currently available player count?
     /// </summary>
-    public bool CanPickAny(ProtoId<WeightedRandomPrototype> weightedPresets)
+    private bool CanPickAny(ProtoId<WeightedRandomPrototype> weightedPresets)
     {
         var ids = ProtoMan.Index(weightedPresets).Weights.Keys
             .Select(x => new ProtoId<GamePresetPrototype>(x));
@@ -136,13 +125,16 @@ public sealed partial class SubSecretRuleSystem : GameRuleSystem<SubSecretRuleCo
     /// <summary>
     /// Can any of the given presets be picked, taking into account the currently available player count?
     /// </summary>
-    public bool CanPickAny(IEnumerable<ProtoId<GamePresetPrototype>> protos)
+    private bool CanPickAny(IEnumerable<ProtoId<GamePresetPrototype>> protos)
     {
         var players = GameTicker.ReadyPlayerCount();
         foreach (var id in protos)
         {
             if (!ProtoMan.TryIndex(id, out var selectedPreset))
-                Log.Error($"Invalid preset {selectedPreset} in secret rule weights: {id}");
+            {
+                Log.Error($"Invalid preset {id} in secret rule weights: {id}");
+                continue;
+            }
 
             if (CanPick(selectedPreset, players))
                 return true;

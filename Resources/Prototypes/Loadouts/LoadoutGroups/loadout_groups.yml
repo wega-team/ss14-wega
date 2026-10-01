@@ -170,12 +170,12 @@
   # Corvax-Wega-Sponsors-start
   - ClothingEyesGlassesGarGigaSponsor
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - ClothingHeadHatBeretCaptainWhite
   - ClothingHeadHatCapcapWhite
   - ClothingHeadHatCapcapSheriff
   - ClothingHeadHatBeretSheriff
-# Corvax-Wega-end
+  # Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -193,12 +193,12 @@
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtElegantCaptain
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - ClothingUniformJumpsuitWhiteCaptain
   - ClothingUniformJumpskirtWhiteCaptain
   - ClothingUniformJumpsuitSheriff
   - ClothingUniformJumpsuitCommandCaptain
-# Corvax-Wega-end
+  # Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -216,11 +216,11 @@
   - ClothingNeckCloakSponsorWithe
   - ClothingNeckCloakSponsorBlue
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - ClothingNeckCaptainWide
   - ClothingNeckCloakRoyalCaptain
   - ClothingNeckWhiteMantleCaptain
-# Corvax-Wega-end
+  # Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -229,14 +229,14 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - ClothingBackpackCapitanWhite
   - ClothingSatchelsCapitanWhite
   - ClothingDuffelsCapitanWhite
   - ClothingBackpackCapitanGreen
   - ClothingSatchelsCapitanGreen
   - ClothingDuffelsCapitanGreen
-# Corvax-Wega-end
+  # Corvax-Wega-end
 
 - type: loadoutGroup
   id: CaptainOuterClothing
@@ -244,14 +244,13 @@
   loadouts:
   - CaptainOuterClothing
   - CaptainCoat # Corvax-Loadouts
-  - CaptainWintercoat
-  - ClothingOuterCoatCaptain  # Corvax-Wega
-# Corvax-Wega-start
+  - ClothingOuterCoatCaptain  # Corvax-Wega-Edit
+  # Corvax-Wega-start
   - ClothingOuterArmorCaptainCarapaceWhite
   - ClothingOuterCoatWhite
   - ClothingOuterArmorSherifCarapace
   - ClothingOuterCoatSherif
-# Corvax-Wega-end
+  # Corvax-Wega-end
 
 #- type: loadoutGroup
 #  id: CaptainJobTrinkets
@@ -362,7 +361,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -495,7 +494,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: PassengerFace
@@ -544,17 +543,17 @@
   minLimit: 0
   loadouts:
   - PassengerWintercoat
-
   # Corvax-Wega-Sponsors-start
   - ClothingOuterCyberJacket
   # Corvax-Wega-Sponsors-end
+
 - type: loadoutGroup
   id: PassengerShoes
   name: loadout-group-passenger-shoes
   loadouts:
   - BlackShoes
   - WinterBoots
- # Corvax-Wega-Shoes-Start
+  # Corvax-Wega-Shoes-Start
   - ClothingShoesColorBlack
   - ClothingShoesColorBrown
   - ClothingShoesColorWhite
@@ -575,11 +574,11 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
- # Corvax-Wega-Shoes-End
+  # Corvax-Wega-Shoes-End
 
 #- type: loadoutGroup
 #  id: PassengerJobTrinkets
@@ -629,7 +628,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - ClothingUniformJumpsuitBartenderVestGreen
   - ClothingUniformJumpsuitBartenderVestRed
   - ClothingUniformJumpsuitBartenderVest
@@ -767,7 +766,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: BartenderOuterClothing
@@ -777,10 +776,10 @@
   - BartenderVest
   - BartenderApron
   - BartenderWintercoat
-
   # Corvax-Wega-Sponsors-start
   - ClothingOuterCyberJacket
   # Corvax-Wega-Sponsors-end
+
 - type: loadoutGroup
   id: BartenderJobTrinkets
   name: loadout-group-jobtrinkets
@@ -841,7 +840,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -974,7 +973,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ChefOuterClothing
@@ -1024,7 +1023,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -1157,7 +1156,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 #- type: loadoutGroup
 #  id: LibrarianJobTrinkets
@@ -1256,7 +1255,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -1389,7 +1388,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 
 - type: loadoutGroup
@@ -1490,7 +1489,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -1623,7 +1622,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: JanitorGloves
@@ -1696,7 +1695,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -1829,7 +1828,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: BotanistBackpack
@@ -1901,7 +1900,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -2034,7 +2033,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ClownBackpack
@@ -2137,7 +2136,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -2270,7 +2269,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: MimeBackpack
@@ -2331,7 +2330,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -2464,7 +2463,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: MusicianOuterClothing
@@ -2598,8 +2597,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -2650,7 +2649,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -2783,7 +2782,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
@@ -2830,8 +2829,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -2956,8 +2955,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -2999,7 +2998,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -3132,7 +3131,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 # Corvax-Wega-Edit-start
 - type: loadoutGroup
@@ -3189,7 +3188,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -3322,7 +3321,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: StationEngineerBackpack
@@ -3370,8 +3369,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -3421,7 +3420,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -3554,7 +3553,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
@@ -3602,8 +3601,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -3708,8 +3707,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -3782,7 +3781,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -3915,7 +3914,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ScientistBackpack
@@ -3968,8 +3967,8 @@
   - ClothingShoesHeelsBlue
   - ClothingShoesHeelsPurple
   - ClothingShoesBootsLaceup
-  - ClothingShoesWizard
-  - ClothingShoesTourist
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
   - ClothingShoesLeather
   - ClothingShoesStylishWhite
  # Corvax-Wega-Shoes-End
@@ -4027,7 +4026,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -4160,7 +4159,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 #- type: loadoutGroup
 #  id: ResearchAssistantJobTrinkets
@@ -4299,14 +4298,14 @@
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtElegantSecurity
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
   - JumpskirtTurtleneckBlack
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -4410,14 +4409,14 @@
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtElegantSecurity
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
   - JumpskirtTurtleneckBlack
   - JumpsuitTurtleneckBlack
   - JumpskirtTurtleneckBlackSleeveless
   - JumpsuitTurtleneckBlackSleeveless
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 #- type: loadoutGroup
 #  id: SecurityCadetJobTrinkets
@@ -4466,7 +4465,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -4599,7 +4598,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 - type: loadoutGroup
   id: ReporterHead
@@ -4652,7 +4651,7 @@
   - ClothingUniformJumpskirtElegantColorWhite
   - ClothingUniformJumpsuitStylishWithe
   # Corvax-Wega-Sponsors-end
-# Corvax-Wega-add-start
+  # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
   - JumpsuitColorBlack
@@ -4785,7 +4784,7 @@
   - ClothingUniformTopColorMaroon
   - ClothingUniformTopic
   - ClothingUniformTopicCool
-# Corvax-Wega-add-end
+  # Corvax-Wega-add-end
 
 #- type: loadoutGroup
 #  id: PsychologistJobTrinkets

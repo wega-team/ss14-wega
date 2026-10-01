@@ -1,47 +1,4 @@
 - type: entity
-  id: MobSharkDragon
-  suffix: DragonBrood
-  parent: MobShark
-  components:
-    - type: GhostRole
-      allowMovement: true
-      allowSpeech: true
-      makeSentient: true
-      name: ghost-role-information-sentient-carpshark-name
-      description: ghost-role-information-sentient-carp-description
-      rules: ghost-role-information-space-dragon-summoned-carp-rules
-      mindRoles:
-      - MindRoleGhostRoleTeamAntagonistFlock
-    - type: GhostTakeoverAvailable
-    - type: HTN
-      rootTask:
-        task: DragonCarpCompound
-    - type: Flammable
-      damage:
-       types: {}
-    - type: Temperature
-    - type: TemperatureDamage
-      heatDamageThreshold: 3600
-    - type: FriendlyFaction
-      faction: Dragon
-    - type: MeleeWeapon
-      damage:
-        types:
-          Slash: 20
-          Bloodloss: 5
-    - type: MobThresholds
-      thresholds:
-        0: Alive
-        125: Dead
-    - type: LeechMeleeWeapon
-      heal:
-        types:
-          Heat: -7.5
-          Blunt: -7.5
-          Slash: -7.5
-          Piercing: -7.5
-
-- type: entity
   id: MobCarpRainbowDragon
   suffix: DragonBrood
   parent: MobCarpRainbow
@@ -67,7 +24,7 @@
       heatDamageThreshold: 3600
     - type: FriendlyFaction
       faction: Dragon
-      
+
 - type: entity
   id: MobCarpHoloDragon
   suffix: DragonBrood

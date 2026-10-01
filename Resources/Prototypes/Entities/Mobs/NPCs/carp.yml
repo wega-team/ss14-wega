@@ -282,3 +282,12 @@
     name: ghost-role-information-sentient-sharkminnow-name
     description: ghost-role-information-sentient-carp-description
     rules: ghost-role-information-space-dragon-summoned-carp-rules
+  # Corvax-Wega-mewmew-start
+  - type: LeechMeleeWeapon
+    heal:
+      types:
+        Heat: -7.5
+        Blunt: -7.5
+        Slash: -7.5
+        Piercing: -7.5
+  # Corvax-Wega-mewmew-end

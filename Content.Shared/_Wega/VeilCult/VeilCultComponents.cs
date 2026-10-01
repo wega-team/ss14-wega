@@ -13,7 +13,7 @@ public sealed partial class VeilCultistComponent : Component
     public static readonly EntProtoId MidasTouch = "ActionMidasTouch";
 
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "VeilCultistFaction";
+    public ProtoId<StatusIconPrototype> StatusIcon { get; set; } = "VeilCultistFaction";
 
     [DataField]
     public ProtoId<MindChannelPrototype> CultMindChannel { get; set; } = "MindVeilCult";

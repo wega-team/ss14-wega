@@ -1,6 +1,5 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.Humanoid.Components;
 using Content.Server.NPC.HTN;
 using Content.Server.Polymorph.Components;
 using Content.Shared.Bed.Sleep;
@@ -16,6 +15,7 @@ using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Genetics;
+using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;

@@ -59,7 +59,7 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-    
+
 - type: gamePreset
   id: VeilCult
   alias:
@@ -74,7 +74,7 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
-    
+
 - type: gamePreset
   id: Standoff
   alias:

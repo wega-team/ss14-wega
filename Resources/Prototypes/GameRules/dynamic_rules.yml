@@ -185,13 +185,14 @@
             min: 20
           - !type:RoundDurationCondition
             min: 2700 # 45 minutes
-        - id: WizardSpawn
-          weight: 10
-          conditions:
-          - !type:HasBudgetCondition
-          - !type:MaxRuleOccurenceCondition
-          - !type:PlayerCountCondition
-            min: 20
-          - !type:RoundDurationCondition
-            min: 2700 # 45 minutes
-
+# Corvax-Wega-Edit-start
+#        - id: WizardSpawn
+#          weight: 10
+#          conditions:
+#          - !type:HasBudgetCondition
+#          - !type:MaxRuleOccurenceCondition
+#          - !type:PlayerCountCondition
+#            min: 20
+#          - !type:RoundDurationCondition
+#            min: 2700 # 45 minutes
+# Corvax-Wega-Edit-end
