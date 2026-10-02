@@ -21,6 +21,7 @@
     AdvancedMineralScanner: 3000
     ClothingBeltSecondSalvageWebbing: 500
     OreBag: 400
+    OreBagIndastril: 5000
     TrofeiBag: 400
     FultonBeacon: 500
     TrackingImplanter: 200
@@ -28,8 +29,8 @@
     JetpackMiningFilled: 2000
     ClothingShoesBootsJump: 2500
     ClothingShoesWinterIceHikingBoots: 2500
-    ClothingModularControllerMiningPreassembled: 2500
-    BorgModuleKinetic: 4000
+    ClothingModularControllerMiningPreassembled: 5000
+    OreProcessorIndustrialMachineCircuitboard: 10000
 
 - type: utilityVendorCategory
   id: UtilityConsumables
@@ -43,6 +44,7 @@
     MedkitBurnFilled: 600
     SeismicCharge: 500
     Fulton: 1000
+    FultonBeacon: 1500
     WormholeJaunter: 900
     TransferCard500: 500
     HandCapsule: 700
@@ -63,6 +65,7 @@
     WeaponProtoKineticRifle: 1500
     WeaponProtoKineticPistol: 500
     KineticHolsterSuitModule: 750
+    BorgModuleKinetic: 4000
     PKAUpgradeRange: 1000
     PKAUpgradeDamage: 1000
     PKAUpgradeFireRate: 1000
@@ -74,11 +77,11 @@
   name: utility-vendor-category-misc
   priority: 12
   inventory:
+    SpaceCash1000: 2000
     DrinkAbsintheBottleFull: 500
     Cigar: 100
     ClothingEyesGlassesGar: 500
     HandLuxuriousCapsule: 3000
     HandCapsuleBar: 10000
     Soap: 200
-    SpaceCash1000: 2000
     DrinkWhiskeyBottleFull: 500

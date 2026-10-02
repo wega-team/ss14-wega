@@ -135,8 +135,17 @@ public sealed partial class VampireSystem
     {
         if (!Exists(uid) || currentTick >= args.Repeats)
             return;
+		
+		var healingSpec = new DamageSpecifier();
 
-        var healingSpec = CalculateScaledHealing(uid, args.Heal, args.HealGroups);
+		if (args.Advanced)
+		{
+			healingSpec = CalculateScaledHealing(uid, args.Heal, args.HealGroups);
+		}
+		else if (!args.NoHeal)
+		{
+			healingSpec = SimpleHealing(uid, args.Heal, args.HealGroups);
+		}
 
         var stomachCount = GetOrganTypeCount(uid, BestiaOrganType.Stomach);
         var bonus = stomachCount * 3;
@@ -163,6 +172,14 @@ public sealed partial class VampireSystem
 
         var groupHealSpec = _damage.CreateWeightedHealFromGroups(uid, healGroups);
         var scaledHeal = (heal + groupHealSpec) * modifier;
+
+        return scaledHeal;
+    }
+
+    private DamageSpecifier SimpleHealing(EntityUid uid, DamageSpecifier heal, GroupHealSpecifier healGroups)
+    {
+        var groupHealSpec = _damage.CreateWeightedHealFromGroups(uid, healGroups);
+        var scaledHeal = (heal + groupHealSpec);
 
         return scaledHeal;
     }
