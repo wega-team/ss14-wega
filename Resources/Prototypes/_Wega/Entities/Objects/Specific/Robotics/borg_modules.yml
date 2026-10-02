@@ -877,10 +877,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.85
-        Heat: 0.85
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.75
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -927,7 +927,7 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.9
-        Heat: 0.7
+        Heat: 0.6
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -977,7 +977,7 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.7
+        Piercing: 0.6
         Heat: 0.9
   - type: BorgModuleWhitelist
     moduleBlacklist:
@@ -1024,8 +1024,8 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.8
-        Heat: 0.8
+        Piercing: 0.9
+        Heat: 0.9
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -1515,6 +1515,13 @@
     layers:
     - state: syndicate
     - state: icon-sniper
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -1552,10 +1559,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.7
-        Heat: 0.7
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.6
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:

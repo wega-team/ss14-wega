@@ -566,9 +566,9 @@
   productEntity: PKAUpgradePressure
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 8
   cost:
-    Telecrystal: 5
+    Telecrystal: 10
   categories:
   - UplinkJob
   conditions:
