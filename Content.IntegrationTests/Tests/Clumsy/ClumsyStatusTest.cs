@@ -101,7 +101,7 @@ public sealed class ClumsyStatusTest : InteractionTest
 
         await PlaceInHands(GunProto);
         await UseInHand(); // Chamber the gun
-        await RunSeconds(0.5f); // Guns have a cooldown when picking them up.
+        await RunSeconds(2.5f); // Guns have a cooldown when picking them up. // Corvax-Wega-Edit
         await AttemptShoot(Target);
 
         Assert.That(_sStatusSystem.HasStatusEffect(SPlayer, SharedStunSystem.StunId), Is.True, "Clumsy mob wasn't stunned from shooting a gun.");
