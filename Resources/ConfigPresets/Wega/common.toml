@@ -4,6 +4,9 @@ contraband_examine = false
 [net]
 connection_timeout = 60.0
 
+[res]
+validate_prototype_upload = false
+
 [admin]
 admins_count_in_playercount = true
 
