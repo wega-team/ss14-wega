@@ -15,6 +15,12 @@
         - id: ClothingOuterWinterCap
         - id: ClothingNeckCloakCap
         - id: ClothingUnderBottomMCaptain # Corvax-Wega
+        # Corvax-Clothing-Start
+        - id: ClothingHeadHatCaptainBeret
+        # - id: ClothingHeadCaptainHat # Corvax-Wega-Edit
+        - id: ClothingUniformJumpsuitCaptain
+        - id: ClothingUniformJumpskirtCaptain
+        # Corvax-Clothing-End
 
 - type: entity
   id: DresserChiefEngineerFilled
@@ -31,6 +37,10 @@
         - id: ClothingOuterWinterCE
         - id: ClothingNeckCloakCe
         - id: ClothingUnderBottomMCe # Corvax-Wega
+        # Corvax-Clothing-Start
+        - id: ClothingUniformJumpsuitChiefEngineer
+        - id: ClothingUniformJumpskirtChiefEngineer
+        # Corvax-Clothing-End
 
 - type: entity
   id: DresserChiefMedicalOfficerFilled
@@ -45,11 +55,15 @@
         - id: ClothingUniformJumpsuitCMOTurtle
         - id: ClothingUniformJumpskirtCMOTurtle
         - id: ClothingHeadHatBeretCmo
-        - id: ClothingHeadMirror
+        # - id: ClothingHeadMirror # Corvax
         - id: ClothingEyesGlasses
         - id: ClothingOuterWinterCMO
         - id: ClothingCloakCmo
         - id: ClothingUnderBottomMCmo # Corvax-Wega
+        # Corvax-Clothing-Start
+        # - id: ClothingUniformJumpsuitCMO # Corvax-Wega-Edit
+        # - id: ClothingUniformJumpskirtCMO # Corvax-Wega-Edit
+        # Corvax-Clothing-End
 
 - type: entity
   id: DresserHeadOfPersonnelFilled
@@ -65,6 +79,12 @@
         - id: ClothingEyesGlasses
         - id: ClothingNeckCloakHop
         - id: ClothingUnderBottomMHop # Corvax-Wega
+        # Corvax-Clothing-Start
+        - id: ClothingUniformJumpsuitHoP
+        - id: ClothingUniformJumpskirtHoP
+        - id: ClothingUniformJumpsuitHoPTurtleneck
+        - id: ClothingUniformJumpskirtHoPTurtleneck
+        # Corvax-Clothing-End
 
 - type: entity
   id: DresserHeadOfSecurityFilled
@@ -85,6 +105,7 @@
         # - id: ClothingOuterWinterHoS # Corvax-Wega-Edit
         - id: ClothingNeckCloakHos
         - id: ClothingUnderBottomMHos # Corvax-Wega
+        - id: ClothingHeadHatCapHoS # Corvax-Clothing
 
 - type: entity
   id: DresserQuarterMasterFilled
@@ -120,6 +141,12 @@
         - id: ClothingOuterCoatRD
         - id: ClothingNeckCloakRd
         - id: ClothingUnderBottomMRd # Corvax-Wega
+        # Corvax-Clothing-Start
+        # - id: ClothingUniformJumpsuitRDClassical # Corvax-Wega-Edit
+        # - id: ClothingUniformJumpskirtRDClassical # Corvax-Wega-Edit
+        - id: ClothingUniformJumpsuitResearchDirector
+        - id: ClothingUniformJumpskirtResearchDirector
+        # Corvax-Clothing-End
 
 - type: entity
   id: DresserWardenFilled

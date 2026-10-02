@@ -1,13 +1,5 @@
 # instrument
 - type: latheRecipe
-  id: VehicleWheelchairFolded
-  result: VehicleWheelchairFolded
-  completetime: 1
-  materials:
-    Steel: 500
-    Plastic: 300
-
-- type: latheRecipe
   parent: BaseSurgicalRecipe
   id: FixOVein
   result: FixOVein
@@ -53,7 +45,7 @@
     Plastic: 200
 
 # pro-instrument
-    
+
 - type: latheRecipe
   id: ScalpelLaser
   result: ScalpelLaser
@@ -62,7 +54,7 @@
     Silver: 100
     Steel: 400
     Plastic: 200
-    
+
 - type: latheRecipe
   id: Bonesaw
   result: Bonesaw
@@ -71,7 +63,7 @@
     Silver: 200
     Steel: 750
     Plastic: 600
-    
+
 - type: latheRecipe
   id: Hemrevein
   result: Hemrevein
@@ -80,7 +72,7 @@
     Silver: 300
     Steel: 400
     Plastic: 200
-    
+
 # Implants
 
 - type: latheRecipe

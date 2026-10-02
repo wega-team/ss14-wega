@@ -1,15 +1,14 @@
 {
     "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by @rlyh8u",
     "size": {
         "x": 32,
         "y": 32
     },
-    "license": "CC-BY-SA-3.0",
-    "copyright": "Made by @rlyh8u",
     "states": [
         {
-            "name": "scanner",
-            "directions": 1,
+            "name": "screen",
             "delays": [
                 [
                     0.4,
@@ -26,8 +25,10 @@
             "directions": 4
         },
         {
-            "name": "icon",
-            "directions": 1
+            "name": "icon"
+        },
+        {
+            "name": "base"
         }
     ]
 }

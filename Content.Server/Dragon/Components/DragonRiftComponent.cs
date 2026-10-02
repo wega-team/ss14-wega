@@ -1,5 +1,5 @@
 using Content.Shared.Dragon;
-using Robust.Shared.Prototypes;
+using Content.Shared.EntityTable.EntitySelectors;
 
 namespace Content.Server.Dragon;
 
@@ -37,9 +37,9 @@ public sealed partial class DragonRiftComponent : SharedDragonRiftComponent
     [DataField]
     public float SpawnCooldown = 30f;
 
-    [DataField(required: true)] // Corvax-Wega-Add
-    public Dictionary<EntProtoId, float> SpawnWeights = new(); // Corvax-Wega-Add
-
-    // [DataField("spawn")] // Corvax-Wega-Edit
-    // public EntProtoId SpawnPrototype = "MobCarpDragon"; // Corvax-Wega-Edit
+    /// <summary>
+    /// The table of entities to consider for spawning. One will be picked every spawn.
+    /// </summary>
+    [DataField(required: true)]
+    public EntityTableSelector Spawn;
 }

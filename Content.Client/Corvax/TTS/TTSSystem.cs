@@ -54,7 +54,7 @@ public sealed partial class TTSSystem : EntitySystem
     private readonly Dictionary<NetEntity, Queue<PlayTTSEvent>> _entityQueues = new();
     private TTSVoiceEffectPreset _voiceEffectPreset = TTSVoiceEffectPreset.None;
     private bool _ttsEnabled;
-    private int _fileIdx = 0;
+    private int _fileIdx;
 
     public override void Initialize()
     {
@@ -70,9 +70,6 @@ public sealed partial class TTSSystem : EntitySystem
         _cfg.OnValueChanged(CCCVars.TTSVoiceEffect, OnVoiceEffectChanged, true);
         _cfg.OnValueChanged(CCCVars.TTSRadioVolume, OnRadioVolumeChanged, true);
         _cfg.OnValueChanged(CCCVars.TTSVolume, OnVolumeChanged, true);
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
-        SubscribeNetworkEvent<PlayTTSEvent>(OnPlayTTS);
     }
 
     public override void Shutdown()
@@ -117,6 +114,7 @@ public sealed partial class TTSSystem : EntitySystem
         _radioVolume = value;
     }
 
+    [SubscribeNetworkEvent]
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
         _entityQueues.Clear();
@@ -130,6 +128,7 @@ public sealed partial class TTSSystem : EntitySystem
         RaiseNetworkEvent(new RequestPreviewTTSEvent(voiceId));
     }
 
+    [SubscribeNetworkEvent]
     private void OnPlayTTS(PlayTTSEvent ev)
     {
         if (!_ttsEnabled)
@@ -141,7 +140,7 @@ public sealed partial class TTSSystem : EntitySystem
             _sawmill.Verbose("Radio TTS volume zero, skipping playback");
             return;
         }
-        else if (_volume <= 0)
+        if (_volume <= 0)
         {
             _sawmill.Verbose("TTS volume zero, skipping playback");
             return;
@@ -202,15 +201,10 @@ public sealed partial class TTSSystem : EntitySystem
             }
         }
 
-        if (ev == null)
-        {
-            _playingEntities.Remove(entityUid);
-            return;
-        }
-
         try
         {
-            PlayTTSInternal(ev, () =>
+            PlayTTSInternal(ev,
+                () =>
             {
                 _playingEntities.Remove(entityUid);
                 ProcessNextInQueueForEntity(entityUid);
@@ -239,8 +233,6 @@ public sealed partial class TTSSystem : EntitySystem
 
         var soundSpecifier = new ResolvedPathSpecifier(Prefix / filePath);
 
-        (EntityUid Entity, AudioComponent Component)? audioResult = null;
-
         try
         {
             if (ev.IsRadio)
@@ -256,41 +248,47 @@ public sealed partial class TTSSystem : EntitySystem
 
                 PlayRadioWithEffectInternal(audioResource, soundSpecifier, radioParams);
             }
-            else if (ev.SourceUid != null)
-            {
-                var sourceUid = GetEntity(ev.SourceUid.Value);
-                if (TerminatingOrDeleted(sourceUid))
-                {
-                    onComplete?.Invoke();
-                    return;
-                }
-
-                float volumeMultiplier = 1f;
-                if (_player.LocalEntity != null && Exists(_player.LocalEntity.Value))
-                {
-                    var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
-                    if (insulation >= 0.95f)
-                        return;
-
-                    if (insulation > 0.1f && insulation < 0.95f)
-                    {
-                        volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
-                        volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
-                    }
-                }
-
-                var insulationParams = audioParams
-                    .WithVolume(AdjustVolume(ev.SourceUid == null, ev.IsWhisper, ev.IsRadio, volumeMultiplier));
-
-                audioResult = _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, insulationParams);
-                if (audioResult != null && _voiceEffectPreset != 0)
-                {
-                    ApplyVoiceEffect(audioResult.Value, _voiceEffectPreset);
-                }
-            }
             else
             {
-                audioResult = _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
+                Entity<AudioComponent>? audioResult;
+
+                if (ev.SourceUid != null)
+                {
+                    var sourceUid = GetEntity(ev.SourceUid.Value);
+                    if (TerminatingOrDeleted(sourceUid))
+                    {
+                        onComplete?.Invoke();
+                        return;
+                    }
+
+                    float volumeMultiplier = 1f;
+                    if (_player.LocalEntity != null && Exists(_player.LocalEntity.Value))
+                    {
+                        var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
+                        if (insulation >= 0.95f)
+                            return;
+
+                        if (insulation > 0.1f && insulation < 0.95f)
+                        {
+                            volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
+                            volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
+                        }
+                    }
+
+                    var insulationParams = audioParams
+                        .WithVolume(AdjustVolume(ev.SourceUid == null, ev.IsWhisper, ev.IsRadio, volumeMultiplier));
+
+                    audioResult = _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, insulationParams);
+                    if (audioResult != null && _voiceEffectPreset != 0)
+                    {
+                        ApplyVoiceEffect(audioResult.Value, _voiceEffectPreset);
+                    }
+                }
+                else
+                {
+                    audioResult = _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
+                }
+
                 if (audioResult != null && _voiceEffectPreset != 0)
                 {
                     ApplyVoiceEffect(audioResult.Value, _voiceEffectPreset);
@@ -305,13 +303,16 @@ public sealed partial class TTSSystem : EntitySystem
         var duration = audioResource.AudioStream?.Length ?? TimeSpan.Zero;
         var delay = duration + TimeSpan.FromSeconds(PlaybackDelay);
 
-        Timer.Spawn(delay, () =>
+        Timer.Spawn(delay,
+            () =>
         {
             onComplete?.Invoke();
         });
     }
 
-    private void PlayRadioWithEffectInternal(AudioResource audioResource, ResolvedPathSpecifier soundSpecifier,
+    private void PlayRadioWithEffectInternal(
+        AudioResource audioResource,
+        ResolvedPathSpecifier soundSpecifier,
         AudioParams audioParams)
     {
         var audioResult = _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
@@ -337,7 +338,8 @@ public sealed partial class TTSSystem : EntitySystem
             ? MinimalVolume + SharedAudioSystem.GainToVolume(_radioVolume)
             : MinimalVolume + SharedAudioSystem.GainToVolume(_volume);
 
-        if (isGlobal) return volume + SharedAudioSystem.GainToVolume(GlobalVolumeBonus);
+        if (isGlobal)
+            return volume + SharedAudioSystem.GainToVolume(GlobalVolumeBonus);
 
         if (isWhisper)
         {
@@ -349,7 +351,7 @@ public sealed partial class TTSSystem : EntitySystem
         return volume;
     }
 
-    private float AdjustDistance(bool isWhisper)
+    private static float AdjustDistance(bool isWhisper)
     {
         return isWhisper ? SharedChatSystem.WhisperMuffledRange : SharedChatSystem.VoiceRange;
     }

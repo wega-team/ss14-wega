@@ -222,10 +222,6 @@
     - TRaySuitModule
     - StorageLargeSuitModule
     - AdvancedFlashlightSuitModuleAqua
-  - type: StorageFill
-    contents:
-      - id: OtherCoreSuitModuleSelector
-        amount: 1
   - type: ItemSlots
     slots:
       cell_slot:
@@ -402,10 +398,6 @@
     - StorageLargeSuitModule
     - GunSuitModule
     - AdvancedFlashlightSuitModuleAqua
-  - type: StorageFill
-    contents:
-      - id: OtherCoreSuitModuleSelector
-        amount: 1
   - type: ItemSlots
     slots:
       cell_slot:

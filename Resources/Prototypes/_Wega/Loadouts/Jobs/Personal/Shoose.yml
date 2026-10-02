@@ -1,10 +1,10 @@
-# Common 
+# Common
 - type: loadout
   id: ClothingShoesColorWhite
   equipment:
     shoes: ClothingShoesColorWhite
   groupBy: "wegaCS"
-  
+
 - type: loadout
   id: ClothingShoesColorYellow
   equipment:
@@ -124,15 +124,15 @@
   groupBy: "wegaOS"
 
 - type: loadout
-  id: ClothingShoesWizard
+  id: ClothingShoesSandalsBrown
   equipment:
-    shoes: ClothingShoesWizard
+    shoes: ClothingShoesSandalsBrown
   groupBy: "wegaOS"
 
 - type: loadout
-  id: ClothingShoesTourist
+  id: ClothingShoesSandalsBlack
   equipment:
-    shoes: ClothingShoesTourist
+    shoes: ClothingShoesSandalsBlack
   groupBy: "wegaOS"
 
 - type: loadout
@@ -162,6 +162,6 @@
   # - ClothingShoesHeelsBlue
   # - ClothingShoesHeelsPurple
   # - ClothingShoesBootsLaceup
-  # - ClothingShoesWizard
-  # - ClothingShoesTourist
+  # - ClothingShoesSandalsBrown
+  # - ClothingShoesSandalsBlack
   # - ClothingShoesLeather

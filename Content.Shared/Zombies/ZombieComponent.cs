@@ -84,7 +84,7 @@ public sealed partial class ZombieComponent : Component
     public TimeSpan NextTick;
 
     [DataField("zombieStatusIcon")]
-    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "ZombieFaction";
+    public ProtoId<StatusIconPrototype> StatusIcon { get; set; } = "ZombieFaction";
 
     public ProtoId<MindChannelPrototype> MindChat { get; set; } = "MindZombie"; // Corvax-Wega-Add
 

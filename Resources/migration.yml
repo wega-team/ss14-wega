@@ -1223,3 +1223,13 @@ WallRockBasaltLavalandGibtonite: WallRockChromiteLavalandGibtonite
 
 #2026-09-25 Corvax-Wega
 FloorTileItemSepia: FloorTileItemWegaSepia
+
+# 2026-09-24
+ClothingShoesTourist: ClothingShoesSandalsBlack
+ClothingShoesWizard: ClothingShoesSandalsBrown
+
+# 2026-09-29
+WallMalign: WallSolid
+WallMalignIndestructible: WallSolid
+WallMalignIndestructibleNoOcclusion: WallSolid
+MalignWindow: Window

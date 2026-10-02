@@ -94,7 +94,7 @@
     antags:
     - !type:LinearAntagCount
       proto: BloodBrother
-      playerRatio: 1
+      playerRatio: 2
       range:
         min: 2
         max: 8
