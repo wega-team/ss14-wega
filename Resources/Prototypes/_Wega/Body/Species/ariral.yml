@@ -156,7 +156,7 @@
         Bloodloss: -1
     bleedReductionAmount: 0.2
   - type: Temperature
-    specificHeat: 46
+    specificHeat: 3000
   - type: TemperatureDamage
     heatDamageThreshold: 325
     coldDamageThreshold: 260
