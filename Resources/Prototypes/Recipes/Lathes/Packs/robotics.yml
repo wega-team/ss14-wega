@@ -23,7 +23,7 @@
   - BorgModuleCommonPen
   - BorgModuleCommonFight
   - BorgModuleCommonPickaxe
-  - BorgModuleCommonSpeed
+  - BorgModuleCommonPostMan
   # - BorgModuleCommonMagBoots надо будет как-то поменять его
   - BorgModuleCommonRepeir
   - BorgModuleCommonCandy
@@ -79,6 +79,7 @@
   - BorgModuleGranader
   - ModuleCommand
   - BorgModuleDNA
+  - BorgModuleCommonSpeed
   - BorgModuleCommonHand
   - BorgModuleSecRare
   - BorgModuleCargoRare

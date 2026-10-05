@@ -6,7 +6,7 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 4 # 3 Corvax-Wega-Add
+  extraModuleCount: 3
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
@@ -22,6 +22,7 @@
   - BorgModuleCommonConstruction
   - BorgModuleCleaningCommon
   - BorgModuleCommonCandy
+  - BorgModuleCommonPostMan
   # - BorgModuleInflatable
   # - BorgModuleArtifact
   # - BorgModuleAnomaly
