@@ -13,6 +13,7 @@
     pricePerJoule: 0.15
   - type: BatterySelfRecharger
     autoRechargeRate: 12
+    autoRechargePauseTime: 5
   - type: PowerCell
   - type: Explosive
     explosionType: Default
