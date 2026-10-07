@@ -11,6 +11,12 @@
       - id: MobCarpDragon
       - id: MobSharkDragon
         weight: 0.15
+# Corvax-Wega-Start
+      - id: MobCarpHoloDragon
+        weight: 0.15
+      - id: MobCarpRainbowDragon
+        weight: 0.01
+# Corvax-Wega-End
   - type: Transform
     anchored: true
   - type: Physics
@@ -72,3 +78,7 @@
     makeSentient: true
     mindRoles:
     - MindRoleGhostRoleTeamAntagonistFlock
+## Corvax-Wega-Start
+  - type: FriendlyFaction
+    faction: Dragon
+## Corvax-Wega-End

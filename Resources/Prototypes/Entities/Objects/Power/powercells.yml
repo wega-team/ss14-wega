@@ -261,6 +261,7 @@
     startingCharge: 720
   - type: BatterySelfRecharger
     autoRechargeRate: 12 # takes 1 minute to charge itself back to full
+    autoRechargePauseTime: 5 # Corvax-Wega-Start
   - type: Extractable
     juiceSolution:
       reagents:

@@ -79,6 +79,7 @@
   - BorgModuleTool
   - BorgModuleArtifact
   - BorgModuleAnomaly
+  - BorgModuleSlime
 
   radioChannels:
   - Science

@@ -42,6 +42,11 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
+  id: BorgModuleCommonPostMan
+  result: BorgModuleCommonPostMan
+
+- type: latheRecipe
+  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonMedical
   result: BorgModuleCommonMedical
 
@@ -96,14 +101,9 @@
   result: BorgModuleCommonRepeir
 
 - type: latheRecipe
-  parent: BaseBorgModuleRecipe
+  parent: BaseGoldBorgModuleRecipe
   id: BorgModuleCommonSpeed
   result: BorgModuleCommonSpeed
-  materials:
-    Steel: 500
-    Glass: 500
-    Plastic: 250
-    Diamond: 50
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe

@@ -715,6 +715,7 @@
     startingCharge: 0
   - type: BatterySelfRecharger
     autoRechargeRate: 12
+    autoRechargePauseTime: 5
   - type: Tag
     tags:
     - ForceableFollow
