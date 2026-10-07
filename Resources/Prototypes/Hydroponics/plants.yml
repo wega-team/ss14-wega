@@ -2000,7 +2000,7 @@
     name: seeds-watermelon-name
     packetPrototype: WatermelonSeeds
     productPrototypes: [ FoodWatermelon ]
-    mutationPrototypes: [ HolymelonPlants, DemonicWatermelonPlants] # Corvax-Wega-Hydroponics-Edit
+    mutationPrototypes: [ HolymelonPlants, DemonicWatermelonPlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 55
     maturation: 12
