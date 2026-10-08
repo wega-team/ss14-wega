@@ -27,11 +27,6 @@
 
 - type: latheRecipe
   parent: BaseGoldBorgModuleRecipe
-  id: BorgModuleGardening
-  result: BorgModuleGardening
-
-- type: latheRecipe
-  parent: BaseGoldBorgModuleRecipe
   id: BorgModuleKinetic
   result: BorgModuleKinetic
 
@@ -92,11 +87,6 @@
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
-  id: BorgModuleMusique
-  result: BorgModuleMusique
-
-- type: latheRecipe
-  parent: BaseBorgModuleRecipe
   id: BorgModuleCommonRepeir
   result: BorgModuleCommonRepeir
 
@@ -124,11 +114,6 @@
   parent: BaseBorgModuleRecipe
   id: BorgModuleCommonPen
   result: BorgModuleCommonPen
-
-- type: latheRecipe
-  parent: BaseBorgModuleRecipe
-  id: BorgModuleHarvesting
-  result: BorgModuleHarvesting
 
 - type: latheRecipe
   parent: BaseBorgModuleRecipe
@@ -232,7 +217,7 @@
   completetime: 5
   materials:
     Steel: 1000
-    Glass: 1500 
+    Glass: 1500
     Plastic: 500
     Gold: 500
     Plasma: 500

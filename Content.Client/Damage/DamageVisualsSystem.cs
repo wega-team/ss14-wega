@@ -32,6 +32,7 @@ namespace Content.Client.Damage;
 /// </summary>
 public sealed partial class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponent>
 {
+    [Dependency] private AppearanceSystem _appearance = default!; // Corvax-Wega-Surgery
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private DisplacementMapSystem _displacement = default!;
 
@@ -493,20 +494,20 @@ public sealed partial class DamageVisualsSystem : VisualizerSystem<DamageVisuals
 
     private void OnOrganRemoved(Entity<OperatedComponent> ent, ref OrganRemovedFromEvent args)
     {
-        if (TryComp<DamageVisualsComponent>(ent, out var damageVisComp))
-        {
-            var ev = new AppearanceChangeEvent();
-            RaiseLocalEvent(ent, ref ev);
-        }
+        if (!HasComp<DamageVisualsComponent>(ent))
+            return;
+
+        if (TryComp<AppearanceComponent>(ent, out var appearance))
+            _appearance.QueueUpdate(ent.Owner, appearance);
     }
 
     private void OnOrganInserted(Entity<OperatedComponent> ent, ref OrganInsertedIntoEvent args)
     {
-        if (TryComp<DamageVisualsComponent>(ent, out var damageVisComp))
-        {
-            var ev = new AppearanceChangeEvent();
-            RaiseLocalEvent(ent, ref ev);
-        }
+        if (!HasComp<DamageVisualsComponent>(ent))
+            return;
+
+        if (TryComp<AppearanceComponent>(ent, out var appearance))
+            _appearance.QueueUpdate(ent.Owner, appearance);
     }
     // Corvax-Wega-Surgery-end
 

@@ -17,4 +17,5 @@
     equippedMessage: kravmaga-enabled
     unequippedMessage: kravmaga-disabled
   - type: StealTarget
-    stealGroup: GlovesKravMaga
+    stealGroup:
+    - GlovesKravMaga

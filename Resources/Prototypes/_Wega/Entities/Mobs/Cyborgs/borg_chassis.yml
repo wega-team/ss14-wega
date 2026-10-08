@@ -69,7 +69,7 @@
       - BorgModuleAdvancedAnomaly
       - BorgModuleScienceRND
       - BorgModuleDNA
-   
+
 - type: entity
   id: BorgChassisGenericPlayer
   parent: BorgChassisGeneric
@@ -222,7 +222,6 @@
       borg_module:
       - BorgModuleClowning
       - BorgModuleAdvancedClowning
-      - BorgModuleGardening
       - BorgModuleServiceRare
 
 ## Xenoborg proded

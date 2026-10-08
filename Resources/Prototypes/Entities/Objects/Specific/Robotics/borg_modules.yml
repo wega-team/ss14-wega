@@ -1669,6 +1669,7 @@
     - state: syndicate
     - state: icon-syndicate
   - type: ItemBorgModule
+    hands:
     # Corvax-Wega-Robot-Edit-start
     - item: SyndicateJawsOfLife
     - hand:

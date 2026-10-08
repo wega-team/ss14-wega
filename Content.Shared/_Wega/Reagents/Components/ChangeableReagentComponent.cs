@@ -16,7 +16,7 @@ public sealed partial class ChangeableReagentComponent : Component
 public sealed partial class ChangeableReagents
 {
     [DataField(required: true)]
-    public List<ReagentQuantity> Reagent;
+    public List<ReagentQuantity> Reagent = default!;
 
     [DataField(required: true)]
     public LocId Name { get; set; }

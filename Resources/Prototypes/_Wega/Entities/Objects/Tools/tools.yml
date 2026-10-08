@@ -43,8 +43,9 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: CombatRCD
-    
+    stealGroup:
+    - CombatRCD
+
 - type: entity
   id: CombatRCDExperimental
   parent: RCD
@@ -89,7 +90,7 @@
     price: 1000
   - type: AutoRecharge
     rechargeDuration: 5
-    
+
 - type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
   parent: HandheldGPSBasic
   id: HandheldGPSBasicOff
@@ -100,7 +101,7 @@
   - type: HandheldGpsUi
     broadcastEnabled: false
   # Corvax-Wega-Lavaland-end
- 
+
 - type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
   parent: HandheldGPSBasic
   categories: [ HideSpawnMenu ]
@@ -234,4 +235,3 @@
     maxCharges: 90
   - type: Sprite
     sprite: _Wega/Objects/Tools/rpd.rsi
-    
