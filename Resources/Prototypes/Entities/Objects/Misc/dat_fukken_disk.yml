@@ -21,7 +21,8 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: NukeDisk
+    stealGroup:
+    - NukeDisk
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
 

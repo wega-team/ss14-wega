@@ -13,9 +13,6 @@
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
-    # Corvax-Wega-start
-  - BorgModuleGardening
-    # Corvax-Wega-end
 
 - type: technology
   id: CritterMechs

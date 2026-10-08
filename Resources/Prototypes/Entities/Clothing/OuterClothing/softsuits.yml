@@ -126,7 +126,8 @@
     protection: 0.15 # Corvax-Wega-Disease
   - type: GroupExamine
   - type: StealTarget
-    stealGroup: ClothingOuterHardsuitVoidParamed
+    stealGroup:
+    - ClothingOuterHardsuitVoidParamed
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetVoidParamed
   - type: ItemToggleExaminableStatus

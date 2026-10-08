@@ -552,7 +552,8 @@
     - Folder
     - HighRiskItem
   - type: StealTarget
-    stealGroup: BoxFolderQmClipboard
+    stealGroup:
+    - BoxFolderQmClipboard
   # Corvax-Wega-Add-start
   - type: EdibleMatter
     canBeEaten: false

@@ -22,7 +22,8 @@
     - UniformUpgrade
     - Badge
   - type: StealTarget
-    stealGroup: BadgeSec
+    stealGroup:
+    - BadgeSec
 
 # Sec
 

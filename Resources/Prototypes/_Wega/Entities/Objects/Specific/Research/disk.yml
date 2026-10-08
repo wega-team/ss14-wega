@@ -10,7 +10,6 @@
     - state: datadisk_base
       map: ["enum.DamageStateVisualLayers.Base"]
     - state: datadisk_label
-    - state: datadisk_gene
   - type: RandomSprite
     available:
     - enum.DamageStateVisualLayers.Base:

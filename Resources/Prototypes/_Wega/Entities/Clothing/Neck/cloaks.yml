@@ -73,7 +73,8 @@
     - type: Sprite
       sprite: _Wega/Clothing/Neck/Cloaks/wide_captain_cloak.rsi
     - type: StealTarget
-      stealGroup: HeadCloak
+      stealGroup:
+      - HeadCloak
 
 - type: entity
   parent: ClothingNeckBase
@@ -84,7 +85,8 @@
     - type: Sprite
       sprite: _Wega/Clothing/Neck/Cloaks/royal_captain.rsi
     - type: StealTarget
-      stealGroup: HeadCloak
+      stealGroup:
+      - HeadCloak
 
 - type: entity
   parent: ClothingNeckBase

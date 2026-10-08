@@ -24,8 +24,8 @@ public sealed class WizdenContentFreeze : GameTest
 
         var protoMan = server.ProtoMan;
 
-        var recipesCount = protoMan.Count<FoodRecipePrototype>();
-        var recipesLimit = 227; //Corvax-Wega нужно больше //Corvax пельмени <3 //218
+        var recipesCount = protoMan.Count<MicrowaveMealRecipePrototype>();
+        var recipesLimit = 225; //Corvax-Wega нужно больше //Corvax пельмени <3 //218
 
         if (recipesCount > recipesLimit)
         {
@@ -34,7 +34,7 @@ public sealed class WizdenContentFreeze : GameTest
 
         if (recipesCount < recipesLimit)
         {
-            Assert.Pass($"Oh, you deleted the microwave recipes? YOU ARE SO COOL! Please lower the number of recipes in MicrowaveRecipesFreezeTest from {recipesLimit} to {recipesCount} so that future contributors cannot add new recipes back."); // Corvax-Wega Failure to Pass
+            Assert.Fail($"Oh, you deleted the microwave recipes? YOU ARE SO COOL! Please lower the number of recipes in MicrowaveRecipesFreezeTest from {recipesLimit} to {recipesCount} so that future contributors cannot add new recipes back.");
         }
     }
 }

@@ -554,7 +554,6 @@
   - BlackShoes
   - WinterBoots
   # Corvax-Wega-Shoes-Start
-  - ClothingShoesColorBlack
   - ClothingShoesColorBrown
   - ClothingShoesColorWhite
   - ClothingShoesColorYellow
@@ -2539,6 +2538,7 @@
   - QuartermasterTurtleneck
   - QuartermasterTurtleneckSkirt
   - QuartermasterFormalSuit
+  - QuartermasterFormalDress
   # Corvax-Wega-Sponsors-start
   - ClothingUniformJumpskirtElegantQM
   # Corvax-Wega-Sponsors-end
@@ -2809,7 +2809,6 @@
   - BlackShoes
   - CargoWinterBoots
  # Corvax-Wega-Shoes-Start
-  - ClothingShoesColorBlack
   - ClothingShoesColorBrown
   - ClothingShoesColorWhite
   - ClothingShoesColorYellow
@@ -3947,7 +3946,6 @@
   - BlackShoes
   - ScienceWinterBoots
  # Corvax-Wega-Shoes-Start
-  - ClothingShoesColorBlack
   - ClothingShoesColorBrown
   - ClothingShoesColorWhite
   - ClothingShoesColorYellow
