@@ -102,6 +102,14 @@ public abstract partial class SharedBuckleSystem
     private void OnParentChanged(Entity<BuckleComponent> ent, ref EntParentChangedMessage args)
     {
         BuckleTransformCheck(ent, args.Transform);
+        AfterBuckleParentChanged(ent, ref args);
+    }
+
+    /// <summary>
+    /// Allows sided buckle systems to handle completed parent changes.
+    /// </summary>
+    protected virtual void AfterBuckleParentChanged(Entity<BuckleComponent> ent, ref EntParentChangedMessage args)
+    {
     }
 
     private void OnInserted(Entity<BuckleComponent> ent, ref EntGotInsertedIntoContainerMessage args)
@@ -261,7 +269,7 @@ public abstract partial class SharedBuckleSystem
         if (!_container.IsInSameOrNoContainer((buckleUid, null, null), (strapUid, null, null)))
             return false;
 
-        if (user != null && !HasComp<HandsComponent>(user))
+        if (user != null && !HasComp<HandsComponent>(user) && strapUid != user)
         {
             if (popup)
                 _popup.PopupEntity(Loc.GetString("buckle-component-no-hands-message"), user.Value, user);
@@ -467,7 +475,6 @@ public abstract partial class SharedBuckleSystem
         if (buckleXform.ParentUid == strap.Owner && !Terminating(oldBuckledXform.ParentUid))
         {
             _transform.PlaceNextTo((buckle, buckleXform), (strap.Owner, oldBuckledXform));
-            buckleXform.ActivelyLerping = false;
 
             var oldBuckledToWorldRot = _transform.GetWorldRotation(strap);
             _transform.SetWorldRotationNoLerp((buckle, buckleXform), oldBuckledToWorldRot);
@@ -527,7 +534,7 @@ public abstract partial class SharedBuckleSystem
             if (!_interaction.InRangeUnobstructed(user.Value, strap.Owner, buckle.Comp.Range, popup: popup))
                 return false;
 
-            if (user.Value != buckle.Owner && !ActionBlocker.CanComplexInteract(user.Value))
+            if (user.Value != buckle.Owner && !ActionBlocker.CanComplexInteract(user.Value) && user.Value != strap.Owner)
                 return false;
         }
 

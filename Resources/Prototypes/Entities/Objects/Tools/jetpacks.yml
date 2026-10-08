@@ -169,7 +169,8 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: JetpackCaptainFilled
+    stealGroup:
+    - JetpackCaptainFilled
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
 

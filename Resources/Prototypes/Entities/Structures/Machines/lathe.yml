@@ -504,7 +504,8 @@
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
-    stealGroup: MedicalTechFabCircuitboard
+    stealGroup:
+    - MedicalTechFabCircuitboard
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Medical]
