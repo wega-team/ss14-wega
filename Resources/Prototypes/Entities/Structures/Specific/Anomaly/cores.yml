@@ -711,10 +711,10 @@
 ## Corvax-Wega-Anomaly-start
   - type: PowerCell
   - type: Battery
-    maxCharge: 1080
+    maxCharge: 720
     startingCharge: 0
   - type: BatterySelfRecharger
-    autoRechargeRate: 48
+    autoRechargeRate: 720
     autoRechargePauseTime: 5
   - type: Tag
     tags:
