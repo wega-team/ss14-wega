@@ -12,7 +12,7 @@
   name: materials-magmite
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: magmite }
   color: "#df7126"
-  price: 1
+  price: 50
   
 - type: material
   id: ChargedBrass

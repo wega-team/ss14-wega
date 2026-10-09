@@ -26,6 +26,36 @@
 
 - type: entity
   parent: BaseBullet
+  id: ProjectileBloodBoltHeal
+  name: ""
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: blood_bolt
+  - type: Ammo
+    muzzleFlash: null
+  - type: Projectile
+    damage:
+      types:
+        Caustic: 5
+  - type: ComplexProjectileDamage
+    damageOptions:
+    - damage:
+        types:
+          Blunt: -10
+          Piercing: -10
+          Slash: -10
+          Heat: -10
+          Shock: -10
+          Caustic: -15
+      whitelist:
+        components:
+        - BloodCultConstruct
+
+- type: entity
+  parent: BaseBullet
   id: BulletMagmaCharge
   name: charge bolt
   description: Marks a target for additional damage.

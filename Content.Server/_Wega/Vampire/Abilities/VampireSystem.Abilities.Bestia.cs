@@ -280,7 +280,7 @@ public sealed partial class VampireSystem
             return;
         }
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, vampire, TimeSpan.FromSeconds(15),
+        var doAfterArgs = new DoAfterArgs(EntityManager, vampire, TimeSpan.FromSeconds(5),
             new VampireDissectDoAfterEvent(bloodCost), vampire, target, GetEntity(selectedOrgan))
         {
             BreakOnMove = true,

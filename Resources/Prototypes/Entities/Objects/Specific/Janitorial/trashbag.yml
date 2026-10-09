@@ -21,6 +21,7 @@
     whitelist:
       tags:
         - Trash
+        - BaseOrgan # Corvax-Wega-Edit
   - type: UseDelay
     delay: 0.5
   - type: Tag
@@ -77,3 +78,9 @@
     maxItemSize: Huge
     grid:
     - 0,0,7,6
+# Corvax-Wega-Start
+  - type: MagnetPickup
+    slotFlags: null
+    range: 2
+    requireActiveHand: true
+# Corvax-Wega-End

@@ -54,14 +54,19 @@ public sealed partial class VampireSystem
                 FixedPoint2? oldDamageValue = null;
                 var damageDict = meleeWeapon.Damage.DamageDict;
 
+                var oldattackrate = meleeWeapon.AttackRate;
+                var attackrate = args.AttackRate;
+
                 if (damageDict.ContainsKey(args.BonusDamageType))
                 {
                     oldDamageValue = damageDict[args.BonusDamageType];
+					meleeWeapon.AttackRate = attackrate;
                     damageDict[args.BonusDamageType] += args.BonusDamageAmount;
                 }
                 else
                 {
                     damageDict[args.BonusDamageType] = args.BonusDamageAmount;
+					meleeWeapon.AttackRate = attackrate;
                 }
 
                 var savedOldDamage = oldDamageValue;
@@ -75,14 +80,17 @@ public sealed partial class VampireSystem
                         if (savedOldDamage.HasValue && weapon.Damage.DamageDict.ContainsKey(damageType))
                         {
                             weapon.Damage.DamageDict[damageType] = savedOldDamage.Value;
+							weapon.AttackRate = oldattackrate;
                         }
                         else if (!savedOldDamage.HasValue)
                         {
                             weapon.Damage.DamageDict.Remove(damageType);
+							weapon.AttackRate = oldattackrate;
                         }
                     }
 
                     _damage.SetDamageModifierSetId(ent.Owner, VampireComponent.VampireDamageModifier);
+					_popup.PopupEntity(Loc.GetString("vampire-blood-swell-end"), ent, ent, PopupType.Medium);
                 });
             }
         }
@@ -91,6 +99,7 @@ public sealed partial class VampireSystem
             Timer.Spawn(args.Time, () =>
             {
                 _damage.SetDamageModifierSetId(ent.Owner, VampireComponent.VampireDamageModifier);
+				_popup.PopupEntity(Loc.GetString("vampire-blood-swell-end"), ent, ent, PopupType.Medium);
             });
         }
 

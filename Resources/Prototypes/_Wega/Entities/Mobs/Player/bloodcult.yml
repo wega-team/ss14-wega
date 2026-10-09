@@ -421,6 +421,22 @@
         Blunt: 5
         Piercing: 5
         Structural: 25
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 0.5s
+    affectedByEmp: true
+  - type: BallisticAmmoProvider
+    proto: ProjectileBloodBoltHeal
+    capacity: 5
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
 
 - type: entity
   parent: SimpleMobConstruct
