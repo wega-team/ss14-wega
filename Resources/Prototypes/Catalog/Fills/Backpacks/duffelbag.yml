@@ -79,9 +79,11 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: WeaponSubMachineGunC20r
-        - id: MagazinePistolSubMachineGun
+          # Corvax-Wega-Edit-Nuka-Start
+        - id: WeaponSubMachineGunExtC20r
+        - id: ExtMagazinePistolSubMachineGun
           amount: 2
+          # Corvax-Wega-Edit-Nuka-Start
 #       - id: SMGSuppressor
 
 - type: entity
@@ -151,7 +153,7 @@
     containers:
       storagebase: !type:AllSelector
         children:
-        - id: MagazinePistolSubMachineGun
+        - id: ExtMagazinePistolSubMachineGun # Corvax-Wega-Edit-Nuka
           amount: 4
         - id: MagazineShotgun
           amount: 4

@@ -63,3 +63,4 @@
     price: 5000
   - type: Magboots # Corvax-Wega-AdvMagboots
     disabledAutoOff: true # Corvax-Wega-AdvMagboots
+    disabledAutoMode: true # Corvax-Wega-Nuka-Edit

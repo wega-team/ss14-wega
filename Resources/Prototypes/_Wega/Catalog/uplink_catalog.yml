@@ -467,7 +467,7 @@
   id: UplinkLoyaltyImplant
   name: uplink-loyalty-implant-name
   description: uplink-loyalty-implant-desc
-  icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
+  icon: { sprite: _Wega/Clothing/Neck/Misc/chokers.rsi, state: spike }
   productEntity: LoyaltyImplanter
   categories:
   - UplinkImplants
@@ -475,6 +475,11 @@
     Telecrystal: 3
   cost:
     Telecrystal: 5
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
     
 - type: listing
   id: UplinkSmokeImplant
@@ -592,7 +597,7 @@
   id: UplinkThermalVisionImplanter
   name: uplink-thermal-vision-implanter-name
   description: uplink-thermal-vision-implanter-desc
-  icon: { sprite: /Textures/Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+  icon: { sprite: /Textures/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
   productEntity: ThermalVisionImplanter
   cost:
     Telecrystal: 8
@@ -672,3 +677,19 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: UplinkExtMagazinePistolSubMachineGun
+  name: uplink-pistol-ext-magazine-c20r-name
+  description: uplink-pistol-ext-magazine-c20r-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag_ext.rsi, state: red-icon }
+  productEntity: ExtMagazinePistolSubMachineGun
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink

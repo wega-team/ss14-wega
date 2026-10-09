@@ -103,17 +103,15 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
-  - type: Wieldable
-    unwieldOnUse: false
-  - type: GunWieldBonus
-    minAngle: -19
-    maxAngle: -12
+    # Corvax-Wega-Edit-Nuka-Start
   - type: Gun
-    minAngle: 21
-    maxAngle: 32
-    angleIncrease: 1.25
+    fireRate: 7
+    minAngle: 2
+    maxAngle: 16
+    angleIncrease: 2
     angleDecay: 20
     shotsPerBurst: 5
+    # Corvax-Wega-Edit-Nuka-End
     availableModes:
     - Burst
     - FullAuto
@@ -137,12 +135,14 @@
   description: A burst-fire C-20r submachine gun for use by cyborgs. Creates .35 caliber ammo on the fly from an internal ammo fabricator, which slowly self-charges.
   components:
   - type: Gun
+    # Corvax-Wega-Edit-Nuka-Start
     minAngle: 2
     maxAngle: 16
-    angleIncrease: 4
+    angleIncrease: 2
     angleDecay: 16
-    fireRate: 8
-    burstFireRate: 8
+    fireRate: 7
+    burstFireRate: 7
+    # Corvax-Wega-Edit-Nuka-End
     selectedMode: Burst
     availableModes:
     - Burst

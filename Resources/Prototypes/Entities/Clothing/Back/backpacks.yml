@@ -21,6 +21,7 @@
       tags:
         - TrashBag
         - TrashBagHolding
+        - SyndicateRapier # Corvax-Wega-Edit-Nuka
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
