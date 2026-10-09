@@ -22,6 +22,13 @@
     Telecrystal: 1 # Corvax-Wega-Syndi
   categories:
   - UplinkAmmo
+  # Corvax-Wega-Nuka-Edit-Start
+  conditions:
+    - !type:StoreWhitelistCondition
+      blacklist:
+        tags:
+          - NukeOpsUplink
+  # Corvax-Wega-Nuka-Edit-End
 
 # For the Bulldog
 - type: listing

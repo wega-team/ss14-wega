@@ -4,3 +4,5 @@ ent-MagazineEagle = пистолетный магазин пустынного �
     .desc = { ent-BaseMagazineRifle.desc }
 ent-MagazineEagleAP = пистолетный магазин пустынного орла (.45 магнум бронебойные)
     .desc = { ent-BaseMagazineRifle.desc }
+ent-ExtMagazinePistolSubMachineGun = расширенный магазин ПП (.35 авто)
+    .desc = Трехрядный магазин на 60 патронов для пистолетов-пулемётов. Предназначен для кинетических боеприпасов общего назначения.

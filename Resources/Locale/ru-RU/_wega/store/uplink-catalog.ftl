@@ -28,8 +28,8 @@ uplink-xc67-desc = Набор, включающий в себя штурмову
 uplink-hristov-bundle-name = Набор продвинутой снайперской винтовки
 uplink-hristov-bundle-desc = Набор, включающий в себя продвинутую снайперскую винтовку и 4 магазина на 10 патрон калибра .60.
 
-uplink-xc67ammo-name = Расширенный винтовочный магазин (.20 винтовочный)
-uplink-xc67ammo-desc = Расширенный винтовочный магазин на 45 патронов под патрон .20 винтовочный. Совместим с штурмовой винтовкой xC-67.
+uplink-xc67ammo-name = Расширенный винтовочный магазин (.30 винтовочный)
+uplink-xc67ammo-desc = Расширенный винтовочный магазин на 45 патронов под патрон .30 винтовочный. Совместим с штурмовой винтовкой xC-67.
 
 uplink-syndiholoprojectorfield-name = Кроваво-красный сдерживающий голопроектор
 uplink-syndiholoprojectorfield-desc = Устройство, создающее на месте использования ничего не пропускающий барьер. В комплекте с гипер батареей.
@@ -88,7 +88,7 @@ uplink-thieving-desc = Позволяет вам незаметно красть
 uplink-pressure-upgrade-name = модкит ПКУ (давление)
 uplink-pressure-upgrade-desc = Модкит, который отключает защитные механизмы ПКУ и заставляет его всегда работать на всю!
 
-uplink-smoke-implant-name = Имплант "Дым"
+uplink-smoke-implant-name = Имплантер "Дым"
 uplink-smoke-implant-desc = Имплант, который даст вам возможность выпустить облако дыма, очень полезен при отступлении или побеге.
 
 uplink-jumpsuit-ventcrawler-name = комбинезон лазальщика
@@ -112,10 +112,10 @@ uplink-homerun-bat-desc = Бита с невероятными балистич�
 uplink-thermal-vision-glasses-name = Очки теплового зрения
 uplink-thermal-vision-glasses-desc = Очки, показывающие тепловые сигнатуры живых существ сквозь стены и темноту. Замаскированы под обычные инженерные очки и оснащены технологией хамелеона, позволяющей имитировать любые другие очки.
 
-uplink-thermal-vision-implanter-name = Имплантер теплового зрения
+uplink-thermal-vision-implanter-name = Имплантер "Тепловое зрение"
 uplink-thermal-vision-implanter-desc = Имплантирует тепловое зрение, позволяя видеть тепловые сигнатуры живых существ сквозь стены и темноту.
 
-uplink-loyalty-implant-name = Имплантер лояльности
+uplink-loyalty-implant-name = Имплантер "Лояльность"
 uplink-loyalty-implant-desc = Заведи себе верную прислугу, пусть она поможет вам в ваших целях, выбирайте с умом (эффект не обратим).
 
 uplink-syndicate-segway-crate-name = Ящик с сигвеем
@@ -123,3 +123,6 @@ uplink-syndicate-segway-crate-desc = Ящик с двухколесным тра
 
 uplink-casebadge-name = Кейс для жетонов
 uplink-casebadge-desc = Маленькая сумка для хранения трофеев с поверженных СБ.
+
+uplink-pistol-ext-magazine-c20r-name = Расширенный магазин ПП (.35 авто)
+uplink-pistol-ext-magazine-c20r-desc = Магазин ПП на 60 патронов. Совместим с C-20r.
