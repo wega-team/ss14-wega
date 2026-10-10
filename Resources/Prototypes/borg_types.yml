@@ -6,11 +6,11 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 5
+  extraModuleCount: 3 # Corvax-Wega-edit
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
-    - BorgModuleScience #until sciborgs are added
+    # - BorgModuleScience #until sciborgs are added # Corvax-Wega-Edit
 
   defaultModules:
   - BorgModulePrying
@@ -266,9 +266,8 @@
   defaultModules:
   - BorgModulePrying
   - BorgModuleService
-  - BorgModuleBotany
-  - BorgModuleCooking
   # Corvax-Wega-Start
+  - BorgModuleBotany
   - BorgModuleCook
   - BorgModuleBar
   # Corvax-Wega-End
