@@ -56,20 +56,20 @@
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
-          entityPreview: SentientSlimeCore
-          requiredPart: Heart
+          entityPreview: OrganSlimePersonCore
+          requiredPart: Brain
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
           time: 3
           successChance: 0.8
           conditions:
             - !type:OrganPresentCondition
-              organ: Heart
+              organ: Brain
         - tag: [ SlimeCore ]
           action: InsertOrgan
           failureEffect: [ Pain ]
-          entityPreview: SentientSlimeCore
-          requiredPart: Heart
+          entityPreview: OrganSlimePersonCore
+          requiredPart: Brain
           sound:
             collection: Squishes
           time: 3
@@ -77,14 +77,14 @@
           conditions:
             - !type:OrganPresentCondition
               invert: true
-              organ: Heart
+              organ: Brain
 
         # Легкие
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           action: RemoveOrgan
           failureEffect: [ Bleeding, Pain ]
-          entityPreview: OrganSlimeLungs
+          entityPreview: OrganSlimePersonLungs
           requiredPart: Lungs
           sound:
             path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
@@ -96,7 +96,7 @@
         - tag: [ Lungs ]
           action: InsertOrgan
           failureEffect: [ Pain ]
-          entityPreview: OrganSlimeLungs
+          entityPreview: OrganSlimePersonLungs
           requiredPart: Lungs
           sound:
             collection: Squishes

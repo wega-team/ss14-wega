@@ -137,6 +137,11 @@
     attackMemoryLength: 10
   - type: TTS # Corvax-TTS
     voice: Chen
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobSlimePerson
+    lowest: MobAdultSlimesGreen
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   abstract: true
