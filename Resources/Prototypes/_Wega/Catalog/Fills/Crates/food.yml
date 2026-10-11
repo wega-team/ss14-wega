@@ -92,3 +92,14 @@
     contents:
     - id: FoodBoxShrimp
       amount: 2
+
+- type: entity
+  id: CrateNori
+  parent: CratePlastic
+  name: доставка нори
+  description: Герметично упакованные сушёные листы для ваших шедевров космической кулинарии.
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodBoxNori
+      amount: 2

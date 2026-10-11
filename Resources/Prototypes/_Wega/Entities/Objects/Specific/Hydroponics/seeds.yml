@@ -177,3 +177,25 @@
       plantId: FestiveTangerinePlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (огурец)
+  id: CucumberSeeds
+  components:
+  - type: Seed
+    plantId: CucumberPlants
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/cucumber.rsi
+    state: seed
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (авокадо)
+  id: AvocadoSeeds
+  components:
+  - type: Seed
+    plantId: AvocadoPlants
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/avocado.rsi
+    state: seed

@@ -43,6 +43,8 @@
     WatermelonSeeds: 5
     # Corvax-Wega-start
     MelonSeeds: 5
+    AvocadoSeeds: 3
+    CucumberSeeds: 3
     # Corvax-Wega-end
   contrabandInventory:
     TobaccoSeeds: 2

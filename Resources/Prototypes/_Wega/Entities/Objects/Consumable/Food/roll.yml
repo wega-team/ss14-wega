@@ -1,0 +1,144 @@
+- type: entity
+  id: SushiRollSalmon
+  name: ролл с лососем
+  description: Ролл с начинкой из лосося.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - fishy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: salmon
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollAvocado
+  name: ролл с авокадо
+  description: Ролл с начинкой из авокадо.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - oily
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: avocado
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollEgg
+  name: ролл с яйцом
+  description: Ролл с яйцом.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - egg
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: egg
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollCalifornia
+  name: ролл калифорния
+  description: Нежность мяса снежного краба.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - fishy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: california
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollUraraki
+  name: ролл урараки
+  description: Рыбка с кунжутом.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - fishy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: salmonuramaki
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollWasabi
+  name: ролл с васаби
+  description: Остро, остро!
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - spicy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: wasabi
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollGunkan
+  name: ролл с икрой
+  description: Дорого богато.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - salty
+      - oily
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: gunkan
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollCrab
+  name: ролл с крабом
+  description: Тропико, так вот где ты был.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+      - meaty
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: crab
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable

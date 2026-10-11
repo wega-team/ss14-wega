@@ -1006,3 +1006,59 @@
     tags:
     - Fruit
     - Slice
+
+- type: entity
+  name: авокадо
+  parent: FoodProduceBase
+  id: FoodAvocado
+  description: Никадо.
+  components:
+  - type: Item
+    heldPrefix: produce
+  - type: Edible
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: OilOlive
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/avocado.rsi
+    state: produce
+  - type: Produce
+    plantId: AvocadoPlants
+  - type: Extractable
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: огурец
+  parent: FoodProduceBase
+  id: FoodCucumber
+  description: Кукумбер.
+  components:
+  - type: Item
+    heldPrefix: produce
+  - type: Edible
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Water
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/cucumber.rsi
+    state: produce
+  - type: Produce
+    plantId: CucumberPlants
+  - type: Extractable
+  - type: Tag
+    tags:
+    - Vegetable

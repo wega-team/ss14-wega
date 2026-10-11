@@ -65,3 +65,37 @@
     contents:
     - id: FoodProduceLollipopMedRandom
       amount: 12
+
+- type: entity
+  parent: BoxCardboard
+  id: FoodBoxNori
+  description: Такая же герметичная коробка листов нори!
+  name: листы нори
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/Baked/noribox.rsi
+    drawdepth: SmallObjects
+    layers:
+    - state: box
+      map:
+      - "enum.StorageVisualLayers.Base"
+    - state: box-open-full
+      map:
+      - "enum.StorageVisualLayers.Door"
+  - type: Storage
+    grid:
+    - 0,0,3,1
+    maxItemSize: Normal
+  - type: Item
+    shape:
+    - 0,0,1,1
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateDoorOpen: box-open-full
+    stateDoorClosed: box
+  - type: StaticPrice
+    price: 0
+  - type: StorageFill
+    contents:
+    - id: Nori
+      amount: 8
