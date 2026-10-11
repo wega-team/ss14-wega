@@ -554,7 +554,7 @@
 - type: entity
   parent: BasePlant
   id: CucumberPlants
-  name: огуречная лоза
+  name: Cucumber Plants
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/cucumber.rsi
@@ -595,7 +595,7 @@
 - type: entity
   parent: BasePlant
   id: AvocadoPlants
-  name: дерево авокадо
+  name: Avocado Tree
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/avocado.rsi

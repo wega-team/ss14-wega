@@ -1008,10 +1008,10 @@
     - Slice
 
 - type: entity
-  name: авокадо
+  name: avocado
   parent: FoodProduceBase
   id: FoodAvocado
-  description: Никадо.
+  description: Nicado.
   components:
   - type: Item
     heldPrefix: produce
@@ -1036,10 +1036,10 @@
     - Vegetable
 
 - type: entity
-  name: огурец
+  name: cucumber
   parent: FoodProduceBase
   id: FoodCucumber
-  description: Кукумбер.
+  description: Cucumber.
   components:
   - type: Item
     heldPrefix: produce

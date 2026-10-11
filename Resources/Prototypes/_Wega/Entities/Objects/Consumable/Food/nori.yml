@@ -1,8 +1,8 @@
 - type: entity
-  name: лист нори
+  name: nori sheet
   parent: FoodBakedBase
   id: Nori
-  description: "Листик засушенной ларимарии."
+  description: "A dried sheet of seaweed."
   components:
   - type: Item
     size: Tiny

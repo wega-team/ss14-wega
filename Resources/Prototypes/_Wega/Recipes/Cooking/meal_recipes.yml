@@ -63,7 +63,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollSalmon
-  name: рецепт ролла с лососем
+  name: salmon roll recipe
   result: SushiRollSalmon
   time: 5
   solids:
@@ -75,7 +75,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollAvocado
-  name: рецепт ролла с авокадо
+  name: avocado roll recipe
   result: SushiRollAvocado
   time: 5
   solids:
@@ -87,7 +87,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollEgg
-  name: рецепт ролла с яйцом
+  name: egg roll recipe
   result: SushiRollEgg
   time: 5
   solids:
@@ -98,7 +98,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollCalifornia
-  name: рецепт ролла калифорния
+  name: california roll recipe
   result: SushiRollCalifornia
   time: 5
   solids:
@@ -112,7 +112,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollUraraki
-  name: рецепт ролла урараки
+  name: uraraka roll recipe
   result: SushiRollUraraki
   time: 5
   solids:
@@ -126,7 +126,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollWasabi
-  name: рецепт ролла с васаби
+  name: wasabi roll recipe
   result: SushiRollWasabi
   time: 5
   solids:
@@ -140,7 +140,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollGunkan
-  name: рецепт ролла с икрой
+  name: roe roll recipe
   result: SushiRollGunkan
   time: 5
   solids:
@@ -154,7 +154,7 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollCrab
-  name: рецепт ролла с крабом
+  name: crab roll recipe
   result: SushiRollCrab
   time: 5
   solids:

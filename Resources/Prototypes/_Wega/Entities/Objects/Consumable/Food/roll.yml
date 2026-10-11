@@ -1,12 +1,12 @@
 - type: entity
   id: SushiRollSalmon
-  name: ролл с лососем
-  description: Ролл с начинкой из лосося.
+  name: salmon roll
+  description: A roll filled with salmon.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - fishy
+    - fishy
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: salmon
@@ -18,13 +18,13 @@
 
 - type: entity
   id: SushiRollAvocado
-  name: ролл с авокадо
-  description: Ролл с начинкой из авокадо.
+  name: avocado roll
+  description: A roll filled with avocado.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - oily
+    - oily
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: avocado
@@ -36,13 +36,13 @@
 
 - type: entity
   id: SushiRollEgg
-  name: ролл с яйцом
-  description: Ролл с яйцом.
+  name: egg roll
+  description: A roll filled with egg.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - egg
+    - egg
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: egg
@@ -54,13 +54,13 @@
 
 - type: entity
   id: SushiRollCalifornia
-  name: ролл калифорния
-  description: Нежность мяса снежного краба.
+  name: California roll
+  description: Delicate snow crab meat.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - fishy
+    - fishy
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: california
@@ -72,13 +72,13 @@
 
 - type: entity
   id: SushiRollUraraki
-  name: ролл урараки
-  description: Рыбка с кунжутом.
+  name: uramaki roll
+  description: Fish with sesame seeds.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - fishy
+    - fishy
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: salmonuramaki
@@ -90,13 +90,13 @@
 
 - type: entity
   id: SushiRollWasabi
-  name: ролл с васаби
-  description: Остро, остро!
+  name: wasabi roll
+  description: Hot, hot!
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - spicy
+    - spicy
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: wasabi
@@ -108,14 +108,14 @@
 
 - type: entity
   id: SushiRollGunkan
-  name: ролл с икрой
-  description: Дорого богато.
+  name: roe gunkan
+  description: Fancy and expensive.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - salty
-      - oily
+    - salty
+    - oily
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: gunkan
@@ -127,13 +127,13 @@
 
 - type: entity
   id: SushiRollCrab
-  name: ролл с крабом
-  description: Тропико, так вот где ты был.
+  name: crab roll
+  description: Tropico, so that's where you've been.
   parent: FoodMealBase
   components:
   - type: FlavorProfile
     flavors:
-      - meaty
+    - meaty
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/rolls.rsi
     state: crab

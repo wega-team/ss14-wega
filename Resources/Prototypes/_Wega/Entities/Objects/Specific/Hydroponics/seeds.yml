@@ -180,7 +180,7 @@
 
 - type: entity
   parent: SeedBase
-  name: пакет семян (огурец)
+  name: packet of cucumber seeds
   id: CucumberSeeds
   components:
   - type: Seed
@@ -191,7 +191,7 @@
 
 - type: entity
   parent: SeedBase
-  name: пакет семян (авокадо)
+  name: packet of avocado seeds 
   id: AvocadoSeeds
   components:
   - type: Seed
