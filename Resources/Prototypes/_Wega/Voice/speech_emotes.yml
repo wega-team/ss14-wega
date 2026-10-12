@@ -90,5 +90,8 @@
   chatMessages: ["chat-emote-msg-ururu"]
   chatTriggers:
     - урчит
+    - урчит.
+    - урчит!
     - урчать
     - ururu
+    - urururu
