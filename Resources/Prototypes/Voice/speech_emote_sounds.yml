@@ -221,6 +221,8 @@
       collection: MaleMoans # Corvax-Wega
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    SlimeBubble: # Corvax-Wega
+      collection: SlimeBubbles # Corvax-Wega
   params:
     variation: 0.125
 
@@ -270,6 +272,8 @@
       collection: FemaleMoans # Corvax-Wega
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    SlimeBubble: # Corvax-Wega
+      collection: SlimeBubbles # Corvax-Wega
   params:
     variation: 0.125
 

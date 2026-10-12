@@ -117,7 +117,7 @@
   - type: Speech
     speechVerb: Slime
     speechSounds: Slime
-    allowedEmotes: ['Squish']
+    allowedEmotes: ['Squish', 'SlimeBubble'] # Corvax-Wega-Edit
   - type: TypingIndicator
     proto: slime
   - type: Vocal
