@@ -196,6 +196,11 @@
     - BleedersBite
     - SLIMEITIS
   # Corvax-Wega-Disease-end
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobSlimePerson
+    lowest: MobAdultSlimesGreen
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBaseOrganic
@@ -285,12 +290,12 @@
     maxReagents: 6
     metabolizerTypes: [ Slime ]
     stages: [ Digestion, Bloodstream, Metabolites ]
-  # # Corvax-Wega-Surgery-start
-  # - type: Tag
-  #   tags:
-  #   - BaseOrgan
-  #   - SlimeCore
-  # # Corvax-Wega-Surgery-end
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseOrgan
+    - SlimeCore
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganBaseEyes, OrganSlimePersonInternal, OrganSlimePersonExternal ]
