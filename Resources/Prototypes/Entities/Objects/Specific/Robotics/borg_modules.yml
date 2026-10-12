@@ -1534,37 +1534,42 @@
     - state: icon-botany
   - type: ItemBorgModule
     hands:
-    - hand:
-        emptyLabel: borg-slot-gardening-tools-empty
-        emptyRepresentative: HydroponicsToolMiniHoe
-        whitelist:
-          tags:
-          - BotanyTool
-    - hand:
-        emptyLabel: borg-slot-gardening-tools-empty
-        emptyRepresentative: HydroponicsToolClippers
-        whitelist:
-          tags:
-          - BotanyTool
-    - item: BorgDropper
-    - item: BorgBucket
     # Corvax-Wega-Robot-start
-    - hand:
-        emptyRepresentative: FoodCabbage
-        emptyLabel: borg-slot-botany-empty
+    - item: PlantAnalyzerUnpowered
+    - item: BorgHydroponicsToolMiniHoe
+      hand:
+        emptyLabel: borg-slot-hydro-empty
+        emptyRepresentative: BorgHydroponicsToolMiniHoe
         whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-hydro-empty
+        emptyRepresentative: BorgHydroponicsToolSpade
+        whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyRepresentative: WheatSeeds
+        emptyLabel: borg-slot-seed-empty
+        whitelist:
+          components:
+          - Seed
           tags:
           - Vegetable
           - Fruit
+    - item: BorgDropper
     # Corvax-Wega-Robot-end
-    - item: PlantBag
+    - item: Bucket
+    # Corvax-Wega-Robot-Start
     - hand:
-        emptyLabel: borg-slot-seed-produce-empty
-        emptyRepresentative: BorgModuleSeedProducePlaceholder
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swap-only-empty
         whitelist:
           components:
-          - Produce
-          - Seed
+          - DiseaseSwab
+    - item: PlantBag
+    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: botany-module }
 
