@@ -32,3 +32,27 @@ ent-Nori = лист нори
 
 ent-FoodBoxNori = коробка листов нори
     .desc = Герметичная упаковка листов нори!
+
+ent-RecipeSushiRollWasabi = рецепт ролла с васаби
+    .desc = рецепт
+
+ent-RecipeSushiRollUraraki = рецепт ролла урарака
+    .desc = рецепт
+
+ent-RecipeSushiRollCalifornia = рецепт ролла урарака
+    .desc = рецепт
+
+ent-RecipeSushiRollEgg = рецепт ролла с яйцом
+    .desc = рецепт
+
+ent-RecipeSushiRollAvocado = рецепт ролла с авокадо
+    .desc = рецепт
+
+ent-RecipeSushiRollSalmon = рецепт ролла с лососем
+    .desc = рецепт
+
+ent-RecipeSushiRollGunkan = рецепт ролла гункан с икрой
+    .desc = рецепт
+
+ent-RecipeSushiRollCrab = рецепт ролла с крабом
+    .desc = рецепт
