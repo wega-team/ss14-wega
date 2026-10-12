@@ -102,7 +102,7 @@ public sealed partial class VampireComponent : Component
     public ProtoId<AlertPrototype> BloodAlert = "BloodAlert";
 
     [DataField]
-    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "VampireFaction";
+    public ProtoId<StatusIconPrototype> StatusIcon { get; set; } = "VampireFaction";
 
     [DataField]
     public DamageSpecifier HolyDamage = new()

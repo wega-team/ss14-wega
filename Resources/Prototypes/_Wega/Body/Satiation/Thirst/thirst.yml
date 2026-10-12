@@ -2,3 +2,8 @@
   id: SkrellThirst
   parent: NormalSatiationThirst
   baseChangeRate: -0.15
+
+- type: satiation
+  id: FeroxiThirst
+  parent: NormalSatiationThirst
+  baseChangeRate: -0.2

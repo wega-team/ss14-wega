@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise, kinetic_holster modified from holster by depsad",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise, kinetic_holster modified from holster by depsad, elec,flora,rock by melisandra, chem by KRIKUN",
   "size": {
     "x": 32,
     "y": 32
@@ -19,6 +19,10 @@
     {
       "name": "storage_holding",
       "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "gun",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1, 0.1 ] ]
     },
     {
       "name": "flashlight"
@@ -133,6 +137,21 @@
       "delays": [ [ 0.1, 0.1, 0.1 ] ]
     },
     {
+      "name": "cryogrenade_core",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "firewall_core",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "chem"
+    },
+    {
+      "name": "chem_core",
+      "delays": [ [ 0.1, 0.1, 0.1 ] ]
+    },
+    {
       "name": "tanning"
     },
     {
@@ -152,6 +171,55 @@
     },
     {
       "name": "jetpack_advanced"
+    },
+    {
+      "name": "grenade"
+    },
+    {
+      "name": "flash"
+    },
+    {
+      "name": "flash_core"
+    },
+    {
+      "name": "flora"
+    },
+    {
+      "name": "flora_core"
+    },
+    {
+      "name": "rock"
+    },
+    {
+      "name": "rock_core"
+    },
+    {
+      "name": "omnivisor"
+    },
+    {
+      "name": "omnivisor_core"
+    },
+    {
+      "name": "shadow"
+    },
+    {
+      "name": "shadow_core"
+    },
+    {
+      "name": "electro"
+    },
+    {
+      "name": "electro_core",
+      "delays": [
+        [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      ]
     },
     {
       "name": "plate_compression"

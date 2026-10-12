@@ -30,7 +30,7 @@ public sealed partial class BloodCultistComponent : Component
     public static readonly EntProtoId RecallBloodSpear = "RecallBloodCultSpear";
 
     [DataField("cultistStatusIcon")]
-    public ProtoId<FactionIconPrototype> StatusIcon { get; set; } = "BloodCultistFaction";
+    public ProtoId<StatusIconPrototype> StatusIcon { get; set; } = "BloodCultistFaction";
 
     public ProtoId<MindChannelPrototype> CultMindChannel { get; set; } = "MindBloodCult";
 }

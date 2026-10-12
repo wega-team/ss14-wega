@@ -82,7 +82,7 @@
 
 - type: entity
   name: energy sword
-  parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
+  parent: BaseMeleeWeaponEnergy # Corvax-Contraband: do not inherit a marker for hidden properties.
   id: EnergySword
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter.
   components:
@@ -201,6 +201,7 @@
         Slash: 10
         Heat: 10
     deactivatedSecret: true
+  # Corvax-Contraband: activation must not re-add the removed legality marker.
   - type: ComponentToggler
     components:
     - type: Tool
@@ -280,7 +281,7 @@
 
 - type: entity
   name: energy cutlass
-  parent: [BaseMeleeWeaponEnergy, BaseMajorContraband]
+  parent: BaseMeleeWeaponEnergy # Corvax-Contraband: do not inherit a marker for hidden properties.
   id: EnergyCutlass
   description: An exotic energy weapon.
   components:
@@ -305,7 +306,7 @@
 
 - type: entity
   name: double-bladed energy sword
-  parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband435, BaseMeleeWeaponEnergy] # Corvax-Contraband: explicit exception to the wiki.
   id: EnergySwordDouble
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:

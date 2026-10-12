@@ -11,10 +11,12 @@ using Content.Server.RoundEnd;
 using Content.Server.Audio;
 using Content.Server.Chat.Systems;
 using Content.Shared.Achievements;
+using Content.Shared.Antag;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
-using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -22,8 +24,9 @@ using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Pinpointer;
+using Content.Shared.RoundEnd;
+using Content.Shared.Station.Systems;
 using Content.Shared.Zombies;
-using Content.Shared.Station;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -39,7 +42,7 @@ namespace Content.Server.GameTicking.Rules
     {
         [Dependency] private SharedAchievementsSystem _achievement = default!;
         [Dependency] private ActionsSystem _action = default!;
-        [Dependency] private AntagSelectionSystem _antag = default!;
+        [Dependency] private ServerAntagSelectionSystem _antag = default!;
         [Dependency] private ISharedPlayerManager _player = default!;
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private IAdminLogManager _adminLogManager = default!;
@@ -53,7 +56,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private ObjectivesSystem _objectives = default!;
         [Dependency] private TargetObjectiveSystem _target = default!;
         [Dependency] private MetaDataSystem _meta = default!;
-        [Dependency] private SharedStationSystem _stationSystem = default!;
+        [Dependency] private StationSystem _stationSystem = default!;
         [Dependency] private EntityLookupSystem _entityLookup = default!;
         [Dependency] private ServerGlobalSoundSystem _sound = default!;
         [Dependency] private StatusEffectsSystem _effects = default!;
@@ -133,7 +136,7 @@ namespace Content.Server.GameTicking.Rules
                 return;
 
             var station = stations[0];
-            var mainGrid = _stationSystem.GetLargestGrid(station);
+            var mainGrid = _stationSystem.GetLargestGrid(station.Owner);
             cult.Station = mainGrid;
             var placeCandidates = new List<EntityUid>();
             var enumerator = EntityQueryEnumerator<NavMapBeaconComponent, TransformComponent>(); // WarpPoint doesnt usually work here cuz were using navigation beacons now.
@@ -327,7 +330,7 @@ namespace Content.Server.GameTicking.Rules
         public VeilCultRuleComponent? GetActiveRule()
         {
             var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
                 return cult;
             }
@@ -363,15 +366,13 @@ namespace Content.Server.GameTicking.Rules
         }
         // endround
 
-        protected override void AppendRoundEndText(EntityUid uid,
-            VeilCultRuleComponent component,
-            GameRuleComponent gameRule,
+        protected override void AppendRoundEndText(Entity<VeilCultRuleComponent> rule,
             ref RoundEndTextAppendEvent args)
         {
-            var winText = Loc.GetString($"veil-cult-{component.WinType.ToString().ToLower()}");
+            var winText = Loc.GetString($"veil-cult-{rule.Comp.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 
-            foreach (var cond in component.VeilCultWinCondition)
+            foreach (var cond in rule.Comp.VeilCultWinCondition)
             {
                 var text = Loc.GetString($"veil-cult-cond-{cond.ToString().ToLower()}");
                 args.AddLine(text);
@@ -379,7 +380,7 @@ namespace Content.Server.GameTicking.Rules
 
             args.AddLine(Loc.GetString("veil-cultist-list-start"));
 
-            var antags = _antag.GetAntagIdentifiers(uid);
+            var antags = _antag.GetAntagIdentifiers(rule.Owner);
             foreach (var (_, sessionData, name) in antags)
             {
                 args.AddLine(Loc.GetString("veil-cultist-list-name-user", ("name", name), ("user", sessionData.UserName)));

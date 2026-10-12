@@ -1,4 +1,4 @@
-﻿using Content.Shared.ActionBlocker;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Chat;
 using Content.Shared.Jaunter; // Corvax-Wega-Lavaland
 using Content.Shared.Movement.Events;

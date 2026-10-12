@@ -11,13 +11,16 @@ using Content.Server.Objectives.Systems;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
 using Content.Shared.Achievements;
+using Content.Shared.Antag;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Body;
 using Content.Shared.Body.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Metabolism;
@@ -31,6 +34,7 @@ using Content.Shared.Zombies;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Mind.Components;
+using Content.Shared.RoundEnd;
 using Content.Shared.StatusEffectNew;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -44,7 +48,7 @@ namespace Content.Server.GameTicking.Rules
     {
         [Dependency] private SharedAchievementsSystem _achievement = default!;
         [Dependency] private ActionsSystem _action = default!;
-        [Dependency] private AntagSelectionSystem _antag = default!;
+        [Dependency] private ServerAntagSelectionSystem _antag = default!;
         [Dependency] private IEntityManager _entityManager = default!;
         [Dependency] private ISharedPlayerManager _player = default!;
         [Dependency] private IAdminLogManager _adminLogManager = default!;
@@ -355,7 +359,7 @@ namespace Content.Server.GameTicking.Rules
             string selectedGod = "";
             var query = QueryActiveRules();
 
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
                 selectedGod = cult.SelectedGod switch
                 {
@@ -397,7 +401,7 @@ namespace Content.Server.GameTicking.Rules
 
             MakeCultist(uid);
             var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
                 EntProtoId selectedDagger = cult.SelectedGod switch
                 {
@@ -557,24 +561,22 @@ namespace Content.Server.GameTicking.Rules
 
         #endregion
 
-        protected override void AppendRoundEndText(EntityUid uid,
-            BloodCultRuleComponent component,
-            GameRuleComponent gameRule,
+        protected override void AppendRoundEndText(Entity<BloodCultRuleComponent> rule,
             ref RoundEndTextAppendEvent args)
         {
             string selectedGod = "";
             var query = QueryActiveRules();
 
-            var winText = Loc.GetString($"blood-cult-{component.WinType.ToString().ToLower()}");
+            var winText = Loc.GetString($"blood-cult-{rule.Comp.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 
-            foreach (var cond in component.BloodCultWinCondition)
+            foreach (var cond in rule.Comp.BloodCultWinCondition)
             {
                 var text = Loc.GetString($"blood-cult-cond-{cond.ToString().ToLower()}");
                 args.AddLine(text);
             }
 
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
                 selectedGod = cult.SelectedGod switch
                 {
@@ -588,7 +590,7 @@ namespace Content.Server.GameTicking.Rules
 
             args.AddLine(Loc.GetString("blood-cultist-list-start", ("god", selectedGod)));
 
-            var antags = _antag.GetAntagIdentifiers(uid);
+            var antags = _antag.GetAntagIdentifiers(rule.Owner);
             foreach (var (_, sessionData, name) in antags)
             {
                 args.AddLine(Loc.GetString("blood-cultist-list-name-user", ("name", name), ("user", sessionData.UserName)));
@@ -598,7 +600,7 @@ namespace Content.Server.GameTicking.Rules
         public BloodCultRuleComponent? GetActiveRule()
         {
             var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
                 return cult;
             }

@@ -14,7 +14,7 @@
   - type: Solution
     id: food
     solution:
-      maxVol: 30
+      maxVol: 20
   - type: Tag
     tags:
     - SlimeRND
@@ -29,12 +29,13 @@
     state: grey
   - type: Solution
     solution:
+      maxVol: 20
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractGray
         Quantity: 5
-      - ReagentId: Silicon
+      - ReagentId: Fat
         Quantity: 5
 
 - type: entity
@@ -47,12 +48,13 @@
     state: blue
   - type: Solution
     solution:
+      maxVol: 20
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractBlue
         Quantity: 5
-      - ReagentId: Fluorine
+      - ReagentId: Hydroxysomnolene
         Quantity: 5
 
 - type: entity
@@ -83,12 +85,13 @@
     state: orange
   - type: Solution
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractOrange
         Quantity: 5
-      - ReagentId: Phosphorus
+      - ReagentId: ChlorineTrifluoride
         Quantity: 5
 
 - type: entity
@@ -101,6 +104,7 @@
     state: metal
   - type: Solution
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
@@ -119,12 +123,13 @@
     state: dark_purple
   - type: Solution
     solution:
+      maxVol: 20
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractDarkPurple
         Quantity: 5
-      - ReagentId: Mercury
+      - ReagentId: Ash
         Quantity: 5
 
 - type: entity
@@ -142,7 +147,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractGreen
         Quantity: 5
-      - ReagentId: Radium
+      - ReagentId: UnstableMutagen
         Quantity: 5
 
 - type: entity
@@ -160,7 +165,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractDarkBlue
         Quantity: 5
-      - ReagentId: Chlorine
+      - ReagentId: Fresium
         Quantity: 5
 
 - type: entity
@@ -178,7 +183,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractPink
         Quantity: 5
-      - ReagentId: Lithium
+      - ReagentId: Pax
         Quantity: 5
 
 - type: entity
@@ -196,7 +201,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractRed
         Quantity: 5
-      - ReagentId: Sulfur
+      - ReagentId: PolytrinicAcid
         Quantity: 5
 
 - type: entity
@@ -214,7 +219,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractYellow
         Quantity: 5
-      - ReagentId: Sodium
+      - ReagentId: Tazinide
         Quantity: 5
 
 - type: entity
@@ -227,12 +232,13 @@
     state: gold
   - type: Solution
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractGold
         Quantity: 5
-      - ReagentId: Gold
+      - ReagentId: FrostOil
         Quantity: 5
 
 - type: entity
@@ -245,12 +251,13 @@
     state: silver
   - type: Solution
     solution:
+      maxVol: 30
       reagents:
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractSilver
         Quantity: 5
-      - ReagentId: Silver
+      - ReagentId: FrostOil
         Quantity: 5
 
 - type: entity
@@ -286,7 +293,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractSepia
         Quantity: 5
-      - ReagentId: Iodine
+      - ReagentId: Nyctalon
         Quantity: 5
 
 - type: entity
@@ -324,8 +331,6 @@
         Quantity: 5
       - ReagentId: Uranium
         Quantity: 5
-      - ReagentId: Silicon
-        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -344,8 +349,6 @@
         Quantity: 5
       - ReagentId: Iron
         Quantity: 5
-      - ReagentId: Carbon
-        Quantity: 5
 
 - type: entity
   parent: BaseMaterialSlimeExtract
@@ -362,9 +365,7 @@
         Quantity: 10
       - ReagentId: SlimeExtractPyrite
         Quantity: 5
-      - ReagentId: Iron
-        Quantity: 5
-      - ReagentId: Sulfur
+      - ReagentId: Ichor
         Quantity: 5
 
 - type: entity
@@ -413,21 +414,11 @@
     state: rainbow
   - type: Solution
     solution:
-      maxVol: 35
+      maxVol: 40
       reagents:
       - ReagentId: Nutriment
-        Quantity: 20
+        Quantity: 5
       - ReagentId: SlimeExtractRainbow
         Quantity: 5
-      - ReagentId: Gold
-        Quantity: 2
-      - ReagentId: Silver
-        Quantity: 2
-      - ReagentId: Uranium
-        Quantity: 2
-      - ReagentId: Iron
-        Quantity: 2
-      - ReagentId: Carbon
-        Quantity: 2
-      - ReagentId: Silicon
-        Quantity: 2
+      - ReagentId: Omnizine
+        Quantity: 30

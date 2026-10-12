@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsChiefEngineer, ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtChiefEngineer
   name: chief engineer's jumpskirt
   description: It's a high visibility jumpskirt given to those engineers insane enough to achieve the rank of Chief Engineer.
@@ -10,7 +10,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Engineering/ce.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsChiefEngineer, ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtChiefEngineerTurtle
   name: chief engineer's turtleneck
   description: A yellow turtleneck designed specifically for work in conditions of the engineering department.
@@ -21,7 +21,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Engineering/ce_turtle.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431JobsStationEngineer, ClothingUniformSkirtToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtEngineering
   name: engineering jumpskirt
   description: If this suit was non-conductive, maybe engineers would actually do their damn job.
@@ -32,7 +32,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Engineering/engineering.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431JobsAtmosphericTechnician, ClothingUniformSkirtToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtAtmos
   name: atmospheric technician jumpskirt
   description: I am at work. I can't leave work. Work is breathing. I am testing air quality.
@@ -43,7 +43,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Engineering/atmosf.rsi
 
 - type: entity
-  parent: ClothingUniformSkirtBase
+  parent: [BaseCorvaxContraband431JobsSeniorEngineerStationEngineer, ClothingUniformSkirtBase] # Corvax-Contraband
   id: ClothingUniformJumpskirtSeniorEngineer
   name: senior engineer jumpskirt
   description: A sign of skill and prestige within the engineering department.

@@ -396,6 +396,7 @@
     - RadiationShieldSuitModule
     - WeldingSuitModule
     - StorageLargeSuitModule
+    - GunSuitModule
     - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:

@@ -11,3 +11,7 @@ ui-options-postprocess = Экспериментальная постобрабо
 ui-options-postprocess-tooltip =
     При включении, обилие света создает эффект переосвещенности.
     Данный параметр влияет лишь на визуальную составляющую.
+ui-options-stylish-label = Стилизация (рекомендуется переподключение):
+ui-options-stylish-current = Текущая
+ui-options-stylish-old = Старая
+ui-options-stylish-event = Ивентовая

@@ -1,4 +1,4 @@
-using Content.Server.Codewords;
+using Content.Shared.Codewords;
 using Content.Shared.Dataset;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Random;

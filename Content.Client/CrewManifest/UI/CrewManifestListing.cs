@@ -1,4 +1,4 @@
-﻿using System.Linq; // Corvax-Wega-Add
+using System.Linq; // Corvax-Wega-Add
 using System.Numerics; // Corvax-Wega-Add
 using Content.Shared.CrewManifest;
 using Content.Shared.Roles;

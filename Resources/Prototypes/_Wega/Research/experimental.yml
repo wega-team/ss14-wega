@@ -21,6 +21,19 @@
 # Tier 3
 
 - type: technology
+  id: SynthCore
+  name: research-technology-synthcore
+  icon:
+    sprite: _Wega/Structures/Specific/Anomalies/Core/sinth_core.rsi
+    state: core
+  discipline: Experimental
+  tier: 3
+  cost: 10000
+  recipeUnlocks:
+  - SynthCore
+
+
+- type: technology
   id: RobotManipulit
   name: research-technology-handmodule
   icon:

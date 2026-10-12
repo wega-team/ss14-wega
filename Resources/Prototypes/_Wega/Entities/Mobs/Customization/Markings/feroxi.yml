@@ -1,0 +1,821 @@
+- type: marking
+  id: FeroxiSnout
+  bodyPart: Snout
+  forcedColoring: true
+  groupWhitelist: [Feroxi]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout
+
+- type: marking
+  id: FeroxiEars
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-inner:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-inner
+
+- type: marking
+  id: FeroxiTail
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+
+- type: marking
+  id: FeroxiDorsal
+  bodyPart: Overlay
+  groupWhitelist: [Feroxi]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-dorsal
+
+- type: marking
+  id: FeroxiSnoutStripe
+  bodyPart: Snout
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-snout-stripe:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-stripe
+
+- type: marking
+  id: FeroxiSnoutCountershading
+  bodyPart: Snout
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-snout-countershading:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-countershading
+
+- type: marking
+  id: FeroxiSnoutCountershadingStripe
+  bodyPart: Snout
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-snout-countershading:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+      feroxi-snout-stripe:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-countershading
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-stripe
+
+- type: marking
+  id: FeroxiSnoutNurse
+  bodyPart: Snout
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-snout-nurse:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-nurse
+
+- type: marking
+  id: FeroxiSnoutNurseCountershading
+  bodyPart: Snout
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-snout-countershading:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+      feroxi-snout-nurse:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-countershading
+  - sprite: _Wega/Mobs/Customization/feroxi_snout.rsi
+    state: feroxi-snout-nurse
+
+- type: marking
+  id: FeroxiEarsTips
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-inner:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+      feroxi-ears-tips:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-inner
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-tips
+
+- type: marking
+  id: FeroxiEarsTiger
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-inner:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+      feroxi-ears-tiger:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-inner
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-tiger
+
+- type: marking
+  id: FeroxiEarsPierced
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-pierced
+
+- type: marking
+  id: FeroxiEarsPiercedTiger
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-tiger:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-pierced
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-tiger
+
+- type: marking
+  id: FeroxiEarsAlt
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-alt-inner:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt-inner
+
+- type: marking
+  id: FeroxiEarsAltTips
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-alt-inner:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+      feroxi-ears-alt-tips:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt-inner
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt-tips
+
+- type: marking
+  id: FeroxiEarsAltTiger
+  bodyPart: HeadTop
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-ears-alt-inner:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+      feroxi-ears-alt-tiger:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt-inner
+  - sprite: _Wega/Mobs/Customization/feroxi_ears.rsi
+    state: feroxi-ears-alt-tiger
+
+- type: marking
+  id: FeroxiTailStriped
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-stripes:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-stripes
+
+- type: marking
+  id: FeroxiTailTwoTone
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-under:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiTailStripedTwoTone
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-stripes:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-under:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-stripes
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiTailTip
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-top-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-bottom-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-second-dorsal-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-top-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-bottom-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-second-dorsal-tip
+
+- type: marking
+  id: FeroxiTailTipTwoTone
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-top-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-bottom-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-second-dorsal-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-under:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-top-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-bottom-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-second-dorsal-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiTailFullTip
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-second-dorsal-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-second-dorsal-tip
+
+- type: marking
+  id: FeroxiTailFullTipTwoTone
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-second-dorsal-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-under:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-second-dorsal-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiTailBlitz
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-stripes:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-top-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-bottom-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-under:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-stripes
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-top-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-bottom-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiTailBlitzFullTip
+  bodyPart: Tail
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-tail-stripes:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+      feroxi-tail-under:
+        type:
+          !type:SimpleColoring
+            color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-stripes
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-tip
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-tail-under
+
+- type: marking
+  id: FeroxiHeadStripesTiger
+  bodyPart: Head
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-head-stripes-tiger
+
+- type: marking
+  id: FeroxiHeadStripesTigerAlt
+  bodyPart: Head
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-head-stripes-tiger-alt
+
+- type: marking
+  id: FeroxiTorsoCountershadingM
+  bodyPart: Chest
+  sexRestriction: Male
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-torso-countershading-m
+
+- type: marking
+  id: FeroxiTorsoCountershadingF
+  bodyPart: Chest
+  sexRestriction: Female
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#E3E9EC"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-torso-countershading-f
+
+- type: marking
+  id: FeroxiTorsoStripesBlitz
+  bodyPart: Chest
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-torso-stripes-blitz
+
+- type: marking
+  id: FeroxiTorsoStripesTiger
+  bodyPart: Chest
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-torso-stripes-tiger
+
+- type: marking
+  id: FeroxiTorsoStripesTigerAlt
+  bodyPart: Chest
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-torso-stripes-tiger-alt
+
+- type: marking
+  id: FeroxiLArmStripesBlitz
+  bodyPart: LArm
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Larm-stripes-blitz
+
+- type: marking
+  id: FeroxiLArmStripesTiger
+  bodyPart: LArm
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Larm-stripes-tiger
+
+- type: marking
+  id: FeroxiRArmStripesBlitz
+  bodyPart: RArm
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rarm-stripes-blitz
+
+- type: marking
+  id: FeroxiRArmStripesTiger
+  bodyPart: RArm
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rarm-stripes-tiger
+
+- type: marking
+  id: FeroxiLHandTip
+  bodyPart: LHand
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Lhand-tip
+
+- type: marking
+  id: FeroxiLHandStripesTiger
+  bodyPart: LHand
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Lhand-stripes-tiger
+
+- type: marking
+  id: FeroxiRHandTip
+  bodyPart: RHand
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rhand-tip
+
+- type: marking
+  id: FeroxiRHandStripesTiger
+  bodyPart: RHand
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rhand-stripes-tiger
+
+- type: marking
+  id: FeroxiLLegStripesBlitz
+  bodyPart: LLeg
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Lleg-stripes-blitz
+
+- type: marking
+  id: FeroxiLLegStripesTiger
+  bodyPart: LLeg
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Lleg-stripes-tiger
+
+- type: marking
+  id: FeroxiRLegStripesBlitz
+  bodyPart: RLeg
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rleg-stripes-blitz
+
+- type: marking
+  id: FeroxiRLegStripesTiger
+  bodyPart: RLeg
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rleg-stripes-tiger
+
+- type: marking
+  id: FeroxiLFootTip
+  bodyPart: LFoot
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Lfoot-tip
+
+- type: marking
+  id: FeroxiLFootStripesTiger
+  bodyPart: LFoot
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Lfoot-stripes-tiger
+
+- type: marking
+  id: FeroxiRFootTip
+  bodyPart: RFoot
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rfoot-tip
+
+- type: marking
+  id: FeroxiRFootStripesTiger
+  bodyPart: RFoot
+  groupWhitelist: [Feroxi]
+  coloring:
+    default:
+      type:
+        !type:TattooColoring
+      fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_body.rsi
+    state: feroxi-Rfoot-stripes-tiger
+
+- type: marking
+  id: FeroxiDorsalTip
+  bodyPart: Overlay
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-dorsal-tip:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-dorsal
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-dorsal-tip
+
+- type: marking
+  id: FeroxiDorsalStriped
+  bodyPart: Overlay
+  groupWhitelist: [Feroxi]
+  coloring:
+    layers:
+      feroxi-dorsal-stripes:
+        type:
+          !type:TattooColoring
+        fallbackColor: "#3B4652"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-dorsal
+  - sprite: _Wega/Mobs/Customization/feroxi_tails.rsi
+    state: feroxi-dorsal-stripes

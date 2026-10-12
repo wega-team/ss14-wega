@@ -15,12 +15,14 @@ using Robust.Shared.Random;
 using Content.Shared.Blood.Brother;
 using Content.Server.Roles;
 using Content.Server.Objectives.Systems;
+using Content.Shared.Antag;
+using Content.Shared.GameTicking.Rules;
 
 namespace Content.Server.GameTicking.Rules;
 
 public sealed partial class BloodBrotherRuleSystem : GameRuleSystem<BloodBrotherRuleComponent>
 {
-    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ServerAntagSelectionSystem _antag = default!;
     [Dependency] private SharedJobSystem _jobs = default!;
     [Dependency] private MindSystem _mindSystem = default!;
     [Dependency] private NpcFactionSystem _npcFaction = default!;

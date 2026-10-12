@@ -115,9 +115,9 @@
       cell_slot: !type:ContainerSlot
 
 - type: entity
-  id: BaseWeaponBatterySmall
-  parent: BaseWeaponBattery
   abstract: true
+  parent: BaseWeaponBatteryNoAmmoCounter
+  id: BaseWeaponBatterySmallNoAmmoCounter
   components:
   - type: Item
     size: Small
@@ -140,6 +140,13 @@
     - suitStorage
 
 - type: entity
+  abstract: true
+  parent: BaseWeaponBatterySmallNoAmmoCounter
+  id: BaseWeaponBatterySmall
+  components:
+  - type: AmmoCounter
+
+- type: entity
   id: BaseWeaponPowerCellSmall
   parent: BaseWeaponPowerCell
   abstract: true
@@ -157,7 +164,7 @@
 
 - type: entity
   name: svalinn laser pistol
-  parent: [BaseWeaponPowerCellSmall, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponPowerCellSmall, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponLaserSvalinn
   description: A cheap and widely used laser pistol.
   components:
@@ -186,7 +193,7 @@
 
 - type: entity
   name: retro laser blaster
-  parent: [BaseWeaponBatterySmall, BaseMajorContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBatterySmall, BaseMajorContraband] # Corvax-Contraband
   id: WeaponLaserGun
   description: A weapon using light amplified by the stimulated emission of radiation.
   components:
@@ -220,7 +227,7 @@
 
 - type: entity
   name: makeshift laser pistol
-  parent: [BaseWeaponBatterySmall, BaseMinorContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBatterySmall, BaseMinorContraband] # Corvax-Contraband
   id: WeaponMakeshiftLaser
   description: Better pray it won't burn your hands off.
   components:
@@ -254,7 +261,7 @@
 
 - type: entity
   name: tesla gun
-  parent: [BaseWeaponBattery, BaseMajorContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBattery, BaseMajorContraband] # Corvax-Contraband
   id: WeaponTeslaGun
   description: The power of the primordial element of lightning in your hands.
   components:
@@ -287,7 +294,7 @@
 
 - type: entity
   name: laser carbine
-  parent: [BaseLaserRifle, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseLaserRifle, BaseGunWieldable, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponLaserCarbine
   description: Favoured by Nanotrasen Security for being cheap and easy to use.
   components:
@@ -321,9 +328,9 @@
 
 - type: entity
   name: pulse pistol
-  parent: [BaseWeaponBatterySmall, BaseCentcommContraband]
+  parent: [BaseCorvaxContraband434DepartmentsCentralCommand, BaseWeaponBatterySmall, BaseCentcommContraband] # Corvax-Contraband
   id: WeaponPulsePistol
-  description: A state of the art energy pistol favoured as a sidearm by the NT operatives.
+  description: A state-of-the-art energy pistol favoured as a sidearm by elite Nanotrasen operatives.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
@@ -366,9 +373,9 @@
 
 - type: entity
   name: pulse carbine
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
+  parent: [BaseCorvaxContraband434DepartmentsCentralCommand, BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband] # Corvax-Contraband
   id: WeaponPulseCarbine
-  description: A high tech energy carbine favoured by the NT-ERT operatives.
+  description: A high-tech energy carbine favoured by elite Nanotrasen operatives.
   components:
   - type: Item
     size: Large
@@ -413,9 +420,9 @@
 
 - type: entity
   name: pulse rifle
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband]
+  parent: [BaseCorvaxContraband434DepartmentsCentralCommand, BaseWeaponBattery, BaseGunWieldable, BaseCentcommContraband] # Corvax-Contraband
   id: WeaponPulseRifle
-  description: A weapon that is almost as infamous as its users.
+  description: A weapon almost as infamous as its users.
   components:
   - type: Item
     size: Huge
@@ -461,7 +468,7 @@
 
 - type: entity
   name: laser cannon
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponLaserCannon
   description: A heavy duty, high powered laser weapon.
   components:
@@ -538,7 +545,7 @@
 
 - type: entity
   name: x-ray cannon
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponXrayCannon
   description: An experimental weapon that uses concentrated x-ray energy against its target.
   components:
@@ -609,9 +616,12 @@
     projectileSpeed: 35 # any higher and this causes issues in lag
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
+  - type: Battery
+    maxCharge: 800
+    startingCharge: 800 # Charges in a 20W recharger at 40 seconds
   - type: BatteryAmmoProvider
     proto: BulletDisablerPractice
-    fireCost: 62.5
+    fireCost: 25 # 32 shots, 2 stamcrits, +3 miss buffer per stamcrit (256 stam damage total)
   - type: Tag
     tags:
     - Taser
@@ -620,7 +630,7 @@
 
 - type: entity
   name: disabler
-  parent: [WeaponDisablerPractice, BaseSecurityCommandContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, WeaponDisablerPractice, BaseSecurityCommandContraband] # Corvax-Contraband
   id: WeaponDisabler
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
   components:
@@ -640,7 +650,6 @@
       - Belt
   - type: BatteryAmmoProvider
     proto: BulletDisabler
-    fireCost: 62.5
   - type: GuideHelp
     guides:
     - Security
@@ -649,7 +658,7 @@
 
 - type: entity
   name: disabler SMG
-  parent: [BaseWeaponBattery, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, BaseWeaponBattery, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponDisablerSMG
   description: Advanced weapon that exhausts organic targets, weakening them until they collapse.
   components:
@@ -677,8 +686,8 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/taser2.ogg
   - type: BatteryAmmoProvider
-    proto: BulletDisablerSmg
-    fireCost: 25
+    proto: BulletDisablerSmgSlowing
+    fireCost: 15.6 # 64 shots, 2 stamcrits, +7 miss buffer per stamcrit (256 stam damage total)
   - type: MagazineVisuals
     magState: mag
     steps: 5
@@ -690,7 +699,7 @@
 
 - type: entity
   name: taser
-  parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, BaseWeaponBatterySmall, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponTaser
   description: A low-capacity, energy-based stun gun used by security teams to subdue targets at close range.
   components:
@@ -718,7 +727,7 @@
       path: /Audio/Weapons/Guns/Gunshots/taser.ogg
     projectileSpeed: 25
   - type: BatteryAmmoProvider
-    proto: BulletTaser
+    proto: BulletTaserExmp # Corvax-Wega-Edit
     fireCost: 200
   - type: MagazineVisuals
     magState: mag
@@ -729,7 +738,7 @@
 
 - type: entity
   name: elite taser
-  parent: [ BaseCentcommContraband, WeaponTaser ]
+  parent: [ BaseTaskForceContraband, WeaponTaser ]
   id: WeaponTaserSuper
   suffix: ADMEME
   description: A low-capacity, energy-based stun gun used by elite security teams to disable even the toughest of targets.
@@ -782,7 +791,8 @@
   - type: StaticPrice
     price: 750
   - type: StealTarget
-    stealGroup: WeaponAntiqueLaser
+    stealGroup:
+    - WeaponAntiqueLaser
   - type: SentienceTarget # I hope this is only the captain's gun
     flavorKind: station-event-random-sentience-flavor-inanimate
     weight: 0.0002 # 5,000 times less likely than 1 regular animal
@@ -792,7 +802,7 @@
 
 - type: entity
   name: advanced laser pistol
-  parent: [BaseWeaponBatterySmall, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBatterySmall, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponAdvancedLaser
   description: An experimental high-energy laser pistol with a self-charging nuclear battery.
   components:
@@ -832,7 +842,7 @@
 
 - type: entity
   name: C.H.I.M.P. handcannon
-  parent: [BaseWeaponBatterySmall, BaseScienceContraband]
+  parent: [BaseCorvaxContraband432DepartmentsScience, BaseWeaponBatterySmall, BaseScienceContraband] # Corvax-Contraband
   id: WeaponPistolCHIMP
   description: Just because it's a little C.H.I.M.P. doesn't mean it can't punch like an A.P.E.
   components:
@@ -926,7 +936,7 @@
 
 - type: entity
   name: energy shotgun
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponEnergyShotgun
   description: A one-of-a-kind prototype energy weapon that uses various shotgun configurations. It offers the possibility of both lethal and non-lethal shots, making it a versatile weapon.
   components:
@@ -995,7 +1005,8 @@
     - HighRiskItem
     - Sidearm
   - type: StealTarget
-    stealGroup: WeaponEnergyMagnum
+    stealGroup:
+    - WeaponEnergyMagnum
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
@@ -1021,7 +1032,7 @@
 
 - type: entity
   name: temperature gun
-  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband434DepartmentsSecurity, BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband] # Corvax-Contraband
   id: WeaponTemperatureGun
   description: An advanced gun that shoots body-temperature-changing beams. This probably constitutes as some kind of war crime.
   components:
@@ -1064,7 +1075,7 @@
     price: 100
 
 - type: entity
-  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponAdvancedLaser]
   id: WeaponLaserGunXenoborg
   name: xenoborg laser gun
   components:
@@ -1079,7 +1090,7 @@
       map: [ "enum.GunVisualLayers.MagUnshaded" ]
 
 - type: entity
-  parent: [WeaponLaserCannon, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponLaserCannon]
   id: WeaponLaserCannonXenoborg
   name: xenoborg laser cannon
   components:
@@ -1105,7 +1116,7 @@
     maxAngle: 2
 
 - type: entity
-  parent: [WeaponAdvancedLaser, BaseXenoborgContraband]
+  parent: [BaseXenoborgContraband, WeaponAdvancedLaser]
   id: WeaponBurstFireLaserXenoborg
   name: xenoborg burst fire laser
   description: An alien weapon, channelling a burst-fire laser through a prism, causing targets to burst into fire.
@@ -1140,7 +1151,7 @@
   id: WeaponRangeFinderXenoborg
   name: xenoborg range finder
   components:
-  - type: Sprite 
+  - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/xenoborg_range_finder.rsi
     layers:
     - state: icon

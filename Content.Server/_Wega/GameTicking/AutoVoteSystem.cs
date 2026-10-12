@@ -1,31 +1,22 @@
-using System.Linq;
 using Content.Server.Voting.Managers;
+using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Voting;
-using Robust.Server.Player;
-using Robust.Shared.Enums;
-using Robust.Shared.Player;
+using Robust.Shared.Configuration;
 
-namespace Content.Server.GameTicking
+namespace Content.Server.GameTicking;
+
+public sealed partial class AutoVoteSystem : EntitySystem
 {
-    public sealed partial class AutoVoteSystem : EntitySystem
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private IVoteManager _vote = default!;
+
+    [SubscribeLocalEvent]
+    private void OnRoundEnd(RoundRestartCleanupEvent ev)
     {
-        [Dependency] private IVoteManager _voteManager = default!;
-        [Dependency] private IPlayerManager _playerManager = default!;
+        if (!_cfg.GetCVar(WegaCVars.VoteRoundEndEnabled))
+            return;
 
-        public override void Initialize()
-        {
-            SubscribeLocalEvent<VoteRoundEndEvent>(OnRoundEnd);
-        }
-
-        private void OnRoundEnd(VoteRoundEndEvent ev)
-        {
-            ICommonSession? initiator = null;
-            var sessions = _playerManager.Sessions.Where(s => s.Status == SessionStatus.InGame).ToList();
-            if (sessions.Count > 0)
-                initiator = sessions[0];
-
-            _voteManager.CreateStandardVote(null, StandardVoteType.Preset);
-        }
+        _vote.CreateStandardVote(null, StandardVoteType.Preset);
     }
 }

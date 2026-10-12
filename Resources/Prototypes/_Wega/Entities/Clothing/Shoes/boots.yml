@@ -66,4 +66,5 @@
   description: "These boots are firmly attached to the wearer's feet, as if they were part of their flesh."
   components:
   - type: Unremoveable
+    onlyInSlots: FEET
   - type: NoSlip

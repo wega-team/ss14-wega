@@ -14,6 +14,7 @@ using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Utility;
 using static Robust.Client.GameObjects.SpriteComponent;
@@ -55,6 +56,7 @@ public sealed partial class ClientClothingSystem : ClothingSystem
     };
 
     [Dependency] private IResourceCache _cache = default!;
+    [Dependency] private ISerializationManager _seriMan = default!;
     [Dependency] private DisplacementMapSystem _displacement = default!;
     [Dependency] private InventorySystem _inventorySystem = default!;
     [Dependency] private SpriteSystem _sprite = default!;
@@ -140,16 +142,22 @@ public sealed partial class ClientClothingSystem : ClothingSystem
                     continue;
             }
 
-            var key = layer.MapKeys?.FirstOrDefault() ?? $"{args.Slot}-{i++}";
-            args.Layers.Add((key, new PrototypeLayerData
+            var key = layer.MapKeys?.FirstOrDefault();
+            if (key == null)
             {
-                MapKeys = layer.MapKeys,
-                RsiPath = layer.RsiPath,
-                State = newState,
-                Color = layer.Color,
-                Scale = layer.Scale,
-                Shader = layer.Shader
-            }));
+                // using the $"{args.Slot}" layer key as the "bookmark" for layer ordering until layer draw depths get added
+                key = $"{args.Slot}-{i}";
+                i++;
+            }
+
+            ent.Comp.MappedLayer = key;
+
+            // Create a copy of the layer, which might get modified.
+            PrototypeLayerData newLayer = new();
+            _seriMan.CopyTo(layer, ref newLayer, notNullableOverride: true);
+            newLayer.State = newState;
+
+            args.Layers.Add((key, newLayer));
             // Corvax-Wega-ToggleClothing-Edit-end
         }
 

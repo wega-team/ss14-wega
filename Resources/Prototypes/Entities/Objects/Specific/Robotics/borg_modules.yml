@@ -699,8 +699,8 @@
           - ArtifactFragment
           - MagmiteAlloy
           - Gems
+    - item: OreBagIndastrilBorg
     # Corvax-Wega-Robot-end
-    - item: BorgOreBag
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: mining-module }
 
@@ -994,7 +994,7 @@
   - type: ItemBorgModule
     hands:
     - item: BorgAdvMopItem # Corvax-Wega-Robot-Edit
-    - item: TrashBagHolding # Corvax-Wega-Robot
+    - item: BorgTrashBagHolding # Corvax-Wega-Robot
     - item: WireBrushElectrical
     - item: BorgMegaSprayBottle
     - item: HoloprojectorBorg
@@ -1416,12 +1416,12 @@
 
 - type: entity
   id: BorgModuleMusique
-  parent: [ BaseBorgModule, BaseProviderBorgModule ] # Corvax-Wega-Robot-Edit
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: musique cyborg module
   components:
   - type: Sprite
     layers:
-    - state: service
+    - state: generic
     - state: icon-musique
   - type: ItemBorgModule
     hands:
@@ -1450,14 +1450,14 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: musical-module } # Corvax-Wega-Robot-Edit
 
 - type: entity
-  id: BorgModuleGardening
+  id: BorgModuleCooking
   parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
-  name: gardening cyborg module
+  name: cooking cyborg module
   components:
   - type: Sprite
     layers:
     - state: service
-    - state: icon-gardening
+    - state: icon-cooking
   - type: ItemBorgModule
     hands:
     # Corvax-Wega-Robot-start
@@ -1497,33 +1497,89 @@
     - item: PlantBag
     # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: gardening-module }
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: cooking-module }
 
 - type: entity
-  id: BorgModuleHarvesting
+  id: BorgModuleFoodPlatterPlaceholder
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Kitchen/placeholder.rsi
+    state: icon-food-platter
+
+- type: entity
+  id: BorgModuleDinnerwarePlaceholder
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Kitchen/placeholder.rsi
+    state: icon-dinnerware
+
+- type: entity
+  id: BorgModuleRawIngredientPlaceholder
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Kitchen/placeholder.rsi
+    state: icon-raw-ingredients
+
+- type: entity
+  id: BorgModuleBotany
   parent: [ BaseBorgModuleService, BaseProviderBorgModule ]
-  name: harvesting cyborg module
+  name: botany cyborg module
   components:
   - type: Sprite
     layers:
     - state: service
-    - state: icon-harvesting
+    - state: icon-botany
   - type: ItemBorgModule
     hands:
-    - item: HydroponicsToolScythe
-    - item: HydroponicsToolHatchet
     # Corvax-Wega-Robot-start
-    - hand:
-        emptyRepresentative: FoodCabbage
-        emptyLabel: borg-slot-botany-empty
+    - item: PlantAnalyzerUnpowered
+    - item: BorgHydroponicsToolMiniHoe
+      hand:
+        emptyLabel: borg-slot-hydro-empty
+        emptyRepresentative: BorgHydroponicsToolMiniHoe
         whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyLabel: borg-slot-hydro-empty
+        emptyRepresentative: BorgHydroponicsToolSpade
+        whitelist:
+          tags:
+          - Itemborg
+    - hand:
+        emptyRepresentative: WheatSeeds
+        emptyLabel: borg-slot-seed-empty
+        whitelist:
+          components:
+          - Seed
           tags:
           - Vegetable
           - Fruit
+    - item: BorgDropper
     # Corvax-Wega-Robot-end
+    - item: Bucket
+    # Corvax-Wega-Robot-Start
+    - hand:
+        emptyRepresentative: DiseaseSwab
+        emptyLabel: borg-slot-swap-only-empty
+        whitelist:
+          components:
+          - DiseaseSwab
     - item: PlantBag
+    # Corvax-Wega-Robot-End
   - type: BorgModuleIcon
-    icon: { sprite: Interface/Actions/actions_borg.rsi, state: harvesting-module }
+    icon: { sprite: Interface/Actions/actions_borg.rsi, state: botany-module }
+
+- type: entity
+  id: BorgModuleSeedProducePlaceholder
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Hydroponics/seeds.rsi
+    state: seed-produce-icon
 
 - type: entity
   id: BorgModuleClowning
@@ -1688,10 +1744,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        Heat: 0.3
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:

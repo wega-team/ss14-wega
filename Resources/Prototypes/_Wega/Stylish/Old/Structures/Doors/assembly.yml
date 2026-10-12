@@ -1,0 +1,275 @@
+# Standard
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-base.rsi
+  entities:
+  - AirlockAssembly
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyAtmosphericsOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/engineering-atmos.rsi
+  entities:
+  - AirlockAssemblyAtmospherics
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyCargoOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/cargo-base.rsi
+  entities:
+  - AirlockAssemblyCargo
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyCommandOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/command-base.rsi
+  entities:
+  - AirlockAssemblyCommand
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyEngineeringOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/engineering-base.rsi
+  entities:
+  - AirlockAssemblyEngineering
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyExternalOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-external.rsi
+  entities:
+  - AirlockAssemblyExternal
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyFreezerOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/service-freezer.rsi
+  entities:
+  - AirlockAssemblyFreezer
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyHydroponicsOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/service-botany.rsi
+  entities:
+  - AirlockAssemblyHydroponics
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyMaintenanceOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-maints.rsi
+  entities:
+  - AirlockAssemblyMaintenance
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyMedicalOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/medical-base.rsi
+  entities:
+  - AirlockAssemblyMedical
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblySalvageOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/cargo-salvage.rsi
+  entities:
+  - AirlockAssemblySalvage
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyScienceOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/science-base.rsi
+  entities:
+  - AirlockAssemblyScience
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblySecurityOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/security-base.rsi
+  entities:
+  - AirlockAssemblySecurity
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyShuttleOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/shuttle-base.rsi
+  entities:
+  - AirlockAssemblyShuttle
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyVirologyOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/medical-viro.rsi
+  entities:
+  - AirlockAssemblyVirology
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyCentralCommandOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/centcomm-base.rsi
+  entities:
+  - AirlockAssemblyCentralCommand
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyMiningOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/cargo-mining.rsi
+  entities:
+  - AirlockAssemblyMining
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblySyndicateOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/syndicate-base.rsi
+  entities:
+  - AirlockAssemblySyndicate
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyShuttleSyndicateOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/shuttle-syndicate.rsi
+  entities:
+  - AirlockAssemblyShuttleSyndicate
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyHighSecOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/airlock-vault.rsi
+  entities:
+  - AirlockAssemblyHighSec
+
+# Glass
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-base.rsi
+  entities:
+  - AirlockAssemblyGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyAtmosphericsGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/engineering-atmos.rsi
+  entities:
+  - AirlockAssemblyAtmosphericsGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyCargoGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/cargo-base.rsi
+  entities:
+  - AirlockAssemblyCargoGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyCommandGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/command-base.rsi
+  entities:
+  - AirlockAssemblyCommandGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyEngineeringGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/engineering-base.rsi
+  entities:
+  - AirlockAssemblyEngineeringGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyExternalGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-external.rsi
+  entities:
+  - AirlockAssemblyExternalGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyHydroponicsGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/service-botany.rsi
+  entities:
+  - AirlockAssemblyHydroponicsGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyMaintenanceGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-maints.rsi
+  entities:
+  - AirlockAssemblyMaintenanceGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyMedicalGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/medical-base.rsi
+  entities:
+  - AirlockAssemblyMedicalGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblySalvageGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/cargo-salvage.rsi
+  entities:
+  - AirlockAssemblySalvageGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyScienceGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/science-base.rsi
+  entities:
+  - AirlockAssemblyScienceGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblySecurityGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/security-base.rsi
+  entities:
+  - AirlockAssemblySecurityGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyShuttleGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/shuttle-base.rsi
+  entities:
+  - AirlockAssemblyShuttleGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyVirologyGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/medical-viro.rsi
+  entities:
+  - AirlockAssemblyVirologyGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyCentralCommandGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/centcomm-base.rsi
+  entities:
+  - AirlockAssemblyCentralCommandGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyMiningGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/cargo-mining.rsi
+  entities:
+  - AirlockAssemblyMiningGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblySyndicateGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/syndicate-base.rsi
+  entities:
+  - AirlockAssemblySyndicateGlass
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAirlockAssemblyShuttleSyndicateGlassOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/shuttle-syndicate.rsi
+  entities:
+  - AirlockAssemblyShuttleSyndicateGlass
+
+# Firelock
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishFirelockFrameOld
+  rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Standard/firelock-base.rsi
+  entities:
+  - FirelockFrame

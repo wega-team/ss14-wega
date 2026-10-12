@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-4.0",
-  "copyright": "Create by 1001081072819388456 krikun12",
+  "copyright": "Create by 1001081072819388456 krikun12 borg sheild, other from Paradise",
   "size": {
     "x": 32,
     "y": 32
@@ -19,6 +19,40 @@
         "name": "borg_sheild_riot",
         "directions": 4
     },
+        {
+            "name": "chefcmo",
+            "directions": 4,
+            "delays": [
+                [
+                    0.1,
+                    0.2,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.2,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.2,
+                    0.1
+                ],
+                [
+                    0.1,
+                    0.2,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "chefce",
+            "directions": 4
+        },
+        {
+            "name": "cheflava",
+            "directions": 4
+        },
     {
         "name": "borg_sheild_teleskop",
         "directions": 4

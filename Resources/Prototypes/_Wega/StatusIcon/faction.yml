@@ -1,5 +1,5 @@
 # Base
-- type: factionIcon
+- type: statusIcon
   id: VampireFaction
   isShaded: true
   priority: 11
@@ -12,7 +12,7 @@
     sprite: /Textures/_Wega/Interface/Misc/vampire_icons.rsi
     state: Vampire
 
-- type: factionIcon
+- type: statusIcon
   id: ThrallFaction
   isShaded: true
   priority: 11
@@ -25,7 +25,7 @@
     sprite: /Textures/_Wega/Interface/Misc/vampire_icons.rsi
     state: Thrall
 
-- type: factionIcon
+- type: statusIcon
   id: BloodCultistFaction
   isShaded: true
   priority: 11
@@ -38,7 +38,7 @@
     sprite: /Textures/_Wega/Interface/Misc/bloodcult_icons.rsi
     state: Cultist
 
-- type: factionIcon
+- type: statusIcon
   id: VeilCultistFaction
   isShaded: true
   priority: 11
@@ -50,8 +50,8 @@
   icon:
     sprite: /Textures/_Wega/Interface/Misc/veilcult_icons.rsi
     state: Cultist
-    
-- type: factionIcon
+
+- type: statusIcon
   id: XenoborgFaction
   priority: 11
   hideOnStealth: false

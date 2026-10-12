@@ -7,6 +7,7 @@
   icon: "JobIconPsychologist"
   isSubRole: true # Corvax-Wega-add
   supervisors: job-supervisors-cmo
+  guides: [ Medical ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Medical
   - Maintenance

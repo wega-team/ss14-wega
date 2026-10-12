@@ -3,10 +3,13 @@ using System.Text;
 using Content.Server.Antag;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Roles;
+using Content.Shared.Antag;
 using Content.Shared.FixedPoint;
-using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
+using Content.Shared.Roles;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 
@@ -14,7 +17,7 @@ namespace Content.Server.GameTicking.Rules
 {
     public sealed partial class VampireRuleSystem : GameRuleSystem<VampireRuleComponent>
     {
-        [Dependency] private AntagSelectionSystem _antag = default!;
+        [Dependency] private ServerAntagSelectionSystem _antag = default!;
         [Dependency] private SharedMindSystem _mind = default!;
 
         public override void Initialize()
@@ -49,18 +52,16 @@ namespace Content.Server.GameTicking.Rules
             return briefing;
         }
 
-        protected override void AppendRoundEndText(EntityUid uid,
-            VampireRuleComponent component,
-            GameRuleComponent gameRule,
+        protected override void AppendRoundEndText(Entity<VampireRuleComponent> rule,
             ref RoundEndTextAppendEvent args)
         {
-            if (component.VampiresInfo.Count == 0)
+            if (rule.Comp.VampiresInfo.Count == 0)
                 return;
 
             var sb = new StringBuilder();
             sb.AppendLine(Loc.GetString("vampire-round-end-header"));
 
-            foreach (var (_, info) in component.VampiresInfo)
+            foreach (var (_, info) in rule.Comp.VampiresInfo)
             {
                 var name = !string.IsNullOrEmpty(info.Name) ? info.Name : Loc.GetString("generic-unknown");
                 var className = Loc.GetString($"select-class-{info.Class.ToString().ToLower()}");
@@ -74,7 +75,7 @@ namespace Content.Server.GameTicking.Rules
             }
 
             sb.AppendLine();
-            var totalBloodDrank = GetTotalBloodDrankInRound(component).ToString("F2");
+            var totalBloodDrank = GetTotalBloodDrankInRound(rule.Comp).ToString("F2");
             sb.AppendLine(Loc.GetString("vampires-drank-total-blood", ("bloodAmount", totalBloodDrank)));
 
             args.AddLine(sb.ToString());

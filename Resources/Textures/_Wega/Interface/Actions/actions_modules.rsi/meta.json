@@ -53,6 +53,9 @@
             "name": "light-off"
         },
         {
+            "name": "antigrav_core"
+        },
+        {
             "name": "light-on"
         }
     ]

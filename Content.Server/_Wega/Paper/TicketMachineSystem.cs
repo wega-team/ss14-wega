@@ -1,9 +1,10 @@
 using Content.Shared.Interaction;
-using Content.Shared.Timing;
 using Content.Shared.Popups;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Paper;
+using Content.Shared.Timing.Components;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 

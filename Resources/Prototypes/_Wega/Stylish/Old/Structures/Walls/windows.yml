@@ -1,0 +1,166 @@
+# I don't care that windows aren't walls let them stay here.
+
+# Basic
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-base.rsi
+  entities:
+  - Window
+  - WindowRCDResistant
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsTintedOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-tinted.rsi
+  entities:
+  - TintedWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-base-diagonal.rsi
+  entities:
+  - WindowDiagonal
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsReinforcedOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-base-reinf.rsi
+  entities:
+  - ReinforcedWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsReinforcedDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-base-diagonal-reinf.rsi
+  entities:
+  - ReinforcedWindowDiagonal
+
+# Directional TODO: Feel free to expand on this if you like; right now, they don't differ enough to warrant the effort
+#- type: stylishPreset
+#  parent: BaseStylishOld
+#  id: StylishWindowsDirectionalOld
+#  rsiPath: _Wega/Stylish/Old/Windows/directional.rsi
+#  entities:
+#  - WindowDirectional
+#  - WindowDirectionalCorner
+#  - WindowDirectionalRCDResistant
+#  - WindowFrostedDirectional
+#  - WindowFrostedDirectionalCorner
+#  - WindowReinforcedDirectional
+#  - WindowReinforcedDirectionalCorner
+#  - PlasmaWindowDirectional
+#  - PlasmaWindowDirectionalCorner
+#  - PlasmaReinforcedWindowDirectional
+#  - PlasmaReinforcedWindowDirectionalCorner
+#  - UraniumReinforcedWindowDirectional
+#  - UraniumReinforcedWindowDirectionalCorner
+#  - UraniumWindowDirectional
+#  - UraniumWindowDirectionalCorner
+
+# Plastitanium
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsPlastitaniumOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-plastitanium.rsi
+  entities:
+  - PlastitaniumWindowIndestructible
+  - PlastitaniumWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsPlastitaniumDirectionalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-diagonal-plastitanium.rsi
+  entities:
+  - PlastitaniumWindowDiagonalIndestructible
+  - PlastitaniumWindowDiagonal
+
+# Plasma
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsPlasmaOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-plasma.rsi
+  entities:
+  - PlasmaWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsPlasmaDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-diagonal-plasma.rsi
+  entities:
+  - PlasmaWindowDiagonal
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsReinforcedPlasmaOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-plasma-reinf.rsi
+  entities:
+  - ReinforcedPlasmaWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsReinforcedPlasmaDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-diagonal-plasma-reinf.rsi
+  entities:
+  - ReinforcedPlasmaWindowDiagonal
+
+# Shuttle
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsShuttleOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-shuttle.rsi
+  entities:
+  - ShuttleWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsShuttleDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-diagonal-shuttle.rsi
+  entities:
+  - ShuttleWindowDiagonal
+
+# Uranium
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsReinforcedUraniumOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-uranium-reinf.rsi
+  entities:
+  - ReinforcedUraniumWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsReinforcedUraniumDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-diagonal-uranium-reinf.rsi
+  entities:
+  - ReinforcedUraniumWindowDiagonal
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsUraniumOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-uranium.rsi
+  entities:
+  - UraniumWindow
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsUraniumDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Windows/window-diagonal-uranium.rsi
+  entities:
+  - UraniumWindowDiagonal
+
+# Xeno
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsXenoOld
+  rsiPath: _Wega/Stylish/Old/Windows/exo-resin.rsi
+  entities:
+  - XenoResinWindow
+
+# Xenoborg
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWindowsXenoborgOld
+  rsiPath: _Wega/Stylish/Old/Windows/exo-resin-borg.rsi
+  entities:
+  - XenoborgWindow

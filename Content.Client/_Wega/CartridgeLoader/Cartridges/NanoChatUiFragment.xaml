@@ -3,7 +3,6 @@
     xmlns:cartridges="clr-namespace:Content.Client._Wega.CartridgeLoader.Cartridges"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
     Orientation="Vertical"
     HorizontalExpand="True"
     VerticalExpand="True"
@@ -32,7 +31,7 @@
 
     <!-- Main content -->
     <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
-        
+
         <!-- Contacts/Groups panel -->
         <PanelContainer StyleClasses="AngleRect" MinWidth="150" MaxWidth="200" VerticalExpand="True">
             <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True">
@@ -45,7 +44,7 @@
                         <BoxContainer Name="GroupsContainer" Orientation="Vertical" HorizontalExpand="True"/>
                     </ScrollContainer>
                 </TabContainer>
-                
+
                 <Label Name="NoContactsLabel" Text="{Loc 'nano-chat-ui-no-contacts'}" StyleClasses="LabelSubText"
                     HorizontalAlignment="Center" VerticalAlignment="Center" Visible="False"/>
                 <Label Name="NoGroupsLabel" Text="{Loc 'nano-chat-ui-no-groups'}" StyleClasses="LabelSubText"
@@ -54,11 +53,11 @@
         </PanelContainer>
 
         <!-- Separator -->
-        <customControls:VSeparator StyleClasses="LowDivider"/>
+        <controls:Separator Orientation="Vertical" StyleClasses="LowDivider"/>
 
         <!-- Chat area -->
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
-            
+
             <!-- Chat header -->
             <PanelContainer StyleClasses="AngleRect">
                 <PanelContainer.PanelOverride>

@@ -23,7 +23,7 @@ public sealed partial class MindControlSystem : EntitySystem
     [Dependency] private ObjectivesSystem _objectives = default!;
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private StatusEffectsSystem _status = default!;
-    [Dependency] private AntagSelectionSystem _antag = default!;
+    [Dependency] private ServerAntagSelectionSystem _antag = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
 
     public override void Initialize()

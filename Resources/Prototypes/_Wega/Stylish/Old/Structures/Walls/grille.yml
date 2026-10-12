@@ -1,0 +1,15 @@
+# Basic
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishGrilleOld
+  rsiPath: _Wega/Stylish/Old/Walls/grille.rsi
+  entities:
+  - Grille
+  - GrilleBroken
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishGrilleDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/grille-diagonal.rsi
+  entities:
+  - GrilleDiagonal

@@ -209,7 +209,7 @@
 
 #ERT
 - type: entity
-  parent: [ ClothingBackpack, BaseCentcommContraband ]
+  parent: [ ClothingBackpack, BaseTaskForceContraband ]
   id: ClothingBackpackERTLeader
   name: ERT leader backpack
   description: A spacious backpack with lots of pockets, worn by the Leader of an Emergency Response Team.
@@ -288,7 +288,7 @@
 
 #Syndicate
 - type: entity
-  parent: [ClothingBackpack, BaseSyndicateContraband, BaseChameleon] # Corvax-wega-add
+  parent: [ClothingBackpack, BaseChameleon] # Corvax-Wega-Kryche-Edit Chamelion # Corvax-Contraband BaseSyndicateContraband
   id: ClothingBackpackSyndicate
   name: syndicate backpack
   description:

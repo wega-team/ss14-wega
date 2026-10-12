@@ -10,7 +10,6 @@
     prototype: CellSequencer
     stackRequirements:
       Plasma: 5
-      MatterBin: 1
       Glass: 1
       Steel: 2
     tagRequirements:
@@ -30,7 +29,6 @@
     prototype: CellularFusion
     stackRequirements:
       Plasma: 5
-      MatterBin: 1
       Glass: 1
       Steel: 2
     tagRequirements:
@@ -69,7 +67,7 @@
     - type: MachineBoard
       prototype: MiningServer
       stackRequirements:
-        Cable: 5        
+        Cable: 5
         Manipulator: 1
 
 - type: entity
@@ -94,7 +92,7 @@
   description: A machine printed circuit board for an injector fabricator.
   components:
     - type: Sprite
-      state: secmodschematic
+      state: security
     - type: MachineBoard
       prototype: InjectorFabricator
       stackRequirements:
@@ -112,7 +110,7 @@
     stackRequirements:
       Manipulator: 2
       Glass: 5
-      
+
 - type: entity
   id: ExosuitFabricatorHyperConvectionMachineCircuitboard
   parent: BaseMachineCircuitboard
@@ -129,7 +127,7 @@
       Igniter:
         amount: 1
         defaultPrototype: Igniter
-        
+
 - type: entity
   id: BorgChargerTurboCircuitboard
   parent: BaseMachineCircuitboard

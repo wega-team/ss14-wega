@@ -3,20 +3,20 @@
   name: guide-entry-antagonists
   text: "/ServerInfo/Guidebook/Antagonist/Antagonists.xml"
   children:
-  - Traitors
-  - VeilCult # Corvax-Wega-VeilCult
+  - Changelings
+  - NuclearOperatives
+  - Revolutionaries
+  - SpaceNinja
   - Thieves
+  - Traitors
+  - Wizard
+  - Xenoborgs
+  - Zombies
+  - MinorAntagonists
+  - VeilCult # Corvax-Wega-VeilCult
   - Vampires # Corvax-Wega-Vampire
   - BloodCult # Corvax-Wega-Blood-Cult
   - BloodBrothers # Corvax-Wega-Blood-Brothers
-  - Revolutionaries
-  - NuclearOperatives
-  - SpaceNinja
-  - Wizard
-  - Zombies
-  - Xenoborgs
-  - Changelings
-  - MinorAntagonists
 
 - type: guideEntry
   id: Traitors

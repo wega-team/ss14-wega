@@ -216,7 +216,7 @@
         Asphyxiation: -10
   - type: AtmosExposed
   - type: Temperature
-    specificHeat: 42
+    specificHeat: 1000
   - type: TemperatureDamage
     heatDamageThreshold: 403.15
     coldDamageThreshold: 213.15

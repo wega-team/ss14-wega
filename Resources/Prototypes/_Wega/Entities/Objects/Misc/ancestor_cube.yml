@@ -18,6 +18,8 @@
         amount: 1
       - id: KoboldCubeWrapped
         amount: 1
+      - id: SlimeCubeWrapped
+        amount: 1
       - id: TajkeyCubeWrapped
         amount: 1
       - id: WolflingCubeWrapped

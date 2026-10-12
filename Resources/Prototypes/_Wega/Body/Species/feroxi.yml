@@ -1,0 +1,274 @@
+- type: markingsGroup
+  parent: None
+  id: Feroxi
+  limits:
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: true
+      default: [FeroxiEars]
+    enum.HumanoidVisualLayers.Head:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Snout:
+      limit: 1
+      required: true
+      default: [FeroxiSnout]
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [FeroxiTail]
+    enum.HumanoidVisualLayers.Overlay:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 2
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceFeroxi
+  name: feroxi appearance
+  components:
+  - type: InitialBody
+    organs:
+      Head: OrganFeroxiHead
+      Torso: OrganFeroxiTorso
+      ArmLeft: OrganFeroxiArmLeft
+      ArmRight: OrganFeroxiArmRight
+      HandLeft: OrganFeroxiHandLeft
+      HandRight: OrganFeroxiHandRight
+      LegLeft: OrganFeroxiLegLeft
+      LegRight: OrganFeroxiLegRight
+      FootLeft: OrganFeroxiFootLeft
+      FootRight: OrganFeroxiFootRight
+      Brain: OrganFeroxiBrain
+      Ears: OrganFeroxiEars
+      Tongue: OrganFeroxiTongue
+      Appendix: OrganFeroxiAppendix
+      Lungs: OrganFeroxiLungs
+      Heart: OrganFeroxiHeart
+      Stomach: OrganFeroxiStomach
+      Liver: OrganFeroxiLiver
+      Kidneys: OrganFeroxiKidneys
+      Eyes: OrganFeroxiEyes
+  - type: HumanoidProfile
+    species: Feroxi
+    height: 160
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit-female
+      shoes:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+    displacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: jumpsuit
+      shoes:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: shoes
+      socks:
+        sizeMaps:
+          32:
+            sprite: Corvax/Mobs/Species/displacement.rsi
+            state: socks
+
+- type: entity
+  id: MobFeroxi
+  name: Urist McShark
+  parent: [AppearanceFeroxi, BaseSpeciesMobOrganic, BaseOperated]
+  components:
+  - type: Damageable
+    damageModifierSet: Feroxi
+  - type: MeleeWeapon
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 6
+        Slash: 2
+  - type: Satiation
+    satiations:
+      Hunger:
+        prototype: NormalSatiationHunger
+      Thirst:
+        prototype: FeroxiThirst
+  - type: SatiationDamage
+    satiations:
+      Thirst:
+        thresholds:
+          Parched:
+            types:
+              Asphyxiation: 1
+  - type: ActionGrant
+    actions:
+    - SwitchBloodSenseAction
+  - type: BloodSense
+
+- type: entity
+  parent: OrganBaseOrganic
+  id: OrganFeroxi
+  abstract: true
+  suffix: Feroxi
+
+- type: entity
+  id: OrganFeroxiMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Animal, Feroxi ]
+
+- type: entity
+  parent: OrganFeroxi
+  id: OrganFeroxiInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  parent: OrganFeroxi
+  id: OrganFeroxiExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Feroxi/parts.rsi
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Feroxi/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Feroxi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganFeroxiExternal ]
+  id: OrganFeroxiTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganFeroxiExternal ]
+  id: OrganFeroxiHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Snout
+    - enum.HumanoidVisualLayers.HeadTop
+    - enum.HumanoidVisualLayers.Hair
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganFeroxiExternal ]
+  id: OrganFeroxiArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganFeroxiExternal ]
+  id: OrganFeroxiArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganFeroxiExternal ]
+  id: OrganFeroxiHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganFeroxiExternal ]
+  id: OrganFeroxiHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganFeroxiExternal ]
+  id: OrganFeroxiLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganFeroxiExternal ]
+  id: OrganFeroxiLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganFeroxiExternal ]
+  id: OrganFeroxiFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganFeroxiExternal ]
+  id: OrganFeroxiFootRight
+
+- type: entity
+  parent: [OrganBaseBrain, OrganFeroxiInternal]
+  id: OrganFeroxiBrain
+
+- type: entity
+  parent: [OrganBaseEars, OrganFeroxiInternal]
+  id: OrganFeroxiEars
+
+- type: entity
+  parent: [OrganBaseTongue, OrganFeroxiInternal]
+  id: OrganFeroxiTongue
+
+- type: entity
+  parent: [OrganBaseAppendix, OrganFeroxiInternal]
+  id: OrganFeroxiAppendix
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganFeroxiInternal, OrganFeroxiMetabolizer ]
+  id: OrganFeroxiLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganFeroxiInternal, OrganFeroxiMetabolizer ]
+  id: OrganFeroxiHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganFeroxiInternal, OrganFeroxiMetabolizer ]
+  id: OrganFeroxiStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganFeroxiInternal, OrganFeroxiMetabolizer ]
+  id: OrganFeroxiLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganFeroxiInternal, OrganFeroxiMetabolizer ]
+  id: OrganFeroxiKidneys
+
+- type: entity
+  parent: [ OrganBaseEyes, OrganFeroxiInternal, OrganFeroxiExternal ]
+  id: OrganFeroxiEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi

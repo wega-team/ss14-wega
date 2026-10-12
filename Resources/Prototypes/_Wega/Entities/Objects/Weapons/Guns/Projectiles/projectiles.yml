@@ -25,11 +25,15 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanStaminaDamage
-    staminaDamage: 33
+    staminaDamage: 10
   - type: HitscanBasicDamage
     damage:
       types:
         Shock: 1
+  - type: StunOnCollide
+    slowdownAmount: 2.2
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -103,9 +107,68 @@
     energyConsumption: 360
 
 - type: entity
+  parent: [SolutionAmmo, SolutionToolVeryTiny, BaseBullet]
+  id: BulletTaserExmp
+  categories: [ HideSpawnMenu ]
+  name: taser bolt
+  components:
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    noRot: true
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    color: "#ffff33"
+    layers:
+    - state: spark
+      shader: unshaded
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.45,0.15,0.15"
+        hard: false
+        mask:
+        - Opaque
+        - Impassable
+        - BulletImpassable
+      fly-by: &flybyfixture
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.5
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: false
+  - type: Ammo
+  - type: Projectile
+    damage:
+      types:
+        Shock: 0
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/taser_hit.ogg"
+    forceSound: true
+  - type: TimedDespawn
+    lifetime: 0.170 # Very short range
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: HardlightToxinSec
+        Quantity: 7.5
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 7.5
+    solution: ammo
+
+- type: entity
   id: BulletTaserBorg
   categories: [ HideSpawnMenu ]
-  parent: BulletTaser
+  parent: BulletTaserExmp
   components:
   - type: TimedDespawn
     lifetime: 0.1 # Very short range

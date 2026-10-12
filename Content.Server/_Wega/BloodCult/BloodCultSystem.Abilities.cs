@@ -36,9 +36,10 @@ using Content.Shared.Stacks;
 using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Examine;
+using Content.Shared.Timing.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -296,7 +297,7 @@ public sealed partial class BloodCultSystem
     private void OnHallucinations(EntityUid cultist, BloodCultistComponent component, BloodCultHallucinationsActionEvent args)
     {
         if (!HasComp<BloodCultistComponent>(args.Target))
-            _hallucinations.StartHallucinations(args.Target, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
+            _hallucinations.StartHallucinations(args.Target, "Hallucinations", TimeSpan.FromSeconds(30f), true, "Bloodcult");
 
         args.Handled = true;
         EmpoweringCheck(args.Action, component);

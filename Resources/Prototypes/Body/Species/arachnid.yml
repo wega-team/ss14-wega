@@ -144,7 +144,7 @@
   # Corvax-Wega-Genetics-start
   - type: DnaModifier
     upper: MobArachnid
-    lowest: MobGiantSpider
+    lowest: MobGiantSpiderTarantula
   # Corvax-Wega-Genetics-end
 
 - type: entity

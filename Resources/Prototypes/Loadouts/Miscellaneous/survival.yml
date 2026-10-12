@@ -22,6 +22,7 @@
     - Vulpkanin
     - Tajaran
     #Corvax-Species-End
+    # Corvax-Wega-Species-start
     - Felinid # Corvax-Wega-UwU
     - Resomi # Corvax-Wega-Resomi
     - Skrell # Corvax-Wega-Skrell
@@ -29,6 +30,8 @@
     - Phantom # Corvax-Wega-Phantom
     - Harpy # Corvax-Wega-Harpy
     - Ariral # Corvax-Wega-Ariral
+    - Feroxi # Corvax-Wega-ГррррррПонедельник
+    # Corvax-Wega-Species-end
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
   effects:

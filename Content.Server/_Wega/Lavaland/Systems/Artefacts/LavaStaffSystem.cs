@@ -3,7 +3,7 @@ using Content.Server.Tiles;
 using Content.Shared.Interaction;
 using Content.Shared.Lavaland.Artefacts.Components;
 using Content.Shared.Maps;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 

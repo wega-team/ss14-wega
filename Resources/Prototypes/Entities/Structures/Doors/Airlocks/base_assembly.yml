@@ -27,7 +27,7 @@
   - type: Pullable
   - type: Transform
     anchored: true
-    noRot: true
+  - type: Rotatable
   - type: Damageable
     damageModifierSet: SteelStaticMod
   - type: RCDDeconstructable
@@ -48,5 +48,6 @@
   - type: Construction
     graph: Airlock
     node: assembly
+  - type: StylishSprite # Corvax-Wega-Stylish
   placement:
     mode: SnapgridCenter

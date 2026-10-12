@@ -3,7 +3,7 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Lavaland.Components;
 using Content.Shared.Pinpointer;
 using Content.Shared.Popups;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.EntitySerialization.Systems;
 
 namespace Content.Server.Lavaland.Systems;

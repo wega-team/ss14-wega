@@ -211,3 +211,17 @@
     items:
     - ClothingModularControllerAsteroidPreassembled
     - ClothingOuterHardsuitSalvage
+
+- type: entity
+  parent: BaseHardsuitSelector
+  id: HardsuitERTLeaderSelector
+  name: ert hardsuit selector
+  description: "An obsidian rod that strikes paranormal things."
+  suffix: Selector
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/HardsuitSelector/responsory.rsi
+  - type: ItemSelector
+    items:
+    - ClothingModularControllerResponsoryPreassembled
+    - ClothingOuterHardsuitERTLeader

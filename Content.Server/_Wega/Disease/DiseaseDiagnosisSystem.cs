@@ -2,7 +2,6 @@ using Content.Server.Disease.Components;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Power;
-using Content.Server.Station.Systems;
 using Content.Shared.Paper;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -19,6 +18,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server.Disease
 {

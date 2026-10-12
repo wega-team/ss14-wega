@@ -1,5 +1,5 @@
 - type: entity
-  parent: ClothingUniformSkirtToggleableBase # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431JobsCargoTechnician, ClothingUniformSkirtToggleableBase] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtCargo
   name: cargo tech jumpskirt
   description: A sturdy jumpskirt, issued to members of the Cargo department.
@@ -10,7 +10,7 @@
     sprite: Clothing/Uniforms/Jumpskirts/Cargo/cargotech.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsQuartermaster, ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtQM
   name: quartermaster's jumpskirt
   description: 'What can brown do for you?'
@@ -21,12 +21,23 @@
     sprite: Clothing/Uniforms/Jumpskirts/Cargo/qm.rsi
 
 - type: entity
-  parent: [ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Wega-ToggleableClothing-Edit
+  parent: [BaseCorvaxContraband431DepartmentsCommandJobsQuartermaster, ClothingUniformSkirtToggleableBase, BaseCommandContraband] # Corvax-Contraband + Corvax-Wega-ToggleableClothing
   id: ClothingUniformJumpskirtQMTurtleneck
-  name: quartermasters's turtleneck
+  name: quartermaster's turtleneck
   description: A sharp turtleneck made for the hardy work environment of supply.
   components:
   - type: Sprite
     sprite: Clothing/Uniforms/Jumpskirts/Cargo/qmturtleskirt.rsi
   - type: Clothing
     sprite: Clothing/Uniforms/Jumpskirts/Cargo/qmturtleskirt.rsi
+
+- type: entity
+  parent: [ClothingUniformBase, BaseCommandContraband]
+  id: ClothingUniformJumpskirtQMFormalDress
+  name: quartermaster's formal dress
+  description: Inspired by the quartermasters of militaries past, the perfect outfit for supplying a formal occasion.
+  components:
+    - type: Sprite
+      sprite: Clothing/Uniforms/Jumpskirts/Cargo/qmformaldress.rsi
+    - type: Clothing
+      sprite: Clothing/Uniforms/Jumpskirts/Cargo/qmformaldress.rsi

@@ -140,7 +140,7 @@
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
     # outerClothing: ClothingOuterHardsuitSyndie # Corvax-Wega-ModularSuits-Edit
-    shoes: ClothingShoesBootsCombatFilled
+    shoes: ClothingShoesBootsMagSyndie
     id: SyndiOperativePDA
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
@@ -175,7 +175,7 @@
   equipment:
     id: SyndiCommanderPDA
     neck: SyndicateWhistle
-    back: ClothingBackpackDuffelSyndicate
+    back: ClothingBackpackDuffelSyndicate # Corvax-Wega
     outerClothing: ClothingOuterHardsuitSyndieCommander
  # Corvax-Wega-start
   storage:
@@ -203,7 +203,6 @@
   equipment:
     eyes: ClothingEyesHudSyndicateAgent
     # outerClothing: ClothingOuterHardsuitSyndieMedic # Corvax-Wega-ModularSuits-Edit
-    # shoes: ClothingShoesBootsMagSyndie # Corvax-Wega-ModularSuits-Edit
     id: SyndiCorpsmanPDA
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:

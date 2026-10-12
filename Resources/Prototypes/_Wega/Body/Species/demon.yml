@@ -98,7 +98,7 @@
         Slash: 2
         Piercing: 3
   - type: Temperature
-    specificHeat: 46
+    specificHeat: 3000
   - type: TemperatureDamage
     heatDamageThreshold: 343
     coldDamageThreshold: 255

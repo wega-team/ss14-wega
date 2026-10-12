@@ -9,3 +9,7 @@
 - type: metabolizerType
   id: Ariral
   name: metabolizer-type-ariral
+
+- type: metabolizerType
+  id: Feroxi
+  name: metabolizer-type-feroxi

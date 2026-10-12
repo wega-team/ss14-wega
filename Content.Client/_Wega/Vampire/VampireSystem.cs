@@ -96,7 +96,7 @@ public sealed partial class VampireSystem : SharedVampireSystem
         }
     }
 
-    private void ShowIcon(FactionIconPrototype icon, ref GetStatusIconsEvent args)
+    private void ShowIcon(StatusIconPrototype icon, ref GetStatusIconsEvent args)
         => args.StatusIcons.Add(icon);
 
     private void OnUpdateAlert(Entity<VampireComponent> ent, ref UpdateAlertSpriteEvent args)

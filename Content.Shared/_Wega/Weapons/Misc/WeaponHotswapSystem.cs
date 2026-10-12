@@ -3,7 +3,7 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Popups;
-using Content.Shared.Timing;
+using Content.Shared.Timing.Systems;
 using Content.Shared.Weapons.Marker;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Misc.Components;

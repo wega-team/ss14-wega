@@ -1,0 +1,40 @@
+- type: entity
+  id: TableCounterHedge
+  parent: CounterBase
+  name: hedge
+  description: A perfectly ordinary hedge. Probably. Stop staring at it.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Decoration/hedge.rsi
+  - type: Icon
+    sprite: _Wega/Structures/Decoration/hedge.rsi
+    state: full
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 0
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: IconSmooth
+    key: hedge
+    base: hedge
+  - type: Construction
+    graph: Table
+    node: CounterHedge
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepGrass

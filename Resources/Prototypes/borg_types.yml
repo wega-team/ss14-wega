@@ -6,22 +6,23 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 4 # 3 Corvax-Wega-Add
+  extraModuleCount: 3 # Corvax-Wega-edit
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
-    # - BorgModuleScience until sciborgs are added
+    # - BorgModuleScience #until sciborgs are added # Corvax-Wega-Edit
 
   defaultModules:
   - BorgModulePrying
   - BorgModuleTool
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - BorgModuleCommonMedical
   - BorgModuleCommonPickaxe
   - BorgModuleCommonFight
   - BorgModuleCommonConstruction
   - BorgModuleCleaningCommon
   - BorgModuleCommonCandy
+  - BorgModuleCommonPostMan
   # - BorgModuleInflatable
   # - BorgModuleArtifact
   # - BorgModuleAnomaly
@@ -31,7 +32,8 @@
   - Medical
   - Service
   - Supply
- # Corvax-Wega-end
+  # Corvax-Wega-end
+
   # Visual
   inventoryTemplateId: borgShort
   spriteBodyState: robot
@@ -119,7 +121,7 @@
   - Supply
   - Science
 
-# Corvax-Wega-start
+  # Corvax-Wega-start
   addComponents:
   - type: UserInterface
     interfaces:
@@ -145,7 +147,7 @@
   - type: HandheldGpsUi
     broadcastEnabled: false
   - type: MagbootsImplant
-# Corvax-Wega-end
+  # Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgTall
@@ -262,17 +264,13 @@
     - BorgModuleService
 
   defaultModules:
-# Corvax-Wega-Start
-  # - BorgModuleTool
-  # - BorgModuleMusique
-  - BorgModuleCook
   - BorgModulePrying
   - BorgModuleService
+  # Corvax-Wega-Start
+  - BorgModuleBotany
+  - BorgModuleCook
   - BorgModuleBar
-  # - BorgModuleClowning
-  # - BorgModuleGardening
-  # - BorgModuleHarvesting
-# Corvax-Wega-End
+  # Corvax-Wega-End
   radioChannels:
   - Science
   - Service

@@ -38,14 +38,14 @@
     maxCharge: 1200
     startingCharge: 1200
   - type: BatteryAmmoProvider
-    proto: BulletDisablerSmg
+    proto: BulletDisablerSmgSlowing
     fireCost: 40
   - type: BatterySelfRecharger
     autoRechargeRate: 20
   - type: AmmoCounter
   - type: BatteryWeaponFireModes
     fireModes:
-    - proto: BulletDisablerSmg
+    - proto: BulletDisablerSmgSlowing
       fireCost: 40
     - proto: BulletTaserBorg
       fireCost: 600
@@ -215,7 +215,7 @@
           Radiation: 500
           Shock: 500
           Poison: 500
-      
+
 - type: entity
   name: Bullet shield borg
   parent: TelescopicShieldBorg

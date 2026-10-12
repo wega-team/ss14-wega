@@ -29,7 +29,7 @@
   description: thief-backpack-category-thiefpai-description
   sprite:
     sprite: Objects/Fun/pai.rsi
-    state: icon-pai-off
+    state: pai-base
   content:
   - ThiefPersonalAI
 
