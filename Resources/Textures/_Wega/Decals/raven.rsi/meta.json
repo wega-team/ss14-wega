@@ -7,416 +7,391 @@
         "y": 32
     },
     "states": [
-        {
-            "name": "diagonal_centre"
-        },
-        {
-            "name": "diagonal_edge"
-        },
-        {
-            "name": "raven_bot_left"
-        },
-        {
-            "name": "raven_bot_centre"
-        },
-        {
-            "name": "raven_bot_right"
-        },
-        {
-            "name": "raven_centre_left"
-        },
-        {
-            "name": "raven_centre"
-        },
-        {
-            "name": "raven_centre_right"
-        },
-        {
-            "name": "raven_top_left"
-        },
-        {
-            "name": "raven_top_centre"
-        },
-        {
-            "name": "raven_top_right"
-        },
-        {
-            "name": "tile_anticorner_nw"
-        },
-        {
-            "name": "tile_anticorner_se"
-        },
-        {
-            "name": "tile_anticorner_sw"
-        },
-        {
-            "name": "tile_anticorner_ne"
-        },
-        {
-            "name": "tile_anticorner_contrasted_nw"
-        },
-        {
-            "name": "tile_anticorner_contrasted_se"
-        },
-        {
-            "name": "tile_anticorner_contrasted_sw"
-        },
-        {
-            "name": "tile_anticorner_contrasted_ne"
-        },
-        {
-            "name": "tile_corner_se"
-        },
-        {
-            "name": "tile_corner_nw"
-        },
-        {
-            "name": "tile_corner_ne"
-        },
-        {
-            "name": "tile_corner_sw"
-        },
-        {
-            "name": "tile_fourcorners"
-        },
-        {
-            "name": "tile_full"
-        },
-        {
-            "name": "tile_half_s"
-        },
-        {
-            "name": "tile_half_n"
-        },
-        {
-            "name": "tile_half_e"
-        },
-        {
-            "name": "tile_half_w"
-        },
-        {
-            "name": "tile_half_contrasted_s"
-        },
-        {
-            "name": "tile_half_contrasted_n"
-        },
-        {
-            "name": "tile_half_contrasted_e"
-        },
-        {
-            "name": "tile_half_contrasted_w"
-        },
-        {
-            "name": "tile_opposing_corners_nw_se"
-        },
-        {
-            "name": "tile_opposing_corners_ne_sw"
-        },
-        {
-            "name": "tile_tram_s"
-        },
-        {
-            "name": "tile_tram_n"
-        },
-        {
-            "name": "tile_tram_e"
-        },
-        {
-            "name": "tile_tram_w"
-        },
-        {
-            "name": "trimline_s"
-        },
-        {
-            "name": "trimline_n"
-        },
-        {
-            "name": "trimline_e"
-        },
-        {
-            "name": "trimline_w"
-        },
-        {
-            "name": "trimline_se"
-        },
-        {
-            "name": "trimline_sw"
-        },
-        {
-            "name": "trimline_ne"
-        },
-        {
-            "name": "trimline_nw"
-        },
-        {
-            "name": "trimline_arrow_ccw_s"
-        },
-        {
-            "name": "trimline_arrow_ccw_n"
-        },
-        {
-            "name": "trimline_arrow_ccw_e"
-        },
-        {
-            "name": "trimline_arrow_ccw_w"
-        },
-        {
-            "name": "trimline_arrow_ccw_se"
-        },
-        {
-            "name": "trimline_arrow_ccw_sw"
-        },
-        {
-            "name": "trimline_arrow_ccw_ne"
-        },
-        {
-            "name": "trimline_arrow_ccw_nw"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_s"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_n"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_e"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_w"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_se"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_sw"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_ne"
-        },
-        {
-            "name": "trimline_arrow_ccw_fill_nw"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_s"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_n"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_e"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_w"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_se"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_sw"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_ne"
-        },
-        {
-            "name": "trimline_arrow_cw_fill_nw"
-        },
-        {
-            "name": "trimline_box"
-        },
-        {
-            "name": "trimline_box_fill"
-        },
-        {
-            "name": "trimline_corner_se"
-        },
-        {
-            "name": "trimline_corner_nw"
-        },
-        {
-            "name": "trimline_corner_ne"
-        },
-        {
-            "name": "trimline_corner_sw"
-        },
-        {
-            "name": "trimline_corner_fill_se"
-        },
-        {
-            "name": "trimline_corner_fill_nw"
-        },
-        {
-            "name": "trimline_corner_fill_ne"
-        },
-        {
-            "name": "trimline_corner_fill_sw"
-        },
-        {
-            "name": "trimline_corner_warn_fill_se"
-        },
-        {
-            "name": "trimline_corner_warn_fill_nw"
-        },
-        {
-            "name": "trimline_corner_warn_fill_ne"
-        },
-        {
-            "name": "trimline_corner_warn_fill_sw"
-        },
-        {
-            "name": "trimline_end_s"
-        },
-        {
-            "name": "trimline_end_n"
-        },
-        {
-            "name": "trimline_end_e"
-        },
-        {
-            "name": "trimline_end_w"
-        },
-        {
-            "name": "trimline_end_fill_s"
-        },
-        {
-            "name": "trimline_end_fill_n"
-        },
-        {
-            "name": "trimline_end_fill_e"
-        },
-        {
-            "name": "trimline_end_fill_w"
-        },
-        {
-            "name": "trimline_fill_s"
-        },
-        {
-            "name": "trimline_fill_n"
-        },
-        {
-            "name": "trimline_fill_e"
-        },
-        {
-            "name": "trimline_fill_w"
-        },
-        {
-            "name": "trimline_fill_se"
-        },
-        {
-            "name": "trimline_fill_sw"
-        },
-        {
-            "name": "trimline_fill_ne"
-        },
-        {
-            "name": "trimline_fill_nw"
-        },
-        {
-            "name": "trimline_mid_s"
-        },
-        {
-            "name": "trimline_mid_n"
-        },
-        {
-            "name": "trimline_mid_e"
-        },
-        {
-            "name": "trimline_mid_w"
-        },
-        {
-            "name": "trimline_mid_fill_s"
-        },
-        {
-            "name": "trimline_mid_fill_n"
-        },
-        {
-            "name": "trimline_mid_fill_e"
-        },
-        {
-            "name": "trimline_mid_fill_w"
-        },
-        {
-            "name": "trimline_shrink_ccw_s"
-        },
-        {
-            "name": "trimline_shrink_ccw_n"
-        },
-        {
-            "name": "trimline_shrink_ccw_e"
-        },
-        {
-            "name": "trimline_shrink_ccw_w"
-        },
-        {
-            "name": "trimline_shrink_cw_s"
-        },
-        {
-            "name": "trimline_shrink_cw_n"
-        },
-        {
-            "name": "trimline_shrink_cw_e"
-        },
-        {
-            "name": "trimline_shrink_cw_w"
-        },
-        {
-            "name": "trimline_tram_s"
-        },
-        {
-            "name": "trimline_tram_n"
-        },
-        {
-            "name": "trimline_tram_e"
-        },
-        {
-            "name": "trimline_tram_w"
-        },
-        {
-            "name": "trimline_warn_s"
-        },
-        {
-            "name": "trimline_warn_n"
-        },
-        {
-            "name": "trimline_warn_e"
-        },
-        {
-            "name": "trimline_warn_w"
-        },
-        {
-            "name": "trimline_warn_se"
-        },
-        {
-            "name": "trimline_warn_sw"
-        },
-        {
-            "name": "trimline_warn_ne"
-        },
-        {
-            "name": "trimline_warn_nw"
-        },
-        {
-            "name": "trimline_warn_fill_s"
-        },
-        {
-            "name": "trimline_warn_fill_n"
-        },
-        {
-            "name": "trimline_warn_fill_e"
-        },
-        {
-            "name": "trimline_warn_fill_w"
-        },
-        {
-            "name": "trimline_warn_fill_se"
-        },
-        {
-            "name": "trimline_warn_fill_sw"
-        },
-        {
-            "name": "trimline_warn_fill_ne"
-        },
-        {
-            "name": "trimline_warn_fill_nw"
-        }
+        { "name": "diagonal_centre", "directions": 1 },
+
+        { "name": "diagonal_edge", "directions": 1 },
+
+        { "name": "raven_bot_left", "directions": 1 },
+       
+        { "name": "raven_bot_centre", "directions": 1 },
+
+        { "name": "raven_bot_right", "directions": 1 },
+
+        { "name": "raven_centre_left", "directions": 1 },
+
+        { "name": "raven_centre", "directions": 1 },
+
+        { "name": "raven_centre_right", "directions": 1 },
+
+        { "name": "raven_top_left", "directions": 1 },
+
+        { "name": "raven_top_centre", "directions": 1 },
+
+        { "name": "raven_top_right", "directions": 1 },
+
+        { "name": "tile_anticorner_nw", "directions": 1 },
+
+        { "name": "tile_anticorner_se", "directions": 1 },
+
+        { "name": "tile_anticorner_sw", "directions": 1 },
+
+
+        { "name": "tile_anticorner_ne", "directions": 1 },
+
+        { "name": "tile_anticorner_contrasted_nw", "directions": 1 },
+
+        { "name": "tile_anticorner_contrasted_se", "directions": 1 },
+
+        { "name": "tile_anticorner_contrasted_sw", "directions": 1 },
+
+        { "name": "tile_anticorner_contrasted_ne", "directions": 1 },
+
+        { "name": "tile_corner_se", "directions": 1 },
+
+        { "name": "tile_corner_nw", "directions": 1 },
+
+        { "name": "tile_corner_ne", "directions": 1 },
+
+        { "name": "tile_corner_sw", "directions": 1 },
+
+        { "name": "tile_fourcorners", "directions": 1 },
+
+        { "name": "tile_full", "directions": 1 },
+
+        { "name": "tile_half_s", "directions": 1 },
+
+        { "name": "tile_half_n", "directions": 1 },
+
+        { "name": "tile_half_e", "directions": 1 },
+
+        { "name": "tile_half_w", "directions": 1 },
+
+        { "name": "tile_half_contrasted_s", "directions": 1 },
+
+        { "name": "tile_half_contrasted_n", "directions": 1 },
+
+        { "name": "tile_half_contrasted_e", "directions": 1 },
+
+        { "name": "tile_half_contrasted_w", "directions": 1 },
+
+        { "name": "tile_opposing_corners_nw_se", "directions": 1 },
+
+        { "name": "tile_opposing_corners_ne_sw", "directions": 1 },
+
+        { "name": "tile_tram_s", "directions": 1 },
+
+        { "name": "tile_tram_n", "directions": 1 },
+
+        { "name": "tile_tram_e", "directions": 1 },
+
+        { "name": "tile_tram_w", "directions": 1 },
+
+        { "name": "trimline_s", "directions": 1 },
+
+        { "name": "trimline_n", "directions": 1 },
+
+        { "name": "trimline_e", "directions": 1 },
+
+        { "name": "trimline_w", "directions": 1 },
+
+        { "name": "trimline_se", "directions": 1 },
+
+        { "name": "trimline_sw", "directions": 1 },
+
+        { "name": "trimline_ne", "directions": 1 },
+
+        { "name": "trimline_nw", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_s", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_n", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_e", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_w", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_se", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_sw", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_ne", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_nw", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_s", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_n", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_e", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_w", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_se", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_sw", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_ne", "directions": 1 },
+
+        { "name": "trimline_arrow_ccw_fill_nw", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_s", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_n", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_e", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_w", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_se", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_sw", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_ne", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_fill_nw", "directions": 1 },
+
+        { "name": "trimline_box", "directions": 1 },
+
+        { "name": "trimline_box_fill", "directions": 1 },
+
+        { "name": "trimline_corner_se", "directions": 1 },
+
+        { "name": "trimline_corner_nw", "directions": 1 },
+
+        { "name": "trimline_corner_ne", "directions": 1 },
+
+        { "name": "trimline_corner_sw", "directions": 1 },
+
+        { "name": "trimline_corner_fill_se", "directions": 1 },
+
+        { "name": "trimline_corner_fill_nw", "directions": 1 },
+
+        { "name": "trimline_corner_fill_ne", "directions": 1 },
+
+        { "name": "trimline_corner_fill_sw", "directions": 1 },
+
+        { "name": "trimline_corner_warn_fill_se", "directions": 1 },
+
+        { "name": "trimline_corner_warn_fill_nw", "directions": 1 },
+
+        { "name": "trimline_corner_warn_fill_ne", "directions": 1 },
+
+        { "name": "trimline_corner_warn_fill_sw", "directions": 1 },
+
+        { "name": "trimline_end_s", "directions": 1 },
+
+        { "name": "trimline_end_n", "directions": 1 },
+
+        { "name": "trimline_end_e", "directions": 1 },
+
+        { "name": "trimline_end_w", "directions": 1 },
+
+        { "name": "trimline_end_fill_s", "directions": 1 },
+
+        { "name": "trimline_end_fill_n", "directions": 1 },
+
+        { "name": "trimline_end_fill_e", "directions": 1 },
+
+        { "name": "trimline_end_fill_w", "directions": 1 },
+
+        { "name": "trimline_fill_s", "directions": 1 },
+
+        { "name": "trimline_fill_n", "directions": 1 },
+
+        { "name": "trimline_fill_e", "directions": 1 },
+
+        { "name": "trimline_fill_w", "directions": 1 },
+
+        { "name": "trimline_fill_se", "directions": 1 },
+
+        { "name": "trimline_fill_sw", "directions": 1 },
+
+        { "name": "trimline_fill_ne", "directions": 1 },
+
+        { "name": "trimline_fill_nw", "directions": 1 },
+
+        { "name": "trimline_mid_s", "directions": 1 },
+
+        { "name": "trimline_mid_n", "directions": 1 },
+
+        { "name": "trimline_mid_e", "directions": 1 },
+
+        { "name": "trimline_mid_w", "directions": 1 },
+
+        { "name": "trimline_mid_fill_s", "directions": 1 },
+
+        { "name": "trimline_mid_fill_n", "directions": 1 },
+
+        { "name": "trimline_mid_fill_e", "directions": 1 },
+
+        { "name": "trimline_mid_fill_w", "directions": 1 },
+
+        { "name": "trimline_shrink_ccw_s", "directions": 1 },
+
+        { "name": "trimline_shrink_ccw_n", "directions": 1 },
+
+        { "name": "trimline_shrink_ccw_e", "directions": 1 },
+
+        { "name": "trimline_shrink_ccw_w", "directions": 1 },
+
+        { "name": "trimline_shrink_cw_s", "directions": 1 },
+
+        { "name": "trimline_shrink_cw_n", "directions": 1 },
+
+        { "name": "trimline_shrink_cw_e", "directions": 1 },
+
+        { "name": "trimline_shrink_cw_w", "directions": 1 },
+
+        { "name": "trimline_tram_s", "directions": 1 },
+
+        { "name": "trimline_tram_n", "directions": 1 },
+
+        { "name": "trimline_tram_e", "directions": 1 },
+
+        { "name": "trimline_tram_w", "directions": 1 },
+
+        { "name": "trimline_warn_s", "directions": 1 },
+
+        { "name": "trimline_warn_n", "directions": 1 },
+
+        { "name": "trimline_warn_e", "directions": 1 },
+
+        { "name": "trimline_warn_w", "directions": 1 },
+
+        { "name": "trimline_warn_se", "directions": 1 },
+
+        { "name": "trimline_warn_sw", "directions": 1 },
+
+        { "name": "trimline_warn_ne", "directions": 1 },
+
+        { "name": "trimline_warn_nw", "directions": 1 },
+
+        { "name": "trimline_warn_fill_s", "directions": 1 },
+
+        { "name": "trimline_warn_fill_n", "directions": 1 },
+
+        { "name": "trimline_warn_fill_e", "directions": 1 },
+
+        { "name": "trimline_warn_fill_w", "directions": 1 },
+
+        { "name": "trimline_warn_fill_se", "directions": 1 },
+
+        { "name": "trimline_warn_fill_sw", "directions": 1 },
+
+        { "name": "trimline_warn_fill_ne", "directions": 1 },
+
+        { "name": "trimline_warn_fill_nw", "directions": 1 },
+
+        { "name": "siding_plain_bind_ne", "directions": 1 },
+
+        { "name": "siding_plain_bind_nw", "directions": 1 },
+
+        { "name": "siding_plain_bind_se", "directions": 1 },
+
+        { "name": "siding_plain_bind_sw", "directions": 1 },
+
+        { "name": "siding_plain_corner_ne", "directions": 1 },
+
+        { "name": "siding_plain_corner_nw", "directions": 1 },
+
+        { "name": "siding_plain_corner_se", "directions": 1 },
+
+        { "name": "siding_plain_corner_sw", "directions": 1 },
+
+        { "name": "siding_plain_e", "directions": 1 },
+
+        { "name": "siding_plain_n", "directions": 1 },
+
+        { "name": "siding_plain_s", "directions": 1 },
+
+        { "name": "siding_plain_w", "directions": 1 },
+
+        { "name": "siding_plain_end_e", "directions": 1 },
+
+        { "name": "siding_plain_end_n", "directions": 1 },
+
+        { "name": "siding_plain_end_s", "directions": 1 },
+
+        { "name": "siding_plain_end_w", "directions": 1 },
+
+        { "name": "siding_thinplating_bind_ne", "directions": 1 },
+
+        { "name": "siding_thinplating_bind_nw", "directions": 1 },
+
+        { "name": "siding_thinplating_bind_se", "directions": 1 },
+
+        { "name": "siding_thinplating_bind_sw", "directions": 1 },
+
+        { "name": "siding_thinplating_e", "directions": 1 },
+
+        { "name": "siding_thinplating_n", "directions": 1 },
+
+        { "name": "siding_thinplating_s", "directions": 1 },
+
+        { "name": "siding_thinplating_w", "directions": 1 },
+
+        { "name": "siding_thinplating_end_e", "directions": 1 },
+
+        { "name": "siding_thinplating_end_n", "directions": 1 },
+
+        { "name": "siding_thinplating_end_s", "directions": 1 },
+
+        { "name": "siding_thinplating_end_w", "directions": 1 },
+
+        { "name": "siding_thinplating_new_bind_ne", "directions": 1 },
+
+        { "name": "siding_thinplating_new_bind_nw", "directions": 1 },
+
+        { "name": "siding_thinplating_new_bind_se", "directions": 1 },
+
+        { "name": "siding_thinplating_new_bind_sw", "directions": 1 },
+
+        { "name": "siding_thinplating_new_e", "directions": 1 },
+
+        { "name": "siding_thinplating_new_n", "directions": 1 },
+
+        { "name": "siding_wideplating_new_e", "directions": 1 },
+
+        { "name": "siding_wideplating_new_n", "directions": 1 },
+
+        { "name": "siding_wideplating_new_s", "directions": 1 },
+
+        { "name": "siding_wideplating_new_w", "directions": 1 },
+
+        { "name": "siding_thinplating_new_s", "directions": 1 },
+
+        { "name": "siding_thinplating_new_w", "directions": 1 },
+
+        { "name": "siding_wideplating_bind_ne", "directions": 1 },
+
+        { "name": "siding_wideplating_bind_nw", "directions": 1 },
+
+        { "name": "siding_wideplating_bind_se", "directions": 1 },
+
+        { "name": "siding_wideplating_bind_sw", "directions": 1 },
+
+        { "name": "siding_wideplating_new_end_e", "directions": 1 },
+
+        { "name": "siding_wideplating_new_end_n", "directions": 1 },
+
+        { "name": "siding_wideplating_new_end_s", "directions": 1 },
+
+        { "name": "siding_wideplating_new_end_w", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_bind_ne", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_bind_nw", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_bind_se", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_bind_sw", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_e", "directions": 1 },
+        
+        { "name": "trimline_arrow_cw_n", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_s", "directions": 1 },
+
+        { "name": "trimline_arrow_cw_w", "directions": 1 }
     ]
 }
