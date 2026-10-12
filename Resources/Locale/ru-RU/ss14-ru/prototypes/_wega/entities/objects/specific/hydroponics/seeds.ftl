@@ -33,3 +33,7 @@ ent-TangerineSeeds = пакет семян (мандарин)
     .desc = { ent-SeedBase.desc }
 ent-FestiveTangerineSeeds = пакет семян (подарин)
     .desc = { ent-SeedBase.desc }
+ent-CucumberSeeds = пакет семян (огурец)
+    .desc = { ent-SeedBase.desc }
+ent-AvocadoSeeds = пакет семян (авокадо)
+    .desc = { ent-SeedBase.desc }

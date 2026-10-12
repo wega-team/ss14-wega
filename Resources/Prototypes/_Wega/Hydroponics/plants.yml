@@ -549,3 +549,82 @@
         min: 1
         max: 5
         potencyDivisor: 15
+
+
+- type: entity
+  parent: BasePlant
+  id: CucumberPlants
+  name: Cucumber Plants
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/cucumber.rsi
+  - type: PlantData
+    name: seeds-cucumber-name
+    packetPrototype: CucumberSeeds
+    productPrototypes: [ FoodCucumber ]
+  - type: Plant
+    lifespan: 35
+    maturation: 8
+    production: 5
+    yield: 3
+    potency: 10
+    growthStages: 4
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.8
+    nutrientConsumption: 0.5
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 1
+        max: 8
+        potencyDivisor: 15
+      Water:
+        min: 2
+        max: 8
+        potencyDivisor: 15
+      Vitamin:
+        min: 1
+        max: 4
+        potencyDivisor: 25
+
+- type: entity
+  parent: BasePlant
+  id: AvocadoPlants
+  name: Avocado Tree
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/avocado.rsi
+  - type: PlantData
+    name: seeds-avocado-name
+    packetPrototype: AvocadoSeeds
+    productPrototypes: [ FoodAvocado ]
+  - type: Plant
+    lifespan: 60
+    maturation: 12
+    production: 7
+    yield: 3
+    potency: 10
+    growthStages: 4
+  - type: PlantHarvest
+    harvestRepeat: Repeat
+  - type: PlantGrowth
+    waterConsumption: 0.8
+    nutrientConsumption: 0.7
+  - type: PlantAtmospheric
+    lowHeatTolerance: 288
+    highHeatTolerance: 308
+  - type: PlantChemicals
+    chemicals:
+      Nutriment:
+        min: 2
+        max: 10
+        potencyDivisor: 10
+      Vitamin:
+        min: 1
+        max: 5
+        potencyDivisor: 20
