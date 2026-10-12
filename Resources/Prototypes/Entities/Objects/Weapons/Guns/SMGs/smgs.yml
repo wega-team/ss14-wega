@@ -103,6 +103,11 @@
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+  # - type: Wieldable
+  # unwieldOnUse: false
+  # - type: GunWieldBonus
+  # minAngle: -19
+  # maxAngle: -12
     # Corvax-Wega-Edit-Nuka-Start
   - type: Gun
     fireRate: 7

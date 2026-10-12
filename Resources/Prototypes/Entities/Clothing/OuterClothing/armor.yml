@@ -231,8 +231,10 @@
         Slash: 0.7
         Piercing: 0.5
         Heat: 0.9
-  - type: StaminaResistance # Corvax-Wega-Change
+  # Corvax-Wega-Edit-Nuka-Start
+  - type: StaminaResistance
     damageCoefficient: 1
+  # Corvax-Wega-Edit-Nuka-End
 
 
 # Armor covering multiple body parts including limbs
