@@ -49,6 +49,11 @@
     default:
       type:
         !type:SkinColoring
+    layers:
+      long:
+        type:
+          !type:CategoryColoring
+          category: Hair
   sprites:
   - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
     state: tail
@@ -63,6 +68,11 @@
     default:
       type:
         !type:SkinColoring
+    layers:
+      up:
+        type:
+          !type:CategoryColoring
+          category: Hair
   sprites:
   - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
     state: tail
