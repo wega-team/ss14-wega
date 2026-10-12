@@ -240,9 +240,11 @@
   - type: EyeCursorOffset
     maxOffset: 2
     pvsIncrease: 0.2
+  # Corvax-Wega-Edit-Nuka-Start
   # - type: SpeedModifiedOnWield
   #   walkModifier: 0.9
   #   sprintModifier: 0.9
+  # Corvax-Wega-Edit-Nuka-End
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot

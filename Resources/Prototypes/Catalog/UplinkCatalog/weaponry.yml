@@ -283,7 +283,7 @@
   - UplinkWeaponry
   conditions:
   - !type:StoreWhitelistCondition
-    blacklist:
+    blacklist: # Corvax-Wega-Edit-Nuka
       tags:
       - NukeOpsUplink
 
