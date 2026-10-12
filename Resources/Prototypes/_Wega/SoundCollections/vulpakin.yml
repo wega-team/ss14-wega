@@ -10,3 +10,9 @@
   files:
     - /Audio/_Wega/Voice/Fulpakin/vulp_laugh2.ogg
     - /Audio/_Wega/Voice/Fulpakin/vulp_laugh1.ogg
+
+- type: soundCollection
+  id: VulpakinUruru
+  files:
+    - /Audio/_Wega/Voice/Fulpakin/vulp_ururu2.ogg
+    - /Audio/_Wega/Voice/Fulpakin/vulp_ururu1.ogg

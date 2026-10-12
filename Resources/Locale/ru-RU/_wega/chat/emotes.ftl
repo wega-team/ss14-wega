@@ -10,6 +10,8 @@ chat-emote-name-pew = Лазерить
 chat-emote-name-bang = Греметь
 chat-emote-name-rev = Газовать
 
+chat-emote-name-ururu = Урчать
+
 # Message
 chat-emote-msg-moan = стонет
 chat-emote-msg-LPCmoan = издает робо-стон
@@ -21,3 +23,5 @@ chat-emote-msg-harpy-rings = звенит
 chat-emote-msg-harpy-pews = лазерит
 chat-emote-msg-harpy-bangs = гремит
 chat-emote-msg-harpy-revs = газует
+
+chat-emote-msg-ururu = урчит
