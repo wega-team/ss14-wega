@@ -39,6 +39,9 @@ public sealed partial class VampireRejuvenateActionEvent : InstantActionEvent, I
     public bool Advanced = false;
 
     [DataField]
+    public bool NoHeal = false;
+
+    [DataField]
     public int Repeats = 5;
 
     [DataField]
@@ -232,7 +235,10 @@ public sealed partial class VampireBloodSwellActionEvent : InstantActionEvent, I
     public ProtoId<DamageTypePrototype> BonusDamageType = "Blunt";
 
     [DataField]
-    public float BonusDamageAmount = 14f;
+    public float AttackRate = 2;
+
+    [DataField]
+    public float BonusDamageAmount = 20f;
 
     [DataField] public FixedPoint2 BloodCost { get; private set; }
 }

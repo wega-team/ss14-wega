@@ -297,7 +297,7 @@ public sealed partial class BloodCultSystem
     private void OnHallucinations(EntityUid cultist, BloodCultistComponent component, BloodCultHallucinationsActionEvent args)
     {
         if (!HasComp<BloodCultistComponent>(args.Target))
-            _hallucinations.StartHallucinations(args.Target, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
+            _hallucinations.StartHallucinations(args.Target, "Hallucinations", TimeSpan.FromSeconds(30f), true, "Bloodcult");
 
         args.Handled = true;
         EmpoweringCheck(args.Action, component);

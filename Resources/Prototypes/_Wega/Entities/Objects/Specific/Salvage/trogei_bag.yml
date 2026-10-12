@@ -36,3 +36,34 @@
         - CursedMask
   - type: Dumpable
   - type: MagnetPickup
+
+- type: entity
+  name: indastril ore bag
+  id: OreBagIndastril
+  parent: OreBag
+  description: A robust bag of holding for salvage billionaires and rich miners alike to carry large amounts of ore. Magnetises any nearby ores when attached to a belt.
+  components:
+  - type: MagnetPickup
+    range: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Salvage/indastril_orebag.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Specific/Salvage/indastril_orebag.rsi
+  - type: Storage
+    grid:
+    - 0,0,13,5
+
+- type: entity
+  parent: OreBagIndastril
+  id: OreBagIndastrilBorg
+  name: integrated ore bag of holding
+  description: A very large ore bag built into the frame of a rich mining cyborg. Magnetises any nearby ores when held.
+  components:
+    - type: MagnetPickup
+      slotFlags: null
+      range: 5 # Corvax-Wega-Change
+      requireActiveHand: true
+    - type: Storage
+      grid:
+      - 0,0,13,5
