@@ -96,8 +96,8 @@
 - type: entity
   id: CrateNori
   parent: CratePlastic
-  name: доставка нори
-  description: Герметично упакованные сушёные листы для ваших шедевров космической кулинарии.
+  name: emergency nori delivery
+  description: emergency Nori delivery
   components:
   - type: StorageFill
     contents:
