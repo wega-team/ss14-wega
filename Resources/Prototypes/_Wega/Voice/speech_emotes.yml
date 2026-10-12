@@ -75,3 +75,23 @@
     - revved
     - газует
     - газовать
+
+- type: emote
+  id: Ururu
+  name: chat-emote-name-ururu
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-ururu"]
+  chatTriggers:
+    - урчит
+    - урчит.
+    - урчит!
+    - урчать
+    - ururu
+    - urururu

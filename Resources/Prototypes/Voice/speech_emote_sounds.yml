@@ -589,6 +589,8 @@
       collection: MaleDeathGasp
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    Ururu: # Corvax-Wega
+      collection: VulpakinUruru # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -634,6 +636,8 @@
       collection: FemaleDeathGasp
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    Ururu: # Corvax-Wega
+      collection: VulpakinUruru # Corvax-Wega
 
 # body emotes
 - type: emoteSounds

@@ -1,0 +1,129 @@
+# Cyber
+
+- type: marking
+  id: VulpCyberArmLeft
+  bodyPart: LArm
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: l_arm_cyber
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: l_arm_cyber_decor
+
+- type: marking
+  id: VulpCyberArmRight
+  bodyPart: RArm
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: r_arm_cyber
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: r_arm_cyber_decor
+
+- type: marking
+  id: VulpCyberHandLeft
+  bodyPart: LHand
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: l_hand_cyber
+
+- type: marking
+  id: VulpCyberHandRight
+  bodyPart: RHand
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: r_hand_cyber
+
+- type: marking
+  id: VulpCyberLegLeft
+  bodyPart: LLeg
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: l_leg_cyber
+
+- type: marking
+  id: VulpCyberLegRight
+  bodyPart: RLeg
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: r_leg_cyber
+
+- type: marking
+  id: VulpCyberFootLeft
+  bodyPart: LFoot
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: l_foot_cyber
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: l_foot_cyber_claws
+
+- type: marking
+  id: VulpCyberFootRight
+  bodyPart: RFoot
+  markingType: NonGenetics
+  groupWhitelist: [ Vulpkanin ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: r_foot_cyber
+    - sprite: _Wega/Mobs/Customization/vulpkanin_cybernetics.rsi
+      state: r_foot_cyber_claws
