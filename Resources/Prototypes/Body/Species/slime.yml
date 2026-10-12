@@ -166,7 +166,7 @@
       - !type:HealthChange
         damage:
           types:
-            Heat: 0.05
+            Heat: 0.5 # Corvax-Wega-Edit
       - !type:PopupMessage
         type: Local
         visualType: Large
