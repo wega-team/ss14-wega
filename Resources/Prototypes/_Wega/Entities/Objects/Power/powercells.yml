@@ -12,7 +12,7 @@
     startingCharge: 720
     pricePerJoule: 0.15
   - type: BatterySelfRecharger
-    autoRechargeRate: 12
+    autoRechargeRate: 720
     autoRechargePauseTime: 5
   - type: PowerCell
   - type: Explosive
@@ -47,5 +47,5 @@
     graph: PowerCellSuperPotatoCraft
     node: superpotatobattery
   - type: BatterySelfRecharger
-    autoRechargeRate: 12
+    autoRechargeRate: 140
     autoRechargePauseTime: 10
