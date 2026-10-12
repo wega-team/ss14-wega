@@ -59,7 +59,7 @@
   groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
 
 - type: marking
   id: DemomTail1Animated
@@ -67,9 +67,9 @@
   groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: demon_tail_waggin
+    state: demon_tail_wagging
 
 - type: marking
   id: DemomTailLongAnimated
@@ -77,9 +77,9 @@
   groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: long_waggin
+    state: long_wagging
 
 - type: marking
   id: DemomTailUpAnimated
@@ -87,6 +87,6 @@
   groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: up_waggin
+    state: up_wagging

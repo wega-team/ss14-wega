@@ -12,9 +12,9 @@
           !type:CategoryColoring
             category: Hair
   sprites:
-  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+  - sprite: _Wega/Mobs/Customization/ariral_tails42x32.rsi
     state: tail
-  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+  - sprite: _Wega/Mobs/Customization/ariral_tails42x32.rsi
     state: up
 
 - type: marking
@@ -26,8 +26,48 @@
       type:
         !type:SkinColoring
   sprites:
-  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
+  - sprite: _Wega/Mobs/Customization/ariral_tails42x32.rsi
     state: tail
+
+- type: marking
+  id: AriralAltTail
+  bodyPart: Tail
+  groupWhitelist: [Ariral]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: tail
+
+- type: marking
+  id: AriralAltTailLong
+  bodyPart: Tail
+  groupWhitelist: [Ariral]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: tail
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: long
+
+- type: marking
+  id: AriralAltTailUp
+  bodyPart: Tail
+  groupWhitelist: [Ariral]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: tail
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: up
 
 # Animated
 - type: marking
@@ -36,10 +76,10 @@
   groupWhitelist: []
   markingType: NonGenetics
   sprites:
-  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
-    state: tail_waggin
-  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
-    state: up_waggin
+  - sprite: _Wega/Mobs/Customization/ariral_tails42x32.rsi
+    state: tail_wagging
+  - sprite: _Wega/Mobs/Customization/ariral_tails42x32.rsi
+    state: up_wagging
 
 - type: marking
   id: AriralBaldTailAnimated
@@ -47,5 +87,36 @@
   groupWhitelist: []
   markingType: NonGenetics
   sprites:
-  - sprite: _Wega/Mobs/Customization/ariral_tails.rsi
-    state: tail_waggin
+  - sprite: _Wega/Mobs/Customization/ariral_tails42x32.rsi
+    state: tail_wagging
+
+- type: marking
+  id: AriralAltTailAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  markingType: NonGenetics
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: tail_wagging
+
+- type: marking
+  id: AriralAltTailLongAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  markingType: NonGenetics
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: tail_wagging
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: long_wagging
+
+- type: marking
+  id: AriralAltTailUpAnimated
+  bodyPart: Tail
+  groupWhitelist: []
+  markingType: NonGenetics
+  sprites:
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: tail_wagging
+  - sprite: _Wega/Mobs/Customization/ariral_tails32x32.rsi
+    state: up_wagging
