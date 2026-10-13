@@ -1,0 +1,20 @@
+- type: entity
+  name: nori sheet
+  parent: FoodBakedBase
+  id: Nori
+  description: "A dried sheet of seaweed."
+  components:
+  - type: Item
+    size: Tiny
+  - type: Edible
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/nori.rsi
+    state: nori
+  - type: Tag
+    tags:
+    - Vegetable
+  - type: FlavorProfile
+    flavors:
+      - salty
+
+

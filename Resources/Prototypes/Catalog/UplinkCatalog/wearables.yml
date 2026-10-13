@@ -54,9 +54,11 @@
   productEntity: ClothingOuterVestWeb
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 3
+  # Corvax-Wega-Nuka-Edit-Start
+    Telecrystal: 2
   cost:
-    Telecrystal: 5
+    Telecrystal: 3
+  # Corvax-Wega-Nuka-Edit-End
   categories:
   - UplinkWearables
   # Corvax-Wega-Syndi-start

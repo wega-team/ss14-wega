@@ -10,6 +10,7 @@ chat-emote-name-pew = Лазерить
 chat-emote-name-bang = Греметь
 chat-emote-name-rev = Газовать
 
+chat-emote-name-ururu = Урчать
 chat-emote-name-bubble = Бурлить
 
 # Message
@@ -24,4 +25,5 @@ chat-emote-msg-harpy-pews = лазерит
 chat-emote-msg-harpy-bangs = гремит
 chat-emote-msg-harpy-revs = газует
 
+chat-emote-msg-ururu = урчит
 chat-emote-msg-bubble = бурлит

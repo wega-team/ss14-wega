@@ -9,7 +9,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-rings"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-rings"]
   chatTriggers:
     - ring
     - rings
@@ -30,7 +30,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-pews"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-pews"]
   chatTriggers:
     - pew
     - pews
@@ -48,7 +48,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-bangs"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-bangs"]
   chatTriggers:
     - bang
     - bangs
@@ -67,7 +67,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-revs"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-revs"]
   chatTriggers:
     - rev
     - revs
@@ -75,6 +75,26 @@
     - revved
     - газует
     - газовать
+
+- type: emote
+  id: Ururu
+  name: chat-emote-name-ururu
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-ururu"]
+  chatTriggers:
+    - урчит
+    - урчит.
+    - урчит!
+    - урчать
+    - ururu
+    - urururu
 
 - type: emote
   id: SlimeBubble
@@ -88,7 +108,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-bubble"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-bubble"]
   chatTriggers:
     - бурлит
     - бурлит.

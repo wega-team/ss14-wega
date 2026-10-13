@@ -4,3 +4,6 @@ ent-WeaponSubMachineGunDonksoft = ПП Donksoft
 ent-WeaponSubmachinegunBerkut = беркут
     .desc = Пистолет-пулемёт армейского класса. Совокупность компактности и огневой мощи.
     .suffix = Пистолет-пулемёт
+ent-WeaponSubMachineGunExtC20r = C-20r
+    .desc = Оружие, часто используемое печально известными ядерными оперативниками. Использует патроны калибра .35 авто.
+    .suffix = Расширенный

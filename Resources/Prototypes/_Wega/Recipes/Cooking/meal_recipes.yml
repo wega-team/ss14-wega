@@ -60,3 +60,106 @@
     Water: 15
     Egg: 6
     Hotsauce: 5
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollSalmon
+  name: microwave-meal-recipe-sushirollsalmon-name
+  result: SushiRollSalmon
+  time: 5
+  solids:
+    FoodMeatFish: 1
+    Nori: 1
+  reagents:
+    Water: 5
+    Rice: 2
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollAvocado
+  name: microwave-meal-recipe-sushirollavocado-name
+  result: SushiRollAvocado
+  time: 5
+  solids:
+    FoodAvocado: 1
+    Nori: 1
+  reagents:
+    Water: 5
+    Rice: 2
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollEgg
+  name: microwave-meal-recipe-sushirollegg-name
+  result: SushiRollEgg
+  time: 5
+  solids:
+    Nori: 1
+  reagents:
+    Water: 5
+    Egg: 6
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollCalifornia
+  name: microwave-meal-recipe-sushirollcalifornia-name
+  result: SushiRollCalifornia
+  time: 5
+  solids:
+    Nori: 1
+    FoodCheeseSlice: 1
+    FoodCucumber: 1
+  reagents:
+    Water: 5
+    Cream: 5
+    Rice: 2
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollUraraki
+  name: microwave-meal-recipe-sushirolluraraki-name
+  result: SushiRollUraraki
+  time: 5
+  solids:
+    FoodMeatFish: 1
+    Nori: 1
+  reagents:
+    Water: 5
+    Rice: 2
+    Cream: 5
+
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollWasabi
+  name: microwave-meal-recipe-sushirollwasabi-name
+  result: SushiRollWasabi
+  time: 5
+  solids:
+    FoodAvocado: 1
+    Nori: 1
+    FoodCucumber: 1
+  reagents:
+    Water: 5
+    Hotsauce: 5
+    Rice: 2
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollGunkan
+  name: microwave-meal-recipe-sushirollgunkan-name
+  result: SushiRollGunkan
+  time: 5
+  solids:
+    FoodMeatFish: 1
+    FoodCheeseSlice: 1
+    Nori: 1
+  reagents:
+    Water: 15
+    Rice: 2
+    Cream: 5
+
+- type: microwaveMealRecipe
+  id: RecipeSushiRollCrab
+  name: microwave-meal-recipe-sushirollcrab-name
+  result: SushiRollCrab
+  time: 5
+  solids:
+    FoodMeatCrab: 1
+    Nori: 1
+  reagents:
+    Water: 15
+    Rice: 2

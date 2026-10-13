@@ -1,0 +1,59 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by ds: irbis4308",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+      {
+          "name": "l_arm_cyber",
+          "directions": 4
+      },
+      {
+          "name": "l_foot_cyber",
+          "directions": 4
+      },
+      {
+          "name": "l_hand_cyber",
+          "directions": 4
+      },
+      {
+          "name": "l_leg_cyber",
+          "directions": 4
+      },
+      {
+          "name": "r_arm_cyber",
+          "directions": 4
+      },
+      {
+          "name": "r_foot_cyber",
+          "directions": 4
+      },
+      {
+          "name": "r_hand_cyber",
+          "directions": 4
+      },
+      {
+          "name": "r_leg_cyber",
+          "directions": 4
+      },
+      {
+          "name": "l_arm_cyber_decor",
+          "directions": 4
+      },
+      {
+          "name": "r_arm_cyber_decor",
+          "directions": 4
+      },
+      {
+          "name": "l_foot_cyber_claws",
+          "directions": 4
+      },
+      {
+          "name": "r_foot_cyber_claws",
+          "directions": 4
+      }
+    ]
+}

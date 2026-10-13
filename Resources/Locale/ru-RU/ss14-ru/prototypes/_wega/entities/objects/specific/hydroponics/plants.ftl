@@ -34,3 +34,7 @@ ent-TangerinePlants = мандарин
     .desc = { ent-BasePlant.desc }
 ent-FestiveTangerinePlants = подарин
     .desc = { ent-BasePlant.desc }
+ent-AvocadoPlants = дерево авокадо
+    .desc = { ent-BasePlant.desc }
+ent-CucumberPlants = огуречная лоза
+    .desc = { ent-BasePlant.desc }
