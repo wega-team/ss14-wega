@@ -34,7 +34,7 @@
     sprite: _Wega/Objects/Consumable/Food/Baked/noribox.rsi
     state: box
   product: CrateNori
-  cost: 300
+  cost: 450
   category: cargoproduct-category-name-food
   group: market
 
