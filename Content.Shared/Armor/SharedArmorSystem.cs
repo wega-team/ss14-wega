@@ -62,10 +62,10 @@ public abstract partial class SharedArmorSystem : EntitySystem
 
     private void OnArmorVerbExamine(EntityUid uid, ArmorComponent component, GetVerbsEvent<ExamineVerb> args)
     {
-	// Corvax-Wega-start
+		// Corvax-Wega-start
 		if (component?.Modifiers == null)
 			return;
-	// Corvax-Wega-End
+		// Corvax-Wega-End
 
         if (!args.CanInteract || !args.CanAccess || !component.ShowArmorOnExamine)
             return;
@@ -84,10 +84,10 @@ public abstract partial class SharedArmorSystem : EntitySystem
     {
         var msg = new FormattedMessage();
 
-	// Corvax-Wega-Start
+	    // Corvax-Wega-Start
 		if (armorModifiers == null)
 			return msg;
-	// Corvax-Wega-End
+	    // Corvax-Wega-End
 
         msg.AddMarkupOrThrow(Loc.GetString("armor-examine"));
 

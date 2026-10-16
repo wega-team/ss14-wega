@@ -22,14 +22,7 @@ public sealed partial class SlimeArmorSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<SlimeArmorComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<SlimeArmorComponent, SlimeArmorDoAfterEvent>(OnDoAfter);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAfterInteract(EntityUid uid, SlimeArmorComponent component, AfterInteractEvent args)
     {
         if (args.Target == null || args.Target == uid || !args.CanReach)
@@ -67,6 +60,7 @@ public sealed partial class SlimeArmorSystem : EntitySystem
         _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(EntityUid uid, SlimeArmorComponent component, SlimeArmorDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null)

@@ -16,14 +16,7 @@ public sealed partial class SlimeSpeedSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedAudioSystem _audio = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<SlimeSpeedComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<SlimeSpeedComponent, SlimeSpeedDoAfterEvent>(OnDoAfter);
-    }
-
+    [SubscribeLocalEvent]
     private void OnAfterInteract(EntityUid uid, SlimeSpeedComponent component, AfterInteractEvent args)
     {
         if (args.Target == null || args.Target == uid || !args.CanReach)
@@ -47,6 +40,7 @@ public sealed partial class SlimeSpeedSystem : EntitySystem
         _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(EntityUid uid, SlimeSpeedComponent component, SlimeSpeedDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null)

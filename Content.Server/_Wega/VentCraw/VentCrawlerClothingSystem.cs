@@ -11,7 +11,6 @@ namespace Content.Server.VentCraw;
 
 public sealed partial class VentCrawlerClothingSystem : EntitySystem
 {
-    [Dependency] private IEntityManager _entManager = default!;
     [Dependency] private PopupSystem _popupSystem = default!;
     [Dependency] private InventorySystem _inventorySystem = default!;
 
@@ -40,7 +39,7 @@ public sealed partial class VentCrawlerClothingSystem : EntitySystem
 		if (IsAnySlotOccupied(args.EquipTarget))
 		{
 			var message = Loc.GetString("interaction-slot-occupied-message");
-			if (_entManager.TryGetComponent<ActorComponent>(args.EquipTarget, out var actor))
+			if (TryComp<ActorComponent>(args.EquipTarget, out var actor))
 				_popupSystem.PopupEntity(message, args.EquipTarget, actor.PlayerSession, PopupType.Small);
 			
 			return;
@@ -72,7 +71,7 @@ public sealed partial class VentCrawlerClothingSystem : EntitySystem
 				RemComp<VentCrawlerComponent>(wearer.Value);
 				
 				var message = Loc.GetString("interaction-slot-occupied-message");
-				if (_entManager.TryGetComponent<ActorComponent>(wearer.Value, out var actor))
+				if (TryComp<ActorComponent>(wearer.Value, out var actor))
 					_popupSystem.PopupEntity(message, wearer.Value, actor.PlayerSession, PopupType.Small);
 			}
 			else if (!hasSlot && !hasComp)
@@ -99,9 +98,7 @@ public sealed partial class VentCrawlerClothingSystem : EntitySystem
 			foreach (var slot in requiredClothingSlots)
 			{
 				if (_inventorySystem.TryGetSlotEntity(target, slot, out _, inventory))
-				{
 					return true;
-				}
 			}
 		}
 		return false;
