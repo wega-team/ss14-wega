@@ -35,24 +35,25 @@ namespace Content.IntegrationTests.Tests
     {
         // ReSharper disable UseCollectionExpression
         private const string ExcludeCorvax = "/Maps/Corvax";
+        private const string ExcludeWega = "/Maps/_Wega"; // Corvax-Wega-Tests
 
-        [Test, TestCaseSource(nameof(GridsSource), new object[] { false, new string[] { ExcludeCorvax } })]
+        [Test, TestCaseSource(nameof(GridsSource), new object[] { false, new string[] { ExcludeCorvax, ExcludeWega } })] // Corvax-Wega-Tests
         [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
         public async Task GridsLoadableTest(string mapFile) => await RunGridsLoadableTest(mapFile);
 
-        [Test, TestCaseSource(nameof(ShuttleMapFilesSource), new object[] { false, new string[] { ExcludeCorvax } })]
+        [Test, TestCaseSource(nameof(ShuttleMapFilesSource), new object[] { false, new string[] { ExcludeCorvax, ExcludeWega } })] // Corvax-Wega-Tests
         [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
         public async Task ShuttlesLoadableTest(ResPath path) => await RunShuttlesLoadableTest(path);
 
-        [Test, TestCaseSource(nameof(AllMapFilesSource), new object[] { false, new string[] { ExcludeCorvax } })]
+        [Test, TestCaseSource(nameof(AllMapFilesSource), new object[] { false, new string[] { ExcludeCorvax, ExcludeWega } })] // Corvax-Wega-Tests
         public async Task NoSavedPostMapInitTest(ResPath map) => await RunNoSavedPostMapInitTest(map);
 
         [Test, TestCaseSource(nameof(GameMapsSource))]
         [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
         public async Task GameMapsLoadableTest(string mapProto)
-            => await RunGameMapsLoadableTest(mapProto, customOnly: false, new string[] { ExcludeCorvax });
+            => await RunGameMapsLoadableTest(mapProto, customOnly: false, new string[] { ExcludeCorvax, ExcludeWega }); // Corvax-Wega-Tests
 
-        [Test, TestCaseSource(nameof(AllMapFilesSource), new object[] { false, new string[] { ExcludeCorvax } })]
+        [Test, TestCaseSource(nameof(AllMapFilesSource), new object[] { false, new string[] { ExcludeCorvax, ExcludeWega } })] // Corvax-Wega-Tests
         [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
         public async Task NonGameMapsLoadableTest(ResPath mapPath) => await RunNonGameMapsLoadableTest(mapPath);
         // ReSharper restore UseCollectionExpression
@@ -185,6 +186,7 @@ namespace Content.IntegrationTests.Tests
         private static readonly ResPath[] ShuttleMapFiles =
             GameDataScrounger.FilesInDirectoryInVfs("/Maps/Shuttles", "*.yml")
                 .Concat(GameDataScrounger.FilesInDirectoryInVfs("/Maps/Corvax/Shuttles", "*.yml"))
+                .Concat(GameDataScrounger.FilesInDirectoryInVfs("/Maps/_Wega/Shuttles", "*.yml")) // Corvax-Wega-Tests
                 .ToArray();
         // Corvax-Tests-end
 
