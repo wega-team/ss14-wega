@@ -8,7 +8,7 @@
     - id: CockroachMigration
     - id: MouseMigration
     - id: RandomCritterHorde
-    - id: KoiMigration #Corvax-Wega-Event
+    - id: KoiMigration # Corvax-Wega-Event
 
 - type: entityTable
   id: SpicyPestEventsTable
