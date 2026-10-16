@@ -23,8 +23,8 @@
     - id: SpiderClownSpawnHorde
     - id: SpiderSpawnHorde
     - id: VentClog
-    - id: DiseaseOutbreak 
-    - id: KoiMigration # Corvax-Wega-Disease
+    - id: DiseaseOutbreak # Corvax-Wega-Disease
+    - id: KoiMigration #Corvax-Wega-Event
     # Corvax-Wega-Disease
     # - id: RadiationOutburst # Corvax-Wega-Edit
 
