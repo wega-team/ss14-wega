@@ -847,3 +847,10 @@
   suffix: Vent Crawler
   components:
   - type: VentCrawlerClothing
+  - type: EmptySlotsRequirement
+    slots: [ outerclothing, back, belt ]
+    blacklist:
+      components:
+      - Clothing
+  - type: SlotBlock
+    slots: [ outerclothing, back, belt ]

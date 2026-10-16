@@ -193,6 +193,7 @@ borg-slot-mmi-and-head-brains-empty = Мозги и шляпы
 borg-slot-nukedisk-empty = Диск ядерной аутентификации
 borg-slot-restock-empty = Набор пополнения
 borg-slot-cash-only-empty = Кредиты
+borg-slot-cube-empty = Кубы животных
 
 ent-ActionBlinkBorg = Блюспейс прыжок
     .desc = Бесконечность не предел!
