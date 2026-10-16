@@ -99,9 +99,7 @@ public sealed partial class SlimeArmorSystem : EntitySystem
         {
             component.Uses--;
             if (component.Uses <= 0)
-            {
                 QueueDel(uid); 
-            }
         }
     }
 }

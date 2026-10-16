@@ -69,9 +69,7 @@ public sealed partial class SlimeSpeedSystem : EntitySystem
         {
             component.Uses--;
             if (component.Uses <= 0)
-            {
                 QueueDel(uid); 
-            }
         }
     }
 }
