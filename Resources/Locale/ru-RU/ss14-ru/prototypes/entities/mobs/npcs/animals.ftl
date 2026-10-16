@@ -233,11 +233,3 @@ ent-MobMouseAdmeme = { ent-MobMouse }
 ent-MobCorgiSmart = умный корги
     .desc = Необычайно умный пёс.
     .suffix = { ent-MobCorgiBase.suffix }
-# corvax-wega-start
-ent-MobKoi1 = космический кои
-    .desc = Безобидный кои, свободно парящий в космосе.
-ent-MobKoi2 = космический кои
-    .desc = Безобидный кои, свободно парящий в космосе.
-ent-MobKoi3 = космический кои
-    .desc = Безобидный кои, свободно парящий в космосе.
-# corvax-wega-end
