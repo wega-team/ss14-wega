@@ -125,6 +125,7 @@
   id: ClothingHeadHatHoodExplorerBDM
   categories: [ HideSpawnMenu ]
   components:
+  - type: Physics
   - type: Unremoveable
   - type: DeleteOnDrop
   - type: Dirtable
