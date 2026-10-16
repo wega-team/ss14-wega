@@ -9,8 +9,12 @@ on:
 jobs:
   add_label:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
     steps:
     - uses: actions-ecosystem/action-add-labels@v1
-      if: join(github.event.issue.labels) == ''
+      if: github.event.action == 'opened' && join(github.event.issue.labels) == '' && join(github.event.pull_request.labels) == ''
       with:
+        github_token: ${{ secrets.LABELER_PAT }}
         labels: "S: Untriaged"
