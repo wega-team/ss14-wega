@@ -16,7 +16,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Server.Clothing;
 
-public sealed class SlimeArmorSystem : EntitySystem
+public sealed partial class SlimeArmorSystem : EntitySystem
 {
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;

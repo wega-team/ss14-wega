@@ -10,7 +10,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Clothing;
 
-public sealed class SlimeSpeedSystem : EntitySystem
+public sealed partial class SlimeSpeedSystem : EntitySystem
 {
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
