@@ -1796,6 +1796,7 @@
   - type: ModularSuitModuleWearerEffect
     activeComponents:
     - type: VentCrawler
+      ignoreInv: true
   - type: ModularSuitModule
     tags: [ CompressionModuleConflict ]
     modulePart: Torso

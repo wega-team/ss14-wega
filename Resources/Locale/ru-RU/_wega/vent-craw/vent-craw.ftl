@@ -1,5 +1,6 @@
 vent-craw-verb-exit = Выйти из вентиляции
 vent-craw-verb-enter = Войти в вентиляцию
+vent-craw-verb-no-clouth = Снимите с себя рюкзак, вверхнию одежду или пояс
 
 vent-craw-direction-north = север
 vent-craw-direction-south = юг
