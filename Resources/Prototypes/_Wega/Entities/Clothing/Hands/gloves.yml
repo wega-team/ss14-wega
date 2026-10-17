@@ -222,7 +222,7 @@
         Piercing: 0.9
         Heat: 0.85
   - type: FireProtection
-    reduction: 0.95
+    reduction: 0.05
   - type: TemperatureProtection
     coefficient: 0.9
   - type: Sprite

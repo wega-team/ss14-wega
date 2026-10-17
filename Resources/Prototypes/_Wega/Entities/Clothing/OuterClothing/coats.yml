@@ -255,7 +255,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.8
   - type: FireProtection
-    reduction: 0.75
+    reduction: 0.25
   - type: TemperatureProtection
     coefficient: 0.7
   - type: Enchantable
