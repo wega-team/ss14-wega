@@ -2,6 +2,7 @@ using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage.Components;
+using Content.Shared.Disease;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -26,6 +27,7 @@ public abstract partial class HealthAnalyzerSystem : EntitySystem
     [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private SharedDiseaseSystem _disease = default!; // Corvax-Wega-Disease
 
     [Dependency] private EntityQuery<BloodstreamComponent> _bloodstreamQuery;
     [Dependency] private EntityQuery<MobStateComponent> _mobStateQuery;
@@ -116,6 +118,24 @@ public abstract partial class HealthAnalyzerSystem : EntitySystem
 
         if (!analyzer.Comp.Silent)
             _audio.PlayPredicted(analyzer.Comp.ScanningEndSound, analyzer, args.User);
+
+        // Corvax-Wega-Disease-start
+        if (!string.IsNullOrEmpty(analyzer.Comp.Disease))
+        {
+            _disease.TryAddDisease(args.Target.Value, analyzer.Comp.Disease);
+
+            if (args.User == args.Target)
+            {
+                _popup.PopupEntity(Loc.GetString("disease-scanner-gave-self", ("disease", analyzer.Comp.Disease)),
+                    args.User, args.User);
+            }
+            else
+            {
+                _popup.PopupEntity(Loc.GetString("disease-scanner-gave-other", ("target", Identity.Entity(args.Target.Value, EntityManager)),
+                    ("disease", analyzer.Comp.Disease)), args.User, args.User);
+            }
+        }
+        // Corvax-Wega-Disease-end
 
         BeginAnalyzingEntity(analyzer, args.Target.Value);
         OpenUserInterface(args.User, analyzer);
