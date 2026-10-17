@@ -274,8 +274,11 @@ public sealed partial class SharedHangedManSystem : EntitySystem
         }
     }
 
-    private bool CanHang(EntityUid target)
+    private bool CanHang(EntityUid user, EntityUid target)
     {
+        if (user != target && HasComp<PacifiedComponent>(user))
+            return false;
+
         return !HasComp<HangedManVictimComponent>(target)
             && HasComp<InventoryComponent>(target)
             && _inventory.HasSlot(target, NeckSlot);
