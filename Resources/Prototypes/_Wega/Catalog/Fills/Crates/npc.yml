@@ -1,5 +1,5 @@
 - type: entity
-  id: CrateNPCkoi
+  id: CrateNPCKoi
   name: koi crate
   description: A crate containing a koi.
   parent: CrateLivestock
