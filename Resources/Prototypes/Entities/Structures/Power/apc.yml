@@ -138,6 +138,18 @@
         density: 5
         mask:
         - FullTileMask
+  # Corvax-Wega-VeilCult-Start
+  - type: ContainerContainer
+    containers:
+      integration_cog: !type:ContainerSlot
+  - type: ItemSlots
+    slots:
+      integration_cog:
+        ejectOnInteract: false
+        whitelist:
+          tags:
+          - InteractionCog
+  # Corvax-Wega-VeilCult-End
 
 # APC under construction
 - type: entity
