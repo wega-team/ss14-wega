@@ -25,7 +25,6 @@
     - id: VentClog
     - id: DiseaseOutbreak # Corvax-Wega-Disease
     - id: KoiMigration # Corvax-Wega-Event
-    # Corvax-Wega-Disease
     # - id: RadiationOutburst # Corvax-Wega-Edit
 
 - type: entityTable
