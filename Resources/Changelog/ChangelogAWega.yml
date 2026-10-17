@@ -1571,3 +1571,10 @@ Entries:
   id: 214
   time: '2026-10-17T12:51:01Z'
   url: https://github.com/wega-team/ss14-wega/pull/563
+- author: GaMEWAR360
+  changes:
+  - type: Tweak
+    message: Логигка работы комбенизона акробата, теперь запрет идёт исключительно на проход в вентиляцию
+  id: 215
+  time: '2026-10-17T15:48:49Z'
+  url: https://github.com/wega-team/ss14-wega/pull/566
