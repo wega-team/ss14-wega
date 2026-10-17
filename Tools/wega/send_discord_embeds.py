@@ -19,6 +19,9 @@ TYPES_TO_EMOJI = {
     "Remove": "❌",
 }
 
+# Discord embed limits.
+MAX_IMAGE_URL_LENGTH = 2048
+MAX_FIELD_VALUE_LENGTH = 1024
 
 def group_by_pr(entries: list[dict]) -> dict[str, list[dict]]:
     """Group entries by PR URL while preserving insertion order."""
@@ -35,10 +38,13 @@ def build_embed(pr_url: str, entries: list[dict]) -> dict:
     """
     Build a single embed for one PR.
 
-    Title shows the author, title is clickable and points at the PR,
-    description lists every change with an emoji prefix.
+    The first image (if any) goes into the embed's `image` field.
+    Videos cannot be played inside a rich embed, so they are added as
+    clickable, numbered links ("Демонстрация N") in a `fields` entry.
+    Author always comes from the PR's GitHub user.
     """
     author = entries[0].get("author", "unknown")
+
     lines: list[str] = []
     for entry in entries:
         for change in entry.get("changes", []):
@@ -50,12 +56,44 @@ def build_embed(pr_url: str, entries: list[dict]) -> dict:
     if len(description) > 4096:
         description = description[:4093] + "..."
 
-    return {
-        "title": f"PR by {author}",
+    embed: dict = {
+        "title": f"Изменение от {author}",
         "url": pr_url,
         "description": description,
         "color": EMBED_COLOR,
     }
+
+    # Collect media from all entries for this PR (usually just one).
+    images: list[str] = []
+    videos: list[str] = []
+    for entry in entries:
+        media = entry.get("media") or {}
+        images.extend(media.get("images", []))
+        videos.extend(media.get("videos", []))
+
+    # Only the first valid image is shown inline; the rest are dropped.
+    for img in images:
+        if img and len(img) <= MAX_IMAGE_URL_LENGTH:
+            embed["image"] = {"url": img}
+            break
+
+    # Videos (GitHub uploads + YouTube): numbered clickable links
+    # in a single "Медиа" field.
+    video_links = []
+    for i, vid in enumerate(videos, start=1):
+        if len(vid) > MAX_IMAGE_URL_LENGTH:
+            continue
+        video_links.append(f"[Демонстрация {i}]({vid})")
+
+    if video_links:
+        value = "\n".join(video_links)
+        if len(value) > MAX_FIELD_VALUE_LENGTH:
+            value = value[: MAX_FIELD_VALUE_LENGTH - 3] + "..."
+        embed.setdefault("fields", []).append(
+            {"name": "Медиа", "value": value, "inline": False}
+        )
+
+    return embed
 
 
 def send_embed(embed: dict) -> None:

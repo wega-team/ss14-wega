@@ -31,6 +31,25 @@ CL_LINE_RE = re.compile(
 # Match `:cl:` line only; author comes from the PR, text after `:cl:` is ignored.
 CL_MARKER_RE = re.compile(r"^[ \t]*:cl:[^\n]*$", re.MULTILINE | re.IGNORECASE)
 
+# GitHub user-attachments host. Images are usually wrapped in markdown
+# (`![alt](url)`) or HTML (`<img src="...">`); videos are bare URLs.
+USER_ATTACHMENT_RE = re.compile(
+    r"https?://github\.com/user-attachments/assets/[A-Za-z0-9-]+"
+)
+MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\((https?://[^)\s]+)\)")
+HTML_IMAGE_RE = re.compile(r"<img[^>]+src=[\"'](https?://[^\"']+)[\"']", re.I)
+VIDEO_EXTENSIONS = (".mp4", ".webm", ".mov", ".m4v")
+
+YOUTUBE_RE = re.compile(
+    r"https?://(?:www\.|m\.)?"
+    r"(?:youtube\.com/(?:watch\?v=|shorts/|embed/|live/|v/)[A-Za-z0-9_-]+"
+    r"|youtu\.be/[A-Za-z0-9_-]+)"
+    r"(?:[?&][^\s)\"'<>]*)?",
+    re.IGNORECASE,
+)
+
+MAX_URL_LENGTH = 2048
+
 
 def make_session() -> requests.Session:
     """Build a requests session pre-configured for the GitHub REST API."""
@@ -50,6 +69,60 @@ def strip_html_comments(text: str) -> str:
     "user left the template as is".
     """
     return re.sub(r"<!--.*?-->", "", text, flags=re.DOTALL)
+
+
+def extract_media(body: str | None) -> dict:
+    """
+    Extract images and videos from a PR body.
+
+    Returns {"images": [...], "videos": [...]} with absolute URLs.
+
+    - Markdown (`![](url)`) and HTML (`<img src=...>`) images -> images.
+    - GitHub user-attachment URLs (bare, no extension) -> videos.
+    - YouTube links (youtube.com, youtu.be) -> videos.
+
+    Anything longer than Discord's 2048-char URL limit is dropped.
+    Duplicates are removed; an URL is only counted once.
+    """
+    if not body:
+        return {"images": [], "videos": []}
+
+    body = strip_html_comments(body)
+
+    images: list[str] = []
+    videos: list[str] = []
+    seen: set[str] = set()
+
+    for url in MD_IMAGE_RE.findall(body) + HTML_IMAGE_RE.findall(body):
+        url = url.strip()
+        if url and url not in seen and len(url) <= MAX_URL_LENGTH:
+            images.append(url)
+            seen.add(url)
+
+    for url in USER_ATTACHMENT_RE.findall(body):
+        if url in seen or len(url) > MAX_URL_LENGTH:
+            continue
+        lower = url.lower()
+        if lower.endswith(VIDEO_EXTENSIONS):
+            videos.append(url)
+            seen.add(url)
+        elif not any(
+            lower.endswith(ext)
+            for ext in (".png", ".jpg", ".jpeg", ".gif", ".webp")
+        ):
+            # No image extension and not captured as markdown image:
+            # GitHub's video attachments are bare URLs -> treat as video.
+            videos.append(url)
+            seen.add(url)
+
+    for url in YOUTUBE_RE.findall(body):
+        url = url.rstrip(".,;:!?")
+        if url in seen or len(url) > MAX_URL_LENGTH:
+            continue
+        videos.append(url)
+        seen.add(url)
+
+    return {"images": images, "videos": videos}
 
 
 def get_last_successful_run(sess: requests.Session) -> dict | None:
@@ -197,6 +270,7 @@ def main() -> None:
     existing_urls = {e.get("url") for e in entries if e.get("url")}
     current_id = next_entry_id(entries)
     new_entries: list[dict] = []
+    media_by_url: dict[str, dict] = {}
 
     for pr_stub in prs:
         number = pr_stub["number"]
@@ -212,6 +286,7 @@ def main() -> None:
 
         current_id += 1
         entry = {
+            # Author is always the PR's GitHub user, never the `:cl:` block.
             "author": pr["user"]["login"],
             "changes": changes,
             "id": current_id,
@@ -220,6 +295,9 @@ def main() -> None:
         }
         entries.append(entry)
         new_entries.append(entry)
+        # Media is kept OUT of the YAML on purpose: the game's changelog
+        # format doesn't need it, only the Discord embed does.
+        media_by_url[pr_url] = extract_media(pr.get("body"))
         existing_urls.add(pr_url)
 
     if not new_entries:
@@ -242,9 +320,15 @@ def main() -> None:
 
     print(f"Added {len(new_entries)} new changelog entries.")
 
-    # Hand the new entries over to the Discord step.
+    # Attach media to each entry for the Discord step.
+    entries_for_discord = []
+    for e in new_entries:
+        item = dict(e)
+        item["media"] = media_by_url.get(e["url"], {"images": [], "videos": []})
+        entries_for_discord.append(item)
+
     NEW_ENTRIES_FILE.write_text(
-        json.dumps(new_entries, ensure_ascii=False, indent=2),
+        json.dumps(entries_for_discord, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 
