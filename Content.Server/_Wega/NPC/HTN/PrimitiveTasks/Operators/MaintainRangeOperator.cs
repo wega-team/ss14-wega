@@ -11,9 +11,9 @@ namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Combat;
 public sealed partial class MaintainRangeOperator : HTNOperator, IHtnConditionalShutdown
 {
     [Dependency] private IEntityManager _entMan = default!;
-    private NPCSteeringSystem _steering = default!;
-    private PathfindingSystem _pathfind = default!;
-    private SharedTransformSystem _transform = default!;
+    [Dependency] private NPCSteeringSystem _steering = default!;
+    [Dependency] private PathfindingSystem _pathfind = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     [DataField("targetKey", required: true)]
     public string TargetKey = default!;
@@ -34,14 +34,6 @@ public sealed partial class MaintainRangeOperator : HTNOperator, IHtnConditional
     public string TargetCoordinatesKey = "TargetCoordinates";
 
     private const string MovementCancelToken = "MovementCancelToken";
-
-    public override void Initialize(IEntitySystemManager sysManager)
-    {
-        base.Initialize(sysManager);
-        _pathfind = sysManager.GetEntitySystem<PathfindingSystem>();
-        _steering = sysManager.GetEntitySystem<NPCSteeringSystem>();
-        _transform = sysManager.GetEntitySystem<SharedTransformSystem>();
-    }
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(
         NPCBlackboard blackboard,

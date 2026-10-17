@@ -47,7 +47,7 @@ public sealed partial class LavalandSystem : SharedLavalandSystem
     [Dependency] private MapLoaderSystem _loader = default!;
     [Dependency] private MapSystem _map = default!;
     [Dependency] private MetaDataSystem _meta = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedShuttleSystem _iff = default!;
     [Dependency] private SharedTransformSystem _transform = default!;

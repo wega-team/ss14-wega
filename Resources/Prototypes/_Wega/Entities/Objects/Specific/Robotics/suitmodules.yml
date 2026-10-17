@@ -1083,7 +1083,7 @@
     state: tray
   - type: ModularSuitItemModule
     handId: tray-hand
-    item: trayScanner
+    item: TRayScanner
   - type: ModularSuitModule
     modulePart: Gloves
     powerUsage: 0.15

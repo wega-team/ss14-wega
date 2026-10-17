@@ -1,6 +1,5 @@
 - type: microwaveMealRecipe
   id: Recipeporkramen
-  name: microwave-meal-recipe-pork-ramen-name
   result: PorkRamenNoodles
   time: 15
   solids:
@@ -14,7 +13,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeHanamiDango
-  name: microwave-meal-recipe-hanami-dango-name
   result: HanamiDango
   time: 10
   reagents:
@@ -25,7 +23,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeMitarashiDango
-  name: microwave-meal-recipe-mitarashi-dango-name
   result: MitarashiDango
   time: 10
   reagents:
@@ -36,7 +33,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeOnigiri
-  name: microwave-meal-recipe-onigiri-name
   result: Onigiri
   time: 20
   reagents:
@@ -47,7 +43,6 @@
 
 - type: microwaveMealRecipe
   id: Recipespicyramen
-  name: microwave-meal-recipe-spicy-ramen-name
   result: SpicyPorkRamenNoodles
   time: 20
   solids:
@@ -63,7 +58,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollSalmon
-  name: microwave-meal-recipe-sushirollsalmon-name
   result: SushiRollSalmon
   time: 5
   solids:
@@ -75,7 +69,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollAvocado
-  name: microwave-meal-recipe-sushirollavocado-name
   result: SushiRollAvocado
   time: 5
   solids:
@@ -87,7 +80,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollEgg
-  name: microwave-meal-recipe-sushirollegg-name
   result: SushiRollEgg
   time: 5
   solids:
@@ -98,7 +90,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollCalifornia
-  name: microwave-meal-recipe-sushirollcalifornia-name
   result: SushiRollCalifornia
   time: 5
   solids:
@@ -112,7 +103,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollUraraki
-  name: microwave-meal-recipe-sushirolluraraki-name
   result: SushiRollUraraki
   time: 5
   solids:
@@ -126,7 +116,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollWasabi
-  name: microwave-meal-recipe-sushirollwasabi-name
   result: SushiRollWasabi
   time: 5
   solids:
@@ -140,7 +129,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollGunkan
-  name: microwave-meal-recipe-sushirollgunkan-name
   result: SushiRollGunkan
   time: 5
   solids:
@@ -154,7 +142,6 @@
 
 - type: microwaveMealRecipe
   id: RecipeSushiRollCrab
-  name: microwave-meal-recipe-sushirollcrab-name
   result: SushiRollCrab
   time: 5
   solids:

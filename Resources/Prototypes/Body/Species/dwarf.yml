@@ -376,6 +376,11 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+      OverEyes:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: dwarfism
 
 - type: entity
   parent: [ OrganDwarfMetabolizer, OrganHumanStomach ]

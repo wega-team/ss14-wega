@@ -1,5 +1,12 @@
 - type: entity
   abstract: true
+  parent: BaseSpeciesMobNoCrawl
+  id: BaseSpeciesMob
+  components:
+  - type: Crawler
+
+- type: entity
+  abstract: true
   parent:
   - BaseMob
   - MobCombat
@@ -8,7 +15,7 @@
   - StripableInventoryBase
   - BaseSpeciesAppearance
   - TTS_speaker # Corvax-TTS
-  id: BaseSpeciesMob
+  id: BaseSpeciesMobNoCrawl
   save: false
   components:
   - type: DamageVisuals
@@ -110,7 +117,6 @@
   - type: StandingState
   - type: SpeechSynthesis # Corvax-Wega-Barks
   - type: OfferGiver # Corvax-Wega-Offer
-  - type: Crawler
   # - type: Dna # Corvax-Wega
   - type: MindContainer
   - type: MindExaminable
@@ -139,10 +145,10 @@
         type: HumanoidMarkingModifierBoundUserInterface
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
-  # Corvax-Wega-Surgery-start
+      # Corvax-Wega-Surgery-start
       enum.SurgeryUiKey.Key:
         type: SurgeryBoundUserInterface
-  # Corvax-Wega-Surgery-end
+      # Corvax-Wega-Surgery-end
   - type: Puller
   - type: Speech
     speechSounds: Alto
@@ -176,10 +182,10 @@
   - MobRespirator
   - MobAtmosStandard
   - MobFlammable
-  - BaseSpeciesMob
+  - BaseSpeciesMobNoCrawl
   - BaseMobDestructible
   - BaseHungerThirstSlowdown
-  id: BaseSpeciesMobOrganic
+  id: BaseSpeciesMobOrganicNoCrawl
   save: false
   components:
   - type: Satiation
@@ -247,3 +253,12 @@
   - type: StunVisuals
   - type: LegionReversible # Corvax-Wega-Lavaland
   - type: DiseaseCarrier # Corvax-Wega-Disease
+
+- type: entity
+  abstract: true
+  parent:
+  - BaseSpeciesMobOrganicNoCrawl
+  id: BaseSpeciesMobOrganic
+  save: false
+  components:
+  - type: Crawler

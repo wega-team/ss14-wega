@@ -46,8 +46,14 @@
             inverted: true
         # Corvax-Wega-Vampire-end
   plantMetabolism:
-    - !type:PlantAdjustWater
-      amount: 0.5
+  - !type:PlantAdjustWater
+    amount: 0.5
+  - !type:DnaImprint
+    reagent: Blood
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
   footstepSound:
     collection: FootstepBlood
     params:
@@ -63,6 +69,13 @@
   color: "#808A51"
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
+  plantMetabolism:
+  - !type:DnaImprint
+    reagent: InsectBlood
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
 
 - type: reagent
   id: Slime
@@ -97,6 +110,13 @@
     collection: FootstepSlime # makes sense
     params:
       volume: 6
+  plantMetabolism:
+  - !type:DnaImprint
+    reagent: Slime
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
 
 - type: reagent
   id: Sap
@@ -124,6 +144,13 @@
     collection: FootstepSlime
     params:
       volume: 6
+  plantMetabolism:
+  - !type:DnaImprint
+    reagent: Sap
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
 
 - type: reagent
   parent: Blood
@@ -135,6 +162,13 @@
   color: "#162581"
   recognizable: true
   physicalDesc: reagent-physical-desc-metallic
+  plantMetabolism:
+  - !type:DnaImprint
+    reagent: CopperBlood
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
 
 - type: reagent
   parent: Blood
@@ -146,6 +180,13 @@
   color: "#7a8bf2"
   recognizable: true
   physicalDesc: reagent-physical-desc-pungent
+  plantMetabolism:
+  - !type:DnaImprint
+    reagent: AmmoniaBlood
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
 
 - type: reagent
   parent: Blood
@@ -157,6 +198,13 @@
   color: "#ccac1f"
   recognizable: true
   physicalDesc: reagent-physical-desc-strong-smelling
+  plantMetabolism:
+  - !type:DnaImprint
+    reagent: SulfurBlood
+    minScale: 5
+    leader: true
+    friendly: true
+    guidebookText: entity-effect-guidebook-dna-imprint
 
 - type: reagent
   id: ZombieBlood
@@ -314,3 +362,42 @@
     collection: FootstepBlood
     params:
       volume: 6
+
+- type: reagent
+  id: Miniozine
+  name: reagent-name-miniozine
+  desc: reagent-desc-miniozine
+  group: Medicine
+  physicalDesc: reagent-physical-desc-enigmatic
+  contrabandSeverity: Syndicate
+  flavor: magical
+  color: "#d44e99"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 5
+      effects:
+      - !type:DnaImprint
+        reagent: Miniozine
+        minScale: 1
+        leader: true
+        friendly: true
+        guidebookText: entity-effect-guidebook-dna-imprint
+
+- type: reagent
+  id: Ragorium
+  name: reagent-name-ragorium
+  desc: reagent-desc-ragorium
+  group: Toxins
+  physicalDesc: reagent-physical-desc-enigmatic
+  contrabandSeverity: Major
+  flavor: metallic
+  color: "#b32e35"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 5
+      effects:
+      - !type:DnaImprint
+        reagent: Ragorium
+        minScale: 1
+        target: true
+        guidebookText: entity-effect-guidebook-dna-hunt

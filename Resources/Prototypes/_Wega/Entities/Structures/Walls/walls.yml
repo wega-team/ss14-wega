@@ -10,7 +10,10 @@
   - type: Destructible
   - type: IconSmooth
     key: walls
-    base: hierophant
+    states:
+    - !type:DiagonalSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: hierophant
   - type: PointLight
     radius: 5.0
     energy: 1.5
@@ -52,8 +55,11 @@
     state: full
   - type: IconSmooth
     key: hierofield
-    base: hierotemp
-    shader: unshaded
+    states:
+    - !type:DiagonalSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: hierotemp
+      shader: unshaded
   - type: PlacementReplacement
     key: walls
   - type: Occluder

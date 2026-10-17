@@ -1,19 +1,18 @@
 using System.Linq;
 using Content.Server.Administration;
-using Content.Server.DeviceLinking.Systems;
 using Content.Server.Medical.Components;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
-using Content.Shared.DeviceLinking;
+using Content.Shared.DeviceLinking.Components;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DeviceLinking.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
@@ -65,7 +64,7 @@ namespace Content.Server.Genetics.System
             SubscribeLocalEvent<DnaModifierConsoleComponent, AfterActivatableUIOpenEvent>(OnUIOpen);
             SubscribeLocalEvent<DnaModifierConsoleComponent, PowerChangedEvent>(OnPowerChanged);
             SubscribeLocalEvent<DnaModifierConsoleComponent, NewLinkEvent>(OnNewLink);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, PortDisconnectedEvent>(OnPortDisconnected);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, SinkPortDisconnectedEvent>(OnPortDisconnected);
             SubscribeLocalEvent<DnaModifierConsoleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
 
             SubscribeNetworkEvent<DnaModifierUpdateEvent>(OnUpdateUI);
@@ -155,7 +154,7 @@ namespace Content.Server.Genetics.System
             RecheckConnections(uid, component.GeneticScanner, component);
         }
 
-        private void OnPortDisconnected(EntityUid uid, DnaModifierConsoleComponent component, PortDisconnectedEvent args)
+        private void OnPortDisconnected(EntityUid uid, DnaModifierConsoleComponent component, SinkPortDisconnectedEvent args)
         {
             if (args.Port == DnaModifierConsoleComponent.ScannerPort)
                 component.GeneticScanner = null;

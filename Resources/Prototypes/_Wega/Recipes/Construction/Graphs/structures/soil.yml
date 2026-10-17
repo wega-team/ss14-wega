@@ -17,4 +17,4 @@
                 state: icon
               doAfter: 10
     - node: soil
-      entity: hydroponicsSoil
+      entity: HydroponicsSoil

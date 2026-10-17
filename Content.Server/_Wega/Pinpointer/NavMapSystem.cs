@@ -4,8 +4,10 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server.Pinpointer;
 
-public sealed partial class NavMapSystem
+public sealed partial class ServerNavMapSystem
 {
+    [Dependency] private SharedMapSystem _maps = default!;
+
     public void RefreshGridWithOffset(EntityUid uid, NavMapComponent component, MapGridComponent mapGrid, Vector2 worldOffset)
     {
         // Clear stale data
@@ -28,7 +30,7 @@ public sealed partial class NavMapSystem
         );
 
         // Loop over all tiles
-        var tileRefs = _mapSystem.GetAllTiles(uid, mapGrid);
+        var tileRefs = _maps.GetAllTiles(uid, mapGrid);
 
         foreach (var tileRef in tileRefs)
         {
@@ -63,7 +65,7 @@ public sealed partial class NavMapSystem
         else
             tileData &= FloorMask;
 #pragma warning disable CS0618 // It drives me crazy
-        var enumerator = _mapSystem.GetAnchoredEntitiesEnumerator(mapGrid.Owner, mapGrid, originalTile);
+        var enumerator = _maps.GetAnchoredEntitiesEnumerator(mapGrid.Owner, mapGrid, originalTile);
 #pragma warning restore CS0618
         while (enumerator.MoveNext(out var ent))
         {

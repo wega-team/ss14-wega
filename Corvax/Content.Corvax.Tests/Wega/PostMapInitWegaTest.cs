@@ -17,6 +17,7 @@ public sealed class PostMapInitWegaTest : PostMapInitTestBase
 
     [Test, TestCaseSource(nameof(GridsSource), new object[] { true, new[] { IncludedWega } })]
     [EnsureCVar(Side.Server, typeof(CCVars), nameof(CCVars.GridFill), false)]
+    [Ignore("Not Exists")]
     public async Task GridsLoadableTest(string mapFile)
     {
         await RunGridsLoadableTest(mapFile);

@@ -505,7 +505,7 @@
           - CableCoil
     - item: Wirecutter
     - item: Crowbar
-    - item: trayScanner
+    - item: TRayScanner
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: wire-module }
 
@@ -930,7 +930,7 @@
   - type: ItemBorgModule
     hands:
     - item: LightReplacerFilled
-# Corvax-Wega-Robot-Start
+    # Corvax-Wega-Robot-Start
     - item: BorgGeneratorBoxLight
     - hand:
         emptyLabel: borg-slot-box-light-mixed-empty
@@ -1461,7 +1461,7 @@
   - type: ItemBorgModule
     hands:
     # Corvax-Wega-Robot-start
-    - item: PlantAnalyzerUnpowered
+    - item: PlantAnalyzer
     - item: BorgHydroponicsToolMiniHoe
       hand:
         emptyLabel: borg-slot-hydro-empty
@@ -1535,7 +1535,7 @@
   - type: ItemBorgModule
     hands:
     # Corvax-Wega-Robot-start
-    - item: PlantAnalyzerUnpowered
+    - item: PlantAnalyzer
     - item: BorgHydroponicsToolMiniHoe
       hand:
         emptyLabel: borg-slot-hydro-empty
@@ -1949,8 +1949,8 @@
     - item: PowerDrill
     - item: WelderExperimental
     - item: Multitool
-    - item: trayScanner
-    - item: XenoRCD # Corvax-Wega-Add
+    - item: TRayScanner
+    - item: RCDRecharging
     - item: SelfRechargingFireExtinguisher
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: xenoborg-adv-tools-module }

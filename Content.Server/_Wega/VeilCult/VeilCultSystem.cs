@@ -1,7 +1,6 @@
 using System.Linq;
 using Content.Server.Audio;
 using Content.Server.GameTicking.Rules;
-using Content.Server.Pinpointer;
 using Content.Shared.Veil.Cult;
 using Content.Shared.Veil.Cult.UI;
 using Content.Shared.Veil.Cult.Components;
@@ -30,12 +29,12 @@ using Content.Shared.Mobs;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Spawners;
 using Robust.Shared.Utility;
 using Content.Shared.Bible.Components;
+using Content.Shared.Pinpointer;
 
 
 namespace Content.Server.Veil.Cult;

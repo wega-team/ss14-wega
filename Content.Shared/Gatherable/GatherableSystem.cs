@@ -79,7 +79,7 @@ public sealed partial class GatherableSystem : EntitySystem
         Dirty(gathering);
 
         if (gathering.Comp.Amount <= 0)
-            PredictedQueueDel(gathering);
+            QueueDel(gathering);
     }
 
     /// <summary>
