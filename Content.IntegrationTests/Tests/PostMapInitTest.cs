@@ -31,6 +31,7 @@ namespace Content.IntegrationTests.Tests
 {
     // Corvax-Tests-start
     [TestFixture]
+    [Ignore("WegaSosaiti")] // Corvax-Wega-Tests
     public sealed class PostMapInitTest : PostMapInitTestBase
     {
         // ReSharper disable UseCollectionExpression

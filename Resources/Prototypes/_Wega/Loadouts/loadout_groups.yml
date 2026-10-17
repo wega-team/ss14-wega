@@ -4079,7 +4079,7 @@
   loadouts:
   - ClothingMaskClown
   - ClothingMaskBlushingClown
-  - ClothingMaskElegantClownMask
+#  - ClothingMaskElegantClownMask
 
 # Medical
 - type: loadoutGroup

@@ -59,16 +59,6 @@
     Durathread: 100
 
 - type: latheRecipe
-  id: Binoculars
-  result: Binoculars
-  categories:
-  - Tools
-  completetime: 2
-  materials:
-    Steel: 100
-    Glass: 50
-
-- type: latheRecipe
   id: TravelCameraCivilian
   result: TravelCameraCivilian
   categories:

@@ -67,7 +67,7 @@ public sealed partial class HandheldBeaconSystem : EntitySystem
         {
             _transform.SetCoordinates(entity, Transform(ev.Args.User).Coordinates);
             _transform.AnchorEntity(entity);
-            _navMap.SetBeaconEnabled(entity, toggle);
+            _navMap.SetBeaconEnabled(entity.Owner, toggle);
 
             entity.Comp.ActiveBeacon = toggle;
             _appearance.SetData(entity, VisualLayers.Enabled, toggle);
@@ -75,7 +75,7 @@ public sealed partial class HandheldBeaconSystem : EntitySystem
         else
         {
             _transform.Unanchor(entity);
-            _navMap.SetBeaconEnabled(entity, toggle);
+            _navMap.SetBeaconEnabled(entity.Owner, toggle);
             _ui.CloseUi(entity.Owner, NavMapBeaconUiKey.Key);
 
             entity.Comp.ActiveBeacon = toggle;

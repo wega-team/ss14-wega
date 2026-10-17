@@ -7,7 +7,7 @@
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Medical/handheldblueshield.rsi
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 1000
   - type: StaticPrice
     price: 1000

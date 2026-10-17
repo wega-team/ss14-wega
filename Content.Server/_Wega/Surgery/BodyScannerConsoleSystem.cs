@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Shared.Buckle.Components;
-using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DeviceLinking.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Surgery;
@@ -16,7 +16,7 @@ namespace Content.Server.Medical.Surgery
     {
         [Dependency] private UserInterfaceSystem _uiSystem = default!;
         [Dependency] private IGameTiming _timing = default!;
-        [Dependency] private SharedDeviceLinkSystem _deviceLink = default!;
+        [Dependency] private DeviceLinkSystem _deviceLink = default!;
 
         public override void Initialize()
         {
@@ -25,7 +25,7 @@ namespace Content.Server.Medical.Surgery
             SubscribeLocalEvent<BodyScannerConsoleComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<BodyScannerConsoleComponent, AfterActivatableUIOpenEvent>(OnUIOpen);
             SubscribeLocalEvent<BodyScannerConsoleComponent, NewLinkEvent>(OnNewLink);
-            SubscribeLocalEvent<BodyScannerConsoleComponent, PortDisconnectedEvent>(OnPortDisconnected);
+            SubscribeLocalEvent<BodyScannerConsoleComponent, SinkPortDisconnectedEvent>(OnPortDisconnected);
             SubscribeLocalEvent<BodyScannerConsoleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         }
 
@@ -70,7 +70,7 @@ namespace Content.Server.Medical.Surgery
             RecheckConnections(uid, component.SurgeryTable, component);
         }
 
-        private void OnPortDisconnected(EntityUid uid, BodyScannerConsoleComponent component, PortDisconnectedEvent args)
+        private void OnPortDisconnected(EntityUid uid, BodyScannerConsoleComponent component, SinkPortDisconnectedEvent args)
         {
             if (args.Port == BodyScannerConsoleComponent.ScannerPort)
                 component.SurgeryTable = null;

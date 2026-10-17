@@ -1,6 +1,5 @@
 using System.Linq;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization; // Corvax-Wega-Genetics-Add
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Markings;
@@ -99,13 +98,4 @@ public sealed partial class MarkingPrototype : IPrototype
     {
         return new Marking(ID, GetColorCount());
     }
-
-    // Corvax-Wega-Genetics-start
-    [Serializable, NetSerializable]
-    public enum MarkingTypes : byte
-    {
-        Base,
-        NonGenetics
-    }
-    // Corvax-Wega-Genetics-end
 }

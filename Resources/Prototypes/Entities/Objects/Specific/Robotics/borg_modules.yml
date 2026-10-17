@@ -1461,7 +1461,7 @@
   - type: ItemBorgModule
     hands:
     # Corvax-Wega-Robot-start
-    - item: PlantAnalyzerUnpowered
+    - item: PlantAnalyzer
     - item: BorgHydroponicsToolMiniHoe
       hand:
         emptyLabel: borg-slot-hydro-empty
@@ -1535,7 +1535,7 @@
   - type: ItemBorgModule
     hands:
     # Corvax-Wega-Robot-start
-    - item: PlantAnalyzerUnpowered
+    - item: PlantAnalyzer
     - item: BorgHydroponicsToolMiniHoe
       hand:
         emptyLabel: borg-slot-hydro-empty

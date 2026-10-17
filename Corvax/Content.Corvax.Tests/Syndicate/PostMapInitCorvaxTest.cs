@@ -11,6 +11,7 @@ namespace Content.Corvax.Tests.Syndicate;
 /// </summary>
 [TestFixture]
 [NonParallelizable]
+[Ignore("WegaSosaiti")] // Corvax-Wega-Tests
 public sealed class PostMapInitCorvaxTest : PostMapInitTestBase
 {
     private const string IncludedCorvax = "/Maps/Corvax";

@@ -15136,7 +15136,7 @@ entities:
     - type: Transform
       parent: 27712
       pos: 5.5,-0.5
-    - type: WirelessNetworkConnection
+    - type: WirelessNetwork
       range: 10000
     - type: DeviceLinkSink
       invokeCounter: 2
