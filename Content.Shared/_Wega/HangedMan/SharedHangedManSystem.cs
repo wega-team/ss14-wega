@@ -135,6 +135,9 @@ public sealed partial class SharedHangedManSystem : EntitySystem
             return;
         }
 
+        _adminLogger.Add(LogType.Action, LogImpact.High,
+            $"{ToPrettyString(args.Args.User):user} hanged {ToPrettyString(victim):target}");
+
         QueueDel(ent);
     }
 
