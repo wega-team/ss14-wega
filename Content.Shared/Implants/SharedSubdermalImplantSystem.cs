@@ -143,7 +143,7 @@ public abstract partial class SharedSubdermalImplantSystem : EntitySystem
             return;
 
         _container.Remove(implant, target.Comp.ImplantContainer);
-        // PredictedQueueDel(implant); // Corvax-Wega-Edit
+        // QueueDel(implant); // Corvax-Wega-Edit
     }
 
     /// <summary>
