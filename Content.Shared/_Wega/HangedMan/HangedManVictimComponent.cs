@@ -31,7 +31,7 @@ public sealed partial class HangedManVictimComponent : Component
     /// <summary>
     /// Next time damage will be applied.
     /// </summary>
-    [DataField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoPausedField]
     public TimeSpan NextDamage;
 
     /// <summary>
