@@ -3,7 +3,7 @@
   icon:
     sprite: _Wega/Mobs/Animals/koi/koi1.rsi
     state: base
-  product: CrateNPCkoi
+  product: CrateNPCKoi
   cost: 1500
   category: cargoproduct-category-name-livestock
   group: market
