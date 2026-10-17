@@ -82,6 +82,9 @@ public sealed partial class HangedManSystem : EntitySystem
         {
             _sprite.SetRotation((ent.Owner, sprite), Angle.Zero);
 
+            if (TryComp<AppearanceComponent>(ent, out var appearance))
+                _appearance.QueueUpdate(ent, appearance);
+
             if (_baseOffsets.TryGetValue(ent, out var baseOffset))
                 _sprite.SetOffset((ent.Owner, sprite), baseOffset);
         }
