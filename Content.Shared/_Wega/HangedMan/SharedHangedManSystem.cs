@@ -115,8 +115,9 @@ public sealed partial class SharedHangedManSystem : EntitySystem
             return;
 
         // Knock the existing neck item to the floor if the slot is occupied.
-        if (_inventory.TryGetSlotEntity(victim, NeckSlot, out _))
-            _inventory.TryUnequip(victim, NeckSlot, out _, force: true, reparent: true);
+        if (_inventory.TryGetSlotEntity(victim, NeckSlot, out _)
+            && !_inventory.TryUnequip(args.Args.User, victim, NeckSlot, out _, reparent: true))
+            return;
 
         // Hang the victim on the structure's tile, not on their own.
         var structureCoords = Transform(ent).Coordinates;
