@@ -122,7 +122,7 @@ public sealed partial class SharedHangedManSystem : EntitySystem
             && !_inventory.TryUnequip(args.Args.User, victim, NeckSlot, out _, reparent: true))
             return;
 
-        // Hang the victim on the structure's tile, not on their own.
+        var oldCoords = Transform(victim).Coordinates;
         var structureCoords = Transform(ent).Coordinates;
         _transform.SetCoordinates(victim, structureCoords);
 
@@ -130,8 +130,8 @@ public sealed partial class SharedHangedManSystem : EntitySystem
 
         if (!_inventory.TryEquip(victim, cloak, NeckSlot, silent: true, force: true))
         {
-            // Couldn't equip - bail out and leave the cloak on the floor.
-            _transform.SetCoordinates(cloak, Transform(victim).Coordinates);
+            Del(cloak);
+            _transform.SetCoordinates(victim, oldCoords);
             return;
         }
 
