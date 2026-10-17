@@ -265,7 +265,6 @@ public sealed partial class SharedHangedManSystem : EntitySystem
                 continue;
 
             victim.NextDamage += victim.DamageInterval;
-            Dirty(uid, victim);
 
             if (_mobState.IsDead(uid))
                 continue;
