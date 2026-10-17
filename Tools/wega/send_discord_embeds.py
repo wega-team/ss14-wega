@@ -9,7 +9,7 @@ import requests
 NEW_ENTRIES_FILE = Path("new_changelog_entries.json")
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 
-EMBED_COLOR = 0x3498DB  # embed accent color (blue)
+EMBED_COLOR = 0xFF00FF  # embed accent color (fuchsia)
 
 # Emoji per change type. Chosen to match SS14's visual style.
 TYPES_TO_EMOJI = {

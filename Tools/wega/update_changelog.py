@@ -28,10 +28,8 @@ CL_LINE_RE = re.compile(
     re.IGNORECASE,
 )
 
-# Matches the `:cl:` marker itself, optionally followed by an author name.
-# In the current PR template there is no author after `:cl:`, so this is
-# left optional for compatibility with the classic SS14 form.
-CL_MARKER_RE = re.compile(r"^\s*:cl:\s*([^\n]*)$", re.MULTILINE | re.IGNORECASE)
+# Match `:cl:` line only; author comes from the PR, text after `:cl:` is ignored.
+CL_MARKER_RE = re.compile(r"^[ \t]*:cl:[^\n]*$", re.MULTILINE | re.IGNORECASE)
 
 
 def make_session() -> requests.Session:
@@ -103,7 +101,7 @@ def get_pr_details(sess: requests.Session, number: int) -> dict:
     return resp.json()
 
 
-def parse_cl_block(body: str | None) -> tuple[str | None, list[dict]]:
+def parse_cl_block(body: str | None) -> list[dict]:
     """
     Parse an SS14-style `:cl:` block from a PR body.
 
@@ -113,15 +111,14 @@ def parse_cl_block(body: str | None) -> tuple[str | None, list[dict]]:
         - add: something new
         - fix: something fixed
 
-    Also tolerates the classic SS14 form with an author name on the `:cl:`
-    line, e.g. `:cl: SomeUser`. In that case the author override is returned
-    as the first element; otherwise it is None and the caller falls back to
-    the PR author's GitHub login.
+    The author is intentionally NOT read from the block — it always
+    comes from the PR's GitHub user (see main()). Anything after `:cl:`
+    on the same line (legacy `:cl: SomeUser` form) is ignored.
 
-    Returns (author_or_none, list_of_changes).
+    Returns the list of changes; empty if the block is missing or empty.
     """
     if not body:
-        return None, []
+        return []
 
     # Drop commented-out template content first: only a filled-in `:cl:`
     # block counts as a real changelog entry.
@@ -129,13 +126,10 @@ def parse_cl_block(body: str | None) -> tuple[str | None, list[dict]]:
 
     marker = CL_MARKER_RE.search(body)
     if not marker:
-        return None, []
-
-    author = (marker.group(1) or "").strip() or None
-    after = body[marker.end():]
+        return []
 
     changes: list[dict] = []
-    for raw_line in after.splitlines():
+    for raw_line in body[marker.end():].splitlines():
         line = raw_line.strip()
         if not line:
             continue                       # skip blank lines between entries
@@ -152,7 +146,7 @@ def parse_cl_block(body: str | None) -> tuple[str | None, list[dict]]:
             # past the changelog block.
             break
 
-    return author, changes
+    return changes
 
 
 def next_entry_id(entries: list[dict]) -> int:
@@ -211,14 +205,14 @@ def main() -> None:
             continue  # already recorded by a previous run
 
         pr = get_pr_details(sess, number)
-        author, changes = parse_cl_block(pr.get("body"))
+        changes = parse_cl_block(pr.get("body"))
         if not changes:
             # No filled-in `:cl:` block: skip, by design.
             continue
 
         current_id += 1
         entry = {
-            "author": author or pr["user"]["login"],
+            "author": pr["user"]["login"],
             "changes": changes,
             "id": current_id,
             "time": pr["merged_at"],
@@ -240,9 +234,10 @@ def main() -> None:
         yaml.safe_dump(
             changelog,
             f,
-            allow_unicode=True,     # keep Cyrillic readable in the YAML
+            allow_unicode=True,
             sort_keys=False,
             default_flow_style=False,
+            width=100000,
         )
 
     print(f"Added {len(new_entries)} new changelog entries.")
