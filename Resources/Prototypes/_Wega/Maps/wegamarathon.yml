@@ -35,6 +35,7 @@
             TechnicalAssistant: [ 3, 3 ]
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
+            Geneticist: [ 2, 2 ]
             Chemist: [ 2, 2 ]
             Surgeon: [ 1, 1 ]
             MedicalDoctor: [ 4, 4 ]
@@ -58,6 +59,7 @@
             ShaftMiner: [ 3, 3 ]
             ShaftMinerMedic: [ 1, 1 ]
             CargoTechnician: [ 3, 3 ]
+            Postman: [ 1, 1 ]
             #civilian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]
