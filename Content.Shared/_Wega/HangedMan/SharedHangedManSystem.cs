@@ -81,7 +81,10 @@ public sealed partial class SharedHangedManSystem : EntitySystem
         args.Handled = true;
 
         if (args.User == args.Dragged)
-            _popup.PopupPredicted(Loc.GetString("hangedman-begin-hang-self"), ent, args.User, PopupType.LargeCaution);
+            _popup.PopupEntity(
+                Loc.GetString("hangedman-begin-hang-self"),
+                Loc.GetString("hangedman-begin-hang-self-observers", ("user", Identity.Entity(args.User, EntityManager))),
+                ent, args.User, PopupType.LargeCaution);
         else
             _popup.PopupPredicted(
                 Loc.GetString("hangedman-begin-hang-self-other", ("target", Identity.Entity(args.Dragged, EntityManager))),
