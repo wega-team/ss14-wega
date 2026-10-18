@@ -209,6 +209,14 @@
 - type: entity
   parent: [ OrganSkrellVisual, OrganBaseEyes, OrganSkrellInternal ]
   id: OrganSkrellEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Skrell/parts.rsi
+      state: eyes
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/_Wega/Mobs/Species/Skrell/parts.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseTongue, OrganSkrellInternal ]
