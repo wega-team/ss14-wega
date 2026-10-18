@@ -1578,3 +1578,25 @@ Entries:
   id: 215
   time: '2026-10-17T15:48:49Z'
   url: https://github.com/wega-team/ss14-wega/pull/566
+- author: Zekins3366
+  changes:
+  - type: Tweak
+    message: Незначительно изменена Ишимура
+  - type: Tweak
+    message: Относительно чего-то там изменен Марафон
+  - type: Add
+    message: Добавлено некоторое количество ролей на Марафон и Ишимуру
+  - type: Fix
+    message: Исправлена загрузка некоторых карт
+  id: 216
+  time: '2026-10-17T23:39:10Z'
+  url: https://github.com/wega-team/ss14-wega/pull/568
+- author: Zekins3366
+  changes:
+  - type: Add
+    message: Всем расам добавлено моргание (кроме Андроидов, Фантомов и Резоми).
+  - type: Fix
+    message: Исправлено отображение всех направленных объектов в сборке.
+  id: 217
+  time: '2026-10-18T00:55:56Z'
+  url: https://github.com/wega-team/ss14-wega/pull/569
