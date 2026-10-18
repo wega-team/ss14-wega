@@ -5,15 +5,21 @@ import argparse
 import requests
 import os
 import subprocess
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Iterable
 
+from requests.adapters import HTTPAdapter
+
 DRY_RUN = os.environ.get("DRY_RUN", "").lower() in ("1", "true", "yes")
 VERSION = os.environ["GITHUB_SHA"]
-FORK_ID = os.environ['FORK_ID']
+FORK_ID = os.environ["FORK_ID"]
 
 RELEASE_DIR = "release"
-MAX_WORKERS = 4
+MAX_WORKERS = 2
+MAX_RETRIES = 10
+BASE_DELAY = 2.0
+REQUEST_TIMEOUT = 600
 
 #
 # CONFIGURATION PARAMETERS
@@ -29,37 +35,69 @@ def get_publish_token() -> str:
 
 
 def simulate_publish(fork_id: str, version: str) -> None:
-    print(f"[DRY RUN] Would publish version {version} to Robust.CDN fork '{fork_id}'")
-    print(f"[DRY RUN]   engine version: {get_engine_version()}")
+    print(f"[DRY RUN] Would publish version {version} to fork '{fork_id}'")
+    print(f"[DRY RUN] Engine version: {get_engine_version()}")
     files = list(get_files_to_publish())
-    print(f"[DRY RUN]   files to upload ({len(files)}):")
-    for file in files:
-        print(f"[DRY RUN]     - {file}")
-    print("[DRY RUN] Skipping all network calls to Robust.CDN.")
+    print(f"[DRY RUN] Files to upload ({len(files)}):")
+    for f in files:
+        print(f"[DRY RUN]   - {f}")
+    print("[DRY RUN] Skipping all network calls.")
 
-def upload_one_file(session: requests.Session, file_path: str, fork_id: str, version: str) -> str:
-    """Uploads a single file. Returns the filename upon success."""
-    print(f"Publishing {file_path}")
-    with open(file_path, "rb") as f:
-        headers = {
-            "Content-Type": "application/octet-stream",
-            "Robust-Cdn-Publish-File": os.path.basename(file_path),
-            "Robust-Cdn-Publish-Version": version,
-        }
-        resp = session.post(
-            f"{ROBUST_CDN_URL}fork/{fork_id}/publish/file",
-            data=f,
-            headers=headers,
-            timeout=600,
-        )
-    resp.raise_for_status()
-    return os.path.basename(file_path)
+
+def make_session() -> requests.Session:
+    """Create an isolated session for a single worker thread."""
+    session = requests.Session()
+    adapter = HTTPAdapter(pool_connections=1, pool_maxsize=1, max_retries=0)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    session.headers.update({
+        "Authorization": f"Bearer {get_publish_token()}",
+    })
+    return session
+
+
+def upload_one_file(file_path: str, fork_id: str, version: str) -> str:
+    """
+    Upload a single file with aggressive retries.
+    Every attempt uses a fresh session and `Connection: close`.
+    """
+    filename = os.path.basename(file_path)
+    url = f"{ROBUST_CDN_URL}fork/{fork_id}/publish/file"
+
+    last_error = None
+    for attempt in range(1, MAX_RETRIES + 1):
+        session = make_session()
+        try:
+            with open(file_path, "rb") as f:
+                headers = {
+                    "Content-Type": "application/octet-stream",
+                    "Robust-Cdn-Publish-File": filename,
+                    "Robust-Cdn-Publish-Version": version,
+                    "Connection": "close",
+                }
+                print(f"  [{filename}] attempt {attempt}/{MAX_RETRIES}")
+                resp = session.post(url, data=f, headers=headers, timeout=REQUEST_TIMEOUT)
+            resp.raise_for_status()
+            print(f"  ✔ [{filename}] uploaded")
+            return filename
+        except Exception as e:
+            last_error = e
+            print(f"  ✘ [{filename}] attempt {attempt} failed: {e}")
+            if attempt < MAX_RETRIES:
+                delay = BASE_DELAY * (2 ** (attempt - 1))  # 2, 4, 8, 16...
+                print(f"     sleeping {delay:.1f}s before retry")
+                time.sleep(delay)
+        finally:
+            session.close()
+
+    raise RuntimeError(f"Failed to upload {filename} after {MAX_RETRIES} attempts: {last_error}")
+
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--fork-id", default=FORK_ID)
-    parser.add_argument("--workers", type=int, default=MAX_WORKERS, help=f"Number of parallel uploads (default: {MAX_WORKERS})")
-
+    parser.add_argument("--workers", type=int, default=MAX_WORKERS,
+                        help=f"Number of parallel uploads (default: {MAX_WORKERS})")
     args = parser.parse_args()
     fork_id = args.fork_id
     workers = args.workers
@@ -68,42 +106,33 @@ def main():
         simulate_publish(fork_id, VERSION)
         return
 
-    adapter = requests.adapters.HTTPAdapter(pool_connections=10, pool_maxsize=workers + 2)
-    session = requests.Session()
-    session.mount("https://", adapter)
-    session.mount("http://", adapter)
-    session.headers = {
-        "Authorization": f"Bearer {get_publish_token()}",
-    }
-
     print(f"Starting publish on Robust.Cdn for version {VERSION}")
-    print(f"Using {workers} parallel upload workers")
+    print(f"Workers: {workers}, retries per file: {MAX_RETRIES}")
 
-    data = {
-        "version": VERSION,
-        "engineVersion": get_engine_version(),
-    }
-    resp = session.post(
+    start_session = make_session()
+    start_session.headers["Connection"] = "close"
+    data = {"version": VERSION, "engineVersion": get_engine_version()}
+    resp = start_session.post(
         f"{ROBUST_CDN_URL}fork/{fork_id}/publish/start",
         json=data,
         headers={"Content-Type": "application/json"},
+        timeout=60,
     )
     resp.raise_for_status()
-    print("Publish successfully started, adding files in parallel...")
+    start_session.close()
+    print("Publish started.")
 
     files = list(get_files_to_publish())
-    failed = []
+    failed: list[str] = []
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         future_to_file = {
-            pool.submit(upload_one_file, session, f, fork_id, VERSION): f
-            for f in files
+            pool.submit(upload_one_file, f, fork_id, VERSION): f for f in files
         }
         for future in as_completed(future_to_file):
             file_path = future_to_file[future]
             try:
-                name = future.result()
-                print(f"  ✔ {name}")
+                future.result()
             except Exception as e:
                 print(f"  ✘ {os.path.basename(file_path)}: {e}", file=sys.stderr)
                 failed.append(file_path)
@@ -114,19 +143,23 @@ def main():
 
     print("\nAll files uploaded, finishing publish...")
 
-    resp = session.post(
+    finish_session = make_session()
+    finish_session.headers["Connection"] = "close"
+    resp = finish_session.post(
         f"{ROBUST_CDN_URL}fork/{fork_id}/publish/finish",
         json={"version": VERSION},
         headers={"Content-Type": "application/json"},
+        timeout=60,
     )
     resp.raise_for_status()
+    finish_session.close()
 
     print("SUCCESS!")
 
 
 def get_files_to_publish() -> Iterable[str]:
-    for file in os.listdir(RELEASE_DIR):
-        yield os.path.join(RELEASE_DIR, file)
+    for f in os.listdir(RELEASE_DIR):
+        yield os.path.join(RELEASE_DIR, f)
 
 
 def get_engine_version() -> str:
