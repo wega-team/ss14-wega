@@ -51,8 +51,7 @@ namespace Content.Client.Veil.Cult
         [SubscribeLocalEvent]
         private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
         {
-            if (_sprite.LayerExists(uid, 1))
-                _sprite.RemoveLayer(uid, 1);
+            _sprite.RemoveLayer(uid, 1, false);
         }
 
         private enum CogKey
