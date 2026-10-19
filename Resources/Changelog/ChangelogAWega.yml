@@ -1607,3 +1607,22 @@ Entries:
   id: 218
   time: '2026-10-19T12:11:24Z'
   url: https://github.com/wega-team/ss14-wega/pull/571
+- author: Zekins3366
+  changes:
+  - type: Add
+    message: Добавлена TTS озвучка сообщений с майндчата
+  - type: Tweak
+    message: Изменена дальности слышимости майндчата в 2 раза
+  - type: Fix
+    message: Исправлена ошибочка при появлении пентаграммы у обоих культов над головой
+  - type: Fix
+    message: Исправлена слышимость майдчата в целом
+  - type: Fix
+    message: Исправлена работа TTS (наверно)
+  - type: Fix
+    message: Исправлена работа Барков
+  - type: Fix
+    message: Исправлено отображение имён формата голосов у некоторых рас
+  id: 219
+  time: '2026-10-19T23:39:48Z'
+  url: https://github.com/wega-team/ss14-wega/pull/572
