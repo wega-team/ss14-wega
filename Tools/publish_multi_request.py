@@ -17,8 +17,9 @@ FORK_ID = os.environ["FORK_ID"]
 
 RELEASE_DIR = "release"
 MAX_WORKERS = 2
-MAX_RETRIES = 10
-BASE_DELAY = 2.0
+MAX_RETRIES = 8
+BASE_DELAY = 1.0
+MAX_DELAY = 20.0
 REQUEST_TIMEOUT = 600
 
 #
@@ -32,6 +33,13 @@ def get_publish_token() -> str:
         return os.environ["PUBLISH_TOKEN"]
     except KeyError:
         raise RuntimeError("PUBLISH_TOKEN is not set")
+
+
+def get_delay(attempt: int) -> float:
+    """Exponential backoff capped at MAX_DELAY; short pauses on the first attempts."""
+    if attempt <= 2:
+        return 0.5
+    return min(BASE_DELAY * (2 ** (attempt - 3)), MAX_DELAY)
 
 
 def simulate_publish(fork_id: str, version: str) -> None:
@@ -84,7 +92,7 @@ def upload_one_file(file_path: str, fork_id: str, version: str) -> str:
             last_error = e
             print(f"  ✘ [{filename}] attempt {attempt} failed: {e}")
             if attempt < MAX_RETRIES:
-                delay = BASE_DELAY * (2 ** (attempt - 1))  # 2, 4, 8, 16...
+                delay = get_delay(attempt)
                 print(f"     sleeping {delay:.1f}s before retry")
                 time.sleep(delay)
         finally:
