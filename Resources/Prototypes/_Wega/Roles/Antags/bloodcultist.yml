@@ -27,8 +27,6 @@
     - Ipc
   components:
   - type: BloodCultist
-  - type: MindLink
-    channels: ["MindBloodCult"]
   - type: NpcFactionMember
     factions:
     - BloodCult
