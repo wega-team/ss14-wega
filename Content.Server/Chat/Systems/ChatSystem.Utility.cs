@@ -200,7 +200,7 @@ public sealed partial class ChatSystem
     /// <summary>
     ///     Returns list of players and ranges for all players withing some range. Also returns observers with a range of -1.
     /// </summary>
-    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(EntityUid source, float voiceGetRange)
+    private Dictionary<ICommonSession, ICChatRecipientData> GetRecipients(EntityUid source, float voiceGetRange, bool ignoreInsulation = false) // Corvax-Wega-SoundInsolation-Edit
     {
         // TODO proper speech occlusion
 
@@ -223,8 +223,8 @@ public sealed partial class ChatSystem
             var observer = _ghostHearingQuery.HasComponent(playerEntity);
 
             // Corvax-Wega-SoundInsolation-start
-            float insulation = 0f;
-            if (!observer)
+            var insulation = 0f;
+            if (!observer && !ignoreInsulation)
             {
                 insulation = _soundInsulation.GetSoundInsulation(source, playerEntity);
                 if (insulation >= 0.95f)
