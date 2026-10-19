@@ -22,6 +22,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.Speech.Muting;
 using Content.Shared.Ghost.Components;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 
 namespace Content.Server.Corvax.TTS;
 
@@ -33,6 +34,7 @@ public sealed partial class TTSSystem : EntitySystem
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private TTSManager _ttsManager = default!;
     [Dependency] private StationSystem _stationSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!; // Corvax-Wega-MindChat
     [Dependency] private IRobustRandom _rng = default!;
 
     private readonly HashSet<string> _sampleText = new()
@@ -214,14 +216,15 @@ public sealed partial class TTSSystem : EntitySystem
 
         if (args.ObfuscatedMessage != null)
         {
-            HandleWhisper(ent, args.Message, protoVoice.Speaker, args.Channel);
+            HandleWhisper(ent, args.Message, protoVoice.Speaker, args.Channel, args.MindChannel); // Corvax-Wega-MindChat-edit
             return;
         }
 
-        HandleSay(ent, args.Message, protoVoice.Speaker, args.Channel);
+        HandleSay(ent, args.Message, protoVoice.Speaker, args.Channel, args.MindChannel); // Corvax-Wega-MindChat-edit
     }
 
-    private async void HandleSay(EntityUid uid, string message, string speaker, RadioChannelPrototype? channel)
+    private async void HandleSay(EntityUid uid, string message, string speaker, RadioChannelPrototype? channel,
+        MindChannelPrototype? mindChannel) // Corvax-Wega-MindChat-Edit
     {
         var soundData = await GenerateTTS(message, speaker);
 
@@ -239,13 +242,21 @@ public sealed partial class TTSSystem : EntitySystem
         {
             SendTTSToRadio(soundData, uid, channel, false);
         }
+
+        // Corvax-Wega-MindChat-start
+        if (mindChannel != null)
+        {
+            SendTTSToMind(soundData, uid, mindChannel);
+        }
+        // Corvax-Wega-MindChat-end
     }
 
     private async void HandleWhisper(
         EntityUid uid,
         string message,
         string speaker,
-        RadioChannelPrototype? channel)
+        RadioChannelPrototype? channel,
+        MindChannelPrototype? mindChannel) // Corvax-Wega-MindChat-Edit
     {
         var fullSoundData = await GenerateTTS(message, speaker, true);
         if (fullSoundData is null)
@@ -264,6 +275,13 @@ public sealed partial class TTSSystem : EntitySystem
         {
             SendTTSToRadio(fullSoundData, uid, channel);
         }
+
+        // Corvax-Wega-MindChat-start
+        if (mindChannel != null)
+        {
+            SendTTSToMind(fullSoundData, uid, mindChannel);
+        }
+        // Corvax-Wega-MindChat-end
     }
 
     private void SendTTSToRadio(byte[] soundData, EntityUid sourceUid, RadioChannelPrototype channel, bool isWhisper = true)
@@ -341,6 +359,46 @@ public sealed partial class TTSSystem : EntitySystem
 
         RaiseNetworkEvent(ttsEvent, filter, recordReplay: false);
     }
+
+    // Corvax-Wega-MindChat-start
+    private void SendTTSToMind(byte[] soundData, EntityUid sourceUid, MindChannelPrototype channel)
+    {
+        var sourceXform = Transform(sourceUid);
+
+        var sourceMapId = sourceXform.MapID;
+        var sourcePos = _transform.GetWorldPosition(sourceUid);
+
+        var ttsEvent = new PlayTTSEvent(soundData); // Global cuz it in the mind
+        var filter = Filter.Empty();
+
+        var query = EntityQueryEnumerator<MindLinkComponent, ActorComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var mindLink, out var actor, out var xform))
+        {
+            if (uid == sourceUid)
+                continue;
+
+            if (xform.MapID != sourceMapId)
+                continue;
+
+            if (!mindLink.Channels.Contains(channel.ID))
+                continue;
+
+            if (HasComp<GhostComponent>(uid) && !HasComp<AdminMindLinkListenerComponent>(uid))
+                continue;
+
+            var pos = _transform.GetWorldPosition(xform);
+            if ((pos - sourcePos).Length() > SharedChatSystem.MindChatRange)
+                continue;
+
+            filter.AddPlayer(actor.PlayerSession);
+        }
+
+        if (!filter.Recipients.Any())
+            return;
+
+        RaiseNetworkEvent(ttsEvent, filter, recordReplay: false);
+    }
+    // Corvax-Wega-MindChat-end
 
     private bool CanTransmitFrom(EntityUid uid, RadioChannelPrototype channel)
     {

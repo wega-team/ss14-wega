@@ -52,6 +52,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private ExamineSystemShared _examineSystem = default!;
     [Dependency] private EntityQuery<GhostHearingComponent> _ghostHearingQuery = default!;
     [Dependency] private SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
+    [Dependency] private MindLinkSystem _mindLink = default!; // Corvax-Wega-MindChat
 
     // Corvax-TTS-Start: Moved from Server to Shared
     // public const int VoiceRange = 10; // how far voice goes in world units
@@ -339,9 +340,9 @@ public sealed partial class ChatSystem : SharedChatSystem
             ("message", message));
 
         // Send to all entities with the same mind channel
-        foreach (var (session, _) in GetRecipients(source, MindChatRange))
+        foreach (var (session, _) in GetRecipients(source, MindChatRange, true))
         {
-            if ((!TryComp<MindLinkComponent>(session.AttachedEntity, out var mindLink) || !mindLink.Channels.Contains(channel.ID))
+            if (!_mindLink.HasChannel(session.AttachedEntity, channel.ID)
                 && !HasComp<AdminMindLinkListenerComponent>(session.AttachedEntity))
                 continue;
 
@@ -355,13 +356,16 @@ public sealed partial class ChatSystem : SharedChatSystem
         }
 
         // Also send a whisper
-        TrySendInGameICMessage(
+        SendEntityWhisper(
             source,
             message,
-            InGameICChatType.Whisper,
             ChatTransmitRange.Normal,
-            nameOverride: name,
-            ignoreActionBlocker: true);
+            null,
+            name,
+            false,
+            ignoreActionBlocker,
+            channel
+        );
 
         // Log to admin logs
         _adminLogger.Add(LogType.Chat, LogImpact.Low,

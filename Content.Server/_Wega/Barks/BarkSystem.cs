@@ -14,33 +14,27 @@ namespace Content.Server.Speech.Synthesis.System;
 public sealed partial class BarkSystem : EntitySystem
 {
     [Dependency] private AudioSystem _audio = default!;
-    [Dependency] private IConfigurationManager _configurationManager = default!;
-    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<SpeechSynthesisComponent, EntitySpokeEvent>(OnEntitySpoke);
-
-        SubscribeNetworkEvent<RequestPreviewBarkEvent>(OnRequestPreviewBark);
-    }
-
+    [SubscribeLocalEvent]
     private void OnEntitySpoke(EntityUid uid, SpeechSynthesisComponent comp, EntitySpokeEvent args)
     {
-        if (comp.VoicePrototypeId is null ||
-            !ProtoMan.TryIndex<BarkPrototype>(comp.VoicePrototypeId, out var barkProto) ||
-            !_configurationManager.GetCVar(WegaCVars.BarksEnabled))
+        if (comp.VoicePrototypeId is null || !ProtoMan.TryIndex(comp.VoicePrototypeId, out var barkProto)
+           || !_cfg.GetCVar(WegaCVars.BarksEnabled))
             return;
 
-        bool isObfuscated = args.ObfuscatedMessage != null;
-        var sourceEntity = _entityManager.GetNetEntity(uid);
+        var isObfuscated = args.ObfuscatedMessage != null;
+        var sourceEntity = GetNetEntity(uid);
+
         var soundPath = barkProto.SoundFiles[new Random().Next(barkProto.SoundFiles.Count)];
         RaiseNetworkEvent(new PlayBarkEvent(soundPath, sourceEntity, args.Message, comp.PlaybackSpeed, isObfuscated));
     }
 
-    private async void OnRequestPreviewBark(RequestPreviewBarkEvent ev, EntitySessionEventArgs args)
+    [SubscribeNetworkEvent]
+    private void OnRequestPreviewBark(RequestPreviewBarkEvent ev, EntitySessionEventArgs args)
     {
         if (string.IsNullOrEmpty(ev.BarkVoiceId) || !ProtoMan.TryIndex<BarkPrototype>(ev.BarkVoiceId, out var barkProto)
-            || !_configurationManager.GetCVar(WegaCVars.BarksEnabled))
+            || !_cfg.GetCVar(WegaCVars.BarksEnabled))
             return;
 
         var soundPath = barkProto.SoundFiles[new Random().Next(barkProto.SoundFiles.Count)];

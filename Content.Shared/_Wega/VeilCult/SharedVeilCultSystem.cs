@@ -25,6 +25,7 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private MindLinkSystem _mindLink = default!;
 
     public override void Initialize()
     {
@@ -57,13 +58,7 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
             }
         }
 
-        if (TryComp<MindLinkComponent>(cultist, out var mindLink))
-        {
-            mindLink.Channels.Remove(veilCultist.CultMindChannel);
-            if (mindLink.Channels.Count == 0)
-                RemComp(cultist, mindLink);
-        }
-
+        _mindLink.RemoveChannel(cultist, veilCultist.CultMindChannel);
         _stun.TryKnockdown(cultist, TimeSpan.FromSeconds(4), true);
         _popup.PopupEntity(Loc.GetString("veil-cult-break-control", ("name", Identity.Entity(cultist, EntityManager))), cultist);
 

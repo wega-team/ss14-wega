@@ -72,6 +72,7 @@ public sealed partial class ZombieSystem
     [Dependency] private IdentitySystem _identity = default!;
     [Dependency] private ServerInventorySystem _inventory = default!;
     [Dependency] private MindSystem _mind = default!;
+    [Dependency] private MindLinkSystem _mindLink = default!; // Corvax-Wega-MindChat
     [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
     [Dependency] private NameModifierSystem _nameMod = default!;
     [Dependency] private ReplacementAccentSystem _replacementAccent = default!;
@@ -358,8 +359,7 @@ public sealed partial class ZombieSystem
         // the zombie is now clumsy. it will drop anything handed to it.
         _statusEffects.TrySetStatusEffectDuration(target, ClumsyZombieStatus);
 
-        var mindLink = EnsureComp<MindLinkComponent>(target); // Corvax-wega-Zomnie
-        mindLink.Channels.Add(zombiecomp.MindChat); // Corvax-wega-Zomnie
+        _mindLink.AddChannel(target, zombiecomp.MindChat); // Corvax-wega-Zomnie
         // Sloth: What the fuck?
         // How long until compregistry lmao.
         RemComp<PullerComponent>(target);
