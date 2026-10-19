@@ -66,26 +66,37 @@ def make_session() -> requests.Session:
 
 def upload_one_file(file_path: str, fork_id: str, version: str) -> str:
     """
-    Upload a single file with aggressive retries.
-    Every attempt uses a fresh session and `Connection: close`.
+    Upload a single file via curl instead of requests.
+    Curl avoids the multi-threaded TLS bug in requests/urllib3 that
+    produces SSLEOFError behind the SYN-proxy.
     """
     filename = os.path.basename(file_path)
     url = f"{ROBUST_CDN_URL}fork/{fork_id}/publish/file"
+    token = get_publish_token()
 
     last_error = None
     for attempt in range(1, MAX_RETRIES + 1):
-        session = make_session()
+        cmd = [
+            "curl",
+            "-X", "POST",
+            "-H", f"Authorization: Bearer {token}",
+            "-H", "Content-Type: application/octet-stream",
+            "-H", f"Robust-Cdn-Publish-File: {filename}",
+            "-H", f"Robust-Cdn-Publish-Version: {version}",
+            "-H", "Connection: close",
+            "--data-binary", f"@{file_path}",
+            "--max-time", str(REQUEST_TIMEOUT),
+            "--fail",
+            "--silent",
+            "--show-error",
+            url,
+        ]
+        print(f"  [{filename}] attempt {attempt}/{MAX_RETRIES}")
         try:
-            with open(file_path, "rb") as f:
-                headers = {
-                    "Content-Type": "application/octet-stream",
-                    "Robust-Cdn-Publish-File": filename,
-                    "Robust-Cdn-Publish-Version": version,
-                    "Connection": "close",
-                }
-                print(f"  [{filename}] attempt {attempt}/{MAX_RETRIES}")
-                resp = session.post(url, data=f, headers=headers, timeout=REQUEST_TIMEOUT)
-            resp.raise_for_status()
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            if result.returncode != 0:
+                err = result.stderr.strip() or f"curl exited with code {result.returncode}"
+                raise RuntimeError(err)
             print(f"  ✔ [{filename}] uploaded")
             return filename
         except Exception as e:
@@ -95,8 +106,6 @@ def upload_one_file(file_path: str, fork_id: str, version: str) -> str:
                 delay = get_delay(attempt)
                 print(f"     sleeping {delay:.1f}s before retry")
                 time.sleep(delay)
-        finally:
-            session.close()
 
     raise RuntimeError(f"Failed to upload {filename} after {MAX_RETRIES} attempts: {last_error}")
 
