@@ -1600,3 +1600,10 @@ Entries:
   id: 217
   time: '2026-10-18T00:55:56Z'
   url: https://github.com/wega-team/ss14-wega/pull/569
+- author: KRIKUN12
+  changes:
+  - type: Tweak
+    message: респрайт 2 овощей и нори листика
+  id: 218
+  time: '2026-10-19T12:11:24Z'
+  url: https://github.com/wega-team/ss14-wega/pull/571
