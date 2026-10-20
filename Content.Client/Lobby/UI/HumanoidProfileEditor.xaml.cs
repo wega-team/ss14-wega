@@ -224,16 +224,6 @@ namespace Content.Client.Lobby.UI
             };
 
             #endregion Height
-
-            #region Barks
-
-            if (configurationManager.GetCVar(WegaCVars.BarksEnabled))
-            {
-                BarksContainer.Visible = true;
-                InitializeBarkVoice();
-            }
-
-            #endregion
             // Corvax-Wega-end
 
             RefreshSpecies();
@@ -427,7 +417,6 @@ namespace Content.Client.Lobby.UI
             UpdateEyePickers();
             UpdateSaveButton();
             UpdateMarkings();
-            UpdateBarkVoicesControls(); // Corvax-Wega-Barks
             UpdateTTSVoicesControls(); // Corvax-TTS
             UpdateStatusControls(); // Corvax-Wega
             UpdateHeightControls(); // Corvax-Wega-Height
