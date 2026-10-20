@@ -6,7 +6,6 @@ import requests
 import os
 import subprocess
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Iterable
 
 from requests.adapters import HTTPAdapter
@@ -16,7 +15,6 @@ VERSION = os.environ["GITHUB_SHA"]
 FORK_ID = os.environ["FORK_ID"]
 
 RELEASE_DIR = "release"
-MAX_WORKERS = 2
 MAX_RETRIES = 8
 BASE_DELAY = 1.0
 MAX_DELAY = 20.0
@@ -53,7 +51,7 @@ def simulate_publish(fork_id: str, version: str) -> None:
 
 
 def make_session() -> requests.Session:
-    """Create an isolated session for a single worker thread."""
+    """Create a session for the start/finish requests."""
     session = requests.Session()
     adapter = HTTPAdapter(pool_connections=1, pool_maxsize=1, max_retries=0)
     session.mount("https://", adapter)
@@ -113,18 +111,15 @@ def upload_one_file(file_path: str, fork_id: str, version: str) -> str:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--fork-id", default=FORK_ID)
-    parser.add_argument("--workers", type=int, default=MAX_WORKERS,
-                        help=f"Number of parallel uploads (default: {MAX_WORKERS})")
     args = parser.parse_args()
     fork_id = args.fork_id
-    workers = args.workers
 
     if DRY_RUN:
         simulate_publish(fork_id, VERSION)
         return
 
     print(f"Starting publish on Robust.Cdn for version {VERSION}")
-    print(f"Workers: {workers}, retries per file: {MAX_RETRIES}")
+    print(f"Retries per file: {MAX_RETRIES}")
 
     start_session = make_session()
     start_session.headers["Connection"] = "close"
@@ -142,17 +137,14 @@ def main():
     files = list(get_files_to_publish())
     failed: list[str] = []
 
-    with ThreadPoolExecutor(max_workers=workers) as pool:
-        future_to_file = {
-            pool.submit(upload_one_file, f, fork_id, VERSION): f for f in files
-        }
-        for future in as_completed(future_to_file):
-            file_path = future_to_file[future]
-            try:
-                future.result()
-            except Exception as e:
-                print(f"  ✘ {os.path.basename(file_path)}: {e}", file=sys.stderr)
-                failed.append(file_path)
+    # Sequential upload: Robust.Cdn returns HTTP 500 on concurrent
+    # /publish/file requests, so files must be sent one at a time.
+    for file_path in files:
+        try:
+            upload_one_file(file_path, fork_id, VERSION)
+        except Exception as e:
+            print(f"  ✘ {os.path.basename(file_path)}: {e}", file=sys.stderr)
+            failed.append(file_path)
 
     if failed:
         print(f"\n{len(failed)} file(s) failed to upload. Aborting publish.", file=sys.stderr)
