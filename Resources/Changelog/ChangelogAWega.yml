@@ -1626,3 +1626,10 @@ Entries:
   id: 219
   time: '2026-10-19T23:39:48Z'
   url: https://github.com/wega-team/ss14-wega/pull/572
+- author: Zekins3366
+  changes:
+  - type: Tweak
+    message: Перенесён выбор барков в раздел "Голос", в меню персонализации
+  id: 220
+  time: '2026-10-20T14:30:20Z'
+  url: https://github.com/wega-team/ss14-wega/pull/573
