@@ -185,6 +185,9 @@ public sealed partial class VeilShifterComponent : Component
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BloodSharpenerComponent : Component;
 
+[RegisterComponent]
+public sealed partial class BloodCultBolaComponent : Component;
+
 /// <summary>
 /// Заглушка для логики
 /// </summary>

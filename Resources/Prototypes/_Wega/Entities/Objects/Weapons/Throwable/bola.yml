@@ -45,6 +45,7 @@
     canThrowTrigger: true
     canMoveBreakout: true
     maxEnsnares: 1
+  - type: BloodCultBola
 
 - type: entity
   name: combat bola

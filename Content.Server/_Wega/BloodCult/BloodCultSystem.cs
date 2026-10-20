@@ -15,7 +15,6 @@ using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.EnergyShield;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -26,7 +25,6 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
-using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Veil.Cult.Components;
@@ -37,6 +35,7 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Hands;
 
 
 namespace Content.Server.Blood.Cult;
@@ -74,6 +73,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
         SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
+        SubscribeLocalEvent<BloodCultBolaComponent, GotEquippedHandEvent>(OnCultBolaPickedUp);
 
         SubscribeLocalEvent<StoneSoulComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StoneSoulComponent, ComponentShutdown>(OnShutdown);
@@ -201,6 +201,18 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         var dropEvent = new DropHandItemsEvent();
         RaiseLocalEvent(user, ref dropEvent);
         args.Cancelled = true;
+    }
+
+    private void OnCultBolaPickedUp(Entity<BloodCultBolaComponent> ent, ref GotEquippedHandEvent args)
+    {
+        var user = args.User;
+
+        if (HasComp<BloodCultistComponent>(user) ||
+            HasComp<AllowCultEquipmentComponent>(user))
+            return;
+
+        var dropEvent = new DropHandItemsEvent();
+        RaiseLocalEvent(user, ref dropEvent);
     }
 
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)
