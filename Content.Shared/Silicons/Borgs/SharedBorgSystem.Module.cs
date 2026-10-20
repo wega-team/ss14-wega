@@ -135,7 +135,7 @@ public abstract partial class SharedBorgSystem
 
         // Default modules should not be dropped so let's remove them.
         if (TryComp<BorgModuleComponent>(module, out var moduleComp) && moduleComp.DefaultModule)
-            PredictedQueueDel(module);
+            QueueDel(module);
     }
 
     #endregion

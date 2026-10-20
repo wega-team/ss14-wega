@@ -2,16 +2,15 @@ name: "Labels: Size"
 on: pull_request_target
 jobs:
   size-label:
-    runs-on: ubuntu-latest
     permissions:
-      contents: read
-      pull-requests: write
       issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
     steps:
       - name: size-label
         uses: "pascalgn/size-label-action@v0.5.5"
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.LABELER_PAT }}"
         with:
           # Custom size configuration
           sizes: >

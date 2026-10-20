@@ -41,7 +41,7 @@
     equipDelay: 1.5
     unequipDelay: 1.5
   - type: ClothingSlowOnDamageModifier
-    modifier: 0.35
+    modifier: 0.65
 
 - type: entity
   parent: ClothingShoesBaseWinterBoots

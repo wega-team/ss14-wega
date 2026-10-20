@@ -3,6 +3,7 @@ using Content.Shared.Examine;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Preferences;
+using Content.Shared.Speech.Synthesis.Components; // Corvax-Wegs-Barks
 using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Prototypes;
 
@@ -45,6 +46,8 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
         ent.Comp.Status = profile.Status;
         ent.Comp.Height = profile.Height;
         ent.Comp.BarkVoice = profile.BarkVoice;
+        if (TryComp<SpeechSynthesisComponent>(ent, out var speech))
+            speech.VoicePrototypeId = profile.BarkVoice;
         // Corvax-Wega-end
         // Corvax-TTS-start
         ent.Comp.TTSVoice = profile.TTSVoice;
@@ -66,6 +69,9 @@ public sealed partial class HumanoidProfileSystem : EntitySystem
 
     private void OnExamined(Entity<HumanoidProfileComponent> ent, ref ExaminedEvent args)
     {
+        if (!ent.Comp.Examinable)
+            return;
+
         var identity = Identity.Entity(ent, EntityManager);
         var species = GetSpeciesRepresentation(ent.Comp.Species).ToLower();
         var age = GetAgeRepresentation(ent.Comp.Species, ent.Comp.Age);

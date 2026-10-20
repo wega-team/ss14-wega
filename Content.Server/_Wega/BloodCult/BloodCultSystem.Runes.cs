@@ -2,7 +2,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Ghost.Roles.Components;
-using Content.Server.Pinpointer;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Atmos.Components;
 using Content.Shared.Blood.Cult;
@@ -41,6 +40,7 @@ using Robust.Shared.Utility;
 using Content.Shared.Bible.Components;
 using Content.Shared.Ghost.Systems;
 using Content.Shared.Ghost.Components;
+using Content.Shared.Pinpointer;
 using Content.Shared.Station.Components;
 
 namespace Content.Server.Blood.Cult;

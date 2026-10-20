@@ -10,22 +10,14 @@ namespace Content.Client.Veil.Cult
     {
         [Dependency] private SpriteSystem _sprite = default!;
 
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            SubscribeLocalEvent<VeilCultistComponent, GetStatusIconsEvent>(GetCultistIcons);
-            SubscribeLocalEvent<VeilCogDisplayComponent, ComponentStartup>(GetHalo);
-            SubscribeLocalEvent<VeilCogDisplayComponent, ComponentShutdown>(RemoveHalo);
-            SubscribeLocalEvent<EnchantedComponent, ComponentRemove>(OnEnchantRemove);
-        }
-
+        [SubscribeLocalEvent]
         private void GetCultistIcons(Entity<VeilCultistComponent> ent, ref GetStatusIconsEvent args)
         {
             var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
             args.StatusIcons.Add(iconPrototype);
         }
 
+        [SubscribeLocalEvent]
         private void GetHalo(EntityUid uid, VeilCogDisplayComponent component, ComponentStartup args)
         {
             if (!TryComp<SpriteComponent>(uid, out var sprite))
@@ -49,19 +41,17 @@ namespace Content.Client.Veil.Cult
             _sprite.LayerMapSet(uid, CogKey.Halo, layer);
         }
 
+        [SubscribeLocalEvent]
         private void RemoveHalo(EntityUid uid, VeilCogDisplayComponent component, ComponentShutdown args)
         {
-            if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out var layer, true))
+            if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out var layer, false))
                 _sprite.RemoveLayer(uid, layer);
         }
 
+        [SubscribeLocalEvent]
         private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
         {
-            if (!HasComp<SpriteComponent>(uid))
-                return;
-
-            if (_sprite.LayerExists(uid, 1))
-                _sprite.RemoveLayer(uid, 1);
+            _sprite.RemoveLayer(uid, 1, false);
         }
 
         private enum CogKey

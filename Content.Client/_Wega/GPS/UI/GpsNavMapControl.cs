@@ -191,14 +191,14 @@ public sealed partial class GpsNavMapControl : Control
 
         foreach (var (_, chunk) in navMap.Chunks)
         {
-            for (int i = 0; i < SharedNavMapSystem.ArraySize; i++)
+            for (int i = 0; i < NavMapSystem.ArraySize; i++)
             {
                 var tileData = chunk.TileData[i];
-                if ((SharedNavMapSystem.FloorMask & tileData) == 0)
+                if ((NavMapSystem.FloorMask & tileData) == 0)
                     continue;
 
-                var relativeTile = SharedNavMapSystem.GetTileFromIndex(i);
-                var tileWorldPos = (chunk.Origin * SharedNavMapSystem.ChunkSize + relativeTile) * tileSize;
+                var relativeTile = NavMapSystem.GetTileFromIndex(i);
+                var tileWorldPos = (chunk.Origin * NavMapSystem.ChunkSize + relativeTile) * tileSize;
 
                 var tilePos = new Vector2i((int)tileWorldPos.X, (int)tileWorldPos.Y);
                 var screenPos = WorldToScreen(tileWorldPos, center, scale);
@@ -304,14 +304,14 @@ public sealed partial class GpsNavMapControl : Control
 
         foreach (var (_, chunk) in navMap.Chunks)
         {
-            for (int i = 0; i < SharedNavMapSystem.ArraySize; i++)
+            for (int i = 0; i < NavMapSystem.ArraySize; i++)
             {
                 var tileData = chunk.TileData[i];
-                if ((SharedNavMapSystem.FloorMask & tileData) == 0)
+                if ((NavMapSystem.FloorMask & tileData) == 0)
                     continue;
 
-                var relativeTile = SharedNavMapSystem.GetTileFromIndex(i);
-                var tileWorldPos = (chunk.Origin * SharedNavMapSystem.ChunkSize + relativeTile) * tileSize;
+                var relativeTile = NavMapSystem.GetTileFromIndex(i);
+                var tileWorldPos = (chunk.Origin * NavMapSystem.ChunkSize + relativeTile) * tileSize;
 
                 var screenPos = WorldToScreen(tileWorldPos, center, scale);
                 var tileScreenSize = tileSize * scale;

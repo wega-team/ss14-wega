@@ -8,13 +8,13 @@ namespace Content.Shared.Armor;
 /// <summary>
 /// Used for clothing that reduces damage when worn.
 /// </summary>
-[RegisterComponent, NetworkedComponent] // Access(typeof(SharedArmorSystem))] Corvax-Wega-Edit
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Access(typeof(SharedArmorSystem))] Corvax-Wega-Edit
 public sealed partial class ArmorComponent : Component
 {
     /// <summary>
     /// The damage reduction
     /// </summary>
-    [DataField(required: true)]
+    [DataField(required: true), AutoNetworkedField] // Corvax-Wega-Edit
     public DamageModifierSet Modifiers = default!;
 
     /// <summary>

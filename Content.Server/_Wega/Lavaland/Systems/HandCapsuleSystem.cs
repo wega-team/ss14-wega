@@ -14,7 +14,7 @@ public sealed partial class HandCapsuleSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
 
     public override void Initialize()
     {

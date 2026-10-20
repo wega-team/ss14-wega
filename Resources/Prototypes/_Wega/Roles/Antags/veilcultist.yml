@@ -26,8 +26,6 @@
     - BibleUser
   components:
   - type: VeilCultist
-  - type: MindLink
-    channels: ["MindVeilCult"]
   - type: NpcFactionMember
     factions:
     - VeilCult

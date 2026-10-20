@@ -7,7 +7,7 @@
   </Box>
 
   <Box>
-    <GuideEntityEmbed Entity="computerBodyScanner" Caption="сканер тела"/>
+    <GuideEntityEmbed Entity="ComputerBodyScanner" Caption="сканер тела"/>
     <GuideEntityEmbed Entity="OperatingTable" Caption="операционный стол"/>
   </Box>
 

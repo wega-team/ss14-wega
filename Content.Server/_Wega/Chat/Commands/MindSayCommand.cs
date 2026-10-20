@@ -10,6 +10,7 @@ namespace Content.Server.Chat.Commands
     internal sealed partial class MindSayCommand : LocalizedEntityCommands
     {
         [Dependency] private ChatSystem _chatSystem = default!;
+        [Dependency] private MindLinkSystem _mindLink = default!;
 
         public override string Command => "mindsay";
 
@@ -43,8 +44,7 @@ namespace Content.Server.Chat.Commands
                 if (channel != null)
                 {
                     // Check if entity has access to the channel
-                    if (EntityManager.TryGetComponent<MindLinkComponent>(playerEntity, out var mindLink) &&
-                        mindLink.Channels.Contains(channel.ID))
+                    if (_mindLink.HasChannel(playerEntity, channel.ID))
                     {
                         _chatSystem.SendMindMessage(playerEntity, modifiedMessage, channel);
                     }

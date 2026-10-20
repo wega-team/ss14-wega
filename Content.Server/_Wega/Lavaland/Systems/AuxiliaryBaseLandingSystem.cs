@@ -24,7 +24,7 @@ public sealed partial class AuxiliaryBaseLandingSystem : EntitySystem
     [Dependency] private EntityLookupSystem _lookup = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private MapSystem _mapSystem = default!;
-    [Dependency] private NavMapSystem _navMap = default!;
+    [Dependency] private ServerNavMapSystem _navMap = default!;
     [Dependency] private ShuttleSystem _shuttle = default!;
     [Dependency] private RadioSystem _radio = default!;
 

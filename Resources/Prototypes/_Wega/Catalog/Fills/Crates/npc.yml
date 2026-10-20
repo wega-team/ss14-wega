@@ -1,0 +1,15 @@
+- type: entity
+  id: CrateNPCKoi
+  name: koi crate
+  description: A crate containing a koi.
+  parent: CrateLivestock
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:GroupSelector
+        children:
+        - id: MobKoi2
+        - id: MobKoi3
+          weight: 0.1
+        - id: MobKoi1
+          weight: 0.1

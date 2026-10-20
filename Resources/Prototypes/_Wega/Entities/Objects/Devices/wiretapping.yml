@@ -40,7 +40,7 @@
     deviceNetId: Wired
     receiveFrequencyId: SurveillanceCamera
     transmitFrequencyId: SurveillanceCamera
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: SurveillanceCameraRouter
     subnetFrequency: SurveillanceCameraAlpha
@@ -105,7 +105,7 @@
       examineText: clothing-upgrade-examine-text-bodycam
     - type: SurveillanceCamera
       networkSet: true
-    - type: WirelessNetworkConnection
+    - type: WirelessNetwork
       range: 200
     - type: InteractionOutline
     - type: Eye

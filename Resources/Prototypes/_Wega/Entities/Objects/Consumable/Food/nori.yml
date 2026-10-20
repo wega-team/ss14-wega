@@ -12,9 +12,7 @@
     state: nori
   - type: Tag
     tags:
-    - Vegetable
+    - ReptilianFood
   - type: FlavorProfile
     flavors:
       - salty
-
-

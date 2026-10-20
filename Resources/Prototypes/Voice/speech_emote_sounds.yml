@@ -307,6 +307,10 @@
       path: /Audio/Effects/Gasp/vox_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    Hiss:
+      path: /Audio/Voice/Vox/vox_hiss.ogg
+    Caw:
+      path: /Audio/Voice/Vox/vox_caw.ogg
   params:
     variation: 0.125
     # TODO: We need vox sounds for the other emotes
@@ -593,7 +597,7 @@
       collection: MaleDeathGasp
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
-    Ururu: # Corvax-Wega
+    Purr: # Corvax-Wega
       collection: VulpakinUruru # Corvax-Wega
 
 - type: emoteSounds
@@ -640,7 +644,7 @@
       collection: FemaleDeathGasp
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
-    Ururu: # Corvax-Wega
+    Purr: # Corvax-Wega
       collection: VulpakinUruru # Corvax-Wega
 
 # body emotes

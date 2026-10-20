@@ -249,9 +249,6 @@
   id: ExtMagazineRifle
 
 - type: Tag
-  id: PlantAnalyzer
-
-- type: Tag
   id: ClockworkGlassShard
 
 - type: Tag

@@ -10,7 +10,7 @@
   - type: Item
     storedRotation: -45
   - type: HandCapsule
-    capsulePath: "/Maps/_Wega/Lavaland/capsule.yml"
+    capsulePath: "/Maps/_Wega/Nonstations/capsule.yml"
   - type: UseDelay
     delay: 5
 
@@ -23,7 +23,7 @@
   - type: Sprite
     state: gold_capsule
   - type: HandCapsule
-    capsulePath: "/Maps/_Wega/Lavaland/luxuriouscapsule.yml"
+    capsulePath: "/Maps/_Wega/Nonstations/luxuriouscapsule.yml"
 
 - type: entity
   parent: HandCapsule
@@ -34,4 +34,4 @@
   - type: Sprite
     state: blue_capsule
   - type: HandCapsule
-    capsulePath: "/Maps/_Wega/Lavaland/capsulebar.yml"
+    capsulePath: "/Maps/_Wega/Nonstations/capsulebar.yml"

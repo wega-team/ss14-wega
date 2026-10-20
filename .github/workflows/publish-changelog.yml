@@ -1,0 +1,57 @@
+name: Publish Changelog
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 13 * * *'
+
+concurrency:
+  group: publish-changelog
+  cancel-in-progress: false
+
+jobs:
+  publish_changelog:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: read
+      pull-requests: read
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        ref: master
+        token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      run: pip install pyyaml requests
+
+    - name: Update changelog YAML
+      id: update
+      run: python Tools/wega/update_changelog.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_RUN_ID: ${{ github.run_id }}
+
+    - name: Send Discord embeds
+      if: steps.update.outputs.changed == 'true'
+      run: python Tools/wega/send_discord_embeds.py
+      env:
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_CHANGELOG_WEBHOOK }}
+
+    - name: Commit and push changes
+      if: steps.update.outputs.changed == 'true'
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add Resources/Changelog/ChangelogAWega.yml
+        git commit -m "chore: auto-update changelog"
+        git push

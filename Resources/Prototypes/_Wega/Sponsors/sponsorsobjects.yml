@@ -209,22 +209,22 @@
 
 # Mask
 
-- type: entity
-  parent: ClothingMaskClownBase
-  id: ClothingMaskElegantClownMask
-  name: elegant clown mask
-  description: A mask for a blushing clown.
-  suffix: Sponsor
-  components:
-  - type: Sprite
-    sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
-  - type: Clothing
-    sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
-  - type: HideLayerClothing
-    slots:
-    - Hair
-  - type: Tag
-    tags: []
+#- type: entity
+#  parent: ClothingMaskClownBase
+#  id: ClothingMaskElegantClownMask
+#  name: elegant clown mask
+#  description: A mask for a blushing clown.
+#  suffix: Sponsor
+#  components:
+#  - type: Sprite
+#    sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
+#  - type: Clothing
+#    sprite: _Wega/Sponsors/Clothing/Mask/sex_clown.rsi
+#  - type: HideLayerClothing
+#    slots:
+#    - Hair
+#  - type: Tag
+#    tags: []
 
 # Shoes
 

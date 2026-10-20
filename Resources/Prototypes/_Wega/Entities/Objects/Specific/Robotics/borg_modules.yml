@@ -212,6 +212,9 @@
         whitelist:
           tags:
           - SlimeRND
+          components:
+          - SlimeSpeed
+          - SlimeArmor
     - item: BorgFireExtinguisher
     - item: KitchenKnife
     - hand:
@@ -223,6 +226,14 @@
         blacklist:
           components:
           - Clothing
+    - hand:
+        emptyRepresentative: MonkeyCubeWrapped
+        emptyLabel: borg-slot-cube-empty
+        whitelist:
+          components:
+          - Rehydratable
+          tags:
+          - WrappedCube
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: slime-module }
 
@@ -758,48 +769,52 @@
     hands:
     - item: ButchCleaver
     - item: RollingPin
-    - hand:
-        emptyRepresentative: FoodBowlBig
-        emptyLabel: borg-slot-cook-empty
-        whitelist:
-          tags:
-          - Cook
     - item: Beaker
       hand:
-        emptyLabel: borg-slot-chemical-containers-empty
-        emptyRepresentative: Beaker
+        emptyLabel: borg-slot-small-containers-empty
+        emptyRepresentative: BorgModuleDinnerwarePlaceholder
         whitelist:
           components:
           - FitsInDispenser
           tags:
-          - ChemDispensable
+          - Dinnerware
     - hand:
-        emptyRepresentative: ReagentContainerFlour
         emptyLabel: borg-slot-ingredient-empty
+        emptyRepresentative: BorgModuleRawIngredientPlaceholder
+        whitelist:
+          tags:
+          - FoodSnack
+          - Fruit
+          - Ingredient
+          - Meat
+          - Packet
+          - Raw
+          - Vegetable
+          - WrappedCube
+          components:
+          - Produce
+          - Rehydratable # For butchering
+        blacklist:
+          tags:
+          - ChiliBowl
+          - Cooked
+          - Cookware
+          - Dinnerware
+          - Donut
+          - DonkPocket
+          - Pie
+          - Pizza
+          - Soup
+          - FoodSnack
+          - FinishedMeal
+    - hand:
+        emptyRepresentative: MonkeyCubeWrapped
+        emptyLabel: borg-slot-cube-empty
         whitelist:
           components:
-          - SlimeFood
+          - Rehydratable
           tags:
-          - Ingredient
-          - Packet
-          - SaltShaker
-          - PepperShaker
-          - Enzyme
-          - Mayo
-          - FoodSnack
-    - hand:
-        emptyRepresentative: FoodMeat
-        emptyLabel: borg-slot-meat-empty
-        whitelist:
-          tags:
-          - Meat
-    - hand:
-        emptyRepresentative: FoodCabbage
-        emptyLabel: borg-slot-botany-empty
-        whitelist:
-          tags:
-          - Vegetable
-          - Fruit
+          - WrappedCube
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cook-module }
 

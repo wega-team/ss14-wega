@@ -106,6 +106,13 @@ public abstract partial class SharedStunSystem
     }
 
     #region Startup and Shutdown
+    [SubscribeLocalEvent]
+    private void OnCrawlerShutdown(Entity<CrawlerComponent> entity, ref ComponentShutdown args)
+    {
+        // hate. let me tell you how much i hate...
+        // this may have unforseen consequences. blame scar
+        ForceStandUp((entity.Owner, null), true);
+    }
 
     private void OnKnockInit(Entity<KnockedDownComponent> entity, ref ComponentInit args)
     {
@@ -392,7 +399,7 @@ public abstract partial class SharedStunSystem
         ForceStandUp(user);
     }
 
-    public void ForceStandUp(Entity<KnockedDownComponent?> entity)
+    public void ForceStandUp(Entity<KnockedDownComponent?> entity, bool popUp = true)
     {
         if (!Resolve(entity, ref entity.Comp, false))
             return;
@@ -406,7 +413,7 @@ public abstract partial class SharedStunSystem
         if (!_hands.TryGetEmptyHand(entity.Owner, out _))
             return;
 
-        if (!TryForceStand(entity.Owner))
+        if (!TryForceStand(entity.Owner, popUp))
             return;
 
         // If we have a DoAfter, cancel it
@@ -429,7 +436,7 @@ public abstract partial class SharedStunSystem
         args.Handled = true;
     }
 
-    private bool TryForceStand(Entity<StaminaComponent?> entity)
+    private bool TryForceStand(Entity<StaminaComponent?> entity, bool popUp)
     {
         // Can't force stand if no Stamina.
         if (!Resolve(entity, ref entity.Comp, false))
@@ -440,7 +447,9 @@ public abstract partial class SharedStunSystem
 
         if (!Stamina.TryTakeStamina(entity, ev.Stamina, entity.Comp, visual: true))
         {
-            _popup.PopupEntity(Loc.GetString("knockdown-component-pushup-failure"), entity, entity, PopupType.MediumCaution);
+            if (popUp)
+                _popup.PopupEntity(Loc.GetString("knockdown-component-pushup-failure"), entity, entity, PopupType.MediumCaution);
+
             return false;
         }
 

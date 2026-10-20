@@ -43,7 +43,7 @@
     reoccurrenceDelay: 120
     minimumPlayers: 120
   - type: LoadMapRule
-    mapPath: /Maps/_Wega/Shuttles/voidshuttle.yml
+    mapPath: /Maps/_Wega/Nonstations/voidshuttle.yml
 
 - type: entity
   id: RadiationOutburst

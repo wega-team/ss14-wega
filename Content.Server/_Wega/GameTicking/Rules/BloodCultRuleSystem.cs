@@ -55,6 +55,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private IAdminLogManager _adminLogManager = default!;
         [Dependency] private MetabolizerSystem _metabolism = default!;
         [Dependency] private MindSystem _mind = default!;
+        [Dependency] private MindLinkSystem _mindLink = default!;
         [Dependency] private NpcFactionSystem _npcFaction = default!;
         [Dependency] private RoleSystem _role = default!;
         [Dependency] private SharedHandsSystem _hands = default!;
@@ -324,6 +325,7 @@ namespace Content.Server.GameTicking.Rules
 
         private void MakeCultist(EntityUid ent, BloodCultRuleComponent cult)
         {
+            var cultist = EnsureComp<BloodCultistComponent>(ent);
             var actionPrototypes = new[]
             {
                 BloodCultistComponent.BloodMagic,
@@ -342,6 +344,7 @@ namespace Content.Server.GameTicking.Rules
                 RemComp(ent, compType);
 
             _effects.TryRemoveStatusEffect(ent, Clumsy);
+            _mindLink.AddChannel(ent, cultist.CultMindChannel);
 
             HandleMetabolism(ent);
             CreateObjectivesForCultist(ent, cult);
@@ -446,9 +449,6 @@ namespace Content.Server.GameTicking.Rules
             if (mind is { UserId: not null } && _player.TryGetSessionById(mind.UserId, out var session))
                 _antag.SendBriefing(session, MakeBriefing(uid), Color.Red, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"));
             RemComp<AutoCultistComponent>(uid);
-
-            var mindLink = EnsureComp<MindLinkComponent>(uid);
-            mindLink.Channels.Add(culsistComp.CultMindChannel);
 
             var query = QueryActiveRules();
             while (query.MoveNext(out _, out var cult, out _, out _))
