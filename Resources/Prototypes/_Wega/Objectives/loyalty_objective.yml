@@ -8,6 +8,6 @@
     issuer: TheSyndicate
     difficulty: 1
     icon:
-      sprite: Objects/Specific/Medical/syndi_implanter.rsi
-      state: implanter0
+      sprite: _Wega/Clothing/Neck/Misc/chokers.rsi
+      state: spike
   - type: EscapeShuttleCondition

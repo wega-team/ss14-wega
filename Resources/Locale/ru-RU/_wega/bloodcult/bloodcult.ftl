@@ -67,7 +67,7 @@ blood-cult-first-warning = Ваши глаза начали полыхать з�
 blood-cult-second-warning = Кровавая пентаграмма образуется над вами, это знак к действию
 blood-dagger-failed-interact = кинжал выскальзывает из вашей руки лезвием нанося увечья
 blood-sharpener-success = точило обратилось в прах
-blood-sharpener-failed = кинжал уже был заточен
+blood-sharpener-failed = оружие уже было заточено
 blood-cult-failed-attack = вы не можете навредить членам культа
 stone-soul-empty = камень души пустой
 stone-soul-already-summoned = душа уже была призвана
@@ -100,6 +100,7 @@ blood-cult-shadow-shackles-failed = ничего не произошло
 blood-cult-twisted-failed = ничего не произошло
 blood-cult-blood-rites-failed = ничего не произошло
 blood-cult-spell-failed = ничего не произошло
+blood-cult-teleport-failed = отсутствует руна телепортации!
 
 rune-ritual-failed = ритуал не может быть начат
 rune-select-complete = надрезав свою руку вы начертали руну

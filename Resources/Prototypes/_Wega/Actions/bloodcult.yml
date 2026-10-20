@@ -25,7 +25,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 3
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -107,7 +107,7 @@
     - state: shadowshackles
       map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
-    maxCharges: 4
+    maxCharges: 3
   - type: InstantAction
     event: !type:BloodCultShadowShacklesActionEvent
 
@@ -126,7 +126,7 @@
     - state: twistedconstruction
       map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
-    maxCharges: 1
+    maxCharges: 2
   - type: InstantAction
     event: !type:BloodCultTwistedConstructionActionEvent
 
@@ -186,7 +186,7 @@
   - type: TargetAction
     range: 6
   - type: LimitedCharges
-    maxCharges: 4
+    maxCharges: 2
   - type: EntityTargetAction
     event: !type:BloodCultHallucinationsActionEvent
 
@@ -205,7 +205,7 @@
     - state: concealpresence
       map: ["enum.ActionVisuals.Icon"]
   - type: LimitedCharges
-    maxCharges: 10
+    maxCharges: 6
   - type: InstantAction
     event: !type:BloodCultConcealPresenceActionEvent
 
@@ -217,7 +217,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 15
+    useDelay: 3
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -235,7 +235,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 10
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -253,7 +253,7 @@
   components:
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 5
+    useDelay: 15
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -271,7 +271,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 15
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -305,7 +305,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 5
+    useDelay: 15
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:

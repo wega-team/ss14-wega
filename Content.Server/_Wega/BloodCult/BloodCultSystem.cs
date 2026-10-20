@@ -231,12 +231,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             HandleRuneInteraction(args);
             return;
         }
-
-        if (HasComp<BloodSharpenerComponent>(target))
-        {
-            HandleSharpenerInteraction(uid, component, args);
-            return;
-        }
     }
 
     private void HandleCultistInteraction(AfterInteractEvent args)
@@ -277,29 +271,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         });
     }
 
-    private void HandleSharpenerInteraction(EntityUid dagger, BloodDaggerComponent component, AfterInteractEvent args)
-    {
-        var user = args.User;
-        if (!TryComp<MeleeWeaponComponent>(dagger, out var meleeWeaponComponent))
-            return;
-
-        if (!component.IsSharpered)
-        {
-            if (meleeWeaponComponent.Damage.DamageDict.TryGetValue("Slash", out var currentSlashDamage))
-                meleeWeaponComponent.Damage.DamageDict["Slash"] = currentSlashDamage + FixedPoint2.New(4);
-            else
-                meleeWeaponComponent.Damage.DamageDict["Slash"] = FixedPoint2.New(4);
-
-            component.IsSharpered = true;
-            QueueDel(args.Target);
-            Spawn("Ash", Transform(user).Coordinates);
-            _popup.PopupEntity(Loc.GetString("blood-sharpener-success"), user, user, PopupType.Small);
-        }
-        else
-        {
-            _popup.PopupEntity(Loc.GetString("blood-sharpener-failed"), user, user, PopupType.Small);
-        }
-    }
     #endregion
 
     #region Soul Stone

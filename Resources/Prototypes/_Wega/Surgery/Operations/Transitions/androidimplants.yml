@@ -700,3 +700,71 @@
           sound:
             path: /Audio/Items/wirecutter.ogg
           time: 2
+
+# LoyaltyImplant
+- type: surgeryTransition
+  id: AndroidRemoveLoyaltyTransition
+  target: RemoveLoyaltyOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "LoyaltyImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: AndroidExtractLoyaltyTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "LoyaltyImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: AndroidEndRemoveLoyaltyTransition
+  target: HeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
