@@ -10,6 +10,18 @@
       storagebase: !type:NestedSelector
         tableId: BeltBlueShieldEntityLable
 
+- type: entity
+  id: ClothingBeltMilitaryWebbingAltFilled
+  name: light military webbing
+  description: Standart light webbing.
+  parent: ClothingBeltMilitaryWebbingAlt
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: BeltBlueShieldEntityLable
+
 - type: entityTable
   id: BeltBlueShieldEntityLable
   table: !type:AllSelector

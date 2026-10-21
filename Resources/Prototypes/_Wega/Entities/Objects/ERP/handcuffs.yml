@@ -1,0 +1,42 @@
+- type: entity
+  parent: Handcuffs
+  id: ClothingOuterShibariWhite
+  name: white shibari
+  description: An aesthetic binding tool that accentuates the bodys shape on both an artistic and symbolic level.
+  components:
+  - type: Item
+    size: Small
+  - type: Handcuff
+    cuffedRSI: _Wega/Clothing/OuterClothing/Misc/shibari_white.rsi
+    breakoutTime: 20
+    cuffTime: 15
+    uncuffTime: 5
+    stunBonus: 2
+    startCuffSound:
+      path: /Audio/Items/Handcuffs/ziptie_start.ogg
+    endCuffSound:
+      path: /Audio/Items/Handcuffs/ziptie_end.ogg
+    startUncuffSound:
+      path: /Audio/Items/Handcuffs/rope_start.ogg
+    endUncuffSound:
+      path: /Audio/Items/Handcuffs/rope_breakout.ogg
+    startBreakoutSound:
+      path: /Audio/Items/Handcuffs/rope_takeoff.ogg
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Misc/shibari_white.rsi
+    state: handcuff
+    scale: 0.7,0.7
+  - type: Contraband
+    severity: Minor
+
+- type: entity
+  parent: ClothingOuterShibariWhite
+  id: ClothingOuterShibariRed
+  name: red shibari
+  components:
+  - type: Handcuff
+    cuffedRSI: _Wega/Clothing/OuterClothing/Misc/shibari_red.rsi
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Misc/shibari_red.rsi
+    state: handcuff
+    scale: 0.7,0.7

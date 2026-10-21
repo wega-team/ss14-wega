@@ -37,7 +37,6 @@
     eyes: ClothingERTHud
     ears: ClothingHeadsetAltCommand
     mask: ClothingMaskGasERTBlueSheild
-    belt: ClothingBeltMilitaryWebbingFilled
     gloves: ClothingHandsGlovesCombatBlueShield
     pocket1: WeaponBlueLaserPistol
   storage:
