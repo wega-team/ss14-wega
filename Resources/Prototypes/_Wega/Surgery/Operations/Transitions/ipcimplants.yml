@@ -704,7 +704,7 @@
 # LoyaltyImplant
 - type: surgeryTransition
   id: IpcRemoveLoyaltyTransition
-  target: RemoveLoyaltyOperation
+  target: IpcRemoveLoyaltyOperation
   label: "Извлечь подозрительный имплант"
   stepGroups:
     - conditions:
