@@ -704,7 +704,7 @@
 # LoyaltyImplant
 - type: surgeryTransition
   id: AndroidRemoveLoyaltyTransition
-  target: RemoveLoyaltyOperation
+  target: AndroidRemoveLoyaltyOperation
   label: "Извлечь подозрительный имплант"
   stepGroups:
     - conditions:
