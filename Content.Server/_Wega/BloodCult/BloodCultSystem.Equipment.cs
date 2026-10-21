@@ -41,6 +41,10 @@ public sealed partial class BloodCultSystem
 
     private void OnHandPickUp(Entity<CultEquipmentComponent> ent, ref BeforeGettingEquippedHandEvent args)
     {
+        if (HasComp<BloodCultBolaComponent>(ent) &&
+            TerminatingOrDeleted(ent))
+            return;
+
         if (args.Cancelled)
             return;
 

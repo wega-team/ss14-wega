@@ -46,6 +46,8 @@
     canMoveBreakout: true
     maxEnsnares: 1
   - type: BloodCultBola
+  - type: CultEquipment
+    cult: Blood
 
 - type: entity
   name: combat bola

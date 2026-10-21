@@ -273,7 +273,7 @@ public sealed partial class BloodCultSystem
             _ => "WeaponBloodDagger"
         };
 
-        var dagger = Spawn(selectedDagger, cultistCoords);
+        var dagger = SpawnAtPosition(selectedDagger, cultistCoords);
         component.RecallDaggerActionEntity = dagger;
         _hands.TryPickupAnyHand(cultist, dagger);
 
@@ -452,7 +452,7 @@ public sealed partial class BloodCultSystem
                 {
                     component.BloodCount -= inputValue;
 
-                    var bloodOrb = Spawn("BloodCultOrb", Transform(cultist).Coordinates);
+                    var bloodOrb = SpawnAtPosition("BloodCultOrb", Transform(cultist).Coordinates);
                     EnsureComp<BloodOrbComponent>(bloodOrb, out var orb);
                     orb.Blood = inputValue;
 
@@ -502,7 +502,7 @@ public sealed partial class BloodCultSystem
             if (_inventory.TryEquip(cultist, target, bloodShield.CurrentSlot, force: true))
             {
                 var shield = EnsureComp<EnergyShieldOwnerComponent>(cultist);
-                shield.ShieldEntity = Spawn("BloodCultShieldEffect", Transform(cultist).Coordinates);
+                shield.ShieldEntity = SpawnAtPosition("BloodCultShieldEffect", Transform(cultist).Coordinates);
                 _transform.SetParent(shield.ShieldEntity.Value, cultist);
 
                 _audio.PlayPvs(CultSpell, target);
@@ -548,7 +548,7 @@ public sealed partial class BloodCultSystem
             component.RecallSpearAction = null;
         }
 
-        var spear = Spawn("BloodCultSpear", Transform(cultist).Coordinates);
+        var spear = SpawnAtPosition("BloodCultSpear", Transform(cultist).Coordinates);
         component.RecallSpearActionEntity = spear;
         _hands.TryPickupAnyHand(cultist, spear);
 
@@ -739,7 +739,7 @@ public sealed partial class BloodCultSystem
             return false;
         }
 
-        var handcuffs = Spawn("Handcuffs", Transform(target).Coordinates);
+        var handcuffs = SpawnAtPosition("Handcuffs", Transform(target).Coordinates);
 
         if (!TryComp<HandcuffComponent>(handcuffs, out var handcuffsComp) ||
             !_cuff.TryAddNewCuffs(target, user, handcuffs, cuffable, handcuffsComp))
@@ -781,7 +781,7 @@ public sealed partial class BloodCultSystem
         var airlockTransform = Transform(airlock).Coordinates;
         QueueDel(airlock);
 
-        var ent = Spawn(spawnProto, airlockTransform);
+        var ent = SpawnAtPosition(spawnProto, airlockTransform);
         _audio.PlayPvs(CultSpell, ent);
 
         ConsumeSpellAction(spell.Owner, user);
@@ -824,18 +824,18 @@ public sealed partial class BloodCultSystem
         _stack.ReduceCount(steelStack, 30);
         if (stack.Count > 0)
         {
-            Spawn("BloodCultConstruct", coords);
+            SpawnAtPosition("BloodCultConstruct", coords);
         }
         else
         {
             QueueDel(steelStack);
-            Spawn("BloodCultConstruct", coords);
+            SpawnAtPosition("BloodCultConstruct", coords);
         }
     }
 
     private void TransformPlasteelToRuneMetal(EntityUid plasteelStack, EntityCoordinates coords, int count)
     {
-        var runeSteel = Spawn("SheetRuneMetal1", coords);
+        var runeSteel = SpawnAtPosition("SheetRuneMetal1", coords);
         QueueDel(plasteelStack);
 
         if (TryComp<StackComponent>(runeSteel, out var newStack))
@@ -1057,7 +1057,7 @@ public sealed partial class BloodCultSystem
         _solution.UpdateChemicals((puddle, solutionComp));
 
         if (absorbedBlood > 0)
-            Spawn("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
+            SpawnAtPosition("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
 
         if (solution.Volume <= FixedPoint2.Zero)
             QueueDel(puddle);
@@ -1102,9 +1102,9 @@ public sealed partial class BloodCultSystem
         {
             var randomRune = runes[_random.Next(runes.Count)];
 
-            Spawn("BloodCultOutEffect", Transform(args.Target.Value).Coordinates);
+            SpawnAtPosition("BloodCultOutEffect", Transform(args.Target.Value).Coordinates);
             _transform.SetCoordinates(args.Target.Value, Transform(randomRune).Coordinates);
-            Spawn("BloodCultInEffect", Transform(randomRune).Coordinates);
+            SpawnAtPosition("BloodCultInEffect", Transform(randomRune).Coordinates);
 
             QueueDel(randomRune);
 
@@ -1156,7 +1156,7 @@ public sealed partial class BloodCultSystem
         if (!TryComp<HandsComponent>(uid, out var hands))
             return false;
 
-        var spell = Spawn(proto, Transform(uid).Coordinates);
+        var spell = SpawnAtPosition(proto, Transform(uid).Coordinates);
         var activeHand = _hands.GetActiveHand((uid, hands));
 
         if (_hands.TryPickupAnyHand(uid, spell) ||

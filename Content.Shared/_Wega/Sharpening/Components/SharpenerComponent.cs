@@ -19,6 +19,6 @@ public sealed partial class SharpenerComponent : Component
     [DataField("deleteOnSharpening"), AutoNetworkedField]
     public bool DeleteOnSharpening = false;
 
-    [DataField("spawnOnDelete"), AutoNetworkedField]
-    public EntProtoId Prototype = string.Empty;
+    [DataField("SpawnOnDelete"), AutoNetworkedField]
+    public EntProtoId? Prototype;
 }

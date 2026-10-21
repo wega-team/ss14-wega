@@ -26,16 +26,14 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Veil.Cult.Components;
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Inventory;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.IdentityManagement.Components;
-using Content.Shared.Inventory;
-using Content.Shared.Hands;
 
 
 namespace Content.Server.Blood.Cult;
@@ -70,10 +68,8 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
-        SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
         SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
-        SubscribeLocalEvent<BloodCultBolaComponent, GotEquippedHandEvent>(OnCultBolaPickedUp);
 
         SubscribeLocalEvent<StoneSoulComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StoneSoulComponent, ComponentShutdown>(OnShutdown);
@@ -171,18 +167,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
-    // Corvax-Wega-Testing-start
-    // Да я пометил тегами чтобы банально не забыть про это и чо?
-    private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
-    {
-        if (HasComp<CultAllowedGunComponent>(args.Used))
-            return;
-
-        _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
-        args.Cancel();
-    }
-    // Corvax-Wega-Testing-end
-
     #region Dagger & Weapon
     private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
@@ -202,19 +186,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         RaiseLocalEvent(user, ref dropEvent);
         args.Cancelled = true;
     }
-
-    private void OnCultBolaPickedUp(Entity<BloodCultBolaComponent> ent, ref GotEquippedHandEvent args)
-    {
-        var user = args.User;
-
-        if (HasComp<BloodCultistComponent>(user) ||
-            HasComp<AllowCultEquipmentComponent>(user))
-            return;
-
-        var dropEvent = new DropHandItemsEvent();
-        RaiseLocalEvent(user, ref dropEvent);
-    }
-
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
@@ -336,7 +307,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         }
 
         var stoneTransform = Transform(stone).Coordinates;
-        var soul = Spawn(component.SoulProto, stoneTransform);
+        var soul = SpawnAtPosition(component.SoulProto, stoneTransform);
         _transform.AttachToGridOrMap(soul, Transform(soul));
 
         if (!string.IsNullOrWhiteSpace(mind.CharacterName))
@@ -513,7 +484,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             return;
         }
 
-        var constructMobe = Spawn(args.Construct, Transform(construct).Coordinates);
+        var constructMobe = SpawnAtPosition(args.Construct, Transform(construct).Coordinates);
         _mind.TransferTo(mind, constructMobe);
         QueueDel(construct);
 
@@ -560,7 +531,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         structure.Comp.ActivateTime = currentTime;
 
-        var item = Spawn(args.Item, Transform(structure).Coordinates);
+        var item = SpawnAtPosition(args.Item, Transform(structure).Coordinates);
         _audio.PlayPvs(structure.Comp.Sound, structure);
 
         var cultistPosition = _transform.GetWorldPosition(args.Actor);

@@ -614,7 +614,7 @@
       state: glow_proteon_cult
       shader: unshaded
   - type: Item
-    size: Normal
+    size: Small
   # - type: Clothing
     # quickEquip: false
     # sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi

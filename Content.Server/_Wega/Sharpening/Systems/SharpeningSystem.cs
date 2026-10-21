@@ -29,16 +29,16 @@ public sealed partial class SharpeningSystem : SharedSharpeningSystem
         {
             var user = GetEntity(args.User);
 
-            Spawn("Ash", Transform(user).Coordinates);
+            SpawnAtPosition("Ash", Transform(user).Coordinates);
 
-            _popup.PopupEntity(Loc.GetString("blood-sharpener-success"),user, user, PopupType.Small);
+            _popup.PopupEntity(Loc.GetString("blood-sharpener-success"), user, user, PopupType.Small);
         }
 
         if (!ent.Comp.DeleteOnSharpening)
             return;
 
-        if (ent.Comp.Prototype != string.Empty && TryComp(ent, out TransformComponent? xform))
-            Spawn(ent.Comp.Prototype, xform.Coordinates);
+        if (ent.Comp.Prototype is { } prototype && TryComp(ent, out TransformComponent? xform))
+            SpawnAtPosition(prototype, xform.Coordinates);
 
         Del(ent);
     }

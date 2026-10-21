@@ -59,7 +59,6 @@ public sealed partial class BloodCultSystem
 
     private void InitializeRunes()
     {
-        base.Initialize();
 
         SubscribeLocalEvent<BloodDaggerComponent, SelectBloodRuneMessage>(AfterRuneSelect);
         SubscribeLocalEvent<BloodCultistComponent, BloodRuneDoAfterEvent>(DoAfterRuneSelect);
@@ -141,7 +140,7 @@ public sealed partial class BloodCultSystem
 
     private EntityUid SpawnRuneEffect(EntityUid cultist, string runeProto)
     {
-        var rune = Spawn(runeProto + "Effect", Transform(cultist).Coordinates);
+        var rune = SpawnAtPosition(runeProto + "Effect", Transform(cultist).Coordinates);
         _appearance.SetData(rune, RuneColorVisuals.Color, TryFindColor(cultist));
         return rune;
     }
@@ -184,7 +183,7 @@ public sealed partial class BloodCultSystem
 
     private EntityUid SpawnFinalRune(EntityUid cultist, string runeProto)
     {
-        var rune = Spawn(runeProto, Transform(cultist).Coordinates);
+        var rune = SpawnAtPosition(runeProto, Transform(cultist).Coordinates);
         _appearance.SetData(rune, RuneColorVisuals.Color, TryFindColor(cultist));
         return rune;
     }
@@ -451,7 +450,7 @@ public sealed partial class BloodCultSystem
 
     private void CreateSoulStone(EntityUid target)
     {
-        var soulStone = Spawn("BloodCultSoulStone", Transform(target).Coordinates);
+        var soulStone = SpawnAtPosition("BloodCultSoulStone", Transform(target).Coordinates);
         if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
             _mind.TransferTo(mindContainer.Mind.Value, soulStone);
     }
@@ -490,9 +489,9 @@ public sealed partial class BloodCultSystem
         var randomRuneEntity = teleportRunes[_random.Next(teleportRunes.Count)];
         var runeCoords = Transform(randomRuneEntity).Coordinates;
 
-        Spawn("BloodCultOutEffect", Transform(cultist).Coordinates);
+        SpawnAtPosition("BloodCultOutEffect", Transform(cultist).Coordinates);
         _transform.SetCoordinates(cultist, runeCoords);
-        Spawn("BloodCultInEffect", runeCoords);
+        SpawnAtPosition("BloodCultInEffect", runeCoords);
         QueueDel(randomRuneEntity);
     }
 
@@ -894,9 +893,9 @@ public sealed partial class BloodCultSystem
         var coords = Transform(rune).Coordinates;
 
         QueueDel(rune);
-        Spawn("BloodCultDistortedEffect", coords);
+        SpawnAtPosition("BloodCultDistortedEffect", coords);
 
-        Spawn(GetGodPrototype(), coords);
+        SpawnAtPosition(GetGodPrototype(), coords);
 
         RaiseLocalEvent(new BloodGodCalledEvent());
         TransformNearbyCultists(coords);
@@ -919,7 +918,7 @@ public sealed partial class BloodCultSystem
 
         foreach (var target in nearbyCultists)
         {
-            var harvester = Spawn("MobConstructHarvester", Transform(target).Coordinates);
+            var harvester = SpawnAtPosition("MobConstructHarvester", Transform(target).Coordinates);
             if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
                 _mind.TransferTo(mindContainer.Mind.Value, harvester);
 
@@ -956,9 +955,9 @@ public sealed partial class BloodCultSystem
     private void OnSummoningSelected(Entity<BloodRuneComponent> rune, ref SummoningRuneSelectCultistMessage args)
     {
         var target = GetEntity(args.CultistUid);
-        Spawn("BloodCultOutEffect", Transform(target).Coordinates);
+        SpawnAtPosition("BloodCultOutEffect", Transform(target).Coordinates);
         _transform.SetCoordinates(target, Transform(rune).Coordinates);
-        Spawn("BloodCultInEffect", Transform(rune).Coordinates);
+        SpawnAtPosition("BloodCultInEffect", Transform(rune).Coordinates);
 
         QueueDel(rune);
     }
