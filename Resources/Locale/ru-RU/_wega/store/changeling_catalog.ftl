@@ -1,0 +1,2 @@
+changeling-catalog-thermal-vision-name = Тепловое зрение
+changeling-catalog-thermal-vision-desc = Вы модифицируете свои фоторецепторы и обостряете свои чувства, чтобы обрести способность видеть сквозь стены живых существ.

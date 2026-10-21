@@ -30,6 +30,10 @@
   - type: Prying
     speedModifier: 1.5 # Jaws of life speed
     pryPowered: true
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
+# Corvax-Wega-End
 
 - type: entity
   parent: Armblade
