@@ -43,7 +43,7 @@
     - state: stripe_bottom
       color: "#446326"
     - sprite: &wega-icon-rsi _Wega/Interface/Misc/job_icons.rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: &wega-icon-offset -0.18750, 0.03125
       state: Barber
   - type: PresetIdCard
     job: Barber
@@ -74,7 +74,7 @@
     - state: stripe_bottom
       color: "#325f7a"
     - sprite: Interface/Misc/job_icons.rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: Geneticist
   - type: PresetIdCard
     job: Geneticist
@@ -92,7 +92,7 @@
     - state: stripe_bottom
       color: "#446326"
     - sprite: *wega-icon-rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: Surgeon
   - type: PresetIdCard
     job: Surgeon
@@ -110,7 +110,7 @@
     - state: stripe_bottom
       color: "#446326"
     - sprite: *wega-icon-rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: Coroner
   - type: PresetIdCard
     job: Coroner
@@ -128,7 +128,7 @@
     - state: stripe_bottom
       color: "#0e4069"
     - sprite: *wega-icon-rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: BlueShield
   - type: PresetIdCard
     job: BlueShieldOfficer
@@ -146,7 +146,7 @@
     - state: stripe_bottom
       color: "#5b4523"
     - sprite: *wega-icon-rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: Postman
   - type: PresetIdCard
     job: Postman
@@ -164,7 +164,7 @@
     - state: stripe_bottom
       color: "#5b4523"
     - sprite: *wega-icon-rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: ShaftMiner
   - type: PresetIdCard
     job: ShaftMiner
@@ -182,7 +182,7 @@
     - state: stripe_bottom
       color: "#5b4523"
     - sprite: *wega-icon-rsi
-      offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+      offset: *wega-icon-offset
       state: ShaftMinerMedic
   - type: PresetIdCard
     job: ShaftMinerMedic
@@ -200,7 +200,7 @@
       - state: stripe_bottom
         color: "#830000"
       - sprite: *wega-icon-rsi
-        offset: &wega-icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
+        offset: *wega-icon-offset
         state: WardenHelper
     - type: PresetIdCard
       job: WardenHelper
