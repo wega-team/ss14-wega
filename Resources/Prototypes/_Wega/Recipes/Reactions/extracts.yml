@@ -297,7 +297,7 @@
   effects:
     - !type:SpawnEntity
       entity: FloorTileItemWegaSepia
-      number: 5
+      number: 30
 
 
 - type: reaction

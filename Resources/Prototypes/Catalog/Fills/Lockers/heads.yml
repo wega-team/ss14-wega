@@ -309,6 +309,7 @@
     children:
     - id: ClothingMaskBreath
     - id: ClothingModularControllerResearchPreassembled # Corvax-Wega-ModularSuits-Edit
+    - id: OtherCoreSuitModuleSelector # Corvax-Wega-ModularSuits-Edit
     - id: OxygenTankFilled
 
 # No hardsuit locker

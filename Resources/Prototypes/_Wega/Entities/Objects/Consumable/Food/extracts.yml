@@ -292,9 +292,9 @@
       - ReagentId: Nutriment
         Quantity: 10
       - ReagentId: SlimeExtractSepia
-        Quantity: 5
+        Quantity: 1
       - ReagentId: Nyctalon
-        Quantity: 5
+        Quantity: 9
 
 - type: entity
   parent: BaseMaterialSlimeExtract
