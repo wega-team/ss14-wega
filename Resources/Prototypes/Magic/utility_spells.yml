@@ -16,3 +16,7 @@
       charge: 1
   - type: SpeakOnAction
     sentence: action-speech-spell-charge
+# Corvax-Wega-Start
+  - type: Magic
+    requiresClothes: true
+# Corvax-Wega-End
