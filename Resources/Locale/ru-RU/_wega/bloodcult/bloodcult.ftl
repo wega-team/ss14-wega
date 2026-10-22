@@ -84,6 +84,7 @@ blood-structure-failed = взаимодействие будет возможн�
 blood-cult-dagger-not-found = кинжала не существует
 blood-cult-dagger-recalled = кинжал образуется перед вами
 blood-cult-blood-dagger-exists = вы уже имеете кинжал
+blood-cult-rites-cooldown = Заклинание станет доступно через {$seconds} сек.
 blood-orb-dialog-title = Передача крови
 blood-orb-dialog-prompt = Количество
 blood-orb-invalid-input = Невозможное значение, укажите числовое значение, которое хотите передать

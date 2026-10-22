@@ -12,6 +12,8 @@ public sealed partial class BloodCultistComponent : Component
 {
     public bool BloodMagicActive = false;
 
+    public Dictionary<EntProtoId, TimeSpan> BloodRitesCooldowns = new();
+
     [DataField] public EntityUid? SelectedSpell { get; set; }
 
     [DataField] public List<EntityUid?> SelectedEmpoweringSpells = new();

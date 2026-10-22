@@ -86,5 +86,7 @@ public sealed partial class MindControlRoundEndSystem : EntitySystem
                     ("controlled", name)));
             }
         }
+
+        args.AddLine(string.Empty);
     }
 }

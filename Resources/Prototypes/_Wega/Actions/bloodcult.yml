@@ -235,7 +235,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 10
+    useDelay: 5
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -253,7 +253,7 @@
   components:
   - type: Action
     itemIconStyle: BigAction
-    useDelay: 15
+    useDelay: 20
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -271,7 +271,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 15
+    useDelay: 90
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:
@@ -305,7 +305,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 15
+    useDelay: 30
   - type: Sprite
     sprite: _Wega/Interface/Actions/actions_bloodcult.rsi
     layers:

@@ -54,6 +54,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Blood.Cult;
 
@@ -422,10 +423,34 @@ public sealed partial class BloodCultSystem
 
     private void BloodRitesSelect(Entity<BloodSpellComponent> ent, ref BloodRitesSelectRitesMessage args)
     {
-        if (!HasComp<BloodCultistComponent>(args.Actor) || ent.Comp.SpellType != BloodCultSpell.BloodRites)
+        if (!TryComp<BloodCultistComponent>(args.Actor, out var cultist) ||
+            ent.Comp.SpellType != BloodCultSpell.BloodRites)
             return;
 
-        _action.AddAction(args.Actor, args.Rites);
+        if (cultist.BloodRitesCooldowns.TryGetValue(args.Rites, out var cooldown) &&
+            _gameTiming.CurTime < cooldown)
+        {
+            var remaining = Math.Ceiling((cooldown - _gameTiming.CurTime).TotalSeconds);
+
+            _popup.PopupEntity(
+                Loc.GetString("blood-cult-rites-cooldown", ("seconds", remaining)),
+                args.Actor,
+                args.Actor,
+                PopupType.SmallCaution);
+
+            return;
+        }
+
+        var actionUid = _action.AddAction(args.Actor, args.Rites);
+        if (actionUid is not { } action)
+            return;
+
+        if (TryComp<ActionComponent>(action, out var actionComp) &&
+            actionComp.UseDelay is { } delay)
+        {
+            cultist.BloodRitesCooldowns[args.Rites] = _gameTiming.CurTime + delay;
+        }
+
         QueueDel(ent);
     }
 

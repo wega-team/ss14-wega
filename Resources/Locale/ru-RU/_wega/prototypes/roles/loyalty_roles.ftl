@@ -20,6 +20,6 @@ mind-control-round-end-master = [color=#ff6b6b]Владелец[/color]: [color=
 [few]подчинённых
 *[other]подчинённых
 }:
-mind-control-round-end-entry = [color=white]{$controlled}[/color]
+mind-control-round-end-entry = - [color=white]{$controlled}[/color]
 mind-control-side-effects-examined = [color=steelblue]Зрачки {$name} выглядят неестественно суженными и почти не реагируют на свет. 
     Взгляд кажется лишённым привычных эмоций.[/color]
