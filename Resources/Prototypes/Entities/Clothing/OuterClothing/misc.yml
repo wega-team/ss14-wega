@@ -188,7 +188,12 @@
   id: ClothingOuterWizardBase
   components:
   - type: WizardClothes
-
+# Corvax-Wega-Start
+  - type: Clothing
+    equipDelay: 2
+    unequipDelay: 2
+# Corvax-Wega-End
+    
 - type: entity
   parent: ClothingOuterWizardBase
   id: ClothingOuterWizardAbyss
