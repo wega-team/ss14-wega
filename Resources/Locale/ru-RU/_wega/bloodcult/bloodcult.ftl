@@ -6,15 +6,25 @@ select-constuct-proteon = Пилон
 select-constuct-idol = Айдол
 
 select-spell-stun = Ошеломление
+    Оглушает, ослепляет и лишает цель возможности говорить.
 select-spell-teleport = Телепорт
-select-spell-electromagnetic-pulse = Электромагнитный Испульс
-select-spell-shadow-shackles = Теневые Оковы
-select-spell-twisted-construction = Искаженное Строительство
-select-spell-summon-equipment = Призыв Снаряжения
-select-spell-summon-dagger = Призыв Кинжала
+    Телепортирует цель к первой руне телепортации.
+select-spell-electromagnetic-pulse = Электромагнитный импульс
+    Создаёт электромагнитный импульс, выводящий из строя электронику поблизости.
+select-spell-shadow-shackles = Теневые оковы
+    Сковывает цель наручниками и временно лишает возможности говорить
+select-spell-twisted-construction = Искажённое строительство
+    Преобразует шлюзы и материалы в конструкции и ресурсы культа.
+select-spell-summon-equipment = Призыв снаряжения
+    Призывает комплект снаряжения культа на выбранного культиста.
+select-spell-summon-dagger = Призыв кинжала
+    Призывает ритуальный кинжал вашего божества.
 select-spell-hallucinations = Галлюцинации
-select-spell-conceal-presence = Маскировка Присутствия
-select-spell-blood-rites = Кровавый Обряд
+    Вызывает у цели галлюцинации на 30 секунд.
+select-spell-conceal-presence = Маскировка присутствия
+    Позволяет скрыть присутствие рун и построек от окружающих.
+select-spell-blood-rites = Кровавый обряд
+    Позволяет собирать кровь, лечить союзников и создавать кровавые заклинания.
 
 select-blood-orb = Кровавая Сфера
 select-blood-recharge = Кровавая Перезарядка
