@@ -2,6 +2,8 @@ using System.Linq;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Audio; // Corvax-Wega-SoundInsolation
+using Content.Shared.Audio.Components; // Corvax-Wega-SoundInsolation
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
@@ -12,7 +14,6 @@ using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
 using Content.Shared.Prying.Components;
 using Content.Shared.Prying.Systems;
-using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
 using Content.Shared.Tools.Systems;
@@ -50,7 +51,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private SharedMapSystem _mapSystem = default!;
     [Dependency] private SharedPowerReceiverSystem _powerReceiver = default!;
     [Dependency] private WeldableSystem _weldSystem = default!;
-    [Dependency] private SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
+    [Dependency] private SharedSoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
     public static readonly ProtoId<TagPrototype> DoorBumpTag = "DoorBumpOpener";
 
@@ -224,7 +225,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     // Corvax-Wega-SoundInsolation-start
     private void UpdateDoorInsulation(EntityUid uid, DoorComponent door, DoorState state)
     {
-        if (!TryComp<SoundInsulatorComponent>(uid, out var insulator))
+        if (!TryComp<SoundInsulationComponent>(uid, out var insulator))
             return;
 
         var shouldIsolate = state == DoorState.Closed || state == DoorState.Closing || state == DoorState.Denying;

@@ -77,9 +77,11 @@
     pylons:
     - Door
     - Firelock
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
+    absorptionFactor: 0.05
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   parent: [ BaseWindowStructure, StructureHealthBarrier ]
@@ -127,8 +129,10 @@
   - type: Occluder
   - type: StaticPrice
     price: 70
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 1 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   abstract: true
@@ -203,6 +207,10 @@
   - type: Construction
     graph: WindowDirectional
     node: windowDirectional
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWindowStructureDirectional, StructureHealthBarrierWeak ]
