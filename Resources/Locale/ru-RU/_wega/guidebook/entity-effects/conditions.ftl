@@ -1,0 +1,1 @@
+entity-condition-guidebook-body-lavaland = на Лаваленде или Айсмуне

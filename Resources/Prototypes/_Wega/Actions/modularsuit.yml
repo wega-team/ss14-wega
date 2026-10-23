@@ -162,23 +162,6 @@
 
 - type: entity
   parent: BaseAction
-  id: ActivateShadowModuleAction
-  name: "[color=#58c4e8]Activate Stealth[/color]"
-  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
-  components:
-  - type: Action
-    startDelay: true
-    useDelay: 5
-  - type: Sprite
-    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
-    layers:
-    - state: shadow_core
-      map: ["enum.ActionVisuals.Icon"]
-  - type: InstantAction
-    event: !type:ModuleStealthEvent
-
-- type: entity
-  parent: BaseAction
   id: ToggleHolsterModuleAction
   name: "[color=#58c4e8]Toggle Holster[/color]"
   description: "Deploys or retracts the weapon holster for quick firearm access."

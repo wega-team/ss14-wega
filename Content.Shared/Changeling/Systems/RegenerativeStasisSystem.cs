@@ -9,6 +9,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Surgery.Components; // Corvax-Wega-Add
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Shared.Changeling.Systems;
@@ -123,6 +124,15 @@ public sealed partial class RegenerativeStasisSystem : EntitySystem
 
         // Heal all damage.
         _damage.ClearAllDamage(target);
+
+		// Corvax-Wega-Start
+		if (TryComp<OperatedComponent>(target, out var oper))
+		{
+			oper.InternalDamages.Clear();
+			oper.ResetOperationState("Default");
+		}
+
+		// Corvax-Wega-End
 
         // Heal bloodloss and stop bleeding.
         if (TryComp<BloodstreamComponent>(target, out var bloodstream))
