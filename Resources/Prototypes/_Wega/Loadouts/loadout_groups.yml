@@ -740,6 +740,21 @@
   - BlueShieldSatchel
 
 - type: loadoutGroup
+  id: BlueshieldBelt
+  name: loadout-group-blue-shield-belt
+  loadouts:
+  - BlueShieldWebbing
+  - BlueShieldWebbingAlt
+
+- type: loadoutGroup
+  id: BlueshieldNeck
+  name: loadout-group-blue-shield-neck
+  loadouts:
+  - BlueShieldCloak
+  - BlueShieldMantle
+  - BlueShieldCloakNT
+
+- type: loadoutGroup
   id: BlueshielOuter
   name: loadout-group-blue-shield-outer
   loadouts:

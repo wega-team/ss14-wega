@@ -43,7 +43,7 @@
     - state: stripe_bottom
       color: "#446326"
     - sprite: &wega-icon-rsi _Wega/Interface/Misc/job_icons.rsi
-      offset: &wega-icon-offset -0.09375, 0.0625
+      offset: &wega-icon-offset -0.18750, 0.03125
       state: Barber
   - type: PresetIdCard
     job: Barber
