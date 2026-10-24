@@ -5,15 +5,16 @@
   - OrganBaseChildInternal
   id: OrganShadekinCore
   name: shadekin core
+  suffix: Shadekin
   components:
   - type: GibbableOrgan
   - type: Organ
     category: Core
   - type: Sprite
-    sprite: _Wega/Mobs/Species/Shadekin/organs.rsi  # your own organ sprite sheet
+    sprite: _Wega/Mobs/Species/Shadekin/organs.rsi
     layers:
-    - state: core  # state 1: teleport ability enabled
-  - type: ShadekinCore       # new component you'll create to hold the "Mode" field
+    - state: core
+  - type: ShadekinCore
     mode: Active
     activeState: core
     inactiveState: core-burned

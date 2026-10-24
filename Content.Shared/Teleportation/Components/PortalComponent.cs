@@ -3,6 +3,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Corvax-Wega
 using Content.Shared.Tag;   // Corvax-Wega
 using Robust.Shared.Serialization;  // Corvax-Wega
+using Content.Shared.Whitelist;     // Corvax-Wega
 
 namespace Content.Shared.Teleportation.Components;
 
@@ -69,6 +70,7 @@ public sealed partial class PortalComponent : Component
     [DataField] public string ClosingSpriteState = "closing";
     [DataField] public TimeSpan OpeningAnimationTime = TimeSpan.FromSeconds(1);
     [DataField] public TimeSpan ClosingAnimationTime = TimeSpan.FromSeconds(1);
+    [DataField] public EntityWhitelist? CollisionBlacklist;
     // Corvax-Wega-Shadekin-end
 }
 

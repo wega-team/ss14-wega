@@ -79,17 +79,15 @@
   - AppearanceShadekin
   - BaseSpeciesMobOrganic
   id: MobShadekin
-  name: Urist McShade
+  name: Urist McMar
   components:
   - type: Operated
     raceGraph: ShadekinSurgery
   - type: Butcherable
     spawned:
-    - id: FoodMeatHuman
+    - id: FoodMeat
       amount: 5
   - type: Speech
-    speechSounds: Lizard
-    speechVerb: Reptilian
     allowedEmotes: ['Mar', 'Wurble']
   - type: Vocal
     emoteSounds: MaleShadekin
@@ -136,6 +134,13 @@
     damageContainer: Biological
   - type: Damageable
     damageModifierSet: Shadekin
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#1c1624"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
   - type: Flammable
     damage:
       types:
@@ -180,7 +185,7 @@
   parent: OrganBaseOrganic
   id: OrganShadekin
   abstract: true
-  suffix: shadekin
+  suffix: Shadekin
 
 - type: entity
   id: OrganShadekinMetabolizer

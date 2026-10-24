@@ -32,6 +32,10 @@
   - type: Appearance
   - type: Portal
     requiredCollisionTag: MobShadekin
+    collisionBlacklist:
+      components:
+      - Vampire
+      - ChangelingIdentity
     closedSpriteState: anom # placeholder
     openingSpriteState: pulse # placeholder
     openSpriteState: anom # placeholder

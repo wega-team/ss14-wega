@@ -1,6 +1,6 @@
 ent-AppearanceShadekin = Shadekin appearance
     .desc = { ent-BaseSpeciesAppearance.desc }
-ent-MobShadekin = Урист МакТень
+ent-MobShadekin = Урист МакМар
     .desc = { ent-AppearanceShadekin.desc }
 ent-OrganShadekin = { ent-OrganBase }
     .desc = { ent-OrganBase.desc }
