@@ -161,14 +161,22 @@ public sealed partial class SoundInsulationSystem : SharedSoundInsulationSystem
         // If insulation is globally disabled, skip tracing entirely and restore default audio
         if (!_insulationEnabled)
         {
-            component.Gain = 1f;
             component.Occlusion = 0f;
             component.Volume = component.Params.Volume;
             return;
         }
 
         if (component.Global)
+        {
+            if (xform.MapID != MapId.Nullspace && listener.MapId != xform.MapID)
+            {
+                component.Gain = 0f;
+                return;
+            }
+
+            component.Volume = component.Params.Volume;
             return;
+        }
 
         if (listener.MapId != xform.MapID)
         {
@@ -206,7 +214,6 @@ public sealed partial class SoundInsulationSystem : SharedSoundInsulationSystem
         var local = _player.LocalEntity;
         if (local is not { Valid: true } listenerEnt)
         {
-            component.Gain = 1f;
             component.Occlusion = 0f;
             component.Volume = component.Params.Volume;
             return;
@@ -222,7 +229,7 @@ public sealed partial class SoundInsulationSystem : SharedSoundInsulationSystem
 
         var trace = _rayTracer.Trace(entity, listenerEnt, xform.MapID);
 
-        // If the sound did not reach the listener, mute it completely.
+        // If the sound did not reach the listener, mute it completely
         var insulation = trace.ReachedListener ? trace.TotalAbsorption : 1f;
 
         if (insulation >= FullyMuffledThreshold)
@@ -233,7 +240,6 @@ public sealed partial class SoundInsulationSystem : SharedSoundInsulationSystem
             return;
         }
 
-        component.Gain = 1f;
         component.Occlusion = MathF.Min(insulation * OcclusionMultiplier, MaxOcclusion);
 
         var totalVolume = component.Params.Volume - insulation * MaxVolumeAttenuationDb;
