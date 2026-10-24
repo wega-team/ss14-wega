@@ -1,0 +1,18 @@
+- type: listing
+  id: ChangelingThermal
+  name: changeling-catalog-thermal-vision-name
+  description: changeling-catalog-thermal-vision-desc
+  icon: { sprite: _Wega/Interface/Actions/action_changeling.rsi, state: thermal }
+  applyToMob: true
+  cost:
+    ChangelingDNA: 15
+  categories:
+  - ChangelingStoreCombat
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyerChangelingIdentityCountCondition
+    requireDevour: true
+    count: 2
+    lock: true
+  productComponents: ChangelingThermalVisionDummy

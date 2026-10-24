@@ -63,7 +63,8 @@ public sealed partial class PopupMessageEffect : InteractionEffect
 
         if (!string.IsNullOrWhiteSpace(OtherMessage))
         {
-            var filter = Filter.Local().RemoveWhereAttachedEntity(uid => uid == user)
+            var filter = Filter.Pvs(target, entityManager: entityManager)
+                .RemoveWhereAttachedEntity(uid => uid == user)
                 .RemoveWhereAttachedEntity(uid => uid == target);
 
             var popupType = ColorMessage == Color.Red ? PopupType.SmallCaution : PopupType.Small;

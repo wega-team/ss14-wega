@@ -77,6 +77,12 @@
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:ChangelingDevourActionEvent
+    # Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+    # Corvax-Wega-End
 
 - type: entity
   id: ActionChangelingTransform
@@ -192,6 +198,12 @@
     whitelist:
       components:
       - HumanoidProfile
+# Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+# Corvax-Wega-End
     event: !type:ChangelingStingDnaEvent
   - type: PopupOnAction
     popupType: Medium
@@ -208,6 +220,12 @@
     whitelist:
       components:
       - Bloodstream
+# Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+# Corvax-Wega-End
     event: !type:EntityEffectActionEvent
   - type: ActionRequirements
     failPopup: changeling-not-enough-chemicals
@@ -432,6 +450,12 @@
     - state: take_over_corpse
   - type: EntityTargetAction
     event: !type:ChangelingTakeOverCorpseActionEvent
+    # Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+    # Corvax-Wega-End
   - type: TargetAction
 
 - type: entity
@@ -541,6 +565,10 @@
     blacklist:
       components:
       - RandomHumanoidAppearance # Hungry... For... Salvage corpses... grrrr...
+    # Corvax-Wega-Start
+      - Android
+      - Ipc
+    # Corvax-Wega-End
     event: !type:EntityEffectActionEvent
   - type: EntityEffectAction
     effects:

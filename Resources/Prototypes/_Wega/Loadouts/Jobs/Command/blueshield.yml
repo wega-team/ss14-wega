@@ -1,3 +1,23 @@
+# For mantle
+- type: loadoutEffectGroup
+  id: BlueShieldMantleRequirement
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBlueShield
+      time: 20h
+
+# For NT cloak
+- type: loadoutEffectGroup
+  id: BlueShieldCloakNTRequirement
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBlueShield
+      time: 50h
+
 # Head
 - type: loadout
   id: BlueshieldHead
@@ -45,6 +65,39 @@
   id: BlueShieldSatchel
   equipment:
     back: ClothingBackpackSatchelBlueShield
+
+#Belt
+- type: loadout
+  id: BlueShieldWebbing
+  equipment:
+    belt: ClothingBeltMilitaryWebbingFilled
+
+- type: loadout
+  id: BlueShieldWebbingAlt
+  equipment:
+    belt: ClothingBeltMilitaryWebbingAltFilled
+
+#Neck
+- type: loadout
+  id: BlueShieldCloak
+  equipment:
+    neck: ClothingNeckCloakBlueShield
+
+- type: loadout
+  id: BlueShieldMantle
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: BlueShieldMantleRequirement
+  equipment:
+    neck: ClothingNeckMantleBlueShield
+
+- type: loadout
+  id: BlueShieldCloakNT
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: BlueShieldCloakNTRequirement
+  equipment:
+    neck: ClothingNeckCloakNanotrasen
 
 # OuterClothing
 - type: loadout

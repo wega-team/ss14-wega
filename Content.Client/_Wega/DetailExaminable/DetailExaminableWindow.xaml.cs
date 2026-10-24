@@ -76,10 +76,10 @@ public sealed partial class DetailExaminableWindow : FancyWindow
     {
         var label = new RichTextLabel
         {
-            Text = text + "\n",
             VerticalExpand = true
         };
 
+        label.SetMessage(text + "\n");
         PreviewGYRContainer.AddChild(label);
     }
 

@@ -8,6 +8,7 @@ using Content.Shared.Emp;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.PDA;
+using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
@@ -25,31 +26,32 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private IGameTiming _timing = default!;
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
+    private readonly Dictionary<EntityUid, TimeSpan> _lastGroupCreate = new();
     private readonly Dictionary<string, EntityUid> _activeChats = new();
     private readonly Dictionary<string, ChatGroupData> _groups = new();
+
     private const string ProgramContainer = "preinstalled-program-container";
     private const int MessageRange = 2000;
 
-    public override void Initialize()
+    private const int MaxChatIdAttempts = 100;
+    private const int MaxGroupIdAttempts = 100;
+    private const int MaxGroupsPerChat = 12;
+    private const int MaxGroupsTotal = 500;
+    private const int MaxGroupNameLength = 32;
+
+    private static readonly TimeSpan GroupCreateCooldown = TimeSpan.FromSeconds(5);
+
+    [SubscribeLocalEvent]
+    private void OnRoundRestart(RoundRestartCleanupEvent args)
     {
-        base.Initialize();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
-
-        SubscribeLocalEvent<PdaComponent, OwnerNameChangedEvent>(OnOwnerNameChanged);
-
-        SubscribeLocalEvent<NanoChatCartridgeComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeMessageEvent>(OnUiMessage);
-        SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeUiReadyEvent>(OnUiReady);
-        SubscribeLocalEvent<NanoChatCartridgeComponent, CartridgeRemovedEvent>(OnCartridgeRemoved);
-
-        SubscribeLocalEvent<NanoChatCartridgeComponent, EmpPulseEvent>(OnEmpPulse);
-        SubscribeLocalEvent<NanoChatCartridgeComponent, EmpDisabledRemovedEvent>(OnEmpFinished);
+        _lastGroupCreate.Clear();
+        _activeChats.Clear();
+        _groups.Clear();
     }
 
-    private void OnRoundRestart(RoundRestartCleanupEvent args) { _activeChats.Clear(); _groups.Clear(); }
-
+    [SubscribeLocalEvent]
     private void OnOwnerNameChanged(Entity<PdaComponent> ent, ref OwnerNameChangedEvent args)
     {
         var container = _container.GetContainer(ent, ProgramContainer);
@@ -66,48 +68,98 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
         }
     }
 
+    private bool TryGenerateUniqueChatId(out string id)
+    {
+        for (var i = 0; i < MaxChatIdAttempts; i++)
+        {
+            var candidate = "#" + _random.Next(10000).ToString("D4");
+            if (!_activeChats.ContainsKey(candidate))
+            {
+                id = candidate;
+                return true;
+            }
+        }
+
+        for (var i = 0; i < 10000; i++)
+        {
+            var candidate = "#" + i.ToString("D4");
+            if (!_activeChats.ContainsKey(candidate))
+            {
+                id = candidate;
+                return true;
+            }
+        }
+
+        id = string.Empty;
+        return false;
+    }
+
+    private bool TryGenerateUniqueGroupId(out string id)
+    {
+        for (var i = 0; i < MaxGroupIdAttempts; i++)
+        {
+            var candidate = "G" + _random.Next(10000).ToString("D4");
+            if (!_groups.ContainsKey(candidate))
+            {
+                id = candidate;
+                return true;
+            }
+        }
+
+        for (var i = 0; i < 10000; i++)
+        {
+            var candidate = "G" + i.ToString("D4");
+            if (!_groups.ContainsKey(candidate))
+            {
+                id = candidate;
+                return true;
+            }
+        }
+
+        id = string.Empty;
+        return false;
+    }
+
+    [SubscribeLocalEvent]
     private void OnMapInit(Entity<NanoChatCartridgeComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.ChatId = GenerateUniqueChatId();
+        if (!TryGenerateUniqueChatId(out var chatId))
+        {
+            QueueDel(ent);
+            return;
+        }
+
+        ent.Comp.ChatId = chatId;
         ent.Comp.OwnerName = Loc.GetString("generic-unknown-title");
 
         _activeChats[ent.Comp.ChatId] = ent.Owner;
     }
 
-    private string GenerateUniqueChatId()
-    {
-        string id;
-        do
-        {
-            id = "#" + _random.Next(10000).ToString("D4");
-        } while (_activeChats.ContainsKey(id));
-
-        return id;
-    }
-
-    private string GenerateUniqueGroupId()
-    {
-        string id;
-        do
-        {
-            id = "G" + _random.Next(10000).ToString("D4");
-        } while (_groups.ContainsKey(id));
-
-        return id;
-    }
-
+    [SubscribeLocalEvent]
     private void OnUiReady(Entity<NanoChatCartridgeComponent> ent, ref CartridgeUiReadyEvent args)
     {
         UpdateUiState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnCartridgeRemoved(Entity<NanoChatCartridgeComponent> ent, ref CartridgeRemovedEvent args)
     {
         _activeChats.Remove(ent.Comp.ChatId);
-        foreach (var group in _groups.Values.Where(g => g.Members.Contains(ent.Comp.ChatId)).ToList())
+        _lastGroupCreate.Remove(ent.Owner);
+
+        var ownedGroups = _groups.Values
+            .Where(g => g.Members.Contains(ent.Comp.ChatId))
+            .ToList();
+
+        foreach (var group in ownedGroups)
+        {
             group.Members.Remove(ent.Comp.ChatId);
+            if (group.Members.Count == 0)
+                _groups.Remove(group.GroupId);
+        }
     }
 
+    [SubscribeLocalEvent]
     private void OnEmpPulse(Entity<NanoChatCartridgeComponent> ent, ref EmpPulseEvent args)
     {
         args.Affected = true;
@@ -118,11 +170,13 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
         UpdateUiState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnEmpFinished(Entity<NanoChatCartridgeComponent> ent, ref EmpDisabledRemovedEvent args)
     {
         UpdateUiState(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnUiMessage(Entity<NanoChatCartridgeComponent> ent, ref CartridgeMessageEvent args)
     {
         if (args is not NanoChatUiMessageEvent message)
@@ -200,7 +254,39 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
 
     private void CreateGroup(Entity<NanoChatCartridgeComponent> ent, string groupName)
     {
-        var groupId = GenerateUniqueGroupId();
+        if (string.IsNullOrWhiteSpace(groupName))
+            return;
+
+        groupName = groupName.Trim();
+        if (groupName.Length > MaxGroupNameLength)
+            groupName = groupName[..MaxGroupNameLength];
+
+        var now = _timing.CurTime;
+        if (_lastGroupCreate.TryGetValue(ent.Owner, out var last) && now < last + GroupCreateCooldown)
+        {
+            _popup.PopupEntity(Loc.GetString("nanochat-group-cooldown"), ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
+        if (ent.Comp.Groups.Count >= MaxGroupsPerChat)
+        {
+            _popup.PopupEntity(Loc.GetString("nanochat-group-limit-reached"), ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
+        if (_groups.Count >= MaxGroupsTotal)
+        {
+            _popup.PopupEntity(Loc.GetString("nanochat-group-limit-reached"), ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
+        if (!TryGenerateUniqueGroupId(out var groupId))
+        {
+            _popup.PopupEntity(Loc.GetString("nanochat-group-limit-reached"), ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
+        _lastGroupCreate[ent.Owner] = now;
         var groupData = new ChatGroupData
         {
             GroupId = groupId,
@@ -254,8 +340,12 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
             NotifyGroupMembers(groupId, Loc.GetString("nano-chat-leave-message", ("name", ent.Comp.OwnerName)));
 
             if (ent.Comp.ActiveChat == groupId)
-            {
                 ent.Comp.ActiveChat = null;
+
+            if (group.Members.Count == 0)
+            {
+                _groups.Remove(groupId);
+                return;
             }
 
             UpdateAllGroupMembersUi(groupId);
@@ -460,7 +550,6 @@ public sealed partial class NanoChatCartridgeSystem : SharedNanoChatCartridgeSys
                 if (_activeChats.TryGetValue(memberId, out var memberEntity) &&
                     TryComp<NanoChatCartridgeComponent>(memberEntity, out var memberComp))
                 {
-
                     memberComp.Groups[groupId] = new ChatGroup(
                         groupId,
                         group.GroupName,

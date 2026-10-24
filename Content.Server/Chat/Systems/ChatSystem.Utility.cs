@@ -262,7 +262,8 @@ public sealed partial class ChatSystem
                 var speech = GetSpeechVerb(source, message);
                 var nameEv = new TransformSpeakerNameEvent(source, Name(source));
                 RaiseLocalEvent(source, nameEv);
-                var name = nameEv.VoiceName;
+
+                var name = FormattedMessage.EscapeText(nameEv.VoiceName);
                 return Loc.GetString(speech.Bold ? "chat-manager-entity-say-bold-wrap-message" : "chat-manager-entity-say-wrap-message",
                     ("entityName", name),
                     ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),

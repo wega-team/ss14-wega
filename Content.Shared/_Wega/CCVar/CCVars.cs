@@ -74,7 +74,13 @@ public sealed partial class WegaCVars
     /// If you enable this mode, it will process the sound with sound isolation.
     /// </summary>
     public static readonly CVarDef<bool> SoundInsulationEnabled =
-        CVarDef.Create("wega.sound_insulation_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+        CVarDef.Create("wega.sound_insulation_enabled", true, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Enables or disables all client-side audio effects like reverb.
+    /// </summary>
+    public static readonly CVarDef<bool> AudioEffectsEnabled =
+        CVarDef.Create("wega.audio_effects_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /*
         Vote CVars

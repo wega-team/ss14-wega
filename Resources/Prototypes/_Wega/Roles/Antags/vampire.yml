@@ -7,10 +7,10 @@
   guides: [ Vampires ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 50h
+    time: 25h
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 25h
+    time: 10h
 
 - type: antagSpecifier
   parent: RestrictedAntag
@@ -27,6 +27,8 @@
     - Ipc
   components:
   - type: Vampire
+  - type: RevolutionaryImmune
+  - type: ZombieImmune
   - type: NpcFactionMember
     factions:
     - Vampire

@@ -56,6 +56,19 @@ public sealed partial class BloodCultSystem
     [Dependency] private SharedGhostSystem _ghost = default!;
 
     private static readonly EntProtoId BloodCultObserver = "MobObserverIfrit";
+    private static readonly HashSet<EntProtoId> AllowedEmpoweringSpells = new()
+    {
+        "ActionBloodCultStun",
+        "ActionBloodCultTeleport",
+        "ActionBloodCultElectromagneticPulse",
+        "ActionBloodCultShadowShackles",
+        "ActionBloodCultTwistedConstruction",
+        "ActionBloodCultSummonEquipment",
+        "ActionBloodCultSummonDagger",
+        "ActionBloodCultHallucinations",
+        "ActionBloodCultConcealPresence",
+        "ActionBloodCultBloodRites",
+    };
 
     private void InitializeRunes()
     {
@@ -930,7 +943,16 @@ public sealed partial class BloodCultSystem
 
     private void OnEmpoweringSelected(Entity<BloodRuneComponent> rune, ref EmpoweringRuneSelectSpellMessage args)
     {
-        if (!HasComp<BloodCultistComponent>(args.Actor))
+        if (!TryComp<BloodCultistComponent>(args.Actor, out var cultistComp))
+            return;
+
+        if (!_interaction.InRangeUnobstructed(args.Actor, rune.Owner))
+            return;
+
+        if (!AllowedEmpoweringSpells.Contains(args.Spell))
+            return;
+
+        if (cultistComp.SelectedEmpoweringSpells.Count >= 4)
             return;
 
         _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.Actor, TimeSpan.FromSeconds(4f), new EmpoweringDoAfterEvent(args.Spell), args.Actor)
@@ -944,7 +966,14 @@ public sealed partial class BloodCultSystem
 
     private void OnEmpoweringDoAfter(EntityUid cultist, BloodCultistComponent component, EmpoweringDoAfterEvent args)
     {
-        if (args.Cancelled) return;
+        if (args.Cancelled)
+            return;
+
+        if (!AllowedEmpoweringSpells.Contains(args.SelectedSpell))
+            return;
+
+        if (component.SelectedEmpoweringSpells.Count >= 4)
+            return;
 
         var actionEntityUid = _action.AddAction(cultist, args.SelectedSpell);
         component.SelectedEmpoweringSpells.Add(actionEntityUid);
@@ -954,7 +983,19 @@ public sealed partial class BloodCultSystem
 
     private void OnSummoningSelected(Entity<BloodRuneComponent> rune, ref SummoningRuneSelectCultistMessage args)
     {
+        if (!HasComp<BloodCultistComponent>(args.Actor))
+            return;
+
+        if (!_interaction.InRangeUnobstructed(args.Actor, rune.Owner))
+            return;
+
         var target = GetEntity(args.CultistUid);
+        if (TerminatingOrDeleted(target) || !HasComp<BloodCultistComponent>(target))
+            return;
+
+        if (Transform(target).MapID != Transform(rune).MapID)
+            return;
+
         SpawnAtPosition("BloodCultOutEffect", Transform(target).Coordinates);
         _transform.SetCoordinates(target, Transform(rune).Coordinates);
         SpawnAtPosition("BloodCultInEffect", Transform(rune).Coordinates);

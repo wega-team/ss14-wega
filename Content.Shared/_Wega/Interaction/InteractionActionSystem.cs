@@ -109,6 +109,9 @@ public sealed partial class InteractionActionSystem : EntitySystem
         if (!_net.IsServer)
             return;
 
+        if (!CheckConditions(action, user, target))
+            return;
+
         if (action.Delay > 0)
         {
             if (!string.IsNullOrWhiteSpace(action.DelayStartUserMessage))
@@ -133,7 +136,8 @@ public sealed partial class InteractionActionSystem : EntitySystem
 
             if (!string.IsNullOrWhiteSpace(action.DelayStartOtherMessage))
             {
-                var filter = Filter.Local().AddAllPlayers().RemoveWhereAttachedEntity(uid => uid == user)
+                var filter = Filter.Pvs(target, entityManager: EntityManager)
+                    .RemoveWhereAttachedEntity(uid => uid == user)
                     .RemoveWhereAttachedEntity(uid => uid == target);
 
                 var popupType = action.DelayStartColorMessage == Color.Red ? PopupType.SmallCaution : PopupType.Small;

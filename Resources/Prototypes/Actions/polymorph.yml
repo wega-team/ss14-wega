@@ -47,6 +47,11 @@
   description: CLANG!
   components:
   - type: Action
+# Corvax-Wega-Start
+    useDelay: 120
+  - type: Magic
+    requiresClothes: true
+# Corvax-Wega-End
   - type: Sprite
     sprite: Objects/Fun/immovable_rod.rsi
     layers:
@@ -62,6 +67,7 @@
   description: Melt into the Ethereal Plane for a quick getaway!
   components:
   - type: Magic
+    requiresClothes: true # Corvax-Wega-Add
   - type: Action
     useDelay: 30
   - type: Sprite

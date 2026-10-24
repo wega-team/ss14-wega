@@ -20,6 +20,10 @@
     checkCanAccess: false
   - type: WorldTargetAction
     event: !type:TeleportActionEvent
+# Corvax-Wega-Start
+  - type: Magic
+    requiresClothes: true
+# Corvax-Wega-End
 
 # TODO: Second level upgrade sometime that allows swapping with all objects
 - type: entity

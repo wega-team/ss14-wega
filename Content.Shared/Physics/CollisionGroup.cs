@@ -24,6 +24,7 @@ public enum CollisionGroup
     InteractImpassable = 1 << 7, // 128 Blocks interaction/InRangeUnobstructed
     // Y dis door passable when all the others impassable / collision.
     DoorPassable       = 1 << 8, // 256 Allows door to close over top, Like blast doors over conveyors for disposals rooms/cargo.
+    SoundOpaque        = 1 << 9, // 512 Corvax-Wega-SoundInsulation
 
     MapGrid = MapGridHelpers.CollisionGroup, // Map grids, like shuttles. This is the actual grid itself, not the walls or other entities connected to the grid.
 
@@ -65,7 +66,7 @@ public enum CollisionGroup
     TabletopMachineLayer = Opaque | BulletImpassable,
 
     // Airlocks, windoors, firelocks
-    GlassAirlockLayer = HighImpassable | MidImpassable | BulletImpassable | InteractImpassable,
+    GlassAirlockLayer = HighImpassable | MidImpassable | BulletImpassable | InteractImpassable | SoundOpaque, // Corvax-Wega-SoundInsulation-Edit
     AirlockLayer = Opaque | GlassAirlockLayer,
 
     // Airlock assembly
@@ -75,18 +76,18 @@ public enum CollisionGroup
     SlipLayer = MidImpassable | LowImpassable,
     ItemMask = Impassable | HighImpassable,
     ThrownItem = Impassable | HighImpassable | BulletImpassable,
-    WallLayer = Opaque | Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
-    GlassLayer = Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
+    WallLayer = Opaque | Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable | SoundOpaque, // Corvax-Wega-SoundInsulation-Edit
+    GlassLayer = Impassable | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable | SoundOpaque, // Corvax-Wega-SoundInsulation-Edit
     HalfWallLayer = MidImpassable | LowImpassable,
-    FlimsyLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | InteractImpassable,
+    FlimsyLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | InteractImpassable | SoundOpaque, // Corvax-Wega-SoundInsulation-Edit
 
     // Allows people to interact past and target players inside of this
-    SpecialWallLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | BulletImpassable,
+    SpecialWallLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | SoundOpaque, // Corvax-Wega-SoundInsulation-Edit
 
     // Statue, monument, airlock, window
     FullTileMask = Impassable | HighImpassable | MidImpassable | LowImpassable | InteractImpassable,
     // FlyingMob can go past
-    FullTileLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable,
+    FullTileLayer = Opaque | HighImpassable | MidImpassable | LowImpassable | BulletImpassable | InteractImpassable | SoundOpaque, // Corvax-Wega-SoundInsulation-Edit
 
     SubfloorMask = Impassable | LowImpassable
 }

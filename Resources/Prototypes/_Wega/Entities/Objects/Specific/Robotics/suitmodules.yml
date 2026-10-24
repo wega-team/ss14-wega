@@ -679,13 +679,13 @@
   - type: ModularSuitModuleContainerRequirement
     failureMessage: modsuit-module-requires-shadow-core
     requiredContainerId: module_core
-  - type: ModularSuitActionModule
-    action: ActivateShadowModuleAction
+  - type: ModularSuitModuleWearerEffect
+    activeComponents:
+    - type: Stealth
+      minVisibility: 0.3
+      lastVisibility: 0.3
   - type: ModularSuitModule
-    powerInstanceUsage: 25
     powerUsage: 1
-    canBeDisabled: false
-    active: true
     verbIcon:
       sprite: *modules-rsi
       state: shadow

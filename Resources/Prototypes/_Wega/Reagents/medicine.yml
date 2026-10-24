@@ -124,11 +124,14 @@
   color: "#a88867"
   metabolisms:
     Bloodstream:
+      metabolismRate: 0.25 # It's basically pure energy so it metabolizes very fast
       effects:
       - !type:HealthChange
+        conditions:
+        - !type:LavalandCondition
         damage:
           types:
-            Blunt: -2.5
-            Slash: -2.5
-            Piercing: -1
-            Heat: -2.5
+            Blunt: -1.5
+            Slash: -1.5
+            Piercing: -1.5
+            Heat: -1.5

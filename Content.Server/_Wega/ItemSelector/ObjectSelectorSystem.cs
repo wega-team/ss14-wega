@@ -13,6 +13,7 @@ public sealed partial class ObjectSelectorSystem : EntitySystem
 {
     [Dependency] private IAdminLogManager _admin = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private IComponentFactory _componentFactory = default!;
 
     public override void Initialize()
@@ -66,9 +67,16 @@ public sealed partial class ObjectSelectorSystem : EntitySystem
 
     private void OnSelection(EntityUid uid, ObjectSelectorComponent comp, ObjectSelectorSelectionMessage args)
     {
+        if (!comp.Objects.Contains(args.SelectedId))
+            return;
+
+        var user = args.Actor;
+        if (!_interaction.InRangeUnobstructed(user, uid))
+            return;
+
         var ent = Spawn(args.SelectedId, Transform(uid).Coordinates);
 
-        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(uid):entity} instead of {ToPrettyString(ent):entity}");
+        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(user):user} selects {ToPrettyString(ent):entity} instead of {ToPrettyString(uid):entity}");
 
         QueueDel(uid);
     }

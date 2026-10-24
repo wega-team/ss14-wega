@@ -56,7 +56,10 @@
     key: walls
   - type: StructureAligner
   - type: StructureAlignerPylon
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   abstract: true
@@ -92,6 +95,10 @@
           SheetPlasma1: &BaseDoorSpawn
             min: 3
             max: 5
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.2
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseMaterialDoorNavMap, StructureHealthDoorWeak ]
@@ -166,6 +173,10 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           MaterialWoodPlank1: *BaseDoorSpawn
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseMaterialDoorNavMap, StructureHealthBarrierWeak ]
@@ -196,6 +207,10 @@
       - !type:SpawnEntitiesBehavior
         spawn:
           SheetPaper1: *BaseDoorSpawn
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.03
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseMaterialDoorNavMap, StructureHealthBarrierWeak ]
@@ -227,6 +242,10 @@
           MaterialWebSilk1:
             min: 1
             max: 2
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseMaterialDoorNavMap, StructureHealthBarrierWeak ]
@@ -264,3 +283,7 @@
           MaterialCardboard: *BaseDoorSpawn
   - type: IconSmooth
     key: cards
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.08
+  # Corvax-Wega-SoundInsolation-end

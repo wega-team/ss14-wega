@@ -44,6 +44,9 @@
     layers:
     - texture: Interface/Actions/eyeopen.png
       map: ["enum.ActionVisuals.Icon"]
+    - texture: Interface/Actions/eyeclose.png
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
   - type: InstantAction
     event: !type:ToggleActionEvent
 

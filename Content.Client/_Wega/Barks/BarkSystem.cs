@@ -10,7 +10,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-using Content.Shared.SoundInsolation;
 
 namespace Content.Client.Speech.Synthesis.System;
 
@@ -22,7 +21,6 @@ public sealed partial class BarkSystem : EntitySystem
     [Dependency] private AudioSystem _audio = default!;
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IPlayerManager _player = default!;
-    [Dependency] private SoundInsulationSystem _soundInsulation = default!;
 
     private const float MinimalVolume = -10f;
     private const float WhisperFade = 4f;
@@ -45,19 +43,9 @@ public sealed partial class BarkSystem : EntitySystem
             var sourceTransform = Transform(sourceEntity);
             var playerTransform = Transform(_player.LocalEntity.Value);
 
-            if (sourceTransform.Coordinates.TryDistance(EntityManager, playerTransform.Coordinates, out var distance) &&
-                distance > SharedChatSystem.VoiceRange)
+            if (sourceTransform.Coordinates.TryDistance(EntityManager, playerTransform.Coordinates, out var distance)
+                && distance > SharedChatSystem.VoiceRange)
                 return;
-
-            var insulation = _soundInsulation.GetSoundInsulation(sourceEntity, _player.LocalEntity.Value);
-            if (insulation >= 0.95f)
-                return;
-
-            if (insulation > 0.1f && insulation < 0.95f)
-            {
-                volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
-                volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
-            }
         }
 
         var userVolume = _cfg.GetCVar(WegaCVars.BarksVolume);
