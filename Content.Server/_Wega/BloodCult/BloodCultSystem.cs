@@ -15,7 +15,6 @@ using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.EnergyShield;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -26,17 +25,15 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
-using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Veil.Cult.Components;
+using Content.Shared.IdentityManagement.Components;
+using Content.Shared.Inventory;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.IdentityManagement.Components;
-using Content.Shared.Inventory;
 
 
 namespace Content.Server.Blood.Cult;
@@ -72,7 +69,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         SubscribeLocalEvent<BloodCultistEyesComponent, ExaminedEvent>(OnCultistEyesExamined);
 
-        SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
         SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
 
@@ -172,18 +168,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         args.PushMarkup(Loc.GetString("blood-cultist-eyes-glow-examined", ("name", name)));
     }
 
-    // Corvax-Wega-Testing-start
-    // Да я пометил тегами чтобы банально не забыть про это и чо?
-    private void OnShotAttempted(Entity<BloodCultistComponent> ent, ref ShotAttemptedEvent args)
-    {
-        if (HasComp<CultAllowedGunComponent>(args.Used))
-            return;
-
-        _popup.PopupEntity(Loc.GetString("gun-disabled"), ent, ent);
-        args.Cancel();
-    }
-    // Corvax-Wega-Testing-end
-
     #region Dagger & Weapon
     private void OnAttemptMelee(Entity<CultWeaponComponent> entity, ref AttemptMeleeEvent args)
     {
@@ -203,7 +187,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         RaiseLocalEvent(user, ref dropEvent);
         args.Cancelled = true;
     }
-
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target is not { Valid: true } target)
@@ -230,12 +213,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         if (HasComp<BloodRuneComponent>(target))
         {
             HandleRuneInteraction(args);
-            return;
-        }
-
-        if (HasComp<BloodSharpenerComponent>(target))
-        {
-            HandleSharpenerInteraction(uid, component, args);
             return;
         }
     }
@@ -278,29 +255,6 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         });
     }
 
-    private void HandleSharpenerInteraction(EntityUid dagger, BloodDaggerComponent component, AfterInteractEvent args)
-    {
-        var user = args.User;
-        if (!TryComp<MeleeWeaponComponent>(dagger, out var meleeWeaponComponent))
-            return;
-
-        if (!component.IsSharpered)
-        {
-            if (meleeWeaponComponent.Damage.DamageDict.TryGetValue("Slash", out var currentSlashDamage))
-                meleeWeaponComponent.Damage.DamageDict["Slash"] = currentSlashDamage + FixedPoint2.New(4);
-            else
-                meleeWeaponComponent.Damage.DamageDict["Slash"] = FixedPoint2.New(4);
-
-            component.IsSharpered = true;
-            QueueDel(args.Target);
-            Spawn("Ash", Transform(user).Coordinates);
-            _popup.PopupEntity(Loc.GetString("blood-sharpener-success"), user, user, PopupType.Small);
-        }
-        else
-        {
-            _popup.PopupEntity(Loc.GetString("blood-sharpener-failed"), user, user, PopupType.Small);
-        }
-    }
     #endregion
 
     #region Soul Stone
@@ -354,7 +308,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         }
 
         var stoneTransform = Transform(stone).Coordinates;
-        var soul = Spawn(component.SoulProto, stoneTransform);
+        var soul = SpawnAtPosition(component.SoulProto, stoneTransform);
         _transform.AttachToGridOrMap(soul, Transform(soul));
 
         if (!string.IsNullOrWhiteSpace(mind.CharacterName))
@@ -541,7 +495,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
             return;
         }
 
-        var constructMobe = Spawn(args.Construct, Transform(construct).Coordinates);
+        var constructMobe = SpawnAtPosition(args.Construct, Transform(construct).Coordinates);
         _mind.TransferTo(mind, constructMobe);
         QueueDel(construct);
 
@@ -594,7 +548,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         structure.Comp.ActivateTime = currentTime;
 
-        var item = Spawn(args.Item, Transform(structure).Coordinates);
+        var item = SpawnAtPosition(args.Item, Transform(structure).Coordinates);
         _audio.PlayPvs(structure.Comp.Sound, structure);
 
         var cultistPosition = _transform.GetWorldPosition(args.Actor);

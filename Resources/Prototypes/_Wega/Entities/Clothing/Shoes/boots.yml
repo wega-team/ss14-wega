@@ -17,11 +17,12 @@
     sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
+  - type: NoSlip
   - type: SlowedOverSlippery
-    slowdownModifier: 0.7
+    slowdownModifier: 0.9
   - type: SpeedModifierContactCapClothing
-    maxContactSprintSlowdown: 0.7
-    maxContactWalkSlowdown: 0.7
+    maxContactSprintSlowdown: 0.9
+    maxContactWalkSlowdown: 0.9
   - type: CultEquipment
     cult: Blood
 

@@ -41,6 +41,10 @@ public sealed partial class BloodCultSystem
 
     private void OnHandPickUp(Entity<CultEquipmentComponent> ent, ref BeforeGettingEquippedHandEvent args)
     {
+        if (HasComp<BloodCultBolaComponent>(ent) &&
+            TerminatingOrDeleted(ent))
+            return;
+
         if (args.Cancelled)
             return;
 
@@ -69,20 +73,14 @@ public sealed partial class BloodCultSystem
         if (!args.IsHit || args.HitEntities.Count == 0)
             return;
 
-        if (args.HitEntities is not List<EntityUid> hitList)
+        if (args.HitEntities is not HashSet<EntityUid> hitSet)
             return;
 
-        for (int i = hitList.Count - 1; i >= 0; i--)
-        {
-            var target = hitList[i];
-            if (HasComp<BloodCultistComponent>(target) && comp.Cult == CultType.Blood)
-                hitList.RemoveAt(i);
+        hitSet.RemoveWhere(target =>
+            comp.Cult == CultType.Blood && HasComp<BloodCultistComponent>(target) ||
+            comp.Cult == CultType.Veil && HasComp<VeilCultistComponent>(target));
 
-            if (HasComp<VeilCultistComponent>(target) && comp.Cult == CultType.Veil)
-                hitList.RemoveAt(i);
-        }
-
-        if (hitList.Count == 0)
+        if (hitSet.Count == 0)
             args.Handled = true;
     }
 }
