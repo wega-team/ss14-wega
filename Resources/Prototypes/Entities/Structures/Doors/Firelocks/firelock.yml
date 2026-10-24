@@ -154,9 +154,10 @@
   - type: StructureAlignerPylon
     pylons:
     - Firelock
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   id: Firelock
@@ -198,6 +199,10 @@
       occludes: false
     - type: Construction
       node: FirelockGlass
+    # Corvax-Wega-SoundInsolation-start
+    - type: SoundInsulation
+      absorptionFactor: 0.05
+    # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   id: FirelockEdge
@@ -256,3 +261,7 @@
     - type: StructureAligner
       alignerType:
       - DoNotAlign
+  # Corvax-Wega-SoundInsolation-start
+    - type: SoundInsulation
+      absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end

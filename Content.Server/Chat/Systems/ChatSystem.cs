@@ -5,6 +5,7 @@ using Content.Server.Chat.Managers;
 using Content.Server.Station.Systems;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
+using Content.Shared.Audio; // Corvax-Wega-SoundInsolation
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.Database; // Corvax-Wega-Add
@@ -15,7 +16,6 @@ using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Ghost.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Players.RateLimiting;
-using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 using Content.Shared.Strangulation; // Corvax-Corvax-Wega-Strangulation
 using Content.Shared.Speech.EntitySystems;
 using Robust.Server.Player;
@@ -51,7 +51,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     [Dependency] private ReplacementAccentSystem _wordreplacement = default!;
     [Dependency] private ExamineSystemShared _examineSystem = default!;
     [Dependency] private EntityQuery<GhostHearingComponent> _ghostHearingQuery = default!;
-    [Dependency] private SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
+    [Dependency] private SharedSoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
     [Dependency] private MindLinkSystem _mindLink = default!; // Corvax-Wega-MindChat
 
     // Corvax-TTS-Start: Moved from Server to Shared
