@@ -36,18 +36,18 @@
       components:
       - Vampire
       - ChangelingIdentity
-    closedSpriteState: anom # placeholder
-    openingSpriteState: pulse # placeholder
-    openSpriteState: anom # placeholder
-    closingSpriteState: pulse # placeholder
+    closedSpriteState: closed
+    openingSpriteState: opening
+    openSpriteState: open
+    closingSpriteState: closing
     arrivalSound:
       collection: Shadeskip
     departureSound:
       collection: Shadeskip
   - type: Sprite
-    sprite: Structures/Specific/Anomalies/shadow_anom.rsi # placeholder
+    sprite: _Wega/Effects/shadekin-portal.rsi
     layers:
-    - state: anom # placeholder
+    - state: closed
       map: ["enum.PortalVisualLayers.Base"]
   - type: PointLight
     color: Purple
