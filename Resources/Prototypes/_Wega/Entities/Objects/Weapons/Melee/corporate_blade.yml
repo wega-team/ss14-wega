@@ -1,0 +1,49 @@
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: CorporateBlade
+  suffix: "Wega, BSO"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/corporate_blade.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+    sprite: _Wega/Objects/Weapons/Melee/corporate_blade-inhands.rsi
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 1
+    clickDamageModifier: 1.45
+    damage:
+      types:
+        Slash: 15
+        Heat: 5
+        Shock: 2.5
+    soundHit:
+      collection: CorporateBladeHit
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1
+  - type: Reflect
+  - type: DamageOnPickup
+    damage:
+      types:
+        Shock: 8
+    throw: true
+    throwSpeed: 3
+    ignoreResistances: false
+    popupText: corporate-blade-shock
+    interactSound: /Audio/_Wega/Weapons/corporate_blade/attack1.ogg
+  - type: Execution
+    doAfterDuration: 4.0
+    canGunExecute: false
+  - type: DisarmMalus
+    malus: 0.6
+  - type: PointLight
+    color: "#77AAFF"
+    radius: 2
+    energy: 1.5
+  - type: CorporateBlade
+  - type: Tag
+    tags:
+    - CorporateBlade
+  - type: StaticPrice
+    price: 8000

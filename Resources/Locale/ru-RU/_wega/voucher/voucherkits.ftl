@@ -16,11 +16,13 @@ voucher-security-jay-name = Набор штурмовой винтовки
 voucher-security-berkut-name = Набор пистолета-пулемёта
 voucher-security-pulsar-name = Набор энерго-карабина
 voucher-security-baton-name = Набор многофункциональной дубинки
+voucher-security-seraphim-name = Набор "Seraphim-II"
 
 voucher-security-jay-desc = Содержит в себе штурмовую винтовку - Сойка, и дополнительные патроны к ней
 voucher-security-berkut-desc = Содержит в себе пистолет-пулемёт - Беркут, и дополнительные патроны к нему
 voucher-security-pulsar-desc = Содержит в себе энергетический карабин "Пульсар"
 voucher-security-baton-desc = Содержит в себе многофункциональную дубинку, способную наносить повышенный вред здоровью при включенном состоянии.
+voucher-security-seraphim-desc = Содержит в себе корпоративный клинок, ножны к нему и одноразовый автоимплантер "Seraphim-II".
 # Salvage
 voucher-explorer-kit-name = Набор Иследователя
 voucher-fulton-kit-name = Набор Эвакуации фултона

@@ -1,0 +1,7 @@
+- type: soundCollection
+  id: CorporateBladeHit
+  files:
+    - /Audio/_Wega/Weapons/corporate_blade/attack1.ogg
+    - /Audio/_Wega/Weapons/corporate_blade/attack2.ogg
+    - /Audio/_Wega/Weapons/corporate_blade/attack3.ogg
+    - /Audio/_Wega/Weapons/corporate_blade/attack4.ogg
