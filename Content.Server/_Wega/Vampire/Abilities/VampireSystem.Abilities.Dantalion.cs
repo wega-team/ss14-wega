@@ -20,6 +20,7 @@ using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Vampire;
 
@@ -139,7 +140,7 @@ public sealed partial class VampireSystem
             {
                 var finalMessage = string.IsNullOrWhiteSpace(message)
                     ? Loc.GetString("vampire-commune-default-message")
-                    : message;
+                    : FormattedMessage.EscapeText(message);
 
                 foreach (var thrallUid in thrallOwner.ThrallOwned)
                 {

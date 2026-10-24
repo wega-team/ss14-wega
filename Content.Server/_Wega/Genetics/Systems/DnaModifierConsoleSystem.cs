@@ -18,6 +18,7 @@ using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
 using Content.Shared.Genetics.Systems;
 using Content.Shared.Genetics.UI;
+using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Power;
@@ -43,18 +44,20 @@ namespace Content.Server.Genetics.System
         [Dependency] private DeviceLinkSystem _signalSystem = default!;
         [Dependency] private DnaClientSystem _dnaClient = default!;
         [Dependency] private DnaModifierSystem _dnaModifier = default!;
-        [Dependency] private IEntityManager _entManager = default!;
         [Dependency] private IGameTiming _timing = default!;
         [Dependency] private ItemSlotsSystem _itemSlotsSystem = default!;
         [Dependency] private PowerReceiverSystem _powerReceiverSystem = default!;
         [Dependency] private QuickDialogSystem _quickDialog = default!;
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private SharedSolutionContainerSystem _solutionContainerSystem = default!;
-        [Dependency] private SharedTransformSystem _transform = default!;
         [Dependency] private UserInterfaceSystem _uiSystem = default!;
+        [Dependency] private SharedInteractionSystem _interaction = default!;
 
         private static readonly EntProtoId Injector = "DnaInjector";
         private static readonly ProtoId<DamageTypePrototype> RadDamage = "Radiation";
+
+        private const float MinRadiationValue = 1f;
+        private const float MaxRadiationValue = 10f;
 
         public override void Initialize()
         {
@@ -67,24 +70,21 @@ namespace Content.Server.Genetics.System
             SubscribeLocalEvent<DnaModifierConsoleComponent, SinkPortDisconnectedEvent>(OnPortDisconnected);
             SubscribeLocalEvent<DnaModifierConsoleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
 
-            SubscribeNetworkEvent<DnaModifierUpdateEvent>(OnUpdateUI);
-            SubscribeNetworkEvent<DnaModifierConsoleEjectEvent>(OnEjectPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleEjectRejuveEvent>(OnEjectRejuvePressed);
-            SubscribeNetworkEvent<DnaModifierConsoleReagentButtonEvent>(OnReagentButtonPressed);
-
-            SubscribeNetworkEvent<DnaModifierConsoleSaveServerEvent>(OnSaveServerPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleClearBufferEvent>(OnClearBufferPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleRenameBufferEvent>(OnRenameBufferPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleInjectorEvent>(OnInjectorPressed);
-            SubscribeNetworkEvent<DnaModifierInjectBlockEvent>(OnInjectBlockPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleSubjectInjectEvent>(OnSubjectInjectPressed);
-
-            SubscribeNetworkEvent<DnaModifierConsoleExportOnDiskEvent>(OnExportOnDiskPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleExportFromDiskEvent>(OnExportFromDiskPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleClearDiskEvent>(OnClearDiskPressed);
-
-            SubscribeNetworkEvent<DnaModifierConsoleReleverationEvent>(OnReleverationPressed);
-            SubscribeNetworkEvent<DnaModifierConsoleReleverationsEvent>(OnReleverationsPressed);
+            // mewmewmew
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleEjectEvent>(OnEjectPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleEjectRejuveEvent>(OnEjectRejuvePressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleReagentButtonEvent>(OnReagentButtonPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleSaveServerEvent>(OnSaveServerPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleClearBufferEvent>(OnClearBufferPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleRenameBufferEvent>(OnRenameBufferPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleInjectorEvent>(OnInjectorPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierInjectBlockEvent>(OnInjectBlockPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleSubjectInjectEvent>(OnSubjectInjectPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleExportOnDiskEvent>(OnExportOnDiskPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleExportFromDiskEvent>(OnExportFromDiskPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleClearDiskEvent>(OnClearDiskPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleReleverationEvent>(OnReleverationPressed);
+            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleReleverationsEvent>(OnReleverationsPressed);
         }
 
         #region UI logic
@@ -128,14 +128,6 @@ namespace Content.Server.Genetics.System
                     UpdateUserInterface(uid, component);
                 }
             }
-        }
-
-        private void OnUpdateUI(DnaModifierUpdateEvent args)
-        {
-            if (!TryComp<DnaModifierConsoleComponent>(GetEntity(args.Uid), out var component))
-                return;
-
-            UpdateUserInterface(GetEntity(args.Uid), component);
         }
 
         private void OnPowerChanged(EntityUid uid, DnaModifierConsoleComponent component, ref PowerChangedEvent args)
@@ -199,7 +191,7 @@ namespace Content.Server.Genetics.System
 
             if (scanner != null)
             {
-                Transform(scanner.Value).Coordinates.TryDistance(EntityManager, Transform((console)).Coordinates, out float scannerDistance);
+                Transform(scanner.Value).Coordinates.TryDistance(EntityManager, Transform(console).Coordinates, out float scannerDistance);
                 consoleComp.GeneticScannerInRange = scannerDistance <= consoleComp.MaxDistance;
             }
 
@@ -368,42 +360,57 @@ namespace Content.Server.Genetics.System
         #endregion
 
         #region Console logic
-        private void PlayClickSound(Entity<DnaModifierConsoleComponent> ent)
-            => _audio.PlayPvs(ent.Comp.ClickSound, ent, AudioParams.Default.WithVolume(-2f));
 
-        private void OnEjectPressed(DnaModifierConsoleEjectEvent args)
+        private bool CanInteract(EntityUid console, EntityUid actor)
         {
-            if (!TryComp<DnaModifierConsoleComponent>(GetEntity(args.Uid), out var console) || console.GeneticScanner == null)
+            if (!actor.IsValid())
+                return false;
+
+            if (!_interaction.InRangeUnobstructed(actor, console))
+                return false;
+
+            return true;
+        }
+
+        private void PlayClickSound(EntityUid console, DnaModifierConsoleComponent component)
+            => _audio.PlayPvs(component.ClickSound, console, AudioParams.Default.WithVolume(-2f));
+
+        private void OnEjectPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleEjectEvent args)
+        {
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (!HasComp<MedicalScannerComponent>(console.GeneticScanner))
+            if (console.GeneticScanner == null || !HasComp<MedicalScannerComponent>(console.GeneticScanner))
                 return;
 
             if (_container.TryGetContainer(console.GeneticScanner.Value, SharedDnaModifier.OccupantSlotName, out var container))
                 _container.EmptyContainer(container);
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(GetEntity(args.Uid), console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnEjectRejuvePressed(DnaModifierConsoleEjectRejuveEvent args)
+        private void OnEjectRejuvePressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleEjectRejuveEvent args)
         {
-            if (!TryComp<DnaModifierConsoleComponent>(GetEntity(args.Uid), out var console) || console.GeneticScanner == null)
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (!HasComp<MedicalScannerComponent>(console.GeneticScanner))
+            if (console.GeneticScanner == null || !HasComp<MedicalScannerComponent>(console.GeneticScanner))
                 return;
 
             if (_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot))
                 _itemSlotsSystem.TryEject(console.GeneticScanner.Value, slot, null, out var _, true);
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(GetEntity(args.Uid), console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnReagentButtonPressed(DnaModifierConsoleReagentButtonEvent args)
+        private void OnReagentButtonPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleReagentButtonEvent args)
         {
-            if (!TryComp<DnaModifierConsoleComponent>(GetEntity(args.Uid), out var console) || console.GeneticScanner == null)
+            if (!CanInteract(uid, args.Actor))
+                return;
+
+            if (console.GeneticScanner == null)
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner) || scanner.BodyContainer.ContainedEntity == null
@@ -440,15 +447,16 @@ namespace Content.Server.Genetics.System
             if (!_solutionContainerSystem.TryAddSolution(targetSolution.Value, reagentSolution))
                 return;
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(GetEntity(args.Uid), console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnSaveServerPressed(DnaModifierConsoleSaveServerEvent args)
+        private void OnSaveServerPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleSaveServerEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null
-                || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
+                return;
+
+            if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
@@ -500,85 +508,96 @@ namespace Content.Server.Genetics.System
             if (dataToSend == null)
                 return;
 
-            _dnaClient.TryAddToBuffer((clientEntity, client), args.CurrentSection, dataToSend);
+            _dnaClient.TryAddToBuffer((uid, client), args.CurrentSection, dataToSend);
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(clientEntity, console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnClearBufferPressed(DnaModifierConsoleClearBufferEvent args)
+        private void OnClearBufferPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleClearBufferEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            _dnaClient.TryClearBuffer((clientEntity, client), args.Index);
+            if (!TryComp<DnaClientComponent>(uid, out var client))
+                return;
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(clientEntity, console);
+            _dnaClient.TryClearBuffer((uid, client), args.Index);
+
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnRenameBufferPressed(DnaModifierConsoleRenameBufferEvent args)
+        private void OnRenameBufferPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleRenameBufferEvent args)
         {
-            var clientEntity = GetEntity(args.Console);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (!_dnaClient.TryGetBufferData((clientEntity, client), args.Index, out var data))
+            if (!TryComp<DnaClientComponent>(uid, out var client))
                 return;
 
-            var user = GetEntity(args.User);
-            if (!TryComp<ActorComponent>(user, out var playerActor))
+            if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
+                return;
+
+            if (!TryComp<ActorComponent>(args.Actor, out var playerActor))
                 return;
 
             var playerSession = playerActor.PlayerSession;
             _quickDialog.OpenDialog(playerSession, Loc.GetString("dna-modifier-button-rename"), "",
                 (string name) =>
                 {
+                    if (playerSession.AttachedEntity is not { } user)
+                        return;
+
+                    if (!_interaction.InRangeUnobstructed(user, uid))
+                        return;
+
                     var finalName = string.IsNullOrWhiteSpace(name)
                         ? data.SampleName
                         : name;
 
-                    var consolePosition = _transform.GetWorldPosition(clientEntity);
-                    var userPosition = _transform.GetWorldPosition(user);
-                    var distance = (userPosition - consolePosition).Length();
-                    if (distance > 3f)
-                        return;
+                    _dnaClient.TryRenameBuffer((uid, client), args.Index, finalName);
 
-                    _dnaClient.TryRenameBuffer((clientEntity, client), args.Index, finalName);
-
-                    PlayClickSound((clientEntity, console));
-                    UpdateUserInterface(clientEntity, console);
+                    PlayClickSound(uid, console);
+                    UpdateUserInterface(uid, console);
                 });
         }
 
-        private void OnInjectorPressed(DnaModifierConsoleInjectorEvent args)
+        private void OnInjectorPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleInjectorEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null
-                || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (!_dnaClient.TryGetBufferData((clientEntity, client), args.Index, out var data))
+            if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
                 return;
 
-            _dnaModifier.OnFillingInjector(_entManager.SpawnEntity(Injector, Transform(clientEntity).Coordinates),
+            if (_timing.CurTime < console.LastInjectorTime + console.InjectorCooldown)
+                return;
+
+            if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
+                return;
+
+            _dnaModifier.OnFillingInjector(Spawn(Injector, Transform(uid).Coordinates),
                 data.Identifier, data.Info);
 
             console.LastInjectorTime = _timing.CurTime;
 
-            PlayClickSound((clientEntity, console));
-            UpdateUserInterface(clientEntity, console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnInjectBlockPressed(DnaModifierInjectBlockEvent args)
+        private void OnInjectBlockPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierInjectBlockEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null
-                || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (!_dnaClient.TryGetBufferData((clientEntity, client), args.Index, out var data) || data.Info == null)
+            if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
+                return;
+
+            if (_timing.CurTime < console.LastInjectorTime + console.InjectorCooldown)
+                return;
+
+            if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data) || data.Info == null)
                 return;
 
             var targetBlock = data.Info.FirstOrDefault(e => e.Order == args.CurrentBlock);
@@ -586,20 +605,23 @@ namespace Content.Server.Genetics.System
                 return;
 
             var singleBlockInfo = new List<EnzymesPrototypeInfo> { targetBlock };
-            _dnaModifier.OnFillingInjector(_entManager.SpawnEntity(Injector, Transform(clientEntity).Coordinates),
-                null, singleBlockInfo);
+            _dnaModifier.OnFillingInjector(Spawn(Injector, Transform(uid).Coordinates), null, singleBlockInfo);
 
             console.LastInjectorTime = _timing.CurTime;
 
-            PlayClickSound((clientEntity, console));
-            UpdateUserInterface(clientEntity, console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnSubjectInjectPressed(DnaModifierConsoleSubjectInjectEvent args)
+        private void OnSubjectInjectPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleSubjectInjectEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null
-                || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
+                return;
+
+            if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
+                return;
+
+            if (_timing.CurTime < console.LastSubjectInjectTime + console.SubjectInjectCooldown)
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
@@ -609,73 +631,82 @@ namespace Content.Server.Genetics.System
             if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier) || !scanBody.HasValue)
                 return;
 
-            if (!_dnaClient.TryGetBufferData((clientEntity, client), args.Index, out var data))
+            if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
                 return;
 
-            PlayClickSound((clientEntity, console));
+            PlayClickSound(uid, console);
             _dnaModifier.ChangeDna((scanBody.Value, dnaModifier), data);
 
             console.LastSubjectInjectTime = _timing.CurTime;
 
             var damage = new DamageSpecifier { DamageDict = { { RadDamage, 20 } } };
             _damage.TryChangeDamage(scanBody.Value, damage, true);
+
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnExportOnDiskPressed(DnaModifierConsoleExportOnDiskEvent args)
+        private void OnExportOnDiskPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleExportOnDiskEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null
-                || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (!_dnaClient.TryGetBufferData((clientEntity, client), args.Index, out var data))
+            if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
                 return;
 
-            if (_itemSlotsSystem.TryGetSlot(clientEntity, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
+            if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
+                return;
+
+            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
             {
                 _dnaModifier.TrySaveInDisk(diskSlot.Item.Value, data);
 
-                PlayClickSound((clientEntity, console));
-                UpdateUserInterface(clientEntity, console);
+                PlayClickSound(uid, console);
+                UpdateUserInterface(uid, console);
             }
         }
 
-        private void OnExportFromDiskPressed(DnaModifierConsoleExportFromDiskEvent args)
+        private void OnExportFromDiskPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleExportFromDiskEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null
-                || !TryComp<DnaClientComponent>(clientEntity, out var client))
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (_itemSlotsSystem.TryGetSlot(clientEntity, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
+            if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
+                return;
+
+            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
             {
                 _dnaModifier.TryGetDataFromDisk(diskSlot.Item.Value, out var data);
                 if (data == null)
                     return;
 
-                _dnaClient.TryAddToBufferDisk((clientEntity, client), args.Index, data);
+                _dnaClient.TryAddToBufferDisk((uid, client), args.Index, data);
 
-                PlayClickSound((clientEntity, console));
-                UpdateUserInterface(clientEntity, console);
+                PlayClickSound(uid, console);
+                UpdateUserInterface(uid, console);
             }
         }
 
-        private void OnClearDiskPressed(DnaModifierConsoleClearDiskEvent args)
+        private void OnClearDiskPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleClearDiskEvent args)
         {
-            var clientEntity = GetEntity(args.Uid);
-            if (!TryComp<DnaModifierConsoleComponent>(clientEntity, out var console) || console.GeneticScanner == null)
+            if (!CanInteract(uid, args.Actor))
                 return;
 
-            if (_itemSlotsSystem.TryGetSlot(clientEntity, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
+            if (console.GeneticScanner == null)
+                return;
+
+            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
             {
-                PlayClickSound((clientEntity, console));
+                PlayClickSound(uid, console);
                 _dnaModifier.TryClearDiskData(diskSlot.Item.Value);
             }
         }
 
-        private void OnReleverationPressed(DnaModifierConsoleReleverationEvent args)
+        private void OnReleverationPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleReleverationEvent args)
         {
-            if (!TryComp<DnaModifierConsoleComponent>(GetEntity(args.Uid), out var console) || console.GeneticScanner == null)
+            if (!CanInteract(uid, args.Actor))
+                return;
+
+            if (console.GeneticScanner == null)
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
@@ -685,27 +716,36 @@ namespace Content.Server.Genetics.System
             if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier) || !scanBody.HasValue)
                 return;
 
+            var intensity = Math.Clamp(args.Intensity, MinRadiationValue, MaxRadiationValue);
+
             if (args.CurrentTab == 0 && dnaModifier.UniqueIdentifiers != null)
             {
-                ModifyUniqueIdentifiers(dnaModifier.UniqueIdentifiers, args.CurrentBlock, args.CurrentValue, args.Intensity);
+                ModifyUniqueIdentifiers(dnaModifier.UniqueIdentifiers, args.CurrentBlock, args.CurrentValue, intensity);
             }
             else if (args.CurrentTab == 1 && dnaModifier.EnzymesPrototypes != null)
             {
-                ModifyEnzymesPrototypes(dnaModifier.EnzymesPrototypes, args.CurrentBlock, args.CurrentValue, args.Intensity);
+                ModifyEnzymesPrototypes(dnaModifier.EnzymesPrototypes, args.CurrentBlock, args.CurrentValue, intensity);
+            }
+            else
+            {
+                return;
             }
 
-            AddRadiationDamage(scanBody.Value, args.Intensity);
+            AddRadiationDamage(scanBody.Value, intensity);
             Dirty(scanBody.Value, dnaModifier);
 
             _dnaModifier.ChangeDna((scanBody.Value, dnaModifier), args.CurrentTab);
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(GetEntity(args.Uid), console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
-        private void OnReleverationsPressed(DnaModifierConsoleReleverationsEvent args)
+        private void OnReleverationsPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleReleverationsEvent args)
         {
-            if (!TryComp<DnaModifierConsoleComponent>(GetEntity(args.Uid), out var console) || console.GeneticScanner == null)
+            if (!CanInteract(uid, args.Actor))
+                return;
+
+            if (console.GeneticScanner == null)
                 return;
 
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
@@ -714,26 +754,33 @@ namespace Content.Server.Genetics.System
             var scanBody = scanner.BodyContainer.ContainedEntity;
             if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier) || !scanBody.HasValue)
                 return;
+
+            var intensity = Math.Clamp(args.Intensity, MinRadiationValue, MaxRadiationValue);
+            var duration = Math.Clamp(args.Duration, MinRadiationValue, MaxRadiationValue);
 
             int type = -1;
             if (args.CurrentTab == 0 && dnaModifier.UniqueIdentifiers != null)
             {
                 type = 0;
-                ModifyUniqueIdentifiers(dnaModifier.UniqueIdentifiers, args.Intensity, args.Duration);
+                ModifyUniqueIdentifiers(dnaModifier.UniqueIdentifiers, intensity, duration);
             }
             else if (args.CurrentTab == 1 && dnaModifier.EnzymesPrototypes != null)
             {
                 type = 1;
-                ModifyEnzymesPrototypes(dnaModifier.EnzymesPrototypes, args.Intensity, args.Duration);
+                ModifyEnzymesPrototypes(dnaModifier.EnzymesPrototypes, intensity, duration);
+            }
+            else
+            {
+                return;
             }
 
-            AddRadiationDamage(scanBody.Value, args.Intensity);
+            AddRadiationDamage(scanBody.Value, intensity);
             Dirty(scanBody.Value, dnaModifier);
 
             _dnaModifier.ChangeDna((scanBody.Value, dnaModifier), type);
 
-            PlayClickSound((GetEntity(args.Uid), console));
-            UpdateUserInterface(GetEntity(args.Uid), console);
+            PlayClickSound(uid, console);
+            UpdateUserInterface(uid, console);
         }
 
         private void ModifyUniqueIdentifiers(UniqueIdentifiersData uniqueIdentifiers, string block, int value, float intensity)
@@ -821,8 +868,7 @@ namespace Content.Server.Genetics.System
             {
                 if (value >= 0 && value < uniqueIdentifiers.SkinTone.Length)
                 {
-                    uniqueIdentifiers.SkinTone[value] =
-                        GenerateSkinToneComponent(value, intensity, 1.0f);
+                    uniqueIdentifiers.SkinTone[value] = GenerateSkinToneComponent(value, intensity, 1.0f);
                 }
                 return;
             }
@@ -900,7 +946,6 @@ namespace Content.Server.Genetics.System
             {
                 var randomEnzyme = enzymesPrototypes[_random.Next(enzymesPrototypes.Count)];
                 int randomIndex = _random.Next(0, randomEnzyme.HexCode.Length);
-
                 randomEnzyme.HexCode[randomIndex] = GenerateRandomHexValue(randomEnzyme.HexCode[randomIndex], intensity, 1.0f);
                 return;
             }
@@ -936,7 +981,6 @@ namespace Content.Server.Genetics.System
         private string GenerateRandomHexValue(string value, float intensity, float duration)
         {
             int baseValue = Convert.ToInt32(value, 16);
-
             float changeStrength = Math.Clamp((intensity * duration) / 100f, 0f, 1f);
             changeStrength = (float)Math.Sqrt(changeStrength);
 

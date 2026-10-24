@@ -333,11 +333,12 @@ public sealed partial class ChatSystem : SharedChatSystem
         var name = MetaData(source).EntityName;
         name = FormattedMessage.EscapeText(name);
 
+        var escapedMessage = FormattedMessage.EscapeText(message);
         var wrappedMessage = Loc.GetString("chat-mind-message-wrap",
             ("color", channel.Color),
             ("channel", $"\\[{channel.LocalizedName}\\]"),
             ("name", name),
-            ("message", message));
+            ("message", escapedMessage));
 
         // Send to all entities with the same mind channel
         foreach (var (session, _) in GetRecipients(source, MindChatRange, true))
