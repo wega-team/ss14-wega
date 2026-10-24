@@ -5,13 +5,13 @@ using Content.Shared.Atmos;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Clothing.EntitySystems;
 using Content.Shared.Clothing.Upgrades.Components;
-using Content.Shared.Clothing;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
+using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared.Verbs;
@@ -27,6 +27,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
     [Dependency] private ISharedAdminLogManager _adminLog = default!;
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private SharedItemSystem _itemSys = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedHandsSystem _hands = default!;
 
@@ -98,10 +99,14 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
         args.Handled = _container.Insert(args.Used, _container.GetContainer(ent, ent.Comp.UpgradesContainerId));
 
-        _adminLog.Add(LogType.Action, LogImpact.Low,
-            $"{ToPrettyString(args.User):player} inserted clothing upgrade {ToPrettyString(args.Used)} into {ToPrettyString(ent.Owner)}.");
+        if (args.Handled)
+        {
+            _adminLog.Add(LogType.Action, LogImpact.Low,
+                $"{ToPrettyString(args.User):player} inserted clothing upgrade {ToPrettyString(args.Used)} into {ToPrettyString(ent.Owner)}.");
 
-        Dirty(ent.Owner, ent.Comp);
+            _itemSys.VisualsChanged(ent.Owner);
+            Dirty(ent.Owner, ent.Comp);
+        }
     }
 
     private void OnExamine(Entity<UpgradeableClothingComponent> ent, ref ExaminedEvent args)
@@ -169,6 +174,7 @@ public sealed partial class ClothingUpgradeSystem : EntitySystem
 
             _hands.TryPickupAnyHand(user, upgrade);
 
+            _itemSys.VisualsChanged(ent.Owner);
             Dirty(ent.Owner, ent.Comp);
         }
     }

@@ -17,7 +17,7 @@ public sealed partial class VisualOrganMarkingsComponent : Component
     /// <summary>
     /// Defines the type of markings this organ can take
     /// </summary>
-    [DataField(required: true), AlwaysPushInheritance]
+    [DataField(required: true), AlwaysPushInheritance, AutoNetworkedField] // Corvax-Wega-Surgery-Edit
     public OrganMarkingData MarkingData = default!;
 
     /// <summary>
