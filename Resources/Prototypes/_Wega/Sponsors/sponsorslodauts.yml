@@ -4,7 +4,7 @@
   - !type:SponsorLoadoutEffect
   inhand:
   - PetCarrierMars
-  
+
 - type: loadout
   id: BigToyHammer
   effects:
@@ -35,7 +35,7 @@
   - !type:SponsorLoadoutEffect
   equipment:
     eyes: ClothingEyesGlassesHeroX
-    
+
 # Head
 - type: loadout
   id: ClothingHeadHatMagic
@@ -66,12 +66,12 @@
     head: ClothingHeadHelmetGarGigaSponsor
 
 # Mask
-- type: loadout
-  id: ClothingMaskElegantClownMask
-  effects:
-  - !type:SponsorLoadoutEffect
-  equipment:
-    mask: ClothingMaskElegantClownMask
+#- type: loadout
+#  id: ClothingMaskElegantClownMask
+#  effects:
+#  - !type:SponsorLoadoutEffect
+#  equipment:
+#    mask: ClothingMaskElegantClownMask
 
 # Neck
 - type: loadout

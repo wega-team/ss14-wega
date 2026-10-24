@@ -48,8 +48,11 @@
     fx: EffectRCDDeconstruct4
   - type: Airtight
   - type: IconSmooth
-    key: walls
-    base: window
+    key: windows
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: window
   - type: PlacementReplacement
     key: walls
   - type: InteractionPopup
@@ -74,9 +77,11 @@
     pylons:
     - Door
     - Firelock
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
+    absorptionFactor: 0.05
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   parent: [ BaseWindowStructure, StructureHealthBarrier ]
@@ -114,15 +119,20 @@
   - type: Icon
     sprite: Structures/Windows/window-tinted.rsi
   - type: IconSmooth
-    base: twindow
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: twindow
   - type: Construction
     graph: Window
     node: tintedWindow
   - type: Occluder
   - type: StaticPrice
     price: 70
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 1 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   abstract: true
@@ -197,6 +207,10 @@
   - type: Construction
     graph: WindowDirectional
     node: windowDirectional
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWindowStructureDirectional, StructureHealthBarrierWeak ]
@@ -319,15 +333,15 @@
   components:
   - type: Sprite
     sprite: Structures/Windows/window-base-diagonal.rsi
-    state: state0
   - type: Tag
     tags:
     - Diagonal
     - Window
   - type: IconSmooth
-    mode: Diagonal
-    key: walls
-    base: state
+    states:
+    - !type:DiagonalSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: state
   - type: Icon
     sprite: Structures/Windows/window-base-diagonal.rsi
     state: state0

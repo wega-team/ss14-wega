@@ -6,11 +6,16 @@ on:
 
 jobs:
   add_label:
+    permissions:
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions-ecosystem/action-add-labels@v1
       with:
+        github_token: ${{ secrets.LABELER_PAT }}
         labels: "S: Needs Review"
     - uses: actions-ecosystem/action-remove-labels@v1
       with:
+        github_token: ${{ secrets.LABELER_PAT }}
         labels: "S: Awaiting Changes"

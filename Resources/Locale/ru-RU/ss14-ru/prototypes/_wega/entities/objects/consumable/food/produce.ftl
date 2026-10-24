@@ -65,3 +65,7 @@ ent-FoodProduceFestiveTangerine = подарин
     .desc = "Небольшой фрукт в форме новогоднего подарка."
 ent-FoodProduceFestiveTangerineTrash = упаковка подарина
     .desc = "Пластиковая упаковка подарина. Упаковать обратно не выйдет."
+ent-FoodAvocado = авокадо
+    .desc = "Никадо."
+ent-FoodCucumber = огурец
+    .desc = "Кукумбер."

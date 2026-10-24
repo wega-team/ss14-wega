@@ -20,6 +20,7 @@ using Content.Shared.Vampire.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Server.Vampire;
 
@@ -139,7 +140,7 @@ public sealed partial class VampireSystem
             {
                 var finalMessage = string.IsNullOrWhiteSpace(message)
                     ? Loc.GetString("vampire-commune-default-message")
-                    : message;
+                    : FormattedMessage.EscapeText(message);
 
                 foreach (var thrallUid in thrallOwner.ThrallOwned)
                 {
@@ -213,7 +214,7 @@ public sealed partial class VampireSystem
         _transform.SetCoordinates(target, currentCoords);
 
         _movementMod.TryUpdateMovementSpeedModDuration(target, MovementModStatusSystem.Slowdown, TimeSpan.FromSeconds(4f), 0.5f);
-        _hallucinations.StartHallucinations(target, "Hallucinations", TimeSpan.FromSeconds(15f), true, "MindBreaker");
+        _hallucinations.StartHallucinations(target, "Hallucinations", TimeSpan.FromSeconds(15f), true, "Vampire");
 
         SubtractBloodEssence(ent.Owner, args.BloodCost);
         args.Handled = true;
@@ -375,7 +376,7 @@ public sealed partial class VampireSystem
                 continue;
 
             _flash.Flash(victimEntity, ent, null, TimeSpan.FromSeconds(4f), 0.5f);
-            _hallucinations.StartHallucinations(victimEntity, "Hallucinations", TimeSpan.FromSeconds(30f), true, "MindBreaker");
+            _hallucinations.StartHallucinations(victimEntity, "Hallucinations", TimeSpan.FromSeconds(30f), true, "VampireUlt");
         }
 
         SubtractBloodEssence(ent.Owner, args.BloodCost);

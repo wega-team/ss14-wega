@@ -175,10 +175,9 @@
   - type: ToolRefinable
     refineResult:
     - id: FoodDemonicWatermelonSlice
-      amount: 5
-  - type: Butcherable
-    spawned:
+      amount: 4
     - id: ClothingHeadHatDemonicWatermelon
+      prob: 0.5
     - id: ClothingNeckWingsTail
   - type: Tag
     tags:
@@ -1006,3 +1005,59 @@
     tags:
     - Fruit
     - Slice
+
+- type: entity
+  name: avocado
+  parent: FoodProduceBase
+  id: FoodAvocado
+  description: Nicado.
+  components:
+  - type: Item
+    heldPrefix: produce
+  - type: Edible
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: OilOlive
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/avocado.rsi
+    state: produce
+  - type: Produce
+    plantId: AvocadoPlants
+  - type: Extractable
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  name: cucumber
+  parent: FoodProduceBase
+  id: FoodCucumber
+  description: Cucumber.
+  components:
+  - type: Item
+    heldPrefix: produce
+  - type: Edible
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 3
+      - ReagentId: Water
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 2
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/cucumber.rsi
+    state: produce
+  - type: Produce
+    plantId: CucumberPlants
+  - type: Extractable
+  - type: Tag
+    tags:
+    - Vegetable

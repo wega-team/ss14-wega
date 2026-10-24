@@ -5,3 +5,4 @@ guide-entry-genetic = Генетик
 guide-entry-surgery = Хирургия
 guide-entry-mindchat = Чат разума
 guide-entry-veil-cult = Праведник Ратвара
+guide-entry-xenobiology = Ксенобиология

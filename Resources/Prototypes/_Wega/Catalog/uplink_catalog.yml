@@ -95,7 +95,7 @@
   id: UplinkClothingHandsKnuckleDustersStun
   name: uplink-clothing-hands-knuckle-dusters-stun-name
   description: clothing-hands-knuckle-dusters-stun-desc
-  icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/electricknuckleduster.rsi, state: knuckleduster_nocell }
+  icon: { sprite: Clothing/Hands/Gloves/KnuckleDusters/electricknuckleduster.rsi, state: knuckleduster_off }
   productEntity: ClothingHandsKnuckleDustersStun
   discountCategory: usualDiscounts
   discountDownTo:
@@ -286,7 +286,7 @@
     whitelist:
       tags:
       - NukeOpsUplink
-      
+
 - type: listing
   id: UplinkDesertEagleAgent
   name: uplink-desert-eagle-name
@@ -449,7 +449,7 @@
     whitelist:
       tags:
       - NukeOpsUplink
-      
+
 - type: listing
   id: UplinkNightVision
   name: uplink-nightvision-name
@@ -467,7 +467,7 @@
   id: UplinkLoyaltyImplant
   name: uplink-loyalty-implant-name
   description: uplink-loyalty-implant-desc
-  icon: { sprite: Objects/Specific/Medical/syndi_implanter.rsi, state: implanter1 }
+  icon: { sprite: _Wega/Clothing/Neck/Misc/chokers.rsi, state: spike }
   productEntity: LoyaltyImplanter
   categories:
   - UplinkImplants
@@ -475,7 +475,12 @@
     Telecrystal: 3
   cost:
     Telecrystal: 5
-    
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+
 - type: listing
   id: UplinkSmokeImplant
   name: uplink-smoke-implant-name
@@ -502,7 +507,7 @@
     Telecrystal: 5
   categories:
     - UplinkWeaponry
-    
+
 - type: listing
   id: UplinkContractorBaton
   name: uplink-contractor-baton-name
@@ -520,7 +525,7 @@
     blacklist:
       tags:
       - NukeOpsUplink
-     
+
 - type: listing
   id: UplinkHypopenAgent
   name: uplink-hypopen-name
@@ -558,7 +563,7 @@
     blacklist:
       tags:
       - NukeOpsUplink
-      
+
 - type: listing
   id: UplinkPressureUpgrade
   name: uplink-pressure-upgrade-name
@@ -566,9 +571,9 @@
   productEntity: PKAUpgradePressure
   discountCategory: usualDiscounts
   discountDownTo:
-    Telecrystal: 4
+    Telecrystal: 8
   cost:
-    Telecrystal: 5
+    Telecrystal: 10
   categories:
   - UplinkJob
   conditions:
@@ -592,7 +597,7 @@
   id: UplinkThermalVisionImplanter
   name: uplink-thermal-vision-implanter-name
   description: uplink-thermal-vision-implanter-desc
-  icon: { sprite: /Textures/Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+  icon: { sprite: /Textures/Clothing/Eyes/Glasses/thermal.rsi, state: icon }
   productEntity: ThermalVisionImplanter
   cost:
     Telecrystal: 8
@@ -603,7 +608,7 @@
       whitelist:
         tags:
           - NukeOpsUplink
-    
+
 - type: listing
   id: UplinkJumpsuitVentCrawler
   name: uplink-jumpsuit-ventcrawler-name
@@ -672,3 +677,19 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: UplinkExtMagazinePistolSubMachineGun
+  name: uplink-pistol-ext-magazine-c20r-name
+  description: uplink-pistol-ext-magazine-c20r-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag_ext.rsi, state: red-icon }
+  productEntity: ExtMagazinePistolSubMachineGun
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink

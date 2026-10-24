@@ -494,6 +494,7 @@
     name: seeds-potato-name
     packetPrototype: PotatoSeeds
     productPrototypes: [ FoodPotato ]
+    mutationPrototypes: [ EnergyPotatoPlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 30
     maturation: 10
@@ -558,6 +559,7 @@
     name: seeds-teaplant-name
     packetPrototype: TeaPlantSeeds
     productPrototypes: [ LeavesTea ]
+    mutationPrototypes: [ TreeTeaPlantPlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 75
     maturation: 5
@@ -788,6 +790,7 @@
   categories: [HideSpawnMenu]
   name: tomato killer plant
   components:
+  - type: NPCImprinted
   - type: Sprite
     sprite: Objects/Specific/Hydroponics/tomatokiller.rsi
   - type: PlantData
@@ -870,6 +873,7 @@
     name: seeds-cabbage-name
     packetPrototype: CabbageSeeds
     productPrototypes: [ FoodCabbage ]
+    mutationPrototypes: [ MoneyCabbagePlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 50
     maturation: 7
@@ -1966,6 +1970,7 @@
     name: seeds-grape-name
     packetPrototype: GrapeSeeds
     productPrototypes: [ FoodGrape ]
+    mutationPrototypes: [ InvisibleGrapePlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 50
     maturation: 6
@@ -1996,7 +2001,7 @@
     name: seeds-watermelon-name
     packetPrototype: WatermelonSeeds
     productPrototypes: [ FoodWatermelon ]
-    mutationPrototypes: [ HolymelonPlants ]
+    mutationPrototypes: [ HolymelonPlants, DemonicWatermelonPlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 55
     maturation: 12
@@ -2099,6 +2104,7 @@
     name: seeds-berries-name
     packetPrototype: BerrySeeds
     productPrototypes: [ FoodBerries ]
+    mutationPrototypes: [ RadioactiveBerriesPlants ] # Corvax-Wega-Hydroponics-Edit
   - type: Plant
     lifespan: 50
     maturation: 6

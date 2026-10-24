@@ -69,7 +69,8 @@
   - type: StaticPrice
     price: 750
   - type: StealTarget
-    stealGroup: ClothingShoesBootsMagAdv
+    stealGroup:
+    - ClothingShoesBootsMagAdv
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
   - type: Magboots # Corvax-Wega-AdvMagboots

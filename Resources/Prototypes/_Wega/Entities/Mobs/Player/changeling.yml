@@ -1,0 +1,7 @@
+- type: entity # dummy prototype for the store listing
+  id: ChangelingThermalVisionDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ThermalVision
+    enabled: false # Disabled by default
+    toggleAction: ActionToggleTherlamChangeling

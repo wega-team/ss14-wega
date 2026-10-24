@@ -92,3 +92,14 @@
     contents:
     - id: FoodBoxShrimp
       amount: 2
+
+- type: entity
+  id: CrateNori
+  parent: CratePlastic
+  name: emergency nori delivery
+  description: emergency Nori delivery
+  components:
+  - type: StorageFill
+    contents:
+    - id: FoodBoxNori
+      amount: 2

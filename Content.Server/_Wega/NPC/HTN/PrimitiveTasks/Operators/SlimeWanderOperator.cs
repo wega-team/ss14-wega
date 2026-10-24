@@ -11,8 +11,8 @@ namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators;
 public sealed partial class SlimeWanderOperator : HTNOperator, IHtnConditionalShutdown
 {
     [Dependency] private IEntityManager _entMan = default!;
-    private NPCSteeringSystem _steering = default!;
-    private PathfindingSystem _pathfind = default!;
+    [Dependency] private NPCSteeringSystem _steering = default!;
+    [Dependency] private PathfindingSystem _pathfind = default!;
 
     [DataField("rangeKey")]
     public string RangeKey = "WanderRange";
@@ -24,13 +24,6 @@ public sealed partial class SlimeWanderOperator : HTNOperator, IHtnConditionalSh
     public HTNPlanState ShutdownState { get; private set; } = HTNPlanState.TaskFinished;
 
     private const string MovementCancelToken = "MovementCancelToken";
-
-    public override void Initialize(IEntitySystemManager sysManager)
-    {
-        base.Initialize(sysManager);
-        _pathfind = sysManager.GetEntitySystem<PathfindingSystem>();
-        _steering = sysManager.GetEntitySystem<NPCSteeringSystem>();
-    }
 
     public override async Task<(bool Valid, Dictionary<string, object>? Effects)> Plan(
         NPCBlackboard blackboard,

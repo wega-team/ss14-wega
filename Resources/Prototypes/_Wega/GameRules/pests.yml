@@ -1,0 +1,18 @@
+# events
+
+- type: entity
+  id: KoiMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    earliestStart: 15
+    weight: 6
+    duration: 50
+  - type: VentCrittersRule
+    entries:
+      - id: MobKoi1
+        prob: 0.02
+      - id: MobKoi2
+        prob: 0.02
+      - id: MobKoi3
+        prob: 0.01

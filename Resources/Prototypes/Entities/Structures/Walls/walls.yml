@@ -50,8 +50,12 @@
     resistance: 2
   - type: BlockWeather
   - type: SunShadowCast
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+  - type: TrayScanReveal
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
+    absorptionFactor: 0.2
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   abstract: true
@@ -76,9 +80,11 @@
     tags:
     - Diagonal
   - type: IconSmooth
-    mode: Diagonal
     key: walls
-    base: state
+    states:
+    - !type:DiagonalSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: state
   - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
@@ -135,7 +141,14 @@
             max: 1
   - type: IconSmooth
     key: walls
-    base: brick
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: brick
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -164,7 +177,14 @@
         node: girder
   - type: IconSmooth
     key: walls
-    base: brass
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: brass
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -198,8 +218,15 @@
         sound:
           collection: gib
   - type: IconSmooth
-    key: meatwalls
-    base: meat
+    key: walls
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: meat
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.4
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, BaseStructureHealth ]
@@ -220,7 +247,42 @@
       - *SpawnGirder
   - type: IconSmooth
     key: walls
-    base: debug
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: debug
+
+- type: entity
+  parent: WallDebug
+  id: WallDebugA
+  name: debug wall
+  suffix: DEBUG, AltA
+  components:
+  - type: Sprite
+    sprite: Structures/Walls/debugalt.rsi
+  - type: Icon
+    sprite: Structures/Walls/debugalt.rsi
+  - type: IconSmooth
+    key: walls
+    states:
+    - !type:CardinalCornerSpriteSmoothing
+      mask: [ walls ]
+      altMask: [ windows, grilles, marble, doors ]
+      base: debug
+
+- type: entity
+  parent: WallDebugA
+  id: WallDebugB
+  name: debug wall
+  suffix: DEBUG, AltB
+  components:
+  - type: IconSmooth
+    key: marble
+    states:
+    - !type:CardinalCornerSpriteSmoothing
+      mask: [ marble ]
+      altMask: [ windows, grilles, walls, doors ]
+      base: debug
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -262,7 +324,14 @@
         density: 4000
   - type: IconSmooth
     key: walls
-    base: gold
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: gold
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -293,9 +362,16 @@
           SheetPlasma1: *BaseWallSpawn
   - type: IconSmooth
     key: walls
-    base: plasma
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: plasma
   - type: RadiationBlocker
     resistance: 5
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: BaseWall
@@ -309,7 +385,10 @@
     sprite: Structures/Walls/plastitanium.rsi
   - type: IconSmooth
     key: walls
-    base: plastitanium
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: plastitanium
   - type: Fixtures
     fixtures:
       fix1:
@@ -326,6 +405,11 @@
   - type: Tag
     tags:
     - SmeltingImmune
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ WallPlastitaniumIndestructible, StructureHealthWallStrong ]
@@ -352,7 +436,6 @@
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/plastitanium-diagonal.rsi
-    state: state0
   - type: Icon
     sprite: Structures/Walls/plastitanium-diagonal.rsi
     state: state0
@@ -412,7 +495,10 @@
           SheetPlasteel1: *BaseWallSpawn
   - type: IconSmooth
     key: walls
-    base: reinf_over
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: reinf_over
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -441,13 +527,16 @@
         layer:
         - WallLayer
         density: 2000
-  # Covrax-Wega-CombatRCD-Start
+  # Covrax-Wega-start
   - type: RCDDeconstructable
     cost: 6
     delay: 8
     reinforced: true
     fx: EffectRCDDeconstruct8
-  # Covrax-Wega-CombatRCD-End
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Covrax-Wega-end
 
 - type: entity
   parent: WallReinforced
@@ -464,8 +553,11 @@
     node: reinforcedWallRust
   - type: IconSmooth
     key: walls
-    base: reinf_over
-  # Rusted walls should be made weaker through a damage mod status effect.
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: reinf_over
+    # Rusted walls should be made weaker through a damage mod status effect.
 
 - type: entity
   parent: [ WallDiagonalBase, StructureHealthWallStrong ]
@@ -475,7 +567,6 @@
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/reinforced-diagonal.rsi
-    state: state0
   - type: Icon
     sprite: Structures/Walls/reinforced-diagonal.rsi
     state: state0
@@ -492,30 +583,6 @@
     resistance: 5
 
 - type: entity
-  parent: [ BaseWall, StructureHealthWallStrong ]
-  id: WallMarble
-  name: marble wall
-  components:
-  - type: Sprite
-    sprite: Structures/Walls/marble.rsi
-  - type: Icon
-    sprite: Structures/Walls/marble.rsi
-  - type: Damageable
-    damageModifierSet: RockMod
-  - type: Destructible
-    thresholds:
-    - trigger: *DamageWallStrong
-      behaviors:
-      - *SoundMetalSlam
-      - *SpawnGirder
-      - *SpawnPlasteel
-  - type: IconSmooth
-    key: walls
-    base: wall
-  - type: StaticPrice
-    price: 150
-
-- type: entity
   parent: BaseWall
   id: WallMarbleIndestructible
   name: marble wall
@@ -526,8 +593,12 @@
   - type: Icon
     sprite: Structures/Walls/marble.rsi
   - type: IconSmooth
-    key: walls
-    base: wall
+    key: marble
+    states:
+    - !type:CardinalCornerSpriteSmoothing
+      mask: [ marble ]
+      altMask: [ walls, windows, grilles, doors ]
+      base: wall
   - type: Fixtures
     fixtures:
       fix1:
@@ -541,6 +612,31 @@
         density: 4000
   - type: RadiationBlocker
     resistance: 5
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.2
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
+
+- type: entity
+  parent: [ WallMarbleIndestructible, StructureHealthWallStrong ]
+  id: WallMarble
+  name: marble wall
+  suffix: ""
+  components:
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Damageable
+    damageModifierSet: RockMod
+  - type: Destructible
+    thresholds:
+    - trigger: *DamageWallStrong
+      behaviors:
+      - *SoundMetalSlam
+      - *SpawnGirder
+      - *SpawnPlasteel
+  - type: StaticPrice
+    price: 150
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -571,7 +667,14 @@
           IngotSilver1: *BaseWallSpawn
   - type: IconSmooth
     key: walls
-    base: silver
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: silver
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 #shuttle walls
 - type: entity
@@ -582,7 +685,6 @@
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/shuttle-diagonal.rsi
-    state: state0
   - type: Icon
     sprite: Structures/Walls/shuttle-diagonal.rsi
     state: state0
@@ -624,6 +726,11 @@
     resistance: 5
   - type: StaticPrice
     price: 200
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallStrong ]
@@ -653,7 +760,10 @@
     node: shuttleWall
   - type: IconSmooth
     key: walls
-    base: state
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: state
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -679,6 +789,11 @@
         layer:
         - WallLayer
         density: 2000
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWall ]
@@ -712,7 +827,10 @@
           SheetSteel1: *BaseWallSpawn
   - type: IconSmooth
     key: walls
-    base: solid
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: solid
 
 - type: entity
   parent: [ WallDiagonalBase, StructureHealthWall ]
@@ -722,7 +840,6 @@
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/solid-diagonal.rsi
-    state: state0
   - type: Icon
     sprite: Structures/Walls/solid-diagonal.rsi
     state: state0
@@ -749,7 +866,10 @@
     node: wallrust
   - type: IconSmooth
     key: walls
-    base: solid
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: solid
   # Rusted walls should be made weaker through a damage mod status effect.
 
 - type: entity
@@ -772,7 +892,10 @@
     sprite: Structures/Walls/exo.rsi
   - type: IconSmooth
     key: walls
-    base: solid
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: solid
   - type: Construction
     graph: Girder
     node: wallChitin
@@ -818,10 +941,18 @@
     resistance: 5
   - type: IconSmooth
     key: walls
-    base: reinf_over
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: reinf_over
   - type: Construction
     graph: Girder
     node: reinforcedWallChitin
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: WallPlastitanium
@@ -834,7 +965,15 @@
     sprite: Structures/Walls/exo-borg.rsi
   - type: IconSmooth
     key: walls
-    base: xenoborg
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: xenoborg
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: WallPlastitaniumDiagonal
@@ -849,6 +988,11 @@
   - type: Icon
     sprite: Structures/Walls/exo-borg-diagonal.rsi
     state: state0
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -886,9 +1030,17 @@
         density: 6000
   - type: IconSmooth
     key: walls
-    base: uranium
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: uranium
   - type: RadiationBlocker
     resistance: 6
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrierStrong ]
@@ -921,7 +1073,14 @@
           MaterialWoodPlank1: *BaseWallSpawn
   - type: IconSmooth
     key: walls
-    base: wood
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: wood
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrier ]
@@ -954,10 +1113,17 @@
           MaterialWebSilk1: *BaseWallSpawn
   - type: IconSmooth
     key: webs
-    base: wall
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors, webs ]
+      base: wall
   - type: Construction
     graph: WebStructures
     node: wall
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWall ]
@@ -978,7 +1144,10 @@
       - *SpawnGirder
   - type: IconSmooth
     key: walls
-    base: mining
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: mining
   - type: Appearance
 
 - type: entity
@@ -989,7 +1158,6 @@
   - type: Sprite
     drawdepth: Walls
     sprite: Structures/Walls/mining-diagonal.rsi
-    state: state0
   - type: Icon
     sprite: Structures/Walls/mining-diagonal.rsi
     state: state0
@@ -1024,6 +1192,10 @@
         layer:
         - GlassLayer
   - type: Airtight
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   id: WallForce
@@ -1051,6 +1223,10 @@
   - type: Icon
     sprite: Structures/Magic/forcewall.rsi
     state: forcewall
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrierStrong ]
@@ -1074,7 +1250,15 @@
       - *SoundBreakStone
   - type: IconSmooth
     key: walls
-    base: concrete
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: concrete
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.35
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 # Cardboard
 
@@ -1132,7 +1316,14 @@
           path: /Audio/Effects/poster_broken.ogg
   - type: IconSmooth
     key: cards
-    base: card
+    states:
+    - !type:CornerSpriteSmoothing
+      mask: [ cards ]
+      base: card
   - type: Occluder
   - type: BlockWeather
   - type: SunShadowCast
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.08
+  # Corvax-Wega-SoundInsolation-end

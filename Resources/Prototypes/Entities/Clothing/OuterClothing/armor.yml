@@ -186,12 +186,12 @@
   - type: StaticPrice
     price: 1500
 
-#Elite web vest
+#Energy web vest
 - type: entity
   parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterArmorBase, TemperatureProtection, ClothingOuterStorageBase, BaseSyndicateContraband] # Corvax-Contraband
   id: ClothingOuterVestWebElite
-  name: elite web vest
-  description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
+  name: energy web vest
+  description: A synthetic armor vest. This one has added webbing with heat and radiation resistant fibers, with the trade-off of weaker ballistic protection.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
@@ -231,6 +231,10 @@
         Slash: 0.7
         Piercing: 0.5
         Heat: 0.9
+  # Corvax-Wega-Edit-Nuka-Start
+  - type: StaminaResistance
+    damageCoefficient: 1
+  # Corvax-Wega-Edit-Nuka-End
 
 
 # Armor covering multiple body parts including limbs
@@ -256,6 +260,7 @@
         Slash: 0.35
         Piercing: 0.35
         Heat: 0.35
+        Radiation: 0.5 # Corvax-Wega-Edit-Nuka
         Caustic: 0.5
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.45

@@ -1,0 +1,91 @@
+- type: entity
+  abstract: true
+  parent:
+  - SimpleSpaceMobBase
+  - FlyingMobBase
+  - BaseSlicingRefinableButchering
+  id: BaseMobKoi
+  name: space koi
+  description: A peaceful ornamental fish drifting through space.
+  components:
+  - type: InputMover
+  - type: MobMover
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Animals/koi/koi1.rsi
+    layers:
+    - map:
+      - "enum.DamageStateVisualLayers.Base"
+      state: base
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.40
+        density: 20
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      20: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2.0
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: base
+      Dead:
+        Base: dead
+  - type: Tag
+    tags:
+    - Carp
+  - type: InteractionPopup
+    interactSuccessString: petting-success-carp
+    interactFailureString: petting-failure-carp
+  - type: ToolRefinable
+    refineResult:
+      - id: FoodMeatFish
+        amount: 2
+
+- type: entity
+  parent: BaseMobKoi
+  id: MobKoi1
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Animals/koi/koi1.rsi
+    layers:
+    - map:
+      - "enum.DamageStateVisualLayers.Base"
+      state: base
+
+- type: entity
+  parent: BaseMobKoi
+  id: MobKoi2
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Animals/koi/koi2.rsi
+    layers:
+    - map:
+      - "enum.DamageStateVisualLayers.Base"
+      state: base
+
+- type: entity
+  parent: BaseMobKoi
+  id: MobKoi3
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Wega/Mobs/Animals/koi/koi3.rsi
+    layers:
+    - map:
+      - "enum.DamageStateVisualLayers.Base"
+      state: base
+

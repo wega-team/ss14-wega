@@ -212,6 +212,9 @@
         whitelist:
           tags:
           - SlimeRND
+          components:
+          - SlimeSpeed
+          - SlimeArmor
     - item: BorgFireExtinguisher
     - item: KitchenKnife
     - hand:
@@ -223,6 +226,14 @@
         blacklist:
           components:
           - Clothing
+    - hand:
+        emptyRepresentative: MonkeyCubeWrapped
+        emptyLabel: borg-slot-cube-empty
+        whitelist:
+          components:
+          - Rehydratable
+          tags:
+          - WrappedCube
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: slime-module }
 
@@ -350,6 +361,57 @@
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: medical-common-module }
 
 - type: entity
+  id: BorgModuleCommonPostMan
+  parent: [ BaseBorgModule, BaseProviderBorgModule ]
+  name: postman common module
+  description: Everyone can heal your action!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: generic
+    - state: icon-appraisal
+  - type: ItemBorgModule
+    hands:
+    - item: AppraisalTool
+    - hand:
+        emptyLabel: borg-slot-documents-empty
+        emptyRepresentative: Paper
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+          components:
+          - Delivery
+    - hand:
+        emptyLabel: borg-slot-delivery-empty
+        emptyRepresentative: PackageDelivery
+        whitelist:
+          tags:
+          - Book
+          - Dice
+          - Document
+          - Figurine
+          - TabletopBoard
+          - Write
+          components:
+          - Delivery
+    - item: BoxFolderYellowEmpty
+    - item: MailBag
+    - hand:
+        emptyLabel: borg-slot-cash-only-empty
+        emptyRepresentative: CashOnlyIcon
+        whitelist:
+          components:
+          - Cash
+  - type: BorgModuleIcon
+    icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: post-module }
+
+- type: entity
   id: BorgModuleFulton
   parent: [ BaseBorgModule, BaseProviderBorgModule ]
   name: fulton module
@@ -415,6 +477,8 @@
           tags:
           - Dice
           - Figurine
+    - item: RubberStampApproved
+    - item: RubberStampDenied
     - item: BooksBag
     - item: ChameleonPDA
   - type: BorgModuleIcon
@@ -682,14 +746,8 @@
     hands:
     - item: BorgMopItem
     - item: Bucket
-    - item: Beaker
-      hand:
-        emptyLabel: borg-slot-beakers-empty
-        emptyRepresentative: Beaker
-        whitelist:
-          components:
-          - FitsInDispenser
     - item: SprayBottle
+    - item: BorgTrashBag
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cleaning-module }
 
@@ -711,48 +769,52 @@
     hands:
     - item: ButchCleaver
     - item: RollingPin
-    - hand:
-        emptyRepresentative: FoodBowlBig
-        emptyLabel: borg-slot-cook-empty
-        whitelist:
-          tags:
-          - Cook
     - item: Beaker
       hand:
-        emptyLabel: borg-slot-chemical-containers-empty
-        emptyRepresentative: Beaker
+        emptyLabel: borg-slot-small-containers-empty
+        emptyRepresentative: BorgModuleDinnerwarePlaceholder
         whitelist:
           components:
           - FitsInDispenser
           tags:
-          - ChemDispensable
+          - Dinnerware
     - hand:
-        emptyRepresentative: ReagentContainerFlour
         emptyLabel: borg-slot-ingredient-empty
+        emptyRepresentative: BorgModuleRawIngredientPlaceholder
+        whitelist:
+          tags:
+          - FoodSnack
+          - Fruit
+          - Ingredient
+          - Meat
+          - Packet
+          - Raw
+          - Vegetable
+          - WrappedCube
+          components:
+          - Produce
+          - Rehydratable # For butchering
+        blacklist:
+          tags:
+          - ChiliBowl
+          - Cooked
+          - Cookware
+          - Dinnerware
+          - Donut
+          - DonkPocket
+          - Pie
+          - Pizza
+          - Soup
+          - FoodSnack
+          - FinishedMeal
+    - hand:
+        emptyRepresentative: MonkeyCubeWrapped
+        emptyLabel: borg-slot-cube-empty
         whitelist:
           components:
-          - SlimeFood
+          - Rehydratable
           tags:
-          - Ingredient
-          - Packet
-          - SaltShaker
-          - PepperShaker
-          - Enzyme
-          - Mayo
-          - FoodSnack
-    - hand:
-        emptyRepresentative: FoodMeat
-        emptyLabel: borg-slot-meat-empty
-        whitelist:
-          tags:
-          - Meat
-    - hand:
-        emptyRepresentative: FoodCabbage
-        emptyLabel: borg-slot-botany-empty
-        whitelist:
-          tags:
-          - Vegetable
-          - Fruit
+          - WrappedCube
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: cook-module }
 
@@ -877,10 +939,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.85
-        Slash: 0.85
-        Piercing: 0.85
-        Heat: 0.85
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.75
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -927,7 +989,7 @@
         Blunt: 0.9
         Slash: 0.9
         Piercing: 0.9
-        Heat: 0.7
+        Heat: 0.6
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -977,7 +1039,7 @@
       coefficients:
         Blunt: 0.9
         Slash: 0.9
-        Piercing: 0.7
+        Piercing: 0.6
         Heat: 0.9
   - type: BorgModuleWhitelist
     moduleBlacklist:
@@ -1024,8 +1086,8 @@
       coefficients:
         Blunt: 0.6
         Slash: 0.6
-        Piercing: 0.8
-        Heat: 0.8
+        Piercing: 0.9
+        Heat: 0.9
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -1257,6 +1319,12 @@
           - Gems
     - item: BorgOreBagOfHolding
     - item: BorgOreBagOfHolding
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: cheflava
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: mining-rare }
 
@@ -1292,8 +1360,8 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponHydraBorg
-    - item: TrashBagHolding
-    - item: TrashBagHolding
+    - item: BorgTrashBagHolding
+    - item: BorgTrashBagHolding
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: ubor-rare }
 
@@ -1334,6 +1402,12 @@
     - item: BorgGeneratorTile
     - item: BorgGeneratorMaterialSteal
     - item: BorgGeneratorMaterialPlasteel
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: chefce
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: rcd-rare }
 
@@ -1448,6 +1522,12 @@
           - FitsInDispenser
           tags:
           - ChemDispensable
+  - type: ComponentBorgModule
+    components:
+    - type: SimpleSpriteOverlay
+      overlaySprite:
+        sprite: _Wega/Mobs/Silicon/chassis.rsi
+        state: chefcmo
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: med-rare }
 
@@ -1515,6 +1595,13 @@
     layers:
     - state: syndicate
     - state: icon-sniper
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.8
+        Slash: 0.8
+        Piercing: 0.8
+        Heat: 0.8
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:
@@ -1552,10 +1639,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.7
-        Slash: 0.7
-        Piercing: 0.7
-        Heat: 0.7
+        Blunt: 0.6
+        Slash: 0.6
+        Piercing: 0.6
+        Heat: 0.6
   - type: BorgModuleWhitelist
     moduleBlacklist:
       tags:

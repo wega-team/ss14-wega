@@ -1,16 +1,15 @@
 - type: emote
   id: Purr
-  name: chat-emote-name-purr
+  name: chat-emote-name-purring
   category: Vocal
   available: false
-  icon: Corvax/Interface/Emotes/purr.png
   whitelist:
     components:
     - Vocal
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-purr"]
+  chatMessages: ["chat-emote-msg-purring"]
   chatTriggers:
   - purr
   - purr.
@@ -24,11 +23,10 @@
   - мурлычет
   - мурлычет.
   - мурлычет!
-  # Corvax-Wega-Start
   - урчит
-  - урчит!
   - урчит.
-  # Corvax-Wega-End
+  - урчит!
+  - урчать
 
 - type: emote
   id: BeepIpc

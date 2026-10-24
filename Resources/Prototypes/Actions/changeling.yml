@@ -20,6 +20,8 @@
       collection: gib # Placeholder
     retractSounds:
       collection: gib # Placeholder
+  - type: ChangelingHorrorDisable
+    toggleOff: true
 
 - type: entity
   parent: BaseAction
@@ -75,6 +77,12 @@
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:ChangelingDevourActionEvent
+    # Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+    # Corvax-Wega-End
 
 - type: entity
   id: ActionChangelingTransform
@@ -190,6 +198,12 @@
     whitelist:
       components:
       - HumanoidProfile
+# Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+# Corvax-Wega-End
     event: !type:ChangelingStingDnaEvent
   - type: PopupOnAction
     popupType: Medium
@@ -206,6 +220,12 @@
     whitelist:
       components:
       - Bloodstream
+# Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+# Corvax-Wega-End
     event: !type:EntityEffectActionEvent
   - type: ActionRequirements
     failPopup: changeling-not-enough-chemicals
@@ -368,6 +388,33 @@
       time: 120 # On dead/crit, transfer the 30s to the duration instead. Means you can also maintain it "permanently" on corpses as long as youre around + want to spend fuck ton of chemicals.
 
 - type: entity
+  parent: BaseActionChangelingSting
+  id: ActionChangelingStingHemotoxin
+  name: Hemotoxin Sting
+  description: "Sting a target and inject them with a dangerous dose of various toxins, causing extensive bleeding. \n\nRequires 30 Chemicals."
+  components:
+  - type: Action
+    useDelay: 10
+    raiseOnAction: true
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: Interface/Actions/changeling2.rsi
+    layers:
+    - state: hemotoxin_sting
+  - type: PopupOnAction
+    popupType: Medium
+    selfMessage: changeling-sting-success
+  - type: EntityEffectAction
+    effects:
+    - !type:PopupMessage
+      visualType: LargeCaution
+      messages: [ "changeling-sting-hemotoxin" ]
+      type: Local
+    - !type:AddReagentToBloodstream
+      reagent: Hemorrhinol
+      quantity: 10 # Bloodloss is very weak, this will likely need tweaks once its more interesting.
+
+- type: entity
   parent: BaseAction
   id: ActionChangelingLastResort
   name: "[color=red]Last Resort[/color]"
@@ -403,6 +450,12 @@
     - state: take_over_corpse
   - type: EntityTargetAction
     event: !type:ChangelingTakeOverCorpseActionEvent
+    # Corvax-Wega-Start
+    blacklist:
+      components:
+        - Android
+        - Ipc
+    # Corvax-Wega-End
   - type: TargetAction
 
 - type: entity
@@ -501,7 +554,7 @@
     selfMessage: changeling-cocoon-success
   - type: DoAfterArgs
     examineText: changeling-cocoon-doafter
-    delay: 10
+    delay: 5
     breakOnMove: true
     breakOnDamage: true
   - type: EntityTargetAction
@@ -512,6 +565,10 @@
     blacklist:
       components:
       - RandomHumanoidAppearance # Hungry... For... Salvage corpses... grrrr...
+    # Corvax-Wega-Start
+      - Android
+      - Ipc
+    # Corvax-Wega-End
     event: !type:EntityEffectActionEvent
   - type: EntityEffectAction
     effects:

@@ -21,6 +21,7 @@
       tags:
         - TrashBag
         - TrashBagHolding
+        - SyndicateRapier # Corvax-Wega-Edit-Nuka
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -284,7 +285,8 @@
   description: Holds the kit of CentComm's most feared agents.
   components:
   - type: Sprite
-    sprite: Clothing/Back/Backpacks/ertsec.rsi
+     # sprite: Clothing/Back/Backpacks/ertsec.rsi
+    sprite: Corvax/Clothing/Back/Backpacks/deathsquad-backpack.rsi # Corvax
 
 #Syndicate
 - type: entity

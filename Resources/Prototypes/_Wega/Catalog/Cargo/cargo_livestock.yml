@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: LivestockKoi
+  icon:
+    sprite: _Wega/Mobs/Animals/koi/koi1.rsi
+    state: base
+  product: CrateNPCKoi
+  cost: 1500
+  category: cargoproduct-category-name-livestock
+  group: market

@@ -74,7 +74,7 @@
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: DeviceLinkSink
     ports:
@@ -95,13 +95,13 @@
   - type: PlacementReplacement
     key: shutters
   - type: IconSmooth
-    key: walls
-    mode: NoSprite
+    key: doors
   - type: StructureAligner
   - type: StructureAlignerPylon
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 0.4 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   id: ShuttersNormal
@@ -164,6 +164,11 @@
     - board
   - type: RadiationBlocker
     resistance: 4
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   id: ShuttersRadiationOpen
@@ -214,6 +219,10 @@
           collection: MetalBreak
           params:
             volume: -4
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   id: ShuttersWindowOpen

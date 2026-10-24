@@ -27,3 +27,14 @@
   cost: 700
   category: cargoproduct-category-name-food
   group: market
+
+- type: cargoProduct
+  id: CrateNori
+  icon:
+    sprite: _Wega/Objects/Consumable/Food/Baked/noribox.rsi
+    state: box
+  product: CrateNori
+  cost: 450
+  category: cargoproduct-category-name-food
+  group: market
+

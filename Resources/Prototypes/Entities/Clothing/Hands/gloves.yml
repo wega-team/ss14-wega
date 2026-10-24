@@ -96,13 +96,13 @@
       types:
         Blunt: 8
     bluntStaminaDamageFactor: 2
-# Corvax-Wega-start
+  # Corvax-Wega-start
   - type: MartialArtsClothing
     style: Boxing
     gotMessage: true
     equippedMessage: boxer-enabled
     unequippedMessage: boxer-disabled
-# Corvax-Wega-End
+  # Corvax-Wega-End
 
 - type: entity
   parent: [ ClothingHandsGlovesBoxingRiggedBase, ClothingHandsGlovesBoxingRed ]
@@ -586,11 +586,12 @@
     - WhitelistChameleon
     - Kangaroo
   - type: StealTarget
-    stealGroup: ClothingHandsKnuckleDustersQM
-# Corvax-Wega-Start
+    stealGroup:
+    - ClothingHandsKnuckleDustersQM
+  # Corvax-Wega-Start
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.5
-# Corvax-Wega-End
+  # Corvax-Wega-End
 
 - type: entity
   parent: [BaseCorvaxContraband433DepartmentsSecurity, ClothingHandsBase, BaseSyndicateContraband] # Corvax-Contraband
@@ -619,10 +620,10 @@
     - Kangaroo
   - type: StaticPrice
     price: 2000
-# Corvax-Wega-Start
+  # Corvax-Wega-Start
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.5
-# Corvax-Wega-End
+  # Corvax-Wega-End
 
 - type: entity
   name: stun knuckle dusters
@@ -725,7 +726,7 @@
   - type: Tag
     tags:
     - Kangaroo
-# Corvax-Wega-Start
+  # Corvax-Wega-Start
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.25
-# Corvax-Wega-End
+  # Corvax-Wega-End

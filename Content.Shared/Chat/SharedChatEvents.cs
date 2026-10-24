@@ -1,4 +1,5 @@
 using Content.Shared.Inventory;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Radio;
 using Content.Shared.Speech;
 using Robust.Shared.Prototypes;
@@ -69,13 +70,16 @@ public sealed class EntitySpokeEvent : EntityEventArgs
     /// </summary>
     public RadioChannelPrototype? Channel;
 
-    public EntitySpokeEvent(EntityUid source, string message, string originalMessage, RadioChannelPrototype? channel, string? obfuscatedMessage)// Corvax-TTS originalMessage
+    public MindChannelPrototype? MindChannel; // Corvax-Wega-MindChat
+
+    public EntitySpokeEvent(EntityUid source, string message, string originalMessage, RadioChannelPrototype? channel, string? obfuscatedMessage, MindChannelPrototype? mindChannel = null) // Corvax-Wega-MindChat-Edit
     {
         Source = source;
         Message = message;
         OriginalMessage = originalMessage; // Corvax-TTS: Spec symbol sanitize
         Channel = channel;
         ObfuscatedMessage = obfuscatedMessage;
+        MindChannel = mindChannel; // Corvax-Wega-MindChat
     }
 }
 

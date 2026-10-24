@@ -77,15 +77,13 @@
     emptySpriteName: bluepen_empty
   - type: Solution
     solution:
-      maxVol: 40
+      maxVol: 30
       reagents:
       - ReagentId: Leporazine
-        Quantity: 10
+        Quantity: 5
       - ReagentId: LavalandSerum
-        Quantity: 15
-      - ReagentId: Epinephrine
-        Quantity: 10
-      - ReagentId: Omnizine
+        Quantity: 20
+      - ReagentId: TranexamicAcid
         Quantity: 5
 
 - type: entity
@@ -106,20 +104,14 @@
     emptySpriteName: luxpen_empty
   - type: Solution
     solution:
-      maxVol: 60
+      maxVol: 55
       reagents:
       - ReagentId: Leporazine
-        Quantity: 10
+        Quantity: 5
       - ReagentId: LavalandSerum
-        Quantity: 10
-      - ReagentId: Pyrazine
-        Quantity: 10
-      - ReagentId: DexalinPlus
-        Quantity: 10
+        Quantity: 45
       - ReagentId: TranexamicAcid
-        Quantity: 10
-      - ReagentId: Omnizine
-        Quantity: 10
+        Quantity: 5
 
 - type: entity
   name: stimpank

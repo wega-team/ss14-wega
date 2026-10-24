@@ -12,6 +12,9 @@ public sealed partial class VentCrawlerComponent : Component
 
     [DataField("enterDelay")]
     public float EnterDelay = 2.5f;
+	
+    [DataField("ignoreInv")]
+    public bool IgnoreInv = false;
 }
 
 [Serializable, NetSerializable]

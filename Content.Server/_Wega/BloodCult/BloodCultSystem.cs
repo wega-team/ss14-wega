@@ -59,6 +59,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
     [Dependency] private SharedMindSystem _mind = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
     [Dependency] private UserInterfaceSystem _ui = default!;
 
     public override void Initialize()
@@ -520,6 +521,16 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
     private void OnConstructSelect(Entity<ConstructComponent> construct, ref BloodConstructSelectMessage args)
     {
+        if (!HasComp<BloodCultistComponent>(args.Actor))
+            return;
+
+        if (!_interaction.InRangeUnobstructed(args.Actor, construct.Owner))
+            return;
+
+        if (!ProtoMan.TryIndex(args.Construct, out var proto)
+            || !proto.HasComp<BloodCultConstructComponent>(EntityManager.ComponentFactory))
+            return;
+
         EntityUid? mindUid = null;
         if (TryComp<ItemSlotsComponent>(construct, out var itemSlotsComponent))
             mindUid = itemSlotsComponent.Slots.First().Value.Item;
@@ -566,6 +577,12 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
     private void OnStructureItemSelect(Entity<BloodStructureComponent> structure, ref BloodStructureSelectMessage args)
     {
+        if (!HasComp<BloodCultistComponent>(args.Actor))
+            return;
+
+        if (!structure.Comp.StructureGear.Contains(args.Item))
+            return;
+
         var currentTime = _gameTiming.CurTime;
         var nextActivateTime = structure.Comp.ActivateTime + TimeSpan.FromMinutes(4);
         if (currentTime < nextActivateTime)

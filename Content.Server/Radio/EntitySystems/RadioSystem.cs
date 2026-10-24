@@ -69,7 +69,7 @@ public sealed partial class RadioSystem : SharedRadioSystem
         var name = evt.VoiceName;
         name = _chat.ChatNameLinks ? $"[textlink=\"{FormattedMessage.EscapeStringParameter(name)}\" entity=\"{GetNetEntity(messageSource)}\" color=\"{channel.Color.ToHex()}\"]" : FormattedMessage.EscapeText(name);
 
-        var job = GetJobName(messageSource); // Corvax-Wega
+        var job = FormattedMessage.EscapeText(GetJobName(messageSource)); // Corvax-Wega
         var depColor = GetDepartmentColor(messageSource); // Corvax-Wega
 
         SpeechVerbPrototype speech;

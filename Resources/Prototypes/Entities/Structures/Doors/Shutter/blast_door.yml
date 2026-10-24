@@ -60,12 +60,14 @@
     interactSuccessSound:
       path: /Audio/Effects/glass_knock.ogg
   - type: IconSmooth
-    key: walls
-    mode: NoSprite
+    key: doors
   - type: PlacementReplacement
     key: blastdoors
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 1 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: BlastDoor

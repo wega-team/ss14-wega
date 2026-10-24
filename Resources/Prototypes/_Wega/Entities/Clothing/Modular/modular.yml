@@ -2730,7 +2730,9 @@
     walkModifier: 0.75
     sprintModifier: 0.75
   - type: StealTarget
-    stealGroup: ClothingOuterHardsuitRd
+    stealGroup:
+    - ClothingOuterHardsuitRd
+    - HeadHardsuit
 
 - type: entity
   parent: ClothingModularHelmetBase

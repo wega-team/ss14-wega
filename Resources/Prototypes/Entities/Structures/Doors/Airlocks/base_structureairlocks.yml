@@ -60,8 +60,7 @@
       shader: unshaded
       visible: false
   - type: IconSmooth
-    key: walls
-    mode: NoSprite
+    key: doors
   - type: AnimationPlayer
   - type: Physics
   - type: Fixtures
@@ -158,8 +157,11 @@
     price: 150
   - type: StructureAligner
   - type: StructureAlignerPylon
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
+    absorptionFactor: 0.2
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   parent: [ BaseAirlockIndestructible, StructureHealthDoor ]
@@ -179,7 +181,7 @@
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: DeviceLinkSink
     ports:
@@ -195,8 +197,14 @@
     lastSignals:
       DoorStatus: false
       DoorBoltStatus: false
-  - type: SoundOnOverload
-  - type: SpawnOnOverload
+  - type: EntityEffectOnDeviceOverload
+    effects:
+    - !type:SpawnEntity
+      entity: EffectSparks
+      predicted: false
+    - !type:PlaySound
+      sound: /Audio/Items/Defib/defib_zap.ogg
+      predicted: false
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -270,5 +278,7 @@
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
       - DoorRemoteWhitelist
       # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
-    insulationFactor: 0.6 # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.08
+  # Corvax-Wega-SoundInsolation-end

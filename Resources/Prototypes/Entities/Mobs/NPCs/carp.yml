@@ -185,8 +185,17 @@
     name: ghost-role-information-sentient-carp-name
     description: ghost-role-information-sentient-carp-description
     rules: ghost-role-information-space-dragon-summoned-carp-rules
-  - type: FriendlyFaction # Corvax-Wega-Friendly
-    faction: Dragon # Corvax-Wega-Friendly
+    # Corvax-Wega-Start
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      80: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 8
+        Slash: 12
+    # Corvax-Wega-End
 
 - type: entity
   parent: MobCarp
@@ -286,8 +295,20 @@
   - type: LeechMeleeWeapon
     heal:
       types:
-        Heat: -7.5
-        Blunt: -7.5
-        Slash: -7.5
-        Piercing: -7.5
+        Heat: -10
+        Blunt: -10
+        Slash: -10
+        Piercing: -10
+    bloodlossModifier: -2
+    modifyBloodLevel: 10
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Dead
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 10
+        Slash: 15
+        Bloodloss: 5
   # Corvax-Wega-mewmew-end

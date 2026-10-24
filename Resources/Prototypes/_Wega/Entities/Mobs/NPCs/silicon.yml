@@ -22,7 +22,7 @@
   description: Give a ride?
   components:
   - type: Sprite
-    sprite: Mobs/Silicon/Bots/taxibot.rsi
+    sprite: _Wega/Mobs/Silicon/Bots/taxibot.rsi
     state: taxibot
   - type: GhostRole
     name: ghost-role-information-taxibot-name

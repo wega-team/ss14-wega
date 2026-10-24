@@ -24,6 +24,8 @@
                 <CheckBox Name="AdminSoundsCheckBox" Text="{Loc 'ui-options-admin-sounds'}" />
                 <CheckBox Name="BwoinkSoundCheckBox" Text="{Loc 'ui-options-bwoink-sound'}" />
                 <CheckBox Name="AudioHrtfCheckBox" Text="{Loc 'ui-options-audio-hrtf'}" />
+                <CheckBox Name="AudioEffectsCheckBox" Text="{Loc 'ui-options-audio-effects'}"
+                          ToolTip="{Loc 'ui-options-audio-effects-tooltip'}" /> <!-- Corvax-Wega-SoundInsulation -->
                 <CheckBox Name="MuteUnfocusedCheckBox" Text="{Loc 'ui-options-mute-unfocused'}" />
             </BoxContainer>
         </BoxContainer>

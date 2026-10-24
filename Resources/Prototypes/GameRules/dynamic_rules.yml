@@ -103,7 +103,9 @@
           - id: SnakeSpawnHorde
           - id: SpiderClownSpawnHorde
           - id: SpiderSpawnHorde
+          - id: VendorMalfunction
           - id: VentClog
+          - id: KoiMigration # Corvax-Wega-Event
         - id: SleeperAgents
           weight: 15
           conditions:

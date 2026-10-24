@@ -14,6 +14,7 @@ using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
+using Content.Shared.Damage;
 using Content.Shared.Standing;
 using Content.Shared.Surgery.Components;
 using Content.Shared.Vampire;
@@ -176,6 +177,9 @@ public sealed partial class VampireSystem
         if (polymorphedEntity == null)
             return;
 
+        var damage = new DamageSpecifier { DamageDict = { { "Bloodloss", 10 } } };
+        _blood.TryModifyBloodLevel(ent.Owner, -100.0f);
+        _damage.TryChangeDamage(ent.Owner, damage);
         SubtractBloodEssence(ent.Owner, args.BloodCost);
         args.Handled = true;
     }

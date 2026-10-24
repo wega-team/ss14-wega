@@ -10,6 +10,6 @@
   - type: Item
     storedRotation: -90
   - type: AuxiliaryBaseLanding
-    basePath: "/Maps/_Wega/Lavaland/auxiliarybase.yml"
+    basePath: "/Maps/_Wega/Nonstations/auxiliarybase.yml"
   - type: UseDelay
     delay: 15

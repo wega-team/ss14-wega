@@ -1,10 +1,8 @@
 using Content.Shared.Chat;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Corvax.TTS;
-using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 using Content.Shared.GameTicking;
 using Robust.Client.Audio;
-using Robust.Client.Player; // Corvax-Wega-SoundInsolation
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -24,11 +22,9 @@ namespace Content.Client.Corvax.TTS;
 public sealed partial class TTSSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IPlayerManager _player = default!; // Corvax-Wega-SoundInsolation
     [Dependency] private IResourceManager _res = default!;
     [Dependency] private IRobustRandom _ran = default!;
     [Dependency] private AudioSystem _audio = default!;
-    [Dependency] private SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
     private ISawmill _sawmill = default!;
     private static MemoryContentRoot _contentRoot = new();
@@ -261,28 +257,7 @@ public sealed partial class TTSSystem : EntitySystem
                         return;
                     }
 
-                    float volumeMultiplier = 1f;
-                    if (_player.LocalEntity != null && Exists(_player.LocalEntity.Value))
-                    {
-                        var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
-                        if (insulation >= 0.95f)
-                            return;
-
-                        if (insulation > 0.1f && insulation < 0.95f)
-                        {
-                            volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
-                            volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
-                        }
-                    }
-
-                    var insulationParams = audioParams
-                        .WithVolume(AdjustVolume(ev.SourceUid == null, ev.IsWhisper, ev.IsRadio, volumeMultiplier));
-
-                    audioResult = _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, insulationParams);
-                    if (audioResult != null && _voiceEffectPreset != 0)
-                    {
-                        ApplyVoiceEffect(audioResult.Value, _voiceEffectPreset);
-                    }
+                    audioResult = _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, audioParams);
                 }
                 else
                 {
@@ -331,8 +306,7 @@ public sealed partial class TTSSystem : EntitySystem
 
     #region Utility Methods
 
-    private float AdjustVolume(bool isGlobal, bool isWhisper, bool isRadio,
-        float volumeMultiplier = 1f) // Corvax-Wega-SoundInsolation-Edit
+    private float AdjustVolume(bool isGlobal, bool isWhisper, bool isRadio)
     {
         var volume = isRadio
             ? MinimalVolume + SharedAudioSystem.GainToVolume(_radioVolume)
@@ -347,7 +321,6 @@ public sealed partial class TTSSystem : EntitySystem
             volume -= SharedAudioSystem.GainToVolume(fade);
         }
 
-        volume *= volumeMultiplier; // Corvax-Wega-SoundInsolation
         return volume;
     }
 

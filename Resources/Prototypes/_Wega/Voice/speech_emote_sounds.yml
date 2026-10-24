@@ -1,5 +1,6 @@
 - type: emoteSounds
   id: MaleFelinid
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -38,6 +39,7 @@
 
 - type: emoteSounds
   id: FemaleFelinid
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -76,6 +78,7 @@
 
 - type: emoteSounds
   id: MaleResomi
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -108,6 +111,7 @@
 
 - type: emoteSounds
   id: FemaleResomi
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -140,6 +144,7 @@
 
 - type: emoteSounds
   id: MaleAndroid
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -178,6 +183,7 @@
 
 - type: emoteSounds
   id: FemaleAndroid
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -216,6 +222,7 @@
 
 - type: emoteSounds
   id: MaleHarpy
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -264,6 +271,7 @@
 
 - type: emoteSounds
   id: FemaleHarpy
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -312,6 +320,7 @@
 
 - type: emoteSounds
   id: MaleAriral
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -356,6 +365,7 @@
 
 - type: emoteSounds
   id: FemaleAriral
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:

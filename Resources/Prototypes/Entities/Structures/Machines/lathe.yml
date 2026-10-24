@@ -138,8 +138,8 @@
     - ServiceStatic
     - PowerCellsStatic
     - ElectronicsStatic
+    - HydroponicsStatic
     - ScienceStatic # Corvax-Wega
-    - HydroponicsStatic # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SecurityAmmoStatic
@@ -504,7 +504,8 @@
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
-    stealGroup: MedicalTechFabCircuitboard
+    stealGroup:
+    - MedicalTechFabCircuitboard
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Medical]
@@ -535,6 +536,7 @@
     - ClothingCivilian
     - ClothingCargo
     - ClothingCommand
+    - ClothingDresses
     - ClothingEngineering
     - ClothingMedical
     - ClothingScience
@@ -647,12 +649,16 @@
   - type: Machine
     board: OreProcessorIndustrialMachineCircuitboard
   - type: Lathe
-    materialUseMultiplier: 0.75
+    # materialUseMultiplier: 0.75 # Corvax-Wega-Edit
     timeMultiplier: 0.5
     staticPacks:
     - OreSmelting
     - RGlassSmelting
     - AdvancedSmelting
+  # Corvax-Wega-Start
+  - type: OreProcessorPoints
+    isProm: true
+  # Corvax-Wega-End
 
 - type: entity
   parent: BaseLathe

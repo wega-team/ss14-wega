@@ -141,6 +141,11 @@
   kind: source
   path: "/Textures/Shaders/sharpness.swsl"
 
+- type: shader
+  id: VacuumDesaturation
+  kind: source
+  path: "/Textures/Shaders/vacuum_desaturation.swsl"
+
 # Corvax-Wega-Shaders-start
 - type: shader
   id: Dizzy
@@ -195,5 +200,4 @@
   id: FeroxiNarcosis
   kind: source
   path: "/Textures/_Wega/Shaders/feroxi_narcosis.swsl"
-    
 # Corvax-Wega-Shaders-end

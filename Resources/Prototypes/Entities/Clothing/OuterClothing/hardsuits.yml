@@ -389,6 +389,9 @@
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #Chief Engineer's Hardsuit
 - type: entity
@@ -428,6 +431,9 @@
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #Chief Medical Officer's Hardsuit
 - type: entity
@@ -462,6 +468,9 @@
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #Research Director's Hardsuit
 - type: entity
@@ -507,7 +516,9 @@
   - type: StaticPrice
     price: 750
   - type: StealTarget
-    stealGroup: ClothingOuterHardsuitRd
+    stealGroup:
+    - ClothingOuterHardsuitRd
+    - HeadHardsuit
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
 
@@ -542,6 +553,9 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitSecurityRed
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #Luxury Mining Hardsuit
 - type: entity
@@ -927,6 +941,9 @@
     - 0,0,3,3
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTLeader
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #ERT Chaplain Hardsuit
 - type: entity
@@ -945,6 +962,9 @@
     - 0,0,3,3
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTChaplain
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #ERT Engineer Hardsuit
 - type: entity
@@ -968,6 +988,9 @@
     protection: 0.4 # Corvax-Wega-Disease
   - type: FireProtection
     reduction: 0.8
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #ERT Medic Hardsuit
 - type: entity
@@ -989,6 +1012,9 @@
   - type: ClothingSterility # Corvax-Wega-Surgery
   - type: DiseaseProtection # Corvax-Wega-Disease
     protection: 0.25 # Corvax-Wega-Disease
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #ERT Security Hardsuit
 - type: entity
@@ -1012,6 +1038,9 @@
     - Hardsuit
     - ModNotEquipable # Corvax-Wega-ModularSuit
     - WhitelistChameleon
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #ERT Janitor Hardsuit
 - type: entity
@@ -1030,6 +1059,9 @@
     - 0,0,3,3
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitERTJanitor
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #Deathsquad
 - type: entity
@@ -1072,6 +1104,9 @@
   - type: HeldSpeedModifier
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitDeathsquad
+  - type: StealTarget
+    stealGroup:
+    - HeadHardsuit
 
 #CBURN Hardsuit
 - type: entity

@@ -9,6 +9,7 @@ using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.DoAfter;
+using Content.Shared.Interaction;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Player;
@@ -25,6 +26,8 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
     [Dependency] private SharedHandsSystem _hands = default!;
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private MindLinkSystem _mindLink = default!;
 
     public override void Initialize()
     {
@@ -57,13 +60,7 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
             }
         }
 
-        if (TryComp<MindLinkComponent>(cultist, out var mindLink))
-        {
-            mindLink.Channels.Remove(veilCultist.CultMindChannel);
-            if (mindLink.Channels.Count == 0)
-                RemComp(cultist, mindLink);
-        }
-
+        _mindLink.RemoveChannel(cultist, veilCultist.CultMindChannel);
         _stun.TryKnockdown(cultist, TimeSpan.FromSeconds(4), true);
         _popup.PopupEntity(Loc.GetString("veil-cult-break-control", ("name", Identity.Entity(cultist, EntityManager))), cultist);
 
@@ -108,7 +105,16 @@ public abstract partial class SharedVeilCultSystem : EntitySystem
 
     private void OnEnchantSelected(EntityUid uid, EnchantableComponent component, EnchantSelectedMessage args)
     {
+        if (!HasComp<VeilCultistComponent>(args.Actor))
+            return;
+
+        if (!component.Enchants.Contains(args.EnchantId))
+            return;
+
         var user = args.Actor;
+        if (!_interaction.InRangeUnobstructed(user, uid))
+            return;
+
         var doAfterDelay = component.Delay;
         var doAfterEventArgs = new DoAfterArgs(EntityManager, user, doAfterDelay,
             new EnchantingDoAfterEvent(args.EnchantId), uid, user)

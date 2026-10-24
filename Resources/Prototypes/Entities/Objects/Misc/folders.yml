@@ -552,11 +552,12 @@
     - Folder
     - HighRiskItem
   - type: StealTarget
-    stealGroup: BoxFolderQmClipboard
+    stealGroup:
+    - BoxFolderQmClipboard
   # Corvax-Wega-Add-start
   - type: EdibleMatter
     canBeEaten: false
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: ChangeableCargoAccount
     accounts:

@@ -33,7 +33,6 @@
   - PouchBase
   - PouchMaterial
   - CargoHoloprojectorField
-  - Binoculars
   - TravelCameraCivilian
 # Corvax-Wega-End
 
@@ -51,6 +50,16 @@
   - PrinterDocMachineCircuitboard # Corvax-Printer
   - WashingMachineCircuitboard # Corvax-Wega-Dirtable
 
+- type: latheRecipePack
+  id: HydroponicsStatic
+  recipes:
+  - HydroponicsToolMiniHoe
+  - HydroponicsToolScythe
+  - HydroponicsToolHatchet
+  - HydroponicsToolSpade
+  - HydroponicsToolClippers
+  - PlantAnalyzer
+
 ## Dynamic
 
 - type: latheRecipePack
@@ -61,6 +70,16 @@
   - ClothingBackpackWaterTank
   - MegaSprayBottle
   - TrashBagHolding
+  - BoxLighttube
+  - BoxExteriorLighttube
+  - BoxLedLighttube
+  - BoxSodiumLighttube
+  - BoxLightbulb
+  - BoxDimLightbulb
+  - BoxWarmLightbulb
+  - BoxLedLightbulb
+  - BoxLightMixed
+  - BoxLedLightMixed
 
 - type: latheRecipePack
   id: Instruments

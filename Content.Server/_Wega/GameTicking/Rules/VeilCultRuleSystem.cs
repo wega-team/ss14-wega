@@ -47,6 +47,7 @@ namespace Content.Server.GameTicking.Rules
         [Dependency] private IPlayerManager _playerManager = default!;
         [Dependency] private IAdminLogManager _adminLogManager = default!;
         [Dependency] private MindSystem _mind = default!;
+        [Dependency] private MindLinkSystem _mindLink = default!;
         [Dependency] private NpcFactionSystem _npcFaction = default!;
         [Dependency] private RoleSystem _role = default!;
         [Dependency] private RoundEndSystem _roundEndSystem = default!;
@@ -96,6 +97,7 @@ namespace Content.Server.GameTicking.Rules
 
         private void MakeCultist(EntityUid ent)
         {
+            var cultist = EnsureComp<VeilCultistComponent>(ent);
             var actionPrototypes = new[]
             {
                 VeilCultistComponent.MidasTouch
@@ -121,6 +123,7 @@ namespace Content.Server.GameTicking.Rules
                 RemComp(ent, compType);
 
             _effects.TryRemoveStatusEffect(ent, Clumsy);
+            _mindLink.AddChannel(ent, cultist.CultMindChannel);
 
             CreateObjectivesForCultist(ent);
         }
@@ -219,7 +222,6 @@ namespace Content.Server.GameTicking.Rules
             }
 
             _npcFaction.AddFaction(uid, Faction);
-            var culsistComp = EnsureComp<VeilCultistComponent>(uid);
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Veil Cult");
             if (mindId == default || !_role.MindHasRole<VeilCultistComponent>(mindId))
                 _role.MindAddRole(mindId, "MindRoleVeilCultist");

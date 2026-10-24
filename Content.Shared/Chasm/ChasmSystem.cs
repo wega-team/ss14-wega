@@ -51,7 +51,7 @@ public sealed partial class ChasmSystem : EntitySystem
                 DebugTools.Assert($"{ToPrettyString(chasm.FallingInto)} is missing {nameof(ChasmComponent)}");
             }
 
-            PredictedQueueDel(uid);
+            QueueDel(uid);
         }
     }
 

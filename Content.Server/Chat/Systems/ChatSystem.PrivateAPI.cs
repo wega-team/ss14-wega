@@ -3,6 +3,7 @@ using Content.Shared.Blood.Cult.Components; // Corvax-Wega-Blood-Cult
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Radio;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -92,7 +93,8 @@ public sealed partial class ChatSystem
         RadioChannelPrototype? channel,
         string? nameOverride,
         bool hideLog = false,
-        bool ignoreActionBlocker = false
+        bool ignoreActionBlocker = false,
+        MindChannelPrototype? mindChannel = null // Corvax-Wega-MindChat
         )
     {
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
@@ -177,7 +179,7 @@ public sealed partial class ChatSystem
         _replay.RecordServerMessage(new ChatMessage(ChatChannel.Whisper, message, baseWrappedMessage, GetNetEntity(source), null, MessageRangeHideChatForReplay(range)));
         // Corvax-Wega-SoundInsolation-Edit-end
 
-        var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage);
+        var ev = new EntitySpokeEvent(source, message, originalMessage, channel, obfuscatedMessage, mindChannel); // Corvax-Wega-MindChat-Edit
         RaiseLocalEvent(source, ev, true);
         if (!hideLog)
             if (originalMessage == message)

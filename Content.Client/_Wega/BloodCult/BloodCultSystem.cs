@@ -14,17 +14,7 @@ namespace Content.Client.Blood.Cult
         [Dependency] private IRobustRandom _random = default!;
         [Dependency] private SpriteSystem _sprite = default!;
 
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            SubscribeLocalEvent<BloodRuneComponent, AppearanceChangeEvent>(OnRuneAppearanceChanged);
-            SubscribeLocalEvent<BloodRitualDimensionalRendingComponent, AppearanceChangeEvent>(OnRuneAppearanceChanged);
-            SubscribeLocalEvent<BloodCultistComponent, GetStatusIconsEvent>(GetCultistIcons);
-            SubscribeLocalEvent<BloodPentagramDisplayComponent, ComponentStartup>(GetHalo);
-            SubscribeLocalEvent<BloodPentagramDisplayComponent, ComponentShutdown>(RemoveHalo);
-        }
-
+        [SubscribeLocalEvent]
         private void OnRuneAppearanceChanged(Entity<BloodRuneComponent> entity, ref AppearanceChangeEvent args)
         {
             if (!_appearance.TryGetData(entity, RuneColorVisuals.Color, out Color color))
@@ -33,6 +23,7 @@ namespace Content.Client.Blood.Cult
             _sprite.SetColor(entity.Owner, color);
         }
 
+        [SubscribeLocalEvent]
         private void OnRuneAppearanceChanged(Entity<BloodRitualDimensionalRendingComponent> entity, ref AppearanceChangeEvent args)
         {
             if (!_appearance.TryGetData(entity, RuneColorVisuals.Color, out Color color))
@@ -41,18 +32,20 @@ namespace Content.Client.Blood.Cult
             _sprite.SetColor(entity.Owner, color);
         }
 
+        [SubscribeLocalEvent]
         private void GetCultistIcons(Entity<BloodCultistComponent> ent, ref GetStatusIconsEvent args)
         {
             var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
             args.StatusIcons.Add(iconPrototype);
         }
 
+        [SubscribeLocalEvent]
         private void GetHalo(EntityUid uid, BloodPentagramDisplayComponent component, ComponentStartup args)
         {
             if (!TryComp<SpriteComponent>(uid, out var sprite))
                 return;
 
-            if (_sprite.LayerMapTryGet(uid, PentagramKey.Halo, out _, true))
+            if (_sprite.LayerMapTryGet(uid, PentagramKey.Halo, out _, false))
                 return;
 
             var haloVariant = _random.Next(1, 6);
@@ -73,9 +66,10 @@ namespace Content.Client.Blood.Cult
             _sprite.LayerMapSet(uid, PentagramKey.Halo, layer);
         }
 
+        [SubscribeLocalEvent]
         private void RemoveHalo(EntityUid uid, BloodPentagramDisplayComponent component, ComponentShutdown args)
         {
-            if (_sprite.LayerMapTryGet(uid, PentagramKey.Halo, out var layer, true))
+            if (_sprite.LayerMapTryGet(uid, PentagramKey.Halo, out var layer, false))
                 _sprite.RemoveLayer(uid, layer);
         }
 

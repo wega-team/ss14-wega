@@ -9,7 +9,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-rings"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-rings"]
   chatTriggers:
     - ring
     - rings
@@ -30,7 +30,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-pews"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-pews"]
   chatTriggers:
     - pew
     - pews
@@ -48,7 +48,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-bangs"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-bangs"]
   chatTriggers:
     - bang
     - bangs
@@ -67,7 +67,7 @@
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-harpy-revs"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-harpy-revs"]
   chatTriggers:
     - rev
     - revs
@@ -75,6 +75,25 @@
     - revved
     - газует
     - газовать
+
+- type: emote
+  id: SlimeBubble
+  name: chat-emote-name-bubble
+  category: Vocal
+  available: false
+  icon: Interface/VerbIcons/bubbles.svg.192dpi.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-bubble"]
+  chatTriggers:
+    - бурлит
+    - бурлит.
+    - бурлит!
+    - бурлить
 
 - type: emote
   id: Mar

@@ -12,26 +12,26 @@
 - type: latheRecipePack
   id: BorgModulesStatic
   recipes:
-  - BorgModuleTool
+  - BorgModuleArtistry
   - BorgModuleCable
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
-  - BorgModuleArtistry
- # Corvax-Wega-Start
+  - BorgModuleMusique
+  - BorgModuleTool
+  # Corvax-Wega-Start
   - BorgModuleCommonConstruction
   - BorgModuleCommonMedical
   - BorgModuleCommonPen
   - BorgModuleCommonFight
   - BorgModuleCommonPickaxe
-  - BorgModuleCommonSpeed
+  - BorgModuleCommonPostMan
   # - BorgModuleCommonMagBoots надо будет как-то поменять его
   - BorgModuleCommonRepeir
   - BorgModuleCommonCandy
   - BorgModuleCleaningCommon
-  - BorgModuleMusique
   - BorgModuleFulton
   - BorgModuleNightVison
- # Corvax-Wega-end
+  # Corvax-Wega-end
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -67,18 +67,18 @@
   - BorgModuleAdvancedClowning
   - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
- # Corvax-Wega-Start
+  # Corvax-Wega-Start
   - BorgModuleAdvancedAnomaly
   - BorgModuleRobotics
   - BorgModuleSurgery
   - BorgModuleLethal
   - BorgModuleKinetic
-  - BorgModuleGardening
   - BorgModuleClowning
   - ModuleSelectorSheild
   - BorgModuleGranader
   - ModuleCommand
   - BorgModuleDNA
+  - BorgModuleCommonSpeed
   - BorgModuleCommonHand
   - BorgModuleSecRare
   - BorgModuleCargoRare
@@ -87,7 +87,7 @@
   - BorgModuleMedicalRare
   - BorgModuleServiceRare
   - BorgModuleScienceRND
- # Corvax-Wega-end
+  # Corvax-Wega-end
 
 - type: latheRecipePack
   id: MechParts

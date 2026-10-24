@@ -567,6 +567,17 @@
   - ERTEquipment
 
 - type: listing
+  id: ERTAnomalySelector
+  name: tactical-interface-module-name
+  description: tactical-interface-module-desc
+  productEntity: OtherCoreSuitModuleSelector
+  categories:
+  - ERTEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ERTRCDCombat
   name: tactical-interface-rcd-name
   description: tactical-interface-rcd-desc

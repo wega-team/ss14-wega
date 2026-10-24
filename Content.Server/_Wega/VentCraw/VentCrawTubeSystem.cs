@@ -12,6 +12,7 @@ using Content.Shared.Tools.Components;
 using Content.Shared.VentCraw;
 using Content.Shared.VentCraw.Components;
 using Content.Shared.Verbs;
+using Content.Shared.Inventory;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -32,6 +33,9 @@ public sealed partial class VentCrawTubeSystem : EntitySystem
     [Dependency] private SharedMoverController _mover = default!;
     [Dependency] private SharedTransformSystem _transformSystem = default!;
     [Dependency] private VentCrawableSystem _ventCrawableSystem = default!;
+	[Dependency] private InventorySystem _inventorySystem = default!;
+
+	private string[] requiredClothingSlots = new[] { "belt", "outerClothing", "back" };
 
     public override void Initialize()
     {
@@ -295,6 +299,18 @@ public sealed partial class VentCrawTubeSystem : EntitySystem
                 return;
             }
         }
+
+		if (TryComp<InventoryComponent>(user, out var inventory) && !crawler.IgnoreInv)
+		{
+			foreach (var slot in requiredClothingSlots)
+			{
+				if (_inventorySystem.TryGetSlotEntity(user, slot, out _, inventory))
+				{
+					_popup.PopupEntity(Loc.GetString("vent-craw-verb-no-clouth"), user);
+					return;
+				}
+			}
+		}
 
         var args = new DoAfterArgs(EntityManager, user, crawler.EnterDelay, new EnterVentDoAfterEvent(), user, uid, user)
         {

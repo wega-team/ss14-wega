@@ -221,6 +221,8 @@
       collection: MaleMoans # Corvax-Wega
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    SlimeBubble: # Corvax-Wega
+      collection: SlimeBubbles # Corvax-Wega
   params:
     variation: 0.125
 
@@ -270,6 +272,8 @@
       collection: FemaleMoans # Corvax-Wega
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    SlimeBubble: # Corvax-Wega
+      collection: SlimeBubbles # Corvax-Wega
   params:
     variation: 0.125
 
@@ -303,6 +307,10 @@
       path: /Audio/Effects/Gasp/vox_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    Hiss:
+      path: /Audio/Voice/Vox/vox_hiss.ogg
+    Caw:
+      path: /Audio/Voice/Vox/vox_caw.ogg
   params:
     variation: 0.125
     # TODO: We need vox sounds for the other emotes
@@ -589,6 +597,8 @@
       collection: MaleDeathGasp
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    Purr: # Corvax-Wega
+      collection: VulpakinUruru # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleVulpkanin
@@ -634,6 +644,8 @@
       collection: FemaleDeathGasp
     FilinidMeows: # Corvax-Wega
       collection: FelinidMeowsSound # Corvax-Wega
+    Purr: # Corvax-Wega
+      collection: VulpakinUruru # Corvax-Wega
 
 # body emotes
 - type: emoteSounds

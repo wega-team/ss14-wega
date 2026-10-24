@@ -34,3 +34,5 @@ seeds-tangerine-name = мандарин
 seeds-tangerine-display-name = мандариновое дерево
 seeds-festivetangerine-name = подарин
 seeds-festivetangerine-display-name = подариновая ёлка
+seeds-avocado-name = дерево авокадо
+seeds-cucumber-name = огуречная лоза

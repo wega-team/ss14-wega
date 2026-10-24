@@ -66,7 +66,7 @@
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
-  - type: WirelessNetworkConnection
+  - type: WirelessNetwork
     range: 200
   - type: DeviceLinkSink
     ports:
@@ -168,6 +168,10 @@
     tags:
     - DoorRemoteWhitelist
     # This tag is used by door remotes to allow or not a door remote to normally be able to interact with a door
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 #Normal windoors
 - type: entity
@@ -222,6 +226,10 @@
     tags:
     - WindoorPlasma
     - DoorRemoteWhitelist
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 #Uranium Windoors
 - type: entity
@@ -250,3 +258,7 @@
     tags:
     - WindoorUranium
     - DoorRemoteWhitelist
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end

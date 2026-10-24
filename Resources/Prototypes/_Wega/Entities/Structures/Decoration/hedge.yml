@@ -31,7 +31,10 @@
         acts: [ "Destruction" ]
   - type: IconSmooth
     key: hedge
-    base: hedge
+    states:
+    - !type:DiagonalSpriteSmoothing
+      mask: [ walls, windows, grilles, marble, doors ]
+      base: hedge
   - type: Construction
     graph: Table
     node: CounterHedge
