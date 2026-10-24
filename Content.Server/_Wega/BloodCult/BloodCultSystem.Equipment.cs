@@ -6,6 +6,7 @@ using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Melee;
 
 namespace Content.Server.Blood.Cult;
 
@@ -17,7 +18,7 @@ public sealed partial class BloodCultSystem
     {
         SubscribeLocalEvent<CultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
         SubscribeLocalEvent<CultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
-        SubscribeLocalEvent<CultWeaponComponent, MeleeHitEvent>(OnCultMeleeHit);
+        SubscribeLocalEvent<MeleeWeaponComponent, MeleeHitEvent>(OnCultMeleeHit);
     }
 
     private void OnDidEquip(Entity<CultEquipmentComponent> ent, ref GotEquippedEvent args)
@@ -68,7 +69,7 @@ public sealed partial class BloodCultSystem
             PopupType.MediumCaution);
     }
 
-    private void OnCultMeleeHit(EntityUid uid, CultWeaponComponent comp, MeleeHitEvent args)
+    private void OnCultMeleeHit(EntityUid uid, MeleeWeaponComponent comp, MeleeHitEvent args)
     {
         if (!args.IsHit || args.HitEntities.Count == 0)
             return;
@@ -76,9 +77,15 @@ public sealed partial class BloodCultSystem
         if (args.HitEntities is not HashSet<EntityUid> hitSet)
             return;
 
+        var bloodCultist = HasComp<BloodCultistComponent>(args.User);
+        var veilCultist = HasComp<VeilCultistComponent>(args.User);
+
+        if (!bloodCultist && !veilCultist)
+            return;
+
         hitSet.RemoveWhere(target =>
-            comp.Cult == CultType.Blood && HasComp<BloodCultistComponent>(target) ||
-            comp.Cult == CultType.Veil && HasComp<VeilCultistComponent>(target));
+            bloodCultist && HasComp<BloodCultistComponent>(target) ||
+            veilCultist && HasComp<VeilCultistComponent>(target));
 
         if (hitSet.Count == 0)
             args.Handled = true;
