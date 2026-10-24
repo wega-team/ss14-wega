@@ -1,10 +1,8 @@
 using Content.Shared.Chat;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Corvax.TTS;
-using Content.Shared.SoundInsolation; // Corvax-Wega-SoundInsolation
 using Content.Shared.GameTicking;
 using Robust.Client.Audio;
-using Robust.Client.Player; // Corvax-Wega-SoundInsolation
 using Robust.Client.ResourceManagement;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -24,11 +22,9 @@ namespace Content.Client.Corvax.TTS;
 public sealed partial class TTSSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
-    [Dependency] private IPlayerManager _player = default!; // Corvax-Wega-SoundInsolation
     [Dependency] private IResourceManager _res = default!;
     [Dependency] private IRobustRandom _ran = default!;
     [Dependency] private AudioSystem _audio = default!;
-    [Dependency] private SoundInsulationSystem _soundInsulation = default!; // Corvax-Wega-SoundInsolation
 
     private ISawmill _sawmill = default!;
     private static MemoryContentRoot _contentRoot = new();
@@ -224,21 +220,17 @@ public sealed partial class TTSSystem : EntitySystem
         var filePath = new ResPath($"{_fileIdx++}.ogg");
         _contentRoot.AddOrUpdateFile(filePath, ev.Data);
 
-        // Corvax-Wega-SoundInsolation-Edit-start
-        var playbackDuration = TimeSpan.Zero;
-        var skipped = false;
+        using var audioResource = new AudioResource();
+        audioResource.Load(IoCManager.Instance!, Prefix / filePath);
+
+        var audioParams = AudioParams.Default
+            .WithVolume(AdjustVolume(ev.SourceUid == null, ev.IsWhisper, ev.IsRadio))
+            .WithMaxDistance(AdjustDistance(ev.IsWhisper));
+
+        var soundSpecifier = new ResolvedPathSpecifier(Prefix / filePath);
 
         try
         {
-            using var audioResource = new AudioResource();
-            audioResource.Load(IoCManager.Instance!, Prefix / filePath);
-
-            var audioParams = AudioParams.Default
-                .WithVolume(AdjustVolume(ev.SourceUid == null, ev.IsWhisper, ev.IsRadio))
-                .WithMaxDistance(AdjustDistance(ev.IsWhisper));
-
-            var soundSpecifier = new ResolvedPathSpecifier(Prefix / filePath);
-
             if (ev.IsRadio)
             {
                 var pitch = GetRadioPitch();
@@ -251,73 +243,46 @@ public sealed partial class TTSSystem : EntitySystem
                     .WithPitchScale(pitch);
 
                 PlayRadioWithEffectInternal(audioResource, soundSpecifier, radioParams);
-                playbackDuration = audioResource.AudioStream?.Length ?? TimeSpan.Zero;
-            }
-            else if (ev.SourceUid != null)
-            {
-                var sourceUid = GetEntity(ev.SourceUid.Value);
-                if (TerminatingOrDeleted(sourceUid))
-                {
-                    skipped = true;
-                }
-                else
-                {
-                    float volumeMultiplier = 1f;
-                    if (_player.LocalEntity != null && Exists(_player.LocalEntity.Value))
-                    {
-                        var insulation = _soundInsulation.GetSoundInsulation(sourceUid, _player.LocalEntity.Value);
-                        if (insulation >= 0.95f)
-                        {
-                            skipped = true;
-                        }
-                        else if (insulation > 0.1f && insulation < 0.95f)
-                        {
-                            volumeMultiplier = 1f - MathHelper.Lerp(0.1f, 0.9f, insulation);
-                            volumeMultiplier = Math.Clamp(volumeMultiplier, 0.1f, 0.9f);
-                        }
-                    }
-
-                    if (!skipped)
-                    {
-                        var insulationParams = audioParams
-                            .WithVolume(AdjustVolume(ev.SourceUid == null, ev.IsWhisper, ev.IsRadio, volumeMultiplier));
-
-                        var audioResult = _audio.PlayEntity(
-                            audioResource.AudioStream, sourceUid, soundSpecifier, insulationParams);
-
-                        if (audioResult != null && _voiceEffectPreset != 0)
-                            ApplyVoiceEffect(audioResult.Value, _voiceEffectPreset);
-
-                        playbackDuration = audioResource.AudioStream?.Length ?? TimeSpan.Zero;
-                    }
-                }
             }
             else
             {
-                var audioResult = _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
+                Entity<AudioComponent>? audioResult;
+
+                if (ev.SourceUid != null)
+                {
+                    var sourceUid = GetEntity(ev.SourceUid.Value);
+                    if (TerminatingOrDeleted(sourceUid))
+                    {
+                        onComplete?.Invoke();
+                        return;
+                    }
+
+                    audioResult = _audio.PlayEntity(audioResource.AudioStream, sourceUid, soundSpecifier, audioParams);
+                }
+                else
+                {
+                    audioResult = _audio.PlayGlobal(audioResource.AudioStream, soundSpecifier, audioParams);
+                }
 
                 if (audioResult != null && _voiceEffectPreset != 0)
+                {
                     ApplyVoiceEffect(audioResult.Value, _voiceEffectPreset);
-
-                playbackDuration = audioResource.AudioStream?.Length ?? TimeSpan.Zero;
+                }
             }
-        }
-        catch (Exception ex)
-        {
-            _sawmill.Error($"Error in PlayTTSInternal: {ex.Message}");
-            skipped = true;
         }
         finally
         {
             _contentRoot.RemoveFile(filePath);
         }
 
-        var delay = skipped
-            ? TimeSpan.FromMilliseconds(50)
-            : playbackDuration + TimeSpan.FromSeconds(PlaybackDelay);
+        var duration = audioResource.AudioStream?.Length ?? TimeSpan.Zero;
+        var delay = duration + TimeSpan.FromSeconds(PlaybackDelay);
 
-        Timer.Spawn(delay, () => onComplete?.Invoke());
-        // Corvax-Wega-SoundInsolation-Edit-end
+        Timer.Spawn(delay,
+            () =>
+        {
+            onComplete?.Invoke();
+        });
     }
 
     private void PlayRadioWithEffectInternal(
@@ -341,8 +306,7 @@ public sealed partial class TTSSystem : EntitySystem
 
     #region Utility Methods
 
-    private float AdjustVolume(bool isGlobal, bool isWhisper, bool isRadio,
-        float volumeMultiplier = 1f) // Corvax-Wega-SoundInsolation-Edit
+    private float AdjustVolume(bool isGlobal, bool isWhisper, bool isRadio)
     {
         var volume = isRadio
             ? MinimalVolume + SharedAudioSystem.GainToVolume(_radioVolume)
@@ -357,7 +321,6 @@ public sealed partial class TTSSystem : EntitySystem
             volume -= SharedAudioSystem.GainToVolume(fade);
         }
 
-        volume *= volumeMultiplier; // Corvax-Wega-SoundInsolation
         return volume;
     }
 

@@ -1,3 +1,6 @@
+ui-options-barks-volume = Громкость Барков:
+ui-options-audio-effects = Звуковые эффекты
+ui-options-audio-effects-tooltip = Включает или отключает динамическое эхо в помещениях.
 ui-options-function-strangle = Душить
 ui-options-function-offer-item = Переключить режим передачи предмета
 ui-options-function-toggle-posing = Переключить режим позирования

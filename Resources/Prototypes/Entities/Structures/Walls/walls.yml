@@ -51,8 +51,11 @@
   - type: BlockWeather
   - type: SunShadowCast
   - type: TrayScanReveal
-  - type: SoundInsulator # Corvax-Wega-SoundInsolation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
+    absorptionFactor: 0.2
   - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
 
 - type: entity
   abstract: true
@@ -142,6 +145,10 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: brick
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -174,6 +181,10 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: brass
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -212,6 +223,10 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: meat
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.4
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, BaseStructureHealth ]
@@ -313,6 +328,10 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: gold
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -349,6 +368,10 @@
       base: plasma
   - type: RadiationBlocker
     resistance: 5
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: BaseWall
@@ -382,6 +405,11 @@
   - type: Tag
     tags:
     - SmeltingImmune
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ WallPlastitaniumIndestructible, StructureHealthWallStrong ]
@@ -499,13 +527,16 @@
         layer:
         - WallLayer
         density: 2000
-  # Covrax-Wega-CombatRCD-Start
+  # Covrax-Wega-start
   - type: RCDDeconstructable
     cost: 6
     delay: 8
     reinforced: true
     fx: EffectRCDDeconstruct8
-  # Covrax-Wega-CombatRCD-End
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Covrax-Wega-end
 
 - type: entity
   parent: WallReinforced
@@ -581,6 +612,11 @@
         density: 4000
   - type: RadiationBlocker
     resistance: 5
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.2
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ WallMarbleIndestructible, StructureHealthWallStrong ]
@@ -635,6 +671,10 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: silver
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.1
+  # Corvax-Wega-SoundInsolation-end
 
 #shuttle walls
 - type: entity
@@ -686,6 +726,11 @@
     resistance: 5
   - type: StaticPrice
     price: 200
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallStrong ]
@@ -744,6 +789,11 @@
         layer:
         - WallLayer
         density: 2000
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWall ]
@@ -898,6 +948,11 @@
   - type: Construction
     graph: Girder
     node: reinforcedWallChitin
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.25
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: WallPlastitanium
@@ -914,6 +969,11 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: xenoborg
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: WallPlastitaniumDiagonal
@@ -928,6 +988,11 @@
   - type: Icon
     sprite: Structures/Walls/exo-borg-diagonal.rsi
     state: state0
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWallWeak ]
@@ -971,6 +1036,11 @@
       base: uranium
   - type: RadiationBlocker
     resistance: 6
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.3
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrierStrong ]
@@ -1007,6 +1077,10 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: wood
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.15
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrier ]
@@ -1046,6 +1120,10 @@
   - type: Construction
     graph: WebStructures
     node: wall
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthWall ]
@@ -1114,6 +1192,10 @@
         layer:
         - GlassLayer
   - type: Airtight
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   id: WallForce
@@ -1141,6 +1223,10 @@
   - type: Icon
     sprite: Structures/Magic/forcewall.rsi
     state: forcewall
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.05
+  # Corvax-Wega-SoundInsolation-end
 
 - type: entity
   parent: [ BaseWall, StructureHealthBarrierStrong ]
@@ -1168,6 +1254,11 @@
     - !type:CornerSpriteSmoothing
       mask: [ walls, windows, grilles, marble, doors ]
       base: concrete
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.35
+    blocksTransmission: true
+  # Corvax-Wega-SoundInsolation-end
 
 # Cardboard
 
@@ -1232,3 +1323,7 @@
   - type: Occluder
   - type: BlockWeather
   - type: SunShadowCast
+  # Corvax-Wega-SoundInsolation-start
+  - type: SoundInsulation
+    absorptionFactor: 0.08
+  # Corvax-Wega-SoundInsolation-end
