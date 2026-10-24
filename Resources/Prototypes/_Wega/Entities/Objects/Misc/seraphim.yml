@@ -1,0 +1,61 @@
+- type: entity
+  parent: BaseSubdermalImplant
+  id: SeraphimImplant
+  suffix: "Wega, BSO"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
+    state: icon
+  - type: SubdermalImplant
+    permanent: true
+    implantComponents:
+    - type: SeraphimImplant
+
+- type: entity
+  parent: BaseItem
+  id: SeraphimAutoImplanter
+  suffix: "Wega, BSO"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
+    layers:
+    - state: icon
+      map: ["icon"]
+    - state: empty
+      visible: false
+      map: ["empty"]
+  - type: Item
+    size: Ginormous
+  - type: SeraphimImplanter
+  - type: Strap
+    position: Down
+    rotation: -90
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SeraphimImplanterVisuals.Empty:
+        icon:
+          True: { visible: false }
+          False: { visible: true }
+        empty:
+          True: { visible: true }
+          False: { visible: false }
+
+# Оверлей-маркинг импланта (рисуется поверх всего, скрыт скафандром)
+- type: entity
+  id: SeraphimMark
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Customization/seraphim.rsi
+    drawdepth: Overlays
+    layers:
+    - state: body
+      map: ["enum.SeraphimMarkVisuals.Layer"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SeraphimMarkVisuals.Hidden:
+        enum.SeraphimMarkVisuals.Layer:
+          True: { visible: false }
+          False: { visible: true }

@@ -10,6 +10,7 @@ using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Hands;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage;
+using Content.Shared.Electrocution;
 
 namespace Content.Shared.DamageOnPickupSystem.Systems;
 
@@ -40,6 +41,19 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
         Dirty(entity);
     }
 
+    // надета ли изоляция
+    private bool IsInsulated(EntityUid uid)
+    {
+        var enumerator = _inventorySystem.GetSlotEnumerator(uid);
+        while (enumerator.MoveNext(out var slot))
+        {
+            if (slot.ContainedEntity is { } item && HasComp<InsulatedComponent>(item))
+                return true;
+        }
+
+        return false;
+    }
+
     private void OnEquipped(Entity<DamageOnPickupComponent> entity, ref BeforeGettingEquippedHandEvent args)
     {
         if (!entity.Comp.Throw || !TryComp<PullableComponent>(entity, out var pullComp) || pullComp.BeingPulled)
@@ -51,6 +65,13 @@ public sealed partial class DamageOnInteractSystem : EntitySystem
         var totalDamage = entity.Comp.Damage;
         if (!entity.Comp.IgnoreResistances)
         {
+            // изолирующие перчатки гасят шок
+            if (IsInsulated(args.User))
+            {
+                totalDamage = DamageSpecifier.ApplyModifierSet(totalDamage,
+                    new DamageModifierSet { Coefficients = { { "Shock", 0f } } });
+            }
+
             _inventorySystem.TryGetInventoryEntity<DamageOnInteractProtectionComponent>(args.User, out var protectiveEntity);
 
             if (protectiveEntity.Comp == null && TryComp<DamageOnInteractProtectionComponent>(args.User, out var protectiveComp))
