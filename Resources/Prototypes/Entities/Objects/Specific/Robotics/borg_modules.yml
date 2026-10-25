@@ -1738,6 +1738,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponLightMachineGunL6C
+    - item: CyborgEnergySword # Corvax-Wega-Robot
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot
   # Corvax-Wega-Robot-start
