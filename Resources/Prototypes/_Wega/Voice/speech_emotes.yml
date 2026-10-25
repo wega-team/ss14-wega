@@ -103,14 +103,15 @@
   whitelist:
     components:
     - Vocal
-  chatMessages: ["chat-emote-msg-shadekin-mars"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-shadekin-mars"]
   chatTriggers:
-    - Mar
-    - Mars
-    - Marna
-    - Мар
-    - Марна
-    - Мярня
+    - mar
+    - mars
+    - marna
+    - мар
+    - марна
+    - марня
+    - мярня
 
 - type: emote
   id: Wurble
@@ -120,8 +121,10 @@
   whitelist:
     components:
     - Vocal
-  chatMessages: ["chat-emote-msg-shadekin-wurble"] # Corvax-Localization
+  chatMessages: ["chat-emote-msg-shadekin-wurble"]
   chatTriggers:
-    - Wurble
-    - Wurbles
-    - Журчит
+    - wurble
+    - wurbles
+    - журчит
+    - журчат
+

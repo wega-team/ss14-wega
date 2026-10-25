@@ -13,15 +13,6 @@
   id: EarsShadekinStriped
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
-  coloring:
-    default:
-      type:
-        !type:SkinColoring
-    layers:
-      shadekin_stripes:
-        type:
-          !type:SimpleColoring
-            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: shadekin
@@ -32,15 +23,6 @@
   id: EarsShadekinMotley
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
-  coloring:
-    default:
-      type:
-        !type:SkinColoring
-    layers:
-      motley_secondary:
-        type:
-          !type:SimpleColoring
-            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: shadekin
@@ -173,6 +155,15 @@
   id: EarsShadekinGauzedAll
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      gauze_ear_all_default:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: shadekin
@@ -183,6 +174,15 @@
   id: EarsShadekinGauzedLeft
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      gauze_ear_l_default:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: shadekin
@@ -193,6 +193,15 @@
   id: EarsShadekinGauzedRight
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      gauze_ear_r_default:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: shadekin
@@ -261,6 +270,15 @@
   id: EarsShadekinFluffyRingedAll
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      fluffy_ringed_all:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: fluffy_default
@@ -271,6 +289,15 @@
   id: EarsShadekinFluffyRingedLeft
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      fluffy_ringed_left:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: fluffy_default
@@ -281,6 +308,15 @@
   id: EarsShadekinFluffyRingedRight
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      fluffy_ringed_right:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: fluffy_default
@@ -329,6 +365,15 @@
   id: EarsShadekinSaggyGauzedAll
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      saggy_gauze_all:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: saggy_default
@@ -339,6 +384,15 @@
   id: EarsShadekinSaggyGauzedLeft
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      saggy_gauze_l:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: saggy_default
@@ -349,6 +403,15 @@
   id: EarsShadekinSaggyGauzedRight
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      saggy_gauze_r:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: saggy_default
@@ -377,6 +440,15 @@
   id: EarsShadekinShortRingedAll
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      short_ringed_all:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: short_default
@@ -387,6 +459,15 @@
   id: EarsShadekinShortRingedLeft
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      short_ringed_left:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: short_default
@@ -397,6 +478,15 @@
   id: EarsShadekinShortRingedRight
   bodyPart: HeadTop
   groupWhitelist: [Shadekin]
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      short_ringed_right:
+        type:
+          !type:SimpleColoring
+            color: "#FFFFFF"
   sprites:
     - sprite: _Wega/Mobs/Customization/shadekin_ears.rsi
       state: short_default

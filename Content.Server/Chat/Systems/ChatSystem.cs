@@ -355,6 +355,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 false,
                 session.Channel);
         }
+
         if (channel.Whisper)
         {
             SendEntityWhisper(
@@ -366,7 +367,7 @@ public sealed partial class ChatSystem : SharedChatSystem
                 false,
                 ignoreActionBlocker,
                 channel
-        );
+            );
         }
 
         // Log to admin logs

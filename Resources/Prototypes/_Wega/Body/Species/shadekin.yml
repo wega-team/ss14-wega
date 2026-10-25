@@ -180,6 +180,9 @@
     tags:
     - MobShadekin
     - DoorBumpOpener
+    - CanPilot
+    - FootstepSound
+    - AnomalyHost
 
 - type: entity
   parent: OrganBaseOrganic

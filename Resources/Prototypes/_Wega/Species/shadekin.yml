@@ -20,5 +20,5 @@
   voices:
   - MaleShadekin
   - FemaleShadekin
-  minHeight: 150 # Corvax-Wega-Height
-  maxHeight: 190 # Corvax-Wega-Height
+  minHeight: 160
+  maxHeight: 190
