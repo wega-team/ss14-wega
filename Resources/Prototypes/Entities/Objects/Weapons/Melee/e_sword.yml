@@ -434,11 +434,11 @@
   suffix: For Borgs
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Specially designed for syndicate cyborgs.
   components: # could add energy-draining like the L6C
-# Corvax-Wega-Start
+  # Corvax-Wega-Start
   - type: Reflect
     reflectProb: 0
     spread: 0
-# Corvax-Wega-End
+  # Corvax-Wega-End
 
 - type: entity
   parent: EnergySwordDouble
@@ -448,11 +448,11 @@
   components: # could add energy-draining like the L6C
   - type: Wieldable
     freeHandsRequired: 0 # because borg has no off-hand to wield with.  Without this, it will be unable to activate the esword
-# Corvax-Wega-Start
+  # Corvax-Wega-Start
   - type: Reflect
     reflectProb: 0
     spread: 0
-# Corvax-Wega-End
+  # Corvax-Wega-End
 
 - type: entity
   parent: [ EnergyDaggerLoud, BaseXenoborgContraband ]
