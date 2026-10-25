@@ -16,8 +16,8 @@
         name: blade
         insertVerbText: sheath-insert-verb
         ejectVerbText: sheath-eject-verb
-        insertSound: /Audio/_Wega/Items/extend.ogg
-        ejectSound: /Audio/_Wega/Items/retract.ogg
+        insertSound: /Audio/_Wega/Items/retract.ogg
+        ejectSound: /Audio/_Wega/Items/extend.ogg
         whitelist:
           tags:
           - CorporateBlade

@@ -18,8 +18,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Genetics;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Inventory;
-using Content.Shared.Inventory.Events;
 using Content.Shared.Jittering;
 using Content.Shared.Medical;
 using Content.Shared.Movement.Systems;
@@ -29,6 +27,7 @@ using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee;
+using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Reflect;
 using Robust.Shared.Audio;
@@ -62,8 +61,6 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private InventorySystem _inventory = default!;
-    [Dependency] private TagSystem _tag = default!;
 
     private const string KneeType = "Knee";
     private const string FuckOffType = "FuckOff";
@@ -74,12 +71,10 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
     private static readonly TimeSpan FuckOffCooldown = TimeSpan.FromSeconds(25);
     private static readonly TimeSpan ConcentrateDuration = TimeSpan.FromSeconds(12);
     private static readonly TimeSpan ConcentrateCooldown = TimeSpan.FromSeconds(45);
-    private static readonly TimeSpan OverdriveDuration = TimeSpan.FromSeconds(15);
+    private static readonly TimeSpan OverdriveDuration = TimeSpan.FromSeconds(25);
     private static readonly TimeSpan OverdriveCooldown = TimeSpan.FromSeconds(90);
     private static readonly TimeSpan ExhaustedDuration = TimeSpan.FromSeconds(20);
 
-    private static readonly EntProtoId MarkProto = "SeraphimMark";
-    private static readonly ProtoId<TagPrototype> HardsuitTag = "Hardsuit";
     private static readonly ProtoId<ReagentPrototype> SpaceDrugs = "SpaceDrugs";
 
     public override void Initialize()
@@ -100,9 +95,6 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
         SubscribeLocalEvent<SeraphimImplanterComponent, GetVerbsEvent<AlternativeVerb>>(OnImplanterVerbs);
         SubscribeLocalEvent<SeraphimImplanterComponent, SeraphimImplantDoAfterEvent>(OnImplantDoAfter);
-
-        SubscribeLocalEvent<SeraphimImplantComponent, DidEquipEvent>(OnEquip);
-        SubscribeLocalEvent<SeraphimImplantComponent, DidUnequipEvent>(OnUnequip);
     }
 
     private void OnKneeAction(Entity<SeraphimImplantComponent> ent, ref SeraphimKneeActionEvent args)
@@ -253,18 +245,13 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
             RemComp<PacifiedComponent>(ent);
     }
 
-    // Экшены и спрайт-маркинг
+    // Экшены
     private void OnImplantInit(Entity<SeraphimImplantComponent> ent, ref ComponentInit args)
     {
         foreach (var actionId in ent.Comp.ActionIds)
         {
             ent.Comp.Actions.Add(_actions.AddAction(ent, actionId));
         }
-
-        var mark = Spawn(MarkProto, Transform(ent.Owner).Coordinates);
-        _transform.SetParent(mark, ent.Owner);
-        ent.Comp.Mark = mark;
-        UpdateMarkVisibility(ent);
     }
 
     private void OnImplantShutdown(Entity<SeraphimImplantComponent> ent, ref ComponentShutdown args)
@@ -273,33 +260,6 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         {
             _actions.RemoveAction(ent.Owner, action);
         }
-
-        if (ent.Comp.Mark is { } mark)
-            QueueDel(mark);
-    }
-
-    // Маркинг поверх всего, кроме скафандра
-    private void UpdateMarkVisibility(Entity<SeraphimImplantComponent> ent)
-    {
-        if (ent.Comp.Mark is not { } mark || !Exists(mark))
-            return;
-
-        var hidden = _inventory.TryGetSlotEntity(ent.Owner, "outerClothing", out var suit)
-            && _tag.HasTag(suit.Value, HardsuitTag);
-
-        _appearance.SetData(mark, SeraphimMarkVisuals.Hidden, hidden);
-    }
-
-    private void OnEquip(Entity<SeraphimImplantComponent> ent, ref DidEquipEvent args)
-    {
-        if (args.Slot == "outerClothing")
-            UpdateMarkVisibility(ent);
-    }
-
-    private void OnUnequip(Entity<SeraphimImplantComponent> ent, ref DidUnequipEvent args)
-    {
-        if (args.Slot == "outerClothing")
-            UpdateMarkVisibility(ent);
     }
 
     // Кто пристёгнут

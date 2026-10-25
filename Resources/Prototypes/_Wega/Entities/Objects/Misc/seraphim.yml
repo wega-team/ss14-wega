@@ -9,6 +9,7 @@
   - type: SubdermalImplant
     permanent: true
     implantComponents:
+    - type: SeraphimMarkVisual
     - type: SeraphimImplant
 
 - type: entity
@@ -40,22 +41,3 @@
         empty:
           True: { visible: true }
           False: { visible: false }
-
-# Оверлей-маркинг импланта (рисуется поверх всего, скрыт скафандром)
-- type: entity
-  id: SeraphimMark
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    sprite: _Wega/Mobs/Customization/seraphim.rsi
-    drawdepth: Overlays
-    layers:
-    - state: body
-      map: ["enum.SeraphimMarkVisuals.Layer"]
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.SeraphimMarkVisuals.Hidden:
-        enum.SeraphimMarkVisuals.Layer:
-          True: { visible: false }
-          False: { visible: true }

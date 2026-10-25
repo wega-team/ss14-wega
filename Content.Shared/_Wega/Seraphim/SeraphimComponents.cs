@@ -22,10 +22,11 @@ public sealed partial class SeraphimImplantComponent : Component
     };
 
     public List<EntityUid?> Actions = new();
-
-    // Спрайт-оверлей импланта
-    public EntityUid? Mark;
 }
+
+//Маркинг
+[RegisterComponent, NetworkedComponent]
+public sealed partial class SeraphimMarkVisualComponent : Component;
 
 /// <summary>
 /// Заготовленный удар кулаком (колено / отброс).
@@ -67,7 +68,7 @@ public sealed partial class SeraphimOverdriveComponent : Component
     public TimeSpan EndTime = TimeSpan.Zero;
 
     [DataField, AutoNetworkedField]
-    public float SpeedMultiplier = 1.08f;
+    public float SpeedMultiplier = 1.18f;
 }
 
 /// <summary>
@@ -136,18 +137,11 @@ public sealed partial class SeraphimImplanterComponent : Component
     public EntProtoId Implant = "SeraphimImplant";
 
     [DataField]
-    public SoundSpecifier? WorkSound = new SoundPathSpecifier("/Audio/_Wega/Effects/seraphim/seraphim_working.ogg");
+    public SoundSpecifier? WorkSound = new SoundCollectionSpecifier("SeraphimSurgery");
 }
 
 [Serializable, NetSerializable]
 public enum SeraphimImplanterVisuals : byte
 {
     Empty,
-}
-
-[Serializable, NetSerializable]
-public enum SeraphimMarkVisuals : byte
-{
-    Hidden,
-    Layer,
 }

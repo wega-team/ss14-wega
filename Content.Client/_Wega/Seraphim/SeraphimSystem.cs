@@ -1,10 +1,9 @@
+using System.Linq;
 using System.Numerics;
 using Content.Shared._Wega.Seraphim;
-using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
-using Robust.Shared.Animations;
 using Robust.Shared.Player;
 using Robust.Shared.Spawners;
 using Robust.Shared.Timing;
@@ -16,13 +15,13 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
     [Dependency] private IPlayerManager _player = default!;
     [Dependency] private IOverlayManager _overlayMan = default!;
     [Dependency] private IGameTiming _timing = default!;
-    [Dependency] private AnimationPlayerSystem _animations = default!;
     [Dependency] private SpriteSystem _sprite = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     private SeraphimOverlay _overlay = default!;
 
     private readonly Dictionary<EntityUid, Vector2> _lastPositions = new();
+    private readonly List<TrailRecord> _trails = new();
     private TimeSpan _nextTrail = TimeSpan.Zero;
     private bool _trailFlip;
 
@@ -31,6 +30,8 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
     private static readonly Color TrailPurple = new(0.72f, 0.45f, 1f, 0.55f);
     private static readonly Color TrailWhite = new(1f, 1f, 1f, 0.45f);
+
+    private sealed record TrailRecord(EntityUid CloneUid, EntityUid SourceUid, Color Tint, TimeSpan SpawnTime);
 
     public override void Initialize()
     {
@@ -74,42 +75,71 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         base.FrameUpdate(frameTime);
 
         var cur = _timing.CurTime;
-        if (cur < _nextTrail)
-            return;
 
-        _nextTrail = cur + TrailInterval;
-        _trailFlip = !_trailFlip;
-
-        var query = EntityQueryEnumerator<SeraphimOverdriveComponent>();
-        while (query.MoveNext(out var uid, out _))
+        // Спавн новых следов
+        if (cur >= _nextTrail)
         {
-            var pos = _transform.GetWorldPosition(uid);
+            _nextTrail = cur + TrailInterval;
+            _trailFlip = !_trailFlip;
 
-            // Не двигается - без следа
-            if (_lastPositions.TryGetValue(uid, out var last)
-                && (pos - last).LengthSquared() < 0.001f)
+            var query = EntityQueryEnumerator<SeraphimOverdriveComponent>();
+            while (query.MoveNext(out var uid, out _))
             {
+                var pos = _transform.GetWorldPosition(uid);
+
+                // Не двигается - без следа
+                if (_lastPositions.TryGetValue(uid, out var last)
+                    && (pos - last).LengthSquared() < 0.001f)
+                {
+                    continue;
+                }
+
+                _lastPositions[uid] = pos;
+                SpawnTrail(uid, cur);
+            }
+
+            var stale = new List<EntityUid>();
+            foreach (var key in _lastPositions.Keys)
+            {
+                if (!HasComp<SeraphimOverdriveComponent>(key))
+                    stale.Add(key);
+            }
+
+            foreach (var key in stale)
+            {
+                _lastPositions.Remove(key);
+            }
+        }
+
+        // Синхронизация с пешкой
+        var lifetime = (float) TrailLifetime.TotalSeconds;
+        for (var i = _trails.Count - 1; i >= 0; i--)
+        {
+            var trail = _trails[i];
+
+            if (!Exists(trail.CloneUid) || !Exists(trail.SourceUid))
+            {
+                _trails.RemoveAt(i);
                 continue;
             }
 
-            _lastPositions[uid] = pos;
-            SpawnTrail(uid);
-        }
+            // Затухание цветом
+            if (TryComp<SpriteComponent>(trail.CloneUid, out var dst))
+            {
+                var age = (float) (cur - trail.SpawnTime).TotalSeconds;
+                var k = Math.Clamp(1f - age / lifetime, 0f, 1f);
+                dst.Color = trail.Tint.WithAlpha(trail.Tint.A * k);
+            }
 
-        var stale = new List<EntityUid>();
-        foreach (var key in _lastPositions.Keys)
-        {
-            if (!HasComp<SeraphimOverdriveComponent>(key))
-                stale.Add(key);
-        }
+            // Поворот и поза
+            _transform.SetWorldRotation(trail.CloneUid, _transform.GetWorldRotation(trail.SourceUid));
 
-        foreach (var key in stale)
-        {
-            _lastPositions.Remove(key);
+            if ((cur - trail.SpawnTime) >= TrailLifetime)
+                _trails.RemoveAt(i);
         }
     }
 
-    private void SpawnTrail(EntityUid uid)
+    private void SpawnTrail(EntityUid uid, TimeSpan cur)
     {
         if (!TryComp<SpriteComponent>(uid, out var sourceSprite))
             return;
@@ -119,29 +149,13 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         _sprite.CopySprite((uid, sourceSprite), (clone, sprite));
         _sprite.SetVisible((clone, sprite), true);
 
-        var tint = _trailFlip ? TrailPurple : TrailWhite;
-        var transparent = tint.WithAlpha(0f);
+        // Все слои unshaded
+        for (var i = 0; i < sprite.AllLayers.Count(); i++)
+            sprite.LayerSetShader(i, "unshaded");
 
         var despawn = EnsureComp<TimedDespawnComponent>(clone);
         despawn.Lifetime = (float) TrailLifetime.TotalSeconds;
 
-        _animations.Play(clone, new Animation
-        {
-            Length = TrailLifetime,
-            AnimationTracks =
-            {
-                new AnimationTrackComponentProperty
-                {
-                    ComponentType = typeof(SpriteComponent),
-                    Property = nameof(SpriteComponent.Color),
-                    InterpolationMode = AnimationInterpolationMode.Linear,
-                    KeyFrames =
-                    {
-                        new AnimationTrackProperty.KeyFrame(tint, 0f),
-                        new AnimationTrackProperty.KeyFrame(transparent, (float) TrailLifetime.TotalSeconds),
-                    }
-                }
-            }
-        }, "seraphim_trail");
+        _trails.Add(new TrailRecord(clone, uid, _trailFlip ? TrailPurple : TrailWhite, cur));
     }
 }

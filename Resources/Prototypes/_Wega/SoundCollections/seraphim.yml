@@ -5,3 +5,12 @@
     - /Audio/_Wega/Weapons/corporate_blade/attack2.ogg
     - /Audio/_Wega/Weapons/corporate_blade/attack3.ogg
     - /Audio/_Wega/Weapons/corporate_blade/attack4.ogg
+
+- type: soundCollection
+  id: SeraphimSurgery
+  files:
+    - /Audio/_Wega/Medical/Surgery/scalpel1.ogg
+    - /Audio/_Wega/Medical/Surgery/scalpel2.ogg
+    - /Audio/_Wega/Medical/Surgery/saw.ogg
+    - /Audio/_Wega/Medical/Surgery/retractor1.ogg
+    - /Audio/_Wega/Medical/Surgery/retractor2.ogg
