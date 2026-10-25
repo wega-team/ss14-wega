@@ -7,7 +7,7 @@
   - type: Action
     useDelay: 1
   - type: Sprite
-    sprite: Interface/Actions/jump.rsi   # placeholder, swap for your own icon
+    sprite: Interface/Actions/jump.rsi
     layers:
     - state: icon
   - type: InstantAction
@@ -22,7 +22,7 @@
   - type: Action
     useDelay: 1
   - type: Sprite
-    sprite: Interface/Actions/jump.rsi   # placeholder, swap for your own icon
+    sprite: Interface/Actions/jump.rsi
     layers:
     - state: icon
   - type: InstantAction
@@ -37,7 +37,7 @@
   - type: Action
     useDelay: 1
   - type: Sprite
-    sprite: Interface/Actions/jump.rsi   # placeholder, swap for your own icon
+    sprite: Interface/Actions/jump.rsi
     layers:
     - state: icon
   - type: InstantAction
