@@ -378,6 +378,12 @@ public sealed partial class ActionTeleporterSystem : EntitySystem
     [SubscribeLocalEvent]
     private void OnCoreRemoved(EntityUid uid, ActionTeleporterComponent component, ref OrganRemovedFromEvent args)
     {
+        if (TerminatingOrDeleted(uid))
+        {
+            FizzlePortals((uid, component), null, instability: false);
+            return;
+        }
+
         if (HasWorkingCore(uid))
             return;
 
