@@ -433,8 +433,8 @@
   id: CyborgEnergySword
   suffix: For Borgs
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Specially designed for syndicate cyborgs.
-  components: # could add energy-draining like the L6C
   # Corvax-Wega-Start
+  components: # could add energy-draining like the L6C
   - type: Reflect
     reflectProb: 0
     spread: 0
