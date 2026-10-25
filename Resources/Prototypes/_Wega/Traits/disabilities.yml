@@ -35,8 +35,5 @@
   species:
     - Shadekin
   forcedEyeColor: "#4d4d4d"
-  whitelist:
-    tags:
-      - MobShadekin
   specials:
   - !type:ShadekinCoreBurned
