@@ -21,6 +21,9 @@ public sealed partial class PortalSystem
         if (!_appearance.TryGetData<PortalVisualState>(uid, PortalVisuals.State, out var state, args.Component))
             state = PortalVisualState.Closed;
 
+        if (!_sprite.TryGetLayer((uid, args.Sprite), PortalVisualLayers.Base, out _, false))
+            return;
+
         switch (state)
         {
             case PortalVisualState.Closed:
@@ -74,6 +77,9 @@ public sealed partial class PortalSystem
             return;
 
         if (!TryComp<SpriteComponent>(uid, out var sprite))
+            return;
+
+        if (!_sprite.TryGetLayer((uid, sprite), PortalVisualLayers.Base, out _, false))
             return;
 
         if (!_appearance.TryGetData<PortalVisualState>(uid, PortalVisuals.State, out var state))

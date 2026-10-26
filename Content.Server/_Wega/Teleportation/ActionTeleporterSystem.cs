@@ -213,11 +213,13 @@ public sealed partial class ActionTeleporterSystem : EntitySystem
         RemoveActionIfAttached(entity.Owner, comp.CreateSecondPortalActionEntity);
         RemoveActionIfAttached(entity.Owner, comp.ClosePortalsActionEntity);
 
-        _actions.SetCooldown(comp.CreatePortalActionEntity,
-            hadSecondPortal ? comp.TwoPortalCooldown : comp.OnePortalCooldown);
+        if (!TerminatingOrDeleted(entity.Owner))
+        {
+            _actions.SetCooldown(comp.CreatePortalActionEntity,
+                hadSecondPortal ? comp.TwoPortalCooldown : comp.OnePortalCooldown);
 
-        _actions.AddAction(entity.Owner, ref comp.CreatePortalActionEntity, comp.CreatePortalAction);
-
+            _actions.AddAction(entity.Owner, ref comp.CreatePortalActionEntity, comp.CreatePortalAction);
+        }
         if (instability && user != null)
             _popup.PopupEntity(Loc.GetString("action-teleporter-instability-fizzle"), entity, user.Value, PopupType.MediumCaution);
     }
