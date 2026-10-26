@@ -330,8 +330,8 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 25 # Corvax-Wega-Edit
-            Heat: 25 # Corvax-Wega-Edit
+            Slash: 20 # Corvax-Wega-Edit
+            Heat: 20 # Corvax-Wega-Edit
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
