@@ -114,6 +114,12 @@
           32:
             sprite: Corvax/Mobs/Species/displacement.rsi
             state: socks
+      mask:
+        sizeMaps:
+          32:
+            sprite: _Wega/Mobs/Species/Feroxi/displacement.rsi
+            state: mask
+
 
 - type: entity
   id: MobFeroxi
