@@ -638,6 +638,8 @@
           types:
             Blunt: 50
             Structural: 800
+      - type: StunOtherOnHit
+        duration: 3
       sound:
         path: "/Audio/Effects/Footsteps/largethud.ogg"
 #endregion
