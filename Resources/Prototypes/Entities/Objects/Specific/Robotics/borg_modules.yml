@@ -1093,6 +1093,7 @@
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     # Corvax-Wega-Robot-Start
+    - item: HandLabeler
     - hand:
         emptyLabel: borg-slot-table-empty
         emptyRepresentative: BorgIconRollerBed
