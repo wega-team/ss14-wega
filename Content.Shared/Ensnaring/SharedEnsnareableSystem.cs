@@ -1,6 +1,6 @@
 using System.Linq;
 using Content.Shared.Alert;
-using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Blood.Cult.Components; //Corvax-Wega-Add
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
