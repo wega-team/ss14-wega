@@ -1,3 +1,4 @@
+using Content.Shared._Wega.Seraphim;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -35,7 +36,7 @@ public sealed partial class SeraphimOverlay : Overlay
         if (args.Viewport.Eye != eyeComp.Eye)
             return false;
 
-        return _entityManager.HasComponent<Content.Shared._Wega.Seraphim.SeraphimOverdriveComponent>(_playerManager.LocalEntity);
+        return _entityManager.HasComponent<SeraphimOverdriveComponent>(_playerManager.LocalEntity);
     }
 
     protected override void Draw(in OverlayDrawArgs args)

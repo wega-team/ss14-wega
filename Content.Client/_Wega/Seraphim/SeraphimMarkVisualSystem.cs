@@ -16,7 +16,6 @@ public sealed partial class SeraphimMarkVisualSystem : EntitySystem
 
     private const string OuterClothingSlot = "outerClothing";
     private const string NeckSlot = "neck";
-    private const string SpriteState = "body";
     private static readonly ResPath SpritePath = new("/Textures/_Wega/Mobs/Customization/seraphim.rsi");
     private static readonly ProtoId<TagPrototype> HardsuitTag = "Hardsuit";
 
@@ -89,7 +88,7 @@ public sealed partial class SeraphimMarkVisualSystem : EntitySystem
 
         var layer = _sprite.AddLayer(
             (ent.Owner, sprite),
-            new SpriteSpecifier.Rsi(SpritePath, SpriteState),
+            new SpriteSpecifier.Rsi(SpritePath, "body"),
             index);
 
         _sprite.LayerMapSet((ent.Owner, sprite), SeraphimMarkVisualLayers.Body, layer);

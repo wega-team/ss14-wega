@@ -1,4 +1,5 @@
 using Content.Shared.DoAfter;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -22,6 +23,9 @@ public sealed partial class SeraphimImplantComponent : Component
     };
 
     public List<EntityUid?> Actions = new();
+
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(15);
 }
 
 //Маркинг
@@ -39,6 +43,9 @@ public sealed partial class SeraphimPreparedComponent : Component
 
     [DataField, AutoNetworkedField]
     public TimeSpan ExpireTime = TimeSpan.Zero;
+
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(15);
 }
 
 /// <summary>
@@ -49,6 +56,9 @@ public sealed partial class SeraphimConcentratingComponent : Component
 {
     [DataField, AutoNetworkedField]
     public TimeSpan EndTime = TimeSpan.Zero;
+
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(12);
 
     [DataField]
     public float BuffReflectProb = 0.55f;
@@ -67,8 +77,20 @@ public sealed partial class SeraphimOverdriveComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan EndTime = TimeSpan.Zero;
 
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(25);
+
     [DataField, AutoNetworkedField]
     public float SpeedMultiplier = 1.18f;
+
+    [DataField]
+    public float AttackRateMultiplier = 1.3f;
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> StartEffects = "SeraphimOverdriveStart";
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> EndEffects = "SeraphimOverdriveEnd";
 }
 
 /// <summary>
@@ -79,6 +101,9 @@ public sealed partial class SeraphimExhaustedComponent : Component
 {
     [DataField, AutoNetworkedField]
     public TimeSpan EndTime = TimeSpan.Zero;
+
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(20);
 
     [DataField, AutoNetworkedField]
     public float SpeedMultiplier = 0.8f;
@@ -93,6 +118,9 @@ public sealed partial class SeraphimSlowedComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan EndTime = TimeSpan.Zero;
 
+    [DataField]
+    public TimeSpan Duration = TimeSpan.FromSeconds(5);
+
     [DataField, AutoNetworkedField]
     public float SpeedMultiplier = 0.65f;
 }
@@ -101,7 +129,11 @@ public sealed partial class SeraphimSlowedComponent : Component
 /// Корпоративный клинок (маркер).
 /// </summary>
 [RegisterComponent, NetworkedComponent]
-public sealed partial class CorporateBladeComponent : Component;
+public sealed partial class CorporateBladeComponent : Component
+{
+    [DataField]
+    public float ThrowSpeedMultiplier = 0.25f;
+}
 
 /// <summary>
 /// Автоимплантер: разовая установка импланта.
@@ -138,6 +170,18 @@ public sealed partial class SeraphimImplanterComponent : Component
 
     [DataField]
     public SoundSpecifier? WorkSound = new SoundCollectionSpecifier("SeraphimSurgery");
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> TickBleed = "SeraphimImplantTickBleed";
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> TickDrugs = "SeraphimImplantTickDrugs";
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> TickPain = "SeraphimImplantTickPain";
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> FinishEffects = "SeraphimImplantFinish";
 }
 
 [Serializable, NetSerializable]

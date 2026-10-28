@@ -13,7 +13,4 @@ public sealed partial class SeraphimConcentrateActionEvent : InstantActionEvent;
 public sealed partial class SeraphimOverdriveActionEvent : InstantActionEvent;
 
 [Serializable, NetSerializable]
-public sealed partial class SeraphimImplantDoAfterEvent : DoAfterEvent
-{
-    public override DoAfterEvent Clone() => this;
-}
+public sealed partial class SeraphimImplantDoAfterEvent : SimpleDoAfterEvent;

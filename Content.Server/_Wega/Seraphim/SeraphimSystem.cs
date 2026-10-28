@@ -1,28 +1,19 @@
 using System.Linq;
 using System.Numerics;
 using Content.Server.Implants;
+using Content.Shared.Genetics;
 using Content.Shared._Wega.Seraphim;
 using Content.Shared.Actions;
 using Content.Shared.Body;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
 using Content.Shared.Buckle.Components;
-using Content.Shared.Chat;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
-using Content.Shared.Drunk;
-using Content.Shared.FixedPoint;
-using Content.Shared.Genetics;
+using Content.Shared.EntityEffects;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Jittering;
-using Content.Shared.Medical;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
-using Content.Shared.StatusEffect;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Content.Shared.Verbs;
@@ -52,11 +43,8 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private ThrowingSystem _throwing = default!;
     [Dependency] private SharedStaminaSystem _stamina = default!;
-    [Dependency] private StatusEffectsSystem _status = default!;
-    [Dependency] private SharedJitteringSystem _jitter = default!;
-    [Dependency] private VomitSystem _vomit = default!;
-    [Dependency] private BloodstreamSystem _bloodstream = default!;
-    [Dependency] private SharedChatSystem _chat = default!;
+    [Dependency] private SharedEntityEffectsSystem _entityEffects = default!;
+    [Dependency] private IPrototypeManager _proto = default!;
     [Dependency] private SubdermalImplantSystem _implant = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
     [Dependency] private SharedAppearanceSystem _appearance = default!;
@@ -64,18 +52,6 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
     private const string KneeType = "Knee";
     private const string FuckOffType = "FuckOff";
-
-    private static readonly TimeSpan PreparedDuration = TimeSpan.FromSeconds(15);
-    private static readonly TimeSpan KneeCooldown = TimeSpan.FromSeconds(20);
-    private static readonly TimeSpan KneeSlowDuration = TimeSpan.FromSeconds(5);
-    private static readonly TimeSpan FuckOffCooldown = TimeSpan.FromSeconds(25);
-    private static readonly TimeSpan ConcentrateDuration = TimeSpan.FromSeconds(12);
-    private static readonly TimeSpan ConcentrateCooldown = TimeSpan.FromSeconds(45);
-    private static readonly TimeSpan OverdriveDuration = TimeSpan.FromSeconds(25);
-    private static readonly TimeSpan OverdriveCooldown = TimeSpan.FromSeconds(90);
-    private static readonly TimeSpan ExhaustedDuration = TimeSpan.FromSeconds(20);
-
-    private static readonly ProtoId<ReagentPrototype> SpaceDrugs = "SpaceDrugs";
 
     public override void Initialize()
     {
@@ -94,7 +70,7 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         SubscribeLocalEvent<SeraphimConcentratingComponent, ComponentShutdown>(OnConcentrateShutdown);
 
         SubscribeLocalEvent<SeraphimImplanterComponent, GetVerbsEvent<AlternativeVerb>>(OnImplanterVerbs);
-        SubscribeLocalEvent<SeraphimImplanterComponent, SeraphimImplantDoAfterEvent>(OnImplantDoAfter);
+        SubscribeLocalEvent<SeraphimImplanterComponent, SimpleDoAfterEvent>(OnImplantDoAfter);
     }
 
     private void OnKneeAction(Entity<SeraphimImplantComponent> ent, ref SeraphimKneeActionEvent args)
@@ -104,11 +80,10 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
         var prep = EnsureComp<SeraphimPreparedComponent>(ent);
         prep.Type = KneeType;
-        prep.ExpireTime = _timing.CurTime + PreparedDuration;
+        prep.ExpireTime = _timing.CurTime + prep.Duration;
         Dirty(ent.Owner, prep);
 
         _popup.PopupEntity(Loc.GetString("seraphim-knee-prepared"), ent, ent, PopupType.Medium);
-        _actions.SetCooldown(args.Action.Owner, KneeCooldown);
         args.Handled = true;
     }
 
@@ -119,11 +94,10 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
         var prep = EnsureComp<SeraphimPreparedComponent>(ent);
         prep.Type = FuckOffType;
-        prep.ExpireTime = _timing.CurTime + PreparedDuration;
+        prep.ExpireTime = _timing.CurTime + prep.Duration;
         Dirty(ent.Owner, prep);
 
         _popup.PopupEntity(Loc.GetString("seraphim-fuckoff-prepared"), ent, ent, PopupType.Medium);
-        _actions.SetCooldown(args.Action.Owner, FuckOffCooldown);
         args.Handled = true;
     }
 
@@ -149,7 +123,7 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         }
 
         var comp = EnsureComp<SeraphimConcentratingComponent>(ent);
-        comp.EndTime = _timing.CurTime + ConcentrateDuration;
+        comp.EndTime = _timing.CurTime + comp.Duration;
         comp.Weapon = blade;
 
         var reflect = EnsureComp<ReflectComponent>(blade.Value);
@@ -164,7 +138,6 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         Dirty(ent.Owner, comp);
 
         _popup.PopupEntity(Loc.GetString("seraphim-concentrate-start"), ent, ent, PopupType.Medium);
-        _actions.SetCooldown(args.Action.Owner, ConcentrateCooldown);
         args.Handled = true;
     }
 
@@ -174,16 +147,12 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
             return;
 
         var comp = EnsureComp<SeraphimOverdriveComponent>(ent);
-        comp.EndTime = _timing.CurTime + OverdriveDuration;
+        comp.EndTime = _timing.CurTime + comp.Duration;
         Dirty(ent.Owner, comp);
         _speed.RefreshMovementSpeedModifiers(ent.Owner);
 
-        _chat.TryEmoteWithChat(ent, "Scream", ChatTransmitRange.Normal, ignoreActionBlocker: true, forceEmote: true);
-        _popup.PopupEntity(Loc.GetString("seraphim-overdrive-start"), ent, PopupType.LargeCaution);
-        _audio.PlayPvs(new SoundPathSpecifier("/Audio/_Wega/Effects/seraphim/seraphim_working.ogg"), ent);
-        _jitter.DoJitter(ent, OverdriveDuration, true, 10f, 8f);
+        _entityEffects.ApplyEffects(ent, _proto.Index(comp.StartEffects).Effects);
 
-        _actions.SetCooldown(args.Action.Owner, OverdriveCooldown);
         args.Handled = true;
     }
 
@@ -204,7 +173,7 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         {
             case KneeType:
                 var slow = EnsureComp<SeraphimSlowedComponent>(target.Value);
-                slow.EndTime = _timing.CurTime + KneeSlowDuration;
+                slow.EndTime = _timing.CurTime + slow.Duration;
                 Dirty(target.Value, slow);
                 _speed.RefreshMovementSpeedModifiers(target.Value);
                 _stamina.TakeStaminaDamage(target.Value, 20f, source: args.User);
@@ -325,7 +294,7 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         PlayWorkSound(ent);
     }
 
-    private void OnImplantDoAfter(Entity<SeraphimImplanterComponent> ent, ref SeraphimImplantDoAfterEvent args)
+    private void OnImplantDoAfter(Entity<SeraphimImplanterComponent> ent, ref SimpleDoAfterEvent args)
     {
         ent.Comp.DoAfter = null;
 
@@ -379,46 +348,28 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         if (target is { } uid && Exists(uid))
         {
             _implant.AddImplant(uid, ent.Comp.Implant);
-            AfterImplantEffects(uid);
+            AfterImplantEffects(ent, uid);
         }
     }
 
     // Последствия установки
-    private void AfterImplantEffects(EntityUid uid)
+    private void AfterImplantEffects(Entity<SeraphimImplanterComponent> ent, EntityUid uid)
     {
-        _vomit.Vomit(uid);
-        _jitter.DoJitter(uid, TimeSpan.FromSeconds(8), true, 8f, 6f);
-
         EnsureComp<DizzyEffectComponent>(uid).Intensity = 80f;
-        _status.TryAddStatusEffect<DrunkStatusEffectComponent>(uid, "Dizzy", TimeSpan.FromSeconds(30), true);
-
-        _popup.PopupEntity(Loc.GetString("seraphim-implanter-done"), uid, uid, PopupType.Large);
+        _entityEffects.ApplyEffects(uid, _proto.Index(ent.Comp.FinishEffects).Effects);
     }
 
     // Периодические эффекты
     private void ImplantTickEffects(Entity<SeraphimImplanterComponent> ent, EntityUid target)
     {
-        _chat.TryEmoteWithChat(target, "Scream", ChatTransmitRange.Normal, ignoreActionBlocker: true, forceEmote: true);
-        _jitter.DoJitter(target, ent.Comp.EffectInterval + TimeSpan.FromSeconds(2), true, 6f, 5f);
-
-        var roll = _random.Next(3);
-        switch (roll)
+        var proto = _random.Next(3) switch
         {
-            case 0:
-                _bloodstream.TryModifyBleedAmount(target, 3f);
-                _popup.PopupEntity(Loc.GetString("seraphim-implanter-bleed"), target, PopupType.Medium);
-                break;
-            case 1:
-                var solution = new Solution();
-                solution.AddReagent(SpaceDrugs, FixedPoint2.New(3));
-                _bloodstream.TryAddToBloodstream(target, solution);
-                _popup.PopupEntity(Loc.GetString("seraphim-implanter-drugs"), target, PopupType.Medium);
-                break;
-            default:
-                _bloodstream.TryModifyBleedAmount(target, 2f);
-                _popup.PopupEntity(Loc.GetString("seraphim-implanter-pain"), target, PopupType.Medium);
-                break;
-        }
+            0 => ent.Comp.TickBleed,
+            1 => ent.Comp.TickDrugs,
+            _ => ent.Comp.TickPain,
+        };
+
+        _entityEffects.ApplyEffects(target, _proto.Index(proto).Effects);
     }
 
     public override void Update(float frameTime)
@@ -427,6 +378,16 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
         var cur = _timing.CurTime;
 
+        UpdatePrepared(cur);
+        UpdateConcentrating(cur);
+        UpdateOverdrive(cur);
+        UpdateExhausted(cur);
+        UpdateSlowed(cur);
+        UpdateImplanters(cur);
+    }
+
+    private void UpdatePrepared(TimeSpan cur)
+    {
         var prepared = EntityQueryEnumerator<SeraphimPreparedComponent>();
         while (prepared.MoveNext(out var uid, out var comp))
         {
@@ -436,7 +397,10 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
                 RemComp<SeraphimPreparedComponent>(uid);
             }
         }
+    }
 
+    private void UpdateConcentrating(TimeSpan cur)
+    {
         var conc = EntityQueryEnumerator<SeraphimConcentratingComponent>();
         while (conc.MoveNext(out var uid, out var comp))
         {
@@ -447,28 +411,22 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
                 RemComp<SeraphimConcentratingComponent>(uid);
             }
         }
+    }
 
+    private void UpdateOverdrive(TimeSpan cur)
+    {
         var over = EntityQueryEnumerator<SeraphimOverdriveComponent>();
         while (over.MoveNext(out var uid, out var comp))
         {
             if (cur < comp.EndTime)
                 continue;
 
-            RemComp<SeraphimOverdriveComponent>(uid);
-            _speed.RefreshMovementSpeedModifiers(uid);
-
-            var exhausted = EnsureComp<SeraphimExhaustedComponent>(uid);
-            exhausted.EndTime = cur + ExhaustedDuration;
-            Dirty(uid, exhausted);
-            _speed.RefreshMovementSpeedModifiers(uid);
-
-            _stamina.TakeStaminaDamage(uid, 60f);
-            _jitter.DoJitter(uid, TimeSpan.FromSeconds(10), true, 5f, 3f);
-            EnsureComp<DizzyEffectComponent>(uid).Intensity = 60f;
-            _status.TryAddStatusEffect<DrunkStatusEffectComponent>(uid, "Dizzy", TimeSpan.FromSeconds(20), true);
-            _popup.PopupEntity(Loc.GetString("seraphim-overdrive-end"), uid, uid, PopupType.LargeCaution);
+            EndOverdrive((uid, comp), cur);
         }
+    }
 
+    private void UpdateExhausted(TimeSpan cur)
+    {
         var exhaustedQuery = EntityQueryEnumerator<SeraphimExhaustedComponent>();
         while (exhaustedQuery.MoveNext(out var uid, out var comp))
         {
@@ -478,7 +436,10 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
                 _speed.RefreshMovementSpeedModifiers(uid);
             }
         }
+    }
 
+    private void UpdateSlowed(TimeSpan cur)
+    {
         var slowed = EntityQueryEnumerator<SeraphimSlowedComponent>();
         while (slowed.MoveNext(out var uid, out var comp))
         {
@@ -488,7 +449,10 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
                 _speed.RefreshMovementSpeedModifiers(uid);
             }
         }
+    }
 
+    private void UpdateImplanters(TimeSpan cur)
+    {
         var implanter = EntityQueryEnumerator<SeraphimImplanterComponent>();
         while (implanter.MoveNext(out var uid, out var comp))
         {
@@ -520,5 +484,22 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
                 ImplantTickEffects((uid, comp), target);
             }
         }
+    }
+
+    private void EndOverdrive(Entity<SeraphimOverdriveComponent> ent, TimeSpan cur)
+    {
+        // Читаем эффекты до удаления компонента
+        var effects = _proto.Index(ent.Comp.EndEffects).Effects;
+
+        RemComp<SeraphimOverdriveComponent>(ent);
+        _speed.RefreshMovementSpeedModifiers(ent.Owner);
+
+        var exhausted = EnsureComp<SeraphimExhaustedComponent>(ent);
+        exhausted.EndTime = cur + exhausted.Duration;
+        Dirty(ent, exhausted);
+        _speed.RefreshMovementSpeedModifiers(ent.Owner);
+
+        EnsureComp<DizzyEffectComponent>(ent).Intensity = 60f;
+        _entityEffects.ApplyEffects(ent, effects);
     }
 }
