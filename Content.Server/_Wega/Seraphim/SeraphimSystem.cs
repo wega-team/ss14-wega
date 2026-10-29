@@ -1,10 +1,8 @@
 using System.Linq;
 using System.Numerics;
-using Content.Server.Implants;
 using Content.Shared.Genetics;
 using Content.Shared._Wega.Seraphim;
 using Content.Shared.Actions;
-using Content.Shared.Body;
 using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Systems;
@@ -12,6 +10,8 @@ using Content.Shared.DoAfter;
 using Content.Shared.EntityEffects;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Implants;
+using Content.Shared.Implants.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
@@ -23,7 +23,6 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Reflect;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.GameObjects;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -45,13 +44,14 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
     [Dependency] private SharedStaminaSystem _stamina = default!;
     [Dependency] private SharedEntityEffectsSystem _entityEffects = default!;
     [Dependency] private IPrototypeManager _proto = default!;
-    [Dependency] private SubdermalImplantSystem _implant = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private SharedImplanterSystem _implanter = default!;
 
     private const string KneeType = "Knee";
     private const string FuckOffType = "FuckOff";
+
+    private readonly List<ImplantProcess> _implantProcesses = new();
 
     public override void Initialize()
     {
@@ -69,8 +69,9 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
         SubscribeLocalEvent<SeraphimConcentratingComponent, ComponentShutdown>(OnConcentrateShutdown);
 
+        SubscribeLocalEvent<SeraphimImplanterComponent, AddImplantAttemptEvent>(OnImplanterAttempt);
+        SubscribeLocalEvent<SeraphimImplanterComponent, ImplantEvent>(OnImplanterImplant);
         SubscribeLocalEvent<SeraphimImplanterComponent, GetVerbsEvent<AlternativeVerb>>(OnImplanterVerbs);
-        SubscribeLocalEvent<SeraphimImplanterComponent, SimpleDoAfterEvent>(OnImplantDoAfter);
     }
 
     private void OnKneeAction(Entity<SeraphimImplantComponent> ent, ref SeraphimKneeActionEvent args)
@@ -221,6 +222,9 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         {
             ent.Comp.Actions.Add(_actions.AddAction(ent, actionId));
         }
+
+        EnsureComp<DizzyEffectComponent>(ent).Intensity = 80f;
+        _entityEffects.ApplyEffects(ent, _proto.Index(ent.Comp.FinishEffects).Effects);
     }
 
     private void OnImplantShutdown(Entity<SeraphimImplantComponent> ent, ref ComponentShutdown args)
@@ -231,7 +235,6 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         }
     }
 
-    // Кто пристёгнут
     private EntityUid? GetBuckledTarget(EntityUid strap)
     {
         var query = EntityQueryEnumerator<BuckleComponent>();
@@ -244,129 +247,115 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         return null;
     }
 
-    // Автоимплантер
     private void OnImplanterVerbs(Entity<SeraphimImplanterComponent> ent, ref GetVerbsEvent<AlternativeVerb> args)
     {
-        if (!args.CanInteract || !args.CanAccess || ent.Comp.Used || ent.Comp.Active)
+        if (!args.CanInteract || !args.CanAccess)
             return;
 
         if (GetBuckledTarget(ent.Owner) is not { } target)
             return;
 
+        if (!TryComp<ImplanterComponent>(ent, out var implanter) || !implanter.ImplanterSlot.HasItem)
+            return;
+
+        if (_implantProcesses.Any(p => p.Implanter == ent.Owner))
+            return;
+
+        var user = args.User;
         args.Verbs.Add(new AlternativeVerb
         {
             Text = Loc.GetString("seraphim-implanter-verb"),
             Priority = 10,
-            Act = () => StartImplant(ent, target),
+            Act = () => StartImplant(ent, user, target),
         });
     }
 
-    private void StartImplant(Entity<SeraphimImplanterComponent> ent, EntityUid target)
+    private void StartImplant(Entity<SeraphimImplanterComponent> ent, EntityUid user, EntityUid target)
     {
-        if (ent.Comp.Used || ent.Comp.Active)
+        if (!TryComp<ImplanterComponent>(ent, out var implanterComp))
             return;
 
-        if (!HasComp<VisualBodyComponent>(target) || HasComp<SeraphimImplantComponent>(target))
-        {
-            _popup.PopupEntity(Loc.GetString("seraphim-implanter-invalid"), ent, PopupType.Medium);
+        if (!_implanter.CanImplant(user, target, new Entity<ImplanterComponent>(ent.Owner, implanterComp), out _, out _))
             return;
-        }
 
-        ent.Comp.Active = true;
-        ent.Comp.Target = target;
-        ent.Comp.EndTime = _timing.CurTime + ent.Comp.Duration;
-        ent.Comp.NextEffectTime = _timing.CurTime + ent.Comp.EffectInterval;
-
-        // Прогресс-бар на пациенте
-        var doAfterArgs = new DoAfterArgs(EntityManager, target, ent.Comp.Duration, new SeraphimImplantDoAfterEvent(), ent.Owner, target: ent.Owner)
+        var doAfterArgs = new DoAfterArgs(EntityManager, target, implanterComp.ImplantTime, new ImplantEvent(), ent, target: target, used: ent)
         {
             NeedHand = false,
             BreakOnMove = false,
             BreakOnDamage = false,
             RequireCanInteract = false,
         };
-        if (_doAfter.TryStartDoAfter(doAfterArgs, out var doAfterId))
-            ent.Comp.DoAfter = doAfterId;
 
-        Dirty(ent.Owner, ent.Comp);
+        if (!_doAfter.TryStartDoAfter(doAfterArgs))
+            return;
+
+        var process = _implantProcesses.FirstOrDefault(p => p.Implanter == ent.Owner);
+        if (process != null)
+            process.User = target;
 
         _popup.PopupEntity(Loc.GetString("seraphim-implanter-start", ("target", target)), ent, PopupType.Medium);
-        PlayWorkSound(ent);
     }
 
-    private void OnImplantDoAfter(Entity<SeraphimImplanterComponent> ent, ref SimpleDoAfterEvent args)
+    private void OnImplanterAttempt(Entity<SeraphimImplanterComponent> ent, ref AddImplantAttemptEvent args)
     {
-        ent.Comp.DoAfter = null;
-
-        if (args.Cancelled)
+        if (args.User == args.Target
+            && !(TryComp<BuckleComponent>(args.Target, out var selfBuckle) && selfBuckle.BuckledTo == ent.Owner))
         {
-            if (ent.Comp.Active)
-                AbortImplant(ent);
+            _popup.PopupEntity(Loc.GetString("seraphim-implanter-self"), args.User, args.User, PopupType.Medium);
+            args.Cancel();
             return;
         }
 
-        if (ent.Comp.Active)
-            FinishImplant(ent);
-    }
-
-    private void AbortImplant(Entity<SeraphimImplanterComponent> ent)
-    {
-        ent.Comp.Active = false;
-        ent.Comp.Target = null;
-        if (ent.Comp.DoAfter is { } doAfter)
+        if (!TryComp<BuckleComponent>(args.Target, out var buckle) || buckle.BuckledTo == null)
         {
-            _doAfter.Cancel(doAfter);
-            ent.Comp.DoAfter = null;
+            _popup.PopupEntity(Loc.GetString("seraphim-implanter-need-strap"), args.User, args.User, PopupType.Medium);
+            args.Cancel();
+            return;
         }
 
-        Dirty(ent.Owner, ent.Comp);
-        _popup.PopupEntity(Loc.GetString("seraphim-implanter-abort"), ent, PopupType.Medium);
+        if (_implantProcesses.Any(p => p.Implanter == ent.Owner))
+            return;
+
+        _implantProcesses.Add(new ImplantProcess(ent.Owner, args.Target, args.User, _timing.CurTime + ent.Comp.EffectInterval));
     }
 
-    private void PlayWorkSound(Entity<SeraphimImplanterComponent> ent)
+    private void OnImplanterImplant(Entity<SeraphimImplanterComponent> ent, ref ImplantEvent args)
     {
-        var stream = _audio.PlayPvs(ent.Comp.WorkSound, ent);
-        ent.Comp.SoundStream = stream?.Entity;
+        _implantProcesses.RemoveAll(p => p.Implanter == ent.Owner);
     }
 
-    private void FinishImplant(Entity<SeraphimImplanterComponent> ent)
+    private bool IsImplantDoAfterActive(ImplantProcess proc)
     {
-        var target = ent.Comp.Target;
+        return TryGetImplantDoAfter(proc, out _);
+    }
 
-        ent.Comp.Active = false;
-        ent.Comp.Used = true;
-        ent.Comp.Target = null;
-        if (ent.Comp.DoAfter is { } doAfter)
+    private bool TryGetImplantDoAfter(ImplantProcess proc, out DoAfterId id)
+    {
+        id = default;
+
+        if (!TryComp<DoAfterComponent>(proc.User, out var doAfter))
+            return false;
+
+        foreach (var (index, active) in doAfter.DoAfters)
         {
-            _doAfter.Cancel(doAfter);
-            ent.Comp.DoAfter = null;
+            if (active.Args.Used == proc.Implanter && active.Args.Event is ImplantEvent)
+            {
+                id = new DoAfterId(proc.User, index);
+                return true;
+            }
         }
 
-        Dirty(ent.Owner, ent.Comp);
-        _appearance.SetData(ent.Owner, SeraphimImplanterVisuals.Empty, true);
-
-        if (target is { } uid && Exists(uid))
-        {
-            _implant.AddImplant(uid, ent.Comp.Implant);
-            AfterImplantEffects(ent, uid);
-        }
-    }
-
-    // Последствия установки
-    private void AfterImplantEffects(Entity<SeraphimImplanterComponent> ent, EntityUid uid)
-    {
-        EnsureComp<DizzyEffectComponent>(uid).Intensity = 80f;
-        _entityEffects.ApplyEffects(uid, _proto.Index(ent.Comp.FinishEffects).Effects);
+        return false;
     }
 
     // Периодические эффекты
-    private void ImplantTickEffects(Entity<SeraphimImplanterComponent> ent, EntityUid target)
+    private void ImplantTickEffects(EntityUid target, SeraphimImplanterComponent comp)
     {
         var proto = _random.Next(3) switch
         {
-            0 => ent.Comp.TickBleed,
-            1 => ent.Comp.TickDrugs,
-            _ => ent.Comp.TickPain,
+            0 => comp.TickBleed,
+            1 => comp.TickDrugs,
+            _ => comp.TickPain,
         };
 
         _entityEffects.ApplyEffects(target, _proto.Index(proto).Effects);
@@ -453,35 +442,38 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
 
     private void UpdateImplanters(TimeSpan cur)
     {
-        var implanter = EntityQueryEnumerator<SeraphimImplanterComponent>();
-        while (implanter.MoveNext(out var uid, out var comp))
+        for (var i = _implantProcesses.Count - 1; i >= 0; i--)
         {
-            if (!comp.Active)
-                continue;
+            var proc = _implantProcesses[i];
 
-            // Цель отстегнулась или удалилась
-            if (comp.Target is not { } target
-                || !Exists(target)
-                || !TryComp<BuckleComponent>(target, out var buckle)
-                || buckle.BuckledTo != uid)
+            if (!Exists(proc.Target) || !TryComp<SeraphimImplanterComponent>(proc.Implanter, out var implanter))
             {
-                AbortImplant((uid, comp));
+                _implantProcesses.RemoveAt(i);
                 continue;
             }
 
-            if (comp.SoundStream is not { } stream || !Exists(stream))
-                PlayWorkSound((uid, comp));
-
-            if (cur >= comp.EndTime)
+            if (!TryComp<BuckleComponent>(proc.Target, out var buckle) || buckle.BuckledTo == null)
             {
-                FinishImplant((uid, comp));
+                if (TryGetImplantDoAfter(proc, out var id))
+                    _doAfter.Cancel(id);
+
+                _implantProcesses.RemoveAt(i);
                 continue;
             }
 
-            if (cur >= comp.NextEffectTime)
+            if (!IsImplantDoAfterActive(proc))
             {
-                comp.NextEffectTime = cur + comp.EffectInterval;
-                ImplantTickEffects((uid, comp), target);
+                _implantProcesses.RemoveAt(i);
+                continue;
+            }
+
+            if (proc.Sound is not { } stream || !Exists(stream))
+                proc.Sound = _audio.PlayPvs(implanter.WorkSound, proc.Implanter)?.Entity;
+
+            if (cur >= proc.NextTick)
+            {
+                proc.NextTick = cur + implanter.EffectInterval;
+                ImplantTickEffects(proc.Target, implanter);
             }
         }
     }
@@ -503,3 +495,20 @@ public sealed partial class SeraphimSystem : SharedSeraphimSystem
         _entityEffects.ApplyEffects(ent, effects);
     }
 }
+
+public sealed class ImplantProcess
+{
+    public readonly EntityUid Implanter;
+    public readonly EntityUid Target;
+
+    public EntityUid User;
+    public TimeSpan NextTick;
+    public EntityUid? Sound;
+
+    public ImplantProcess(EntityUid implanter, EntityUid target, EntityUid user, TimeSpan nextTick)
+    {
+        Implanter = implanter;
+        Target = target;
+        User = user;
+        NextTick = nextTick;
+    }}

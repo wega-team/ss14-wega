@@ -13,12 +13,13 @@
     - type: SeraphimImplant
 
 - type: entity
-  parent: BaseItem
+  parent: BaseImplantOnlyImplanter
   id: SeraphimAutoImplanter
   suffix: "Wega, BSO"
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
+    state: icon
     layers:
     - state: icon
       map: ["icon"]
@@ -26,7 +27,14 @@
       visible: false
       map: ["empty"]
   - type: Item
+    sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
     size: Ginormous
+  - type: Implanter
+    implant: SeraphimImplant
+    implantTime: 60
+    whitelist:
+      components:
+      - VisualBody
   - type: SeraphimImplanter
   - type: Strap
     position: Down
@@ -34,10 +42,10 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.SeraphimImplanterVisuals.Empty:
+      enum.ImplanterVisuals.Full:
         icon:
-          True: { visible: false }
-          False: { visible: true }
-        empty:
           True: { visible: true }
           False: { visible: false }
+        empty:
+          True: { visible: false }
+          False: { visible: true }

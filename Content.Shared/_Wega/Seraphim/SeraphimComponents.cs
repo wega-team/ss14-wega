@@ -1,9 +1,7 @@
-using Content.Shared.DoAfter;
 using Content.Shared.EntityEffects;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._Wega.Seraphim;
 
@@ -26,6 +24,9 @@ public sealed partial class SeraphimImplantComponent : Component
 
     [DataField]
     public TimeSpan Duration = TimeSpan.FromSeconds(15);
+
+    [DataField]
+    public ProtoId<EntityEffectPrototype> FinishEffects = "SeraphimImplantFinish";
 }
 
 //Маркинг
@@ -138,35 +139,11 @@ public sealed partial class CorporateBladeComponent : Component
 /// <summary>
 /// Автоимплантер: разовая установка импланта.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class SeraphimImplanterComponent : Component
 {
-    [DataField, AutoNetworkedField]
-    public bool Used;
-
-    [DataField, AutoNetworkedField]
-    public bool Active;
-
-    [DataField, AutoNetworkedField]
-    public TimeSpan EndTime = TimeSpan.Zero;
-
-    public TimeSpan NextEffectTime = TimeSpan.Zero;
-
-    public EntityUid? Target;
-
-    public EntityUid? SoundStream;
-
-    [NonSerialized]
-    public DoAfterId? DoAfter;
-
-    [DataField]
-    public TimeSpan Duration = TimeSpan.FromSeconds(60);
-
     [DataField]
     public TimeSpan EffectInterval = TimeSpan.FromSeconds(8);
-
-    [DataField]
-    public EntProtoId Implant = "SeraphimImplant";
 
     [DataField]
     public SoundSpecifier? WorkSound = new SoundCollectionSpecifier("SeraphimSurgery");
@@ -179,13 +156,4 @@ public sealed partial class SeraphimImplanterComponent : Component
 
     [DataField]
     public ProtoId<EntityEffectPrototype> TickPain = "SeraphimImplantTickPain";
-
-    [DataField]
-    public ProtoId<EntityEffectPrototype> FinishEffects = "SeraphimImplantFinish";
-}
-
-[Serializable, NetSerializable]
-public enum SeraphimImplanterVisuals : byte
-{
-    Empty,
 }

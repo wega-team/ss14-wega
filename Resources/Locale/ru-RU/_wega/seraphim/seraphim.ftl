@@ -12,8 +12,8 @@ seraphim-cant-shoot = Ваши руки не слушаются. Имплант 
 
 seraphim-implanter-verb = Включить
 seraphim-implanter-start = Устройство оживает и начинает установку импланта в { $target }
-seraphim-implanter-invalid = Устройство не может установить имплант этому существу
-seraphim-implanter-abort = Установка прервана
+seraphim-implanter-self = Имплантатор не предназначен для использования на себе
+seraphim-implanter-need-strap = Зафиксируйте пациента перед установкой импланта
 seraphim-implanter-bleed = Иглы врезаются в позвоночник. Кровь течёт по спине
 seraphim-implanter-drugs = В кровь впрыскивается мощное болеутоляющее
 seraphim-implanter-pain = Невыносимая боль пронзает тело
