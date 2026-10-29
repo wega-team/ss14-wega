@@ -1,0 +1,15 @@
+- type: species
+  id: Returned
+  name: species-name-returned
+  roundStart: true
+  prototype: MobReturned
+  defaultSkinTone: "#34a223"
+  dollPrototype: AppearanceReturned
+  skinColoration: HumanToned
+  defaultSoundsBySex:
+  - ReturnedM
+  - ReturnedF
+  - ReturnedM
+  voices:
+  - ReturnedM
+  - ReturnedF

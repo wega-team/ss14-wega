@@ -1,0 +1,251 @@
+- type: markingsGroup
+  parent: None
+  id: Returned
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceReturned
+  name: returned appearance
+  components:
+  - type: Inventory
+    templateId: returned
+  - type: InitialBody
+    organs:
+      Torso: OrganReturnedTorso
+      Head: OrganReturnedHead
+      ArmLeft: OrganReturnedArmLeft
+      ArmRight: OrganReturnedArmRight
+      HandLeft: OrganReturnedHandLeft
+      HandRight: OrganReturnedHandRight
+      LegLeft: OrganReturnedLegLeft
+      LegRight: OrganReturnedLegRight
+      FootLeft: OrganReturnedFootLeft
+      FootRight: OrganReturnedFootRight
+      Brain: OrganReturnedBrain
+      Eyes: OrganReturnedEyes
+      Tongue: OrganReturnedTongue
+      Appendix: OrganReturnedAppendix
+      Ears: OrganReturnedEars
+      Lungs: OrganReturnedLungs
+      Heart: OrganReturnedHeart
+      Stomach: OrganReturnedStomach
+      Liver: OrganReturnedLiver
+      Kidneys: OrganReturnedKidneys
+  - type: HumanoidProfile
+    species: Returned
+
+- type: entity
+  parent:
+  - AppearanceReturned
+  - BaseSpeciesMobOrganic
+  - BaseOperated
+  id: MobReturned
+  name: Urist McReturned
+  components:
+  - type: ContentEye
+    targetZoom: "0.9, 0.9"
+    maxZoom: "0.9, 0.9"
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatRotten
+      amount: 5
+  - type: Temperature
+    heatDamageThreshold: 360
+    coldDamageThreshold: 243.15
+    currentTemperature: 310.15
+    specificHeat: 46
+    coldDamage:
+      types:
+        Cold: 0
+    heatDamage:
+      types:
+        Heat: 0.1
+  - type: Damageable
+    damageModifierSet: Zombie
+  - type: Pacified
+  - type: StutteringAccent
+  - type: Bloodstream
+    bloodReagent: CopperBlood
+  - type: ZombieImmune
+  - type: Internals
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 20
+    damage:
+      types:
+        Heat: -0.07
+        Blunt: -0.4
+        Slash: -0.2
+        Piercing: -0.2
+      groups:
+        Brute: -0.07
+  - type: FireVisuals
+    alternateState: Standing
+  - type: Vocal
+    emoteSounds: ReturnedM
+
+# - Organs
+
+- type: entity
+  parent: OrganBase
+  id: OrganReturned
+  abstract: true
+  suffix: Returned
+
+- type: entity
+  id: OrganReturnedMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Human ]
+
+- type: entity
+  parent: OrganReturned
+  id: OrganReturnedInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+
+- type: entity
+  id: OrganReturnedVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Returned
+
+- type: entity
+  parent: [ OrganReturned, OrganReturnedVisual ]
+  id: OrganReturnedExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Zombie/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganReturnedExternal ]
+  id: OrganReturnedTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganReturnedExternal ]
+  id: OrganReturnedHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.FacialHair
+    - enum.HumanoidVisualLayers.HeadTop
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganReturnedExternal ]
+  id: OrganReturnedArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganReturnedExternal ]
+  id: OrganReturnedArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganReturnedExternal ]
+  id: OrganReturnedHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganReturnedExternal ]
+  id: OrganReturnedHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganReturnedExternal ]
+  id: OrganReturnedLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganReturnedExternal ]
+  id: OrganReturnedLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganReturnedExternal ]
+  id: OrganReturnedFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganReturnedExternal ]
+  id: OrganReturnedFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganReturnedInternal ]
+  id: OrganReturnedBrain
+
+- type: entity
+  parent: [ OrganReturnedVisual, OrganBaseEyes, OrganReturnedInternal ]
+  id: OrganReturnedEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: Mobs/Customization/eyes.rsi
+      state: eyes
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/Mobs/Species/Human/parts.rsi
+  - type: Appearance
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganReturnedInternal ]
+  id: OrganReturnedTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganReturnedInternal ]
+  id: OrganReturnedAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganReturnedInternal ]
+  id: OrganReturnedEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganReturnedInternal, OrganReturnedMetabolizer ]
+  id: OrganReturnedLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganReturnedInternal, OrganReturnedMetabolizer ]
+  id: OrganReturnedHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganReturnedInternal, OrganReturnedMetabolizer ]
+  id: OrganReturnedStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganReturnedInternal, OrganReturnedMetabolizer ]
+  id: OrganReturnedLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganReturnedInternal, OrganReturnedMetabolizer ]
+  id: OrganReturnedKidneys
