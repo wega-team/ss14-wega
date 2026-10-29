@@ -146,6 +146,14 @@ namespace Content.Server.GameTicking.Rules
             return false;
         }
 
+        private bool IsBloodCultTargetExcluded(EntityUid uid)
+        {
+            if (!_mind.TryGetMind(uid, out var mindId, out _))
+                return false;
+
+            return _job.MindHasJobWithId(mindId, "BlueShieldOfficer");
+        }
+
         private void OnCultistSelected(Entity<BloodCultRuleComponent> rule, ref AfterAntagEntitySelectedEvent args)
         {
             var ent = args.EntityUid;
@@ -171,7 +179,7 @@ namespace Content.Server.GameTicking.Rules
                 if (HasComp<SyntheticOperatedComponent>(uid))
                     continue;
 
-                if (IsBloodCultistCandidate(uid))
+                if (IsBloodCultistCandidate(uid) || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 mindShieldCandidates.Add(uid);
@@ -207,7 +215,8 @@ namespace Content.Server.GameTicking.Rules
             {
                 if (cult.SelectedTargets.Contains(uid)
                     || IsBloodCultistCandidate(uid)
-                    || HasComp<SyntheticOperatedComponent>(uid))
+                    || HasComp<SyntheticOperatedComponent>(uid)
+                    || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 globalCandidates.Add(uid);
@@ -258,7 +267,8 @@ namespace Content.Server.GameTicking.Rules
                     || cult.SelectedTargets.Contains(uid)
                     || IsBloodCultistCandidate(uid)
                     || HasComp<BloodCultObjectComponent>(uid)
-                    || HasComp<SyntheticOperatedComponent>(uid))
+                    || HasComp<SyntheticOperatedComponent>(uid)
+                    || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 mindShieldCandidates.Add(uid);
@@ -280,7 +290,8 @@ namespace Content.Server.GameTicking.Rules
                     || cult.SelectedTargets.Contains(uid)
                     || IsBloodCultistCandidate(uid)
                     || HasComp<BloodCultObjectComponent>(uid)
-                    || HasComp<SyntheticOperatedComponent>(uid))
+                    || HasComp<SyntheticOperatedComponent>(uid)
+                    || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 globalCandidates.Add(uid);
@@ -464,7 +475,7 @@ namespace Content.Server.GameTicking.Rules
                     _ => "WeaponBloodDagger"
                 };
 
-                var dagger = _entityManager.SpawnEntity(selectedDagger, Transform(uid).Coordinates);
+                var dagger = _entityManager.SpawnAtPosition(selectedDagger, Transform(uid).Coordinates);
                 culsistComp.RecallDaggerActionEntity = dagger;
                 _hands.TryPickupAnyHand(uid, dagger);
                 break;

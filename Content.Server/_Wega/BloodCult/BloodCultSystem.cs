@@ -29,11 +29,13 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.IdentityManagement.Components;
 using Content.Shared.Inventory;
+using Content.Shared.Throwing;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Physics.Events;
 
 
 namespace Content.Server.Blood.Cult;
@@ -71,6 +73,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
         SubscribeLocalEvent<CultWeaponComponent, AttemptMeleeEvent>(OnAttemptMelee);
         SubscribeLocalEvent<BloodDaggerComponent, AfterInteractEvent>(OnInteract);
+        SubscribeLocalEvent<BloodDaggerComponent, PreventCollideEvent>(OnBloodDaggerPreventCollide);
 
         SubscribeLocalEvent<StoneSoulComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<StoneSoulComponent, ComponentShutdown>(OnShutdown);
@@ -186,6 +189,15 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
         var dropEvent = new DropHandItemsEvent();
         RaiseLocalEvent(user, ref dropEvent);
         args.Cancelled = true;
+    }
+
+    private void OnBloodDaggerPreventCollide(Entity<BloodDaggerComponent> ent, ref PreventCollideEvent args)
+    {
+        if (!TryComp<ThrownItemComponent>(ent.Owner, out var thrown) || thrown.Thrower is not { } thrower)
+            return;
+
+        if (HasComp<BloodCultistComponent>(thrower) && HasComp<BloodCultistComponent>(args.OtherEntity))
+            args.Cancelled = true;
     }
     private void OnInteract(EntityUid uid, BloodDaggerComponent component, AfterInteractEvent args)
     {
