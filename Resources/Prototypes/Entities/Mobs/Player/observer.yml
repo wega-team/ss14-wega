@@ -27,6 +27,7 @@
         density: 15
         layer:
         - GhostImpassable
+  - type: IgnoreSoundInsulation # Corvax-Wega-SoundInsulation
 
 # shared parent between aghosts, replay spectators and normal observers
 - type: entity
