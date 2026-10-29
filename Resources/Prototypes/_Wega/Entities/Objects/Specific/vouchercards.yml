@@ -95,3 +95,29 @@
     - BlueShieldkit2
     - BlueShieldkit3
     - BlueShieldkit4
+
+- type: entity
+  parent: BaseVoucherCard
+  id: HallowenVoucherCard
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/VoucherCard/vouchercard.rsi
+    state: hallowen
+  - type: VoucherCard
+    typeVoucher: Hallowen
+    kits:
+    - HallowenPumpkinMan
+    - HallowenSkeleton
+    - HallowenNinja
+    - HallowenGhost
+    - HallowenDemon
+    - HallowenSkub
+    - HallowenBorg
+    - HallowenWhitch
+    - HallowenCarp
+    - HallowenWizV
+    - HallowenWizB
+    - HallowenWizR
+    - HallowenDoc
+    - HallowenChick
+    - HallowenVamp

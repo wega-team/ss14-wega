@@ -8,7 +8,7 @@ namespace Content.Shared.Voucher.Components;
 public sealed partial class VoucherComponent : Component
 {
     [DataField("typeVoucher", required: true)]
-    public string TypeVoucher;
+    public List<string> TypeVoucher = new();
 
     public SoundSpecifier SoundVend = new SoundPathSpecifier("/Audio/Machines/machine_vend.ogg");
 }

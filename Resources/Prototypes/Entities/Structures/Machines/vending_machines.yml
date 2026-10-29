@@ -1003,7 +1003,8 @@
     color: "#78645c"
   # Corvax-Wega-Add-Start
   - type: Voucher
-    typeVoucher: Security
+    typeVoucher:
+    - Security
   # Corvax-Wega-Add-End
   - type: GuideHelp
     guides:
@@ -1235,7 +1236,9 @@
     dataset: AutoDrobeAds
   # Corvax-Wega-Add-Start
   - type: Voucher
-    typeVoucher: Theater
+    typeVoucher:
+    - Theater
+    - Hallowen
   # Corvax-Wega-Add-End
   - type: SpeakOnUIClosed
     pack: GenericVendGoodbyes
@@ -1256,10 +1259,6 @@
     radius: 1.5
     energy: 3.0
     color: "#c73434"
-# Corvax-Wega-Start
-  - type: Voucher
-    typeVoucher: Hallowen
-# Corvax-Wega-End
 
 - type: entity
   parent: VendingMachine
@@ -1448,7 +1447,8 @@
       enum.WiresUiKey.Key:
         type: WiresBoundUserInterface
   - type: Voucher
-    typeVoucher: Salvage
+    typeVoucher:
+    - Salvage
   - type: UtilityVendor
     categories:
       - UtilityBasic

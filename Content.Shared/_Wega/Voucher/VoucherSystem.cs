@@ -31,7 +31,7 @@ public sealed partial class VoucherSystem : EntitySystem
             return;
         }
 
-        if (entity.Comp.TypeVoucher != cardComp.TypeVoucher)
+        if (!entity.Comp.TypeVoucher.Contains(cardComp.TypeVoucher))
         {
             _popup.PopupEntity(Loc.GetString("voucher-wrong-type"), args.User, args.User);
             return;
