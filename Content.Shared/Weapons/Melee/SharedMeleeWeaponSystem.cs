@@ -565,13 +565,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 
         var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-        if (Damageable.TryChangeDamage(
-            target.Value,
-            modifiedDamage,
-            out var damageResult,
-            origin: user,
-            ignoreResistances: resistanceBypass,
-            armorPenetration: component.ArmorPenetration)) // Corvax-Wega-ArmorPenetration-Add
+        if (Damageable.TryChangeDamage(target.Value, modifiedDamage, out var damageResult, origin: user, ignoreResistances: resistanceBypass, armorPenetration: component.ArmorPenetration)) // Corvax-Wega-ArmorPenetration-Edit
         {
             _dirt.AddBloodDirtFromDamage(target.Value, user, damageResult); // Corvax-Wega-Dirtable
             // If the target has stamina and is taking blunt damage, they should also take stamina damage based on their blunt to stamina factor
@@ -611,7 +605,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
         }
     }
 
-    protected abstract void DoDamageEffect(HashSet<EntityUid> targets, EntityUid? user, TransformComponent targetXform);
+    protected abstract void DoDamageEffect(HashSet<EntityUid> targets, EntityUid? user,  TransformComponent targetXform);
 
     private bool DoHeavyAttack(EntityUid user, HeavyAttackEvent ev, EntityUid meleeUid, MeleeWeaponComponent component, ICommonSession? session)
     {
@@ -724,7 +718,7 @@ public abstract partial class SharedMeleeWeaponSystem : EntitySystem
             RaiseLocalEvent(entity, attackedEvent);
             var modifiedDamage = DamageSpecifier.ApplyModifierSets(damage + hitEvent.BonusDamage + attackedEvent.BonusDamage, hitEvent.ModifiersList);
 
-            var damageResult = Damageable.ChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass, armorPenetration: component.ArmorPenetration); // Corvax-Wega-ArmorPenetration-Add
+            var damageResult = Damageable.ChangeDamage(entity, modifiedDamage, origin: user, ignoreResistances: resistanceBypass, armorPenetration: component.ArmorPenetration); // Corvax-Wega-ArmorPenetration-Edit
 
             if (damageResult.GetTotal() > FixedPoint2.Zero)
             {

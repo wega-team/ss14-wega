@@ -79,7 +79,7 @@ public abstract partial class SharedArmorSystem : EntitySystem
         if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 
-        // Corvax-Wega-ArmorPenetration-Start
+        // Corvax-Wega-ArmorPenetration-Edit-Start
         // Учитываем пробитие при расчёте защиты экипированной брони.
         var penetration = args.Args.ArmorPenetration;
 
@@ -88,7 +88,7 @@ public abstract partial class SharedArmorSystem : EntitySystem
             : GetPenetratedModifiers(component.Modifiers, penetration);
 
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers);
-        // Corvax-Wega-ArmorPenetration-End
+        // Corvax-Wega-ArmorPenetration-Edit-End
     }
 
     private void OnBorgDamageModify(EntityUid uid, ArmorComponent component,
@@ -97,7 +97,7 @@ public abstract partial class SharedArmorSystem : EntitySystem
         if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 
-        // Corvax-Wega-ArmorPenetration-Start
+        // Corvax-Wega-ArmorPenetration-Edit-Start
         // Применяем пробитие к защите боргов.
         var penetration = args.Args.ArmorPenetration;
 
@@ -106,7 +106,7 @@ public abstract partial class SharedArmorSystem : EntitySystem
             : GetPenetratedModifiers(component.Modifiers, penetration);
 
         args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers);
-        // Corvax-Wega-ArmorPenetration-End
+        // Corvax-Wega-ArmorPenetration-Edit-End
     }
 
     private void OnArmorVerbExamine(EntityUid uid, ArmorComponent component, GetVerbsEvent<ExamineVerb> args)

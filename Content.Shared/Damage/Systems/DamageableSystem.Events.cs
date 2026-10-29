@@ -258,7 +258,7 @@ public record struct BeforeDamageChangedEvent(DamageSpecifier Damage, EntityUid?
 ///
 ///     For example, armor.
 /// </summary>
-public sealed class DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null, float armorPenetration = 0f) // Corvax-Wega-ArmorPenetration-Add
+public sealed class DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null, float armorPenetration = 0f) // Corvax-Wega-ArmorPenetration-Edit
     : EntityEventArgs, IInventoryRelayEvent
 {
     /// <inheritdoc/>
