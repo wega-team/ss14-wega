@@ -409,7 +409,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
         }
 
         if (lastState == DoorState.Emagging && TryComp<DoorBoltComponent>(uid, out var doorBoltComponent))
-            SetBoltsDown((uid, doorBoltComponent), true, user, true);
+            TrySetBoltDown((uid, doorBoltComponent), true, user, true);
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
 - type: marking
+  parent: [ VulpBaseMarking ] # No clamping, you can have nail (claw?) polish or something
   id: VulpClawsHandLeft
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
@@ -7,6 +8,7 @@
       state: claws_l_hand
 
 - type: marking
+  parent: [ VulpBaseMarking ] # No clamping, you can have nail (claw?) polish or something
   id: VulpClawsHandRight
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
@@ -15,6 +17,7 @@
       state: claws_r_hand
 
 - type: marking
+  parent: [ VulpBaseMarking ] # No clamping, you can have nail (claw?) polish or something
   id: VulpClawsFootLeft
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
@@ -23,6 +26,7 @@
       state: claws_l_foot
 
 - type: marking
+  parent: [ VulpBaseMarking ] # No clamping, you can have nail (claw?) polish or something
   id: VulpClawsFootRight
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
@@ -34,6 +38,7 @@
 
 ## Left Side
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsCrestLegLeft
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
@@ -43,6 +48,7 @@
 
 # Corvax-Wega-Marking-Edit-start
 #- type: marking
+#  parent: [ VulpBaseMarkingClamped ]
 #  id: VulpPointsCrestArmLeft
 #  bodyPart: LArm
 #  groupWhitelist: [ Vulpkanin ]
@@ -52,6 +58,7 @@
 # Corvax-Wega-Marking-Edit-end
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsCrestFootLeft
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
@@ -60,6 +67,7 @@
       state: crest-foot-l
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsCrestHandLeft
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
@@ -70,6 +78,7 @@
 ## Right Side
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsCrestLegRight
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
@@ -79,6 +88,7 @@
 
 # Corvax-Wega-Marking-Edit-start
 #- type: marking
+#  parent: [ VulpBaseMarkingClamped ]
 #  id: VulpPointsCrestArmRight
 #  bodyPart: RArm
 #  groupWhitelist: [ Vulpkanin ]
@@ -88,6 +98,7 @@
 # Corvax-Wega-Marking-Edit-end
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsCrestFootRight
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
@@ -96,6 +107,7 @@
       state: crest-foot-r
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsCrestHandRight
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
@@ -109,14 +121,16 @@
 
 # Corvax-Wega-Marking-Edit-start
 #- type: marking
+#  parent: [ VulpBaseMarkingClamped ]
 #  id: VulpPointsFadeLegLeft
 #  bodyPart: LLeg
 #  groupWhitelist: [ Vulpkanin ]
 #  sprites:
 #    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
 #      state: points_fade-leg-l
-
+#
 #- type: marking
+#  parent: [ VulpBaseMarkingClamped ]
 #  id: VulpPointsFadeArmLeft
 #  bodyPart: LArm
 #  groupWhitelist: [ Vulpkanin ]
@@ -126,6 +140,7 @@
 # Corvax-Wega-Marking-Edit-end
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsFadeFootLeft
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
@@ -134,6 +149,7 @@
       state: gradient-foot-l # Corvax-Wega-Marking-Edit
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsFadeHandLeft
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
@@ -145,14 +161,16 @@
 
 # Corvax-Wega-Marking-Edit-start
 #- type: marking
+#  parent: [ VulpBaseMarkingClamped ]
 #  id: VulpPointsFadeLegRight
 #  bodyPart: RLeg
 #  groupWhitelist: [ Vulpkanin ]
 #  sprites:
 #    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
 #      state: points_fade-leg-r
-
+#
 #- type: marking
+#  parent: [ VulpBaseMarkingClamped ]
 #  id: VulpPointsFadeArmRight
 #  bodyPart: RArm
 #  groupWhitelist: [ Vulpkanin ]
@@ -162,6 +180,7 @@
 # Corvax-Wega-Marking-Edit-end
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsFadeFootRight
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
@@ -170,6 +189,7 @@
       state: gradient-foot-r # Corvax-Wega-Marking-Edit
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsFadeHandRight
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]
@@ -182,6 +202,7 @@
 ## Left Side
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpLegLeft
   bodyPart: LLeg
   groupWhitelist: [ Vulpkanin ]
@@ -190,6 +211,7 @@
       state: points_sharp-leg-l
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpArmLeft
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
@@ -198,6 +220,7 @@
       state: points_sharp-arm-l
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpLongArmLeft
   bodyPart: LArm
   groupWhitelist: [ Vulpkanin ]
@@ -206,6 +229,7 @@
       state: points_sharp-arm-long-l
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpFootLeft
   bodyPart: LFoot
   groupWhitelist: [ Vulpkanin ]
@@ -214,6 +238,7 @@
       state: points_sharp-foot-l
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpHandLeft
   bodyPart: LHand
   groupWhitelist: [ Vulpkanin ]
@@ -224,6 +249,7 @@
 ## Right Side
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpLegRight
   bodyPart: RLeg
   groupWhitelist: [ Vulpkanin ]
@@ -232,6 +258,7 @@
       state: points_sharp-leg-r
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpArmRight
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
@@ -240,6 +267,7 @@
       state: points_sharp-arm-r
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpLongArmRight
   bodyPart: RArm
   groupWhitelist: [ Vulpkanin ]
@@ -248,6 +276,7 @@
       state: points_sharp-arm-long-r
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpFootRight
   bodyPart: RFoot
   groupWhitelist: [ Vulpkanin ]
@@ -256,6 +285,7 @@
       state: points_sharp-foot-r
 
 - type: marking
+  parent: [ VulpBaseMarkingClamped ]
   id: VulpPointsSharpHandRight
   bodyPart: RHand
   groupWhitelist: [ Vulpkanin ]

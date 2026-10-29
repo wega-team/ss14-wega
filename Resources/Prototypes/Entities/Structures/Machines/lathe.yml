@@ -313,6 +313,7 @@
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
+    - PowerCellsStatic
     - ModesuitPartStatic # Corvax-Wega-Edit
     - ModesuitModuleStatic # Corvax-Wega-Edit
     dynamicPacks:
@@ -323,18 +324,19 @@
     - BorgModules
     - MechParts
     - MechEquipment
+    - PowerCells
   - type: MaterialStorage
     whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: GuideHelp
     guides:
     - Robotics
-# Corvax-wega-start
+  # Corvax-wega-start
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ModesuitModuleSecStatic
     - ModesuitModuleSecReach
-# Corvax-wega-end
+  # Corvax-wega-end
 
 - type: entity
   id: Biofabricator
