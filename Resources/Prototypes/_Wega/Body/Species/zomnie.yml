@@ -76,10 +76,6 @@
     - id: FoodMeatRotten
       amount: 5
   - type: Temperature
-    heatDamageThreshold: 360
-    coldDamageThreshold: 243.15
-    currentTemperature: 310.15
-    specificHeat: 46
     coldDamage:
       types:
         Cold: 0
@@ -91,21 +87,22 @@
   - type: Pacified
   - type: StutteringAccent
   - type: Bloodstream
-    bloodReagent: CopperBlood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: CopperBlood
+        Quantity: 600
   - type: ZombieImmune
   - type: Internals
   - type: PassiveDamage
     allowedStates:
     - Alive
-    damageCap: 20
     damage:
       types:
         Heat: -0.07
-        Blunt: -0.4
-        Slash: -0.2
-        Piercing: -0.2
-      groups:
-        Brute: -0.07
+        Blunt: -0.6
+        Slash: -0.4
+        Piercing: -0.4
+        Shock: -0.07
   - type: FireVisuals
     alternateState: Standing
   - type: Vocal
