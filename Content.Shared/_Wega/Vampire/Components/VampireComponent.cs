@@ -33,7 +33,7 @@ public sealed partial class VampireComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public float NextSpaceDamageTick { get; set; }
 
-    [DataField, ViewVariables(VVAccess.ReadOnly)]
+    [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public VampireClassEnum CurrentEvolution { get; set; } = VampireClassEnum.NonSelected;
 
     [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
