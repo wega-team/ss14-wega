@@ -1,0 +1,7 @@
+- type: soundCollection
+  id: Slaps
+  files:
+    - /Audio/_Wega/Interacrtions/Slaps/woman-slap.ogg
+    - /Audio/_Wega/Interacrtions/Slaps/clap1.ogg
+    - /Audio/_Wega/Interacrtions/Slaps/clap2.ogg
+    - /Audio/_Wega/Interacrtions/Slaps/pat_1.ogg

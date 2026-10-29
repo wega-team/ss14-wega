@@ -1,0 +1,633 @@
+- type: entity
+  parent: d20Dice
+  id: DiceOfFate
+  name: d20
+  description: A die with twenty sides. The preferred die to throw at the GM.
+  suffix: Dice Of Fate, DO NOT MAP
+  components:
+  - type: DiceOfFate
+
+- type: entity
+  parent: BaseStorageItem
+  id: CardTarotBoxEmpty
+  name: tarot card box
+  description: "An enchanted deck of Tarot cards."
+  suffix: Empty
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/cardtarot.rsi
+    state: box
+  - type: SpaceGarbage
+  - type: Tag
+    tags:
+    - Trash
+  - type: Storage
+    maxItemSize: Tiny
+    grid:
+    - 0,0,11,3
+    whitelist:
+      tags:
+      - CardTarot
+
+- type: entity
+  parent: CardTarotBoxEmpty
+  id: CardTarotBoxFilled
+  name: tarot card box
+  description: "An enchanted deck of Tarot cards."
+  suffix: Filled, DO NOT MAP
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: CardTarotFool
+        - id: CardTarotMagician
+        - id: CardTarotHighPriestess
+        - id: CardTarotEmpress
+        - id: CardTarotEmperor
+        - id: CardTarotHierophant
+        - id: CardTarotLovers
+        - id: CardTarotChariot
+        - id: CardTarotJustice
+        - id: CardTarotHermit
+        - id: CardTarotWheelOfFortune
+        - id: CardTarotStrength
+        - id: CardTarotHangedMan
+        - id: CardTarotDeath
+        - id: CardTarotTemperance
+        - id: CardTarotDevil
+        - id: CardTarotTower
+        - id: CardTarotStars
+        - id: CardTarotMoon
+        - id: CardTarotSun
+        - id: CardTarotJudgement
+        - id: CardTarotTheWorld
+        # -------------------------------- #
+        - id: CardTarotFoolReversed
+        - id: CardTarotMagicianReversed
+        - id: CardTarotHighPriestessReversed
+        - id: CardTarotEmpressReversed
+        - id: CardTarotEmperorReversed
+        - id: CardTarotHierophantReversed
+        - id: CardTarotLoversReversed
+        - id: CardTarotChariotReversed
+        - id: CardTarotJusticeReversed
+        - id: CardTarotHermitReversed
+        - id: CardTarotWheelOfFortuneReversed
+        - id: CardTarotStrengthReversed
+        - id: CardTarotHangedManReversed
+        - id: CardTarotDeathReversed
+        - id: CardTarotTemperanceReversed
+        - id: CardTarotDevilReversed
+        - id: CardTarotTowerReversed
+        - id: CardTarotStarsReversed
+        - id: CardTarotMoonReversed
+        - id: CardTarotSunReversed
+        - id: CardTarotJudgementReversed
+        - id: CardTarotTheWorldReversed
+
+- type: entity
+  parent: BaseItem
+  id: BaseCardTarot
+  abstract: true
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/cardtarot.rsi
+  - type: CardTarot
+    card: NotEnchanted
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - CardTarot
+  - type: Appearance
+  - type: StaticPrice
+    price: 5
+
+- type: entity
+  parent: BaseCardTarot
+  id: BaseCardTarotReversed
+  abstract: true
+  components:
+  - type: CardTarot
+    card: NotEnchanted
+    cardType: Reversed
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotNotEnchanted
+  name: empty card tarot
+  description: "This is one of the cards in the Tarot deck, but it seems to be empty."
+  components:
+  - type: Sprite
+    state: notenchanted
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotFool
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: fool
+  - type: CardTarot
+    card: Fool
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotMagician
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: magician
+  - type: CardTarot
+    card: Magician
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotHighPriestess
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: highpriestess
+  - type: CardTarot
+    card: HighPriestess
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotEmpress
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: empress
+  - type: CardTarot
+    card: Empress
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotEmperor
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: emperor
+  - type: CardTarot
+    card: Emperor
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotHierophant
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: hierophant
+  - type: CardTarot
+    card: Hierophant
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotLovers
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: lovers
+  - type: CardTarot
+    card: Lovers
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotChariot
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: chariot
+  - type: CardTarot
+    card: Chariot
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotJustice
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: justice
+  - type: CardTarot
+    card: Justice
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotHermit
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: hermit
+  - type: CardTarot
+    card: Hermit
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotWheelOfFortune
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: wheeloffortune
+  - type: CardTarot
+    card: WheelOfFortune
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotStrength
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: strength
+  - type: CardTarot
+    card: Strength
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotHangedMan
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: hangedman
+  - type: CardTarot
+    card: HangedMan
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotDeath
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: death
+  - type: CardTarot
+    card: Death
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotTemperance
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: temperance
+  - type: CardTarot
+    card: Temperance
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotDevil
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: devil
+  - type: CardTarot
+    card: Devil
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotTower
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: tower
+  - type: CardTarot
+    card: Tower
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotStars
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: stars
+  - type: CardTarot
+    card: Stars
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotMoon
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: moon
+  - type: CardTarot
+    card: Moon
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotSun
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: sun
+  - type: CardTarot
+    card: Sun
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotJudgement
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: judgement
+  - type: CardTarot
+    card: Judgement
+
+- type: entity
+  parent: BaseCardTarot
+  id: CardTarotTheWorld
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  components:
+  - type: Sprite
+    state: theworld
+  - type: CardTarot
+    card: TheWorld
+
+# ------------------------------------ #
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotFoolReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: fool-reversed
+  - type: CardTarot
+    card: Fool
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotMagicianReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: magician-reversed
+  - type: CardTarot
+    card: Magician
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotHighPriestessReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: highpriestess-reversed
+  - type: CardTarot
+    card: HighPriestess
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotEmpressReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: empress-reversed
+  - type: CardTarot
+    card: Empress
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotEmperorReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: emperor-reversed
+  - type: CardTarot
+    card: Emperor
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotHierophantReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: hierophant-reversed
+  - type: CardTarot
+    card: Hierophant
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotLoversReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: lovers-reversed
+  - type: CardTarot
+    card: Lovers
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotChariotReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: chariot-reversed
+  - type: CardTarot
+    card: Chariot
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotJusticeReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: justice-reversed
+  - type: CardTarot
+    card: Justice
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotHermitReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: hermit-reversed
+  - type: CardTarot
+    card: Hermit
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotWheelOfFortuneReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: wheeloffortune-reversed
+  - type: CardTarot
+    card: WheelOfFortune
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotStrengthReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: strength-reversed
+  - type: CardTarot
+    card: Strength
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotHangedManReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: hangedman-reversed
+  - type: CardTarot
+    card: HangedMan
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotDeathReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: death-reversed
+  - type: CardTarot
+    card: Death
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotTemperanceReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: temperance-reversed
+  - type: CardTarot
+    card: Temperance
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotDevilReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: devil-reversed
+  - type: CardTarot
+    card: Devil
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotTowerReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: tower-reversed
+  - type: CardTarot
+    card: Tower
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotStarsReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: stars-reversed
+  - type: CardTarot
+    card: Stars
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotMoonReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: moon-reversed
+  - type: CardTarot
+    card: Moon
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotSunReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: sun-reversed
+  - type: CardTarot
+    card: Sun
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotJudgementReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: judgement-reversed
+  - type: CardTarot
+    card: Judgement
+
+- type: entity
+  parent: BaseCardTarotReversed
+  id: CardTarotTheWorldReversed
+  name: card tarot
+  description: "This is one of the cards from the Tarot deck."
+  suffix: Reversed
+  components:
+  - type: Sprite
+    state: theworld-reversed
+  - type: CardTarot
+    card: TheWorld

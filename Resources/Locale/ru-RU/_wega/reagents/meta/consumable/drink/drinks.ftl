@@ -12,6 +12,9 @@ reagent-name-milkshakechockolate = шоколадный милкшейк
 reagent-name-milkshakecherry = вишневый милкшейк
 reagent-name-milkshakebanana = банановый милкшейк
 reagent-name-milkshakeberry = ягодный милкшейк
+reagent-name-melonjuice = сок дыни
+reagent-name-catmelonjuice = сок кошкодыни
+reagent-name-juicetangerine = мандариновый сок
 
 reagent-desc-cafe-mocha = Изысканный кофейный напиток с шоколадом и молоком, идеальный для любителей сладкого.
 reagent-desc-chocolate-milk = Прохладное молоко с насыщенным шоколадным вкусом, любимый напиток детей и взрослых.
@@ -27,3 +30,6 @@ reagent-desc-milkshakechockolate = Взбитый молочный коктей�
 reagent-desc-milkshakecherry = Взбитый молочный коктейль, идеальный для освежения со вкусом вишни.
 reagent-desc-milkshakebanana = Взбитый молочный коктейль, идеальный для освежения со вкусом банана.
 reagent-desc-milkshakeberry = Взбитый молочный коктейль, идеальный для освежения со вкусом ягод.
+reagent-desc-melonjuice = Свежевыжатый сок дыни.
+reagent-desc-catmelonjuice = Свежевыжатый сок кошкодыни. Вызывает симптомы патологического мяуканья.
+reagent-desc-juicetangerine = Свежевыжатый мандариновый сок, идеально скрасит ваши праздники!

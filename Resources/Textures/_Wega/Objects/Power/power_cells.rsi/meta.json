@@ -8,6 +8,12 @@
     "copyright": "Made with love by Melissandra",
     "states": [
         {
+            "name": "o1"
+        },
+        {
+            "name": "o2"
+        },
+        {
             "name": "superpotato"
         }
     ]

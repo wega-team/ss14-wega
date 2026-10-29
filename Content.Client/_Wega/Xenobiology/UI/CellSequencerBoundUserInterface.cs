@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.Xenobiology.UI;
 
 [UsedImplicitly]
-public sealed class CellSequencerBoundUserInterface : BoundUserInterface
+public sealed partial class CellSequencerBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private CellSequencerWindow? _window;

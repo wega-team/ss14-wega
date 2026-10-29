@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/tgstation/tgstation",
+  "size": {
+    "x": 96,
+    "y": 46
+  },
+  "states": [
+    {
+      "name": "dragon",
+      "directions": 4
+    },
+    {
+      "name": "dragon_dead"
+    },
+    {
+      "name": "shadow"
+    }
+  ]
+}

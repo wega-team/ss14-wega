@@ -1,8 +1,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared._Wega.Resomi.Abilities;
+namespace Content.Shared.Resomi.Abilities;
 
 [RegisterComponent, NetworkedComponent]
 [AutoGenerateComponentState]
@@ -10,6 +9,7 @@ public sealed partial class AgillitySkillComponent : Component
 {
     [AutoNetworkedField, DataField]
     public Dictionary<string, int> DisabledJumpUpFixtureMasks = new();
+
     [AutoNetworkedField, DataField]
     public Dictionary<string, int> DisabledJumpDownFixtureMasks = new();
 
@@ -22,10 +22,11 @@ public sealed partial class AgillitySkillComponent : Component
     [DataField("jumpEnabled")]
     public bool JumpEnabled = true;
 
-    [DataField("switchAgilityAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string? SwitchAgilityAction = "SwitchAgilityAction";
+    [DataField("switchAgilityAction")]
+    public EntProtoId? SwitchAgilityAction = "SwitchAgilityAction";
 
-    [DataField("switchAgilityActionEntity")] public EntityUid? SwitchAgilityActionEntity;
+    [DataField("switchAgilityActionEntity")]
+    public EntityUid? SwitchAgilityActionEntity;
 
     /// <summary>
     /// how much stamina will be spent for each jump

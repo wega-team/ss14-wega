@@ -1,0 +1,10 @@
+# Rank 2
+- type: cargoProduct
+  id: CargoPlasmaCutter
+  icon:
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/cutter.rsi
+    state: icon
+  product: CratePlasmaCutter
+  cost: 5000
+  category: cargoproduct-category-name-cargo
+  group: SalvageJobReward2

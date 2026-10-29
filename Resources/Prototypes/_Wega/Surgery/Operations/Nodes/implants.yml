@@ -241,3 +241,10 @@
   transitions:
     - ExtractFakeMindShieldTransition
     - EndRemoveFakeMindShieldTransition
+
+# Throat
+- type: surgeryNode
+  id: RemoveDivineVocalCordsOperation
+  description: Извлечь голосовые связки бога
+  transitions:
+    - EndRemoveDivineVocalCordsTransition

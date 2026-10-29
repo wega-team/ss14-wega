@@ -47,6 +47,9 @@
     - FakeMindShieldImplant
     - RadioImplant
     - ChameleonControllerImplant
+    - VoiceMaskImplant
+    - LoyaltyImplant #Corvax-Wega-Edit
+    - ThermalVisionImplant # Corvax-Wega-Add
     deimplantFailureDamage:
       types:
         Cellular: 50
@@ -80,6 +83,9 @@
     interfaces:
       enum.DeimplantUiKey.Key:
         type: DeimplantBoundUserInterface
+  - type: Tag
+    tags:
+    - SmeltingImmune
 
 - type: entity
   id: Implanter
@@ -126,7 +132,7 @@
   id: BaseImplantOnlyImplanterSyndi
   parent: [BaseImplantOnlyImplanter, BaseSyndicateContraband]
   name: syndicate implanter
-  description: A compact disposable syringe exclusively designed for the injection of subdermal implants. Make sure to scrub it with soap or a rag to remove residual DNA after use!
+  description: A compact disposable syringe exclusively designed for the injection of subdermal implants. Make sure to scrub it with soap to remove residual DNA after use!
   abstract: true
   components:
   - type: Item
@@ -152,7 +158,8 @@
           True: {state: broken}
           False: {state: implanter1}
   - type: Tag
-    tags: []
+    tags:
+    - SmeltingImmune
 
 #Fun implanters
 
@@ -219,7 +226,7 @@
 - type: entity
   id: UplinkImplanter
   name: uplink implanter
-  parent: BaseImplantOnlyImplanterSyndi
+  parent: [BaseCorvaxContraband436, BaseImplantOnlyImplanterSyndi] # Corvax-Contraband
   components:
   - type: Implanter
     implant: UplinkImplant
@@ -255,6 +262,14 @@
   components:
   - type: Implanter
     implant: ChameleonControllerImplant
+
+- type: entity
+  id: VoiceMaskImplanter
+  name: identity mask implanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: VoiceMaskImplant
 
 #Nuclear Operative/Special implanters
 

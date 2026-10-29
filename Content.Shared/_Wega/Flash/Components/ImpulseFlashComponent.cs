@@ -1,5 +1,4 @@
 using Robust.Shared.GameStates;
-using Content.Shared.Actions;
 using Robust.Shared.Prototypes;
 namespace Content.Shared.Flash.Components;
 
@@ -11,10 +10,10 @@ public sealed partial class ImpulseFlashComponent : Component
 {
     [DataField]
     public float Range = 1.0f;
-	
-	[DataField]
+
+    [DataField]
     public float FlashCharge = 100f;
-	
+
     [DataField]
     public EntProtoId FlashAction = "ActionToggleFlashHelm";
 
@@ -26,7 +25,7 @@ public sealed partial class ImpulseFlashComponent : Component
 
     [DataField]
     public float Probability = 1.0f;
-	
-	[DataField]
+
+    [DataField]
     public float SlowTo = 0.5f;
 }

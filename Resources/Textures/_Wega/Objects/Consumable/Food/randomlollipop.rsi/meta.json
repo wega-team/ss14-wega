@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made with love by Melissandra",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "lollipop1"
+    },
+    {
+      "name": "lollipop2"
+    },
+    {
+      "name": "lollipop3"
+    },
+    {
+      "name": "lollipop4"
+    },
+    {
+      "name": "lollipop5"
+    },
+    {
+      "name": "lollipop6"
+    },
+    {
+      "name": "lollipop7"
+    },
+    {
+      "name": "lollipop8"
+    },
+    {
+      "name": "lollipop9"
+    },
+    {
+      "name": "lollipop10"
+    },
+    {
+      "name": "lollipop11"
+    },
+    {
+      "name": "lollipop12"
+    },
+    {
+      "name": "lollipop13"
+    },
+    {
+      "name": "lollipop14"
+    },
+    {
+      "name": "lollipop15"
+    },
+    {
+      "name": "lollipop16"
+    }
+  ]
+}

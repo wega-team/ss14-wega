@@ -12,10 +12,12 @@
     sprite: _Wega/Effects/bloodtentacle.rsi
     layers:
     - state: blood_tendril
-  - type: StunOnContact
+  - type: SlowdownOnContact
+    multiplier: 0
+    duration: 8
     blacklist:
-      tags:
-      - Goliath
+      components:
+      - Vampire
   - type: Fixtures
     fixtures:
       fix:
@@ -28,7 +30,7 @@
         - Impassable
         hard: false
   - type: TimedDespawn
-    lifetime: 0.4
+    lifetime: 6
   - type: SpawnOnDespawn
     prototype: EffectBloodTentacleRetract
 
@@ -47,7 +49,7 @@
     sprite: _Wega/Effects/bloodtentacle.rsi
   - type: InteractionOutline
   - type: TimedDespawn
-    lifetime: 0.7
+    lifetime: 0.1
 
 - type: entity
   id: EffectBloodTentacleSpawn
@@ -74,11 +76,9 @@
   id: BloodBarrier
   name: blood barrier
   components:
-  - type: TimedDespawn
-    lifetime: 25
-  - type: Tag
-    tags:
-      - Wall
+  - type: Sprite
+    sprite: _Wega/Effects/bloodbarrier.rsi
+    state: blood_barrier
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -92,13 +92,8 @@
         layer:
           - WallLayer
   - type: Airtight
-  - type: Sprite
-    sprite: _Wega/Effects/bloodbarrier.rsi
-    state: blood_barrier
-  - type: Icon
-    sprite: _Wega/Effects/bloodbarrier.rsi
-    state: blood_barrier
   - type: Damageable
+  - type: Injurable
     damageContainer: Biological
   - type: Destructible
     thresholds:
@@ -116,6 +111,10 @@
       - !type:PlaySoundBehavior
         sound:
           path: /Audio/Items/drink.ogg
+  - type: TimedDespawn
+    lifetime: 25
+  - type: SpawnOnDespawn
+    prototype: PuddleBlood
 
 - type: entity
   parent: [ CollideFloorTrap, BaseShadow ]
@@ -127,25 +126,73 @@
     state: trap
   - type: Stealth
     lastVisibility: 0.1
+  - type: FlashOnTrigger
+  - type: TimedDespawn
+    lifetime: 1
+  - type: SpawnOnDespawn
+    prototype: ShadowTrapTrue
+  - type: EmitSoundOnSpawn
+    sound:
+      path: /Audio/Items/Handcuffs/cuff_end.ogg
+      params:
+        variation: 0.3
+  - type: Photophobia
+    applyShadowWeakness: true
+    damagePerLight: 5
+    speedModifier: 1
+    interval: 0.5
+
+- type: entity
+  parent: [ CollideFloorTrap, BaseShadow ]
+  id: ShadowTrapTrue
+  categories: [ HideSpawnMenu ]
+  name: shadow trap
+  components:
+  - type: Sprite
+    sprite: _Wega/Effects/shadowtrap.rsi
+    state: trap
+  - type: Stealth
+    lastVisibility: 0.1
   - type: TriggerOnCollide
     fixtureID: floortrap
+    maxTriggers: 1
   - type: FlashOnTrigger
   - type: DamageOnTrigger
+    targetUser: true
+    ignoreResistances: true
     damage:
       types:
         Blunt: 20
+    blacklist:
+      components:
+      - Vampire
+  - type: StunOnContact
+    fixtureId: floortrap
+    duration: 2
+    blacklist:
+      components:
+      - Vampire
 
 - type: entity
   parent: BaseStructure
   id: BeaconSoul
   name: beacon soul
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Wega/Effects/soulbeacon.rsi
     state: beacon
-  - type: BeaconSoul
   - type: TimedDespawn
-    lifetime: 350.0
+    lifetime: 250.0 # 130s CD + 120s action
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 100
+        mask:
+        - TableMask
 
 - type: entity
   id: VampireMistEffect
@@ -175,6 +222,16 @@
   - type: Sprite
     sprite: _Wega/Effects/shadowboxing.rsi
     state: shadow
+  - type: Injurable
+    damageContainer: Inorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: MovementSpeedModifier
     baseWalkSpeed: 20
     baseSprintSpeed: 20
@@ -182,23 +239,17 @@
   - type: MeleeWeapon
     damage:
       types:
+        Blunt: 15
+  - type: DamageOnHit
+    damage:
+      types:
         Blunt: 20
-  - type: NPCMeleeCombat
+  - type: NPCIgnoringOptimize
   - type: NpcFactionMember
     factions:
     - Vampire
   - type: HTN
     rootTask:
-      task: FollowerShadowCompound
+      task: SimpleHostileCompound
   - type: TimedDespawn
-    lifetime: 0.8
-
-- type: htnCompound
-  id: FollowerShadowCompound
-  branches:
-    - tasks:
-        - !type:HTNCompoundTask
-          task: MeleeCombatCompound
-    - tasks:
-        - !type:HTNCompoundTask
-          task: IdleCompound
+    lifetime: 20.0

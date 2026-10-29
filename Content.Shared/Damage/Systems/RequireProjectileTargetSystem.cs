@@ -1,14 +1,15 @@
+using Content.Shared.Damage.Components;
 using Content.Shared.Projectiles;
-using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Standing;
-using Robust.Shared.Physics.Events;
+using Content.Shared.Weapons.Ranged.Components;
 using Robust.Shared.Containers;
+using Robust.Shared.Physics.Events;
 
-namespace Content.Shared.Damage.Components;
+namespace Content.Shared.Damage.Systems;
 
-public sealed class RequireProjectileTargetSystem : EntitySystem
+public sealed partial class RequireProjectileTargetSystem : EntitySystem
 {
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -27,7 +28,8 @@ public sealed class RequireProjectileTargetSystem : EntitySystem
 
         var other = args.OtherEntity;
         if (TryComp(other, out ProjectileComponent? projectile) &&
-            CompOrNull<TargetedProjectileComponent>(other)?.Target != ent)
+            CompOrNull<TargetedProjectileComponent>(other)?.Target != ent
+            && !projectile.IgnoreTargeted) // Corvax-Wega-Edit
         {
             // Prevents shooting out of while inside of crates
             var shooter = projectile.Shooter;

@@ -12,9 +12,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -31,9 +32,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -50,9 +52,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 4
 
 - type: reagent
@@ -69,9 +72,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
 
 - type: reagent
@@ -88,9 +92,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -107,9 +112,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -126,9 +132,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -145,9 +152,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -164,9 +172,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -183,9 +192,10 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
 
 - type: reagent
@@ -202,11 +212,12 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
-        
+
 - type: reagent
   id: MilkshakeBerry
   parent: BaseJuice
@@ -221,11 +232,12 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
-        
+
 - type: reagent
   id: MilkshakeBanana
   parent: BaseJuice
@@ -240,7 +252,83 @@
     state: icon
   metamorphicChangeColor: false
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 2
+
+- type: reagent
+  id: MelonJuice
+  parent: BaseJuice
+  name: reagent-name-melonjuice
+  group: Drinks
+  desc: reagent-desc-melonjuice
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: melon
+  color: "#ffe3b8"
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/melon_juice.rsi
+    state: icon
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: JuiceTangerine
+  parent: BaseJuice
+  name: reagent-name-juicetangerine
+  group: Drinks
+  desc: reagent-desc-juicetangerine
+  physicalDesc: reagent-physical-desc-citric
+  flavor: tangerine
+  color: "#ff6000"
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/juice_tangerine_glass.rsi
+    state: icon
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+
+- type: reagent
+  id: CatMelonJuice
+  parent: BaseJuice
+  name: reagent-name-catmelonjuice
+  group: Drinks
+  desc: reagent-desc-catmelonjuice
+  physicalDesc: reagent-physical-desc-creamy
+  flavor: melon
+  color: "#ffb8ee"
+  metamorphicSprite:
+    sprite: _Wega/Objects/Consumable/Drinks/catmelon_juice.rsi
+    state: icon
+  metamorphicChangeColor: false
+  metabolisms:
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 2
+    Bloodstream:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        probability: 0.3
+        messages:
+        - "catmelonjuice-effect-at-purr"
+        - "catmelonjuice-effect-at-murr"
+        - "catmelonjuice-effect-at-meow"
+      - !type:Emote
+        emote: FilinidMeows
+        showInChat: true
+        force: true
+        probability: 0.2

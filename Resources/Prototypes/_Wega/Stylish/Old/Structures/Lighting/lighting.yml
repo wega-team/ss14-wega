@@ -1,0 +1,45 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallLightOld
+  rsiPath: Structures/Wallmounts/Lighting/light-tube.rsi
+  offset: 0, 0.81
+  entities:
+  - AlwaysPoweredWallLight
+  - PoweredlightEmpty
+  - Poweredlight
+  - PoweredlightLED
+  - AlwaysPoweredLightLED
+  - PoweredlightExterior
+  - AlwaysPoweredLightExterior
+  - PoweredlightSodium
+  - AlwaysPoweredLightSodium
+  - AlwaysPoweredlightColor
+  - PoweredlightCyan
+  - AlwaysPoweredlightCyan
+  - PoweredlightBlue
+  - AlwaysPoweredlightBlue
+  - PoweredlightYellow
+  - AlwaysPoweredlightYellow
+  - PoweredlightPink
+  - AlwaysPoweredlightPink
+  - PoweredlightOrange
+  - AlwaysPoweredlightOrange
+  - PoweredlightBlack
+  - AlwaysPoweredlightBlack
+  - PoweredlightRed
+  - AlwaysPoweredlightRed
+  - PoweredlightGreen
+  - AlwaysPoweredlightGreen
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallSmallLightOld
+  rsiPath: Structures/Wallmounts/Lighting/light-small.rsi
+  offset: 0, 0.875
+  entities:
+  - SmallLight
+  - PoweredSmallLightEmpty
+  - PoweredLEDSmallLight
+  - PoweredDimSmallLight
+  - PoweredWarmSmallLight
+  - PoweredSmallLight

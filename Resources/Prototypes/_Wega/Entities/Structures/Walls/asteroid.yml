@@ -1,0 +1,190 @@
+# Veins
+- type: entity
+  abstract: true
+  id: BaseVeinBananium
+  suffix: Bananium
+  description: An ore vein rich with bananium.
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreBananium
+  - type: Sprite
+    layers:
+    - state: rock_bananium
+      sprite: _Wega/Structures/Walls/stone-ore.rsi
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+
+- type: entity
+  abstract: true
+  id: BaseVeinGems
+  suffix: Gems
+  description: An ore vein rich with gems.
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    oreRarityPrototypeId: RandomGemsDistributionStandard
+  - type: Sprite
+    layers:
+    - state: rock_gems
+      sprite: _Wega/Structures/Walls/stone-ore.rsi
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+
+- type: entity
+  abstract: true
+  id: BaseVeinMagmite
+  suffix: Magmite
+  description: An ore vein rich with magmite.
+  components:
+  - type: OreVein
+    oreChance: 1.0
+    currentOre: OreMagmite
+  - type: Sprite
+    layers:
+    - state: rock_magmite
+      sprite: _Wega/Structures/Walls/stone-ore.rsi
+      map: [ "enum.MiningScannerVisualLayers.Overlay" ]
+
+# Specific
+- type: entity
+  parent: [ BaseAsteroidRockVisuals, BaseAsteroidRock ]
+  id: WallRockChromiteIndestructible
+  suffix: Indestructible
+  components:
+  - type: Icon
+    sprite: Structures/Walls/stone-chromite.rsi
+    state: full
+  - type: Sprite
+    sprite: Structures/Walls/stone-chromite.rsi
+
+- type: entity
+  parent: [ BaseAsteroidRockVisuals, BaseAsteroidRock ]
+  id: WallRockSnowIndestructible
+  suffix: Indestructible
+  components:
+  - type: Icon
+    sprite: Structures/Walls/stone-snow.rsi
+    state: full
+  - type: Sprite
+    sprite: Structures/Walls/stone-snow.rsi
+
+# Lavaland
+- type: entity
+  parent: [ WallRockChromite, BaseVeinCoal ]
+  id: WallRockChromiteLavalandCoal
+  suffix: Coal, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinGold ]
+  id: WallRockChromiteLavalandGold
+  suffix: Gold, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinDiamond ]
+  id: WallRockChromiteLavalandDiamond
+  suffix: Diamond, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinPlasma ]
+  id: WallRockChromiteLavalandPlasma
+  suffix: Plasma, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinQuartz ]
+  id: WallRockChromiteLavalandQuartz
+  suffix: Quartz, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinSilver ]
+  id: WallRockChromiteLavalandSilver
+  suffix: Silver, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinSteel ]
+  id: WallRockChromiteLavalandTin
+  suffix: Iron, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinUranium ]
+  id: WallRockChromiteLavalandUranium
+  suffix: Uranium, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinBananium ]
+  id: WallRockChromiteLavalandBananium
+  suffix: Bananium, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinGems ]
+  id: WallRockChromiteLavalandGems
+  suffix: Gems, Lavaland
+
+- type: entity
+  parent: [ WallRockChromite, BaseVeinMagmite ]
+  id: WallRockChromiteLavalandMagmite
+  suffix: Magmite, Lavaland
+
+- type: entity
+  parent: [ BaseRockGibtonite, WallRockChromite ]
+  id: WallRockChromiteLavalandGibtonite
+  suffix: Gibtonite, Lavaland
+
+# Icemoon
+- type: entity
+  parent: [ WallRockSnow, BaseVeinCoal ]
+  id: WallRockSnowIcemoonCoal
+  suffix: Coal, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinGold ]
+  id: WallRockSnowIcemoonGold
+  suffix: Gold, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinDiamond ]
+  id: WallRockSnowIcemoonDiamond
+  suffix: Diamond, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinPlasma ]
+  id: WallRockSnowIcemoonPlasma
+  suffix: Plasma, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinQuartz ]
+  id: WallRockSnowIcemoonQuartz
+  suffix: Quartz, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinSilver ]
+  id: WallRockSnowIcemoonSilver
+  suffix: Silver, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinSteel ]
+  id: WallRockSnowIcemoonTin
+  suffix: Iron, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinUranium ]
+  id: WallRockSnowIcemoonUranium
+  suffix: Uranium, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinBananium ]
+  id: WallRockSnowIcemoonBananium
+  suffix: Bananium, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinGems ]
+  id: WallRockSnowIcemoonGems
+  suffix: Gems, Icemoon
+
+- type: entity
+  parent: [ WallRockSnow, BaseVeinMagmite ]
+  id: WallRockSnowIcemoonMagmite
+  suffix: Magmite, Icemoon
+
+- type: entity
+  parent: [ BaseRockGibtonite, WallRockSnow ]
+  id: WallRockSnowIcemoonGibtonite
+  suffix: Gibtonite, Icemoon

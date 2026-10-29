@@ -1,0 +1,16 @@
+- type: entity
+  id: BadgeCase
+  parent: ClothingBackpack
+  name: case badge
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Storage/badge_case.rsi
+    state: icon
+  - type: Storage
+    grid:
+    - 0,0,5,1
+    whitelist:
+      tags:
+      - Badge
+  - type: Item
+    size: Small

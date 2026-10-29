@@ -1,0 +1,19 @@
+- type: entity
+  id: RandomContainerBlank
+  name: random container spawner
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - ShippingContainerBlank
+      - ShippingContainerConarex
+      - ShippingContainerCybersun
+      - ShippingContainerDeforest
+      - ShippingContainerDonkCo
+      - ShippingContainerGorlexRed
+      - ShippingContainerGorlex
+      - ShippingContainerInterdyne
+      - ShippingContainerKahraman
+      - ShippingContainerKosmologistika
+      - ShippingContainerNakamura
+      - ShippingContainerNanotrasen
+      - ShippingContainerVitezstvi

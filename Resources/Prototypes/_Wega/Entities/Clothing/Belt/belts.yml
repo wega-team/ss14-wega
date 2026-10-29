@@ -1,0 +1,117 @@
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltWhiteSheath
+  name: white sabre sheath
+  description: Style, shine, everything for the best sabers in the universe.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/white_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/white_sheath.rsi
+
+- type: entity
+  parent: ClothingBeltSheath
+  id: ClothingBeltSheriffSheath
+  name: sheriff sabre sheath
+  description: Practicality, durability, the saber will definitely not end up in your leg.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/sheriff_sheath.rsi
+    state: sheath
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/sheriff_sheath.rsi
+    
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltBeerBandolier
+  name: beer bandolizer
+  description: No need for violence, take some beer!
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/beerbandolier.rsi
+    state: belt
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/beerbandolier.rsi
+  - type: Appearance
+  - type: Item
+    size: Huge
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,5,1
+    whitelist:
+      tags:
+        - Beer
+  - type: ItemMapper
+    mapLayers:
+      belt-onebottle:
+        minCount: 1
+        maxCount: 2
+        whitelist:
+          tags:
+          - Beer
+      belt-twobottle:
+        minCount: 3
+        maxCount: 4
+        whitelist:
+          tags:
+          - Beer
+      belt-threebottle:
+        minCount: 5
+        maxCount: 6
+        whitelist:
+          tags:
+          - Beer
+
+# ADT
+
+- type: entity
+  parent: ClothingBeltBase
+  id: ClothingBeltBlackSuspenders
+  name: black suspenders
+  description: A suspenders made with elastic ribbon and the addition of rubber. Made by company "Modeling Agency Dar-Vaxed".
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/black_suspenders.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/black_suspenders.rsi #спрайты от prazat911
+    quickEquip: true
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingBeltBase
+  id: ClothingBeltBrownSuspenders
+  name: brown suspenders
+  description: A suspenders made of rough leather. Made by company "Modeling Agency Dar-Vaxed".
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/leather_suspenders.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/leather_suspenders.rsi #спрайты от prazat911
+    quickEquip: true
+  - type: StaticPrice
+    price: 15
+
+- type: entity
+  parent: ClothingBeltStorageBase
+  id: ClothingBeltSecondSalvageWebbing
+  name: salvage rig
+  description: "A universal unloading system for working in space and beyond."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/salvagewebbing.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/salvagewebbing.rsi
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbing
+  id: ClothingBeltMilitaryWebbingAlt
+  name: light military webbing
+  description: Standart light webbing.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Belt/webbingblueshield.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Belt/webbingblueshield.rsi

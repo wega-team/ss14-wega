@@ -1,4 +1,4 @@
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Genetics;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
@@ -6,10 +6,10 @@ using Content.Shared.Vampire.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class SpeedUpGenSystem : EntitySystem
+public sealed partial class SpeedUpGenSystem : EntitySystem
 {
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private MovementSpeedModifierSystem _speed = default!;
 
     public override void Initialize()
     {
@@ -17,7 +17,7 @@ public sealed class SpeedUpGenSystem : EntitySystem
 
         SubscribeLocalEvent<SpeedUpGenComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<SpeedUpGenComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<SpeedUpGenComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<SpeedUpGenComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     private void OnInit(Entity<SpeedUpGenComponent> ent, ref ComponentInit args)
@@ -46,22 +46,15 @@ public sealed class SpeedUpGenSystem : EntitySystem
         }
     }
 
-    private void OnDamageChanged(Entity<SpeedUpGenComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<SpeedUpGenComponent> ent, ref DamageDealtEvent args)
     {
-        if (args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
+        if (!ent.Comp.DamageBooster)
             return;
 
-        var bonusDamage = args.DamageDelta * 0.2f;
-        _damageable.TryChangeDamage(ent, bonusDamage, true);
-    }
+        if (args.Damage.GetTotal() <= 0)
+            return;
 
-    private bool IsNegativeDamage(DamageSpecifier damage)
-    {
-        foreach (var type in damage.DamageDict)
-        {
-            if (type.Value > 0)
-                return false;
-        }
-        return true;
+        var bonusDamage = args.Damage * 0.2f;
+        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
     }
 }

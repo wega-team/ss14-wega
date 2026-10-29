@@ -1,0 +1,144 @@
+- type: entity
+  id: SushiRollSalmon
+  name: salmon roll
+  description: A roll filled with salmon.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - fishy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: salmon
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollAvocado
+  name: avocado roll
+  description: A roll filled with avocado.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - oily
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: avocado
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollEgg
+  name: egg roll
+  description: A roll filled with egg.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - egg
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: egg
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollCalifornia
+  name: California roll
+  description: Delicate snow crab meat.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - fishy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: california
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollUraraki
+  name: uramaki roll
+  description: Fish with sesame seeds.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - fishy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: salmonuramaki
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollWasabi
+  name: wasabi roll
+  description: Hot, hot!
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - spicy
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: wasabi
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollGunkan
+  name: roe gunkan
+  description: Fancy and expensive.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - salty
+    - oily
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: gunkan
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable
+
+- type: entity
+  id: SushiRollCrab
+  name: crab roll
+  description: Tropico, so that's where you've been.
+  parent: FoodMealBase
+  components:
+  - type: FlavorProfile
+    flavors:
+    - meaty
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/rolls.rsi
+    state: crab
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Vegetable

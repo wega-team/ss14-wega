@@ -1,2 +1,20 @@
+ui-options-barks-volume = Громкость Барков:
+ui-options-audio-effects = Звуковые эффекты
+ui-options-audio-effects-tooltip = Включает или отключает динамическое эхо в помещениях.
 ui-options-function-strangle = Душить
 ui-options-function-offer-item = Переключить режим передачи предмета
+ui-options-function-toggle-posing = Переключить режим позирования
+ui-options-function-posing-offset-left = Переместиться влево (позирование)
+ui-options-function-posing-offset-right = Переместиться вправо (позирование)
+ui-options-function-posing-offset-up = Переместиться вверх (позирование)
+ui-options-function-posing-offset-down = Переместиться вниз (позирование)
+ui-options-function-posing-rotate-negative = Повернуть против часовой (позирование)
+ui-options-function-posing-rotate-positive = Повернуть по часовой (позирование)
+ui-options-postprocess = Экспериментальная постобработка
+ui-options-postprocess-tooltip =
+    При включении, обилие света создает эффект переосвещенности.
+    Данный параметр влияет лишь на визуальную составляющую.
+ui-options-stylish-label = Стилизация (рекомендуется переподключение):
+ui-options-stylish-current = Текущая
+ui-options-stylish-old = Старая
+ui-options-stylish-event = Ивентовая

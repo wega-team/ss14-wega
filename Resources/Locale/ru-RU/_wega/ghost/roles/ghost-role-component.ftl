@@ -31,3 +31,24 @@ ghost-role-information-proteon-name = Протеон
 ghost-role-information-proteon-description = Слаб.
 ghost-role-information-possessed-blade-name = Одержимый меч
 ghost-role-information-possessed-blade-description = Ты — древний клинок, пропитанный жаждой крови. Твоя душа, заточённая в стали, жаждет разрушения.
+ghost-role-information-taxibot-name = Таксибот
+ghost-role-information-taxibot-description = Отвезите членов экипажа к месту назначения.
+ghost-role-information-idol-name = Айдол
+ghost-role-information-idol-description = Помощник одинокого Культиста.
+
+
+ghost-role-information-soul-vessel-name = Вместилище души
+ghost-role-information-soul-vessel-description = Пустующее вместилище души.
+ghost-role-information-cogscarab-name = Латунный скарабей
+ghost-role-information-cogscarab-description = Маленький лучший друг праведников, следите, чтобы ваш механизм был достаточно заведен, чтобы не умереть в случайный момент.
+ghost-role-information-ratvar = Ратвар
+ghost-role-information-ratvar-desc = Дальше - больше...
+
+ghost-role-information-ash-guardian-name = Пепельный страж
+ghost-role-information-ash-guardian-description = Слушайте своего хозяина. Не танкуйте урон. Сильно бейте людей.
+
+ghost-role-information-sentient-carpshark-name = Карпоакула
+ghost-role-information-sentient-golocarp-name = Голокарп
+ghost-role-information-sentient-rainbowcarp-name = Радужный карп
+
+ghost-role-information-syndicate-cyborg-medical-name = Медицинский киборг Синдиката

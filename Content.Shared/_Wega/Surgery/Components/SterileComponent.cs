@@ -3,13 +3,13 @@ namespace Content.Shared.Surgery.Components;
 [RegisterComponent]
 public sealed partial class SterileComponent : Component
 {
-    [DataField("amount")]
-    public float Amount = 100f;
+    [DataField]
+    public float Amount = 0f;
 
-    [DataField("decayRate")]
+    [DataField]
     public float DecayRate = 0.5f;
 
-    [DataField("alwaysSterile")]
+    [DataField]
     public bool AlwaysSterile = false;
 
     [ViewVariables]

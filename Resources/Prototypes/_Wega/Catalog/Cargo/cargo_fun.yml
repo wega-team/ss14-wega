@@ -27,3 +27,23 @@
   cost: 1500
   category: cargoproduct-category-name-fun
   group: market
+
+- type: cargoProduct
+  id: SlotMachine
+  icon:
+    sprite: _Wega/Structures/Machines/slot_machine.rsi
+    state: base
+  product: SlotMachine
+  cost: 5000
+  category: cargoproduct-category-name-fun
+  group: market
+
+- type: cargoProduct
+  id: CrateFunLavaLamp
+  icon:
+    sprite: _Wega/Objects/Misc/lava_lamp.rsi
+    state: base_red
+  product: CrateFunLavaLamp
+  cost: 500
+  category: cargoproduct-category-name-fun
+  group: market

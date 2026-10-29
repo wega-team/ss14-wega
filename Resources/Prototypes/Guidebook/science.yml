@@ -3,10 +3,11 @@
   name: guide-entry-science
   text: "/ServerInfo/Guidebook/Science/Science.xml"
   children:
-  - Technologies
   - AnomalousResearch
   - Xenoarchaeology
+  - Technologies
   - Robotics
+  - Xenobiology # Corvax-Wega-Xenobiology
 
 - type: guideEntry
   id: Technologies

@@ -1,0 +1,9 @@
+- type: entity
+  parent: MobGingerbread
+  categories: [ HideSpawnMenu ]
+  id: MobGingerbreadReformed
+  name: Reformed Gingerbread
+  components:
+    - type: IsDeadIC
+    - type: RandomHumanoidAppearance 
+  

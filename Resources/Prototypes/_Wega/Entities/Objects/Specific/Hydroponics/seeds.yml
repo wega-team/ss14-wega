@@ -4,7 +4,7 @@
   id: RoseSeeds
   components:
     - type: Seed
-      seedId: rose
+      plantId: RosePlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/rose.rsi
 
@@ -14,7 +14,7 @@
   id: SunflowerSeeds
   components:
     - type: Seed
-      seedId: sunflower
+      plantId: SunflowerPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/sunflower.rsi
 
@@ -24,9 +24,19 @@
   id: ClownflowerSeeds
   components:
     - type: Seed
-      seedId: clownflower
+      plantId: ClownflowerPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/clownflower.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of fire blossom seeds
+  id: FireBlossomFlowerSeeds
+  components:
+    - type: Seed
+      plantId: FireblossomflowerPlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/fireblossom.rsi
 
 - type: entity
   parent: SeedBase
@@ -34,17 +44,17 @@
   id: MoneyCabbageSeeds
   components:
     - type: Seed
-      seedId: moneyCabbage
+      plantId: MoneyCabbagePlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/moneycabbage.rsi
 
 - type: entity
   parent: SeedBase
-  name: packet of demonick watermelon seeds
+  name: packet of demonic watermelon seeds
   id: DemonicWatermelonSeeds
   components:
     - type: Seed
-      seedId: demonicWatermelon
+      plantId: DemonicWatermelonPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/demonicwatermelon.rsi
 
@@ -54,7 +64,7 @@
   id: BlueSpaceBananaSeeds
   components:
     - type: Seed
-      seedId: blueSpaceBanana
+      plantId: BlueSpaceBananaPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/blue_space_banana.rsi
 
@@ -64,7 +74,7 @@
   id: RadioactiveBerriesSeeds
   components:
     - type: Seed
-      seedId: radioactiveBerries
+      plantId: RadioactiveBerriesPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
 
@@ -74,7 +84,7 @@
   id: AlienBerriesSeeds
   components:
     - type: Seed
-      seedId: alienBerries
+      plantId: AlienBerriesPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/alien_berry.rsi
 
@@ -84,7 +94,7 @@
   id: EnergyPotatoSeeds
   components:
     - type: Seed
-      seedId: energyPotato
+      plantId: EnergyPotatoPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/energy_potato.rsi
 
@@ -94,7 +104,7 @@
   id: TreeTeaPlantSeeds
   components:
     - type: Seed
-      seedId: treeTeaPlant
+      plantId: TreeTeaPlantPlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/relaxing_tea.rsi
 
@@ -104,6 +114,88 @@
   id: InvisibleGrapeSeeds
   components:
     - type: Seed
-      seedId: invisibleGrape
+      plantId: InvisibleGrapePlants
     - type: Sprite
       sprite: _Wega/Objects/Specific/Hydroponics/Invisiblgrape.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tree seeds
+  id: CandyTreeSeeds
+  components:
+    - type: Seed
+      plantId: CandyTreePlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/candytree.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of candy tree random seeds
+  id: CandyTreeRandomSeeds
+  components:
+    - type: Seed
+      plantId: CandyTreeRandomPlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/candytreerandom.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of melon seeds
+  id: MelonSeeds
+  components:
+    - type: Seed
+      plantId: MelonPlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/melon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of catmelon seeds
+  id: CatMelonSeeds
+  components:
+    - type: Seed
+      plantId: CatmelonPlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/catmelon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of tangerine seeds
+  id: TangerineSeeds
+  components:
+    - type: Seed
+      plantId: TangerinePlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/tangerine.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of festive tangerine seeds
+  id: FestiveTangerineSeeds
+  components:
+    - type: Seed
+      plantId: FestiveTangerinePlants
+    - type: Sprite
+      sprite: _Wega/Objects/Specific/Hydroponics/festive_tangerine.rsi
+
+- type: entity
+  parent: SeedBase
+  name: packet of cucumber seeds
+  id: CucumberSeeds
+  components:
+  - type: Seed
+    plantId: CucumberPlants
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/cucumber.rsi
+    state: seed
+
+- type: entity
+  parent: SeedBase
+  name: packet of avocado seeds 
+  id: AvocadoSeeds
+  components:
+  - type: Seed
+    plantId: AvocadoPlants
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Hydroponics/avocado.rsi
+    state: seed

@@ -7,11 +7,11 @@
   startingGear: CBURNLeaderGear
   icon: "JobIconNanotrasen"
   supervisors: job-supervisors-centcom
-  canBeAntag: false
   accessGroups:
   - AllAccess
   access:
   - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
 
 - type: startingGear
   id: CBURNLeaderGear
@@ -19,7 +19,7 @@
     jumpsuit: ClothingUniformJumpsuitColorBrown
     back: ClothingBackpackDuffelCBURN
     mask: ClothingMaskGasERT
-    eyes: ClothingEyesGlassesSecurity
+    eyes: ClothingERTHud
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURNLeader
@@ -27,12 +27,12 @@
     id: CBURNLeaderPDA
     pocket1: TacticalInterfaceCBURN
     pocket2: WeaponAdvancedLaser
-    belt: ClothingBeltBandolier
+    belt: ClothingBeltMercWebbing
   storage:
     back:
     - WeaponShotgunKammerer
     - BoxShotgunIncendiary
-    - GrenadeFlashBang
+    - GrenadeIncendiary
     - PillAmbuzolPlus
     - PillAmbuzol
     - RadioHandheld

@@ -2,7 +2,7 @@ using System.Linq;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Audio;
 using Content.Shared.Chemistry;
-using Content.Shared.Chemistry.Components.SolutionManager;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Containers.ItemSlots;
@@ -13,14 +13,14 @@ using Robust.Shared.Containers;
 
 namespace Content.Server.Injector.Fabticator;
 
-public sealed class InjectorFabticatorSystem : EntitySystem
+public sealed partial class InjectorFabticatorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionSystem = default!;
-    [Dependency] private readonly ItemSlotsSystem _itemSlotsSystem = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionSystem = default!;
+    [Dependency] private ItemSlotsSystem _itemSlots = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
 
     public override void Initialize()
     {
@@ -76,12 +76,25 @@ public sealed class InjectorFabticatorSystem : EntitySystem
 
     private void OnComponentInit(EntityUid uid, InjectorFabticatorComponent component, ComponentInit args)
     {
-        _itemSlotsSystem.AddItemSlot(uid, InjectorFabticatorComponent.BeakerSlotId, component.BeakerSlot);
+        if (!_itemSlots.TryGetSlot(uid, InjectorFabticatorComponent.BeakerSlotId, out _))
+        {
+            _itemSlots.AddItemSlot(uid, InjectorFabticatorComponent.BeakerSlotId, component.BeakerSlot);
+        }
     }
 
     private void OnMapInit(EntityUid uid, InjectorFabticatorComponent component, MapInitEvent args)
     {
-        _solutionSystem.EnsureSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out _, component.BufferMaxVolume);
+        if (!TryComp<SolutionComponent>(uid, out var solutionComp))
+        {
+            solutionComp = AddComp<SolutionComponent>(uid);
+            solutionComp.Solution.MaxVolume = component.BufferMaxVolume;
+        }
+        else
+        {
+            solutionComp.Solution.MaxVolume = component.BufferMaxVolume;
+        }
+
+        solutionComp.Solution.RemoveAllSolution();
     }
 
     private void OnContainerModified(EntityUid uid, InjectorFabticatorComponent component, ContainerModifiedMessage args)
@@ -100,16 +113,34 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (component.IsProducing || component.BeakerSlot.Item is not { } beaker)
             return;
 
-        if (!_solutionSystem.TryGetSolution(beaker, "beaker", out var beakerSolution, out var solution) ||
-            !_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out _))
+        if (!TryComp<SolutionComponent>(uid, out var bufferSolutionComp))
             return;
 
-        if (solution.GetReagentQuantity(args.ReagentId) < args.Amount)
+        if (!TryComp<SolutionComponent>(beaker, out var beakerSolutionComp))
             return;
 
-        var quantity = new ReagentQuantity(args.ReagentId, args.Amount);
-        _solutionSystem.RemoveReagent(beakerSolution.Value, quantity);
-        _solutionSystem.TryAddReagent(bufferSolution.Value, quantity, out _);
+        var bufferSolution = bufferSolutionComp.Solution;
+        var beakerSolution = beakerSolutionComp.Solution;
+
+        if (!beakerSolution.TryGetReagentQuantity(args.ReagentId, out var availableAmount))
+            return;
+
+        if (availableAmount < args.Amount)
+            return;
+
+        if (bufferSolution.AvailableVolume < args.Amount)
+            return;
+
+        var reagentToTransfer = new ReagentQuantity(args.ReagentId, args.Amount);
+
+        var removed = beakerSolution.RemoveReagent(reagentToTransfer);
+        if (removed <= FixedPoint2.Zero)
+            return;
+
+        bufferSolution.AddReagent(args.ReagentId, removed);
+
+        _solutionSystem.UpdateChemicals((beaker, beakerSolutionComp));
+        _solutionSystem.UpdateChemicals((uid, bufferSolutionComp));
 
         UpdateUiState(uid, component);
     }
@@ -122,16 +153,34 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (component.BeakerSlot.Item is not { } beaker)
             return;
 
-        if (!_solutionSystem.TryGetSolution(beaker, "beaker", out var beakerSolution, out _) ||
-            !_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out var solution))
+        if (!TryComp<SolutionComponent>(uid, out var bufferSolutionComp))
             return;
 
-        if (solution.GetReagentQuantity(args.ReagentId) < args.Amount)
+        if (!TryComp<SolutionComponent>(beaker, out var beakerSolutionComp))
             return;
 
-        var quantity = new ReagentQuantity(args.ReagentId, args.Amount);
-        _solutionSystem.RemoveReagent(bufferSolution.Value, quantity);
-        _solutionSystem.TryAddReagent(beakerSolution.Value, quantity, out _);
+        var bufferSolution = bufferSolutionComp.Solution;
+        var beakerSolution = beakerSolutionComp.Solution;
+
+        if (!bufferSolution.TryGetReagentQuantity(args.ReagentId, out var availableAmount))
+            return;
+
+        if (availableAmount < args.Amount)
+            return;
+
+        if (beakerSolution.AvailableVolume < args.Amount)
+            return;
+
+        var reagentToTransfer = new ReagentQuantity(args.ReagentId, args.Amount);
+
+        var removed = bufferSolution.RemoveReagent(reagentToTransfer);
+        if (removed <= FixedPoint2.Zero)
+            return;
+
+        beakerSolution.AddReagent(args.ReagentId, removed);
+
+        _solutionSystem.UpdateChemicals((uid, bufferSolutionComp));
+        _solutionSystem.UpdateChemicals((beaker, beakerSolutionComp));
 
         UpdateUiState(uid, component);
     }
@@ -143,6 +192,16 @@ public sealed class InjectorFabticatorSystem : EntitySystem
 
         if (component.Recipe == null)
             component.Recipe = new Dictionary<ReagentId, FixedPoint2>();
+
+        if (!TryComp<SolutionComponent>(uid, out var bufferSolutionComp))
+            return;
+
+        var bufferSolution = bufferSolutionComp.Solution;
+        if (!bufferSolution.TryGetReagentQuantity(args.ReagentId, out var availableAmount))
+            return;
+
+        if (availableAmount < args.Amount)
+            return;
 
         var exactKey = component.Recipe.Keys.FirstOrDefault(k =>
             k.Prototype == args.ReagentId.Prototype);
@@ -176,17 +235,26 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (component.IsProducing)
             return;
 
-        if (component.Recipe == null || component.Recipe.Sum(r => (long)r.Value) > 30)
+        if (component.Recipe == null || component.Recipe.Count == 0)
             return;
 
-        var totalRequired = new Dictionary<ReagentId, FixedPoint2>();
-        foreach (var (reagent, amountPerInjector) in component.Recipe)
+        var totalAmount = component.Recipe.Sum(r => (long)r.Value);
+        if (totalAmount > 30)
+            return;
+
+        if (!TryComp<SolutionComponent>(uid, out var bufferSolutionComp))
+            return;
+
+        var bufferSolution = bufferSolutionComp.Solution;
+        foreach (var (reagentId, amountPerInjector) in component.Recipe)
         {
-            totalRequired[reagent] = amountPerInjector * args.Amount;
-        }
+            var requiredAmount = amountPerInjector * args.Amount;
+            if (!bufferSolution.TryGetReagentQuantity(reagentId, out var availableAmount))
+                return;
 
-        if (!_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out var buffer))
-            return;
+            if (availableAmount < requiredAmount)
+                return;
+        }
 
         component.CustomName = args.CustomName;
         component.InjectorsToProduce = args.Amount;
@@ -205,7 +273,7 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (component.IsProducing)
             return;
 
-        _itemSlotsSystem.TryEject(uid, component.BeakerSlot, null, out var _, true);
+        _itemSlots.TryEject(uid, component.BeakerSlot, null, out var _, true);
     }
 
     private void OnSyncRecipeMessage(EntityUid uid, InjectorFabticatorComponent component, InjectorFabticatorSyncRecipeMessage args)
@@ -219,33 +287,44 @@ public sealed class InjectorFabticatorSystem : EntitySystem
 
     private void ProduceInjector(EntityUid uid, InjectorFabticatorComponent component)
     {
-        if (component.Recipe == null)
+        if (component.Recipe == null || component.Recipe.Count == 0)
             return;
 
         var injector = Spawn(component.Injector, Transform(uid).Coordinates);
-        if (!HasComp<SolutionContainerManagerComponent>(injector))
+        if (!TryComp<SolutionComponent>(injector, out var injectorSolutionComp))
+        {
+            injectorSolutionComp = AddComp<SolutionComponent>(injector);
+            injectorSolutionComp.Solution.MaxVolume = 30;
+        }
+
+        var injectorSolution = injectorSolutionComp.Solution;
+        if (!TryComp<SolutionComponent>(uid, out var bufferSolutionComp))
             return;
 
-        if (!_solutionSystem.TryGetSolution(injector, "pen", out var solution, out _))
-            return;
-
+        var bufferSolution = bufferSolutionComp.Solution;
         foreach (var (reagent, amount) in component.Recipe)
         {
-            var addQuantity = new ReagentQuantity(reagent, amount);
-            _solutionSystem.TryAddReagent(solution.Value, addQuantity, out _);
+            if (!bufferSolution.TryGetReagentQuantity(reagent, out var availableAmount))
+                continue;
+
+            var amountToTransfer = FixedPoint2.Min(amount, availableAmount);
+            if (amountToTransfer <= FixedPoint2.Zero)
+                continue;
+
+            var reagentToTransfer = new ReagentQuantity(reagent, amountToTransfer);
+
+            var removed = bufferSolution.RemoveReagent(reagentToTransfer);
+            if (removed <= FixedPoint2.Zero)
+                continue;
+
+            injectorSolution.AddReagent(reagent, removed);
         }
+
+        _solutionSystem.UpdateChemicals((uid, bufferSolutionComp));
+        _solutionSystem.UpdateChemicals((injector, injectorSolutionComp));
 
         if (!string.IsNullOrWhiteSpace(component.CustomName))
             _metaData.SetEntityName(injector, component.CustomName);
-
-        if (_solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out var bufferSolution, out _))
-        {
-            foreach (var (reagent, amount) in component.Recipe)
-            {
-                var remQuantity = new ReagentQuantity(reagent, amount);
-                _solutionSystem.RemoveReagent(bufferSolution.Value, remQuantity);
-            }
-        }
     }
 
     private void UpdateAppearance(EntityUid uid, InjectorFabticatorComponent? component = null)
@@ -276,16 +355,41 @@ public sealed class InjectorFabticatorSystem : EntitySystem
             beakerContainerInfo = BuildBeakerContainerInfo(component.BeakerSlot.Item.Value);
         }
 
-        _solutionSystem.TryGetSolution(uid, InjectorFabticatorComponent.BufferSolutionName, out _, out var buffer);
+        Solution? buffer = null;
+        FixedPoint2 bufferVolume = FixedPoint2.Zero;
 
-        var canProduce = component.Recipe != null && component.Recipe.Sum(r => (long)r.Value) <= 30;
+        if (TryComp<SolutionComponent>(uid, out var bufferSolutionComp))
+        {
+            buffer = bufferSolutionComp.Solution;
+            bufferVolume = buffer.Volume;
+        }
+
+        bool canProduce = false;
+        if (component.Recipe != null && component.Recipe.Count > 0 && buffer != null)
+        {
+            var totalAmount = component.Recipe.Sum(r => (long)r.Value);
+            if (totalAmount <= 30)
+            {
+                canProduce = true;
+                foreach (var (reagentId, amount) in component.Recipe)
+                {
+                    var availableAmount = buffer.GetReagentQuantity(reagentId);
+                    if (availableAmount < amount)
+                    {
+                        canProduce = false;
+                        break;
+                    }
+                }
+            }
+        }
+
         return new InjectorFabticatorBoundUserInterfaceState(
             component.IsProducing,
             canProduce,
             beakerNetEntity,
             beakerContainerInfo,
             buffer,
-            buffer?.Volume ?? FixedPoint2.Zero,
+            bufferVolume,
             component.BufferMaxVolume,
             component.Recipe,
             component.CustomName,
@@ -296,10 +400,10 @@ public sealed class InjectorFabticatorSystem : EntitySystem
 
     private ContainerInfo? BuildBeakerContainerInfo(EntityUid beaker)
     {
-        if (!HasComp<SolutionContainerManagerComponent>(beaker)
-            || !_solutionSystem.TryGetSolution(beaker, "beaker", out _, out var solution))
+        if (!TryComp<SolutionComponent>(beaker, out var solutionComp))
             return null;
 
+        var solution = solutionComp.Solution;
         return new ContainerInfo(
             Name(beaker),
             solution.Volume,

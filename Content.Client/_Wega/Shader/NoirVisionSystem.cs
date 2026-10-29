@@ -1,5 +1,4 @@
 using Content.Client.Shaders.Systems;
-using Content.Shared.Genetics;
 using Content.Shared.Shaders;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -7,10 +6,10 @@ using Robust.Shared.Player;
 
 namespace Content.Client.Shaders.System;
 
-public sealed class NoirVisionSystem : EntitySystem
+public sealed partial class NoirVisionSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     private NoirVisionOverlay _overlay = default!;
 

@@ -28,3 +28,4 @@
     runningState: base_machine_processing
     staticPacks:
     - GoldPrinterRec
+  - type: OreSiloClient

@@ -6,8 +6,15 @@
     name: store-preset-name-tactical-interface
     categories:
     - ERTSquad
+    - ERTWeapon
+    - ERTWeaponPro
+    - ERTAmmo
     - ERTEquipment
+    - ERTEquipmentPro
+    - ERTGranades
     - ERTEngineering
+    - ERTMaterials
+    - ERTFlatpack
     - ERTMedicine
     currencyWhitelist:
     - TacticalResource
@@ -32,3 +39,16 @@
     - Credit
     balance:
       Telecrystal: 0
+
+- type: entity
+  id: StorePresetRevolution
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-revolution
+    categories:
+    - RevolutionSupport
+    currencyWhitelist:
+    - HelpfulResource
+    balance:
+      HelpfulResource: 0

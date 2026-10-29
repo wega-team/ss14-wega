@@ -1,6 +1,6 @@
-using Content.Shared.Body.Components;
 using Content.Shared.Clothing.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Inventory;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.GameStates;
@@ -8,10 +8,10 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Clothing;
 
-public sealed class ToggleableSpriteClothingSystem : EntitySystem
+public sealed partial class ToggleableSpriteClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
 
     public override void Initialize()
     {
@@ -19,7 +19,7 @@ public sealed class ToggleableSpriteClothingSystem : EntitySystem
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<ToggleableSpriteClothingComponent, GetVerbsEvent<AlternativeVerb>>(AddToggleVerb);
 
-        SubscribeLocalEvent<BodyComponent, ToggleSpriteClothingDoAfterEvent>(OnDoAfter); // Fuck, I'm too lazy to think of something
+        SubscribeLocalEvent<InventoryComponent, ToggleSpriteClothingDoAfterEvent>(OnDoAfter);
     }
 
     private static void OnGetState(EntityUid uid, ToggleableSpriteClothingComponent component, ref ComponentGetState args)
@@ -60,7 +60,7 @@ public sealed class ToggleableSpriteClothingSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(args);
     }
 
-    private void OnDoAfter(Entity<BodyComponent> entity, ref ToggleSpriteClothingDoAfterEvent args)
+    private void OnDoAfter(Entity<InventoryComponent> entity, ref ToggleSpriteClothingDoAfterEvent args)
     {
         if (args.Handled || args.Target == null)
             return;

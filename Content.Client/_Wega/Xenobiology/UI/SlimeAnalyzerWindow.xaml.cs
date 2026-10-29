@@ -11,7 +11,7 @@ namespace Content.Client._Wega.Xenobiology.UI;
 [GenerateTypedNameReferences]
 public sealed partial class SlimeAnalyzerWindow : FancyWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public SlimeAnalyzerWindow()
     {

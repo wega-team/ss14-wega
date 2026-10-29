@@ -1,8 +1,7 @@
 - type: marking
   id: DemomTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -14,8 +13,7 @@
 - type: marking
   id: DemomTail1
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
@@ -29,12 +27,16 @@
 - type: marking
   id: DemomTailLong
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
         !type:SkinColoring
+    layers:
+      long:
+        type:
+          !type:CategoryColoring
+          category: Hair
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tail
@@ -44,12 +46,16 @@
 - type: marking
   id: DemomTailUp
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   coloring:
     default:
       type:
         !type:SkinColoring
+    layers:
+      up:
+        type:
+          !type:CategoryColoring
+          category: Hair
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
     state: tail
@@ -60,41 +66,37 @@
 - type: marking
   id: DemomTailAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
 
 - type: marking
   id: DemomTail1Animated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: demon_tail_waggin
+    state: demon_tail_wagging
 
 - type: marking
   id: DemomTailLongAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: long_waggin
+    state: long_wagging
 
 - type: marking
   id: DemomTailUpAnimated
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: []
+  groupWhitelist: []
   sprites:
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: tail_waggin
+    state: tail_wagging
   - sprite: _Wega/Mobs/Customization/demon.rsi
-    state: up_waggin
+    state: up_wagging

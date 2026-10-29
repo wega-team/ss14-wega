@@ -6,10 +6,10 @@
   requirements:
     - !type:OverallPlaytimeRequirement
       time: 10h # Corvax-RoleTime
-    # - !type:DepartmentTimeRequirement Corvax-Wega
-    #   department: Security
-    #   time: 20h # Corvax-RoleTime 5
-    #   inverted: true # stop playing intern if you're good at security!
+    - !type:DepartmentTimeRequirement
+      department: Security
+      time: 20h # Corvax-RoleTime 5
+      inverted: true # stop playing intern if you're good at security!
     - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true
       traits:
@@ -17,16 +17,14 @@
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
-  canBeAntag: false
+  guides: [ Security ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Security
   - Brig
   - Maintenance
-  - Service
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - External
   - Cryogenics
-  - GenpopEnter
-  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

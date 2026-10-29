@@ -12,9 +12,9 @@ namespace Content.Client._Wega.Genetics.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class MindCommunicationPanel : DefaultWindow
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IEntityNetworkManager _entityNetworkManager = default!;
-    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IEntityNetworkManager _entityNetworkManager = default!;
+    [Dependency] private ISharedPlayerManager _playerManager = default!;
 
     public MindCommunicationPanel()
     {
@@ -26,14 +26,11 @@ public sealed partial class MindCommunicationPanel : DefaultWindow
 
     private void InitializeTargets()
     {
-        foreach (var actor in _entityManager.EntityQuery<ActorComponent>())
+        var actorQuery = _entityManager.EntityQueryEnumerator<ActorComponent, MetaDataComponent, HumanoidProfileComponent>();
+        while (actorQuery.MoveNext(out var uid, out _, out var metaData, out _))
         {
-            if (_entityManager.TryGetComponent<MetaDataComponent>(actor.Owner, out var metaData)
-                && _entityManager.HasComponent<HumanoidAppearanceComponent>(actor.Owner))
-            {
-                var entityName = metaData.EntityName;
-                AddTargetButton(entityName, actor.Owner);
-            }
+            var entityName = metaData.EntityName;
+            AddTargetButton(entityName, uid);
         }
     }
 

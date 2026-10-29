@@ -3,6 +3,7 @@
   name: job-name-pilot
   description: job-description-pilot
   playTimeTracker: JobPilot
+  isSubRole: true # Corvax-Wega-add
   requirements:
   - !type:DepartmentTimeRequirement
     department: Security
@@ -14,12 +15,12 @@
   startingGear: PilotGear
   icon: "JobIconPilot"
   supervisors: job-supervisors-hos
-  canBeAntag: false
   access:
   - Security
   - Brig
   - Maintenance
   - Service
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - External
   - Cryogenics
   special:
@@ -37,6 +38,7 @@
     back:
     - Flash
     - MagazinePistol
+    - SecurityVoucherCard # Corvax-Wega-Voucher
 
 - type: chameleonOutfit
   id: PilotChameleonOutfit

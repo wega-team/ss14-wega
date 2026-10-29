@@ -12,9 +12,12 @@
     - id: DoorRemoteCargo
     - id: AstroNavCartridge
     - id: ClothingHandsKnuckleDustersQM
+    - id: PlushieLizardJobQuartermaster
+      prob: 0.02
     - id: PrinterDocFlatpack # Corvax-Printer
-    - id: FundingAllocationComputerCircuitboard # Corvax-Wega
-
+    - id: FundingAllocationComputerFlatpack # Corvax-Wega
+    - id: AccessConfiguratorCargo # Corvax-Wega
+    - id: LandingDesignatorMining # Corvax-Wega-Lavaland
 
 - type: entity
   id: LockerQuarterMasterFilled
@@ -48,14 +51,16 @@
     - id: SpaceCash1000
     - id: WeaponDisabler
     - id: ClothingEyesGlassesCommand
-    - id: HeadSkeleton # A skull to accompany your skeleton crew
+    - id: OrganSkeletonPersonHead # A skull to accompany your skeleton crew
       conditions:
       - !type:PlayerCountCondition
         max: 15
-    # Corvax-Resprite-Start
-    - id: ClothingHeadCaptainHat
+    - id: PlushieLizardJobCaptain
+      prob: 0.02
+    # Corvax-Start
+    - id: PrinterDocFlatpack
     - id: ClothingOuterCoatCaptain
-    # Corvax-Resprite-End
+    # Corvax-End
 
 # No laser table + Laser table
 - type: entityTable
@@ -71,7 +76,7 @@
   id: FillCaptainHardsuit
   table: !type:AllSelector
     children:
-    - id: ClothingOuterHardsuitCap
+    - id: HardsuitCapSelector # Corvax-Wega-ModularSuits-Edit
     - id: ClothingMaskGasCaptain
     - id: JetpackCaptainFilled
     - id: OxygenTankFilled
@@ -137,6 +142,8 @@
     - id: HoPIDCard
     - id: WeaponDisabler
     - id: ClothingEyesHudCommand
+    - id: PlushieLizardJobHeadofpersonnel
+      prob: 0.02
     - id: ClothingOuterCoatHOP # Corvax-Resprite
     - id: PrinterDocFlatpack # Corvax-Printer
 
@@ -161,9 +168,10 @@
       prob: 0.15
     - id: ClothingBeltChiefEngineerFilled
     - id: ClothingEyesGlassesMeson
-    - id: ClothingHandsGlovesColorYellow
+    - id: ClothingHandsGlovesAtmos # Corvax-Wega
     - id: ClothingHeadsetAltEngineering
     - id: DoorRemoteEngineering
+    - id: RPD # Corvax-Wega
     # Covrax-Wega-CombatRCD-Start
     - id: CombatRCD
     - id: RCDAmmo
@@ -172,6 +180,9 @@
     # Covrax-Wega-CombatRCD-End
     - id: RubberStampCE
     - id: MetalFoamGrenade
+    - id: PlushieLizardJobChiefengineer
+      prob: 0.02
+    - id: PrinterDocFlatpack # Corvax-Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -179,7 +190,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasAtmos
-    - id: ClothingOuterHardsuitEngineeringWhite
+    - id: HardsuitCESelector # Corvax-Wega-ModularSuits-Edit
     - id: ClothingShoesBootsMagAdv
     - id: JetpackVoidFilled
     - id: OxygenTankFilled
@@ -216,24 +227,26 @@
   table: !type:AllSelector
     children:
     - id: BoxEncryptionKeyMedical
-    - id: SurgerykitFilled # Corvax-Wega-Surgery-Edit
-    - id: ClothingCloakCmo
-    - id: ClothingEyesHudMedical
-    - id: ClothingHandsGlovesNitrile
+    - id: SurgerykitFilledPro # Corvax-Wega-Surgery-Edit
     - id: ClothingHandsGlovesLatexSurgeon # Corvax-Wega-Surgery
-    - id: ClothingHeadHatBeretCmo
-    - id: ClothingHeadsetAltMedical
-    - id: ClothingMaskSterile
     - id: UniformScrubsColorCmo # Corvax-Wega-Surgery
     - id: ClothingHeadHatSurgcapCmo # Corvax-Wega-Surgery
-    - id: DoorRemoteMedical
+    - id: ClothingEyesHudMedical
+    - id: ClothingBeltMedicalFilled
     - id: HandheldCrewMonitor
     - id: Hypospray
-    - id: BoxCMOCircuitboards
-    - id: MedkitFilled
-    - id: RubberStampCMO
     - id: MedTekCartridge
     - id: BodyScannerComputerCircuitboard # Corvax-Wega-Surgery
+    - id: FoodBoxLollipop # Corvax-Wega-Candy
+    # Standard command gear
+    - id: RubberStampCMO
+    - id: ClothingHeadsetAltMedical
+    - id: DoorRemoteMedical
+    - id: BoxEncryptionKeyMedical
+    - id: BoxCMOCircuitboards
+    - id: PlushieLizardJobChiefmedicalofficer
+      prob: 0.02
+    - id: PrinterDocFlatpack # Corvax-Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -241,7 +254,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreathMedical
-    - id: ClothingOuterHardsuitMedical
+    - id: HardsuitMedicalSelector # Corvax-Wega-ModularSuits-Edit
     - id: OxygenTankFilled
 
 # No hardsuit locker
@@ -283,6 +296,11 @@
     - id: DoorRemoteResearch
     - id: HandTeleporter
     - id: RubberStampRd
+    - id: AccessConfiguratorSci # Corvax-Wega
+    - id: HeadcrabCube # Corvax-Wega
+    - id: PlushieLizardJobResearchdirector
+      prob: 0.02
+    - id: PrinterDocFlatpack # Corvax-Printer
 
 # Hardsuit table, used for suit storage as well
 - type: entityTable
@@ -290,7 +308,8 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskBreath
-    - id: ClothingOuterHardsuitRd
+    - id: ClothingModularControllerResearchPreassembled # Corvax-Wega-ModularSuits-Edit
+    - id: OtherCoreSuitModuleSelector # Corvax-Wega-ModularSuits-Edit
     - id: OxygenTankFilled
 
 # No hardsuit locker
@@ -332,7 +351,6 @@
     - id: ClothingBeltSecurityFilled
     - id: ClothingEyesGlassesSecurity
     - id: ClothingHeadsetAltSecurity
-    - id: ClothingMaskNeckGaiter
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: FlashlightSeclite
@@ -341,18 +359,22 @@
     - id: RubberStampHos
     - id: BoxHoSCircuitboards
     - id: WeaponDisabler
-    - id: WeaponTaser
     - id: WantedListCartridge
     - id: DrinkHosFlask
     # Corvax-Wega-Start
-    - id: ServerWiretappingKit
-    - id: WiretappingTerminal
+    - id: WiretappingServerAlpha
+    - id: ClothingOuterWinterHoS
+    - id: SecurityVoucherCard
+      amount: !type:ConstantNumberSelector
+        value: 2
+    - id: SecApartmentTablet # Corvax-Wega-SecApartment
     # Corvax-Wega-End
+    - id: PlushieLizardJobHeadofsecurity
+      prob: 0.02
     # Corvax-Start
-    - id: ClothingHeadHatCapHoS
-      prob: 0.5
-    - id: ClothingOuterCoatHoSGreatcoat
     - id: BookBusido
+    - id: SecApartmentTablet
+    - id: PrinterDocFlatpack
     # Corvax-End
 
 # Hardsuit table, used for suit storage as well
@@ -361,7 +383,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingMaskGasSwat
-    - id: ClothingOuterHardsuitSecurityRed
+    - id: HardsuitHosSelector # Corvax-Wega-ModularSuits-Edit
     - id: JetpackSecurityFilled
     - id: OxygenTankFilled
 

@@ -5,10 +5,10 @@ using Robust.Shared.Player;
 
 namespace Content.Client.Genetics.System;
 
-public sealed class DizzySystem : EntitySystem
+public sealed partial class DizzySystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IOverlayManager _overlayMan = default!;
 
     private DizzyOverlay _overlay = default!;
 

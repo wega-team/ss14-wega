@@ -73,6 +73,30 @@ public sealed partial class OperatedComponent : Component
     public float LimbLossChance = 1f;
 
     /// <summary>
+    /// Is gradual limb regeneration included.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool LimbRegeneration = false;
+
+    /// <summary>
+    /// Regeneration interval in seconds.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float RegenerationInterval = 90f;
+
+    /// <summary>
+    /// Timer until the next regeneration.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float NextRegenerationTick = 0f;
+
+    /// <summary>
+    /// The maximum number of limbs that can be regenerated in one cycle.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public int MaxLimbsPerCycle = 1;
+
+    /// <summary>
     /// The level of sterility. It may affect the chance of success.
     /// </summary>
     [ViewVariables]

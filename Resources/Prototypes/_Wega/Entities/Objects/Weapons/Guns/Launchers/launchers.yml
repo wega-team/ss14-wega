@@ -1,0 +1,40 @@
+- type: entity
+  name: ORG 430
+  parent: [ BaseWeaponLauncher, BaseGunWieldable, BaseMajorContraband ]
+  id: WeaponORG430
+  description: Load granade for optimal results.
+  suffix: launcher
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
+    layers:
+      - state: icon
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,2
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 3
+    proto: GrenadeFrag
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: GunRequiresWield
+  - type: StaticPrice
+    price: 10000

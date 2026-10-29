@@ -1,24 +1,21 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
-using Content.Server.Speech;
-using Content.Server.Speech.Components;
 using Content.Shared.Chat;
 using Content.Shared.Paper;
 using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
 using Content.Shared.TapeRecorder;
 using Content.Shared.TapeRecorder.Components;
 using Content.Shared.TapeRecorder.Events;
-using Robust.Shared.Prototypes;
 using System.Text;
 
 namespace Content.Server.TapeRecorder;
 
-public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
+public sealed partial class TapeRecorderSystem : SharedTapeRecorderSystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly PaperSystem _paper = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private HandsSystem _hands = default!;
+    [Dependency] private PaperSystem _paper = default!;
 
     public override void Initialize()
     {
@@ -46,7 +43,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
             voice.NameOverride = message.Name ?? ent.Comp.DefaultName;
             // TODO: mimic the exact string chosen when the message was recorded
             var verb = message.Verb ?? SharedChatSystem.DefaultSpeechVerb;
-            speech.SpeechVerb = _proto.Index<SpeechVerbPrototype>(verb);
+            speech.SpeechVerb = ProtoMan.Index(verb);
             //Play the message
             _chat.TrySendInGameICMessage(ent, message.Message, InGameICChatType.Speak, false);
         }
@@ -113,7 +110,7 @@ public sealed class TapeRecorderSystem : SharedTapeRecorderSystem
         foreach (var message in cassette.Comp.RecordedData)
         {
             var name = message.Name ?? ent.Comp.DefaultName;
-            var time = TimeSpan.FromSeconds((double)message.Timestamp);
+            var time = TimeSpan.FromSeconds(message.Timestamp);
 
             text.AppendLine(Loc.GetString("tape-recorder-print-message-text",
                 ("time", time.ToString(@"hh\:mm\:ss")),

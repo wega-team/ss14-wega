@@ -9,7 +9,6 @@ namespace Content.Shared.Injector.Fabticator;
 public sealed partial class InjectorFabticatorComponent : Component
 {
     public const string BeakerSlotId = "beakerSlot";
-    public const string BufferSolutionName = "buffer";
 
     [DataField(required: true)]
     public EntProtoId Injector;
@@ -19,9 +18,6 @@ public sealed partial class InjectorFabticatorComponent : Component
 
     [DataField]
     public ItemSlot BeakerSlot = new();
-
-    [ViewVariables]
-    public FixedPoint2 BufferVolume = 0;
 
     [ViewVariables]
     public FixedPoint2 BufferMaxVolume = 2000;
@@ -44,4 +40,3 @@ public sealed partial class InjectorFabticatorComponent : Component
     [ViewVariables]
     public Dictionary<ReagentId, FixedPoint2>? Recipe;
 }
-

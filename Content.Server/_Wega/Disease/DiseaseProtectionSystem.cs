@@ -3,7 +3,7 @@ using Content.Shared.Disease.Components;
 
 namespace Content.Server.Nutrition.EntitySystems;
 
-public sealed class DiseaseProtectionSystem : EntitySystem
+public sealed partial class DiseaseProtectionSystem : EntitySystem
 {
     public override void Initialize()
     {

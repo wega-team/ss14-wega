@@ -15,7 +15,7 @@
   color: "#C2FFE0"
   flavor: tea
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:GenericStatusEffect
         key: Pacified
@@ -31,17 +31,25 @@
         - !type:ReagentCondition
           reagent: RelaxingTea
           min: 50
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 5
-    Narcotic:
-      effects:
       - !type:GenericStatusEffect
         key: SeeingRainbows
         component: SeeingRainbows
         type: Add
         time: 2
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        probability: 0.2
+        messages:
+        - "psicodine-effect-at-peace"
+        - "relaxingtea-effect-at-love"
+        - "relaxingtea-effect-forget-grievances"
+        - "relaxingtea-effect-at-peace"
+    Digestion:
+      effects:
+      - !type:Satiate
+        satiationType: Thirst
+        factor: 5
 
 - type: reagent
   id: GrapeJuiceInvisible
@@ -51,7 +59,7 @@
   physicalDesc: reagent-physical-desc-soothing
   color: "#AAAAAA"
   metabolisms:
-    Poison:
+    Bloodstream:
       metabolismRate: 0.3
       effects:
       - !type:GenericStatusEffect
@@ -64,3 +72,33 @@
         component: StealthOnMove
         type: Add
         time: 15
+
+- type: reagent
+  id: BakeryJuice
+  name: reagent-name-bakeryjuice
+  group: Narcotics
+  desc: reagent-desc-bakeryjuice
+  physicalDesc: reagent-physical-desc-soothing
+  color: "#964B00"
+  flavor: sweet
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:Polymorph
+        prototype: PolymorphGingerbread
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Animal ]
+          inverted: true
+        - !type:ReagentCondition
+          reagent: BakeryJuice
+          min: 10
+      - !type:PopupMessage
+        type: Local
+        visualType: Medium
+        probability: 0.2
+        messages:
+        - "bakeryjuice-effect-at-gingerbread"
+        - "bakeryjuice-effect-at-sweet"
+        - "bakeryjuice-effect-at-ginger"
+        - "bakeryjuice-effect-at-you-ginger"

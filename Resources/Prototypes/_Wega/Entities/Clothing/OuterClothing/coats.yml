@@ -26,10 +26,15 @@
   name: cult robe
   description: "A set of robes worn by followers of the blood cult. Put on your hood and remove your ID card to hide your identity."
   components:
+  - type: AllowSuitStorage
   - type: Sprite
     sprite: _Wega/Clothing/OuterClothing/Coats/cultrobesalt.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/cultrobesalt.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodCultrobesAlt
   - type: Armor
@@ -41,6 +46,8 @@
         Heat: 0.8
   - type: ExplosionResistance
     damageCoefficient: 0.9
+  - type: CultEquipment
+    cult: Blood
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -52,20 +59,26 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/flagellantrobe.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/flagellantrobe.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodFlagellantHood
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 2
-        Slash: 2
-        Piercing: 2
-        Heat: 2
+        Blunt: 1.5
+        Slash: 1.5
+        Piercing: 1.5
+        Heat: 1.5
   - type: ExplosionResistance
-    damageCoefficient: 2
+    damageCoefficient: 1.5
   - type: ClothingSpeedModifier
     walkModifier: 1.6
     sprintModifier: 1.6
+  - type: CultEquipment
+    cult: Blood
 
 - type: entity
   parent: ClothingOuterStorageBase
@@ -77,5 +90,178 @@
     sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
   - type: Clothing
     sprite: _Wega/Clothing/OuterClothing/Coats/postman.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHatHoodPostman
+
+- type: entity
+  parent: ClothingOuterCoatCaptain
+  id: ClothingOuterCoatSherif
+  name: sherif's jacket
+  description: Captain's formal jacket, inlaid with gold.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_green.rsi
+
+- type: entity
+  parent: ClothingOuterCoatCaptain
+  id: ClothingOuterCoatWhite
+  name: white capitan's jacket
+  description: Captain's formal jacket, inlaid with gold.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/captain_white.rsi
+
+
+# ADT
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterDutch
+  name: dutch's jacket
+  description: For those long nights on the beach in Tahiti.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/dutch_jacket.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/dutch_jacket.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterLettermanNanoTrasen
+  name: blue letterman jacket
+  description: A blue letterman jacket with a proud Nanotrasen N on the back. The tag says that it was made by Mr.Chang's corp.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_nanotrasen.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_nanotrasen.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterLettermanSyndie
+  name: blood-red letterman jacket
+  description: A blood-red letterman jacket with a huge S on the back. Nothing suspicious.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_syndie.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_syndie.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterLettermanBlack
+  name: black letterman jacket
+  description: A black letterman jacket.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/letterman_black.rsi
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterWhiteSweatshirtTop
+  name: white sweatshirt-top
+  description: white sweatshirt-top
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/white_sweatshirttop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/white_sweatshirttop.rsi
+  - type: StaticPrice
+    price: 65
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterGraySweatshirtTop
+  name: gray sweatshirt-top
+  description: gray sweatshirt-top
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/gray_sweatshirttop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/gray_sweatshirttop.rsi
+  - type: StaticPrice
+    price: 65
+
+- type: entity
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterBlackSweatshirtTop
+  name: black sweatshirt-top
+  description: black sweatshirt-top
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/black_sweatshirttop.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/black_sweatshirttop.rsi
+  - type: StaticPrice
+    price: 65
+
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterCoatPathfinderCloak
+  name: pathfinder cloak
+  description: "A thick cloak made of tendons and skins, designed to protect its wearer from adverse weather conditions."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/pathcloack.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/pathcloack.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodPathfinder
+    requiredSlot:
+    - outerClothing
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+  - type: ClothingAshStormProtection
+    modifier: 0.8
+  - type: Construction
+    graph: PathfinderCloak
+    node: cloack
+
+- type: entity
+  parent: [ ClothingOuterStorageBase, BaseEnchantable ]
+  id: ClothingOuterVeilCultRobes
+  name: clockwork robe
+  description: "None of those can escape the fate of DEATH!"
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/OuterClothing/Coats/clockrobe.rsi
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container {}
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodVeilCultRobes
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.7
+        Heat: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: FireProtection
+    reduction: 0.25
+  - type: TemperatureProtection
+    coefficient: 0.7
+  - type: Enchantable
+    enchants:
+    - ClothingOuterVeilCultRobesCamouflage
+    - ClothingOuterVeilCultRobesHaste
+  - type: CultEquipment
+    cult: Veil
+

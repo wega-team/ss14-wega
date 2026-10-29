@@ -59,6 +59,11 @@
   path: "/Textures/Shaders/camera_static.swsl"
 
 - type: shader
+  id: CameraStaticAccessible
+  kind: source
+  path: "/Textures/Shaders/camera_static_accessible.swsl"
+
+- type: shader
   id: Drunk
   kind: source
   path: "/Textures/Shaders/drunk.swsl"
@@ -117,6 +122,32 @@
   path: "/Textures/Shaders/hologram.swsl"
 
 - type: shader
+  id: HeatBlur
+  kind: source
+  path: "/Textures/Shaders/heatBlur.swsl"
+
+- type: shader
+  id: ScreechShockWave
+  kind: source
+  path: "/Textures/Shaders/screech_shock_wave.swsl"
+
+- type: shader
+  id: NightVision
+  kind: source
+  path: "/Textures/Shaders/nightvision.swsl"
+
+- type: shader
+  id: Sharpness
+  kind: source
+  path: "/Textures/Shaders/sharpness.swsl"
+
+- type: shader
+  id: VacuumDesaturation
+  kind: source
+  path: "/Textures/Shaders/vacuum_desaturation.swsl"
+
+# Corvax-Wega-Shaders-start
+- type: shader
   id: Dizzy
   kind: source
   path: "/Textures/_Wega/Shaders/dizzy.swsl"
@@ -127,7 +158,7 @@
   path: "/Textures/_Wega/Shaders/colourblindness.swsl"
 
 - type: shader
-  id: NightVision
+  id: WegaNightVision
   kind: source
   path: "/Textures/_Wega/Shaders/night.swsl"
 
@@ -135,3 +166,38 @@
   id: NaturalNightVision
   kind: source
   path: "/Textures/_Wega/Shaders/nightvision.swsl"
+
+- type: shader
+  id: Rave
+  kind: source
+  path: "/Textures/_Wega/Shaders/rave.swsl"
+
+- type: shader
+  id: NullDamage
+  kind: source
+  path: "/Textures/_Wega/Shaders/nulldamage.swsl"
+
+- type: shader
+  id: Postprocess
+  kind: source
+  path: "/Textures/_Wega/Shaders/postprocess.swsl"
+  params:
+    CircleRadius: 420.0
+    CircleMinDist: 0.0
+    CirclePow: 1.0
+    CircleMax: 4.0
+    CircleMult: 0.25
+    FalloffClampMin: 0.075
+    FalloffClampMax: 1.0
+    FalloffPow: 3.0
+
+- type: shader
+  id: BloodSense
+  kind: source
+  path: "/Textures/_Wega/Shaders/blood_sense.swsl"
+
+- type: shader
+  id: FeroxiNarcosis
+  kind: source
+  path: "/Textures/_Wega/Shaders/feroxi_narcosis.swsl"
+# Corvax-Wega-Shaders-end

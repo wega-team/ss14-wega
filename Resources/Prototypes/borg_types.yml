@@ -6,19 +6,33 @@
   dummyPrototype: BorgChassisGeneric
 
   # Functional
-  extraModuleCount: 5
+  extraModuleCount: 3 # Corvax-Wega-edit
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
-    - BorgModuleScience #until sciborgs are added
+    # - BorgModuleScience #until sciborgs are added # Corvax-Wega-Edit
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
-  - BorgModuleInflatable
-  - BorgModuleArtifact
-  - BorgModuleAnomaly
+  # Corvax-Wega-start
+  - BorgModuleCommonMedical
+  - BorgModuleCommonPickaxe
+  - BorgModuleCommonFight
+  - BorgModuleCommonConstruction
+  - BorgModuleCleaningCommon
+  - BorgModuleCommonCandy
+  - BorgModuleCommonPostMan
+  # - BorgModuleInflatable
+  # - BorgModuleArtifact
+  # - BorgModuleAnomaly
   radioChannels:
   - Science
+  - Engineering
+  - Medical
+  - Service
+  - Supply
+  # Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgShort
@@ -40,13 +54,14 @@
   dummyPrototype: BorgChassisEngineer
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleEngineering
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleConstruction
   - BorgModuleRCD
@@ -55,6 +70,19 @@
   radioChannels:
   - Engineering
   - Science
+
+# Corvax-Wega-start
+  addComponents:
+  - type: ShowElectrocutionHUD
+  - type: ShowHealthBars
+    damageContainers:
+    - Inorganic
+    - Silicon
+    - Android
+  - type: ShowAccessReaderSettings
+  - type: MagbootsImplant
+  - type: ThermalSight
+# Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgShort
@@ -76,13 +104,14 @@
   dummyPrototype: BorgChassisMining
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleCargo
 
   defaultModules:
+  - BorgModulePrying
   - BorgModuleTool
   - BorgModuleMining
   - BorgModuleTraversal
@@ -91,6 +120,34 @@
   radioChannels:
   - Supply
   - Science
+
+  # Corvax-Wega-start
+  addComponents:
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
+      enum.RadarConsoleUiKey.Key:
+        type: RadarConsoleBoundUserInterface
+  - type: IntrinsicUI
+    uis:
+      enum.RadarConsoleUiKey.Key:
+        toggleAction: ActionAGhostShowRadar
+  - type: RadarConsole
+    followEntity: true
+  - type: HandheldGPS
+    gPSName: Шахтёрский киборг
+  - type: HandheldGpsUi
+    broadcastEnabled: false
+  - type: MagbootsImplant
+  # Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgTall
@@ -113,16 +170,17 @@
   dummyPrototype: BorgChassisJanitor
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleJanitor
 
   defaultModules:
-  - BorgModuleTool
+  - BorgModulePrying
   - BorgModuleCleaning
   - BorgModuleCustodial
+  - BorgModuleRestock # Corvax-Wega-add
 
   radioChannels:
   - Science
@@ -149,14 +207,14 @@
   dummyPrototype: BorgChassisMedical
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleMedical
 
   defaultModules:
-  - BorgModuleTool
+  - BorgModulePrying
   - BorgModuleChemical
   - BorgModuleTopicals
   - BorgModuleRescue
@@ -199,26 +257,46 @@
   dummyPrototype: BorgChassisService
 
   # Functional
-  extraModuleCount: 3
+  extraModuleCount: 4 # 3 Corvax-Wega-Add
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
     - BorgModuleService
 
   defaultModules:
-  - BorgModuleTool
-# Corvax-Wega-Start
-  # - BorgModuleMusique
-  - BorgModuleCook
+  - BorgModulePrying
   - BorgModuleService
+  # Corvax-Wega-Start
+  - BorgModuleBotany
+  - BorgModuleCook
   - BorgModuleBar
-  # - BorgModuleClowning
-  # - BorgModuleGardening
-  # - BorgModuleHarvesting
-# Corvax-Wega-End
+  # Corvax-Wega-End
   radioChannels:
   - Science
   - Service
+
+# Corvax-Wega-start
+  addComponents:
+  - type: ShowSatiationIcons
+    shownTypes:
+    - Thirst
+    - Hunger
+  - type: Instrument
+    allowPercussion: false
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+# Corvax-Wega-end
 
   # Visual
   inventoryTemplateId: borgTall

@@ -10,6 +10,9 @@ tactical-interface-ert-medic-basic-desc = Медик ОБР, снаряженн�
 tactical-interface-ert-medic-name = Медик
 tactical-interface-ert-medic-desc = Медик ОБР, снаряженный скафандром.
 
+tactical-interface-ert-engineer-basic-name = Инженер
+tactical-interface-ert-engineer-basic-desc = Инженер ОБР, снаряженный самым базовым снаряжением.
+
 tactical-interface-ert-engineer-name = Инженер
 tactical-interface-ert-engineer-desc = Инженер ОБР, снаряженный скафандром.
 
@@ -19,40 +22,46 @@ tactical-interface-ert-janitor-basic-desc = Уборщик ОБР, снаряж�
 tactical-interface-ert-janitor-name = Уборщик
 tactical-interface-ert-janitor-desc = Уборщик ОБР, снаряженный скафандром.
 
+tactical-interface-ert-chaplain-basic-name = Священник
+tactical-interface-ert-chaplain-basic-desc = Священник ОБР, снаряженный самым базовым снаряжением.
+
+tactical-interface-ert-chaplain-name = Священник
+tactical-interface-ert-chaplain-desc = Священник ОБР, снаряженный скафандром.
+
 tactical-interface-cburn-agent-name = Агент РХБЗЗ
 tactical-interface-cburn-agent-desc = Оперативник РХБЗЗ, снаряженный всем необходимым для уничтожения глупых зомби.
 
 tactical-interface-laser-cannon-name = Лазерная пушка
 tactical-interface-laser-cannon-desc = { ent-WeaponLaserCannon.desc }
 
-tactical-interface-laser-name = продвинутый лазерный пистолет
+tactical-interface-laser-name = Продвинутый лазерный пистолет
 tactical-interface-laser-desc = { ent-WeaponAdvancedLaser.desc }
 
 tactical-interface-lecter-name = Лектер
 tactical-interface-lecter-desc = { ent-WeaponRifleLecter.desc }
 
-tactical-interface-lecter-ammo-name = магазины с .20 винтовочными
+tactical-interface-lecter-ammo-name = Магазины с .20 винтовочными
 tactical-interface-lecter-ammo-desc = { ent-BoxMagazineRifle.desc }
 
 tactical-interface-drozd-name = Дрозд
 tactical-interface-drozd-desc = { ent-WeaponSubMachineGunDrozd.desc }
 
-tactical-interface-drozd-ammo-name = магазины для ПП .35 авто
+tactical-interface-drozd-ammo-name = Магазины для ПП .35 авто
 tactical-interface-drozd-ammo-desc = { ent-BoxMagazinePistolSubMachineGun.desc }
 
 tactical-interface-Wt550-name = { ent-WeaponSubMachineGunWt550 }
 tactical-interface-Wt550-desc = { ent-WeaponSubMachineGunWt550.desc }
 
-tactical-interface-Wt550-ammo-name = { ent-BoxMagazinePistolSubMachineGunTopMounted }
+tactical-interface-Wt550-ammo-name = Коробка магазинов WT550 .35 авто
 tactical-interface-Wt550-ammo-desc = { ent-BoxMagazinePistolSubMachineGunTopMounted.desc }
 
 tactical-interface-enforcer-name = Силовик
 tactical-interface-enforcer-desc = { ent-WeaponShotgunEnforcer.desc }
 
-tactical-interface-enforcer-ammo-lethal-name = ружейные патроны (летальные)
+tactical-interface-enforcer-ammo-lethal-name = Ружейные патроны (летальные)
 tactical-interface-enforcer-ammo-lethal-desc = { ent-BoxLethalshot.desc }
 
-tactical-interface-enforcer-ammo-incendiary-name = ружейные патроны (зажигательные)
+tactical-interface-enforcer-ammo-incendiary-name = Ружейные патроны (зажигательные)
 tactical-interface-enforcer-ammo-incendiary-desc = { ent-BoxShotgunIncendiary.desc }
 
 tactical-interface-pulse-pistol-name = Импульсный пистолет
@@ -60,6 +69,9 @@ tactical-interface-pulse-pistol-desc = { ent-WeaponPulsePistol.desc }
 
 tactical-interface-pulse-carbine-name = Импульсный карабин
 tactical-interface-pulse-carbine-desc = { ent-WeaponPulseCarbine.desc }
+
+tactical-interface-ammo-all-name = Набор боеприпасов
+tactical-interface-ammo-all-desc = { ent-ClothingBackpackERTAmmoAll.desc }
 
 tactical-interface-disabler-smg-name = Станнер-пулемёт
 tactical-interface-disabler-smg-desc = { ent-WeaponDisablerSMG.desc }
@@ -76,8 +88,26 @@ tactical-interface-riot-laser-shield-desc = { ent-RiotLaserShield.desc }
 tactical-interface-riot-bullet-shield-name = Баллистический щит
 tactical-interface-riot-bullet-shield-desc = { ent-RiotBulletShield.desc }
 
-tactical-interface-telescopic-shield-name = { ent-TelescopicShield }
+tactical-interface-telescopic-shield-name = Телескопический щит
 tactical-interface-telescopic-shield-desc = { ent-TelescopicShield.desc }
+
+tactical-interface-portable-recharger-name = Переносной зарядник
+tactical-interface-portable-recharger-desc = { ent-PortableRecharger.desc }
+
+tactical-interface-portable-recharger-pro-name = Переносной турбо-зарядник-рюкзак
+tactical-interface-portable-recharger-pro-desc = { ent-PortableRechargerTurboBag.desc }
+
+tactical-interface-cleaner-grenade-name = Чистящая граната
+tactical-interface-cleaner-grenade-desc = { ent-CleanerGrenade.desc }
+
+tactical-interface-cleaner-grenade-box-name = Коробка чистящих гранат
+tactical-interface-cleaner-grenade-box-desc = { ent-BoxCleanerGrenades.desc }
+
+tactical-interface-holywater-grenade-name = Свято-очистительная граната
+tactical-interface-holywater-grenade-desc = { ent-HolyWaterGrenade.desc }
+
+tactical-interface-holywater-grenade-box-name = Коробка со свято-очистительными гранатами
+tactical-interface-holywater-grenade-box-desc = { ent-BoxHollyGrenade.desc }
 
 tactical-interface-grenade-incendiary-name = Зажигательная граната
 tactical-interface-grenade-incendiary-desc = { ent-GrenadeIncendiary.desc }
@@ -88,16 +118,19 @@ tactical-interface-emp-grenade-desc = { ent-EmpGrenade.desc }
 tactical-interface-tear-gas-grenade-name = Слезоточивая граната
 tactical-interface-tear-gas-grenade-desc = { ent-TearGasGrenade.desc }
 
+tactical-interface-tear-gas-grenade-box-name = Коробка слезоточивых гранат
+tactical-interface-tear-gas-grenade-box-desc = { ent-BoxTearGas.desc }
+
 tactical-interface-grenade-shrapnel-name = Осколочная граната
 tactical-interface-grenade-shrapnel-desc = { ent-GrenadeShrapnel.desc }
 
-tactical-interface-mini-jetpkac-name = { ent-JetpackMiniFilled }
+tactical-interface-mini-jetpkac-name = Мини-джетпак
 tactical-interface-mini-jetpkac-desc = { ent-JetpackMiniFilled.desc }
 
-tactical-interface-double-tank-oxygen-name = { ent-DoubleEmergencyOxygenTankFilled }
+tactical-interface-double-tank-oxygen-name = Двойной аварийный кислородный баллон
 tactical-interface-double-tank-oxygen-desc = { ent-DoubleEmergencyOxygenTankFilled.desc }
 
-tactical-interface-double-tank-nitrogen-name = { ent-DoubleEmergencyNitrogenTankFilled }
+tactical-interface-double-tank-nitrogen-name = Двойной аварийный азотный баллон
 tactical-interface-double-tank-nitrogen-desc = { ent-DoubleEmergencyNitrogenTankFilled.desc }
 
 tactical-interface-rcd-name = РСУ
@@ -106,8 +139,8 @@ tactical-interface-rcd-desc = { ent-RCD.desc }
 tactical-interface-rcd-ammo-name = Картриджи РСУ
 tactical-interface-rcd-ammo-desc = { ent-CrateRCDAmmo.desc }
 
-tactical-interface-rcd-experimental-name = экспериментальный РСУ
-tactical-interface-rcd-experimental-desc = { ent-RCDRecharging.desc }
+tactical-interface-rcd-experimental-name = Экспериментальный РСУ
+tactical-interface-rcd-experimental-desc = { ent-RCDExperimental.desc }
 
 tactical-interface-steel-name = Сталь
 tactical-interface-steel-desc = { ent-CrateMaterialSteel.desc }
@@ -160,20 +193,44 @@ tactical-interface-teg-desc = { ent-TegCenter.desc }
 tactical-interface-medkit-combat-name = Боевая аптечка
 tactical-interface-medkit-combat-desc = { ent-MedkitCombatFilled.desc }
 
-tactical-interface-medkit-brute-name = набор для лечения механических травм
+tactical-interface-medkit-brute-name = Набор для лечения механических травм
 tactical-interface-medkit-brute-desc = { ent-MedkitBruteFilled.desc }
 
-tactical-interface-medkit-burn-name = набор для лечения физических травм
+tactical-interface-medkit-burn-name = Набор для лечения физических травм
 tactical-interface-medkit-burn-desc = { ent-MedkitBurnFilled.desc }
 
-tactical-interface-medkit-toxin-name = набор для лечения физических травм
+tactical-interface-medkit-toxin-name = Набор для лечения физических травм
 tactical-interface-medkit-toxin-desc = { ent-MedkitToxinFilled.desc }
 
-tactical-interface-medkit-radiation-name = набор для выведения радиации
+tactical-interface-medkit-radiation-name = Набор для выведения радиации
 tactical-interface-medkit-radiation-desc = { ent-MedkitRadiationFilled.desc }
+
+tactical-interface-medkit-android-name = Боевой набор для андроидов
+tactical-interface-medkit-android-desc = { ent-MedkitAndroidBlackFilled.desc }
+
+tactical-interface-mepipen-all-name = Коробка автоинъекторов общего типа
+tactical-interface-mepipen-all-desc = { ent-BoxAutoInjectorAll.desc }
+
+tactical-interface-mepipen-mech-name = Коробка автоинъекторов от механического урона
+tactical-interface-mepipen-mech-desc = { ent-BoxAutoInjectorMech.desc }
+
+tactical-interface-mepipen-burm-name = Коробка автоинъекторов от физического урона
+tactical-interface-mepipen-burm-desc = { ent-BoxAutoInjectorBurn.desc }
+
+tactical-interface-mepipen-ert-name = Боевой стимулятор
+tactical-interface-mepipen-ert-desc = { ent-Ertpen.desc }
+
+tactical-interface-mepipen-combat-name = Боевой медипен
+tactical-interface-mepipen-combat-desc = { ent-CombatMedipen.desc }
 
 tactical-interface-ambuzol-name = 5 таблеток Амбузола
 tactical-interface-ambuzol-desc = Стабильный способ излечить от зомби вируса.
 
 tactical-interface-ambuzol-plus-name = Таблетка Амбузола плюс
 tactical-interface-ambuzol-plus-desc = Иммунитет от зомби.
+
+tactical-interface-bluesheild-name = Энергощит "Синий Щит"
+tactical-interface-bluesheild-desc = Специальный щит, который генерирует твердый поток энергии при помощи встроенного проектора, который отражает любые снаряды.
+
+tactical-interface-module-name = Преобразователь аномальных улучшений мод-костюма с ядрами
+tactical-interface-module-desc = Соддержит один из аномальных улучшений, в котором встроенно ядро аномалии, которое невозможно вытащить.

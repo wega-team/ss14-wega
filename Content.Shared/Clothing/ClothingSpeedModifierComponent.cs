@@ -1,13 +1,13 @@
-﻿using Robust.Shared.GameStates;
+using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Clothing;
 
 /// <summary>
 /// Modifies speed when worn and activated.
-/// Supports <c>ItemToggleComponent</c>.
+/// Supports <see cref="ItemToggleComponent"/>.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(ClothingSpeedModifierSystem))]
+[RegisterComponent, NetworkedComponent] // Access(typeof(ClothingSpeedModifierSystem))] // Corvax-Wega-Edit, wizards i hate ya
 public sealed partial class ClothingSpeedModifierComponent : Component
 {
     [DataField]
@@ -15,6 +15,13 @@ public sealed partial class ClothingSpeedModifierComponent : Component
 
     [DataField]
     public float SprintModifier = 1.0f;
+
+    /// <summary>
+    /// Defines if the speed modifier requires <see cref="ItemToggleComponent"/> activation to apply.
+    /// This will have no effect without an <see cref="ItemToggleComponent"/> on the entity.
+    /// </summary>
+    [DataField]
+    public bool RequireActivated = true;
 
     /// <summary>
     /// An optional required standing state.

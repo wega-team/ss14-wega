@@ -1,0 +1,6 @@
+- type: latheRecipe
+  id: SheetMagmite1
+  result: SheetMagmite1
+  completetime: 2
+  materials:
+    RawMagmite: 100

@@ -1,6 +1,7 @@
 # species
 - type: emoteSounds
   id: MaleHuman
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -42,9 +43,12 @@
       collection: MaleDeathGasp
     Moan: # Corvax-Wega
       collection: MaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleHuman
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -86,9 +90,12 @@
       collection: FemaleDeathGasp
     Moan: # Corvax-Wega
       collection: FemaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
 
 - type: emoteSounds
   id: MaleReptilian
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -110,9 +117,26 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: DeathGasp
+    # Corvax-Wega-Start
+    Purr:
+      collection: ReptilianPurr 
+    FilinidHisses:
+      collection: ReptilianHiss
+    Growl:
+      collection: ReptilianGrowl
+    Sigh:
+      collection: MaleSigh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Snore:
+      collection: Snores
+    # Corvax-Wega-End
 
 - type: emoteSounds
   id: FemaleReptilian
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -134,9 +158,26 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    # Corvax-Wega-Start
+    Purr:
+      collection: ReptilianPurr 
+    FilinidHisses:
+      collection: ReptilianHiss
+    Growl:
+      collection: ReptilianGrowl
+    Sigh:
+      collection: FemaleSigh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Snore:
+      collection: Snores
+    # Corvax-Wega-End
 
 - type: emoteSounds
   id: MaleSlime
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   sounds:
     Squish:
       collection: Squishes
@@ -178,11 +219,16 @@
       collection: MaleDeathGasp
     Moan: # Corvax-Wega
       collection: MaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
+    SlimeBubble: # Corvax-Wega
+      collection: SlimeBubbles # Corvax-Wega
   params:
     variation: 0.125
 
 - type: emoteSounds
   id: FemaleSlime
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   sounds:
     Squish:
       collection: Squishes
@@ -224,16 +270,23 @@
       collection: FemaleDeathGasp
     Moan: # Corvax-Wega
       collection: FemaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
+    SlimeBubble: # Corvax-Wega
+      collection: SlimeBubbles # Corvax-Wega
   params:
     variation: 0.125
 
 - type: emoteSounds
   id: UnisexVox
+  voiceSelectorName: humanoid-profile-editor-voice-neutral
   sounds:
     Scream:
       path: /Audio/Voice/Vox/shriek1.ogg
     Laugh:
       path: /Audio/Voice/Vox/vox_laugh.ogg
+    Sneeze:
+      path: /Audio/Voice/Vox/vox_sneeze.ogg
     Cough:
       path: /Audio/Voice/Vox/vox_cough.ogg
     Sigh:
@@ -254,17 +307,24 @@
       path: /Audio/Effects/Gasp/vox_gasp.ogg
     DefaultDeathgasp:
       path: /Audio/Effects/Gasp/vox_DeathGasp.ogg
+    Hiss:
+      path: /Audio/Voice/Vox/vox_hiss.ogg
+    Caw:
+      path: /Audio/Voice/Vox/vox_caw.ogg
   params:
     variation: 0.125
     # TODO: We need vox sounds for the other emotes
 
 - type: emoteSounds
   id: UnisexDiona
+  voiceSelectorName: humanoid-profile-editor-voice-neutral
   sounds:
     Scream:
       path: /Audio/Voice/Diona/diona_scream.ogg
     Laugh:
       collection: DionaLaugh
+    Sneeze:
+      collection: DionaSneeze
     Chirp:
       path: /Audio/Animals/nymph_chirp.ogg
     Honk:
@@ -282,6 +342,7 @@
 
 - type: emoteSounds
   id: UnisexArachnid
+  voiceSelectorName: humanoid-profile-editor-voice-neutral
   params:
     variation: 0.125
   sounds:
@@ -306,6 +367,7 @@
 
 - type: emoteSounds
   id: UnisexDwarf
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   sounds:
     Scream:
       collection: MaleScreams
@@ -345,12 +407,15 @@
       collection: MaleDeathGasp
     Moan: # Corvax-Wega
       collection: MaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
   params:
     variation: 0.125
     pitch: 0.75
 
 - type: emoteSounds
   id: FemaleDwarf
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   sounds:
     Scream:
       collection: FemaleScreams
@@ -390,12 +455,15 @@
       collection: FemaleDeathGasp
     Moan: # Corvax-Wega
       collection: FemaleMoans # Corvax-Wega
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
   params:
     variation: 0.125
     pitch: 0.75
 
 - type: emoteSounds
   id: UnisexMoth
+  voiceSelectorName: humanoid-profile-editor-voice-neutral
   params:
     variation: 0.125
   sounds:
@@ -487,19 +555,22 @@
 # Vulp Sounds
 - type: emoteSounds
   id: MaleVulpkanin
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
     Laugh:
-      collection: MaleLaugh
+      collection: VulpakinLaugh
     Sneeze:
-      collection: MaleSneezes
+      collection: VulpkaninSneeze
     Cough:
       collection: MaleCoughs
     Whistle:
       collection: Whistles
     Sigh:
       collection: MaleSigh
+    Yawn:
+      collection: VulpkaninYawns
     Scream:
       collection: VulpkaninScreams
     Growl:
@@ -510,28 +581,43 @@
       collection: VulpkaninBarks
     Whine:
       collection: VulpkaninWhines
+    Crying:
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
     Gasp:
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
+    Purr: # Corvax-Wega
+      collection: VulpakinUruru # Corvax-Wega
 
 - type: emoteSounds
   id: FemaleVulpkanin
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
     Laugh:
-      collection: FemaleLaugh
+      collection: VulpakinLaugh
     Sneeze:
-      collection: FemaleSneezes
+      collection: VulpkaninSneeze
     Cough:
       collection: FemaleCoughs
     Whistle:
       collection: Whistles
     Sigh:
       collection: FemaleSigh
+    Yawn:
+      collection: VulpkaninYawns
     Scream:
       collection: VulpkaninScreams
     Growl:
@@ -542,12 +628,24 @@
       collection: VulpkaninBarks
     Whine:
       collection: VulpkaninWhines
+    Crying:
+      collection: VulpkaninWhines
     Howl:
       collection: VulpkaninHowls
+    Weh:
+      collection: Weh
+    Hew:
+      collection: Hew
+    Honk:
+      collection: BikeHorn
     Gasp:
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    FilinidMeows: # Corvax-Wega
+      collection: FelinidMeowsSound # Corvax-Wega
+    Purr: # Corvax-Wega
+      collection: VulpakinUruru # Corvax-Wega
 
 # body emotes
 - type: emoteSounds
@@ -588,6 +686,22 @@
       path: /Audio/Voice/Reptilian/reptilian_tailthump.ogg
       params:
         variation: 0.125
+    Clap:
+      collection: Claps
+    ClapSingle:
+      collection: ClapSingle
+    Snap:
+      collection: Snaps
+      params:
+        volume: -6
+    Salute:
+      collection: Salutes
+
+- type: emoteSounds
+  id: MothBodyEmotes
+  sounds:
+    Flap:
+      path: /Audio/Voice/Moth/moth_flap.ogg
     Clap:
       collection: Claps
     ClapSingle:
@@ -668,6 +782,20 @@
     path: /Audio/Animals/goat_bah.ogg
     params:
       variation: 0.125
+
+- type: emoteSounds
+  id: Sheep
+  sound:
+    collection: Sheep
+    params:
+      variation: 0.05
+
+- type: emoteSounds
+  id: SheepSpace
+  sound:
+    collection: SheepSpace
+    params:
+      variation: 0.05
 
 - type: emoteSounds
   id: Scurret

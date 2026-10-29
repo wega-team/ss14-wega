@@ -1,0 +1,12 @@
+ent-BaseIcemoonDemonicPortal = демонический портал
+    .desc = Нет, это не галлюцинация. Перед вами действительно портал чистейшего зла! Эти потусторонние искажения являются источником всех этих отвратительных демонических стражей, снежных легионов и ледяных детёнышей.
+    .suffix = НЕ МАППИТЬ
+ent-IceDemonIcemoonDemonicPortal = { ent-BaseIcemoonDemonicPortal }
+    .desc = { ent-BaseIcemoonDemonicPortal.desc }
+    .suffix = { ent-BaseIcemoonDemonicPortal.suffix }
+ent-SnowLegionIcemoonDemonicPortal = { ent-BaseIcemoonDemonicPortal }
+    .desc = { ent-BaseIcemoonDemonicPortal.desc }
+    .suffix = { ent-BaseIcemoonDemonicPortal.suffix }
+ent-IceWhelpIcemoonDemonicPortal = { ent-BaseIcemoonDemonicPortal }
+    .desc = { ent-BaseIcemoonDemonicPortal.desc }
+    .suffix = { ent-BaseIcemoonDemonicPortal.suffix }

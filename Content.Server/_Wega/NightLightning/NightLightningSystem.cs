@@ -9,12 +9,15 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Night.Lightning;
 
-public sealed class NightLightningSystem : EntitySystem
+public sealed partial class NightLightningSystem : EntitySystem
 {
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedPointLightSystem _light = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private IConfigurationManager _cfg = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private SharedPointLightSystem _light = default!;
+    [Dependency] private ChatSystem _chat = default!;
+
+    private int _nightStartHour = 22;
+    private int _nightEndHour = 8;
 
     public override void Initialize()
     {
@@ -22,7 +25,13 @@ public sealed class NightLightningSystem : EntitySystem
 
         SubscribeLocalEvent<NightLightningComponent, ComponentStartup>(OnComponentStartup);
         SubscribeLocalEvent<NightLightComponent, PointLightToggleEvent>(OnPointLightToggle);
+
+        _cfg.OnValueChanged(WegaCVars.NightStartHour, OnNightStartHourChanged, true);
+        _cfg.OnValueChanged(WegaCVars.NightEndHour, OnNightEndHourChanged, true);
     }
+
+    private void OnNightStartHourChanged(int obj) => _nightStartHour = Math.Clamp(obj, 0, 23);
+    private void OnNightEndHourChanged(int obj) => _nightEndHour = Math.Clamp(obj, 0, 23);
 
     public override void Update(float frameTime)
     {
@@ -43,17 +52,18 @@ public sealed class NightLightningSystem : EntitySystem
 
     private void UpdateNightLights(EntityUid uid, NightLightningComponent comp)
     {
-        if (!_cfg.GetCVar(WegaCVars.NightLightEnabled) || !TryComp<TransformComponent>(uid, out var transform))
+        if (!_cfg.GetCVar(WegaCVars.NightLightEnabled))
             return;
 
         var station = Name(uid);
+        var transform = Transform(uid);
         if (IsNightTime() && !comp.IsNight)
         {
             var lightEntities = _lookup.GetEntitiesInRange<PointLightComponent>(transform.Coordinates, 500f);
             foreach (var lightEntity in lightEntities)
             {
                 var light = lightEntity.Owner;
-                if (!TryComp<AmbientSoundComponent>(light, out var sound) || HasComp<NightLightBlockedComponent>(light))
+                if (!HasComp<AmbientSoundComponent>(light) || HasComp<NightLightBlockedComponent>(light))
                     continue;
 
                 if (_light.TryGetLight(light, out var pointLight))
@@ -115,10 +125,20 @@ public sealed class NightLightningSystem : EntitySystem
 
     private bool IsNightTime()
     {
-        DateTime currentTime = DateTime.Now;
         if (_cfg.GetCVar(WegaCVars.PartyEnabled))
-            return currentTime.Hour >= 0;
-        return currentTime.Hour >= 19 || currentTime.Hour < 5;
+            return true;
+
+        var currentHour = DateTime.Now.Hour;
+        if (_nightStartHour > _nightEndHour)
+        {
+            return currentHour >= _nightStartHour || currentHour < _nightEndHour;
+        }
+        else if (_nightStartHour < _nightEndHour)
+        {
+            return currentHour >= _nightStartHour && currentHour < _nightEndHour;
+        }
+
+        return false;
     }
 
     private void OnComponentStartup(EntityUid uid, NightLightningComponent component, ComponentStartup ev)

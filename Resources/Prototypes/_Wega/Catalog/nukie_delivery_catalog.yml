@@ -1,0 +1,11 @@
+- type: listing
+  id: NukieDeliveryMedicineBorgBundle
+  name: nukie-delivery-medicineborg-bundle-name
+  description: nukie-delivery-medicineborg-bundle-desc
+  productEntity: ReinforcementRadioSyndicateCyborgMedical
+  categories:
+  - NukieDelivery
+  restockTime: 1200
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

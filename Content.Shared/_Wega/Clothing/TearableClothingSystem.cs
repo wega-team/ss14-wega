@@ -1,6 +1,8 @@
 using Content.Shared.Clothing.Components;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Genetics;
 using Content.Shared.IdentityManagement;
@@ -12,11 +14,11 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Clothing;
 
-public sealed class TearableClothingSystem : EntitySystem
+public sealed partial class TearableClothingSystem : EntitySystem
 {
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     private static readonly ProtoId<DamageTypePrototype> Damage = "Slash";
 
@@ -51,7 +53,7 @@ public sealed class TearableClothingSystem : EntitySystem
         if (!TryComp<PhysicsComponent>(user, out var physics) || physics.Mass <= 60f
             && !HasComp<StrongnessGenComponent>(user))
         {
-            _popup.PopupClient(Loc.GetString("tearable-clothing-too-weakness"), user, user);
+            _popup.PopupEntity(Loc.GetString("tearable-clothing-too-weakness"), user, user);
             return;
         }
 
@@ -78,7 +80,7 @@ public sealed class TearableClothingSystem : EntitySystem
 
         args.Handled = true;
 
-        _popup.PopupClient(Loc.GetString("tearable-clothing-successed", ("clothing", Name(entity))), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("tearable-clothing-successed", ("clothing", Name(entity))), args.User, args.User);
 
         var damageSpec = new DamageSpecifier { DamageDict = { { Damage, 60 } } };
         _damage.TryChangeDamage(args.Args.Target.Value, damageSpec, true);

@@ -191,7 +191,7 @@
 - type: soundCollection
   id: HarpyRevs
   files:
-    - /Audio/Weapons/chainsawwield.ogg
+    - /Audio/Weapons/chainsaw_rev.ogg
     - /Audio/Machines/blender.ogg
     - /Audio/Machines/juicer.ogg
     - /Audio/Machines/reclaimer_startup.ogg
@@ -214,7 +214,7 @@
 
 - type: soundCollection
   id: HarpyChitter
-  files: 
+  files:
     - /Audio/Voice/Moth/moth_chitter.ogg
     - /Audio/Machines/circuitprinter.ogg
     - /Audio/Machines/diagnoser_printing.ogg
@@ -223,6 +223,6 @@
 
 - type: soundCollection
   id: HarpySqueak
-  files: 
+  files:
     - /Audio/Voice/Moth/moth_squeak.ogg
     - /Audio/Animals/mouse_squeak.ogg

@@ -2,8 +2,8 @@
   id: WegaCyberiad
   mapName: 'Cyberiad Station'
   mapPath: /Maps/_Wega/wegacyberiad.yml
-  minPlayers: 45
-  maxPlayers: 80
+  minPlayers: 25
+  maxPlayers: 65
   stations:
     Cyberiad:
       stationProto: StandardNanotrasenStation
@@ -15,6 +15,13 @@
             prefixCreator: 'TZ'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/Shuttles/emergency_courser.yml
+        - type: StationLavaland
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
         - type: StationJobs
           availableJobs:
             #service
@@ -54,6 +61,7 @@
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
+            WardenHelper: [ 1, 1 ]
             SeniorOfficer: [ 1, 1 ]
             SecurityOfficer: [ 3, 3 ]
             Detective: [ 1, 1 ]
@@ -63,7 +71,8 @@
             #Lawyer: [ 2, 2 ] # Corvax-IAA
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 4, 4 ]
+            ShaftMinerMedic: [ 1, 1 ]
             CargoTechnician: [ 3, 3 ]
             Postman: [ 1, 1 ]
             #civilian

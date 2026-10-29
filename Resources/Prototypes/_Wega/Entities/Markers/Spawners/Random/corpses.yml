@@ -1,0 +1,11 @@
+- type: entity
+  id: RandomLegionCorpse
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    prototypes:
+      - RandomCargoCorpseSpawner
+      - RandomMedicCorpseSpawner
+      - RandomServiceCorpseSpawner
+      - RandomEngineerCorpseSpawner
+      - RandomSecurityCorpseSpawner

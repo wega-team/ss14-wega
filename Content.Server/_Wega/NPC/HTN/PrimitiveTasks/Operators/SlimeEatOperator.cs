@@ -9,8 +9,8 @@ namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators;
 
 public sealed partial class SlimeEatOperator : HTNOperator
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     [DataField("targetKey")]
     public string TargetKey = "FoodTarget";

@@ -24,6 +24,7 @@
       size: Large
     - type: Speech
       speechVerb: Robotic
+    - type: ItemToggleExaminableStatus
     - type: ItemToggle
       soundActivate:
         path: /Audio/Items/Defib/defib_safety_on.ogg
@@ -68,7 +69,7 @@
   - type: MultiHandedItem
   - type: ToggleCellDraw
   - type: PowerCellDraw
-    useRate: 100
+    useCharge: 100
 
 - type: entity
   id: DefibrillatorEmpty
@@ -106,7 +107,7 @@
     size: Normal
   - type: ToggleCellDraw
   - type: PowerCellDraw
-    useRate: 100
+    useCharge: 100
   - type: Defibrillator
     zapHeal:
       types:
@@ -137,7 +138,7 @@
 
 - type: entity
   id: DefibrillatorSyndicate
-  parent: [ DefibrillatorCompact, BaseSyndicateContraband ]
+  parent: [BaseCorvaxContraband131, DefibrillatorCompact, BaseSyndicateContraband] # Corvax-Contraband
   name: interdyne defibrillator
   description: Doubles as a self-defense weapon against war-crime inclined tiders.
   components:

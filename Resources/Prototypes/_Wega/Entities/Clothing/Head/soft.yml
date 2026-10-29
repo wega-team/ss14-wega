@@ -13,3 +13,19 @@
   parent: [ClothingHeadHeadHatBaseFlipped, ClothingHeadHatPostmansoft]
   id: ClothingHeadHatPostmansoftFlipped
   name: postman cap
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: ClothingHeadHatWardenHelper
+  name: warden cap
+  description: The perfect cap for aspiring wardens.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Head/Soft/wardsoft.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Head/Soft/wardsoft.rsi
+
+- type: entity
+  parent: [ClothingHeadHeadHatBaseFlipped, ClothingHeadHatWardenHelper]
+  id: ClothingHeadHatWardenHelperFlipped
+  name: warden cap

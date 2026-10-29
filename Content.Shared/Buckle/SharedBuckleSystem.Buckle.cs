@@ -7,6 +7,7 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Popups;
@@ -15,7 +16,7 @@ using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Throwing;
-using Content.Shared.Vehicle.Components; // Corvax-Wega-Vehicles
+using Content.Shared.Vehicle.Components;
 using Content.Shared.Whitelist;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -30,7 +31,7 @@ public abstract partial class SharedBuckleSystem
 {
     public static ProtoId<AlertCategoryPrototype> BuckledAlertCategory = "Buckled";
 
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
 
     private void InitializeBuckle()
     {
@@ -110,9 +111,6 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleMove(Entity<BuckleComponent> ent, ref MoveEvent ev)
     {
-        if (HasComp<VehicleComponent>(ent.Comp.BuckledTo)) // Corvax-Wega-Vehicles
-            return; // Corvax-Wega-Vehicles
-
         BuckleTransformCheck(ent, ev.Component);
     }
 
@@ -167,15 +165,6 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleStandAttempt(EntityUid uid, BuckleComponent component, StandAttemptEvent args)
     {
-        // Corvax-Wega-Vehicles-start
-        if (component.BuckledTo != null)
-        {
-            var buckle = component.BuckledTo;
-            if (HasComp<VehicleComponent>(buckle))
-                return;
-        }
-        // Corvax-Wega-Vehicles-end
-
         if (component.Buckled)
             args.Cancel();
     }
@@ -188,7 +177,11 @@ public abstract partial class SharedBuckleSystem
 
     private void OnBuckleUpdateCanMove(EntityUid uid, BuckleComponent component, UpdateCanMoveEvent args)
     {
-        if (component.Buckled && !HasComp<VehicleComponent>(component.BuckledTo)) // Corvax-Wega-Vehicles-Edit
+        // If we're relaying then don't cancel.
+        if (HasComp<RelayInputMoverComponent>(uid))
+            return;
+
+        if (component.Buckled)
             args.Cancel();
     }
 
@@ -248,10 +241,10 @@ public abstract partial class SharedBuckleSystem
 
         // Does it pass the Whitelist
         if (_whitelistSystem.IsWhitelistFail(strapComp.Whitelist, buckleUid) ||
-            _whitelistSystem.IsBlacklistPass(strapComp.Blacklist, buckleUid))
+            _whitelistSystem.IsWhitelistPass(strapComp.Blacklist, buckleUid))
         {
-            if (popup)
-                _popup.PopupClient(Loc.GetString("buckle-component-cannot-fit-message"), user, PopupType.Medium);
+            if (popup && user != null)
+                _popup.PopupEntity(Loc.GetString("buckle-component-cannot-fit-message"), user.Value, user, PopupType.Medium);
 
             return false;
         }
@@ -268,24 +261,24 @@ public abstract partial class SharedBuckleSystem
         if (!_container.IsInSameOrNoContainer((buckleUid, null, null), (strapUid, null, null)))
             return false;
 
-        if (user != null && !HasComp<HandsComponent>(user))
+        if (user != null && !HasComp<HandsComponent>(user) && strapUid != user)
         {
             if (popup)
-                _popup.PopupClient(Loc.GetString("buckle-component-no-hands-message"), user);
+                _popup.PopupEntity(Loc.GetString("buckle-component-no-hands-message"), user.Value, user);
 
             return false;
         }
 
         if (buckleComp.Buckled && !TryUnbuckle(buckleUid, user, buckleComp))
         {
-            if (popup)
+            if (popup && user != null)
             {
                 var message = Loc.GetString(buckleUid == user
                     ? "buckle-component-already-buckled-message"
                     : "buckle-component-other-already-buckled-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -308,7 +301,8 @@ public abstract partial class SharedBuckleSystem
                     : "buckle-component-other-cannot-buckle-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                if (user != null)
+                    _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -323,7 +317,8 @@ public abstract partial class SharedBuckleSystem
                     : "buckle-component-other-cannot-buckle-message",
                 ("owner", Identity.Entity(buckleUid, EntityManager)));
 
-                _popup.PopupClient(message, user);
+                if (user != null)
+                    _popup.PopupEntity(message, user.Value, user);
             }
 
             return false;
@@ -532,7 +527,7 @@ public abstract partial class SharedBuckleSystem
             if (!_interaction.InRangeUnobstructed(user.Value, strap.Owner, buckle.Comp.Range, popup: popup))
                 return false;
 
-            if (user.Value != buckle.Owner && !ActionBlocker.CanComplexInteract(user.Value))
+            if (user.Value != buckle.Owner && !ActionBlocker.CanComplexInteract(user.Value) && user.Value != strap.Owner)
                 return false;
         }
 
@@ -540,9 +535,6 @@ public abstract partial class SharedBuckleSystem
         RaiseLocalEvent(buckle, ref unbuckleAttempt);
         if (unbuckleAttempt.Cancelled)
             return false;
-
-        if (TryComp<VehicleComponent>(strapUid, out var vehicle) && vehicle.Rider != user && !_mobState.IsIncapacitated(buckle)) // Corvax-Wega-Vehicles
-            return false; // Corvax-Wega-Vehicles
 
         var unstrapAttempt = new UnstrapAttemptEvent(strap, buckle!, user, popup);
         RaiseLocalEvent(strap, ref unstrapAttempt);

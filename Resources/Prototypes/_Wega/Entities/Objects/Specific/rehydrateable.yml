@@ -9,7 +9,7 @@
   - type: Tag
     tags:
     - Meat
-    
+
 - type: entity
   parent: BaseWrappedCube
   name: slime cube
@@ -92,7 +92,7 @@
   components:
   - type: Rehydratable
     possibleSpawns:
-    - MobGiantSpider
+    - MobGiantSpiderTarantula
 
 - type: entity
   parent: RehydratableAnimalCube
@@ -120,3 +120,12 @@
   - type: Rehydratable
     possibleSpawns:
     - MobDionaNymph
+
+- type: entity
+  parent: RehydratableAnimalCube
+  id: HeadcrabCube
+  name: lamar cube
+  components:
+  - type: Rehydratable
+    possibleSpawns:
+    - MobXenomorphLammar

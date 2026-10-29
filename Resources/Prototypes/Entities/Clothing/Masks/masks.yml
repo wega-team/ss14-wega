@@ -28,7 +28,7 @@
   # Corvax-Wega-Dirtable-end
 
 - type: entity
-  parent: [ClothingMaskGas, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingMaskGas, BaseSecurityContraband] # Corvax-Contraband
   id: ClothingMaskGasSecurity
   name: security gas mask
   description: A standard issue Security gas mask.
@@ -48,7 +48,7 @@
         Heat: 0.95
 
 - type: entity
-  parent: [ClothingMaskGas, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingMaskGas, BaseSyndicateContraband] # Corvax-Contraband
   id: ClothingMaskGasSyndicate
   name: syndicate gas mask
   description: A close-fitting tactical mask that can be connected to an air supply.
@@ -208,14 +208,25 @@
     price: 30 # increases in price after decomposed into raw materials
 
 - type: entity
-  parent: ClothingMaskBase
+  parent: [ClothingMaskBase, BaseFoldable]
   id: ClothingMaskClownBase
   abstract: true
   name: clown wig and mask
   description: A true prankster's facial attire. A clown is incomplete without his wig and mask.
   components:
+  - type: Foldable
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: opened
+    foldedHeldPrefix: opened
   - type: Sprite
     sprite: Clothing/Mask/clown.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-opened
+      map: [ "foldedLayer" ]
+      visible: false
   - type: Clothing
     sprite: Clothing/Mask/clown.rsi
   - type: BreathMask
@@ -224,19 +235,7 @@
     tags:
     - ClownMask
     - WhitelistChameleon
-  - type: HideLayerClothing
-    slots:
-    - Snout
-
-- type: entity
-  parent: ClothingMaskClownBase
-  id: ClothingMaskClown
-  components:
-  - type: Tag
-    tags:
-    - ClownMask
     - HamsterWearable
-    - WhitelistChameleon
   - type: HideLayerClothing
     slots:
     - Snout
@@ -247,7 +246,15 @@
   # Corvax-Wega-Dirtable-end
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: ClothingMaskClownBase
+  id: ClothingMaskClown
+  description: A clown mask featuring a foldable wig; a true prankster's attire.
+  components:
+  - type: Sprite
+    sprite: Clothing/Mask/clown.rsi
+
+- type: entity
+  parent: ClothingMaskClownBase
   id: ClothingMaskClownBanana
   name: banana clown wig and mask
   components:
@@ -260,7 +267,7 @@
     node: mask
 
 - type: entity
-  parent: [ClothingMaskClown, BaseSecurityContraband]
+  parent: [ClothingMaskClownBase, BaseSecurityContraband]
   id: ClothingMaskClownSecurity
   name: security clown wig and mask
   description: A debatably oxymoronic but protective mask and wig.
@@ -276,7 +283,6 @@
         Slash: 0.95
         Piercing: 0.95
         Heat: 0.95
-
 - type: entity
   parent: ClothingMaskBase
   id: ClothingMaskJoy
@@ -362,8 +368,8 @@
     equipDelay: 3
     unequipDelay: 3
   - type: IngestionBlocker
-  - type: AddAccentClothing
-    accent: MumbleAccent
+  - type: MumbleAccent
+    relayAccent: true
   - type: EmoteBlocker
     blocksCategories:
     - Vocal
@@ -403,11 +409,11 @@
   - type: Clothing
     sprite: Clothing/Mask/cluwne.rsi
   - type: Unremoveable
-  - type: AddAccentClothing
-    accent: StutteringAccent
+  - type: StutteringAccent
+    relayAccent: true
 
 - type: entity
-  parent: [ ClothingMaskGas, BaseSecurityContraband ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingMaskGas, BaseSecurityContraband] # Corvax-Contraband
   id: ClothingMaskGasSwat
   name: swat gas mask
   description: A elite issue Security gas mask.
@@ -453,9 +459,9 @@
         Heat: 0.95
 
 - type: entity
-  parent: [ ClothingMaskGas, BaseCentcommContraband ]
+  parent: [ ClothingMaskGas, BaseTaskForceContraband ]
   id: ClothingMaskGasERT
-  name: ert gas mask
+  name: ERT gas mask
   description: The gas mask of the elite squad of the ERT.
   components:
   - type: Sprite
@@ -476,8 +482,8 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.95
-        Slash: 0.95
+        Blunt: 0.90 # Corvax-Wega-add
+        Slash: 0.90 # Corvax-Wega-add
         Piercing: 0.95
         Heat: 0.95
 
@@ -654,7 +660,7 @@
 - type: entity
   parent: ClothingMaskClownBase
   id: ClothingMaskBlushingClown
-  name: blushing clown mask
+  name: blushing clown wig and mask
   description: A mask for a blushing clown.
   components:
   - type: Sprite
@@ -725,9 +731,6 @@
     sprite: Clothing/Mask/italian_moustache.rsi
   - type: Item
     storedRotation: -90
-  - type: AddAccentClothing
-    accent: ReplacementAccent
-    replacement: italian
 
 - type: entity
   parent: ClothingMaskBase
@@ -746,7 +749,7 @@
   - type: IdentityBlocker
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, WeldingMaskBase]
   id: ClothingMaskWeldingGas
   name: welding gas mask
   description: A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.
@@ -756,17 +759,14 @@
     state: icon
   - type: Clothing
     sprite: Clothing/Mask/welding-gas.rsi
-  - type: FlashImmunity
-  - type: EyeProtection
-  - type: PhysicalComposition
-    materialComposition:
-      Steel: 200
-      Glass: 100
   - type: StaticPrice
     price: 100
   - type: Tag
     tags:
     - WhitelistChameleon
+  - type: ImageOverlay
+    pathToOverlayImage: "/Textures/Clothing/Head/Welding/weldingTexture.png"
+    additionalColorOverlay: "#00000050"
 
 # Entity tables
 - type: entityTable

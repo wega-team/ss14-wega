@@ -3,7 +3,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared.Genetics.UI;
 
-public sealed class SharedDnaModifier
+public sealed partial class SharedDnaModifier
 {
     public const string OccupantSlotName = "scanner-bodyContainer";
     public const string DiskSlotName = "diskSlot";
@@ -12,10 +12,10 @@ public sealed class SharedDnaModifier
 }
 
 [Serializable, NetSerializable]
-public sealed class DnaModifierBoundUserInterfaceState : BoundUserInterfaceState
+public sealed partial class DnaModifierBoundUserInterfaceState : BoundUserInterfaceState
 {
     public readonly NetEntity Console;
-    public readonly UniqueIdentifiersPrototype? Unique;
+    public readonly UniqueIdentifiersData? Unique;
     public readonly List<EnzymesPrototypeInfo>? Enzymes;
     public readonly EnzymeInfo? Enzyme;
     public readonly string? ScannerBodyInfo;
@@ -32,7 +32,7 @@ public sealed class DnaModifierBoundUserInterfaceState : BoundUserInterfaceState
     public readonly TimeSpan SubjectInjectCooldownRemaining;
     public DnaModifierBoundUserInterfaceState(
         NetEntity console,
-        UniqueIdentifiersPrototype?
+        UniqueIdentifiersData?
         unique, List<EnzymesPrototypeInfo>?
         enzymes, EnzymeInfo? enzyme,
         string? scannerBodyInfo,

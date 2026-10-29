@@ -18,5 +18,10 @@
     - id: ClothingOuterCoatRnd
     - id: AnomalyScanner
     - id: NodeScanner
+    - id: SlimeRNDCubeWrapped # Corvax-Wega-Add
     - id: NetworkConfigurator
       prob: 0.5
+    - id: PlushieLizardJobResearchassistant
+      prob: 0.02
+    - id: PlushieLizardJobScientist
+      prob: 0.02

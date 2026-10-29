@@ -1,0 +1,19 @@
+﻿- type: surgeryPackage
+  id: DeconvertationPackage
+  transitions:
+    - VeilCultistDeconvertationTransition
+
+- type: surgeryPackage
+  id: SlimeDeconvertationPackage
+  transitions:
+    - SlimeVeilCultistDeconvertationTransition
+
+- type: surgeryPackage
+  id: AndroidDeconvertationPackage
+  transitions:
+    - AndroidVeilCultistDeconvertationTransition
+
+- type: surgeryPackage
+  id: IpcDeconvertationPackage
+  transitions:
+    - IpcVeilCultistDeconvertationTransition

@@ -20,11 +20,10 @@
       inverted: true
       traits:
       - Muted
-  weight: 10
   startingGear: HoSGear
   icon: "JobIconHeadOfSecurity"
   supervisors: job-supervisors-captain
-  canBeAntag: false
+  guides: [ Command ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - HeadOfSecurity
   - Command
@@ -32,10 +31,12 @@
   - Security
   - Armory
   - Maintenance
-  - Service
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - External
   - Detective
   - Cryogenics
+  - GenpopEnter
+  - GenpopLeave
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -55,11 +56,13 @@
     back:
     - Flash
     - MagazinePistol
+    - SecurityVoucherCard # Corvax-Wega-Voucher
 
 - type: chameleonOutfit
   id: HeadOfSecurityChameleonOutfit
   job: HeadOfSecurity
   hasMindShield: true
   equipment:
+    head: ClothingHeadHatBeretHoS
     mask: ClothingMaskGasSecurity
     neck: ClothingNeckCloakHos

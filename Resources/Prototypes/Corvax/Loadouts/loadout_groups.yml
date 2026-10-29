@@ -5,6 +5,32 @@
   maxLimit: 5
   loadouts: []
 
+#Law
+
+- type: loadoutGroup
+  id: MagistrateHead
+  name: loadout-group-magistrate-head
+  loadouts:
+  - MagistrateHeadPwig
+  - MagistrateHeadPwigFancy
+
+- type: loadoutGroup
+  id: MagistrateJumpsuit
+  name: loadout-group-magistrate-jumpsuit
+  loadouts:
+  - MagistrateJumpsuit
+  - MagistrateJumpskirt
+  - MagistrateJumpsuitFormal
+
+- type: loadoutGroup
+  id: MagistrateOuterClothing
+  name: loadout-group-magistrate-outerclothing
+  loadouts:
+  - MagistrateOuterClothingRobe
+  - MagistrateOuterClothingRobeAlt
+  - MagistrateOuterClothingRobeFancy
+  - MagistrateOuterClothingRobeRed
+
 # Engineering
 - type: loadoutGroup
   id: ChiefEngineerBackpack
@@ -26,6 +52,19 @@
   loadouts:
   - SeniorEngineerJumpsuit
   - SeniorEngineerJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
@@ -49,6 +88,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -58,8 +108,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -93,6 +143,61 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformJumpsuitRedVictorianSuit
+  - ClothingUniformJumpsuitBlackVictorianSuit
+  - ClothingUniformJumpsuitBarberBrown
+  - ClothingUniformJumpsuitBarber
+  - ClothingUniformJumpsuitTuxedo
+  - ClothingUniformJumpsuitTuxedoWhite
+  - ClothingUniformJumpsuitTuxedoRed
+  - ClothingUniformJumpsuitTuxedoHell
+  - ClothingUniformDressVintage
+  - ClothingUniformTangoDressBlack
+  - ClothingUniformTangoDressWhite
+  - ClothingUniformJumpsuitBlackShirt
+  - ClothingUniformJumpsuitBlueShirt
+  - ClothingUniformJumpsuitPurpleShirt
+  - ClothingUniformJumpsuitRedShirt
+  - ClothingUniformJumpsuitWhiteShirt
+  - ClothingUniformJumpsuitFancyShirt
+  - ClothingUniformJumpsuitRedPlaidShirt
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -121,6 +226,31 @@
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
  # Corvax-Wega-start
 - type: loadoutGroup
@@ -147,6 +277,19 @@
   loadouts:
   - SeniorResearcherJumpsuit
   - SeniorResearcherJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpsuitColorWhite
   - JumpskirtColorWhite
@@ -170,6 +313,17 @@
   - JumpskirtColorDarkBlue
   - JumpsuitColorDarkGreen
   - JumpskirtColorDarkGreen
+  - ClothingUniformJumpskirtGreenElegantDress
+  - ClothingUniformJumpskirtRedElegantDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtPurpleElegantDress
+  - ClothingUniformJumpskirtBlackElegantDress
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtGreenStripedDress
+  - ClothingUniformJumpskirtRedStripedDress
+  - ClothingUniformJumpskirtOrangeStripedDress
+  - ClothingUniformJumpskirtPinkStripedDress
+  - ClothingUniformJumpskirtYellowOldDress
   - JumpsuitColorTeal
   - JumpskirtColorTeal
   - JumpsuitCasualBlue
@@ -179,8 +333,8 @@
   - JumpsuitCasualRed
   - JumpskirtCasualRed
   - JumpsuitCasualGreen
-  - JumpskirtCasualGreen 
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtCasualGreen
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -214,6 +368,61 @@
   - JumpsuitTurtleneckWhiteBlackSleeveless
   - JumpsuitTurtleneckWhiteSleeveless
   - JumpskirtTurtleneckWhiteSleeveless
+  - ClothingUniformJumpskirtPurpleTurtleneckDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
+  - ClothingUniformJumpskirtYellowTurtleneckDress
+  - ClothingUniformJumpskirtGreenTurtleneckDress
+  - ClothingUniformJumpskirtRedTurtleneckDress
+  - ClothingUniformJumpsuitSecBlueOJ
+  - ClothingUniformJumpskirtDetectiveGrey
+  - ClothingUniformJumpsuitDetectiveGrey
+  - ClothingUniformJumpskirtDetective
+  - ClothingUniformJumpsuitDetective
+  - ClothingUniformJumpskirtLawyerBlue
+  - ClothingUniformJumpsuitLawyerBlue
+  - ClothingUniformJumpskirtLawyerPurple
+  - ClothingUniformJumpsuitLawyerPurple
+  - ClothingUniformJumpskirtLawyerRed
+  - ClothingUniformJumpsuitLawyerRed
+  - ClothingUniformJumpskirtLawyerBlack
+  - ClothingUniformJumpsuitLawyerBlack
+  - ClothingUniformJumpskirtLawyerGood
+  - ClothingUniformJumpsuitLawyerGood
+  - ClothingUniformJumpsuitRedVictorianSuit
+  - ClothingUniformJumpsuitBlackVictorianSuit
+  - ClothingUniformJumpsuitBarberBrown
+  - ClothingUniformJumpsuitBarber
+  - ClothingUniformJumpsuitTuxedo
+  - ClothingUniformJumpsuitTuxedoWhite
+  - ClothingUniformJumpsuitTuxedoRed
+  - ClothingUniformJumpsuitTuxedoHell
+  - ClothingUniformDressVintage
+  - ClothingUniformTangoDressBlack
+  - ClothingUniformTangoDressWhite
+  - ClothingUniformJumpsuitBlackShirt
+  - ClothingUniformJumpsuitBlueShirt
+  - ClothingUniformJumpsuitPurpleShirt
+  - ClothingUniformJumpsuitRedShirt
+  - ClothingUniformJumpsuitWhiteShirt
+  - ClothingUniformJumpsuitFancyShirt
+  - ClothingUniformJumpsuitRedPlaidShirt
+  - ClothingUniformTopColorWhite
+  - ClothingUniformTopColorGrey
+  - ClothingUniformTopColorBlack
+  - ClothingUniformTopColorBlue
+  - ClothingUniformTopColorDarkBlue
+  - ClothingUniformTopColorTeal
+  - ClothingUniformTopColorGreen
+  - ClothingUniformTopColorDarkGreen
+  - ClothingUniformTopColorOrange
+  - ClothingUniformTopColorRed
+  - ClothingUniformTopColorYellow
+  - ClothingUniformTopColorPurple
+  - ClothingUniformTopColorLightBrown
+  - ClothingUniformTopColorBrown
+  - ClothingUniformTopColorMaroon
+  - ClothingUniformTopic
+  - ClothingUniformTopicCool
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -243,6 +452,31 @@
   - WhiteShoes
   - BlackShoes
   - ScienceWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
 - type: loadoutGroup
   id: SeniorResearcherGloves
@@ -278,6 +512,9 @@
   loadouts:
   - JumpsuitPilot
   - JumpskirtPilot
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantSecurity
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
@@ -307,6 +544,9 @@
   loadouts:
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtElegantSecurity
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
   - JumpskirtTurtleneckRed
   - JumpsuitTurtleneckRed
@@ -373,8 +613,21 @@
   loadouts:
   - SeniorPhysicianJumpsuit
   - SeniorPhysicianJumpskirt
+  # Corvax-Wega-Sponsors-start
+  - ClothingUniformJumpskirtSexySweater
+  - ClothingUniformJumpskirtMagicDress
+  - ClothingUniformJumpskirtBlackrevealingdress
+  - ClothingUniformJumpskirtRedrevealingdress
+  - ClothingUniformJumpskirtNecklineSweater
+  - ClothingUniformJumpskirtPinkKimano
+  - ClothingUniformJumpskirtBlueKimono
+  - ClothingUniformJumpskirtElegantTacticalmaid
+  - ClothingUniformJumpsuitStylishShirt
+  - ClothingUniformJumpsuitManlyPants
+  - ClothingUniformJumpsuitBeautifulSweater
+  # Corvax-Wega-Sponsors-end
 # Corvax-Wega-add-start
-  - JumpskirtTurtleneckAquamarine   
+  - JumpskirtTurtleneckAquamarine
   - JumpsuitTurtleneckAquamarine
   - JumpskirtTurtleneckWhite
   - JumpsuitTurtleneckWhite
@@ -384,6 +637,9 @@
   - JumpsuitTurtleneckAzure
   - JumpskirtTurtleneckBlue
   - JumpsuitTurtleneckBlue
+  - ClothingUniformJumpskirtCyanStripedDress
+  - ClothingUniformJumpskirtBlueElegantDress
+  - ClothingUniformJumpskirtBlueTurtleneckDress
 # Corvax-Wega-add-end
 
 - type: loadoutGroup
@@ -409,6 +665,31 @@
   loadouts:
   - WhiteShoes
   - MedicalWinterBoots
+ # Corvax-Wega-Shoes-Start
+  - ClothingShoesColorBlack
+  - ClothingShoesColorBrown
+  - ClothingShoesColorWhite
+  - ClothingShoesColorYellow
+  - ClothingShoesColorGreen
+  - ClothingShoesColorRed
+  - ClothingShoesColorOrange
+  - ClothingShoesColorBlue
+  - ClothingShoesColorPurple
+  - ClothingShoesHeelsBlack
+  - ClothingShoesHeelsGray
+  - ClothingShoesHeelsTurquoise
+  - ClothingShoesHeelsYellow
+  - ClothingShoesHeelsGreen
+  - ClothingShoesHeelsPink
+  - ClothingShoesHeelsOrange
+  - ClothingShoesHeelsRed
+  - ClothingShoesHeelsBlue
+  - ClothingShoesHeelsPurple
+  - ClothingShoesBootsLaceup
+  - ClothingShoesSandalsBrown
+  - ClothingShoesSandalsBlack
+  - ClothingShoesLeather
+ # Corvax-Wega-Shoes-End
 
   # Corvax-Wega-start
 - type: loadoutGroup

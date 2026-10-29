@@ -11,8 +11,7 @@ namespace Content.Client._Wega.Xenobiology.UI;
 [GenerateTypedNameReferences]
 public sealed partial class CellSequencerWindow : FancyWindow
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IEntityManager _entity = default!;
+    [Dependency] private IEntityManager _entity = default!;
 
     private readonly CellSystem _cell;
 

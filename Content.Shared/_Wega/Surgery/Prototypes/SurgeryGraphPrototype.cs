@@ -5,14 +5,14 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Surgery;
 
-[Prototype("surgeryGraph")]
-public sealed class SurgeryGraphPrototype : IPrototype
+[Prototype]
+public sealed partial class SurgeryGraphPrototype : IPrototype
 {
     [IdDataField]
     public string ID { get; private set; } = default!;
 
     [DataField("startNodes", required: true)]
-    public List<ProtoId<SurgeryNodePrototype>> StartNodeIds { get; } = new();
+    public List<ProtoId<SurgeryNodePrototype>> StartNodeIds { get; private set; } = new();
 
     public IEnumerable<SurgeryNodePrototype> GetStartNodes()
     {
@@ -27,7 +27,7 @@ public sealed class SurgeryGraphPrototype : IPrototype
     }
 }
 
-[Prototype("surgeryNode"), DataDefinition]
+[Prototype, DataDefinition]
 public sealed partial class SurgeryNodePrototype : IPrototype
 {
     [IdDataField]
@@ -67,7 +67,7 @@ public sealed partial class SurgeryNodePrototype : IPrototype
     }
 }
 
-[Prototype("surgeryPackage"), DataDefinition]
+[Prototype, DataDefinition]
 public sealed partial class SurgeryPackagePrototype : IPrototype
 {
     [IdDataField]
@@ -77,7 +77,7 @@ public sealed partial class SurgeryPackagePrototype : IPrototype
     public List<ProtoId<SurgeryTransitionPrototype>> TransitionIds { get; set; } = new();
 }
 
-[Prototype("surgeryTransition"), DataDefinition]
+[Prototype, DataDefinition]
 public sealed partial class SurgeryTransitionPrototype : IPrototype
 {
     [IdDataField]

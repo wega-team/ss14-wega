@@ -4,6 +4,7 @@
     PassengerPDA: 5
     ClearPDA: 5
     PassengerIDCard: 5
+    IDCardNeck: 2 # Corvax-Wega-Add
     ClothingHeadsetGrey: 5
     RubberStampApproved: 1
     RubberStampDenied: 1

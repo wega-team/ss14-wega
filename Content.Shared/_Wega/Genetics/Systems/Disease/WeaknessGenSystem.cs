@@ -3,7 +3,7 @@ using Content.Shared.Weapons.Melee;
 
 namespace Content.Shared.Genetics.Systems;
 
-public sealed class WeaknessSystem : EntitySystem
+public sealed partial class WeaknessSystem : EntitySystem
 {
     public override void Initialize()
     {

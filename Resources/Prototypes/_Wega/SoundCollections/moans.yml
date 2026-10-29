@@ -15,3 +15,10 @@
     - /Audio/_Wega/Voice/Human/moan_f5.ogg
     - /Audio/_Wega/Voice/Human/moan_f6.ogg
     - /Audio/_Wega/Voice/Human/moan_f7.ogg
+
+- type: soundCollection
+  id: LPCMoans
+  files: 
+    - /Audio/_Wega/Voice/Android/android_moan_1.ogg
+    - /Audio/_Wega/Voice/Android/android_moan_2.ogg
+    - /Audio/_Wega/Voice/Android/android_moan_3.ogg

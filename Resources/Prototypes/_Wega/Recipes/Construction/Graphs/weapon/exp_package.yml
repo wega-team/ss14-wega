@@ -1,0 +1,40 @@
+- type: constructionGraph
+  id: PxpPackage
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: explosionPack
+      steps:
+      - material: Cable
+        amount: 5
+        doAfter: 6
+      - material: Cardboard
+        amount: 1
+        doAfter: 6
+      - tag: FireBomb
+        name: ent-FireBomb
+        icon:
+          sprite: Objects/Weapons/Bombs/ied.rsi
+          state: base
+        doAfter: 2
+      - tag: FireBomb
+        name: ent-FireBomb
+        icon:
+          sprite: Objects/Weapons/Bombs/ied.rsi
+          state: base
+        doAfter: 2
+      - tag: FireBomb
+        name: ent-FireBomb
+        icon:
+          sprite: Objects/Weapons/Bombs/ied.rsi
+          state: base
+        doAfter: 2
+      - tag: FireBomb
+        name: ent-FireBomb
+        icon:
+          sprite: Objects/Weapons/Bombs/ied.rsi
+          state: base
+        doAfter: 2
+  - node: explosionPack
+    entity: ExplosionPackage

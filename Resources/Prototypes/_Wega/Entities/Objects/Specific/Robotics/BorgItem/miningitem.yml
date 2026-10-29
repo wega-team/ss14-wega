@@ -1,0 +1,109 @@
+# CARGO
+- type: entity
+  name: proto-kinetic accelerator1
+  categories: [ HideSpawnMenu ]
+  id: WeaponProtoKineticAcceleratorBorg
+  parent: BaseItem
+  description: Fires low-damage kinetic bolts at a short range.
+  suffix: Borg
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    layers:
+    - state: icon
+    - state: animation-icon
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Item
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    size: Large
+    shape:
+    - 0,0,2,1
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    angleDecay: 0
+    minAngle: 0
+    maxAngle: 0
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/kinetic_accel.ogg
+  - type: AmmoCounter
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AmmoVisuals.HasAmmo:
+        empty-icon:
+          True: { visible: False }
+          False: { visible: True }
+        #todo: add other 'empty' animations
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 0.75
+    rechargeSound:
+      path: /Audio/Weapons/Guns/MagIn/kinetic_reload.ogg
+  - type: BasicEntityAmmoProvider
+    proto: BulletKinetic
+    capacity: 1
+    count: 1
+  - type: UseDelay
+    delay: 1
+  - type: UpgradeableGun
+    whitelist:
+      tags:
+      - PKAUpgrade
+  - type: ContainerContainer
+    containers:
+      upgrades: !type:Container
+      
+- type: entity
+  id: MailBagBorg
+  name: mail bag cyborg
+  parent: MailBag
+  description: A bag for carrying mail around the station for cyborg. Made from tanned space bear hide.
+  components:
+  - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,15,7
+    quickInsert: true
+    areaInsert: true
+    whitelist:
+      components:
+      - Paper
+      - Delivery
+      tags:
+      - Document
+      - Paper
+
+- type: entity
+  id: DocumentBorg
+  name: point card cyborg
+  parent: BaseItem
+  description: A bag for carrying mail around the station for cyborg. Made from tanned space bear hide.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/lavaborg_id.rsi
+    state: icon
+  - type: Tag
+    tags:
+    - DocumentBorg
+  - type: PointsCard
+  
+- type: entity
+  name: plasma cutter adv
+  parent: WeaponPlasmaCutter
+  id: WeaponPlasmaCutterBorg
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/adv_cutter.rsi
+    state: icon
+  - type: Gun
+    fireRate: 2
+  - type: Battery
+    maxCharge: 2500
+    startingCharge: 2500
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterMagma
+    fireCost: 75

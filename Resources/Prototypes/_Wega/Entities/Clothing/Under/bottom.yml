@@ -1,48 +1,4 @@
 - type: entity
-  parent: [ Clothing, ClothingUnderDamageableBase ]
-  id: ClothingUnderBottomBase
-  abstract: true
-  components:
-  - type: Sprite
-    state: icon
-  - type: Clothing
-    equipDelay: 2
-    unequipDelay: 2
-    quickEquip: false
-    slots:
-    - underwearbottom
-  - type: Item
-    size: Small
-  - type: Storage
-    grid:
-    - 0,0,0,1
-    maxItemSize: Tiny
-  - type: ContainerContainer
-    containers:
-      storagebase: !type:Container
-        ents: []
-  - type: UserInterface
-    interfaces:
-      enum.StorageUiKey.Key:
-        type: StorageBoundUserInterface
-  - type: UseDelay
-    delay: 0.5
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
-    - id: MaterialCloth1
-      amount: 2
-  - type: Edible
-    requiresSpecialDigestion: true
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
-
-- type: entity
   parent: ClothingUnderBottomBase
   id: ClothingUnderBottomGrey
   name: grey pants
@@ -52,6 +8,17 @@
     sprite: _Wega/Clothing/Under/Bottom/grey.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/grey.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomSecurity
+  name: security pants
+  description: "Standard security briefs. Provide freedom of movement during chases and arrests."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/security.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/security.rsi
 
 - type: entity
   parent: ClothingUnderBottomBase
@@ -428,7 +395,7 @@
     sprite: _Wega/Clothing/Under/Bottom/Head/mbso.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/Head/mbso.rsi
-
+## Capitan
 - type: entity
   parent: ClothingUnderBottomBase
   id: ClothingUnderBottomFCaptain
@@ -450,6 +417,50 @@
     sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomFCaptainS
+  name: sherif pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_green.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomMCaptainS
+  name: sherif pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain_green.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomFCaptainW
+  name: white captain pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/fcaptain_white.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUnderBottomMCaptainW
+  name: white captain pants
+  description: "These comfortable briefs made of soft and breathable material provide excellent comfort for every day."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain_white.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/Head/mcaptain_white.rsi
 
 - type: entity
   parent: ClothingUnderBottomBase
@@ -582,3 +593,69 @@
     sprite: _Wega/Clothing/Under/Bottom/Head/mrd.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/Head/mrd.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformSwimBlack
+  name: black swimsuit
+  description: A stylish black swimsuit for the beach or pool.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swim_black.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swim_black.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformSwimBlue
+  name: blue swimsuit
+  description: A bright blue swimsuit perfect for summer days.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swim_blue.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swim_blue.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformSwimDarkGreen
+  name: dark green swimsuit
+  description: A dark green swimsuit with a classic look.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swim_dark_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swim_dark_green.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformSwimGreen
+  name: green swimsuit
+  description: A vibrant green swimsuit for the bold.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swim_green.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swim_green.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformSwimPurple
+  name: purple swimsuit
+  description: A beautiful purple swimsuit with elegant design.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swim_purp.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swim_purp.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformSwimRed
+  name: red swimsuit
+  description: A stunning red swimsuit that catches the eye.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swim_red.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swim_red.rsi

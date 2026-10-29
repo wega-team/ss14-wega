@@ -1,4 +1,5 @@
 using Content.Client.UserInterface.Systems.Sandbox;
+using Content.Shared.Atmos.Components; // Corvax-Wega-VentCrawling
 using Content.Shared.SubFloor;
 using Robust.Client.GameObjects;
 using Robust.Client.UserInterface;
@@ -6,13 +7,14 @@ using Robust.Shared.Player;
 
 namespace Content.Client.SubFloor;
 
-public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
+public sealed partial class SubFloorHideSystem : SharedSubFloorHideSystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly IUserInterfaceManager _ui = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
+    [Dependency] private IUserInterfaceManager _ui = default!;
 
     private bool _showAll;
+    private bool _showVentPipe; // Corvax-Wega-VentCrawling
 
     [ViewVariables(VVAccess.ReadWrite)]
     public bool ShowAll
@@ -32,38 +34,52 @@ public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
         }
     }
 
-    public override void Initialize()
+    // Corvax-Wega-VentCrawling-start
+    [ViewVariables(VVAccess.ReadWrite)]
+    public bool ShowVentPipe
     {
-        base.Initialize();
-
-        SubscribeLocalEvent<SubFloorHideComponent, AppearanceChangeEvent>(OnAppearanceChanged);
-        SubscribeNetworkEvent<ShowSubfloorRequestEvent>(OnRequestReceived);
-        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
+        get => _showVentPipe;
+        set
+        {
+            if (_showVentPipe == value) return;
+            _showVentPipe = value;
+            UpdateAll();
+        }
     }
+    // Corvax-Wega-VentCrawling-end
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(LocalPlayerDetachedEvent ev)
     {
         // Vismask resets so need to reset this.
         ShowAll = false;
     }
 
+    [SubscribeNetworkEvent]
     private void OnRequestReceived(ShowSubfloorRequestEvent ev)
     {
         // When client receives request Queue an update on all vis.
         UpdateAll();
     }
 
+    [SubscribeLocalEvent]
     private void OnAppearanceChanged(EntityUid uid, SubFloorHideComponent component, ref AppearanceChangeEvent args)
     {
         if (args.Sprite == null)
             return;
 
-        _appearance.TryGetData<bool>(uid, SubFloorVisuals.Covered, out var covered, args.Component);
-        _appearance.TryGetData<bool>(uid, SubFloorVisuals.ScannerRevealed, out var scannerRevealed, args.Component);
+        args.TryGetData<bool>(SubFloorVisuals.Covered, out var covered);
+        args.TryGetData<bool>(SubFloorVisuals.ScannerRevealed, out var scannerRevealed);
 
         scannerRevealed &= !ShowAll; // no transparency for show-subfloor mode.
 
-        var revealed = !covered || ShowAll || scannerRevealed;
+        // Corvax-Wega-VentCrawling-start
+        var showVentPipe = false;
+        if (HasComp<PipeAppearanceComponent>(uid))
+            showVentPipe = ShowVentPipe;
+        // Corvax-Wega-VentCrawling-end
+
+        var revealed = !covered || ShowAll || scannerRevealed || showVentPipe; // Corvax-Wega-VentCrawling-Edit
 
         // set visibility & color of each layer
         foreach (var layer in args.Sprite.AllLayers)
@@ -91,16 +107,17 @@ public sealed class SubFloorHideSystem : SharedSubFloorHideSystem
         {
             // Allows sandbox mode to make wires visible over other stuff.
             component.OriginalDrawDepth ??= args.Sprite.DrawDepth;
-            _sprite.SetDrawDepth((uid, args.Sprite), (int)Shared.DrawDepth.DrawDepth.Overdoors);
+            var drawDepthDifference = Shared.DrawDepth.DrawDepth.ThickPipe - (Shared.DrawDepth.DrawDepth.Overdoors + 1);
+            _sprite.SetDrawDepth((uid, args.Sprite), args.Sprite.DrawDepth - drawDepthDifference);
         }
         else if (scannerRevealed)
         {
-            // Allows a t-ray to show wires/pipes above carpets/puddles.
+            // Allows a t-ray to show wires/pipes above walls.
             if (component.OriginalDrawDepth is not null)
                 return;
             component.OriginalDrawDepth = args.Sprite.DrawDepth;
-            var drawDepthDifference = Shared.DrawDepth.DrawDepth.ThickPipe - Shared.DrawDepth.DrawDepth.Puddles;
-            _sprite.SetDrawDepth((uid, args.Sprite), args.Sprite.DrawDepth - (drawDepthDifference - 1));
+            var drawDepthDifference = Shared.DrawDepth.DrawDepth.ThickPipe - (Shared.DrawDepth.DrawDepth.Walls + 1);
+            _sprite.SetDrawDepth((uid, args.Sprite), args.Sprite.DrawDepth - drawDepthDifference);
         }
         else if (component.OriginalDrawDepth.HasValue)
         {

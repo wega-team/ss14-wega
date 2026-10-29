@@ -14,11 +14,14 @@
       path: /Audio/Weapons/ebladehum.ogg
   - type: ComponentToggler
     components:
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
     - type: DisarmMalus
       malus: 0.6
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
   - type: ItemToggleHot
   - type: ItemToggleSize
     activatedSize: Huge
@@ -42,7 +45,7 @@
       types:
         Slash: 15
         Heat: 15
-        Structural: 20
+        Structural: 25 # Corvax-Wega-Edit
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -72,13 +75,18 @@
   - type: Reflect
   - type: IgnitionSource
     temperature: 700
+  # Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
+  # Corvax-Wega-End
 
 - type: entity
   name: energy sword
-  parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
+  parent: BaseMeleeWeaponEnergy # Corvax-Contraband: do not inherit a marker for hidden properties.
   id: EnergySword
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Cuts through unarmored targets like butter.
   components:
+  - type: ItemToggleExaminableStatus
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_sword.rsi
     layers:
@@ -99,6 +107,7 @@
   id: EnergyDaggerLoud
   description: A not as loud and dangerous dagger with a beam made of pure, concentrated plasma. This one is completely undisguised.
   components:
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     soundActivate:
       path: /Audio/Weapons/ebladeon.ogg
@@ -126,11 +135,14 @@
         volume: -3
   - type: ComponentToggler
     components:
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
     - type: DisarmMalus
       malus: 0.4
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger_loud.rsi
     layers:
@@ -153,7 +165,7 @@
   - type: PointLight
     enabled: false
     radius: 1.5
-    energy: 1.5
+    energy: 2.7
     color: white
     netsync: false
 
@@ -188,15 +200,24 @@
       types:
         Slash: 10
         Heat: 10
+    deactivatedSecret: true
+  # Corvax-Contraband: activation must not re-add the removed legality marker.
   - type: ComponentToggler
     components:
-    - type: Sharp
+    - type: Tool
+      qualities:
+      - Slicing
     - type: DisarmMalus
       malus: 0.4
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
     - type: Contraband
       severity: Syndicate
+    # Corvax-Wega-Start
+    - type: BonusMeleeDamage
+      heavyDamageMultiplier: 1.5
+    # Corvax-Wega-End
   - type: Sprite
     sprite: Objects/Weapons/Melee/e_dagger.rsi
     layers:
@@ -212,7 +233,7 @@
   - type: PointLight
     enabled: false
     radius: 1.5
-    energy: 1.5
+    energy: 2.7
     color: white
     netsync: false
   - type: MeleeWeapon
@@ -235,6 +256,10 @@
   - type: Tag
     tags:
     - Write
+  # Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1
+  # Corvax-Wega-End
 
 - type: entity
   parent: [BaseItem, BaseSyndicateContraband]
@@ -256,10 +281,11 @@
 
 - type: entity
   name: energy cutlass
-  parent: [BaseMeleeWeaponEnergy, BaseMajorContraband]
+  parent: BaseMeleeWeaponEnergy # Corvax-Contraband: do not inherit a marker for hidden properties.
   id: EnergyCutlass
   description: An exotic energy weapon.
   components:
+  - type: ItemToggleExaminableStatus
   - type: ItemToggleMeleeWeapon
     activatedDamage:
         types:
@@ -280,10 +306,11 @@
 
 - type: entity
   name: double-bladed energy sword
-  parent: [BaseMeleeWeaponEnergy, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband435, BaseMeleeWeaponEnergy] # Corvax-Contraband: explicit exception to the wiki.
   id: EnergySwordDouble
   description: Syndicate Command Interns thought that having one blade on the energy sword was not enough. This can be stored in pockets.
   components:
+  - type: ItemToggleExaminableStatus
   - type: ItemToggle
     onUse: false # wielding events control it instead
     onActivate: false # prevents the weapon from being able to be turned on when it is on the ground
@@ -303,9 +330,8 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 12
-            Heat: 12
-            Structural: 15
+            Slash: 15 # Corvax-Wega-Edit
+            Heat: 15 # Corvax-Wega-Edit
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
@@ -313,11 +339,14 @@
         volume: 3
   - type: ComponentToggler
     components:
-    - type: Sharp
     - type: DisarmMalus
       malus: 0.7
     - type: Execution
       doAfterDuration: 4.0
+      canGunExecute: false # Corvax-Wega-Suicide
+    - type: Tool
+      qualities:
+      - Slicing
   - type: Wieldable
     wieldSound: null # esword light sound instead
   - type: MeleeWeapon
@@ -368,11 +397,12 @@
       types:
         Slash: 20
         Heat: 20
-        Structural: 20
   - type: MeleeRequiresWield
   - type: HeldSpeedModifier #slowdown is what balances this compared to a dsword
     walkModifier: 0.6
     sprintModifier: 0.6
+    weightlessAcceleration: 0.6
+    zeroGravityModifier: 0.6
   - type: UseDelay
     delay: 1.5
   - type: Sprite

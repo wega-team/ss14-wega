@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC-BY-SA-4.0",
-    "copyright": "mody by <@500744677352407051>",
+    "copyright": "mody by <@500744677352407051>, adv-anomaly-module created by Davyei (Discord)",
     "size": {
         "x": 32,
         "y": 32
@@ -14,7 +14,22 @@
             "name": "cook-module"
         },
         {
+            "name": "restock-module"
+        },
+        {
             "name": "bar-module"
+        },
+        {
+            "name": "hand-module"
+        },
+        {
+            "name": "candy-module"
+        },
+        {
+            "name": "post-module"
+        },
+        {
+            "name": "repeir-module"
         },
         {
             "name": "kinetic-weapon-module"
@@ -33,6 +48,111 @@
         },
         {
             "name": "pickaxe-common-module"
+        },
+        {
+            "name": "xenoborg-hypo-2-module"
+        },
+        {
+            "name": "dec-module"
+        },
+        {
+            "name": "grenade-module"
+        },
+        {
+            "name": "gun-module"
+        },
+        {
+            "name": "sheild-module"
+        },
+        {
+            "name": "zipper-module"
+        },
+        {
+            "name": "cook-rare"
+        },
+        {
+            "name": "rcd-rare"
+        },
+        {
+            "name": "med-rare"
+        },
+        {
+            "name": "mining-rare"
+        },
+        {
+            "name": "ubor-rare"
+        },
+        {
+            "name": "lethal-rare"
+        },
+        {
+            "name": "magboots"
+        },
+        {
+            "name": "speed"
+        },
+        {
+            "name": "cleaning-module"
+        },
+        {
+            "name": "musical-module"
+        },
+        {
+            "name": "china-module"
+        },
+        {
+            "name": "construction-module"
+        },
+        {
+            "name": "xfield-module"
+        },
+        {
+            "name": "repeir-xenoborg-module"
+        },
+        {
+            "name": "blink_borg"
+        },
+        {
+            "name": "adv-anomaly-module"
+        },
+        {
+            "name": "anomaly-module"
+        },
+        {
+            "name": "node-scanner-module"
+        },
+        {
+            "name": "robotic-module"
+        },
+        {
+            "name": "slime-module"
+        },
+        {
+            "name": "genetic-module"
+        },
+        {
+            "name": "rnd-rare"
+        },
+        {
+            "name": "emp-module"
+        },
+        {
+            "name": "fulton-module"
+        },
+        {
+            "name": "sniper-module"
+        },
+        {
+            "name": "surgery-s-module"
+        },
+        {
+            "name": "chem-s-module"
+        },
+        {
+            "name": "speed_xenoborg"
+        },
+        {
+            "name": "clockwork-module"
         }
     ]
 }

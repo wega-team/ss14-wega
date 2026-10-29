@@ -28,7 +28,6 @@
     children:
     - id: FlashlightSeclite
     - id: WeaponDisabler
-    - id: WeaponTaser
     - id: ClothingBeltSecurityFilled
     - id: Flash
     - id: ClothingEyesGlassesSecurity
@@ -51,6 +50,9 @@
       amount: 2
     - id: NetworkConfigurator
     - id: Binoculars
+    - id: PlushieLizardJobWarden
+      prob: 0.02
+    - id: SecApartmentTablet # Corvax-SecApartment
 
 - type: entityTable
   id: FillLockerWardenHarduit
@@ -77,7 +79,6 @@
     - id: FlashlightSeclite
       prob: 0.8
     - id: WeaponDisabler
-    - id: WeaponTaser
     - id: ClothingUniformJumpsuitSecGrey
       prob: 0.3
     - id: ClothingHeadHelmetBasic
@@ -95,8 +96,18 @@
       prob: 0.6
     - id: BookSpaceLaw
       prob: 0.5
+    - id: PlushieLizardJobSecuritycadet
+      prob: 0.02
+    - id: PlushieLizardJobSecurityofficer
+      prob: 0.02
     - id: ClothingOuterCoatSecurityOvercoat # Corvax-SecFashion
       prob: 0.2
+      # Corvax-Wega-Edit-Start
+    - id: WiretappingCameraAlphaOff
+      prob: 0.4
+    - id: CrisisButton
+      prob: 0.2
+      # Corvax-Wega-Edit-End
 
 - type: entity
   id: LockerBrigmedicFilled
@@ -113,7 +124,6 @@
   table: !type:AllSelector
     children:
     - id: ClothingEyesGlassesSecurity
-    - id: WeaponTaser
     - id: WeaponDisabler
     - id: TrackingImplanter
       amount: 2
@@ -126,6 +136,7 @@
     - id: ClothingUniformJumpskirtOfLife
       prob: 0.1
     - id: MedkitFilled
+    - id: MedkitCombatFilled
     #Corvax Delete start
     #- !type:GroupSelector
     #  prob: 0.7
@@ -150,11 +161,12 @@
     - id: ClothingOuterCoatLabSecurityMedic # Corvax-Resprite
       prob: 0.5
     # Corvax-Wega-Brigmedic-start
-    - id: ClothingMaskBreathMedicalSecurity 
+    - id: ClothingMaskBreathMedicalSecurity
     - id: BoxBodyBag
     - id: Defibrillator
     - id: PowerCellHigh
       amount: 2
+    - id: SurgerykitFilled
     # Corvax-Wega-Brigmedic-end
 
 - type: entity
@@ -189,6 +201,9 @@
     - id: BoxEvidenceMarkers
     - id: HandLabeler
     - id: BoxTapeRecorder # Corvax-Wega-Recorder
+    - id: WeaponDisabler # Corvax-Wega-Add
+    - id: PlushieLizardJobDetective
+      prob: 0.02
 
 - type: entity
   id: ClosetBombFilled
@@ -322,6 +337,8 @@
       amount: 2
     - id: BoxLethalshot
       amount: 4
+    - id: HammerBreachingNT # Corvax-Wega-Edit
+      amount: 1
 
 - type: entity
   id: GunSafeSubMachineGunWt550
@@ -359,3 +376,7 @@
     children:
     - id: WeaponLaserCarbine
       amount: 3
+# Corvax-Wega-start
+    - id: PortableRecharger
+      amount: 3
+# Corvax-Wega-end

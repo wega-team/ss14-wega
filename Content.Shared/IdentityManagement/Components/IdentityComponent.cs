@@ -1,4 +1,4 @@
-﻿using Robust.Shared.Containers;
+using Robust.Shared.Containers;
 using Robust.Shared.Enums;
 using Robust.Shared.GameStates;
 
@@ -47,10 +47,16 @@ public sealed class IdentityRepresentation
         PresumedName = presumedName;
     }
 
-    public string ToStringKnown(bool trueName)
+    /// <summary>
+    /// Get this identity as a string
+    /// </summary>
+    /// <param name="trueName">Should we show their "true" name or hide it?</param>
+    /// <param name="nameOverride">A "true name" override</param>
+    /// <returns></returns>
+    public string ToStringKnown(bool trueName, string? nameOverride)
     {
         return trueName
-            ? TrueName
+            ? nameOverride ?? TrueName
             : PresumedName ?? ToStringUnknown();
     }
 
@@ -69,7 +75,7 @@ public sealed class IdentityRepresentation
         };
 
         // i.e. 'young assistant man' or 'old cargo technician person' or 'middle-aged captain'
-        return PresumedJob is null
+        return string.IsNullOrWhiteSpace(PresumedJob)
             ? $"{AgeString} {genderString}"
             : $"{AgeString} {PresumedJob} {genderString}";
     }

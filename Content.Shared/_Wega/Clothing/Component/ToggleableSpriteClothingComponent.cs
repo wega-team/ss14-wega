@@ -23,7 +23,7 @@ public sealed partial class ToggleableSpriteClothingComponent : Component
 }
 
 [Serializable, NetSerializable]
-public sealed class ToggleableSpriteClothingComponentState : ComponentState
+public sealed partial class ToggleableSpriteClothingComponentState : ComponentState
 {
     public string ActiveSuffix;
 

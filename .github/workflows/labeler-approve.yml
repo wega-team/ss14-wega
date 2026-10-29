@@ -6,13 +6,12 @@ on:
 
 jobs:
   remove_label:
-    permissions:
-      pull-requests: write
     if: github.event.review.state == 'approved'
     runs-on: ubuntu-latest
     steps:
     - uses: actions-ecosystem/action-remove-labels@v1
       with:
+        github_token: ${{ secrets.LABELER_PAT }}
         labels: |
-          Status: Needs Review
-          Status: Awaiting Changes
+          S: Needs Review
+          S: Awaiting Changes

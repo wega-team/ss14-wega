@@ -1,0 +1,6 @@
+- type: stack
+  id: MagmiteOre
+  name: magmite-ore
+  icon: { sprite: _Wega/Objects/Materials/ore.rsi, state: magmite }
+  spawn: MagmiteOre1
+  maxCount: 30

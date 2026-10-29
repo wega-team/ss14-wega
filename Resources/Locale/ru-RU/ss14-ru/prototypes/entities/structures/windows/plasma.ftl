@@ -1,7 +1,10 @@
 ent-PlasmaWindow = плазменное окно
-    .desc = { ent-BaseDeltaPressurePlasma.desc }
+    .desc = { ent-BaseWindowStructure.desc }
 ent-PlasmaWindowDirectional = направленное плазменное окно
     .desc = Смотри, не заляпай.
+ent-PlasmaWindowDirectionalCorner = { ent-PlasmaWindowDirectional }
+    .desc = { ent-PlasmaWindowDirectional.desc }
+    .suffix = Угол
 ent-PlasmaWindowDiagonal = { ent-PlasmaWindow }
-    .suffix = Диагональ
     .desc = { ent-PlasmaWindow.desc }
+    .suffix = Диагональ

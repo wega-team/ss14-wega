@@ -25,6 +25,14 @@
         - !type:HTNCompoundTask
           task: SlimeHungryBehavior
 
+    # Hungry
+    - preconditions:
+        - !type:CheckSlimeHungerPrecondition
+          targetState: Passive
+      tasks:
+        - !type:HTNCompoundTask
+          task: SlimeHungryLow
+
     # Attack
     - preconditions:
         - !type:KeyExistsPrecondition
@@ -115,6 +123,33 @@
         operator: !type:SlimeWanderOperator
           rangeKey: WanderRange
           wanderRange: 5.0
+
+- type: htnCompound
+  id: SlimeHungryLow
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeFindFoodOperator
+            targetKey: FoodTarget
+            rangeKey: FoodSearchRange
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            targetKey: TargetCoordinates
+            rangeKey: MovementRange
+            pathfindInPlanning: true
+            removeKeyOnFinish: false
+
+        - !type:HTNPrimitiveTask
+          operator: !type:SlimeEatOperator
+            targetKey: FoodTarget
+            eatRange: 1
+
+    - tasks:
+      - !type:HTNPrimitiveTask
+        operator: !type:SlimeWanderOperator
+          rangeKey: WanderRange
+          wanderRange: 1
 
 - type: htnCompound
   id: SlimeFollowCompound

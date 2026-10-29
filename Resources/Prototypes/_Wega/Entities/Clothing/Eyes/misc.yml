@@ -11,3 +11,5 @@
   - type: EyeProtection
   - type: FlashImmunity
   - type: ShowHealthBars
+  - type: CultEquipment
+    cult: Blood

@@ -11,7 +11,7 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class ChemCauseRandomDiseaseEntityEffectSystem : EntityEffectSystem<DiseaseCarrierComponent, ChemCauseRandomDisease>
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     protected override void Effect(Entity<DiseaseCarrierComponent> entity, ref EntityEffectEvent<ChemCauseRandomDisease> args)
     {

@@ -4,3 +4,6 @@ job-description-surgeon = Ваша миссия — вскрывать, испр
 job-description-coroner = Нет лучше собеседника, чем труп.
 job-description-bso = Защитите командный состав, капитана и VIP-персон с ЦентКома ценой своей жизни.
 job-description-postman = Доставляйте письма, получайте призент.
+job-description-shaft-miner = Rock and Stone!
+job-description-shaft-miner-medic = Вы та самая сила, способная спасти потерявшихся в пепле шахтёров.
+job-description-wardenHelper = Поддерживайте порядок и чистоту бриге, проверяйте камеры и арсенал, помогайте с допросами.

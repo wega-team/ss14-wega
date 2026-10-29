@@ -2,7 +2,7 @@
 
 namespace Content.Shared.Xenobiology.Events;
 
-public sealed class CellServerDatabaseChangedEvent : EntityEventArgs
+public sealed partial class CellServerDatabaseChangedEvent : EntityEventArgs
 {
     public readonly Entity<CellServerComponent> Server;
     public readonly Entity<CellClientComponent> Client;

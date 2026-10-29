@@ -5,11 +5,11 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Wires;
 
-namespace Content.Shared._Wega.Android;
+namespace Content.Shared.Android;
 
 public abstract partial class SharedAndroidSystem : EntitySystem
 {
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
 
     public override void Initialize()
     {
@@ -45,10 +45,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         if (!TryComp<WiresPanelComponent>(uid, out var panel))
             return true;
 
-        if (!panel.Open)
-            return false;
-
-        if (user != null && user == uid)
+        if (!panel.Open || user != null && user == uid)
             return false;
 
         return true;
@@ -59,7 +56,7 @@ public abstract partial class SharedAndroidSystem : EntitySystem
         if (_toggle.IsActivated(uid))
             return;
 
-        if (!TryComp<MovementSpeedModifierComponent>(uid, out var movement))
+        if (!HasComp<MovementSpeedModifierComponent>(uid))
             return;
 
         args.ModifySpeed(component.DischargeSpeedModifier, component.DischargeSpeedModifier);

@@ -4,75 +4,120 @@
   id: BaseStationEventGhostBarSpawn
   components:
   - type: LoadMapRule
-    mapPath: /Maps/_Wega/wegabar.yml
+    mapPath: /Maps/_Wega/Nonstations/wegabar.yml
+
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesNoMinor
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.25 # Corvax-Wega-Edit
+    - id: SubWizard
+      prob: 0.05
+    - id: SubXenoborgs
+      prob: 0.1 # Corvax-Wega-Edit
 
 # Rules
 - type: entity
+  abstract: true
   parent: BaseGameRule
-  id: Vampire
+  id: BaseVampireRule
   components:
-  - type: GameRule
-    minPlayers: 20
   - type: VampireRule
-  - type: AntagObjectives
-    objectives:
-      - VampireBloodObjective
-      - EscapeVampirefShuttleObjective
   - type: AntagRandomObjectives
     sets:
     - groups: VampireObjectiveGroups
-      maxPicks: 2
     maxDifficulty: 5
   - type: AntagSelection
     agentName: vampire-round-end-name
-    definitions:
-      - prefRoles: [ Vampire ]
-        max: 10
-        playerRatio: 10
-        blacklist:
-          components:
-          - AntagImmune
-          - BibleUser
-          - Android
-          - Ipc
-        lateJoinAdditional: true
-        components:
-        - type: NpcFactionMember
-          factions:
-          - Vampire
-        mindRoles:
-        - MindRoleVampire
-        briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/vampare_start.ogg"
+  - type: DynamicRuleCost
+    cost: 100
 
 - type: entity
-  parent: BaseGameRule
+  parent: [BaseVampireRule, BaseRoundstartAntagRule]
+  id: Vampire
+  components:
+  - type: GameRule
+    minPlayers: 5
+    delay:
+      min: 240
+      max: 420
+  - type: AntagObjectives
+    objectives:
+      - EscapeVampirefShuttleObjective
+  - type: AntagSelection
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: Vampire
+      range:
+        min: 1
+        max: 4
+
+- type: entity
+  parent: [BaseGameRule, BaseRoundstartAntagRule]
   id: BloodCult
   components:
   - type: GameRule
-    minPlayers: 30
+    minPlayers: 15
   - type: BloodCultRule
+  - type: AntagObjectives
+    objectives:
+      - BloodCultRitualObjective
   - type: AntagSelection
-    definitions:
-      - prefRoles: [ BloodCultist ]
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: BloodCultist
+      playerRatio: 10
+      range:
+        min: 2 # Minimum 2 required for work gamerule
         max: 4
-        playerRatio: 10
-        blacklist:
-          components:
-          - AntagImmune
-          - BibleUser
-          - Android
-          - Ipc
-        lateJoinAdditional: true
-        components:
-        - type: BloodCultist
-        - type: NpcFactionMember
-          factions:
-          - BloodCult
-        mindRoles:
-        - MindRoleBloodCultist
-        briefing:
-          sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
+
+- type: entity
+  parent: [BaseGameRule,BaseRoundstartAntagRule]
+  id: BloodBrothers
+  components:
+  - type: GameRule
+    minPlayers: 5
+  - type: BloodBrotherRule
+    requiredObjectives:
+    - BloodBrotherSharedEscapeObjective
+    objectiveSets:
+    - groups: BloodBrotherObjectiveGroups
+      maxPicks: 3
+  - type: AntagSelection
+    agentName: blood-brother-round-end-name
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: BloodBrother
+      playerRatio: 2
+      range:
+        min: 2
+        max: 8
+
+- type: entity
+  parent: [BaseGameRule, BaseRoundstartAntagRule]
+  id: VeilCult
+  components:
+  - type: GameRule
+    minPlayers: 15
+  - type: VeilCultRule
+  - type: AntagObjectives
+    objectives:
+      - VeilCultRitualObjective
+  - type: AntagSelection
+    lateJoinAdditional: true
+    antags:
+    - !type:LinearAntagCount
+      proto: VeilCultist
+      playerRatio: 10
+      range:
+        min: 2 # Minimum 2 required for work gamerule
+        max: 4
 
 # event schedulers
 

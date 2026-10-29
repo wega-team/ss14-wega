@@ -1,0 +1,12 @@
+- type: listing
+  id: PAIBorgiForm
+  name: pai-borgi-form-name
+  description: pai-borgi-form-desc
+  productAction: ActionPAIPolymorphBorgi
+  cost:
+    SiliconMemory: 10
+  categories:
+  - PAIAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

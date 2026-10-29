@@ -13,8 +13,8 @@
     state: icon
 
 - type: stealTargetGroup
-  id: WeaponBlueLaserPistol
-  name: steal-target-groups-weapon-blue-laser-pistol
+  id: BadgeSec
+  name: steal-target-groups-badge-sec
   sprite:
-    sprite: _Wega/Objects/Weapons/Guns/Battery/bluerantiquelasergun.rsi
+    sprite: _Wega/Clothing/Accessories/SecBadge/secT0.rsi
     state: icon

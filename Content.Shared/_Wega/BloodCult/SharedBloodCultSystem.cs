@@ -3,16 +3,18 @@ using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Blood.Cult.Components;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 
 namespace Content.Shared.Blood.Cult;
 
-public abstract class SharedBloodCultSystem : EntitySystem
+public abstract partial class SharedBloodCultSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private MindLinkSystem _mindLink = default!;
 
     #region Deconvertation
     public void CultistDeconvertation(EntityUid cultist)
@@ -28,39 +30,28 @@ public abstract class SharedBloodCultSystem : EntitySystem
                     continue;
 
                 var protoId = meta.EntityPrototype?.ID;
-                if (protoId == BloodCultistComponent.CultObjective
-                    || protoId == BloodCultistComponent.CultCommunication
-                    || protoId == BloodCultistComponent.BloodMagic
-                    || protoId == BloodCultistComponent.RecallBloodDagger)
+                if (protoId == BloodCultistComponent.BloodMagic.Id
+                    || protoId == BloodCultistComponent.RecallBloodDagger.Id)
                 {
                     _action.RemoveAction(cultist, actionId);
                 }
             }
         }
 
-        if (bloodCultist.RecallSpearActionEntity != null)
-            _action.RemoveAction(cultist, bloodCultist.RecallSpearActionEntity);
-
-        if (bloodCultist.SelectedSpell != null)
-            _action.RemoveAction(cultist, bloodCultist.SelectedSpell.Value);
+        _action.RemoveAction(cultist, bloodCultist.RecallSpearActionEntity);
+        _action.RemoveAction(cultist, bloodCultist.SelectedSpell);
 
         foreach (var spell in bloodCultist.SelectedEmpoweringSpells)
-        {
-            if (spell != null)
-            {
-                _action.RemoveAction(cultist, spell.Value);
-            }
-        }
+            _action.RemoveAction(cultist, spell);
 
-        var stunTime = TimeSpan.FromSeconds(4);
-        var name = Identity.Entity(cultist, EntityManager);
+        _mindLink.RemoveChannel(cultist, bloodCultist.CultMindChannel);
 
-        _stun.TryKnockdown(cultist, stunTime, true);
-        _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", name)), cultist);
+        _stun.TryKnockdown(cultist, TimeSpan.FromSeconds(4), true);
+        _popup.PopupEntity(Loc.GetString("blood-cult-break-control", ("name", Identity.Entity(cultist, EntityManager))), cultist);
 
         RemComp<BloodCultistComponent>(cultist);
-        if (HasComp<CultistEyesComponent>(cultist)) RemComp<CultistEyesComponent>(cultist);
-        if (HasComp<PentagramDisplayComponent>(cultist)) RemComp<PentagramDisplayComponent>(cultist);
+        RemComp<BloodCultistEyesComponent>(cultist);
+        RemComp<BloodPentagramDisplayComponent>(cultist);
     }
     #endregion
 }

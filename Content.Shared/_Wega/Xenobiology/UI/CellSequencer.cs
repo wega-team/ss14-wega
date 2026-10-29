@@ -9,7 +9,7 @@ public enum CellSequencerUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CellSequencerUiState : BoundUserInterfaceState
+public sealed partial class CellSequencerUiState : BoundUserInterfaceState
 {
     public readonly IReadOnlyList<Cell> InsideCells;
     public readonly IReadOnlyList<Cell> RemoteCells;
@@ -26,10 +26,10 @@ public sealed class CellSequencerUiState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class CellSequencerUiSyncMessage : BoundUserInterfaceMessage;
+public sealed partial class CellSequencerUiSyncMessage : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
-public sealed class CellSequencerUiAddMessage : BoundUserInterfaceMessage
+public sealed partial class CellSequencerUiAddMessage : BoundUserInterfaceMessage
 {
     public readonly Cell? Cell;
 
@@ -40,7 +40,7 @@ public sealed class CellSequencerUiAddMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class CellSequencerUiRemoveMessage : BoundUserInterfaceMessage
+public sealed partial class CellSequencerUiRemoveMessage : BoundUserInterfaceMessage
 {
     public readonly Cell? Cell;
     public readonly bool Remote;
@@ -53,7 +53,7 @@ public sealed class CellSequencerUiRemoveMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class CellSequencerUiReplaceMessage : BoundUserInterfaceMessage
+public sealed partial class CellSequencerUiReplaceMessage : BoundUserInterfaceMessage
 {
     public readonly Cell? Cell;
 

@@ -3,7 +3,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.Verbs;
 using Content.Shared.Strangulation;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Hands.Components;
 using Content.Shared.Hands;
 using Content.Shared.Popups;
 using Content.Shared.Garrotte;
@@ -21,24 +20,26 @@ using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.StatusEffect;
-using Content.Shared.Speech.Muting;
+using Content.Shared.StatusEffectNew;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Strangulation
 {
-    public sealed class StrangulationSystem : EntitySystem
+    public sealed partial class StrangulationSystem : SharedStrangulationSystem
     {
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-        [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-        [Dependency] private readonly VirtualItemSystem _virtualItemSystem = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly PullingSystem _pulling = default!;
-        [Dependency] private readonly AlertsSystem _alerts = default!;
-        [Dependency] private readonly SharedStutteringSystem _stutteringSystem = default!;
-        [Dependency] private readonly SharedCombatModeSystem _combatModeSystem = default!;
-        [Dependency] private readonly StatusEffectsSystem _statusEffect = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private SharedPopupSystem _popupSystem = default!;
+        [Dependency] private MobStateSystem _mobStateSystem = default!;
+        [Dependency] private VirtualItemSystem _virtualItemSystem = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private SharedHandsSystem _hands = default!;
+        [Dependency] private PullingSystem _pulling = default!;
+        [Dependency] private AlertsSystem _alerts = default!;
+        [Dependency] private StutteringSystem _stutteringSystem = default!;
+        [Dependency] private SharedCombatModeSystem _combatModeSystem = default!;
+        [Dependency] private StatusEffectsSystem _statusEffect = default!;
+
+        private static readonly EntProtoId Muted = "StatusEffectMuted";
 
         public override void Initialize()
         {
@@ -78,12 +79,13 @@ namespace Content.Server.Strangulation
 
             AlternativeVerb verb = new()
             {
+                Priority = 1,
+                Text = Loc.GetString("strangle-verb"),
+                Category = VerbCategory.Interaction,
                 Act = () =>
                 {
                     TryStartStrangle(args.User, args.Target);
                 },
-                Text = Loc.GetString("strangle-verb"),
-
             };
             args.Verbs.Add(verb);
         }
@@ -108,7 +110,7 @@ namespace Content.Server.Strangulation
                 return;
 
             var target = args.Target ?? default;
-            _statusEffect.TryAddStatusEffect<MutedComponent>(target, "Muted", TimeSpan.FromSeconds(3f), true);
+            _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(3f));
 
             if (args.Cancelled)
             {
@@ -174,12 +176,7 @@ namespace Content.Server.Strangulation
         }
 
         private void TryStartStrangle(EntityUid strangler, EntityUid target)
-        {
-            if (CheckGarrotte(strangler, out _))
-                StartStrangleDoAfter(strangler, target);
-            else
-                StartStrangulationDelayDoAfter(strangler, target); //задержка перед удушением руками
-        }
+            => StartStrangulationDelayDoAfter(strangler, target);
 
         private bool CanStrangle(EntityUid strangler, EntityUid target, RespiratorComponent? component = null)
         {
@@ -205,13 +202,16 @@ namespace Content.Server.Strangulation
             return true;
         }
 
-        private void StartStrangulationDelayDoAfter(EntityUid strangler, EntityUid target) //задержка перед удушением руками
+        private void StartStrangulationDelayDoAfter(EntityUid strangler, EntityUid target)
         {
             if (strangler == target)
                 _popupSystem.PopupEntity(Loc.GetString("strangle-delay-start-self"), target, target, PopupType.Medium);
             else
                 _popupSystem.PopupEntity(Loc.GetString("strangle-delay-start"), target, target, PopupType.LargeCaution);
-            var doAfterDelay = TimeSpan.FromSeconds(1.5);
+
+            var time = CheckGarrotte(strangler, out _) ? 1 : 1.5;
+
+            var doAfterDelay = TimeSpan.FromSeconds(time);
             var doAfterEventArgs = new DoAfterArgs(EntityManager, strangler, doAfterDelay,
                 new StrangulationDelayDoAfterEvent(),
                 eventTarget: strangler,
@@ -221,7 +221,7 @@ namespace Content.Server.Strangulation
                 BreakOnMove = true,
                 NeedHand = true
             };
-            _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out var doAfterId);
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs, out _);
         }
 
         private void StartStrangleDoAfter(EntityUid strangler, EntityUid target)
@@ -305,7 +305,7 @@ namespace Content.Server.Strangulation
             _doAfterSystem.Cancel(comp.BreakFreeDoAfterId);
             comp.Cancelled = true;
             _alerts.ClearAlert(target, comp.StrangledAlert);
-            _stutteringSystem.DoRemoveStutterTime(target, TimeSpan.FromSeconds(5));
+            _stutteringSystem.DoStutter(target, TimeSpan.FromSeconds(0), true);
             _combatModeSystem.SetDisarmFailChance(target, 0.75f);
             RemComp<StranglerComponent>(strangler);
             RemComp<StrangulationComponent>(target);

@@ -1,6 +1,5 @@
 ### for technical and/or system messages
 
-
 ## General
 
 shell-command-success = Команда выполнена.
@@ -13,19 +12,20 @@ shell-only-players-can-run-this-command = Только игроки могут �
 shell-must-be-attached-to-entity = Для выполнения этой команды вы должны быть прикреплены к сущности.
 shell-must-have-body = У вас должно быть тело, чтобы выполнить эту команду.
 
+shell-unknown-error = Произошла неизвестная ошибка.
+
 ## Arguments
 
 shell-need-exactly-one-argument = Нужен ровно один аргумент.
-shell-wrong-arguments-number-need-specific =
-    Нужно { $properAmount } { $properAmount ->
-        [one] аргумент
-        [few] аргумента
-       *[other] аргументов
-    }, было { $currentAmount } { $currentAmount ->
-        [one] аргумент
-        [few] аргумента
-       *[other] аргументов
-    }.
+shell-wrong-arguments-number-need-specific = Нужно { $properAmount } { $properAmount ->
+    [one] аргумент
+    [few] аргумента
+    *[other] аргументов
+}, было { $currentAmount } { $currentAmount ->
+    [one] аргумент
+    [few] аргумента
+    *[other] аргументов
+}.
 shell-argument-must-be-number = Аргумент должен быть числом.
 shell-argument-must-be-boolean = Аргумент должен быть boolean.
 shell-wrong-arguments-number = Неправильное количество аргументов.
@@ -33,6 +33,7 @@ shell-need-between-arguments = Нужно от { $lower } до { $upper } арг
 shell-need-minimum-arguments = Нужно не менее { $minimum } аргументов!
 shell-need-minimum-one-argument = Нужен хотя бы один аргумент!
 shell-need-exactly-zero-arguments = Эта команда принимает ноль аргументов.
+
 shell-argument-uid = EntityUid
 
 ## Guards
@@ -44,6 +45,7 @@ shell-invalid-grid-id = Недопустимый ID сетки.
 shell-invalid-map-id = Недопустимый ID карты.
 shell-invalid-entity-uid = { $uid } не является допустимым идентификатором uid.
 shell-invalid-bool = Неверный boolean.
+shell-invalid-bool-value = Неверный boolean: '{ $value }'
 shell-entity-uid-must-be-number = EntityUid должен быть числом.
 shell-could-not-find-entity = Не удалось найти сущность { $entity }.
 shell-could-not-find-entity-with-uid = Не удалось найти сущность с uid { $uid }.
@@ -58,6 +60,8 @@ shell-argument-number-must-be-between = Аргумент { $index } должен
 shell-argument-station-id-invalid = Аргумент { $index } должен быть валидным station id!
 shell-argument-map-id-invalid = Аргумент { $index } должен быть валидным map id!
 shell-argument-number-invalid = Аргумент { $index } должен быть валидным числом!
+shell-argument-chat-invalid = Аргумент { $index } должен быть существующим чатом!
+
 # Hints
 shell-argument-username-hint = <username>
 shell-argument-username-optional-hint = [username]

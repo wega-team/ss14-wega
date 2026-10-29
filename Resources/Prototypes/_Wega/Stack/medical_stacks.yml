@@ -10,3 +10,9 @@
   icon: { sprite: "/Textures/Objects/Specific/Medical/medical.rsi", state: tourniquet }
   spawn: Tourniquet
   maxCount: 5
+
+- type: stack
+  id: Nanopast
+  name: stack-morphine
+  spawn: Nanopast
+  maxCount: 5

@@ -1,0 +1,8 @@
+- type: construction
+  id: BoxHugEmpty
+  name: construction-recipe-boxhug-cardboard
+  graph: BoxHugEmpty
+  startNode: start
+  targetNode: boxhugempty
+  category: construction-category-storage
+  objectType: Item

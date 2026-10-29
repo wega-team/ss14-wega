@@ -1,13 +1,11 @@
 using Content.Shared.Xenobiology.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Xenobiology;
 
-public abstract class SharedSlimeVisualSystem : EntitySystem
+public abstract partial class SharedSlimeVisualSystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
@@ -42,18 +40,16 @@ public abstract class SharedSlimeVisualSystem : EntitySystem
             ? typeProto
             : component.DefaultVisuals;
 
-        if (protoId == null || !_proto.TryIndex(protoId, out var proto))
+        if (protoId == null || !ProtoMan.TryIndex(protoId, out var proto))
             return;
 
         _metaData.SetEntityName(uid, proto.Name);
         _metaData.SetEntityDescription(uid, proto.Description);
 
-        if (TryComp<AppearanceComponent>(uid, out var appearance) &&
-            proto.TryGetComponent("Appearance", out AppearanceComponent? appearanceOther))
+        if (TryComp<AppearanceComponent>(uid, out var appearance))
         {
             _appearance.SetData(uid, SlimeVisualLayers.Type, growth.SlimeType, appearance);
             _appearance.SetData(uid, SlimeVisualLayers.Stage, growth.CurrentStage, appearance);
-            _appearance.AppendData(appearanceOther, uid);
             Dirty(uid, appearance);
         }
     }

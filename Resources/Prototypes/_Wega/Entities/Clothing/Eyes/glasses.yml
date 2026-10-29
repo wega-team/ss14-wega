@@ -1,0 +1,163 @@
+- type: entity
+  parent: ClothingEyesHudMedical
+  id: ClothingEyesGlassesMedSunglasses
+  name: med sun glasses
+  description: A pair of black sunglasses with medical HUD.
+  components:
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/Glasses/medglasses.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: Construction
+    graph: GlassesMed
+    node: medGlasses
+
+- type: entity
+  parent: ClothingEyesHudMedSec
+  id: ClothingEyesGlassesMedSecSunglasses
+  name: med-sec sun glasses
+  description: A pair of black sunglasses with security and medical HUD.
+  components:
+  - type: FlashImmunity
+  - type: EyeProtection
+    protectionTime: 5
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/Glasses/medsecglasses.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/Glasses/medsecglasses.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: Construction
+    graph: GlassesMedSec
+    node: medsecGlasses
+
+- type: entity
+  parent: [ClothingEyesBase, BaseHighlyIllegalContraband]
+  id: ClothingEyesGlassesNightVision
+  name: night vision goggles
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/nightvision.rsi
+    layers:
+    - state: icon-off
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/nightvision.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: ClothingNightVision
+    tint: "#4d8140"
+    noiseAmount: 0.015
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: "icon" }
+          False: { state: "icon-off" }
+
+- type: entity
+  parent: ClothingEyesGlassesNightVision
+  id: ClothingEyesGlassesNightVisionNinja
+  name: night vision goggles pavuk
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: FlashImmunity
+
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesGlassesMonocle
+  name: monocle
+  description: An outdated optical device for correcting vision or demonstrating arrogance.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/Glasses/monocle.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/Glasses/monocle.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+
+# VeilCults
+- type: entity
+  parent: ClothingEyesBase
+  id: ClothingEyesJudicialVisor
+  name: judicial visor
+  description: a pair of goggles that allows you to see through dark.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Eyes/judicialvisor.rsi
+    layers:
+    - state: icon-off
+      map: [ "enum.ToggleableVisuals.Layer" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Eyes/judicialvisor.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: ClothingNightVision
+    tint: "#c242bb00"
+    brightness: 0.5
+    luminanceThreshold: 0.05
+    noiseAmount: 0.02
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { state: "icon" }
+          False: { state: "icon-off" }
+  - type: ShowHealthBars
+  - type: EyeProtection
+  - type: CultEquipment
+    cult: Veil
+
+- type: entity
+  parent: [ClothingEyesBase, BaseChameleon, BaseHighlyIllegalContraband]
+  id: ClothingEyesGlassesThermalVision
+  name: engineering goggles
+  description: Goggles that let you see through the thickest of walls and darkness, drawn to look just like a standard pair of engineering goggles.
+  suffix: Thermal, Chameleon
+  components:
+  - type: Sprite
+    sprite: Clothing/Eyes/Glasses/meson.rsi
+  - type: Clothing
+    sprite: Clothing/Eyes/Glasses/meson.rsi
+  - type: IdentityBlocker
+    coverage: EYES
+  - type: Tag
+    tags: [] # ignore "WhitelistChameleon" tag
+  - type: ChameleonClothing
+    slot: [eyes]
+    default: ClothingEyesGlassesMeson
+  - type: ThermalVision
+  - type: ItemToggle
+    soundActivate: /Audio/_Wega/Items/activate.ogg
+    soundDeactivate: /Audio/_Wega/Items/deactivate.ogg
+    onUse: false
+    onActivate: false

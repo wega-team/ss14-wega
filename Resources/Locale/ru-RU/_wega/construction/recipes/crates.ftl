@@ -1,0 +1,1 @@
+construction-recipe-boxhug-cardboard = коробка обнимашек

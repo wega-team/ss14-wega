@@ -10,7 +10,7 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class WashDirtEntityEffectSystem : EntityEffectSystem<DirtableComponent, WashDirt>
 {
-    [Dependency] private readonly SharedDirtSystem _dirt = default!;
+    [Dependency] private SharedDirtSystem _dirt = default!;
 
     protected override void Effect(Entity<DirtableComponent> entity, ref EntityEffectEvent<WashDirt> args)
     {

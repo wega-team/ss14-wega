@@ -4,14 +4,13 @@
   name: aperol bottle
   description: "An aperitif with a bright orange flavor and a bitter aftertaste. Perfect for summer cocktails."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Aperol
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Aperol
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-aperol
+    localizedLabel: reagent-name-aperol
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/aperolbottle.rsi
   - type: Sealable
@@ -22,14 +21,13 @@
   name: jagermeister bottle
   description: "A legendary herbal liqueur with a rich, complex flavor. Often consumed neat or in cocktails."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Jagermeister
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Jagermeister
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-jagermeister
+    localizedLabel: reagent-name-jagermeister
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/jagermeisterbottle.rsi
   - type: Sealable
@@ -40,14 +38,13 @@
   name: schnaps bottle
   description: "A strong alcoholic drink, usually fruit-based, with a bold aroma and sharp taste."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Schnaps
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Schnaps
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-schnaps
+    localizedLabel: reagent-name-schnaps
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/schnapsbottle.rsi
   - type: Sealable
@@ -58,14 +55,13 @@
   name: sambuka bottle
   description: "An anise-flavored liqueur with a characteristic sweetish taste. Often served with coffee beans."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Sambuka
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sambuka
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-sambuka
+    localizedLabel: reagent-name-sambuka
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/sambukabottle.rsi
   - type: Sealable
@@ -76,14 +72,13 @@
   name: bitter bottle
   description: "A strong alcoholic drink with a bitter herbal flavor. Used as a digestif or cocktail ingredient."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Bitter
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Bitter
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-bitter
+    localizedLabel: reagent-name-bitter
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/bitterbottle.rsi
   - type: Sealable
@@ -94,32 +89,30 @@
   name: sheridan bottle
   description: "A layered coffee-cream liqueur with a delicate flavor. Ideal for desserts or as a standalone drink."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Sheridan
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Sheridan
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-sheridan
+    localizedLabel: reagent-name-sheridan
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/sheridanbottle.rsi
   - type: Sealable
-  
+
 - type: entity
   parent: [DrinkVisualsOpenable, DrinkBottleGlassBaseFull]
   id: DrinkWhiteWineBottleFull
   name: white wine bottle
   description: "A layered coffee-cream liqueur with a delicate flavor. Ideal for desserts or as a standalone drink."
   components:
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: WhiteWine
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: WhiteWine
+        Quantity: 120
   - type: Label
-    currentLabel: reagent-name-whitewine
+    localizedLabel: reagent-name-whitewine
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Drinks/whitewine_botle.rsi
   - type: Sealable

@@ -1,24 +1,22 @@
 using System.Linq;
 using Content.Shared.Buckle.Components;
-using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
+using Content.Shared.DeviceLinking.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Surgery;
 using Content.Shared.Surgery.Components;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Medical.Surgery
 {
-    public sealed class BodyScannerConsoleSystem : EntitySystem
+    public sealed partial class BodyScannerConsoleSystem : EntitySystem
     {
-        [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IGameTiming _timing = default!;
-        [Dependency] private readonly SharedDeviceLinkSystem _deviceLink = default!;
+        [Dependency] private UserInterfaceSystem _uiSystem = default!;
+        [Dependency] private IGameTiming _timing = default!;
+        [Dependency] private DeviceLinkSystem _deviceLink = default!;
 
         public override void Initialize()
         {
@@ -27,7 +25,7 @@ namespace Content.Server.Medical.Surgery
             SubscribeLocalEvent<BodyScannerConsoleComponent, ComponentInit>(OnInit);
             SubscribeLocalEvent<BodyScannerConsoleComponent, AfterActivatableUIOpenEvent>(OnUIOpen);
             SubscribeLocalEvent<BodyScannerConsoleComponent, NewLinkEvent>(OnNewLink);
-            SubscribeLocalEvent<BodyScannerConsoleComponent, PortDisconnectedEvent>(OnPortDisconnected);
+            SubscribeLocalEvent<BodyScannerConsoleComponent, SinkPortDisconnectedEvent>(OnPortDisconnected);
             SubscribeLocalEvent<BodyScannerConsoleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         }
 
@@ -72,7 +70,7 @@ namespace Content.Server.Medical.Surgery
             RecheckConnections(uid, component.SurgeryTable, component);
         }
 
-        private void OnPortDisconnected(EntityUid uid, BodyScannerConsoleComponent component, PortDisconnectedEvent args)
+        private void OnPortDisconnected(EntityUid uid, BodyScannerConsoleComponent component, SinkPortDisconnectedEvent args)
         {
             if (args.Port == BodyScannerConsoleComponent.ScannerPort)
                 component.SurgeryTable = null;
@@ -139,7 +137,7 @@ namespace Content.Server.Medical.Surgery
             var damages = new List<BodyScannerDamageInfo>();
             foreach (var (damageId, bodyParts) in operated.InternalDamages)
             {
-                if (!_prototypeManager.TryIndex<InternalDamagePrototype>(damageId, out var damageProto))
+                if (!ProtoMan.TryIndex(damageId, out var damageProto))
                     continue;
 
                 damages.Add(new BodyScannerDamageInfo(

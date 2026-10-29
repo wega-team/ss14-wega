@@ -12,18 +12,26 @@
 - type: latheRecipePack
   id: BorgModulesStatic
   recipes:
-  - BorgModuleTool
+  - BorgModuleArtistry
   - BorgModuleCable
   - BorgModuleFireExtinguisher
   - BorgModuleInflatable
-  - BorgModuleArtistry
- # Corvax-Wega-Start
+  - BorgModuleMusique
+  - BorgModuleTool
+  # Corvax-Wega-Start
   - BorgModuleCommonConstruction
   - BorgModuleCommonMedical
   - BorgModuleCommonPen
   - BorgModuleCommonFight
   - BorgModuleCommonPickaxe
- # Corvax-Wega-end
+  - BorgModuleCommonPostMan
+  # - BorgModuleCommonMagBoots надо будет как-то поменять его
+  - BorgModuleCommonRepeir
+  - BorgModuleCommonCandy
+  - BorgModuleCleaningCommon
+  - BorgModuleFulton
+  - BorgModuleNightVison
+  # Corvax-Wega-end
 
 - type: latheRecipePack
   id: BorgLimbsStatic
@@ -41,12 +49,15 @@
   id: Robotics
   recipes:
   - ProximitySensor
-  # Corvax-Wega-Android-Start
+  # # Corvax-Wega-Android-Start
   - AndroidBodyPart
   - ArmSyntheticPry
   - ArmSyntheticDefib
   - ArmSyntheticProtoKinetic
-  # Corvax-Wega-Android-End
+  - ArmSyntheticCharger
+  - LegSyntheticMagboots
+  - LegSyntheticJump
+  # # Corvax-Wega-Android-End
 
 - type: latheRecipePack
   id: BorgModules
@@ -54,16 +65,29 @@
   - BorgModuleAdvancedCleaning
   - BorgModuleAdvancedTool
   - BorgModuleAdvancedClowning
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
   - BorgModuleAdvancedMining
- # Corvax-Wega-Start
+  # Corvax-Wega-Start
+  - BorgModuleAdvancedAnomaly
+  - BorgModuleRobotics
   - BorgModuleSurgery
+  - BorgModuleLethal
   - BorgModuleKinetic
-  - BorgModuleGardening
-  - BorgModuleHarvesting
-  - BorgModuleMusique
   - BorgModuleClowning
- # Corvax-Wega-end
+  - ModuleSelectorSheild
+  - BorgModuleGranader
+  - ModuleCommand
+  - BorgModuleDNA
+  - BorgModuleCommonSpeed
+  - BorgModuleCommonHand
+  - BorgModuleSecRare
+  - BorgModuleCargoRare
+  - BorgModuleEngenerRare
+  - BorgModuleCleanerRare
+  - BorgModuleMedicalRare
+  - BorgModuleServiceRare
+  - BorgModuleScienceRND
+  # Corvax-Wega-end
 
 - type: latheRecipePack
   id: MechParts

@@ -1,0 +1,56 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from TG station https://github.com/tgstation/tgstation",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "tentacle_patch"
+        },
+        {
+            "name": "rage"
+        },
+        {
+            "name": "spawn_children"
+        },
+        {
+            "name": "legionnaire_charge"
+        },
+        {
+            "name": "head_detach"
+        },
+        {
+            "name": "bonfire_teleport"
+        },
+        {
+            "name": "spew_smoke"
+        },
+        {
+            "name": "singular_shot"
+        },
+        {
+            "name": "magic_box"
+        },
+        {
+            "name": "pandora_teleport"
+        },
+        {
+            "name": "aoe_squares"
+        },
+        {
+            "name": "herald_trishot"
+        },
+        {
+            "name": "herald_directionalshot"
+        },
+        {
+            "name": "herald_teleshot"
+        },
+        {
+            "name": "herald_mirror"
+        }
+    ]
+}

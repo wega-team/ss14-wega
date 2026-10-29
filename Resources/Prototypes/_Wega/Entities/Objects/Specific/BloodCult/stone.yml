@@ -7,11 +7,8 @@
   - type: Sprite
     sprite: _Wega/Objects/Specific/BloodCult/stone.rsi
     layers:
-    - state: stone_soul
-      map: ["enum.StoneSoulVisualLayers.Soul"]
-      visible: false
     - state: stone
-      map: ["enum.StoneSoulVisualLayers.Base"]
+      map: ["soul"]
   - type: MindContainer
   - type: BlockMovement
   - type: GhostRole
@@ -24,6 +21,12 @@
       settings: default
   - type: GhostTakeoverAvailable
   - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.StoneSoulVisuals.HasSoul:
+        soul:
+          True: { state: stone_soul }
+          False: { state: stone }
   - type: StoneSoul
     soulProto: MobBanshee
   - type: Tag

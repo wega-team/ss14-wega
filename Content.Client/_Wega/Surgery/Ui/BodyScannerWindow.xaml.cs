@@ -36,7 +36,6 @@ namespace Content.Client._Wega.Surgery.Ui
                 DamagesContainer.AddChild(new Label
                 {
                     Text = Loc.GetString("body-scanner-no-damages"),
-                    StyleClasses = { StyleNano.StyleClassLabelSecondaryColor }
                 });
                 return;
             }
@@ -56,7 +55,7 @@ namespace Content.Client._Wega.Surgery.Ui
                 damageHeader.AddChild(new Label
                 {
                     Text = damage.DamageName,
-                    StyleClasses = { StyleNano.StyleClassLabelBig }
+                    StyleClasses = { StyleClass.LabelHeading }
                 });
 
                 damageContainer.AddChild(damageHeader);
@@ -65,7 +64,6 @@ namespace Content.Client._Wega.Surgery.Ui
                 {
                     Text = Loc.GetString("body-scanner-affected-parts",
                         ("parts", string.Join(", ", damage.AffectedParts.Select(p => Loc.GetString($"body-scanner-part-{p}"))))),
-                    StyleClasses = { StyleNano.StyleClassLabelSecondaryColor }
                 };
 
                 damageContainer.AddChild(partsLabel);

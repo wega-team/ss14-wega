@@ -1,5 +1,6 @@
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
+using Content.Shared.Whitelist; // Corvax-Wega-Lavaland
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
@@ -16,4 +17,9 @@ public sealed partial class TileEntityEffectComponent : Component
     /// </summary>
     [DataField]
     public List<EntityEffect> Effects = default!;
+
+    // Corvax-Wega-Lavaland-start
+    [DataField]
+    public EntityWhitelist Blacklist = new();
+    // Corvax-Wega-Lavaland-end
 }

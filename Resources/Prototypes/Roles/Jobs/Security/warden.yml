@@ -7,21 +7,30 @@
     - !type:DepartmentTimeRequirement
       department: Security
       time: 50h # Corvax-RoleTime
+    # Corvax-Wega-AnyRequirement-Edit-start
+    - !type:AnyRequirement
+      requirements:
+        - !type:RoleTimeRequirement
+          role: JobWardenHelper
+          time: 10h
+        - !type:RoleTimeRequirement
+          role: JobWarden # If you have played before
+          time: 1h
+    # Corvax-Wega-AnyRequirement-Edit-end
     - !type:TraitsRequirement #Corvax-TraitsRequirement
       inverted: true
       traits:
       - Muted
-  weight: 5
   startingGear: WardenGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-hos
-  canBeAntag: false
+  guides: [ Security ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Security
   - Brig
   - Armory
   - Maintenance
-  - Service
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - External
   - Detective
   - Cryogenics

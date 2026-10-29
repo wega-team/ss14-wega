@@ -4,7 +4,7 @@ using Content.Shared.Eui;
 
 namespace Content.Server.DetailExaminable;
 
-public sealed class DetailExaminableEui : BaseEui
+public sealed partial class DetailExaminableEui : BaseEui
 {
     private readonly DetailExaminableEuiState _state;
 

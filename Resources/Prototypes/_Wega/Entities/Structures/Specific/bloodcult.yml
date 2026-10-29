@@ -6,6 +6,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
+    drawdepth: HighFloorObjects
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
   - type: Clickable
   - type: InteractionOutline
@@ -16,6 +17,7 @@
         "#ff0000"
   - type: Physics
     bodyType: Static
+    canCollide: False
   - type: UseDelay
     delay: 5
 
@@ -28,7 +30,8 @@
   - type: Sprite
     state: offering
   - type: BloodRune
-    prototype: offering
+    runeType: Offering
+    desc: "offering-rune-desc"
 
 - type: entity
   id: BloodRuneTeleport
@@ -39,7 +42,8 @@
   - type: Sprite
     state: teleport
   - type: BloodRune
-    prototype: teleport
+    runeType: Teleport
+    desc: "teleport-rune-desc"
 
 - type: entity
   id: BloodRuneEmpowering
@@ -50,7 +54,12 @@
   - type: Sprite
     state: empowering
   - type: BloodRune
-    prototype: empowering
+    runeType: Empowering
+    desc: "empowering-rune-desc"
+  - type: UserInterface
+    interfaces:
+      enum.EmpoweringRuneUiKey.Key:
+        type: EmpoweringRuneBoundUserInterface
 
 - type: entity
   id: BloodRuneRevive
@@ -61,7 +70,8 @@
   - type: Sprite
     state: revive
   - type: BloodRune
-    prototype: revive
+    runeType: Revive
+    desc: "revive-rune-desc"
 
 - type: entity
   id: BloodRuneBarrier
@@ -71,9 +81,6 @@
   components:
   - type: Sprite
     state: barrier
-  - type: Physics
-    bodyType: Dynamic
-    canCollide: false
   - type: Fixtures
     fixtures:
       barrier:
@@ -84,8 +91,9 @@
         - WallLayer
         hard: false
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -95,7 +103,8 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: BloodRune
-    prototype: barrier
+    runeType: Barrier
+    desc: "barrier-rune-desc"
 
 - type: entity
   id: BloodRuneSummoning
@@ -106,7 +115,12 @@
   - type: Sprite
     state: summoning
   - type: BloodRune
-    prototype: summoning
+    runeType: Summoning
+    desc: "summoning-rune-desc"
+  - type: UserInterface
+    interfaces:
+      enum.SummoningRuneUiKey.Key:
+        type: SummoningRuneBoundUserInterface
 
 - type: entity
   id: BloodRuneBloodBoil
@@ -117,7 +131,8 @@
   - type: Sprite
     state: bloodboil
   - type: BloodRune
-    prototype: bloodboil
+    runeType: BloodBoil
+    desc: "bloodboil-rune-desc"
 
 - type: entity
   id: BloodRuneSpiritealm
@@ -128,7 +143,8 @@
   - type: Sprite
     state: spiritrealm
   - type: BloodRune
-    prototype: spiritrealm
+    runeType: SpiritRealm
+    desc: "spiritrealm-rune-desc"
 
 - type: entity
   id: BloodRuneRitualDimensionalRending
@@ -137,6 +153,7 @@
   description: ""
   components:
   - type: Sprite
+    drawdepth: HighFloorObjects
     sprite: _Wega/Structures/Specific/bloodcult_structures_large.rsi
     state: rune_large
   - type: BloodRitualDimensionalRending
@@ -146,8 +163,8 @@
     enabled: true
 
 - type: entity
-  id: BloodCultConstruct
   parent: BaseStructure
+  id: BloodCultConstruct
   name: construct
   description: A strange floating structure in the air.
   suffix: DO NOT MAP
@@ -155,12 +172,11 @@
   - type: Sprite
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
     state: construct-cult
-  - type: Physics
-    bodyType: Dynamic
   - type: Construct
   - type: Damageable
-    damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -193,6 +209,10 @@
         whitelist:
           tags:
           - SoulStone
+  - type: UserInterface
+    interfaces:
+      enum.BloodConstructUiKey.Key:
+        type: BloodConstructBoundUserInterface
 
 - type: entity
   id: BaseBloodCultStructure
@@ -201,11 +221,13 @@
   components:
   - type: Anchorable
     tool: BloodDagger
-  - type: Physics
-    bodyType: Dynamic
   - type: InteractionOutline
   - type: BloodStructure
     fixture: fix1
+  - type: UserInterface
+    interfaces:
+      enum.BloodStructureUiKey.Key:
+        type: BloodStructureBoundUserInterface
 
 - type: entity
   parent: BaseBloodCultStructure
@@ -230,8 +252,9 @@
           - MachineLayer
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -249,10 +272,12 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: BloodStructure
+    fixture: fix1
     structureGear:
     - ClothingEyesZealotBlindfold
     - BloodCultVeilShifter
     - BloodCultShuttleCurse
+    - CardTarotNotEnchanted
   - type: Construction
     graph: BloodCultStructureArchivesGraph
     node: BloodCultStructureArchives
@@ -267,9 +292,21 @@
   - type: Sprite
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
     state: altar
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.4"
+        density: 190
+        mask:
+        - MachineMask
+        layer:
+          - MachineLayer
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -287,6 +324,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: BloodStructure
+    fixture: fix1
     structureGear:
     - BloodCultEldritchSharpener
     - DrinkUnholyFlaskFull
@@ -322,8 +360,9 @@
           - MachineLayer
   - type: Appearance
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:
@@ -341,11 +380,13 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: BloodStructure
+    fixture: fix1
     sound: "/Audio/_Wega/Effects/anvil.ogg"
     structureGear:
-    - ClothingOuterArmorCult
+    - ClothingOuterArmorBloodCult
     - ClothingOuterFlagellantRobe
     - MirrorShield
+    - ClothingShoesBootsForsaken
   - type: Construction
     graph: BloodCultStructureForgeGraph
     node: BloodCultStructureForge
@@ -360,14 +401,13 @@
   - type: Sprite
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
     state: pylon
-  - type: Physics
-    bodyType: Dynamic
   - type: BloodPylon
   - type: BloodStructure
-    canInteract: false
+    fixture: fix1
   - type: Damageable
-    damageContainer: Inorganic
     damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: Inorganic
   - type: Destructible
     thresholds:
     - trigger:

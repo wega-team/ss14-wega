@@ -18,7 +18,10 @@
   - type: Examiner
     skipChecks: true
   - type: Ghost
+  - type: BloodCultGhost
   - type: Spectral
+  - type: MindLink
+    channels: ["MindBloodCult"]
 
 - type: entity
   id: MobBanshee
@@ -42,8 +45,9 @@
       settings: default
   - type: GhostTakeoverAvailable
   - type: Damageable
-    damageContainer: ManifestedSpirit
     damageModifierSet: ManifestedSpirit
+  - type: Injurable
+    damageContainer: ManifestedSpirit
   - type: Destructible
     thresholds:
     - trigger:
@@ -76,6 +80,28 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 5
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
+
+- type: entity
+  name: jaunt
+  parent: BaseMobJaunt
+  id: FantomJaunt
+  suffix: BloodCult
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
+    state: banshee
+  - type: MovementSpeedModifier
+    baseSprintSpeed: 6
+    baseWalkSpeed: 4
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
+  - type: ShowCultistIcons
 
 - type: entity
   abstract: true
@@ -101,10 +127,11 @@
         - FlyingMobLayer
   - type: MovementAlwaysTouching
   - type: TemperatureProtection
-    heatingCoefficient: 0.001
-    coolingCoefficient: 0.001
+    coefficient: 0.001
   - type: FlashImmunity
-  - type: PressureImmunity
+  - type: PermanentStatusEffects
+    statusEffects:
+    - StatusEffectPressureImmunity
   - type: ZombieImmune
   - type: Puller
     needsHands: false
@@ -145,8 +172,10 @@
     rules: ghost-role-information-construct-rules
   - type: Speech
   - type: Bloodstream
-    bloodMaxVolume: 75
-    bloodReagent: Blood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 75
     bloodlossDamage:
       types:
         Bloodloss:
@@ -158,6 +187,10 @@
   - type: NpcFactionMember
     factions:
     - BloodCult
+  - type: FriendlyFaction
+    faction: BloodCult
+  - type: MindLink
+    channels: ["MindBloodCult"]
   - type: ShowCultistIcons
   - type: BloodCultConstruct
   - type: Barotrauma
@@ -167,9 +200,6 @@
   - type: Metabolizer
     solutionOnBody: false
     metabolizerTypes: [ Bloodsucker ]
-    groups:
-      - id: Medicine
-      - id: Poison
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -191,7 +221,7 @@
       170: 0.7
       220: 0.5
   - type: Stamina
-    critThreshold: 300
+    baseCritThreshold: 300
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.4
     baseSprintSpeed : 3.8
@@ -246,7 +276,7 @@
     damage:
       types:
         Blunt: 25
-        Structural: 60
+        Structural: 120
 
 - type: entity
   parent: SimpleMobConstruct
@@ -265,7 +295,7 @@
       70: 0.8
       85: 0.5
   - type: Stamina
-    critThreshold: 150
+    baseCritThreshold: 150
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.9
@@ -324,15 +354,26 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      50: Dead
+      100: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      40: 0.8
+      80: 0.8
   - type: Stamina
-    critThreshold: 80
+    baseCritThreshold: 80
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.5
+  - type: Hands
+    hands:
+      hand_right:
+        location: Right
+        emptyRepresentative: BloodCultSoulStone
+        whitelist:
+          components:
+          - StoneSoul
+    sortedHands:
+    - hand_right
+  - type: ComplexInteraction
   - type: Sprite
     sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
     noRot: true
@@ -380,6 +421,22 @@
         Blunt: 5
         Piercing: 5
         Structural: 25
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 0.5s
+    affectedByEmp: true
+  - type: BallisticAmmoProvider
+    proto: ProjectileBloodBoltHeal
+    capacity: 5
+  - type: Gun
+    fireRate: 1
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+      - FullAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
 
 - type: entity
   parent: SimpleMobConstruct
@@ -399,7 +456,7 @@
       100: 0.9
       130: 0.7
   - type: Stamina
-    critThreshold: 300
+    baseCritThreshold: 300
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.8
@@ -461,13 +518,13 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      100: Dead
+      75: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
-      70: 0.8
-      85: 0.5
+      40: 0.8
+      60: 0.5
   - type: Stamina
-    critThreshold: 100
+    baseCritThreshold: 100
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
     baseSprintSpeed : 4.6
@@ -503,6 +560,7 @@
           Ash:
             min: 1
             max: 1
+  - type: AmmoCounter
   - type: MeleeWeapon
     altDisarm: false
     hidden: true
@@ -514,16 +572,99 @@
       types:
         Blunt: 5
         Slash: 10
-  - type: RechargeBasicEntityAmmo
-    rechargeCooldown: 0.5
-  - type: BasicEntityAmmoProvider
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 0.5s
+    affectedByEmp: true
+  - type: BallisticAmmoProvider
     proto: ProjectileBloodBolt
-    capacity: 1
-    count: 1
+    capacity: 5
   - type: Gun
-    fireRate: 0.5
+    fireRate: 2
     useKey: false
     selectedMode: FullAuto
     availableModes:
       - FullAuto
     soundGunshot: /Audio/Weapons/Guns/Gunshots/Magic/staff_animation.ogg
+
+- type: entity
+  parent: SimpleMobConstruct
+  id: MobConstructIdol
+  name: idol
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      35: 0.8
+      45: 0.5
+  - type: Stamina
+    baseCritThreshold: 100
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.1
+    baseSprintSpeed: 4.0
+  - type: Sprite
+    sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
+    noRot: true
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: idol
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
+      state: glow_proteon_cult
+      shader: unshaded
+  - type: Item
+    size: Normal
+  # - type: Clothing
+    # quickEquip: false
+    # sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi
+    # equippedPrefix: 0
+    # slots:
+    # - HEAD
+  - type: GhostRole
+    name: ghost-role-information-idol-name
+    description: ghost-role-information-idol-description
+  - type: HTN
+    rootTask:
+      task: MouseCompound
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/demon_dies.ogg
+      - !type:ExplodeBehavior
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+  - type: MeleeWeapon
+    altDisarm: false
+    hidden: true
+    animation: WeaponArcSlash
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 1
+  - type: ThermalVision
+  - type: Instrument
+    allowPercussion: false
+    program: 52
+  - type: UserInterface
+    interfaces:
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+  - type: ShowHealthBars
+    damageContainers:
+    - Biological
+  - type: CanEscapeInventory
+    baseResistTime: 1
+  - type: VentCrawler

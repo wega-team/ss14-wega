@@ -5,3 +5,31 @@
   entities:
   - HallucinationMobBearSpace
   - HallucinationMobCorgi
+
+- type: hallucinationsPack
+  id: Vampire
+  minChance: 0.4
+  maxChance: 0.9
+  entities:
+  - HallucinationMobVampV1
+  - HallucinationMobVampV2
+
+- type: hallucinationsPack
+  id: VampireUlt
+  minChance: 0.4
+  maxChance: 0.9
+  entities:
+  - HallucinationMobVampUV1
+  - HallucinationMobVampUV2
+
+- type: hallucinationsPack
+  id: Bloodcult
+  minChance: 0.4
+  maxChance: 0.9
+  entities:
+  - HallucinationMobBloodcultV1
+  - HallucinationMobBloodcultV2
+  - HallucinationMobBloodcultV3
+  - HallucinationMobBloodcultV4
+  - HallucinationMobBloodcultV5
+  - HallucinationMobBloodcultV6

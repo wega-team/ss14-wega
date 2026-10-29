@@ -1,0 +1,567 @@
+<Document>
+  # Ксенобиология
+  
+    <Table Columns="4">
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Название слайма
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#56000C">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Кровь
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#7e009e">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Плазма
+      </Box>
+    </ColorBox>
+    <ColorBox Color="#75b1f0">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Вода
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Серый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        5 кубиков обезьяны
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Серый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        25 Эпинефрин
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Оранжевый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" Orientation="Vertical" Margin="2">
+        25 Напалма 25 Флогистона
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Сильный пожар
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Фиолетовый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        10 Слаймового стероида
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Синий слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        10 Слаймового стабилизатор
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        25 Морозного масла
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Желтый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        ЭМИ
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Заряженное слаймовое ядро
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Яркий свет
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Тёмно-фиолетовый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        20 Листов плазмы
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		20 Плазменного стекла
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Тёмно-синий слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Фрезон
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		30 Зелья охлаждения
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Серебряный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        5 Случайных блюд
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 Случайных напитков
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Блюспейс слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Случайный артефакт
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Случайная аномалия
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Сепия слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 Плиткок Сепии
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Остановка времени
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Лазурный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        10 Слаймового усилителя
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Пирит слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Желе радиационной защиты
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		30 Зелья радиационной стойкости
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Зелёный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		30 Зелья клеточной стойкости
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Красный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Желе скорости 
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		10 Зелья мутаций
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Розовый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Желе высокотемпературной защиты
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		10 Зелья дружбы
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		30 Зелья термостойкости
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Золотой слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 Нейтральных существ
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 Агрессивных существ
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 Дружелюбных существ
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Масляный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		15 Зелья скорости
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Взрыв
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Чёрный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		15 Улучшенного мутагеннлшл токсина
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Светло-розовый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		10 Зелья разума
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Адамантиевый слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		30 Зелья железной кожи
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		Желе механической защиты
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        Радужный слайм
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 случайных слаймов
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+		5 случайных т3 дисков
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+  </Table>
+
+    <GuideReagentEmbed Reagent="SlimeSteroid"/>
+    <GuideReagentEmbed Reagent="SlimeStabilizer"/>
+    <GuideReagentEmbed Reagent="MutationsPotion"/>
+    <GuideReagentEmbed Reagent="IncreaseFriendshipPotion"/>
+    <GuideReagentEmbed Reagent="AdvancedMutateToxin"/>
+    <GuideReagentEmbed Reagent="MindPotion"/>
+	
+    <GuideReagentEmbed Reagent="ChillPotion"/>
+    <GuideReagentEmbed Reagent="RadiationResistPotion"/>
+    <GuideReagentEmbed Reagent="CellularResistPotion"/>
+    <GuideReagentEmbed Reagent="HeatResistPotion"/>
+    <GuideReagentEmbed Reagent="IronSkinResistPotion"/>
+
+  # Схема мутаций слаймов
+
+    <Table Columns="5">
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#40E0D0" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeBluespace" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#FA8072" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeRed" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#FA8072" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeOil" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#FFD700" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeAdamantine" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#40E0D0" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeYellow" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeOrange" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#483D8B" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeDarkPurple" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#483D8B" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeSepia" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#FFD700" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeGold" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeMetallic" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeGray" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimePurple" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#008000" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeGreen" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#CD853F" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimePyrite" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#CD853F" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeSilver" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeBlue" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#1E90FF" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeDarkBlue" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#008000" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeBlack" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#8A2BE2" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeLightPink" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#8A2BE2" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimePink" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox OutlineColor="#1E90FF" OutlineThickness="2">
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+        <GuideEntityEmbed Entity="MobXenoSlimeAzure" Caption=""/>
+      </Box>
+    </ColorBox>
+    <ColorBox>
+      <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
+      </Box>
+    </ColorBox>
+  </Table>
+
+	Процесс мутации слайма происходит при подкармливании, во время этого слайм размножается на 4 других, которые с шансом могут мутировать в соседнию по ребру версию. 
+	Однако некоторые слаймы требуют для появления определенных слаймов, все такие случаи помечены одним цветом для упрощения работы. Как правило тупиковые слаймы, что находятся на краю таблицы не могут мутировать обратно.
+
+</Document>

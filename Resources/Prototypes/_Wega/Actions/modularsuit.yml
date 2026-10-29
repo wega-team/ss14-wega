@@ -1,0 +1,329 @@
+- type: entity
+  parent: BaseAction
+  id: ToggleModularSuitDeployAction
+  name: "[color=#58c4e8]Expand Suit[/color]"
+  description: "Opens the modular suit, placing all the installed parts on the body. When pressed again, it closes the suit back into a compact state."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1.5
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: activate
+      map: ["enum.ActionVisuals.Icon"]
+    - state: activate-ready
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleDeploySuitActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleModularSuitUiAction
+  name: "[color=#58c4e8]Open MODSuit interface[/color]"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: panel
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ToggleSuitUiActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleLightModuleAction
+  name: "[color=#58c4e8]Toggle Light[/color]"
+  description: "Turns the suit's integrated lighting system on or off."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: light-off
+      map: ["enum.ActionVisuals.Icon"]
+    - state: light-on
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleLightModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateTeleporterModuleAction
+  name: "[color=#58c4e8]Activate Teleporter[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigAction
+    useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: teleporter
+  - type: TargetAction
+    range: 16 # default examine-range.
+    # ^ should probably add better validation that the clicked location is on the users screen somewhere,
+    repeat: false
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:ActivateTeleporterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateAntiGravitationModuleAction
+  name: "[color=#58c4e8]Activate Antigrav[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:AntiGravitationEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateFleshModuleAction
+  name: "[color=#58c4e8]Activate damage[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: antigrav_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:DamageOnActionModuleEvent
+      hungerPerUse: 100
+      damage:
+        types:
+          Blunt: -10
+          Slash: -10
+          Piercing: -10
+          Heat: -10
+          Cold: -10
+          Poison: -10
+          Asphyxiation: -20
+          Bloodloss: -20
+
+- type: entity
+  parent: BaseAction
+  id: ActivateEMPModuleAction
+  name: "[color=#58c4e8]Activate EMP[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: electro_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleEMPEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateFloraModuleAction
+  name: "[color=#58c4e8]Activate Flora[/color]"
+  description: "Instantly teleports the user to the location of a random nearby creature. Requires a bluespace core to function."
+  components:
+  - type: Action
+    startDelay: true
+    itemIconStyle: BigItem
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    layers:
+    - state: flora_core
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ModuleHealSurgeyEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleHolsterModuleAction
+  name: "[color=#58c4e8]Toggle Holster[/color]"
+  description: "Deploys or retracts the weapon holster for quick firearm access."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: holster-in
+      map: ["enum.ActionVisuals.Icon"]
+    - state: holster-out
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleHolsterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ToggleKineticHolsterModuleAction
+  name: "[color=#58c4e8]Toggle Kinetic Holster[/color]"
+  description: "Deploys or retracts the mining holster for quick accelerator access."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 10
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: kinetic_holster-in
+      map: ["enum.ActionVisuals.Icon"]
+    - state: kinetic_holster-out
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleHolsterModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivatePaperDispenserModuleAction
+  name: "[color=#58c4e8]Activate Paper Dispenser[/color]"
+  description: "Synthesizes fresh paper using advanced fax and printer technology. Converts suit power into high-quality stationery. Perfect for paperwork emergencies or when you just need to leave a note."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: paper
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateDispenserModuleEvent
+      spawnedProto:
+      - Paper
+      - PaperOffice
+      activateSound:
+        path: "/Audio/Machines/printer.ogg"
+
+- type: entity
+  parent: BaseAction
+  id: ActivateEnergyShieldModuleAction
+  name: "[color=#58c4e8]Activate Energy Shield[/color]"
+  description: "Generates a personal protective forcefield that blocks incoming attacks. Consumes significant power."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 60
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: energyshield
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateEnergyShieldModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateBurgerDispenserModuleAction
+  name: "[color=#58c4e8]Activate Burger Dispenser[/color]"
+  description: "Creates an edible burger using the suit's power. The exact type of burger may vary. Earl Grey tea not available."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 120
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: dispenser
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateDispenserModuleEvent
+      spawnedProto:
+      - FoodBurgerAppendix
+      - FoodBurgerBacon
+      - FoodBurgerBaseball
+      - FoodBurgerBear
+      - FoodBurgerBig
+      - FoodBurgerBrain
+      - FoodBurgerCat
+      - FoodBurgerCheese
+      - FoodBurgerChicken
+      - FoodBurgerClown
+      - FoodBurgerCorgi
+      - FoodBurgerCrab
+      - FoodBurgerCrazy
+      - FoodBurgerDuck
+      - FoodBurgerCarp
+      - FoodBurgerFive
+      - FoodBurgerGhost
+      - FoodBurgerHuman
+      - FoodBurgerMcguffin
+      - FoodBurgerMcrib
+      - FoodBurgerMime
+      - FoodBurgerPlain
+      - FoodBurgerRat
+      - FoodBurgerRobot
+      - FoodBurgerSoy
+      - FoodBurgerSpell
+      - FoodBurgerSuper
+      - FoodBurgerTofu
+      - FoodBurgerXeno
+      - FoodBurgerMothRoach
+
+- type: entity
+  parent: BaseAction
+  id: ActivateTanningModuleAction
+  name: "[color=#58c4e8]Activate Tanning[/color]"
+  description: "Activates UV lamps for a safe tan. Skin cancer functionality has not been proven."
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 30
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: tanning
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateTanningModuleEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActivateAtrocinatorModuleAction
+  name: "[color=#58c4e8]Activate Atrocinator[/color]"
+  description: "Activates the mysterious orb. Effects vary. Watch your step!"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    startDelay: true
+    useDelay: 300
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_modules.rsi
+    layers:
+    - state: atrocinator
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateAtrocinatorModuleEvent

@@ -80,7 +80,6 @@
     tags:
     - Write
     - WriteIgnoreStamps
-    - Pickaxe
     - Pen
   - type: MeleeWeapon
     wideAnimationRotation: -45
@@ -101,6 +100,12 @@
   id: CyberPen
   description: A high-tech pen straight from Cybersun's legal department, capable of refracting hard-light at impossible angles through its diamond tip in order to write. So powerful, it's even able to rewrite officially stamped documents should the need arise.
   components:
+  # Corvax-Contraband-start
+  - type: Contraband
+    severity: Corvax432
+    allowedDepartments: []
+    allowedJobs: []
+  # Corvax-Contraband-end
   - type: Sprite
     state: overpriced_pen
   - type: Item
@@ -114,6 +119,12 @@
   id: PenCentcom
   description: In an attempt to keep up with the "power" of the cybersun bureaucracy, NT made a replica of cyber pen, in their corporate style.
   components:
+  # Corvax-Contraband-start
+  - type: Contraband
+    severity: Corvax432
+    allowedDepartments: [CentralCommand]
+    allowedJobs: [Magistrate, IAA]
+  # Corvax-Contraband-end
   - type: Sprite
     state: pen_centcom
   - type: Item
@@ -129,10 +140,10 @@
     state: pen_cap
 
 - type: entity
-  name: hop's fountain pen
+  name: HoP's fountain pen
   parent: PenEmbeddable
   id: PenHop
-  description: A luxurious fountain pen for the hop of the station.
+  description: A luxurious fountain pen for the HoP of the station.
   components:
   - type: Sprite
     state: pen_hop

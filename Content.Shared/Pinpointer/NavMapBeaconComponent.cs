@@ -1,11 +1,12 @@
 using Robust.Shared.GameStates;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Pinpointer;
 
 /// <summary>
 /// Will show a marker on a NavMap.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedNavMapSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(NavMapSystem))]
 [AutoGenerateComponentState]
 public sealed partial class NavMapBeaconComponent : Component
 {
@@ -21,6 +22,14 @@ public sealed partial class NavMapBeaconComponent : Component
     /// </summary>
     [DataField]
     public LocId? DefaultText;
+
+    // Corvax-Wega-Lavaland-start
+    [DataField]
+    public LocId DefaultDesc = "nav-map-beacon-default-desc";
+
+    [DataField]
+    public SpriteSpecifier? BeaconIcon { get; private set; }
+    // Corvax-Wega-Lavaland-end
 
     [DataField, AutoNetworkedField]
     public Color Color = Color.Orange;

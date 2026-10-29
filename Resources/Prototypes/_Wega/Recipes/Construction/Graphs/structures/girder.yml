@@ -1,53 +1,53 @@
-- type: constructionGraph
-  id: CultGirder
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: cultgirder
-          completed:
-            - !type:SnapToGrid
-              southRotation: true
-          steps:
-            - material: RuneMetal
-              amount: 1
-              doAfter: 1
-
-    - node: cultgirder
-      entity: CultGirder
-      edges:
-        - to: start
-          completed:
-            - !type:SpawnPrototype
-              prototype: SheetRuneMetal1
-              amount: 1
-            - !type:DeleteEntity {}
-          conditions:
-            - !type:EntityAnchored
-              anchored: false
-          steps:
-            - tool: Screwing
-              doAfter: 2
-
-        - to: cultwall
-          completed:
-            - !type:SnapToGrid
-              southRotation: true
-          conditions:
-            - !type:EntityAnchored {}
-          steps:
-            - material: RuneMetal
-              amount: 1
-              doAfter: 2
-
-    - node: cultwall
-      entity: WallCult
-      edges:
-        - to: cultgirder
-          completed:
-            - !type:GivePrototype
-              prototype: SheetRuneMetal1
-              amount: 1
-          steps:
-            - tool: Welding
-              doAfter: 10
+#- type: constructionGraph
+#  id: CultGirder
+#  start: start
+#  graph:
+#    - node: start
+#      edges:
+#        - to: cultgirder
+#          completed:
+#            - !type:SnapToGrid
+#              southRotation: true
+#          steps:
+#            - material: RuneMetal
+#              amount: 1
+#              doAfter: 1
+#
+#    - node: cultgirder
+#      entity: CultGirder
+#      edges:
+#        - to: start
+#          completed:
+#            - !type:SpawnPrototype
+#              prototype: SheetRuneMetal1
+#              amount: 1
+#            - !type:DeleteEntity {}
+#          conditions:
+#            - !type:EntityAnchored
+#              anchored: false
+#          steps:
+#            - tool: Screwing
+#              doAfter: 2
+#
+#        - to: cultwall
+#          completed:
+#            - !type:SnapToGrid
+#              southRotation: true
+#          conditions:
+#            - !type:EntityAnchored {}
+#          steps:
+#            - material: RuneMetal
+#              amount: 1
+#              doAfter: 2
+#
+#    - node: cultwall
+#      entity: WallCult
+#      edges:
+#        - to: cultgirder
+#          completed:
+#            - !type:GivePrototype
+#              prototype: SheetRuneMetal1
+#              amount: 1
+#          steps:
+#            - tool: Welding
+#              doAfter: 10

@@ -1,63 +1,34 @@
 - type: vendingMachineInventory
   id: WinterDrobeInventory
   startingInventory:
-    # Corvax-Wega-Turtleneck-start
-    ADTClothingUniformJumpskirtTurtleneckAquamarine: 2
-    ADTClothingUniformJumpsuitTurtleneckAquamarine: 2
-    ADTClothingUniformJumpskirtTurtleneckWhite: 2
-    ADTClothingUniformJumpsuitTurtleneckWhite: 2
-    ADTClothingUniformJumpskirtTurtleneckAzure: 2
-    ADTClothingUniformJumpsuitTurtleneckAzure: 2
-    ADTClothingUniformJumpskirtTurtleneckYellow: 2 
-    ADTClothingUniformJumpsuitTurtleneckYellow: 2
-    ADTClothingUniformJumpskirtTurtleneckGreen: 2
-    ADTClothingUniformJumpsuitTurtleneckGreen: 2
-    ADTClothingUniformJumpskirtTurtleneckBrown: 2
-    ADTClothingUniformJumpsuitTurtleneckBrown: 2
-    ADTClothingUniformJumpskirtTurtleneckRed: 2
-    ADTClothingUniformJumpsuitTurtleneckRed: 2
-    ADTClothingUniformJumpskirtTurtleneckOrange: 2
-    ADTClothingUniformJumpsuitTurtleneckOrange: 2
-    ADTClothingUniformJumpskirtTurtleneckPink: 2
-    ADTClothingUniformJumpsuitTurtleneckPink: 2
-    ADTClothingUniformJumpskirtTurtleneckGrey: 2
-    ADTClothingUniformJumpsuitTurtleneckGrey: 2 
-    ADTClothingUniformJumpskirtTurtleneckBlue: 2
-    ADTClothingUniformJumpsuitTurtleneckBlue: 2 
-    ADTClothingUniformJumpskirtTurtleneckPurple: 2
-    ADTClothingUniformJumpsuitTurtleneckPurple: 2 
-    ADTClothingUniformJumpskirtTurtleneckBlack: 2
-    ADTClothingUniformJumpsuitTurtleneckBlack: 2
-    ADTClothingUniformJumpskirtTurtleneckSalat: 2
-    ADTClothingUniformJumpsuitTurtleneckSalat: 2 
-    ADTClothingUniformJumpsuitTurtleneckSalatblack: 2 
-    ADTClothingUniformJumpskirtTurtleneckBlackSleeveless: 2
-    ADTClothingUniformJumpsuitTurtleneckBlackSleeveless: 2 
-    ADTClothingUniformJumpsuitTurtleneckWhiteBlackSleeveless: 2 
-    ADTClothingUniformJumpsuitTurtleneckWhiteSleeveless: 2 
-    ADTClothingUniformJumpskirtTurtleneckWhiteSleeveless: 2
-    # Corvax-Wega-Turtleneck-end
-    ClothingNeckScarfStripedRed: 3
-    ClothingNeckScarfStripedGreen: 3
-    ClothingNeckScarfStripedBlue: 3
-    ClothingNeckScarfStripedBlack: 3
-    ClothingNeckScarfStripedBrown: 3
-    ClothingNeckScarfStripedLightBlue: 3
-    ClothingNeckScarfStripedOrange: 3
-    ClothingNeckScarfStripedPurple: 3
+    # Corvax-Wega-start
+    # ClothingNeckScarfStripedRed: 3
+    # ClothingNeckScarfStripedGreen: 3
+    # ClothingNeckScarfStripedBlue: 3
+    # ClothingNeckScarfStripedBlack: 3
+    # ClothingNeckScarfStripedBrown: 3
+    # ClothingNeckScarfStripedLightBlue: 3
+    # ClothingNeckScarfStripedOrange: 3
+    # ClothingNeckScarfStripedPurple: 3
+    # Corvax-Wega-end
     ClothingOuterCoatTrench: 6
     ClothingOuterWinterCoat: 6
+    # Corvax-Wega-start
+    TurtleneckSelector: 15
+    ScarfSelector: 10
+    # Corvax-Wega-end
     ClothingShoesBootsWinter: 6
     ClothingOuterFlannelRed: 2
     ClothingOuterFlannelBlue: 2
     ClothingOuterFlannelGreen: 2
     ClothingOuterCoatBomber: 3
     ClothingHeadHatCanadaBeanie: 4
+    ClothingHeadHatHetmanHat: 3 # Corvax-Wega-add
     ClothingHeadHatSantahat: 2
     ClothingHeadHatXmasCrown: 2
     # Corvax-Wega-Turtleneck-start
   contrabandInventory:
-    ADTClothingUniformJumpsuitTurtleneckTactick: 2
+    ClothingUniformJumpsuitTurtleneckTactick: 2
     # Corvax-Wega-Turtleneck-end
   emaggedInventory:
     ClothingNeckScarfStripedSyndieGreen: 3

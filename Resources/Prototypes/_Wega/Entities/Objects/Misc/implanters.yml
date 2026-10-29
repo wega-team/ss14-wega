@@ -1,0 +1,23 @@
+- type: entity
+  id: BluseSpaceImplanter
+  name: bluespase implanter
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: BluespaceLifelineImplant
+
+- type: entity
+  id: LoyaltyImplanter
+  name: loyalty implanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: LoyaltyImplant
+    
+- type: entity
+  id: SmokeImplanter
+  name: smoke implanter
+  parent: BaseImplantOnlyImplanterSyndi
+  components:
+  - type: Implanter
+    implant: SmokeImplant

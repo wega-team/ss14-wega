@@ -33,7 +33,6 @@
   minOreYield: 1
   maxOreYield: 2
 
-
 # Low yields
 - type: ore
   id: OrePlasmaCore
@@ -64,3 +63,55 @@
     OreSilverCore: 1
     OreUraniumCore: 1
     OreBananiumCore: 1
+
+- type: ore
+  id: OreMagmite
+  oreEntity: MagmiteOre1
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: GemRuby
+  oreEntity: GemRuby
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: GemSapphire
+  oreEntity: GemSapphire
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: GemEmerald
+  oreEntity: GemEmerald
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: GemTopaz
+  oreEntity: GemTopaz
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: GemRuperium
+  oreEntity: GemRuperium
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: ore
+  id: GemHardenedShell
+  oreEntity: GemHardenedShell
+  minOreYield: 1
+  maxOreYield: 2
+
+- type: weightedRandomOre
+  id: RandomGemsDistributionStandard
+  weights:
+    GemRuby: 20
+    GemSapphire: 20
+    GemEmerald: 20
+    GemTopaz: 20
+    GemRuperium: 5
+    GemHardenedShell: 5

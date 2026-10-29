@@ -4,6 +4,9 @@ humanoid-profile-editor-status-semi-text = Неполное ЕРП
 humanoid-profile-editor-status-full-text = Полное ЕРП
 humanoid-profile-editor-status-absolute-text = Абсолютное ЕРП
 
+humanoid-profile-editor-height-label = Рост:
+humanoid-profile-editor-height-display = {$value} см
+
 humanoid-profile-editor-flavor-label = Внешний Вид
 humanoid-profile-editor-flavor-character-label = Черты характера и стиль общения
 humanoid-profile-editor-flavor-ooc-label = OOC Заметки

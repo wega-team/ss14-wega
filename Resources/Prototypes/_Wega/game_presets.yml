@@ -12,7 +12,6 @@
   rules:
   - Traitor
   - SubGamemodesRule
-  - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
 
 # Antags
@@ -45,3 +44,70 @@
     - MeteorSwarmScheduler
     - SpaceTrafficControlEventScheduler
     - BasicRoundstartVariation
+
+- type: gamePreset
+  id: BloodBrothers
+  alias:
+    - blood-brothers
+  name: blood-brothers-title
+  description: blood-brothers-description
+  showInVote: false
+  rules:
+    - BloodBrothers
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - MeteorSwarmScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset
+  id: VeilCult
+  alias:
+    - veil-cult
+  name: veil-cult-title
+  description: veil-cult-description
+  showInVote: false
+  rules:
+    - VeilCult
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - MeteorSwarmScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Standoff
+  alias:
+    - standoff
+    - standoff-2 # IM SO SORRY I CANT STOP XDDDD
+  name: standoff-title
+  description: standoff-description
+  showInVote: false
+  rules:
+    - VeilCult
+    - BloodCult
+    - SubGamemodesRule
+    - BasicStationEventScheduler
+    - MeteorSwarmScheduler
+    - SpaceTrafficControlEventScheduler
+    - BasicRoundstartVariation
+
+- type: gamePreset
+  id: SecretLight
+  alias:
+    - secretlight
+  name: sectet-light-title
+  description: sectet-light-description
+  showInVote: true
+  rules:
+    - SubSecretSmall
+
+- type: gamePreset
+  id: SecretLarge
+  alias:
+    - secretlarge
+  name: sectet-large-title
+  description: sectet-large-description
+  showInVote: true
+  rules:
+    - SubSecretLarge

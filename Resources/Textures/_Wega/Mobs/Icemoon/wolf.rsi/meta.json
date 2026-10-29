@@ -1,0 +1,56 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Attribute Stephen Redshrike. Take from https://opengameart.org/content/lpc-wolf-animation. resrite Melissandra",
+    "size": {
+        "x": 48,
+        "y": 48
+    },
+    "states": [
+        {
+            "name": "base",
+            "directions": 4
+        },
+        {
+            "name": "foot",
+            "directions": 4
+        },
+        {
+            "name": "eyes",
+            "directions": 4
+        },
+        {
+            "name": "dead"
+        },
+        {
+            "name": "base_moving",
+            "directions": 4,
+            "delays": [
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ]
+            ]
+        },
+        {
+            "name": "foot_moving",
+            "directions": 4,
+            "delays": [
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ]
+            ]
+        },
+        {
+            "name": "eyes_moving",
+            "directions": 4,
+            "delays": [
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ],
+                [ 0.1, 0.1, 0.1, 0.1, 0.1 ]
+            ]
+        }
+    ]
+}

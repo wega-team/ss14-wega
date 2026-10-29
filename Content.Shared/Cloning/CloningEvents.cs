@@ -20,3 +20,10 @@ public record struct CloningEvent(CloningSettingsPrototype Settings, EntityUid C
 /// </summary>
 [ByRefEvent]
 public record struct CloningItemEvent(EntityUid CloneUid);
+
+/// <summary>
+///    Corvax-Wega-Start
+///    Ивент, вызывающийся при TryCloning, нужен для работы Accentless на клонах или других компонентов с подпиской на ComponentStartup
+/// </summary>
+[ByRefEvent]
+public readonly record struct CloneFinishedEvent(EntityUid Original);

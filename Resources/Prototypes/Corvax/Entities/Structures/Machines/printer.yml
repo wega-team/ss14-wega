@@ -47,7 +47,7 @@
       - Document
     storage:
       PrinterPaper: 0
-  - type: DocumentPrinter 
+  - type: DocumentPrinter
   - type: ContainerContainer
     containers:
       machine_board: !type:Container
@@ -61,3 +61,4 @@
         whitelist:
           components:
           - IdCard
+  - type: StationAiWhitelist # Corvax-Wega-Edit

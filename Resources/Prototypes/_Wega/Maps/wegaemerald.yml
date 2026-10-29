@@ -2,7 +2,7 @@
   id: WegaEmerald
   mapName: 'Emerald Station'
   mapPath: /Maps/_Wega/wegaemerald.yml
-  minPlayers: 60
+  minPlayers: 65
   stations:
     Emerald:
       stationProto: StandardNanotrasenStation
@@ -14,6 +14,13 @@
             prefixCreator: 'TZ'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Wega/Shuttles/emeraldemergency.yml
+        - type: StationLavaland
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
         - type: StationJobs
           availableJobs:
             #service
@@ -61,7 +68,8 @@
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 3, 3 ]
+            ShaftMiner: [ 4, 4 ]
+            ShaftMinerMedic: [ 1, 1 ]
             CargoTechnician: [ 4, 4 ]
             Postman: [ 1, 1 ]
             #civilian
@@ -70,7 +78,6 @@
             Mime: [ 1, 1 ]
             Reporter: [ 2, 2 ]
             Musician: [ 2, 2 ]
-            Boxer: [ 2, 2 ]
             Barber: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]

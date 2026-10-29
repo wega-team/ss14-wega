@@ -1,0 +1,31 @@
+- type: construction
+  id: GlassesMedSec
+  graph: GlassesMedSec
+  startNode: start
+  targetNode: medsecGlasses
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  id: GlassesMedical
+  graph: GlassesMed
+  startNode: start
+  targetNode: medGlasses
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  id: BigBag
+  graph: BigBag
+  startNode: start
+  targetNode: Bigbackpack
+  category: construction-category-clothing
+  objectType: Item
+
+- type: construction
+  id: ModMasc
+  graph: ModMasc
+  startNode: start
+  targetNode: voiceMasc
+  category: construction-category-clothing
+  objectType: Item

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Server.Research.Systems;
 using Content.Server.Power.Components;
 using Content.Shared.Interaction;
 using Robust.Shared.Physics.Components;
@@ -15,26 +16,32 @@ using Content.Shared.Throwing;
 using Robust.Shared.Random;
 using Content.Shared.Climbing.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Research;
+using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 using Content.Shared.Construction.Components;
 using Content.Shared.Xenobiology;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Body.Components;
+using Robust.Shared.Audio;
 
 namespace Content.Server.Xenobiology
 {
-    public sealed class SlimeExtractorSystem : EntitySystem
+    public sealed partial class SlimeExtractorSystem : EntitySystem
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
-        [Dependency] private readonly MobStateSystem _mobState = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedJitteringSystem _jittering = default!;
-        [Dependency] private readonly PuddleSystem _puddle = default!;
-        [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
-        [Dependency] private readonly ThrowingSystem _throwing = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly InventorySystem _inventory = default!;
-        [Dependency] private readonly SharedTransformSystem _transform = default!;
-        [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
+        [Dependency] private IEntityManager _entManager = default!;
+        [Dependency] private MobStateSystem _mobState = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedJitteringSystem _jittering = default!;
+        [Dependency] private PuddleSystem _puddle = default!;
+        [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+        [Dependency] private ThrowingSystem _throwing = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private InventorySystem _inventory = default!;
+        [Dependency] private SharedTransformSystem _transform = default!;
+        [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+		[Dependency] private ResearchSystem _research = default!;
+		[Dependency] private ChatSystem _chat = default!;
 
         public const string SlimeExtractPrefix = "MaterialSlimeExtract";
 
@@ -122,7 +129,7 @@ namespace Content.Server.Xenobiology
 
             if (_random.Prob(0.15f))
             {
-                _audio.PlayPvs("/Audio/Voice/Slime/slime_squish.ogg", uid);
+                _audio.PlayPvs(new SoundPathSpecifier("/Audio/Voice/Slime/slime_squish.ogg"), uid);
             }
         }
 
@@ -143,6 +150,8 @@ namespace Content.Server.Xenobiology
             {
                 component.ProcessingTimer = 0;
                 component.IsActive = false;
+				RemComp<JitteringComponent>(uid);
+				_ambient.SetAmbience(uid, false);
                 Dirty(uid, component);
             }
         }
@@ -190,6 +199,13 @@ namespace Content.Server.Xenobiology
             if (!TryComp<PhysicsComponent>(slime, out var physics) || !TryComp<SlimeGrowthComponent>(slime, out var slimeGrowth))
                 return;
 
+			if (!_research.TryGetClientServer(extractor, out var server, out var serverComp))
+            {
+				var ms = Loc.GetString("no-choose-server");
+				_chat.TrySendInGameICMessage(extractor.Owner, ms, InGameICChatType.Speak, true);
+                return;
+			}
+
             var component = extractor.Comp;
             component.IsActive = true;
             component.ProcessingTimer = physics.FixturesMass * component.ProcessingTimePerUnitMass;
@@ -198,21 +214,33 @@ namespace Content.Server.Xenobiology
             component.SlimeType = slimeGrowth.SlimeType.ToString();
             component.SlimeStage = slimeGrowth.CurrentStage;
             component.Reinforced = slimeGrowth.Reinforced;
+            component.Points = slimeGrowth.Points;
 
             _jittering.AddJitter(extractor, -10, 100);
-            _audio.PlayPvs("/Audio/Machines/reclaimer_startup.ogg", extractor);
+            _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/reclaimer_startup.ogg"), extractor);
             _ambient.SetAmbience(extractor, true);
 
             if (TryComp<BloodstreamComponent>(slime, out var bloodstream))
             {
-                component.BloodReagent = bloodstream.BloodReagent;
+                if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
+                {
+                    var reagentQuantity = bloodstream.BloodReferenceSolution.Contents[0];
+                    component.BloodReagent = reagentQuantity.Reagent.Prototype;
+                }
             }
 
             foreach (var item in _inventory.GetHandOrInventoryEntities(slime))
             {
                 _transform.DropNextTo(item, extractor.Owner);
             }
-
+			
+			if (component.Points != 0)
+			{
+				_research.ModifyServerPoints(server.Value, component.Points, serverComp);
+				var message = Loc.GetString("extrator-point-get", ("points", component.Points));
+				_chat.TrySendInGameICMessage(extractor.Owner, message, InGameICChatType.Speak, true);
+			}
+			
             QueueDel(slime);
             Dirty(extractor, component);
         }

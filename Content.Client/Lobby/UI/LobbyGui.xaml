@@ -5,8 +5,8 @@
     xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:vote="clr-namespace:Content.Client.Voting.UI"
-    xmlns:style="clr-namespace:Content.Client.Stylesheets"
     xmlns:lobbyUi="clr-namespace:Content.Client.Lobby.UI"
+    xmlns:corvaxLobby="clr-namespace:Content.Client.Corvax.Lobby.UI"
     xmlns:info="clr-namespace:Content.Client.Info"
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets">
     <!-- Background -->
@@ -47,14 +47,19 @@
                         <!-- Voting Popups -->
                         <BoxContainer Orientation="Vertical" SeparationOverride="4" Name="VoteContainer"
                                       Access="Public" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0 8" />
+                        <!-- Corvax lobby server hub. Kept on the wide left side so names and online fit. -->
+                        <corvaxLobby:LobbyServerHub />
                     </BoxContainer>
                     <!-- Vertical Padding-->
                     <Control VerticalExpand="True" />
                     <!-- Left Bot Panel -->
-                    <BoxContainer Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Bottom">
                         <info:DevInfoBanner Name="DevInfoBanner" VerticalExpand="false" Margin="3 3 3 3" />
-                        <PanelContainer StyleClasses="BackgroundPanel">
-                            <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Center" />
+                        <PanelContainer StyleClasses="BackgroundPanel" Margin="3 3 3 3">
+                            <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="3 3 3 3">
+                                <RichTextLabel Name="LobbySong" Access="Public" HorizontalAlignment="Left" />
+                                <RichTextLabel Name="LobbyBackground" Access="Public" HorizontalAlignment="Left" />
+                            </BoxContainer>
                         </PanelContainer>
                     </BoxContainer>
                 </Control>
@@ -73,12 +78,16 @@
                                HorizontalExpand="True" HorizontalAlignment="Center" />
                     </BoxContainer>
                     <!-- Gold line -->
-                    <controls:HLine StyleClasses="highlight" Thickness="2" />
+                    <controls:Separator StyleClasses="highlight"/>
                     <controls:HSpacer Spacing="10" />
                     <!-- Voting & misc button bar -->
                     <BoxContainer Orientation="Horizontal" MinSize="0 40" HorizontalAlignment="Right">
                         <Button Name="AHelpButton" Access="Public" Text="{Loc 'ui-lobby-ahelp-button'}"
                                 StyleClasses="ButtonBig" />
+                        <!-- Corvax-Wega-Achievements-start -->
+                        <Button Name="AchievementsButton" Access="Public" Text="{Loc 'ui-lobby-achievements-button'}"
+                                StyleClasses="ButtonBig" />
+                        <!-- Corvax-Wega-Achievements-end -->
                         <vote:VoteCallMenuButton Name="CallVoteButton" StyleClasses="ButtonBig" />
                         <Button Name="OptionsButton" Access="Public" StyleClasses="ButtonBig"
                                 Text="{Loc 'ui-lobby-options-button'}" />
@@ -97,7 +106,7 @@
                     <controls:HSpacer Spacing="5" />
                     <BoxContainer MinHeight="10" />
                     <!-- Gold line -->
-                    <controls:HLine StyleClasses="highlight" Thickness="2" Access="Public" />
+                    <controls:Separator StyleClasses="highlight" Access="Public"/>
                     <controls:HSpacer Spacing="10" />
                     <widgets:ChatBox Name="Chat" Access="Public" VerticalExpand="True" Margin="3 3 3 3" MinHeight="50" />
                 </BoxContainer>

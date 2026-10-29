@@ -92,8 +92,8 @@ public sealed partial class NanoChatUiFragment : BoxContainer
 
         ChatTypeTabs.OnTabChanged += _ => OnTabChanged();
 
-        EmojiButton.AddStyleClass(StyleNano.ButtonOpenBoth);
-        SendButton.AddStyleClass(StyleNano.ButtonOpenLeft);
+        EmojiButton.AddStyleClass(StyleClass.ButtonOpenBoth);
+        SendButton.AddStyleClass(StyleClass.ButtonOpenLeft);
 
         UpdateUiState();
     }

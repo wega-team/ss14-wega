@@ -25,7 +25,7 @@ public sealed partial class VoucherCardComponent : Component
     public ProtoId<VoucherKitPrototype>? CurrentKit = default!;
 }
 
-[Prototype("voucherKit")]
+[Prototype]
 public sealed partial class VoucherKitPrototype : IPrototype
 {
     [IdDataField]
@@ -38,8 +38,18 @@ public sealed partial class VoucherKitPrototype : IPrototype
     public string Description = string.Empty;
 
     [DataField("items", required: true)]
-    public List<EntProtoId> Items = new();
+    public List<KitItem> Items = new();
 
     [DataField("icon")]
     public SpriteSpecifier? Icon;
+}
+
+[DataRecord]
+public sealed partial record KitItem
+{
+    [DataField]
+    public EntProtoId Id { get; init; }
+
+    [DataField]
+    public int Amount { get; init; } = 1;
 }

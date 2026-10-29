@@ -1,6 +1,7 @@
 - type: job
   id: SeniorEngineer
   name: job-name-senior-engineer
+  isSubRole: true # Corvax-Wega-add
   description: job-description-senior-engineer
   playTimeTracker: JobSeniorEngineer
   requirements:
@@ -13,7 +14,6 @@
     - !type:DepartmentTimeRequirement
       department: Engineering
       time: 60h
-  weight: 9
   startingGear: SeniorEngineerGear
   icon: "JobIconSeniorEngineer"
   supervisors: job-supervisors-ce

@@ -1,6 +1,6 @@
 - type: entity
   id: BaseLathe
-  parent: [ BaseMachinePowered, ConstructibleMachine ]
+  parent: [ BaseMachinePowered, ConstructibleMachine, BaseConstructibleMachineDestructible ]
   abstract: true
   name: lathe
   components:
@@ -23,15 +23,11 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
+        damage: 175
       behaviors:
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
-      - !type:ChangeConstructionNodeBehavior
-        node: machineFrame
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
   - type: WiresPanel
   - type: ActivatableUI
     key: enum.LatheUiKey.Key
@@ -49,6 +45,11 @@
     price: 800
   - type: ResearchClient
   - type: TechnologyDatabase
+  - type: ApcPowerReceiver
+    powerLoad: 150
+  - type: PowerState
+    idlePowerDraw: 150
+    workingPowerDraw: 1000
 
 # a lathe that can be sped up with space lube / slowed down with glue
 - type: entity
@@ -61,16 +62,20 @@
     modifiers:
       SpaceLube: 0.25
       SpaceGlue: 5
-  - type: SolutionContainerManager
+  - type: SolutionManager
     solutions:
-      lube:
-        maxVol: 250
+    - SolutionLatheLube
   - type: Spillable
     solution: lube
   - type: RefillableSolution
     solution: lube
   - type: ExaminableSolution
     solution: lube
+
+- type: entity
+  parent: [SolutionLube, SolutionLarge]
+  id: SolutionLatheLube # Its own prototype since some lathes might interface with solutions in other ways
+  categories: [ HideSpawnMenu ]
 
 - type: entity
   abstract: true
@@ -107,7 +112,7 @@
   - type: Machine
     board: AutolatheMachineCircuitboard
   - type: MaterialStorage
-    whitelist:
+    whitelist: &StandardMaterialWhitelist
       tags:
         - Sheet
         - RawMaterial
@@ -133,6 +138,7 @@
     - ServiceStatic
     - PowerCellsStatic
     - ElectronicsStatic
+    - HydroponicsStatic
     - ScienceStatic # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
@@ -184,23 +190,17 @@
   - type: Machine
     board: ProtolatheMachineCircuitboard
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
     runningState: building
     unlitIdleState: unlit
     unlitRunningState: unlit-building
-    # staticPacks:
-    # - ChemistryStatic
-    # - SurgeryStatic
+    staticPacks:
+    - ChemistryStatic
+    # - SurgeryStatic # Corvax-Wega-Edit
     dynamicPacks:
-    # Corvax-Wega-Edit
-    - ChemistryStatic # Corvax-Wega-Edit
     - AdvancedTools
     - ScienceEquipment
     - ScienceExplosives
@@ -274,11 +274,7 @@
     emagDynamicPacks:
     - SecurityBoards
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: RequireProjectileTarget
 
@@ -317,21 +313,28 @@
     - RoboticsStatic
     - BorgModulesStatic
     - BorgLimbsStatic
+    - ModesuitPartStatic # Corvax-Wega-Edit
+    - ModesuitModuleStatic # Corvax-Wega-Edit
     dynamicPacks:
     - Robotics
+    - ScienceReach # Corvax-Wega-Edit
+    - ModesuitPlatingReach # Corvax-Wega-Edit
+    - ModesuitModuleReach # Corvax-Wega-Edit
     - BorgModules
     - MechParts
     - MechEquipment
   - type: MaterialStorage
-    whitelist:
-      tags:
-      - Sheet
-      - RawMaterial
-      - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: GuideHelp
     guides:
     - Robotics
+# Corvax-wega-start
+  - type: EmagLatheRecipes
+    emagStaticPacks:
+    - ModesuitModuleSecStatic
+    - ModesuitModuleSecReach
+# Corvax-wega-end
 
 - type: entity
   id: Biofabricator
@@ -374,7 +377,7 @@
 
 - type: entity
   id: SecurityTechFab
-  parent: BaseLatheLube
+  parent: [BaseCorvaxContraband433DepartmentsSecurity, BaseLatheLube] # Corvax-Contraband
   name: security techfab
   description: Prints equipment for use by security crew.
   components:
@@ -396,11 +399,14 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - SecurityEquipmentStatic
     - SecurityPracticeStatic
     - SecurityAmmoStatic
     - SecurityWeaponsStatic
+    - ModesuitModuleSecStatic # Corvax-Wega-Edit
     dynamicPacks:
     - SalvageSecurityBoards
     - SalvageSecurityWeapons
@@ -411,22 +417,20 @@
     - SecurityWeapons
     - SecurityDisablers
     - ImplantSB # Corvax-Wega-Edit
+    - ScienceReach # Corvax-Wega-Edit
+    - ModesuitModuleSecReach # Corvax-Wega-Edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - SyndicateAmmoStatic
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Security]
 
 - type: entity
   id: AmmoTechFab
-  parent: BaseLatheLube
+  parent: [BaseCorvaxContraband433DepartmentsSecurity, BaseLatheLube] # Corvax-Contraband
   name: ammo techfab
   description: Prints the bare minimum of bullets that any budget military or armory could need. Nothing fancy.
   components:
@@ -448,17 +452,15 @@
     - type: Lathe
       idleState: icon
       runningState: icon
+      unlitIdleState: unlit
+      unlitRunningState: unlit-building
       staticPacks:
       - SecurityAmmoStatic
     - type: EmagLatheRecipes
       emagStaticPacks:
       - SyndicateAmmoStatic
     - type: MaterialStorage
-      whitelist:
-        tags:
-          - Sheet
-          - RawMaterial
-          - Ingot
+      whitelist: *StandardMaterialWhitelist
     - type: OreSiloClient
 
 - type: entity
@@ -483,25 +485,31 @@
   - type: Lathe
     idleState: icon
     runningState: icon
+    unlitIdleState: unlit
+    unlitRunningState: unlit-building
     staticPacks:
     - TopicalsStatic
+    - ChemistryStatic
     - MedicalStatic
     - RollerBedsStatic
     - MedicalClothingStatic
     - EmptyMedkitsStatic
+    # - SurgeryStatic # Corvax-Wega-Edit
     dynamicPacks:
-    - ChemistryStatic # Corvax-Wega-Edit
-    - SurgeryStatic # Corvax-Wega-Edit
     - Chemistry
-    - AdvencedMed # Corvax-Wega-Edit
-    - ImplantMed # Corvax-Wega-Edit
+    # Corvax-Wega-Add-start
+    - AdvencedMed
+    - ImplantMed
+    # Corvax-Wega-Add-end
   - type: Machine
     board: MedicalTechFabCircuitboard
   - type: StealTarget
-    stealGroup: MedicalTechFabCircuitboard
+    stealGroup:
+    - MedicalTechFabCircuitboard
   - type: OreSiloClient
   - type: LatheAnnouncing
     channels: [Medical]
+  - type: AmbientMusicMarkerMedical
 
 - type: entity
   parent: BaseLathe
@@ -528,6 +536,7 @@
     - ClothingCivilian
     - ClothingCargo
     - ClothingCommand
+    - ClothingDresses
     - ClothingEngineering
     - ClothingMedical
     - ClothingScience
@@ -539,16 +548,13 @@
     - Carpets
     - Bedsheets
     - CorvaxClothing # Corvax-Clothing
+    - WegaUniform # Corvax-Wega
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm
     - ClothingSyndie
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - RawMaterial
-        - Ingot
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient
 
 - type: entity
@@ -630,6 +636,7 @@
       staticPacks:
       - OreSmelting
       - RGlassSmelting
+    - type: OreProcessorPoints # Corvax-Wega-Lavaland
 
 - type: entity
   parent: OreProcessor
@@ -642,12 +649,16 @@
   - type: Machine
     board: OreProcessorIndustrialMachineCircuitboard
   - type: Lathe
-    materialUseMultiplier: 0.75
+    # materialUseMultiplier: 0.75 # Corvax-Wega-Edit
     timeMultiplier: 0.5
     staticPacks:
     - OreSmelting
     - RGlassSmelting
     - AdvancedSmelting
+  # Corvax-Wega-Start
+  - type: OreProcessorPoints
+    isProm: true
+  # Corvax-Wega-End
 
 - type: entity
   parent: BaseLathe
@@ -686,8 +697,6 @@
   name: cutter machine
   description: This is a cutter. It cuts. Add variety to your station floor with eye-pleasing patterns! Don't stick your fingers in.
   components:
-  - type: Transform
-    noRot: false
   - type: Sprite
     sprite: Structures/Machines/cuttermachine.rsi
     snapCardinals: true
@@ -710,18 +719,17 @@
     - FloorSteelTilesStatic
     - FloorWhiteTilesStatic
     - FloorMaintsTilesStatic
+    - FloorIndustrialTilesStatic
     - FloorWoodTilesStatic
     - FloorConcreteTilesStatic
     - CircuitFloorsStatic
     - FloorMarbleTilesStatic
+    - FloorShuttleTilesStatic
+    - PlasticTilesStatic
+    - CarpetTilesStatic
+    - PreciousTilesStatic
     dynamicPacks:
     - FauxTiles
   - type: MaterialStorage
-    whitelist:
-      tags:
-        - Sheet
-        - Metal
-        - Wooden
-        - RawMaterial
-        - Plastic
+    whitelist: *StandardMaterialWhitelist
   - type: OreSiloClient

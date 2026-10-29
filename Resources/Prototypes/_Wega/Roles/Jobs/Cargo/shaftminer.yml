@@ -1,0 +1,42 @@
+- type: job
+  id: ShaftMiner
+  name: job-name-shaft-miner
+  description: job-description-shaft-miner
+  playTimeTracker: JobShaftMiner
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Cargo
+      time: 3h
+  startingGear: ShaftMinerGear
+  icon: "JobIconShaftMinerAlt"
+  supervisors: job-supervisors-qm
+  access:
+  - Cargo
+  - Salvage
+  - LavalandAvanpost
+  - Maintenance
+  - External
+  subRoles:
+  - ShaftMinerMedic
+
+- type: startingGear
+  id: ShaftMinerGear
+  equipment:
+    id: MinerPDA
+    ears: ClothingHeadsetMining
+  storage:
+    back:
+    - SalvageVoucherCard
+    - SurvivalMedipen
+    - SurvivalKnife
+
+- type: chameleonOutfit
+  id: ShaftMinerChameleonOutfit
+  job: ShaftMiner
+  equipment:
+    head: ClothingHeadHatCargosoft
+    eyes: ClothingEyesGlassesCheapSunglasses
+    mask: ClothingMaskGasExplorer
+    outerClothing: ClothingOuterArmorExplorerSuit
+    neck: ClothingNeckScarfStripedBrown
+    gloves: ClothingHandsGlovesColorBlack

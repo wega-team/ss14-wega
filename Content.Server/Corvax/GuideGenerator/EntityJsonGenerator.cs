@@ -1,27 +1,60 @@
 using System.IO;
 using System.Linq;
-using System.Text.Json;
+using System.Text.Json.Serialization;
+using Content.Shared.Labels.Components;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.GuideGenerator;
+namespace Content.Server.Corvax.GuideGenerator;
 
 public sealed class EntityJsonGenerator
 {
-    public static void PublishJson(StreamWriter file)
+    [JsonIgnore]
+    public string Id { get; }
+
+    [JsonPropertyName("name")]
+    public string Name { get; }
+
+    [JsonPropertyName("desc")]
+    public string Description { get; }
+
+    [JsonPropertyName("suffix")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Suffix { get; }
+
+    [JsonPropertyName("label")]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string? Label { get; }
+
+    public EntityJsonGenerator(EntityPrototype proto)
     {
-        var prototype = IoCManager.Resolve<IPrototypeManager>();
-        var prototypes =
-            prototype
-                .EnumeratePrototypes<EntityPrototype>()
-                .Where(x => !x.Abstract)
-                .Select(x => new EntityEntry(x))
-                .ToDictionary(x => x.Id, x => x);
+        var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
+        var loc = IoCManager.Resolve<ILocalizationManager>();
 
-        var serializeOptions = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-        };
+        Id = proto.ID;
+        Name = TextTools.CapitalizeString(TextTools.GetDisplayName(proto, prototypeManager, loc));
+        Description = proto.Description;
 
-        file.Write(JsonSerializer.Serialize(prototypes, serializeOptions));
+        if (!string.IsNullOrWhiteSpace(proto.EditorSuffix))
+            Suffix = TextTools.GetEditorSuffix(proto.EditorSuffix, EntityNameDuplicatesJsonGenerator.IgnoredSuffixTokens, TextTools.NormalizeSuffixToken);
+
+        Label = proto.Components.Values
+            .Select(x => x.Component)
+            .OfType<LabelComponent>()
+            .Select(lc => lc.CurrentLabel)
+            .Where(label => !string.IsNullOrEmpty(label))
+            .Select(label => Loc.GetString(label!))
+            .FirstOrDefault();
+    }
+
+    public static void PublishJson(Stream stream)
+    {
+        var prototypeManager = IoCManager.Resolve<IPrototypeManager>();
+        var prototypes = prototypeManager
+            .EnumeratePrototypes<EntityPrototype>()
+            .Where(x => !x.Abstract)
+            .Select(x => new EntityJsonGenerator(x))
+            .ToDictionary(x => x.Id, x => x);
+
+        GuideJson.Write(stream, prototypes);
     }
 }

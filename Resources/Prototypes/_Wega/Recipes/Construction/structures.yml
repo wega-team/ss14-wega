@@ -1,22 +1,22 @@
-- type: construction
-  id: CultGirder
-  graph: CultGirder
-  startNode: start
-  targetNode: cultgirder
-  category: construction-category-structures
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
+#- type: construction
+#  id: CultGirder
+#  graph: CultGirder
+#  startNode: start
+#  targetNode: cultgirder
+#  category: construction-category-bloodcult
+#  objectType: Structure
+#  placementMode: SnapgridCenter
+#  canRotate: false
+#  canBuildInImpassable: false
+#  conditions:
+#    - !type:TileNotBlocked
 
 - type: construction
   id: BloodCultStructureAltar
   graph: BloodCultStructureAltarGraph
   startNode: start
   targetNode: BloodCultStructureAltar
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -29,7 +29,7 @@
   graph: BloodCultStructureArchivesGraph
   startNode: start
   targetNode: BloodCultStructureArchives
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -42,7 +42,7 @@
   graph: BloodCultStructureForgeGraph
   startNode: start
   targetNode: BloodCultStructureForge
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -55,7 +55,7 @@
   graph: BloodCultStructurePylonGraph
   startNode: start
   targetNode: BloodCultStructurePylon
-  category: construction-category-structures
+  category: construction-category-bloodcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
@@ -69,6 +69,59 @@
   startNode: start
   targetNode: soil
   category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: SolidSecretDoorReinforced
+  name: recipes-resecret-door-name
+  description: recipes-resecret-door-desc
+  graph: SecretDoorReinforced
+  startNode: start
+  targetNode: solidSecretDoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: VeilCultClockworkLathe
+  graph: VeilCultStructureLatheGraph
+  startNode: start
+  targetNode: VeilCultClockworkLathe
+  category: construction-category-veilcult
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: VeilCultStructureAltar
+  graph: VeilCultStructureAltarGraph
+  startNode: start
+  targetNode: VeilCultStructureAltar
+  category: construction-category-veilcult
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: VeilCultBeacon
+  graph: VeilCultStructureBeaconGraph
+  startNode: start
+  targetNode: VeilCultBeacon
+  category: construction-category-veilcult
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false

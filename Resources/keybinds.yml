@@ -201,6 +201,28 @@ binds:
 - function: OfferItem
   type: State
   key: F
+- function: TogglePosing
+  type: State
+  key: R
+  mod1: Control
+- function: PosingOffsetLeft
+  type: State
+  key: A
+- function: PosingOffsetRight
+  type: State
+  key: D
+- function: PosingOffsetUp
+  type: State
+  key: W
+- function: PosingOffsetDown
+  type: State
+  key: S
+- function: PosingRotateNegative
+  type: State
+  key: Q
+- function: PosingRotatePositive
+  type: State
+  key: E
 # Corvax-Wega-end
 - function: TextCursorSelect
   # TextCursorSelect HAS to be above ExamineEntity
@@ -289,10 +311,14 @@ binds:
   type: State
   key: v
   mod1: Alt
-- function: MouseMiddle
+- function: InspectServerComponent
   type: State
-  key: MouseMiddle
-  canFocus: true
+  key: b
+  mod1: Alt
+- function: InspectClientComponent
+  type: State
+  key: c
+  mod1: Alt
 - function: RotateObjectClockwise
   type: State
   key: J
@@ -490,7 +516,7 @@ binds:
   type: State
   key: F8
 - function: ToggleRoundEndSummaryWindow
-  type: Toggle
+  type: State
   key: F9
 - function: OpenSandboxWindow
   type: State

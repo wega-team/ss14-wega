@@ -1,0 +1,57 @@
+- type: entity
+  parent: BaseAction
+  id: ActionBlinkBorg
+  name: Bluespase blink
+  description: Teleport to the clicked location.
+  components:
+  - type: Action
+    useDelay: 45
+    itemIconStyle: BigAction
+    sound: !type:SoundPathSpecifier
+      path: "/Audio/Effects/teleport_arrival.ogg"
+      params:
+        volume: 3
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_borg.rsi
+    layers:
+    - state: blink_borg
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 16 # default examine-range.
+    # ^ should probably add better validation that the clicked location is on the users screen somewhere,
+    repeat: false
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:TeleportActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionStealthCyborg
+  name: Stealth
+  description: Stalth base
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 120
+  - type: Sprite
+    sprite: Interface/Actions/actions_borg.rsi
+    layers:
+    - state: xenoborg-eye-module    
+  - type: InstantAction
+    event: !type:SteathAbilityEvent {}
+    
+- type: entity
+  parent: BaseAction
+  id: ActionStealthCyborgTwo
+  name: Stealth II
+  description: Stalth base
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 40
+  - type: Sprite
+    sprite: Interface/Actions/actions_borg.rsi
+    layers:
+    - state: xenoborg-eye2-module
+  - type: InstantAction
+    event: !type:SteathAbilityEvent {}

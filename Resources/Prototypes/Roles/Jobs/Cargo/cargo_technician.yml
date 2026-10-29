@@ -6,11 +6,13 @@
   startingGear: CargoTechGear
   icon: "JobIconCargoTechnician"
   supervisors: job-supervisors-qm
+  guides: [ Cargo ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Cargo
   - Maintenance
   extendedAccess:
   - Salvage
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: BoxingDay
@@ -21,9 +23,14 @@
   equipment:
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool
+# Corvax-Wega-Start
   #storage:
     #back:
     #- Stuff
+  storage:
+    back:
+    - CargoHoloprojectorField
+# Corvax-Wega-End
 
 - type: chameleonOutfit
   id: CargoTechnicianChameleonOutfit

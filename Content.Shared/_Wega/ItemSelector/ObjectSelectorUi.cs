@@ -10,7 +10,7 @@ public enum ObjectSelectorUiKey : byte
 }
 
 [Serializable, NetSerializable]
-public sealed class ObjectSelectorUserMessage : BoundUserInterfaceMessage
+public sealed partial class ObjectSelectorUserMessage : BoundUserInterfaceMessage
 {
     public List<EntProtoId> Objects;
 
@@ -21,7 +21,7 @@ public sealed class ObjectSelectorUserMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class ObjectSelectorSelectionMessage : BoundUserInterfaceMessage
+public sealed partial class ObjectSelectorSelectionMessage : BoundUserInterfaceMessage
 {
     public EntProtoId SelectedId;
 

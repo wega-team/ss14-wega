@@ -1,0 +1,15 @@
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsLavalandAvanpost
+  suffix: Avanpost, Locked
+  components:
+  - type: AccessReader
+    access: [["LavalandAvanpost"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsBlueShieldOfficer
+  suffix: BlueShieldOfficer, Locked
+  components:
+  - type: AccessReader
+    access: [["BlueShieldOfficer"]]

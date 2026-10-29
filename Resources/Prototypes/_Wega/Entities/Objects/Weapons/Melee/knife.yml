@@ -1,6 +1,6 @@
 - type: entity
   name: combat crowbar
-  parent: [BaseKnife, BaseRestrictedContraband]
+  parent: [BaseKnife, BaseCentcommContraband]
   id: CombatCrowbar
   description: A deadly knife designed for close combat. Thanks to the improved handle, it also works as a crowbar.
   components:
@@ -49,6 +49,7 @@
   name: arrhythmic knife
   description: They say that fear kills the mind, but sticking a knife in your head also works.
   components:
+  - type: NullRod
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Melee/arrhythmic_knife.rsi
     state: icon
@@ -79,3 +80,66 @@
     walkModifier: 1.1
     sprintModifier: 1.1
   - type: HeldSpeedModifier
+# Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1
+# Corvax-Wega-End
+
+- type: entity
+  parent: BaseItem
+  id: WeaponCleawingSaw
+  name: cleawing saw
+  description: "A fast-paced saw made from very old and rusty metal."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/cleaving_saw.rsi
+    state: icon
+  - type: Item
+    storedRotation: -45
+    size: Small
+  - type: Execution
+    doAfterDuration: 4.0
+    canGunExecute: false # Corvax-Wega-Suicide
+  - type: Utensil
+    types:
+      - Knife
+  - type: Tool
+    qualities:
+    - Sawing
+    - Slicing
+    useSound:
+      path: /Audio/Items/Culinary/chop.ogg
+  - type: WeaponHotswap
+    alternateForm: WeaponCleawingSawWide
+    isAlternate: false
+  - type: ContainerContainer
+    containers:
+      hotswap-paired: !type:Container
+  - type: MeleeWeapon
+    wideAnimationRotation: 175
+    possibilityWideAtack: false
+    attackRate: 2.25
+    damage:
+      types:
+        Slash: 10
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: DisarmMalus
+    malus: 1
+
+- type: entity
+  parent: WeaponCleawingSaw
+  id: WeaponCleawingSawWide
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Item
+    sprite: _Wega/Objects/Weapons/Melee/cleaving_saw64x64.rsi
+  - type: WeaponHotswap
+    alternateForm: WeaponCleawingSaw
+    isAlternate: true
+  - type: MeleeWeapon
+    possibilityWideAtack: true
+    attackRate: 0.75
+    damage:
+      types:
+        Slash: 24

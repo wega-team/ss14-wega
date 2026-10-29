@@ -7,7 +7,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -26,7 +26,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -41,11 +41,11 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -65,7 +65,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           damageType: MuscleTears
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
           sound:
@@ -79,11 +79,11 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -102,7 +102,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -117,13 +117,13 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -142,7 +142,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -157,13 +157,13 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -182,7 +182,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -197,11 +197,11 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -220,7 +220,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -235,11 +235,11 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -258,7 +258,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -273,13 +273,13 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -298,7 +298,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -313,13 +313,13 @@
   label: "Лечить физические травмы"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: MuscleTears
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -338,7 +338,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: MuscleTears
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -356,7 +356,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -375,7 +375,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -390,11 +390,11 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -414,7 +414,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           damageType: MildBurns
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
           sound:
@@ -428,11 +428,11 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -451,7 +451,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -466,13 +466,13 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -491,7 +491,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -506,13 +506,13 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -531,7 +531,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -546,11 +546,11 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -569,7 +569,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -584,11 +584,11 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -607,7 +607,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -622,13 +622,13 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -647,7 +647,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -662,13 +662,13 @@
   label: "Лечить легкие ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: MildBurns
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -687,7 +687,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: MildBurns
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -705,7 +705,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -733,7 +733,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -748,11 +748,11 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -781,7 +781,7 @@
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
           damageType: ClosedFracture
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
           sound:
@@ -795,11 +795,11 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -827,7 +827,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -842,13 +842,13 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -876,7 +876,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -891,13 +891,13 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -925,7 +925,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -940,11 +940,11 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -972,7 +972,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -987,11 +987,11 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1019,7 +1019,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1034,13 +1034,13 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1068,7 +1068,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1083,13 +1083,13 @@
   label: "Исправить внутренний перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: ClosedFracture
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1117,7 +1117,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: ClosedFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1135,7 +1135,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1163,7 +1163,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1178,11 +1178,11 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1211,7 +1211,7 @@
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
           damageType: OpenFracture
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
           sound:
@@ -1225,11 +1225,11 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1257,7 +1257,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1272,13 +1272,13 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1306,7 +1306,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1321,13 +1321,13 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1355,7 +1355,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1370,11 +1370,11 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1402,7 +1402,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1417,11 +1417,11 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1449,7 +1449,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1464,13 +1464,13 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1498,7 +1498,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1513,13 +1513,13 @@
   label: "Исправить открытый перелом"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: OpenFracture
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1547,7 +1547,7 @@
           time: 8
         - tool: [ BoneGel ]
           tag: [ Screwdriver ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: OpenFracture
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1565,7 +1565,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1584,7 +1584,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1598,11 +1598,11 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1621,7 +1621,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1635,11 +1635,11 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1658,7 +1658,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1672,13 +1672,13 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1697,7 +1697,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1711,13 +1711,13 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1736,7 +1736,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1750,11 +1750,11 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1773,7 +1773,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1787,11 +1787,11 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1810,7 +1810,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1824,13 +1824,13 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1849,7 +1849,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1863,13 +1863,13 @@
   label: "Остановить артериальное кровотечение"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: ArterialBleeding
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1888,7 +1888,7 @@
           time: 4
         - tool: [ FixOVein ]
           tag: [ CableCoil ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: ArterialBleeding
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -1905,7 +1905,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1924,7 +1924,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: torso
+          requiredPart: Torso
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -1937,11 +1937,11 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1961,7 +1961,7 @@
         - tag: [ Ointment ]
           entityPreview: Ointment1
           damageType: DeepBurns
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           action: HealInternalDamage
           sound:
             path: /Audio/Items/Medical/ointment_end.ogg
@@ -1973,11 +1973,11 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -1996,7 +1996,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2009,13 +2009,13 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2034,7 +2034,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2047,13 +2047,13 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2072,7 +2072,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2085,11 +2085,11 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2108,7 +2108,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2121,11 +2121,11 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2144,7 +2144,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2157,13 +2157,13 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2182,7 +2182,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2195,13 +2195,13 @@
   label: "Лечить тяжелые ожоги"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: DeepBurns
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2220,7 +2220,7 @@
           time: 4
         - tag: [ Ointment ]
           entityPreview: Ointment1
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: DeepBurns
           action: HealInternalDamage
           sound:
@@ -2236,7 +2236,7 @@
     - conditions:
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: torso
+          bodyPart: Torso
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2255,7 +2255,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: torso
+          requiredPart: Torso
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2270,11 +2270,11 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
+        - !type:OrganPresentCondition
+          organ: ArmLeft
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: left_arm
+          bodyPart: ArmLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2294,7 +2294,7 @@
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
           damageType: BulletWound
-          requiredPart: left_arm
+          requiredPart: ArmLeft
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
           sound:
@@ -2308,11 +2308,11 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
+        - !type:OrganPresentCondition
+          organ: ArmRight
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: right_arm
+          bodyPart: ArmRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2331,7 +2331,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_arm
+          requiredPart: ArmRight
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2346,13 +2346,13 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_arm
-        - !type:BodyPartCondition
-          bodyPart: left_hand
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          organ: HandLeft
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: left_hand
+          bodyPart: HandLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2371,7 +2371,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_hand
+          requiredPart: HandLeft
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2386,13 +2386,13 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_arm
-        - !type:BodyPartCondition
-          bodyPart: right_hand
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          organ: HandRight
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: right_hand
+          bodyPart: HandRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2411,7 +2411,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_hand
+          requiredPart: HandRight
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2426,11 +2426,11 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
+        - !type:OrganPresentCondition
+          organ: LegLeft
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: left_leg
+          bodyPart: LegLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2449,7 +2449,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_leg
+          requiredPart: LegLeft
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2464,11 +2464,11 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
+        - !type:OrganPresentCondition
+          organ: LegRight
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: right_leg
+          bodyPart: LegRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2487,7 +2487,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_leg
+          requiredPart: LegRight
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2502,13 +2502,13 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: left_leg
-        - !type:BodyPartCondition
-          bodyPart: left_foot
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          organ: FootLeft
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: left_foot
+          bodyPart: FootLeft
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2527,7 +2527,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: left_foot
+          requiredPart: FootLeft
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]
@@ -2542,13 +2542,13 @@
   label: "Извлечь инородное тело"
   stepGroups:
     - conditions:
-        - !type:BodyPartCondition
-          bodyPart: right_leg
-        - !type:BodyPartCondition
-          bodyPart: right_foot
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          organ: FootRight
         - !type:InternalDamageCondition
           damageType: BulletWound
-          bodyPart: right_foot
+          bodyPart: FootRight
       steps:
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
@@ -2567,7 +2567,7 @@
           time: 4
         - tool: [ Hemostat ]
           tag: [ CableCoil, Crowbar ]
-          requiredPart: right_foot
+          requiredPart: FootRight
           damageType: BulletWound
           action: HealInternalDamage
           failureEffect: [ Bleeding, Pain ]

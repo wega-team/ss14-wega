@@ -1,0 +1,63 @@
+- type: htnCompound
+  id: LegionBehaviorCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: LegionMaintainRangePrecondition
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+- type: htnCompound
+  id: LegionMaintainRangePrecondition
+  branches:
+    - preconditions:
+        - !type:BuckledPrecondition
+          isBuckled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnbuckleOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:InContainerPrecondition
+          isInContainer: true
+      tasks:
+        - !type:HTNCompoundTask
+          task: EscapeCompound
+
+    - preconditions:
+        - !type:PulledPrecondition
+          isPulled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnPullOperator
+            shutdownState: TaskFinished
+
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UtilityOperator
+            proto: NearbyMeleeTargets
+        - !type:HTNCompoundTask
+          task: LegionMaintainRangeCompound
+
+- type: htnCompound
+  id: LegionMaintainRangeCompound
+  branches:
+    - preconditions:
+        - !type:KeyExistsPrecondition
+          key: Target
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:MaintainRangeOperator
+            targetKey: Target
+            minRange: 3.0
+            maxRange: 5.0
+            shutdownState: PlanFinished
+            targetCoordinatesKey: TargetCoordinates
+            pathfindKey: TargetPathfind
+          services:
+            - !type:UtilityService
+              id: MaintainRangeService
+              proto: NearbyMeleeTargets
+              key: Target

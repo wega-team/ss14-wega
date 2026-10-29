@@ -1,8 +1,7 @@
 - type: marking
   id: FelinidTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:
@@ -19,8 +18,7 @@
 - type: marking
   id: FelinidWaggingTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:
@@ -37,8 +35,7 @@
 - type: marking
   id: FelinidWaggingTailStripes
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:

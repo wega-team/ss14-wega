@@ -18,10 +18,10 @@ namespace Content.Client.Guidebook;
 /// </summary>
 public sealed partial class DocumentParsingManager
 {
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IReflectionManager _reflectionManager = default!;
-    [Dependency] private readonly IResourceManager _resourceManager = default!;
-    [Dependency] private readonly ISandboxHelper _sandboxHelper = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
+    [Dependency] private IReflectionManager _reflectionManager = default!;
+    [Dependency] private IResourceManager _resourceManager = default!;
+    [Dependency] private ISandboxHelper _sandboxHelper = default!;
 
     private readonly Dictionary<string, Parser<char, Control>> _tagControlParsers = new();
     private Parser<char, Control> _controlParser = default!;
@@ -39,6 +39,13 @@ public sealed partial class DocumentParsingManager
         var whitespaceAndCommentParser = SkipWhitespaces.Then(Try(String("<!--").Then(Parser<char>.Any.SkipUntil(Try(String("-->"))))).SkipMany());
 
         _controlParser = OneOf(_tagParser, TryHeaderControl, ListControlParser, TextControlParser)
+            .Select(control =>
+            {
+                if (!_lastControlWasList)
+                    _numberedListCounter = 0;
+                _lastControlWasList = false;
+                return control;
+            }) // Corvax-Guidebook
             .Before(whitespaceAndCommentParser);
 
         foreach (var typ in _reflectionManager.GetAllChildren<IDocumentTag>())
@@ -70,6 +77,8 @@ public sealed partial class DocumentParsingManager
     {
         try
         {
+            _numberedListCounter = 0; // Corvax-Guidebook
+            _lastControlWasList = false; // Corvax-Guidebook
             foreach (var child in ControlParser.ParseOrThrow(text))
             {
                 control.AddChild(child);

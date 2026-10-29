@@ -6,8 +6,8 @@
       contents:
         - id: ThrusterMachineCircuitboard
           amount: 2
-        - id: SheetSteel10
-        - id: CapacitorStockPart
+        - id: SheetSteel
+        - id: MicroManipulatorStockPart
           amount: 8
 
 - type: entity
@@ -20,29 +20,72 @@
         - id: SheetGlass1
           amount: 2
         - id: MicroManipulatorStockPart
-          amount: 2
-        - id: CapacitorStockPart
+          amount: 3
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
-  id: ADTClothingBackpackDuffelSyndicateFilledXC67
+  id: ClothingBackpackDuffelSyndicateFilledXC67
   name: xC-67 rifle bundle
   description: bundle with a prototype xC-67 assault rifle and two mags.
   components:
   - type: StorageFill
     contents:
-      - id: ADTWeaponRifleXC67
-      - id: ADTExtMagazineRifle
+      - id: WeaponRifleXC67
+      - id: ExtMagazineRifle
         amount: 2
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
-  id: ADTClothingBackpackDuffelSyndicateFilledHristov
+  id: ClothingBackpackDuffelSyndicateFilledHristov
   name: Hristov bundle
   description: bundle with hristov and four mags.
   components:
   - type: StorageFill
     contents:
-      - id: ADTWeaponSniperHristovAdvanced
-      - id: ADTMagazineHristovAdvanced
+      - id: WeaponSniperHristovAdvanced
+      - id: MagazineHristovAdvanced
         amount: 4
+
+- type: entity
+  parent: ClothingBackpackDuffelSalvage
+  id: ClothingBackpackDuffelSalvageBaseKit
+  suffix: Kit
+  components:
+    - type: StorageFill
+      contents:
+        - id: WeaponProtoKineticAccelerator
+        - id: SurvivalKnife
+        - id: ClothingOuterArmorExplorerSuit
+        - id: FlashlightSeclite
+        - id: ClothingEyesGlassesMeson
+        - id: MineralScanner
+        - id: ClothingMaskGasExplorer
+        - id: MinerIDCard
+        - id: SurvivalMedipen
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateControllerBundle
+  name: syndicate hardsuit bundle
+  description: "Contains the Syndicate's signature blood red hardsuit."
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: HardsuitOperSelector
+        - !type:NestedSelector
+          tableId: SyndicateHardsuitExtrasEntityTable
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelEnergyShieldModuleBundle
+  name: energy shield module bundle
+  description: Contains five energy shield modules. Allows equipping an entire team with personal protective forcefields.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: EnergyShieldSuitModule
+          amount: 5

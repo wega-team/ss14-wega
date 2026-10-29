@@ -74,6 +74,12 @@
         "name": "yellow-lock"
     },
     {
+        "name": "secspike"
+    },
+    {
+        "name": "secspike-lock"
+    },
+    {
       "name": "black-equipped-NECK",
       "directions": 4
     },

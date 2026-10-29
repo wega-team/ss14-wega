@@ -1,0 +1,27 @@
+- type: constructionGraph
+  id: BloodCultWeapons
+  start: blood
+  graph:
+  - node: blood
+    entity: WeaponBloodBlade
+    edges:
+    - to: death
+      steps:
+      - tool: BloodDagger
+        doAfter: 10
+  - node: death
+    entity: WeaponDeathBlade
+    edges:
+    - to: hell
+      steps:
+      - tool: BloodDagger
+        doAfter: 10
+  - node: hell
+    entity: WeaponHellBlade
+    edges:
+    - to: blood
+      steps:
+      - tool: BloodDagger
+        doAfter: 10
+
+

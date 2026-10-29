@@ -2,16 +2,31 @@
 loadout-group-top = Верхнее белье
 loadout-group-bottom = Нижнее белье
 loadout-group-socks = Носки
+loadout-group-base-shoes = Обувь, базовая
+loadout-group-sec-badge = СБ, жетоны
 
 # Heads
+loadout-group-sponsor-head = Спонсор, голова
+
+# Neck
+loadout-group-sponsor-neck = Спонсор, шея
+
+# Gloves
+loadout-group-sponsor-gloves = Спонсор, перчатки
+
+# Outer
+loadout-group-sponsor-outer= Спонсор, верхняя одежда
 
 # Command
 loadout-group-captain-top = Капитан, верхнее белье
 loadout-group-captain-bottom = Капитан, нижнее белье
 loadout-group-captain-socks = Капитан, носки
+loadout-group-capitan-gloves = Капитан, перчатки
 loadout-group-blue-shield-head = Офицер "Синий Щит", голова
 loadout-group-blue-shield-jumpsuit = Офицер "Синий Щит", комбинезон
 loadout-group-blue-shield-backpack = Офицер "Синий Щит", рюкзак
+loadout-group-blue-shield-belt = Офицер "Синий Щит", пояс
+loadout-group-blue-shield-neck = Офицер "Синий Щит", шея
 loadout-group-blue-shield-outer = Офицер "Синий Щит", верхняя одежда
 loadout-group-blue-shield-top = Офицер "Синий Щит", верхнее белье
 loadout-group-blue-shield-bottom = Офицер "Синий Щит", нижнее белье
@@ -21,6 +36,7 @@ loadout-group-hop-bottom = Глава персонала, нижнее бель�
 loadout-group-hop-socks = Глава персонала, носки
 # Service
 loadout-group-barber-outerclothing = Барбер, верхняя одежда
+loadout-group-clown-mask = Клоун, маска
 # Cargo
 loadout-group-quartermaster-top = Квартирмейстер, верхнее белье
 loadout-group-quartermaster-bottom = Квартирмейстер, нижнее белье
@@ -28,6 +44,14 @@ loadout-group-quartermaster-socks = Квартирмейстер, носки
 loadout-group-postman-head = Почтальон, голова
 loadout-group-postman-jumpsuit = Почтальон, комбинезон
 loadout-group-postman-backpack = Почтальон, рюкзак
+loadout-group-shaft-miner-backpack = Шахтёр, рюкзак
+loadout-group-shaft-miner-jumpsuit = Шахтёр, комбинезон
+loadout-group-shaft-miner-outerclothing = Шахтёр, верхняя одежда
+loadout-group-shaft-miner-shoes = Шахтёр, обувь
+loadout-group-shaft-miner-medic-head = Шахтёрский медик, голова
+loadout-group-shaft-miner-medic-backpack = Шахтёрский медик, рюкзак
+loadout-group-shaft-miner-medic-jumpsuit = Шахтёрский медик, комбинезон
+loadout-group-shaft-miner-medic-gloves = Шахтёрский медик, перчатки
 # Engineering
 loadout-group-chief-engineer-top = Старший инженер, верхнее белье
 loadout-group-chief-engineer-bottom = Старший инженер, нижнее белье
@@ -59,3 +83,7 @@ loadout-group-surgeon-jumpsuit = Хирург, комбинезон
 
 # Effects
 loadout-group-allowed-sex-restriction = Этот предмет недоступен для вашего текущего пола.
+loadout-group-achievement-restriction-any = Требуется достичь хотя бы одной из следующих ачивок:
+    {$achievements}
+loadout-group-achievement-restriction-all = Требуется достичь всех следующих ачивок:
+    {$achievements}

@@ -24,4 +24,9 @@ public sealed partial class OrePrototype : IPrototype
 
     [DataField]
     public SpriteSpecifier? OreSprite;
+
+    // Corvax-Wega-Lavaland-start
+    [DataField]
+    public double PointsPerUnit { get; private set; } = 0;
+    // Corvax-Wega-Lavaland-end
 }

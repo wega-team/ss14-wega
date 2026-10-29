@@ -1,5 +1,3 @@
-particle-accelerator-control-menu-on-button = ВКЛ
-particle-accelerator-control-menu-off-button = ВЫКЛ
 particle-accelerator-control-menu-service-manual-reference = См. стр. 132 руководства по обслуживанию
 particle-accelerator-control-menu-device-version-label = Ускоритель частиц Mark 2
 particle-accelerator-control-menu-power-label = [bold]Питание:[/bold]
@@ -17,6 +15,7 @@ particle-accelerator-control-menu-draw-value = [font="Monospace"]{ $watts }/{ $l
 particle-accelerator-control-menu-draw-not-available = [font="Monospace"][color=gray]Н/Д[/color][/font]
 particle-accelerator-control-menu-flavor-left = Пожалуйста держите клоуна подальше от этой консоли!
 particle-accelerator-control-menu-flavor-right = v 1.6
+
 particle-accelerator-radio-message-on = Питание УЧ было включено.
 particle-accelerator-radio-message-off = Питание УЧ было выключено.
 particle-accelerator-radio-message-num = Мощность УЧ установлена на уровень { $level }.

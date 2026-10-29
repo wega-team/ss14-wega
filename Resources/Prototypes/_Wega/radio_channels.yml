@@ -1,0 +1,55 @@
+- type: radioChannel
+  id: SecSquadOne
+  name: chat-radio-secsquad-one
+  frequency: 1251
+  keycode: ')'
+  color: "#ff0000"
+  longRange: true
+  
+- type: radioChannel
+  id: SecSquadTwo
+  name: chat-radio-secsquad-two
+  frequency: 1252
+  keycode: '('
+  color: "#d62b2b"
+  longRange: true
+  
+- type: radioChannel
+  id: SecSquadThree
+  name: chat-radio-secsquad-three
+  frequency: 1253
+  keycode: '*'
+  color: "#ff3333"
+  longRange: true  
+  
+- type: radioChannel
+  id: SecSquadFour
+  name: chat-radio-secsquad-four
+  frequency: 1254
+  keycode: '?'
+  color: "#d60000"
+  longRange: true
+
+- type: radioChannel
+  id: SecSquadFive
+  name: chat-radio-secsquad-five
+  frequency: 1255
+  keycode: '&'
+  color: "#df0000"
+  longRange: true
+
+- type: radioChannel
+  id: SecSquadSix
+  name: chat-radio-secsquad-six
+  frequency: 1256
+  keycode: '^'
+  color: "#df2d2d"
+  longRange: true
+  
+- type: radioChannel
+  id: SecSquadCommand
+  name: chat-radio-seccommand
+  frequency: 1257
+  keycode: '%'
+  color: "#c22727"
+  longRange: true

@@ -4,3 +4,19 @@
   icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: runemetal }
   spawn: SheetRuneMetal1
   maxCount: 30
+
+- type: stack
+  id: Magmite
+  name: stak-magmite
+  icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: magmite }
+  spawn: SheetMagmite1
+  maxCount: 30
+
+- type: stack
+  id: ChargedBrass
+  name: stack-chargedbrass
+  icon: { sprite: _Wega/Objects/Materials/Sheets/metal.rsi, state: chargedbrass }
+  spawn: SheetChargedBrass1
+  maxCount: 30
+
+

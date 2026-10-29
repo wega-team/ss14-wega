@@ -1,0 +1,86 @@
+- type: guideEntry
+  id: SOP
+  name: guide-entry-sop
+  text: "/ServerInfo/Corvax/Guidebook/SOP/SOP.xml"
+  children:
+  - SOPService
+  - SOPResearch
+  - SOPCargo
+  - SOPMedical
+  - SOPEngineering
+  - SOPCommand
+  - SOPCentcomm
+  - SOPDSO
+  - SOPLegal
+  - SOPSecurity
+  - SOPGeneral
+
+# Отделы
+- type: guideEntry
+  id: SOPService
+  name: guide-entry-sop-service
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Service.xml"
+
+- type: guideEntry
+  id: SOPResearch
+  name: guide-entry-sop-research
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Research.xml"
+
+- type: guideEntry
+  id: SOPCargo
+  name: guide-entry-sop-cargo
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Cargo.xml"
+
+- type: guideEntry
+  id: SOPMedical
+  name: guide-entry-sop-medical
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Medical.xml"
+
+- type: guideEntry
+  id: SOPEngineering
+  name: guide-entry-sop-engineering
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Engineering.xml"
+
+- type: guideEntry
+  id: SOPSecurity
+  name: guide-entry-sop-security
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Security.xml"
+
+- type: guideEntry
+  id: SOPCommand
+  name: guide-entry-sop-command
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Command.xml"
+
+- type: guideEntry
+  id: SOPCentcomm
+  name: guide-entry-sop-centcomm
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Centcomm.xml"
+
+- type: guideEntry
+  id: SOPDSO
+  name: guide-entry-sop-dso
+  text: "/ServerInfo/Corvax/Guidebook/SOP/DSO.xml"
+
+- type: guideEntry
+  id: SOPLegal
+  name: guide-entry-sop-legal
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Legal.xml"
+
+# Общее
+- type: guideEntry
+  id: SOPGeneral
+  name: guide-entry-sop-general
+  text: "/ServerInfo/Corvax/Guidebook/SOP/General.xml"
+  children:
+  - SOPCodes
+  - SOPEmergencies
+
+- type: guideEntry
+  id: SOPCodes
+  name: guide-entry-sop-codes
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Codes.xml"
+
+- type: guideEntry
+  id: SOPEmergencies
+  name: guide-entry-sop-emergencies
+  text: "/ServerInfo/Corvax/Guidebook/SOP/Emergencies.xml"

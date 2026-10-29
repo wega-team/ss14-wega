@@ -1,10 +1,40 @@
+# For mantle
+- type: loadoutEffectGroup
+  id: BlueShieldMantleRequirement
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBlueShield
+      time: 20h
+
+# For NT cloak
+- type: loadoutEffectGroup
+  id: BlueShieldCloakNTRequirement
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobBlueShield
+      time: 50h
+
 # Head
 - type: loadout
   id: BlueshieldHead
   equipment:
     head: ClothingHeadHatBeretBlueShield
 
+- type: loadout
+  id: BlueshieldHeadAlt
+  equipment:
+    head: ClothingHeadHelmetBlueShield
+
 # Jumpsuit
+- type: loadout
+  id: BlueShieldJumpsuitAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlueShieldRock
+    
 - type: loadout
   id: BlueShieldJumpsuit
   equipment:
@@ -36,6 +66,39 @@
   equipment:
     back: ClothingBackpackSatchelBlueShield
 
+#Belt
+- type: loadout
+  id: BlueShieldWebbing
+  equipment:
+    belt: ClothingBeltMilitaryWebbingFilled
+
+- type: loadout
+  id: BlueShieldWebbingAlt
+  equipment:
+    belt: ClothingBeltMilitaryWebbingAltFilled
+
+#Neck
+- type: loadout
+  id: BlueShieldCloak
+  equipment:
+    neck: ClothingNeckCloakBlueShield
+
+- type: loadout
+  id: BlueShieldMantle
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: BlueShieldMantleRequirement
+  equipment:
+    neck: ClothingNeckMantleBlueShield
+
+- type: loadout
+  id: BlueShieldCloakNT
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: BlueShieldCloakNTRequirement
+  equipment:
+    neck: ClothingNeckCloakNanotrasen
+
 # OuterClothing
 - type: loadout
   id: BlueshieldOterArmor
@@ -43,9 +106,19 @@
     outerClothing: ClothingOuterArmorBlueShield
 
 - type: loadout
+  id: BlueshieldOterArmorAlt
+  equipment:
+    outerClothing: ClothingVestBlueShieldAlt
+
+- type: loadout
   id: BlueShieldOuterWinter
   equipment:
     outerClothing: ClothingOuterWinterBlueShield
+    
+- type: loadout
+  id: BlueShieldOuterWinterAlt
+  equipment:
+    outerClothing: ClothingOuterWinterBlueShieldAlt
 
 #Top
 - type: loadout

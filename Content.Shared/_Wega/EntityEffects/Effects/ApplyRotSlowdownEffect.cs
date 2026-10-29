@@ -11,7 +11,7 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class ApplyRotSlowdownEntityEffectSystem : EntityEffectSystem<RottingComponent, ApplyRotSlowdown>
 {
-    [Dependency] private readonly SharedRottingSystem _rotting = default!;
+    [Dependency] private SharedRottingSystem _rotting = default!;
 
     protected override void Effect(Entity<RottingComponent> entity, ref EntityEffectEvent<ApplyRotSlowdown> args)
     {

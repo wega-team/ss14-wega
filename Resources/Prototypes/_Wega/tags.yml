@@ -2,6 +2,9 @@
   id: Android
 
 - type: Tag
+  id: AndroidPart
+
+- type: Tag
   id: SoulStone
 
 - type: Tag
@@ -9,6 +12,9 @@
 
 - type: Tag
   id: Rose
+
+- type: Tag
+  id: RevShop
 
 - type: Tag
   id: Sunflower
@@ -127,6 +133,9 @@
 
 - type: Tag
   id: SubdermalHeadImplant
+
+- type: Tag
+  id: DivineVocalCordsImplant
 # Surgery end
 
 # Synthetic Surgery
@@ -168,23 +177,17 @@
 # Synthetic Surgery end
 
 - type: Tag
-  id: JanicartKeys
-
-- type: Tag
-  id: VehicleKey
-
-- type: Tag
   id: CapacitorStockPart
 
 - type: Tag
   id: ShardCrystal
-  
+
 - type: Tag
   id: ArmorScrap
-  
+
 - type: Tag
   id: HalmetScrap
-  
+
 - type: Tag
   id: Salad
 
@@ -193,7 +196,7 @@
 
 - type: Tag
   id: Sheild
-  
+
 - type: Tag
   id: BananiumClakson
 
@@ -232,6 +235,415 @@
 
 - type: Tag
   id: Shrimp
-  
+
 - type: Tag
   id: Cook
+
+- type: Tag
+  id: MagazineEagle
+
+- type: Tag
+  id: MagazineHristov
+
+- type: Tag
+  id: ExtMagazineRifle
+
+- type: Tag
+  id: ClockworkGlassShard
+
+- type: Tag
+  id: SecwayKeys
+
+- type: Tag
+  id: ATVKeys
+
+- type: Tag
+  id: SyndicateSegwayKeys
+
+- type: Tag
+  id: Coin
+
+- type: Tag
+  id: BorgModuleSecurity
+
+- type: Tag
+  id: EvidenceMarker
+
+- type: Tag
+  id: Lollipops
+
+- type: Tag
+  id: CardTarot
+
+- type: Tag
+  id: CanSwim
+
+- type: Tag
+  id: Oar
+
+- type: Tag
+  id: HandheldBeacon
+
+- type: Tag
+  id: DockLavalandStation
+
+- type: Tag
+  id: DockLavalandOutpost
+
+- type: Tag
+  id: DockPenalServitudeStation
+
+- type: Tag
+  id: DockPenalServitude
+
+- type: Tag
+  id: GunUpgradeAoE
+
+- type: Tag
+  id: GunUpgradePressure
+
+- type: Tag
+  id: GunUpgradeLifesteal
+
+- type: Tag
+  id: CrusherUpgrade
+
+- type: Tag
+  id: CrusherUpgradeLegion
+
+- type: Tag
+  id: CrusherUpgradeGoliath
+
+- type: Tag
+  id: CrusherUpgradeAncientGoliath
+
+- type: Tag
+  id: CrusherUpgradeWatcher
+
+- type: Tag
+  id: CrusherUpgradeMagmaWatcher
+
+- type: Tag
+  id: CrusherUpgradeMarrowWeaverPoisonfang
+
+- type: Tag
+  id: CrusherUpgradeFrostbiteWeaverFrostGland
+
+- type: Tag
+  id: CrusherUpgradeWhiteWolfEar
+
+- type: Tag
+  id: CrusherUpgradeIceDemonCube
+
+- type: Tag
+  id: CrusherUpgradePolarBearPaw
+
+- type: Tag
+  id: CrusherUpgradeBDM
+
+- type: Tag
+  id: CrusherUpgradeAshDrake
+
+- type: Tag
+  id: CrusherUpgradeBubblegum
+
+- type: Tag
+  id: CrusherUpgradeColossus
+
+- type: Tag
+  id: CrusherUpgradeHierophant
+
+- type: Tag
+  id: CrusherUpgradeBroodmother
+
+- type: Tag
+  id: CrusherUpgradeLegionnaire
+
+- type: Tag
+  id: CrusherUpgradeWendigo
+
+- type: Tag
+  id: CrusherUpgradeFrostMiner
+
+- type: Tag
+  id: CrusherUpgradeTheThing
+
+- type: Tag
+  id: MaterialsThrophy
+
+- type: Tag
+  id: Sinew
+
+- type: Tag
+  id: Chitin
+
+- type: Tag
+  id: DragonHide
+
+- type: Tag
+  id: PolarBearHide
+
+- type: Tag
+  id: ExplorerSuit
+
+- type: Tag
+  id: ExplorerSuitKhaki
+
+- type: Tag
+  id: GoliathCloak
+
+- type: Tag
+  id: WendigoSkull
+
+- type: Tag
+  id: IceCrystal
+
+- type: Tag
+  id: UniformUpgrade
+
+- type: Tag
+  id: BoneTalismanUpgrade
+
+- type: Tag
+  id: SkullCodpieceUpgrade
+
+- type: Tag
+  id: PandoraHopeUpgrade
+
+- type: Tag
+  id: MagmiteAlloy
+
+- type: Tag
+  id: Gems
+
+- type: Tag
+  id: DataCrystal
+
+- type: Tag
+  id: HudMedSec
+
+- type: Tag
+  id: Lightbox
+
+- type: Tag
+  id: Itemborg
+
+- type: Tag
+  id: Nanopast
+
+- type: Tag
+  id: AnomalyCore
+
+- type: Tag
+  id: GravityCore
+
+- type: Tag
+  id: BluespaceCore
+
+- type: Tag
+  id: FlameCore
+
+- type: Tag
+  id: IceCore
+
+- type: Tag
+  id: ChemCore
+
+- type: Tag
+  id: ElecCore
+
+- type: Tag
+  id: ShadowCore
+
+- type: Tag
+  id: FloraCore
+
+- type: Tag
+  id: RockCore
+
+- type: Tag
+  id: TechCore
+
+- type: Tag
+  id: FleshCore
+
+- type: Tag
+  id: Synthcore
+
+- type: Tag
+  id: BorgScience
+
+- type: Tag
+  id: DocumentBorg
+
+- type: Tag
+  id: ModNotEquipable
+
+- type: Tag
+  id: ModularSuitCore
+
+- type: Tag
+  id: ModularSuitHelmet
+
+- type: Tag
+  id: ModularSuitChestPlate
+
+- type: Tag
+  id: ModularSuitGauntlets
+
+- type: Tag
+  id: ModularSuitBoots
+
+- type: Tag
+  id: BasicPlating
+
+- type: Tag
+  id: CivilianPlating
+
+- type: Tag
+  id: ClownPlating
+
+- type: Tag
+  id: EngineeringPlating
+
+- type: Tag
+  id: AtmosPlating
+
+- type: Tag
+  id: WhiteEngineeringPlating
+
+- type: Tag
+  id: SecurityPlating
+
+- type: Tag
+  id: RedSecurityPlating
+
+- type: Tag
+  id: RescuePlating
+
+- type: Tag
+  id: MedicalPlating
+
+- type: Tag
+  id: RDPlating
+
+- type: Tag
+  id: StorageSuitModule
+
+- type: Tag
+  id: FlashlightSuitModule
+
+- type: Tag
+  id: VisorSuitModule
+
+- type: Tag
+  id: WeldingModuleConflict
+
+- type: Tag
+  id: JetpackSuitModule
+
+- type: Tag
+  id: MagneticSuitModule
+
+- type: Tag
+  id: EMPShieldSuitModule
+
+- type: Tag
+  id: TemperatureRegulatorModuleConflict
+
+- type: Tag
+  id: CarryConstructorModuleConflict
+
+- type: Tag
+  id: ArmorBoosterSuitModule
+
+- type: Tag
+  id: CompressionModuleConflict
+
+- type: Tag
+  id: NoSlipModuleConflict
+
+- type: Tag
+  id: FireBomb
+
+- type: Tag
+  id: Gloves
+
+- type: Tag
+  id: Saw
+
+  # Veil Cult Tags Start
+
+- type: Tag
+  id: InteractionCog
+
+- type: Tag
+  id: StrangeShard
+
+- type: Tag
+  id: SoulVessel
+
+- type: Tag
+  id: Brass
+
+- type: Tag
+  id: ChargedBrass
+
+  # Veil Cult Tags End
+
+- type: Tag
+  id: OrganicBrain
+
+- type: Tag
+  id: Bola
+
+- type: Tag
+  id: Morgue
+
+- type: Tag
+  id: BorgModuleSyndicateMedical
+
+- type: Tag
+  id: TechnologyDiskT3
+
+- type: Tag
+  id: Badge
+
+- type: Tag
+  id: Camera
+
+- type: Tag
+  id: Tear1
+
+- type: Tag
+  id: Tear2
+
+- type: Tag
+  id: Tear3
+
+- type: Tag
+  id: UpgradeKitBrain
+
+- type: Tag
+  id: PKAWeapon
+
+- type: Tag
+  id: BorgModulePower
+
+- type: Tag
+  id: BorgModuleArmorSec
+
+- type: Tag
+  id: BorgModuleLethalSec
+
+- type: Tag
+  id: BorgModuleLethalSyndi
+
+- type: Tag
+  id: XenoBorgModuleStalthWeapons
+
+- type: Tag
+  id: XenoborgModuleStealthInvisible
+
+- type: Tag
+  id: XenoborgModuleHeavyBalance

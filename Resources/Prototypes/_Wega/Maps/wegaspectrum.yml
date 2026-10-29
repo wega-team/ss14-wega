@@ -2,7 +2,7 @@
   id: WegaSpectrum
   mapName: 'Spectrum Station'
   mapPath: /Maps/_Wega/wegaspectrum.yml
-  minPlayers: 70
+  minPlayers: 65
   stations:
     WegaSpectrum:
       stationProto: StandardNanotrasenStation
@@ -13,7 +13,14 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'TZ'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml 
+          emergencyShuttlePath: /Maps/Shuttles/emergency_box.yml
+        - type: StationLavaland
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
         - type: StationJobs
           availableJobs:
             #service
@@ -27,7 +34,7 @@
             Janitor: [ 3, 3 ]
             Chaplain: [ 1, 1 ]
             Librarian: [ 1, 1 ]
-            ServiceWorker: [ 4, 4 ]
+            ServiceWorker: [ 5, 5 ]
             #engineering
             ChiefEngineer: [ 1, 1 ]
             SeniorEngineer: [ 1, 1 ]
@@ -37,7 +44,7 @@
             #medical
             ChiefMedicalOfficer: [ 1, 1 ]
             Geneticist: [ 2, 2 ]
-            Chemist: [ 3, 3 ]
+            Chemist: [ 2, 2 ]
             Surgeon: [ 2, 2 ]
             Coroner: [ 1, 1 ]
             SeniorPhysician: [ 1, 1 ]
@@ -53,6 +60,7 @@
             #security
             HeadOfSecurity: [ 1, 1 ]
             Warden: [ 1, 1 ]
+            WardenHelper: [ 1, 1 ]
             SeniorOfficer: [ 1, 1 ]
             SecurityOfficer: [ 5, 5 ]
             Detective: [ 1, 1 ]
@@ -61,7 +69,9 @@
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 4, 4 ]
+            SalvageSpecialist: [ 2, 2 ]
+            ShaftMiner: [ 4, 5 ]
+            ShaftMinerMedic: [ 1, 1 ]
             CargoTechnician: [ 4, 4 ]
             Postman: [ 1, 1 ]
             #civilian
@@ -70,7 +80,6 @@
             Mime: [ 1, 1 ]
             Reporter: [ 2, 2 ]
             Musician: [ 3, 3 ]
-            Boxer: [ 2, 2 ]
             # silicon
             StationAi: [ 1, 1 ]
             Borg: [ 2, 2 ]

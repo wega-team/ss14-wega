@@ -1,8 +1,7 @@
 - type: marking
   id: FelinidEars
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:
@@ -24,8 +23,7 @@
 - type: marking
   id: FelinidEarsStubby
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:
@@ -47,8 +45,7 @@
 - type: marking
   id: FelinidEarsCurled
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:
@@ -70,8 +67,7 @@
 - type: marking
   id: FelinidEarsTorn
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [Felinid]
+  groupWhitelist: [Felinid]
   coloring:
     default:
       type:

@@ -1,8 +1,9 @@
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Misc.Components; // Corvax-Wega-Lavaland
 using Content.Shared.Whitelist;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
@@ -10,35 +11,37 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.Weapons.Marker;
 
-public abstract class SharedDamageMarkerSystem : EntitySystem
+public abstract partial class SharedDamageMarkerSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _netManager = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private INetManager _netManager = default!;
+    // [Dependency] private SharedAudioSystem _audio = default!; // Corvax-Wega-Lavaland-Edit
+    // [Dependency] private DamageableSystem _damageable = default!; // Corvax-Wega-Lavaland-Edit
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
         SubscribeLocalEvent<DamageMarkerOnCollideComponent, StartCollideEvent>(OnMarkerCollide);
-        SubscribeLocalEvent<DamageMarkerComponent, AttackedEvent>(OnMarkerAttacked);
+        // SubscribeLocalEvent<DamageMarkerComponent, AttackedEvent>(OnMarkerAttacked); // Corvax-Wega-Lavaland-Edit
     }
 
-    private void OnMarkerAttacked(EntityUid uid, DamageMarkerComponent component, AttackedEvent args)
-    {
-        if (component.Marker != args.Used)
-            return;
+    // Corvax-Wega-Lavaland-Edit-start
+    // private void OnMarkerAttacked(EntityUid uid, DamageMarkerComponent component, AttackedEvent args)
+    // {
+    //     if (component.Marker != args.Used)
+    //         return;
 
-        args.BonusDamage += component.Damage;
-        RemCompDeferred<DamageMarkerComponent>(uid);
-        _audio.PlayPredicted(component.Sound, uid, args.User);
+    //     args.BonusDamage += component.Damage;
+    //     RemCompDeferred<DamageMarkerComponent>(uid);
+    //     _audio.PlayPredicted(component.Sound, uid, args.User);
 
-        if (TryComp<LeechOnMarkerComponent>(args.Used, out var leech))
-        {
-            _damageable.TryChangeDamage(args.User, leech.Leech, true, false, origin: args.Used);
-        }
-    }
+    //     if (TryComp<LeechOnMarkerComponent>(args.Used, out var leech))
+    //     {
+    //         _damageable.TryChangeDamage(args.User, leech.Leech, true, false, origin: args.Used);
+    //     }
+    // }
+    // Corvax-Wega-Lavaland-Edit-end
 
     public override void Update(float frameTime)
     {
@@ -67,11 +70,27 @@ public abstract class SharedDamageMarkerSystem : EntitySystem
             return;
         }
 
+        // Corvax-Wega-Lavaland-start
+        var weapon = projectile.Weapon.Value;
+        if (TryComp<WeaponHotswapComponent>(weapon, out var hotswap))
+        {
+            if (hotswap.IsAlternate && hotswap.PairedWeapon != null)
+                weapon = hotswap.PairedWeapon.Value;
+        }
+        // Corvax-Wega-Lavaland-end
+
         // Markers are exclusive, deal with it.
         var marker = EnsureComp<DamageMarkerComponent>(args.OtherEntity);
         marker.Damage = new DamageSpecifier(component.Damage);
-        marker.Marker = projectile.Weapon.Value;
+        marker.Marker = weapon; // Corvax-Wega-Lavaland-Edit
         marker.EndTime = _timing.CurTime + component.Duration;
+        // Corvax-Wega-Lavaland-start
+        if (component.Weakening)
+        {
+            marker.Weakening = true;
+            marker.WeakeningModifier = component.WeakeningModifier;
+        }
+        // Corvax-Wega-Lavaland-end
         component.Amount--;
         Dirty(args.OtherEntity, marker);
 
@@ -88,3 +107,12 @@ public abstract class SharedDamageMarkerSystem : EntitySystem
         }
     }
 }
+
+// Corvax-Wega-Lavaland-start
+[ByRefEvent]
+public record struct MarkerAttackAttemptEvent(EntityUid User, EntityUid Target,
+    float DamageModifier = 1f, float HealModifier = 1f);
+
+[ByRefEvent]
+public record struct AfterMarkerAttackedEvent(EntityUid User, EntityUid Target, DamageSpecifier Damage);
+// Corvax-Wega-Lavaland-end

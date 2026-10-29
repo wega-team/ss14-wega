@@ -11,7 +11,7 @@
   cost: 5000
   recipeUnlocks:
   - ProximitySensor
-  - AndroidBodyPart # Corvax-Wega-Android
+  - BorgModuleRobotics # Corvax-Wega-Add
 
 - type: technology
   id: BasicAnomalousResearch
@@ -54,6 +54,8 @@
   cost: 5000
   recipeUnlocks:
   - TechDiskComputerCircuitboard
+  - TechDiskBag # Corvax-Wega-Add
+  - TechDiskBagT3 # Corvax-Wega-Add
 
 - type: technology
   id: MagnetsTech
@@ -63,10 +65,12 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost: 7500
+  cost: 10000 # 7500 Corvax-Wega-Edit
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
+  - LegSyntheticMagboots # Corvax-Wega-Androids
+  - MagnetSuitModule # Corvax-Wega-add
 
 - type: technology
   id: AnomalyCoreHarnessing
@@ -76,9 +80,10 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost: 10000
+  cost: 15000 # 10000 Corvax-Wega-edit
   recipeUnlocks:
   - WeaponGauntletGorilla
+  - OtherCoreSuitModuleNoCoreSelector # Corvax-Wega
 
 # Tier 2
 
@@ -105,6 +110,7 @@
   cost: 10000
   recipeUnlocks:
   - WeaponPistolCHIMP
+  - BorgModuleAdvancedAnomaly # Corvax-Wega-Add
   - AnomalySynchronizerCircuitboard
   - AnomalyVesselExperimentalCircuitboard
   technologyPrerequisites:
@@ -135,6 +141,7 @@
   recipeUnlocks:
     - WeaponForceGun
     - WeaponTetherGun
+    - KinesisSuitModule # Corvax-Wega-Edit
 
 # Tier 3
 
@@ -149,15 +156,34 @@
   cost: 10000
   recipeUnlocks:
   - DeviceQuantumSpinInverter
+  - DeviceDesynchronizer
+
+# Corvax-Wega-Edit-start
+# - type: technology
+#   id: BluespaceTimeManipulation
+#   name: research-technology-bluespace-time-manipulation
+#   icon:
+#     sprite: Objects/Devices/desynchronizer.rsi
+#     state: icon
+#   discipline: Experimental
+#   tier: 3
+#   cost: 10000
+#   recipeUnlocks:
+#   - DeviceDesynchronizer
+# Corvax-Wega-Edit-end
 
 - type: technology
-  id: BluespaceTimeManipulation
-  name: research-technology-bluespace-time-manipulation
+  id: TeleSci
+  name: research-technology-telesci
   icon:
-    sprite: Objects/Devices/desynchronizer.rsi
-    state: icon
+    sprite: Effects/portal.rsi
+    state: portal-artifact
   discipline: Experimental
   tier: 3
   cost: 10000
   recipeUnlocks:
-  - DeviceDesynchronizer
+# Corvax-Wega-Start
+  # - StationTeleportersControlCircuitboard
+  # - StationTeleporterMachineCircuitboard
+  - SelectorTeleporter # TeleporterChipBlank
+# Corvax-Wega-End

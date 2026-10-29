@@ -6,3 +6,65 @@
       sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
     - type: Clothing
       sprite: _Wega/Clothing/Shoes/Boots/jackboots_blue.rsi
+
+- type: entity
+  parent: [ClothingShoesBaseButcherable, BaseMinorContraband]
+  id: ClothingShoesBootsForsaken
+  name: forsaken boots
+  description: Cursed boots that grip the ground with an unnatural tenacity. The blood cult's dark magic ensures you'll never slip.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/cult_boots.rsi
+  - type: SlowedOverSlippery
+    slowdownModifier: 0.7
+  - type: SpeedModifierContactCapClothing
+    maxContactSprintSlowdown: 0.7
+    maxContactWalkSlowdown: 0.7
+  - type: CultEquipment
+    cult: Blood
+
+- type: entity
+  parent: ClothingShoesBootsCowboyBrown
+  id: ClothingShoesClockworkTreads
+  name: clockwork treads
+  description: Heavy shoes worn by clockwork cultists.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/clockwork_treads.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/clockwork_treads.rsi
+    # equipSound: /Audio/Mecha/mechmove03.ogg FOR FUTURE SOUNDS
+    # unequipSound: /Audio/Mecha/mechmove03.ogg FOR FUTURE SOUNDS
+    equipDelay: 1.5
+    unequipDelay: 1.5
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.65
+
+- type: entity
+  parent: ClothingShoesBaseWinterBoots
+  id: ClothingShoesWinterIceHikingBoots
+  name: ice hiking boots
+  description: "A pair of winter boots with special grips on the bottom, designed to prevent slipping on frozen surfaces."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Shoes/Boots/ice_boots.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Shoes/Boots/ice_boots.rsi
+  - type: ClothingFrictionIgnore
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: BarestepCarpet
+      params:
+        variation: 0.8
+
+- type: entity
+  parent: ClothingShoesWinterIceHikingBoots
+  id: ClothingShoesWinterCursedIceHikingBoots
+  name: cursed ice hiking boots
+  description: "These boots are firmly attached to the wearer's feet, as if they were part of their flesh."
+  components:
+  - type: Unremoveable
+    onlyInSlots: FEET
+  - type: NoSlip

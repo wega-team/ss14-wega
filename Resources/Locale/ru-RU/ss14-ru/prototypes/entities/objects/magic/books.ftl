@@ -1,11 +1,14 @@
 ent-BaseSpellbook = книга заклинаний
     .desc = { ent-BaseItem.desc }
 ent-WizardsGrimoire = гримуар волшебника
+    .desc = Тяжёлый том, содержащий сложные таинственные формулы для подготовки магических заклинаний и призыва сверхъестественного снаряжения. Десятилетия ушли на изучение этой коллекции мистических секретов. Теперь с их помощью испортьте чей-то день.
     .suffix = Волшебник
-    .desc = { ent-BaseItem.desc }
-ent-WizardsGrimoireNoRefund = гримуар волшебника
-    .suffix = Волшебник, Без возврата средств
+ent-WizardsGrimoireNoRefund = { ent-WizardsGrimoire }
     .desc = { ent-WizardsGrimoire.desc }
+    .suffix = Волшебник, Без возврата средств
+ent-WizardsGrimoireDebug = { ent-WizardsGrimoire }
+    .desc = Тяжёлый том, содержащий сложные таинственные формулы для подготовки магических заклинаний и призыва сверхъестественного снаряжения. Внутри обложки кто-то написал "ИСПОЛЬЗОВАТЬ ТОЛЬКО ДЛЯ ЭКСПЕРИМЕНТОВ".
+    .suffix = Волшебник, DEBUG
 ent-SpawnSpellbook = книга заклинания призыв
     .desc = { ent-BaseSpellbook.desc }
 ent-ForceWallSpellbook = книга заклинания силовой барьер

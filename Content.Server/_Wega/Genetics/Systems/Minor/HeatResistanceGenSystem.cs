@@ -4,7 +4,7 @@ using Content.Shared.Temperature.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class HeatResistanceGenSystem : EntitySystem
+public sealed partial class HeatResistanceGenSystem : EntitySystem
 {
     public override void Initialize()
     {
@@ -16,13 +16,13 @@ public sealed class HeatResistanceGenSystem : EntitySystem
 
     private void OnInit(Entity<HeatResistanceGenComponent> ent, ref ComponentInit args)
     {
-        if (TryComp<FlammableComponent>(ent, out _))
+        if (HasComp<FlammableComponent>(ent))
         {
             RemComp<FlammableComponent>(ent);
             ent.Comp.RemFlammable = true;
         }
 
-        if (TryComp<TemperatureComponent>(ent, out var temperature))
+        if (TryComp<TemperatureDamageComponent>(ent, out var temperature))
         {
             temperature.HeatDamageThreshold = temperature.HeatDamageThreshold * ent.Comp.ResistanceRatio;
         }
@@ -32,7 +32,7 @@ public sealed class HeatResistanceGenSystem : EntitySystem
     {
         if (ent.Comp.RemFlammable) AddComp<FlammableComponent>(ent);
 
-        if (TryComp<TemperatureComponent>(ent, out var temperature))
+        if (TryComp<TemperatureDamageComponent>(ent, out var temperature))
         {
             temperature.HeatDamageThreshold = temperature.HeatDamageThreshold / ent.Comp.ResistanceRatio;
         }

@@ -1,0 +1,68 @@
+- type: reagent
+  id: HemorrhinolBloodCult
+  name: reagent-name-hemorrhinol
+  group: Toxins
+  desc: reagent-desc-hemorrhinol
+  physicalDesc: reagent-physical-desc-thin
+  evaporationSpeed: 0.1
+  contrabandSeverity: Major
+  flavor: sharp
+  color: "#96424f"
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectHemorrhage
+        time: 63 # 7 bleed ticks, you bleed every 3 seconds by default.
+        type: Update
+      - !type:ModifyBleed
+        amount: 0.5
+
+- type: reagent
+  id: ImpedrezeneNoDamage
+  name: reagent-name-impedrezene
+  group: Narcotics
+  desc: reagent-desc-impedrezene
+  physicalDesc: reagent-physical-desc-acrid
+  contrabandSeverity: Minor
+  flavor: bitter
+  color: "#215263"
+  metabolisms:
+    Bloodstream:
+      effects:
+      - !type:MovementSpeedModifier
+        walkSpeedModifier: 0.5
+        sprintSpeedModifier: 0.5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow
+        time: 10
+        type: Add
+      - !type:Vomit # Vomiting is a symptom of brain damage
+        probability: 0.05
+      - !type:Drunk # Headaches and slurring are major symptoms of brain damage, this is close enough
+        boozePower: 5
+
+- type: reagent
+  id: HardlightToxinSec
+  name: reagent-name-hardlight-toxin
+  group: Toxins
+  desc: reagent-desc-hardlight-toxin
+  evaporationSpeed: 100 # Dissolves basically instantly if you *somehow* spill it
+  color: "#00FF00"
+  physicalDesc: reagent-physical-desc-glowing
+  metabolisms:
+    Bloodstream: # TODO Make this a metabolite!!!
+      metabolismRate: 2.5 # It's basically pure energy so it metabolizes very fast
+      effects:
+      - !type:StaminaDamage
+        damage: 10
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectKnockdown
+        time: 1
+        delay: 2.5
+      - !type:MovementSpeedModifier
+        effectProto: TaserSlowdownStatusEffect
+        time: 1.5
+        delay: 2.5
+        walkSpeedModifier: 0.5
+        sprintSpeedModifier: 0.5

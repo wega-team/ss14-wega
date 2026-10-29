@@ -1,0 +1,9 @@
+- type: entity
+  id: EnergyShieldEffect
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    noRot: true
+    drawdepth: OverMobs
+    sprite: _Wega/Effects/energy-shield.rsi
+    state: shield

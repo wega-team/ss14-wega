@@ -51,3 +51,20 @@
       amount: 2
     - id: ChemistryBottleEthanol
       amount: 2
+
+- type: entity
+  id: SurgerykitFilledPro
+  name: surgery kit
+  parent: Surgerykit
+  suffix: Cool instrument
+  components:
+  - type: StorageFill
+    contents:
+    - id: ScalpelLaser
+    - id: Hemrevein
+    - id: Bonesaw
+    - id: SprayBottleEthanol
+    - id: Bloodpack
+    - id: Gauze
+    - id: ChemistryBottleEthanol
+      amount: 6

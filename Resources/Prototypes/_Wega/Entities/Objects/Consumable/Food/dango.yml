@@ -23,13 +23,11 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: hanamidango
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-          - ReagentId: Nutriment
-            Quantity: 15
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
 
 - type: entity
   name: mitarashi dango
@@ -43,10 +41,8 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: mitarashidango
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 20
-        reagents:
-          - ReagentId: Nutriment
-            Quantity: 15
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15

@@ -5,10 +5,10 @@ using Robust.Shared.Random;
 
 namespace Content.Server.Objectives.Systems;
 
-public sealed class BloodConditionSystem : EntitySystem
+public sealed partial class BloodConditionSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
 
     public override void Initialize()
     {
@@ -24,7 +24,7 @@ public sealed class BloodConditionSystem : EntitySystem
         if (args.Mind.OwnedEntity.HasValue)
         {
             var ownedEntity = args.Mind.OwnedEntity.Value;
-            comp.BloodTargets[ownedEntity] = _random.Next(200, 300);
+            comp.BloodTargets[ownedEntity] = _random.Next(comp.TargetMin, comp.TargetMax);
         }
     }
 

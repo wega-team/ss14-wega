@@ -1,8 +1,7 @@
-<DefaultWindow
+<controls:FancyWindow
     xmlns="https://spacestation14.io"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    x:Class="Content.Client.Runes.Panel.Ui.SummoningRunePanelMenu"
     Title="{Loc 'runes-ui-default-title'}"
     MinSize="512 340"
     SetSize="512 340">
@@ -19,4 +18,4 @@
             </ScrollContainer>
         </PanelContainer>
     </BoxContainer>
-</DefaultWindow>
+</controls:FancyWindow>

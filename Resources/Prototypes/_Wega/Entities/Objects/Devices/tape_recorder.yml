@@ -68,6 +68,8 @@
   - type: Item
     size: Tiny
   - type: Damageable
+  - type: Injurable
+    damageContainer: Inorganic
   - type: TapeCassette
     maxCapacity: 180
     repairWhitelist:
@@ -88,12 +90,21 @@
         tape_greyscale: Rainbow
 
 - type: entity
-  suffix: Interview with Garry Smosh
+  parent: CassetteTape
+  id: CassetteTapeLong
+  name: cassette tape long
+  description: A magnetic tape that can hold up to ten minutes of content on either side.
+  components:
+  - type: TapeCassette
+    maxCapacity: 600
+
+- type: entity
   parent: CassetteTape
   id: CassetteTapeInterview
+  suffix: Interview with Garry Smosh
   components:
   - type: Label
-    currentLabel: Interview with Garry Smosh
+    localizedLabel: tape-label-interview-garry-smosh
   - type: TapeCassette
     recordedData:
       - timestamp: 2

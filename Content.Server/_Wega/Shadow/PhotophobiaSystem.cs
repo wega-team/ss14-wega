@@ -14,25 +14,27 @@ using Content.Server.Hands.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Shared.Random;
+using Robust.Shared.Prototypes;
+using Content.Shared.Damage.Systems;
+using Content.Shared.Lavaland.Components;
 
 namespace Content.Server.Shadow;
 
-public sealed class PhotophobiaSystem : EntitySystem
+public sealed partial class PhotophobiaSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly HandsSystem _handsSystem = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speed = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
+    [Dependency] private ContainerSystem _container = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private HandsSystem _handsSystem = default!;
+    [Dependency] private MovementSpeedModifierSystem _speed = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string Damage = "Heat";
+    private static readonly ProtoId<DamageTypePrototype> Damage = "Heat";
 
     // private readonly List<EntityUid> _scratchLights = new();
 
@@ -42,7 +44,7 @@ public sealed class PhotophobiaSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<PhotophobiaComponent, EntityUnpausedEvent>(OnUnpaused);
-        SubscribeLocalEvent<PhotophobiaComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<PhotophobiaComponent, DamageDealtEvent>(OnDamageChanged);
         SubscribeLocalEvent<PhotophobiaComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshMovementSpeedModifiers);
     }
 
@@ -94,8 +96,10 @@ public sealed class PhotophobiaSystem : EntitySystem
     private bool CheckNearbyLights(EntityUid uid)
     {
         var xform = Transform(uid);
-        var worldPos = _transform.GetWorldPosition(xform);
+        if (HasComp<LavalandComponent>(xform.MapUid))
+            return true;
 
+        var worldPos = _transform.GetWorldPosition(xform);
         foreach (var (lightUid, light) in _lookup.GetEntitiesInRange<PointLightComponent>(xform.Coordinates, 10f))
         {
             if (!light.Enabled)
@@ -208,15 +212,8 @@ public sealed class PhotophobiaSystem : EntitySystem
 
     public bool IsTargetInsideCone(EntityUid targetUid, EntityUid lightUid)
     {
-        if (!TryComp<PointLightComponent>(lightUid, out var lightComp))
+        if (!HasComp<PointLightComponent>(lightUid))
             return true;
-
-        // TODO: Избавится от этого ужаса.
-        if (lightComp.MaskPath == "/Textures/Effects/LightMasks/double_cone.png")
-            return true;
-
-        if (lightComp.MaskPath == null)
-            return false;
 
         var tXform = Transform(targetUid);
         var lXform = Transform(lightUid);
@@ -253,22 +250,15 @@ public sealed class PhotophobiaSystem : EntitySystem
             args.ModifySpeed(ent.Comp.SpeedModifier, ent.Comp.SpeedModifier);
     }
 
-    private void OnDamageChanged(Entity<PhotophobiaComponent> ent, ref DamageChangedEvent args)
+    private void OnDamageChanged(Entity<PhotophobiaComponent> ent, ref DamageDealtEvent args)
     {
-        if (!ent.Comp.ShadowWeakness || args.DamageDelta is null || IsNegativeDamage(args.DamageDelta))
+        if (!ent.Comp.ShadowWeakness)
             return;
 
-        var bonusDamage = args.DamageDelta * ent.Comp.DamageModfier;
-        _damageable.TryChangeDamage(ent, bonusDamage, true);
-    }
+        if (args.Damage.GetTotal() <= 0)
+            return;
 
-    private bool IsNegativeDamage(DamageSpecifier damage)
-    {
-        foreach (var type in damage.DamageDict)
-        {
-            if (type.Value > 0)
-                return false;
-        }
-        return true;
+        var bonusDamage = args.Damage * ent.Comp.DamageModfier;
+        _damageable.TryChangeDamage(ent.Owner, bonusDamage, true);
     }
 }

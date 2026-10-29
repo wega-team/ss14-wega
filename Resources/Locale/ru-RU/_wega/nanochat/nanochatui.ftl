@@ -59,3 +59,6 @@ nano-chat-ui-unread-indicator =  (У)
 nano-chat-create-group-message = {$name} создал группу '{$groupName}'.
 nano-chat-join-message = -> {$name} присоединился!
 nano-chat-leave-message = <- {$name} покинул группу.
+
+nanochat-group-cooldown = Подождите перед созданием новой группы.
+nanochat-group-limit-reached = Достигнут лимит созданных групп.

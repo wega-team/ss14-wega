@@ -8,12 +8,12 @@ using Content.Shared.Popups;
 
 namespace Content.Server.Offer;
 
-public sealed class OfferItemSystem : SharedOfferItemSystem
+public sealed partial class OfferItemSystem : SharedOfferItemSystem
 {
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private AlertsSystem _alerts = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {

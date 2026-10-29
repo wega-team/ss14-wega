@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/tgstation/tgstation, wendigo, frostminer & thething created by zekins3366",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "bubblegum"
+    },
+    {
+      "name": "colossus"
+    },
+    {
+      "name": "dragon"
+    },
+    {
+      "name": "hierophant"
+    },
+    {
+      "name": "mega_legion"
+    },
+    {
+      "name": "miner"
+    },
+    {
+      "name": "frostminer"
+    },
+    {
+      "name": "thething"
+    },
+    {
+      "name": "wendigo"
+    },
+    {
+      "name": "clockwork_defender"
+    }
+  ]
+}

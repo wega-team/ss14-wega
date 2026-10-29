@@ -8,17 +8,19 @@ using Robust.Shared.Containers;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
+using Content.Shared.Whitelist; // Corvax-Wega-Morgue-change
 
 namespace Content.Shared.Foldable;
 
 // TODO: This system could arguably be refactored into a general state system, as it is being utilized for a lot of different objects with various needs.
-public sealed class FoldableSystem : EntitySystem
+public sealed partial class FoldableSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly AnchorableSystem _anchorable = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAppearanceSystem _appearance = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private AnchorableSystem _anchorable = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-Morgue-change
 
     public override void Initialize()
     {
@@ -78,32 +80,32 @@ public sealed class FoldableSystem : EntitySystem
     /// <summary>
     /// Set the folded state of the given <see cref="FoldableComponent"/>
     /// </summary>
-    public void SetFolded(EntityUid uid, FoldableComponent component, bool folded)
+    public void SetFolded(EntityUid uid, FoldableComponent component, bool folded, EntityUid? user = null)
     {
         component.IsFolded = folded;
         Dirty(uid, component);
         _appearance.SetData(uid, FoldedVisuals.State, folded);
         _buckle.StrapSetEnabled(uid, !component.IsFolded);
 
-        var ev = new FoldedEvent(folded);
+        var ev = new FoldedEvent(folded, user);
         RaiseLocalEvent(uid, ref ev);
     }
 
     private void OnInsertEvent(EntityUid uid, FoldableComponent component, ContainerGettingInsertedAttemptEvent args)
     {
-        if (!component.IsFolded && !component.CanFoldInsideContainer)
+        if (!component.IsFolded && !component.CanFoldInsideContainer && _whitelistSystem.IsWhitelistFailOrNull(component.DeployedContainerWhitelist, args.Container.Owner)) // Corvax-Wega-Morgue-change
             args.Cancel();
     }
 
     public bool TryToggleFold(EntityUid uid, FoldableComponent comp, EntityUid? folder = null)
     {
-        var result = TrySetFolded(uid, comp, !comp.IsFolded);
+        var result = TrySetFolded(uid, comp, !comp.IsFolded, folder);
         if (!result && folder != null)
         {
             if (comp.IsFolded)
-                _popup.PopupPredicted(Loc.GetString("foldable-unfold-fail", ("object", uid)), uid, folder.Value);
+                _popup.PopupEntity(Loc.GetString("foldable-unfold-fail", ("object", uid)), uid, folder.Value);
             else
-                _popup.PopupPredicted(Loc.GetString("foldable-fold-fail", ("object", uid)), uid, folder.Value);
+                _popup.PopupEntity(Loc.GetString("foldable-fold-fail", ("object", uid)), uid, folder.Value);
         }
         return result;
     }
@@ -129,7 +131,7 @@ public sealed class FoldableSystem : EntitySystem
     /// <summary>
     /// Try to fold/unfold
     /// </summary>
-    public bool TrySetFolded(EntityUid uid, FoldableComponent comp, bool state)
+    public bool TrySetFolded(EntityUid uid, FoldableComponent comp, bool state, EntityUid? user = null)
     {
         if (state == comp.IsFolded)
             return false;
@@ -137,7 +139,7 @@ public sealed class FoldableSystem : EntitySystem
         if (!CanToggleFold(uid, comp))
             return false;
 
-        SetFolded(uid, comp, state);
+        SetFolded(uid, comp, state, user);
         return true;
     }
 
@@ -180,6 +182,7 @@ public record struct FoldAttemptEvent(FoldableComponent Comp, bool Cancelled = f
 /// <summary>
 /// Event raised on an entity after it has been folded.
 /// </summary>
-/// <param name="IsFolded"></param>
+/// <param name="IsFolded">True is it has been folded, false if it has been unfolded.</param>
+/// <param name="User">The player who did the folding.</param>
 [ByRefEvent]
-public readonly record struct FoldedEvent(bool IsFolded);
+public readonly record struct FoldedEvent(bool IsFolded, EntityUid? User);

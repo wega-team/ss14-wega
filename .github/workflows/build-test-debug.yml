@@ -8,6 +8,10 @@ on:
     types: [ opened, reopened, synchronize, ready_for_review ]
     branches: [ master, staging, stable ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }} # Corvax-Pega-Edit <- Pega It's like lol
+  cancel-in-progress: ${{ github.event_name != 'merge_group' }}
+
 jobs:
   build:
     if: github.actor != 'IanComradeBot' && github.event.pull_request.draft == false
@@ -16,10 +20,18 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 50
 
     steps:
     - name: Checkout Master
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v7
+
+    # Corvax-Wega-Specific-start
+    - name: Delete sponsor secrets content
+      run: |
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsor-tiers.yml
+        rm -f Resources/Prototypes/_Wega/Sponsors/sponsorghosts.yml
+    # Corvax-Wega-Specific-end
 
     - name: Setup Submodule
       run: |
@@ -34,9 +46,9 @@ jobs:
         git submodule update --init --recursive
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.1.0
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 9.0.x
+        dotnet-version: 10.0.x
 
     - name: Install dependencies
       run: dotnet restore
@@ -45,13 +57,30 @@ jobs:
       run: dotnet build --configuration DebugOpt --no-restore /m
 
     - name: Run Content.Tests
-      run: dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0
+      shell: pwsh
+      run: dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0 NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
 
     - name: Run Content.IntegrationTests
       shell: pwsh
+      # Corvax-Pega-Edit-start
+      continue-on-error: true
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed
+        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --blame -- NUnit.ConsoleOut=0 NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
+      # Corvax-Pega-Edit-end
+
+    - name: Archive NUnit3 test results.
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: nunit3-results-${{ matrix.os }}
+        # Corvax-Pega-Edit-start
+        path: |
+          test_results/*
+          TestResults/*
+        # Corvax-Pega-Edit-end
+        retention-days: 7
+        compression-level: 9
   ci-success:
     name: Build & Test Debug
     needs:

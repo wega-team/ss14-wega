@@ -1,5 +1,6 @@
 - type: reagent
   id: Cryptobiolin
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-cryptobiolin
   group: Medicine
   desc: reagent-desc-cryptobiolin
@@ -9,7 +10,7 @@
   flavor: medicine
   color: "#081a80"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectScrambled
@@ -27,7 +28,7 @@
   flavor: medicine
   color: "#3a1d8a"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -39,8 +40,8 @@
           reagent: Dylovene
           min: 20
         damage:
-          groups:
-            Brute: 2
+          types:
+            Blunt: 2
       - !type:Jitter
         conditions:
         - !type:ReagentCondition
@@ -81,7 +82,7 @@
   flavor: medicine
   color: "#64ffe6"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:AdjustReagent
         reagent: Histamine
@@ -93,7 +94,6 @@
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
         time: 1.5
-        type: Add
       - !type:HealthChange
         damage:
           types:
@@ -108,7 +108,7 @@
   flavor: medicine
   color: "#2d5708"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrunk
@@ -128,14 +128,13 @@
   flavor: medicine
   color: "#bd5902"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
           types:
             Radiation: -3
-          groups:
-            Brute: 1.5
+            Blunt: 1.5
 
 - type: reagent
   id: Bicaridine
@@ -146,12 +145,11 @@
   flavor: medicine
   color: "#ffaa00"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:HealthChange  # Corvax-Wega-Change
+      - !type:EvenHealthChange
         damage:
-          groups:  # Corvax-Wega-Change
-            Brute: -2  # Corvax-Wega-Change
+          Brute: -2 # Corvax-Wega-Change
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -194,23 +192,25 @@
     amount: 5
   - !type:PlantCryoxadone {}
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-        - !type:HealthChange
-          conditions:
-          - !type:TemperatureCondition
-            # this is a little arbitrary but they gotta be pretty cold
-            max: 213.0
-          damage:
-          # todo scale with temp like SS13
-            groups:
-              Airloss: -6
-              Brute: -4
-              Burn: -6
-              Toxin: -4
+      - !type:AdjustTemperature
+        amount: 60000 # Heats you up as it metabolizes necessitating constant cooling.
+      - !type:EvenHealthChange
+        conditions:
+        - !type:TemperatureCondition
+          # taken from tg, must be below freezing.
+          max: 273.15
+        damage:
+        # todo scale with temp like SS13
+          Airloss: -3
+          Brute: -2
+          Burn: -2
+          Toxin: -2
 
 - type: reagent
   id: Doxarubixadone
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-doxarubixadone
   group: Medicine
   desc: reagent-desc-doxarubixadone
@@ -218,12 +218,12 @@
   flavor: medicine
   color: "#32cd32"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
         - !type:HealthChange
           conditions:
           - !type:TemperatureCondition
-            max: 213.0
+            max: 273.15
           damage:
             types:
              Cellular: -2
@@ -237,7 +237,7 @@
   flavor: medicine
   color: "#215263"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -254,8 +254,7 @@
           types:
             Asphyxiation: 1
             Cold: 2
-          groups:
-            Brute: 0.5
+            Blunt: 0.5
       - !type:Jitter
         conditions:
         - !type:ReagentCondition
@@ -276,7 +275,7 @@
   flavor: medicine
   color: "#0041a8"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -302,7 +301,7 @@
   flavor: medicine
   color: "#4da0bd"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -336,7 +335,7 @@
   flavor: medicine
   color: "#d2fffa"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:AdjustReagent
         conditions:
@@ -357,9 +356,17 @@
           types:
             Asphyxiation: -3
             Poison: -0.5
-          groups:
-            Brute: -0.5
-            Burn: -0.5
+      - !type:EvenHealthChange
+        conditions:
+          # they gotta be in crit first
+        - !type:MobStateCondition
+          mobstate: Critical
+        - !type:ReagentCondition
+          reagent: Epinephrine
+          max: 20
+        damage:
+          Brute: -0.5
+          Burn: -0.5
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -394,9 +401,8 @@
       - !type:ModifyKnockdown
         time: 0.75
         type: Remove
-      - !type:GenericStatusEffect
-        key: Adrenaline # Guess what epinephrine is...
-        component: IgnoreSlowOnDamage
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectAdrenaline # Guess what epinephrine is...
         time: 5 # lingers less than hivemind reagent to give it a niche
 
 - type: reagent
@@ -408,7 +414,7 @@
   flavor: medicine
   color: "#4cb580"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -441,7 +447,7 @@
   flavor: medicine
   color: "#422912"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:Vomit
         conditions:
@@ -459,7 +465,7 @@
   flavor: medicine
   color: "#731024"
   metabolisms:
-    Medicine:
+    Bloodstream:
       metabolismRate: 0.1 # Smaller doses stabilize critical people for longer. Gives it a specific usecase as to not be entirely outclassed by dex+
       effects:
       - !type:HealthChange
@@ -482,7 +488,7 @@
   flavor: medicine
   color: "#bf3d19"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -490,7 +496,8 @@
             Heat: -0.33
             Shock: -0.33
             Cold: -0.33
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: -10
         conditions:
         - !type:ReagentCondition
@@ -517,7 +524,7 @@
   flavor: medicine
   color: "#ff7db5"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -527,12 +534,12 @@
         conditions:
         - !type:TemperatureCondition
           max: 293.15
-        amount: 100000 # thermal energy, not temperature!
+        amount: 1000000 # thermal energy, not temperature!
       - !type:AdjustTemperature
         conditions:
         - !type:TemperatureCondition
           min: 293.15
-        amount: -10000
+        amount: -1000000
       - !type:PopupMessage
         type: Local
         visualType: Medium
@@ -551,7 +558,7 @@
   flavor: medicine
   color: "#ff867d"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         probability: 0.3
@@ -572,9 +579,9 @@
           - !type:ReagentCondition
             reagent: Barozine
             min: 30
-      - !type:GenericStatusEffect
-        key: PressureImmunity
-        component: PressureImmunity
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectPressureImmunity
+        type: Add
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -599,13 +606,12 @@
   plantMetabolism:
     - !type:PlantAdjustToxins
       amount: 6
-    - !type:PlantPhalanximine
-      conditions:
-      - !type:ReagentCondition
-        reagent: Phalanximine
-        min: 4
+    - !type:PlantChangeTraits
+      trait: PlantTraitUnviable
+      type: Remove
+      minScale: 4
   metabolisms:
-    Medicine:
+    Bloodstream:
       metabolismRate: 0.1
       effects:
       - !type:HealthChange
@@ -640,14 +646,12 @@
   flavor: violets
   color: "#9423FF"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:HealthChange
+      - !type:EvenHealthChange
         damage:
-          groups:
-            Brute: -3.5
-          types:
-            Asphyxiation: -2.5
+          Brute: -1.75
+          Airloss: -1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -668,13 +672,20 @@
   flavor: medicine
   color: "#86caf7"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
         - !type:CureZombieInfection
           conditions:
             - !type:ReagentCondition
               reagent: Ambuzol
-              min: 10
+              min: 15
+    Digestion:
+      effects:
+        - !type:CureZombieInfection
+          conditions:
+            - !type:ReagentCondition
+              reagent: Ambuzol
+              min: 15
 
 - type: reagent
   id: AmbuzolPlus
@@ -685,7 +696,7 @@
   flavor: medicine
   color: "#1274b5"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
         - !type:CureZombieInfection
           innoculate: true
@@ -693,6 +704,14 @@
             - !type:ReagentCondition
               reagent: AmbuzolPlus
               min: 5
+    Digestion:
+      effects:
+      - !type:CureZombieInfection
+        innoculate: true
+        conditions:
+        - !type:ReagentCondition
+          reagent: AmbuzolPlus
+          min: 5
 
 - type: reagent
   id: PulpedBananaPeel
@@ -703,7 +722,7 @@
   flavor: medicine
   color: "#FFE774"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ModifyBleed
         amount: -0.5
@@ -717,9 +736,10 @@
   flavor: salty
   color: "#0064C8"
   metabolisms:
-    Drink:
+    Bloodstream:
       effects:
-        - !type:SatiateThirst
+        - !type:Satiate
+          satiationType: Thirst
           factor: 6
         - !type:ModifyBloodLevel
           amount: 6
@@ -733,7 +753,7 @@
   flavor: medicine
   color: "#f4dab8"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -748,8 +768,11 @@
   physicalDesc: reagent-physical-desc-starry
   flavor: medicine
   color: "#2b2f77"
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: -5
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -772,7 +795,7 @@
   flavor: medicine
   color: "#d49a2f"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -799,7 +822,7 @@
   flavor: medicine
   color: "#ba7d7d"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       # Medium-large quantities can hurt you instead,
       # but still technically stop your bleeding.
@@ -823,20 +846,26 @@
   flavor: medicine
   color: "#00e5ff"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
+      - !type:EvenHealthChange
+        conditions:
+        - !type:MobStateCondition # no healing in crit so that dedicated single damage type meds can still have a niche.
+          mobstate: Alive
+        damage:
+          Brute: -1
+          Burn: -1
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectFrail # Reduced combat viability
+        time: 5
+        type: Update # Only weak while the reagent is metabolising
       - !type:HealthChange
         conditions:
-        - !type:TotalDamageCondition
-          max: 50
+        - !type:MobStateCondition
+          mobstate: Alive
         damage:
-          groups:
-            Brute: -1
           types:
-            Poison: -0.5 ##Should be about what it was when it healed the toxin group
-            Heat: -0.33
-            Shock: -0.33
-            Cold: -0.33
+            Poison: -0.5 # Same as what it was before the second coming of offmed
 
 - type: reagent
   id: Lipozine
@@ -849,10 +878,11 @@
   flavor: medicine
   color: "#2690b5"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       # what the hell, this isn't satiating at all!!
-      - !type:SatiateHunger
+      - !type:Satiate
+        satiationType: Hunger
         factor: -1
 
   # Should heal quite literally everything, use in very small amounts
@@ -865,7 +895,7 @@
   flavor: medicine
   color: "#fcf7f9"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:EvenHealthChange
         damage:
@@ -883,7 +913,7 @@
   flavor: medicine
   color: "#520e30"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:EvenHealthChange
         conditions:
@@ -901,8 +931,8 @@
           min: 0
           max: 20
         damage:
-          groups:
-            Brute: 1.5
+          types:
+            Blunt: 1.5
       - !type:EvenHealthChange
         conditions:
         - !type:ReagentCondition
@@ -910,14 +940,14 @@
           min: 20
         damage:
           Toxin: -2
-      - !type:HealthChange # Corvax-Wega-Change
+      - !type:HealthChange
         conditions:
         - !type:ReagentCondition
           reagent: Ultravasculine
           min: 20
         damage:
-          groups:  # Corvax-Wega-Change
-            Brute: 6  # Corvax-Wega-Change
+          types:
+            Blunt: 6
       - !type:AdjustReagent
         conditions:
         - !type:ReagentCondition
@@ -942,7 +972,7 @@
   flavor: medicine
   color: "#404040"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:EyeDamage
 
@@ -955,7 +985,7 @@
   flavor: magical
   color: "#b50ee8"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:MakeSentient
         conditions:
@@ -965,6 +995,7 @@
 
 - type: reagent
   id: Ethyloxyephedrine
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-ethyloxyephedrine
   desc: reagent-desc-ethyloxyephedrine
   group: Medicine
@@ -972,7 +1003,7 @@
   flavor: medicine
   color: "#d5d5e4"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:Jitter
       - !type:GenericStatusEffect
@@ -1002,7 +1033,7 @@
   flavor: medicine
   color: "#b0abaa"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
@@ -1028,8 +1059,8 @@
   flavor: sweet
   color: "#e0a5b9"
   metabolisms:
-    Medicine:
-          # metabolismRate: 0.25  # Corvax-Wega-Change
+    Bloodstream:
+      # metabolismRate: 0.25 # Corvax-Wega-Change
       effects:
       - !type:HealthChange
         damage:
@@ -1088,8 +1119,8 @@
   flavor: syrupy
   color: "#283332"
   metabolisms:
-    Medicine:
-          # metabolismRate: 0.25  # Corvax-Wega-Change
+    Bloodstream:
+      # metabolismRate: 0.25 # Corvax-Wega-Change
       effects:
       - !type:HealthChange
         damage:
@@ -1113,8 +1144,8 @@
   flavor: fizzy
   color: "#b9bf93"
   metabolisms:
-    Medicine:
-          # metabolismRate: 0.25  # Corvax-Wega-Change
+    Bloodstream:
+      # metabolismRate: 0.25 # Corvax-Wega-Change
       effects:
       - !type:ModifyBleed  # Corvax-Wega-Change
         amount: -1.5  # Corvax-Wega-Change
@@ -1141,16 +1172,16 @@
   flavor: sour
   color: "#ff3636"
   metabolisms:
-    Medicine:
-          # metabolismRate: 0.25  # Corvax-Wega-Change
+    Bloodstream:
+      # metabolismRate: 0.25 # Corvax-Wega-Change
       effects:
       - !type:HealthChange
         damage:
           types:
-  #          Blunt: -2.25 # 9 per u  # Corvax-Wega-Change
- #     - !type:SatiateHunger  # Corvax-Wega-Change
-#        factor: -1  # Corvax-Wega-Change
-            Blunt: -3.5  # Corvax-Wega-Change
+            Blunt: -2.25 # 9 per u
+      - !type:Satiate
+        satiationType: Hunger
+        factor: -1
       - !type:HealthChange
         conditions:
         - !type:ReagentCondition
@@ -1174,11 +1205,12 @@
   flavor: holy
   color: "#91C3F7"
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
-    Medicine:
+    Bloodstream:
       effects:
       # Corvax-Wega-BloodCult-start
       - !type:HolyPurification
@@ -1189,11 +1221,11 @@
        # Corvax-Wega-BloodCult-end
       - !type:HealthChange
         conditions:
-        - !type:TotalDamageCondition
-          max: 50
+        # Corvax-Wega-Vampire-start
         - !type:MetabolizerTypeCondition
           type: [ Vampire ]
           inverted: true
+        # Corvax-Wega-Vampire-end
         damage:
           types:
             Blunt: -0.2
@@ -1210,7 +1242,6 @@
       methods: [ Touch ]
       effects:
       - !type:HealthChange
-        scaling: true
         ignoreResistances: false
         damage:
           types:
@@ -1234,6 +1265,7 @@
 
 - type: reagent
   id: Pyrazine
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-pyrazine
   group: Medicine
   desc: reagent-desc-pyrazine
@@ -1241,7 +1273,7 @@
   flavor: syrupy
   color: "#aa4308"
   metabolisms:
-    Medicine:
+    Bloodstream:
       metabolismRate: 0.1 # slow metabolism to not be a godly combat med, its for treating burn victims efficiently
       effects:
       - !type:HealthChange
@@ -1278,6 +1310,7 @@
 
 - type: reagent
   id: Insuzine
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-insuzine
   group: Medicine
   desc: reagent-desc-insuzine
@@ -1285,8 +1318,8 @@
   flavor: metallic
   color: "#8147ff"
   metabolisms:
-    Medicine:
-          # metabolismRate: 0.25  # Corvax-Wega-Change
+    Bloodstream:
+      # metabolismRate: 0.25 # Corvax-Wega-Change
       effects:
       # heals shocks and removes shock chems
       - !type:HealthChange
@@ -1325,6 +1358,7 @@
 
 - type: reagent
   id: Opporozidone #Name based of an altered version of the startreck chem "Opporozine"
+  contrabandSeverity: Corvax443 # Corvax-Contraband
   name: reagent-name-opporozidone
   group: Medicine
   desc: reagent-desc-opporozidone
@@ -1333,48 +1367,43 @@
   color: "#b5e36d"
   worksOnTheDead: true
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
+        - !type:AdjustTemperature
+         amount: 80000
         - !type:ReduceRotting
           seconds: 20
           conditions:
           #Patient must be dead and in a cryo tube (or something cold)
           - !type:TemperatureCondition
-            max: 150.0
+            max: 273.15
           - !type:MobStateCondition
             mobstate: Dead
 
 - type: reagent
-  id: Necrosol
-  name: reagent-name-necrosol
+  id: Arcryox
+  name: reagent-name-arcryox
   group: Medicine
-  desc: reagent-desc-necrosol
-  physicalDesc: reagent-physical-desc-necrotic
+  desc: reagent-desc-arcryox
+  physicalDesc: reagent-physical-desc-arcryox
   flavor: medicine
-  color: "#86a5bd"
+  color: "#0cbfe9"
   worksOnTheDead: true
-  plantMetabolism:
-  - !type:PlantAdjustToxins
-    amount: -5
-  - !type:PlantAdjustHealth
-    amount: 5
-  - !type:PlantCryoxadone {}
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-        - !type:HealthChange
-          conditions:
-          - !type:TemperatureCondition
-            max: 213.0
-          damage:
-            groups:
-              Brute: -4
-              Burn: -5
-            types:
-              Poison: -2
+      - !type:AdjustTemperature
+        amount: 60000 # Heats you up as it metabolizes necessitating constant cooling.
+      - !type:EvenHealthChange
+        conditions:
+        - !type:TemperatureCondition
+          max: 273.15
+        damage:
+          Brute: -3
+          Burn: -3
 
 - type: reagent
-  id : Aloxadone
+  id: Aloxadone
   name: reagent-name-aloxadone
   group: Medicine
   desc: reagent-desc-aloxadone
@@ -1383,18 +1412,16 @@
   color: "#89f77f"
   worksOnTheDead: true
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:HealthChange
+      - !type:AdjustTemperature
+        amount: 80000
+      - !type:EvenHealthChange
         conditions:
         - !type:TemperatureCondition
-          max: 213.0
+          max: 273.15
         damage:
-          types:
-            Cold: -4.0
-            Heat: -4.0
-            Shock: -4.0
-            Caustic: -1.5
+          Burn: -6
 
 - type: reagent
   id : Mannitol # currently this is just a way to create psicodine
@@ -1405,7 +1432,7 @@
   flavor: sweet
   color: "#A0A0A0"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:PopupMessage
         conditions:
@@ -1419,6 +1446,7 @@
 
 - type: reagent
   id: Psicodine
+  contrabandSeverity: Corvax442 # Corvax-Contraband
   name: reagent-name-psicodine
   group: Medicine
   desc: reagent-desc-psicodine
@@ -1426,7 +1454,7 @@
   flavor: bitter
   color: "#07E79E"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         conditions:
@@ -1470,11 +1498,10 @@
   flavor: medicine
   color: "#baa15d"
   metabolisms:
-    Medicine:
+    Digestion:
       effects:
-      - !type:GenericStatusEffect
-        key: RadiationProtection
-        component: RadiationProtection
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectRadiationProtection
         time: 2
         type: Add
       - !type:HealthChange
@@ -1495,11 +1522,10 @@
   flavor: medicine
   color: "#27870a"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:Emote
         emote: Yawn
-        showInChat: true
         probability: 0.1
       - !type:ModifyStatusEffect
         effectProto: StatusEffectDrowsiness
@@ -1537,3 +1563,27 @@
       - !type:AdjustReagent
         reagent: MindbreakerToxin
         amount: -3.0
+
+- type: reagent
+  id: Heparin
+  name: reagent-name-heparin
+  group: Medicine
+  desc: reagent-desc-heparin
+  physicalDesc: reagent-physical-desc-thin
+  allowedDepartments:
+  - Medical
+  flavor: medicine
+  color: "#d0e21b"
+  metabolisms:
+    Bloodstream:
+      effects: # One day this could be useful for treating blood clots, if we get those
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectAnticoagulant
+        time: 30 # 10 bleed ticks, you bleed every 3 seconds by default.
+        type: Update
+      - !type:ModifyBleed
+        conditions:
+        - !type:ReagentCondition
+          reagent: Heparin
+          min: 15
+        amount: 0.25

@@ -1,12 +1,13 @@
 using Content.Server.Actions;
+using Content.Server.DoAfter;
 using Content.Server.Popups;
-using Content.Server.PowerCell;
+using Content.Server.Power.Components;
+using Content.Server.Power.EntitySystems;
 using Content.Server.Stunnable;
-using Content.Shared._Wega.Android;
-using Content.Shared.Alert;
-using Content.Shared.Damage.Components;
+using Content.Shared.Android;
+using Content.Shared.Body;
+using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Lock;
@@ -15,36 +16,39 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.PowerCell;
-using Content.Shared.PowerCell.Components;
 using Content.Shared.Standing;
 using Content.Shared.Toggleable;
+using Content.Shared.Verbs;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
-namespace Content.Server._Wega.Android;
+namespace Content.Server.Android;
 
 public sealed partial class AndroidSystem : SharedAndroidSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movementSpeedModifier = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
-    [Dependency] private readonly StunSystem _stun = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedMindSystem _mind = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MovementSpeedModifierSystem _movementSpeedModifier = default!;
+    [Dependency] private BatterySystem _battery = default!;
+    [Dependency] private PowerCellSystem _powerCell = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private ActionsSystem _actions = default!;
+    [Dependency] private LockSystem _lock = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private PointLightSystem _pointLight = default!;
+    [Dependency] private StunSystem _stun = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
 
     public override void Initialize()
     {
@@ -59,6 +63,9 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
 
         SubscribeLocalEvent<AndroidComponent, ToggleActionEvent>(OnToggleLightAction);
         SubscribeLocalEvent<AndroidComponent, ToggleLockActionEvent>(OnToggleLockAction);
+
+        SubscribeLocalEvent<ApcComponent, GetVerbsEvent<AlternativeVerb>>(OnGetAlternativeVerbs);
+        SubscribeLocalEvent<AndroidComponent, AndroidChargeDoAfterEvent>(OnChargeDoAfter);
     }
 
     public override void Update(float frameTime)
@@ -73,6 +80,8 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
                 DoDischargeStun(ent, component);
                 DelayDischargeStun(component);
             }
+
+            UpdatePowerCell(ent, component);
         }
     }
 
@@ -111,21 +120,29 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         EntityUid lightEntity = component.LightEntity.Value;
 
         if (enabled != null)
+        {
+            _appearance.SetData(uid, AndroidVisuals.Light, enabled.Value);
             _pointLight.SetEnabled(lightEntity, enabled.Value);
+            _audio.PlayPvs(component.ToggleLightSound, uid);
+        }
 
         _pointLight.SetRadius(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightRadiuse : Math.Max(component.BasePointLightRadiuse / 3f, 1.3f));
         _pointLight.SetEnergy(lightEntity, _toggle.IsActivated(lightEntity) ? component.BasePointLightEnergy : component.BasePointLightEnergy * 0.75f);
 
-        if (!TryComp<HumanoidAppearanceComponent>(uid, out var appearance))
+        if (!_visualBody.TryGatherMarkingsData(uid, null, out _, out _, out var applied))
             return;
 
-        if (!appearance.MarkingSet.TryGetCategory(MarkingCategories.Special, out var markings) || markings.Count == 0)
-            return;
+        Color ledColor = Color.White;
+        foreach (var organMarkings in applied.Values)
+        {
+            if (organMarkings.TryGetValue(HumanoidVisualLayers.Special, out var markings) && markings.Count > 0)
+            {
+                ledColor = markings[0].MarkingColors.Count > 0 ? markings[0].MarkingColors[0].WithAlpha(255) : Color.White;
+                break;
+            }
+        }
 
-        Color ledColor = markings[0].MarkingColors[0].WithAlpha(255);
         _pointLight.SetColor(lightEntity, ledColor);
-
-        _audio.PlayPvs(component.ToggleLightSound, uid);
     }
 
     #region Battery
@@ -135,14 +152,15 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _powerCell.SetDrawEnabled(uid, args.NewMobState == MobState.Alive);
     }
 
-    private void OnPowerCellChanged(EntityUid uid, AndroidComponent component, PowerCellChangedEvent args)
+    private void OnPowerCellChanged(EntityUid uid, AndroidComponent component, ref PowerCellChangedEvent args)
     {
-        UpdateBatteryAlert((uid, component));
+        UpdatePowerCell(uid, component);
+    }
 
+    private void UpdatePowerCell(EntityUid uid, AndroidComponent component)
+    {
         if (_powerCell.HasDrawCharge(uid))
-        {
             _toggle.TryActivate(uid);
-        }
     }
 
     private void OnPowerCellSlotEmpty(EntityUid uid, AndroidComponent component, ref PowerCellSlotEmptyEvent args)
@@ -164,26 +182,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         _movementSpeedModifier.RefreshMovementSpeedModifiers(uid);
 
         UpdateLight(uid, component);
-    }
-
-    private void UpdateBatteryAlert(Entity<AndroidComponent> ent, PowerCellSlotComponent? slotComponent = null)
-    {
-        if (!_powerCell.TryGetBatteryFromSlot(ent, out var battery, slotComponent))
-        {
-            _alerts.ClearAlert(ent.Owner, ent.Comp.BatteryAlert);
-            _alerts.ShowAlert(ent.Owner, ent.Comp.NoBatteryAlert);
-            return;
-        }
-
-        var chargePercent = (short)MathF.Round(battery.CurrentCharge / battery.MaxCharge * 10f);
-
-        if (chargePercent == 0 && _powerCell.HasDrawCharge(ent, cell: slotComponent))
-        {
-            chargePercent = 1;
-        }
-
-        _alerts.ClearAlert(ent.Owner, ent.Comp.NoBatteryAlert);
-        _alerts.ShowAlert(ent.Owner, ent.Comp.BatteryAlert, chargePercent);
     }
 
     private void DelayDischargeStun(AndroidComponent component)
@@ -219,7 +217,6 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
         }
 
         _audio.PlayPvs(!lockComp.Locked ? lockComp.LockSound : lockComp.UnlockSound, uid);
-        _popup.PopupEntity(Loc.GetString(!lockComp.Locked ? "android-lock-message" : "android-unlock-message"), uid, uid);
 
         if (lockComp.Locked)
             _lock.Unlock(uid, uid, lockComp);
@@ -227,6 +224,71 @@ public sealed partial class AndroidSystem : SharedAndroidSystem
             _lock.Lock(uid, uid, lockComp);
 
         args.Handled = true;
+    }
+
+    private bool DoCharging(EntityUid uid, AndroidComponent component, EntityUid source)
+    {
+        if (!_powerCell.TryGetBatteryFromSlot(uid, out var battery))
+        {
+            _popup.PopupEntity(Loc.GetString("android-charging-no-battery"), uid, uid);
+            return false;
+        }
+
+        if (_battery.GetCharge(source).Charge == 0)
+        {
+            _popup.PopupEntity(Loc.GetString("android-charging-no-charge"), uid, uid);
+            return false;
+        }
+
+        float needCharge = Math.Max(0f, battery.Value.Comp.MaxCharge * component.ChargeLimit - _battery.GetCharge(battery.Value.Owner).Charge);
+        float transferAmount = Math.Min(Math.Min(component.ChargeSpeed / component.ChargeEfficency,
+                                      needCharge / component.ChargeEfficency), _battery.GetCharge(source).Charge);
+
+        _battery.TryUseCharge(source, transferAmount);
+        _battery.ChangeCharge(battery.Value.Owner, transferAmount * component.ChargeEfficency);
+        _audio.PlayPvs(component.ChargeSound, uid);
+
+        if (_battery.GetChargeLevel(battery.Value.Owner) >= component.ChargeLimit)
+        {
+            _popup.PopupEntity(Loc.GetString("android-charging-limit"), uid, uid);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void OnChargeDoAfter(EntityUid uid, AndroidComponent component, AndroidChargeDoAfterEvent args)
+    {
+        args.Repeat = DoCharging(uid, component, GetEntity(args.Source));
+    }
+
+    private void OnGetAlternativeVerbs(EntityUid uid, ApcComponent component, GetVerbsEvent<AlternativeVerb> args)
+    {
+        if (!args.CanAccess || !args.CanComplexInteract)
+            return;
+
+        if (!TryComp<AndroidComponent>(args.User, out var android))
+            return;
+
+        AlternativeVerb verb = new()
+        {
+            Act = () =>
+            {
+                _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, TimeSpan.FromSeconds(1f),
+                                         new AndroidChargeDoAfterEvent(GetNetEntity(uid)), args.User)
+                {
+                    BreakOnMove = true,
+                    BreakOnDamage = true,
+                    MovementThreshold = 0.01f,
+                    NeedHand = true
+                });
+            },
+            Text = Loc.GetString("android-charging-start"),
+            Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/zap.svg.192dpi.png")),
+            Priority = 2
+        };
+
+        args.Verbs.Add(verb);
     }
 
     #endregion Battery

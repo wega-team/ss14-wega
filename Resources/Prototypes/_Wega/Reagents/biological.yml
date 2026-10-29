@@ -11,15 +11,14 @@
     requiredSlipSpeed: 4
     superSlippery: true
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 4
-    Food:
-      effects:
-        - !type:AdjustReagent
-          reagent: UncookedAnimalProteins
-          amount: 0.1
+      - !type:AdjustReagent
+        reagent: UncookedAnimalProteins
+        amount: 0.1
   footstepSound:
     collection: FootstepBlood
     params:
@@ -49,29 +48,6 @@
   color: "#ff4d2a"
   recognizable: true
   physicalDesc: reagent-physical-desc-ferrous
-  metabolisms:
-    Drink:
-      effects:
-      - !type:SatiateThirst
-        factor: 1.0
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Ariral ]
-          inverted: true
-    Poison:
-      effects:
-      - !type:HealthChange
-        conditions:
-        - !type:MetabolizerTypeCondition
-          type: [ Ariral ]
-          inverted: true
-        damage:
-          types:
-            Poison: 0.5
-  footstepSound:
-    collection: FootstepBlood
-    params:
-      volume: 6
 
 - type: reagent
   id: Tyrium
@@ -83,11 +59,12 @@
   recognizable: false
   physicalDesc: reagent-physical-desc-metallic
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 1.0
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:

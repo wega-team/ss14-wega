@@ -10,12 +10,12 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Vibrator.System
 {
-    public sealed class VibratorUsageSystem : EntitySystem
+    public sealed partial class VibratorUsageSystem : EntitySystem
     {
-        [Dependency] private readonly IEntityManager _entManager = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
+        [Dependency] private IEntityManager _entManager = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private SharedDoAfterSystem _doAfter = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
 
         public override void Initialize()
         {
@@ -102,7 +102,7 @@ namespace Content.Server.Vibrator.System
             var invalidGenderMessage = Loc.GetString("interaction-cant-do-this");
             var invalidSpeciesMessage = Loc.GetString("interaction-no-race");
 
-            if (!_entManager.TryGetComponent<HumanoidAppearanceComponent>(target, out var targetAppearance))
+            if (!_entManager.TryGetComponent<HumanoidProfileComponent>(target, out var targetAppearance))
             {
                 if (_entManager.TryGetComponent<ActorComponent>(user, out var userActor))
                     _popupSystem.PopupEntity(noHumanoidMessage, user, userActor.PlayerSession, PopupType.Small);

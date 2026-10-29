@@ -3,7 +3,7 @@ using Content.Shared.Genetics;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class NoBreathingGenSystem : EntitySystem
+public sealed partial class NoBreathingGenSystem : EntitySystem
 {
     public override void Initialize()
     {
@@ -21,6 +21,9 @@ public sealed class NoBreathingGenSystem : EntitySystem
 
     private void OnShutdown(Entity<NoBreathingGenComponent> ent, ref ComponentShutdown args)
     {
+        if (TerminatingOrDeleted(ent))
+            return;
+
         EnsureComp<RespiratorComponent>(ent);
     }
 }

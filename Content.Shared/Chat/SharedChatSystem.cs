@@ -1,13 +1,17 @@
 using System.Collections.Frozen;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Content.Shared.ActionBlocker;
+using Content.Shared.CCVar;
 using Content.Shared.Chat.Prototypes;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Speech;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -31,41 +35,51 @@ public abstract partial class SharedChatSystem : EntitySystem
     public const char EmotesAltPrefix = '*';
     public const char AdminPrefix = ']';
     public const char WhisperPrefix = ',';
+    public const char MindPrefix = '+'; // Corvax-Wega-MindChat
     public const char DefaultChannelKey = 'а'; // Corvax-Wega-Edit
-    // Corvax-TTS-Start: Moved from Server to Shared
+
     public const int VoiceRange = 10; // how far voice goes in world units
     public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
+    public const int MindChatRange = 2000; // Corvax-Wega-MindChat
     public static readonly SoundSpecifier DefaultAnnouncementSound
         = new SoundPathSpecifier("/Audio/Announcements/announce.ogg");
 
     public static readonly ProtoId<RadioChannelPrototype> CommonChannel = "Common";
+    public bool ChatNameLinks { get; private set; }
 
     public static readonly string DefaultChannelPrefix = $"{RadioChannelPrefix}{DefaultChannelKey}";
     public static readonly ProtoId<SpeechVerbPrototype> DefaultSpeechVerb = "Default";
 
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] protected IConfigurationManager Config = default!;
+    [Dependency] private INetManager _net = default!;
+    [Dependency] protected IRobustRandom Random = default!;
+    [Dependency] private ISharedPlayerManager _player = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     /// <summary>
     /// Cache of the keycodes for faster lookup.
     /// </summary>
     private FrozenDictionary<char, RadioChannelPrototype> _keyCodes = default!;
 
+    private FrozenDictionary<char, MindChannelPrototype> _mindKeyCodes = default!; // Corvax-Wega-MindChat
+
     public override void Initialize()
     {
         base.Initialize();
 
-        DebugTools.Assert(_prototypeManager.HasIndex(CommonChannel));
+        DebugTools.Assert(ProtoMan.HasIndex(CommonChannel));
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypeReload);
+        SubscribeAllEvent<ChatLinkClickedRequestEvent>(OnChatMessageLinkClicked);
         CacheRadios();
         CacheEmotes();
+        CacheMindChannels(); // Corvax-Wega-MindChat
+
+        Subs.CVar(Config, CCVars.ChatNameLinks, v => ChatNameLinks = v, true);
     }
 
     protected virtual void OnPrototypeReload(PrototypesReloadedEventArgs obj)
@@ -75,13 +89,40 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         if (obj.WasModified<EmotePrototype>())
             CacheEmotes();
+
+        // Corvax-Wega-MindChat-start
+        if (obj.WasModified<MindChannelPrototype>())
+            CacheMindChannels();
+        // Corvax-Wega-MindChat-end
+    }
+
+    private void OnChatMessageLinkClicked(ChatLinkClickedRequestEvent msg, EntitySessionEventArgs args)
+    {
+        if (!ChatNameLinks)
+            return;
+
+        if (GetEntity(msg.Target) is not { Valid: true } target || !Exists(target))
+            return;
+
+        if (args.SenderSession.AttachedEntity is not { Valid: true } ent)
+            return;
+
+        ClickMessageSender(target, ent);
     }
 
     private void CacheRadios()
     {
-        _keyCodes = _prototypeManager.EnumeratePrototypes<RadioChannelPrototype>()
+        _keyCodes = ProtoMan.EnumeratePrototypes<RadioChannelPrototype>()
             .ToFrozenDictionary(x => x.KeyCode);
     }
+
+    // Corvax-Wega-MindChat-start
+    private void CacheMindChannels()
+    {
+        _mindKeyCodes = ProtoMan.EnumeratePrototypes<MindChannelPrototype>()
+            .ToFrozenDictionary(x => x.KeyCode);
+    }
+    // Corvax-Wega-MindChat-end
 
     /// <summary>
     ///     Attempts to find an applicable <see cref="SpeechVerbPrototype"/> for a speaking entity's message.
@@ -90,13 +131,13 @@ public abstract partial class SharedChatSystem : EntitySystem
     public SpeechVerbPrototype GetSpeechVerb(EntityUid source, string message, SpeechComponent? speech = null)
     {
         if (!Resolve(source, ref speech, false))
-            return _prototypeManager.Index(DefaultSpeechVerb);
+            return ProtoMan.Index(DefaultSpeechVerb);
 
         // check for a suffix-applicable speech verb
         SpeechVerbPrototype? current = null;
         foreach (var (str, id) in speech.SuffixSpeechVerbs)
         {
-            var proto = _prototypeManager.Index(id);
+            var proto = ProtoMan.Index(id);
             if (message.EndsWith(Loc.GetString(str)) && proto.Priority >= (current?.Priority ?? 0))
             {
                 current = proto;
@@ -104,7 +145,7 @@ public abstract partial class SharedChatSystem : EntitySystem
         }
 
         // if no applicable suffix verb return the normal one used by the entity
-        return current ?? _prototypeManager.Index(speech.SpeechVerb);
+        return current ?? ProtoMan.Index(speech.SpeechVerb);
     }
 
     /// <summary>
@@ -146,7 +187,7 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// <param name="channel">The channel that was requested, if any</param>
     /// <param name="quiet">Whether or not to generate an informative pop-up message.</param>
     /// <returns></returns>
-    public bool TryProccessRadioMessage(
+    public bool TryProcessRadioMessage(
         EntityUid source,
         string input,
         out string output,
@@ -162,7 +203,7 @@ public abstract partial class SharedChatSystem : EntitySystem
         if (input.StartsWith(RadioCommonPrefix))
         {
             output = SanitizeMessageCapital(input[1..].TrimStart());
-            channel = _prototypeManager.Index<RadioChannelPrototype>(CommonChannel);
+            channel = ProtoMan.Index(CommonChannel);
             return true;
         }
 
@@ -187,7 +228,7 @@ public abstract partial class SharedChatSystem : EntitySystem
             RaiseLocalEvent(source, ev);
 
             if (ev.Channel != null)
-                _prototypeManager.TryIndex(ev.Channel, out channel);
+                ProtoMan.TryIndex(ev.Channel, out channel);
             return true;
         }
 
@@ -199,6 +240,42 @@ public abstract partial class SharedChatSystem : EntitySystem
 
         return true;
     }
+
+    // Corvax-Wega-MindChat-start
+    public bool TryProcessMindMessage(
+        EntityUid source,
+        string input,
+        out string output,
+        out MindChannelPrototype? channel,
+        bool quiet = false)
+    {
+        output = input.Trim();
+        channel = null;
+
+        if (input.Length == 0 || !input.StartsWith(MindPrefix))
+            return false;
+
+        if (input.Length < 2 || char.IsWhiteSpace(input[1]))
+        {
+            output = SanitizeMessageCapital(input[1..].TrimStart());
+            if (!quiet)
+                _popup.PopupEntity(Loc.GetString("chat-manager-no-mind-key"), source, source);
+            return true;
+        }
+
+        var channelKey = input[1];
+        channelKey = char.ToLower(channelKey);
+        output = SanitizeMessageCapital(input[2..].TrimStart());
+
+        if (!_mindKeyCodes.TryGetValue(channelKey, out channel) && !quiet)
+        {
+            var msg = Loc.GetString("chat-manager-no-such-mind-channel", ("key", channelKey));
+            _popup.PopupEntity(msg, source, source);
+        }
+
+        return true;
+    }
+    // Corvax-Wega-MindChat-end
 
     public string SanitizeMessageCapital(string message)
     {
@@ -274,7 +351,10 @@ public abstract partial class SharedChatSystem : EntitySystem
         return trimmed;
     }
 
-    public static string InjectTagInsideTag(ChatMessage message, string outerTag, string innerTag, string? tagParameter)
+    /// <summary>
+    /// Injects a tag inside the first found instance of a specific <paramref name="outerTag"/> string in a <see cref="ChatMessage"/>.
+    /// </summary>
+    public static string InjectTagInsideTag(ChatMessage message, string outerTag, string innerTag, string? tagValue = null, params (string Key, string Value)[]? tagParameters)
     {
         var rawmsg = message.WrappedMessage;
         var tagStart = rawmsg.IndexOf($"[{outerTag}]");
@@ -283,9 +363,14 @@ public abstract partial class SharedChatSystem : EntitySystem
             return rawmsg;
         tagStart += outerTag.Length + 2;
 
-        string innerTagProcessed = tagParameter != null ? $"[{innerTag}={tagParameter}]" : $"[{innerTag}]";
-
         rawmsg = rawmsg.Insert(tagEnd, $"[/{innerTag}]");
+        if (tagValue != null)
+            innerTag = $"{innerTag}=\"{FormattedMessage.EscapeText(tagValue)}\"";
+
+        var innerTagProcessed = tagParameters == null
+            ? $"[{innerTag}]"
+            : $"[{innerTag} {string.Join(" ", tagParameters.Select(t => $"{FormattedMessage.EscapeText(t.Key)}=\"{FormattedMessage.RemoveMarkupPermissive(t.Value)}\""))}]";
+
         rawmsg = rawmsg.Insert(tagStart, innerTagProcessed);
 
         return rawmsg;
@@ -298,8 +383,67 @@ public abstract partial class SharedChatSystem : EntitySystem
     public static string InjectTagAroundString(ChatMessage message, string targetString, string tag, string? tagParameter)
     {
         var rawmsg = message.WrappedMessage;
+        // TODO: Figure out if there's any way we can cache this, and if not then rewrite this to not use regex.
+#pragma warning disable RA0026
         rawmsg = Regex.Replace(rawmsg, "(?i)(" + targetString + ")(?-i)(?![^[]*])", $"[{tag}={tagParameter}]$1[/{tag}]");
+#pragma warning restore RA0026
         return rawmsg;
+    }
+
+    /// <inheritdoc cref="CanClickMessageSender(EntityUid,EntityUid?)"/>
+    public bool CanClickMessageSender(NetEntity target, EntityUid? ent = null)
+    {
+        return CanClickMessageSender(GetEntity(target), ent);
+    }
+
+    /// <summary>
+    /// Checks whether an entity can click a chat message link.
+    /// </summary>
+    /// <param name="target">Target of the message link</param>
+    /// <param name="ent">Entity that is attempting to click the chat message, defaults to attached player entity if null.</param>
+    /// <returns>True if the entity is able to click the link</returns>
+    public bool CanClickMessageSender(EntityUid target, EntityUid? ent = null)
+    {
+        ent ??= _player.LocalEntity;
+        if (ent == null)
+            return false;
+
+        if (!CanClick(target, ent.Value))
+            return false;
+
+        var ev = new ClickEntityLinkEvent(target, true);
+        RaiseLocalEvent(ent.Value, ref ev);
+        return ev.Handled;
+    }
+
+    private bool CanClick(EntityUid target, EntityUid ent)
+    {
+        if (!ChatNameLinks)
+            return false;
+
+        if (ent == target)
+            return false;
+
+        return true;
+    }
+
+    /// <summary>
+    /// Teleports an entity to a target via <see cref="ClickEntityLinkEvent"/>
+    /// </summary>
+    /// <param name="target">Target we are attempted to teleport to</param>
+    /// <param name="ent">Entity that is attempting to warp</param>
+    /// <returns>True if warp was successful.</returns>
+    public void ClickMessageSender(EntityUid target, EntityUid? ent = null)
+    {
+        ent ??= _player.LocalEntity;
+        if (ent == null)
+            return;
+
+        if (!CanClick(target, ent.Value))
+            return;
+
+        var ev = new ClickEntityLinkEvent(target, false);
+        RaiseLocalEvent(ent.Value, ref ev);
     }
 
     public static string GetStringInsideTag(ChatMessage message, string tag)
@@ -362,6 +506,7 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// <param name="shell"></param>
     /// <param name="player">The player doing the speaking.</param>
     /// <param name="nameOverride">The name to use for the speaking entity. Usually this should just be modified via <see cref="TransformSpeakerNameEvent"/>. If this is set, the event will not get raised.</param>
+    /// <param name="checkRadioPrefix">Whether or not <paramref name="message"/> should be parsed with consideration of radio channel prefix text at start the start.</param>
     /// <param name="ignoreActionBlocker">If set to true, action blocker will not be considered for whether an entity can send this message.</param>
     public virtual void TrySendInGameICMessage(
         EntityUid source,
@@ -404,12 +549,14 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// <param name="playSound">Play the announcement sound.</param>
     /// <param name="announcementSound">Sound to play.</param>
     /// <param name="colorOverride">Optional color for the announcement message.</param>
+    /// <param name="signature">Optional signature shown below the announcement message.</param>
     public virtual void DispatchGlobalAnnouncement(
         string message,
         string? sender = null,
         bool playSound = true,
         SoundSpecifier? announcementSound = null,
-        Color? colorOverride = null
+        Color? colorOverride = null,
+        string? signature = null
         )
     { }
 
@@ -423,6 +570,7 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// <param name="playSound">Play the announcement sound.</param>
     /// <param name="announcementSound">Sound to play.</param>
     /// <param name="colorOverride">Optional color for the announcement message.</param>
+    /// <param name="signature">Optional signature shown below the announcement message.</param>
     public virtual void DispatchFilteredAnnouncement(
         Filter filter,
         string message,
@@ -430,7 +578,8 @@ public abstract partial class SharedChatSystem : EntitySystem
         string? sender = null,
         bool playSound = true,
         SoundSpecifier? announcementSound = null,
-        Color? colorOverride = null)
+        Color? colorOverride = null,
+        string? signature = null)
     { }
 
     /// <summary>
@@ -442,14 +591,32 @@ public abstract partial class SharedChatSystem : EntitySystem
     /// <param name="playDefaultSound">Play the announcement sound.</param>
     /// <param name="announcementSound">Sound to play.</param>
     /// <param name="colorOverride">Optional color for the announcement message.</param>
+    /// <param name="signature">Optional signature shown below the announcement message.</param>
     public virtual void DispatchStationAnnouncement(
         EntityUid source,
         string message,
         string? sender = null,
         bool playDefaultSound = true,
         SoundSpecifier? announcementSound = null,
+        Color? colorOverride = null,
+        string? signature = null)
+    { }
+
+    // Corvax-Wega-MindChat-start
+    public virtual void SendMindMessage(
+        EntityUid source,
+        string message,
+        MindChannelPrototype channel,
+        bool ignoreActionBlocker = false)
+    { }
+    // Corvax-Wega-MindChat-end
+
+    // Corvax-Wega-MindChat-start
+    public virtual void SendMessageToOne(
+        EntityUid target, string message,
         Color? colorOverride = null)
     { }
+    // Corvax-Wega-MindChat-end
 }
 
 /// <summary>

@@ -2,129 +2,379 @@ using System.Linq;
 using Content.Server.Actions;
 using Content.Server.Administration.Logs;
 using Content.Server.Antag;
-using Content.Server.Blood.Cult;
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
+using Content.Server.Bed.Cryostorage;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Mind;
+using Content.Server.Objectives;
+using Content.Server.Objectives.Components;
+using Content.Server.Objectives.Systems;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
+using Content.Shared.Achievements;
+using Content.Shared.Antag;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Body;
 using Content.Shared.Body.Components;
-using Content.Shared.Clumsy;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Database;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.GameTicking.Rules;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Metabolism;
+using Content.Shared.Mind;
+using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.NPC.Systems;
+using Content.Shared.Popups;
 using Content.Shared.Zombies;
+using Content.Shared.Roles.Jobs;
+using Content.Shared.Surgery.Components;
+using Content.Shared.Mind.Components;
+using Content.Shared.RoundEnd;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
+using Robust.Shared.Random;
 
 namespace Content.Server.GameTicking.Rules
 {
-    public sealed class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
+    public sealed partial class BloodCultRuleSystem : GameRuleSystem<BloodCultRuleComponent>
     {
-        [Dependency] private readonly ActionsSystem _action = default!;
-        [Dependency] private readonly AntagSelectionSystem _antag = default!;
-        [Dependency] private readonly BodySystem _body = default!;
-        [Dependency] private readonly BloodCultSystem _cult = default!;
-        [Dependency] private readonly IEntityManager _entityManager = default!;
-        [Dependency] private readonly ISharedPlayerManager _player = default!;
-        [Dependency] private readonly IAdminLogManager _adminLogManager = default!;
-        [Dependency] private readonly MetabolizerSystem _metabolism = default!;
-        [Dependency] private readonly MindSystem _mind = default!;
-        [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
-        [Dependency] private readonly RoleSystem _role = default!;
-        [Dependency] private readonly SharedHandsSystem _hands = default!;
-        [Dependency] private readonly RoundEndSystem _roundEndSystem = default!;
+        [Dependency] private SharedAchievementsSystem _achievement = default!;
+        [Dependency] private ActionsSystem _action = default!;
+        [Dependency] private ServerAntagSelectionSystem _antag = default!;
+        [Dependency] private IEntityManager _entityManager = default!;
+        [Dependency] private ISharedPlayerManager _player = default!;
+        [Dependency] private IAdminLogManager _adminLogManager = default!;
+        [Dependency] private MetabolizerSystem _metabolism = default!;
+        [Dependency] private MindSystem _mind = default!;
+        [Dependency] private MindLinkSystem _mindLink = default!;
+        [Dependency] private NpcFactionSystem _npcFaction = default!;
+        [Dependency] private RoleSystem _role = default!;
+        [Dependency] private SharedHandsSystem _hands = default!;
+        [Dependency] private RoundEndSystem _roundEndSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedPopupSystem _popup = default!;
+        [Dependency] private SharedVisualBodySystem _visualBody = default!;
+        [Dependency] private ObjectivesSystem _objectives = default!;
+        [Dependency] private TargetObjectiveSystem _target = default!;
+        [Dependency] private MetaDataSystem _meta = default!;
+        [Dependency] private SharedJobSystem _job = default!;
+        [Dependency] private StatusEffectsSystem _effects = default!;
 
-        public readonly ProtoId<NpcFactionPrototype> BloodCultNpcFaction = "BloodCult";
+        private static readonly ProtoId<NpcFactionPrototype> Faction = "BloodCult";
+        private static readonly EntProtoId Clumsy = "StatusEffectClumsyClown";
 
         public override void Initialize()
         {
             base.Initialize();
 
-            SubscribeLocalEvent<BloodCultRuleComponent, ComponentStartup>(OnRuleStartup);
             SubscribeLocalEvent<BloodCultRuleComponent, AfterAntagEntitySelectedEvent>(OnCultistSelected);
 
-            SubscribeLocalEvent<GodCalledEvent>(OnGodCalled);
-            SubscribeLocalEvent<RitualConductedEvent>(OnRitualConducted);
+            SubscribeLocalEvent<BloodCultistComponent, ComponentStartup>((_, _, _) => CheckStage());
+            SubscribeLocalEvent<BloodCultConstructComponent, ComponentStartup>((_, _, _) => CheckStage());
+            SubscribeLocalEvent<BloodCultObjectComponent, ComponentShutdown>(OnBloodCultObjectShutdown);
+            SubscribeLocalEvent<BloodCultObjectComponent, CryostorageEnterEvent>(OnCryostorageEnter);
+
+            SubscribeLocalEvent<BloodGodCalledEvent>(OnGodCalled);
+            SubscribeLocalEvent<BloodRitualConductedEvent>(OnRitualConducted);
 
             SubscribeLocalEvent<AutoCultistComponent, ComponentStartup>(OnAutoCultistAdded);
             SubscribeLocalEvent<BloodCultistComponent, ComponentRemove>(OnComponentRemove);
             SubscribeLocalEvent<BloodCultistComponent, MobStateChangedEvent>(OnMobStateChanged);
-            SubscribeLocalEvent<BloodCultistComponent, EntityZombifiedEvent>(OnOperativeZombified);
+            SubscribeLocalEvent<BloodCultistComponent, EntityZombifiedEvent>(OnCultistZombified);
         }
 
-        private void OnRuleStartup(EntityUid uid, BloodCultRuleComponent component, ComponentStartup args)
+        protected override void Started(EntityUid uid, BloodCultRuleComponent component,
+            GameRuleComponent gameRule, GameRuleStartedEvent args)
         {
-            List<string> gods = new List<string> { "Narsie", "Reaper", "Kharin" };
-            component.SelectedGod = gods[new Random().Next(gods.Count)];
-            Timer.Spawn(TimeSpan.FromMinutes(1), _cult.SelectRandomTargets);
+            base.Started(uid, component, gameRule, args);
+            component.SelectedGod = (BloodCultGod)_random.Next(0, 3);
         }
+
+        private void OnCryostorageEnter(EntityUid uid, BloodCultObjectComponent component, CryostorageEnterEvent args)
+        {
+            var cult = GetActiveRule();
+            if (cult == null)
+                return;
+
+            if (!cult.SelectedTargets.Contains(uid))
+                return;
+
+            var newTarget = FindNewRandomTarget(cult, uid);
+            if (newTarget == null)
+                return;
+
+            ReplaceTargetForAllCultists(uid, newTarget.Value);
+
+            cult.SelectedTargets.Remove(uid);
+            cult.SelectedTargets.Add(newTarget.Value);
+
+            RemComp<BloodCultObjectComponent>(uid);
+            EnsureComp<BloodCultObjectComponent>(newTarget.Value);
+        }
+
+        #region Cultist Processing
 
         private void OnCultistSelected(Entity<BloodCultRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
         {
             var ent = args.EntityUid;
 
+            if (mindId.Comp.SelectedTargets.Count == 0)
+                SelectRandomTargets(mindId.Comp);
+
             MakeCultist(ent);
             _antag.SendBriefing(ent, MakeBriefing(ent), Color.Red, null);
         }
 
+        private void SelectRandomTargets(BloodCultRuleComponent cult)
+        {
+            cult.SelectedTargets.Clear();
+
+            var mindShieldCandidates = new List<EntityUid>();
+            var enumerator = EntityQueryEnumerator<HumanoidProfileComponent, MindShieldStatusComponent>();
+            while (enumerator.MoveNext(out var uid, out _, out var status))
+            {
+                if (!status.IsMindshielded)
+                    continue;
+
+                if (HasComp<SyntheticOperatedComponent>(uid))
+                    continue;
+
+                if (HasComp<BloodCultistComponent>(uid))
+                    continue;
+
+                mindShieldCandidates.Add(uid);
+            }
+
+            if (mindShieldCandidates.Count >= 2)
+            {
+                var selectedIndices = new HashSet<int>();
+                while (selectedIndices.Count < 2)
+                {
+                    var index = _random.Next(0, mindShieldCandidates.Count);
+                    selectedIndices.Add(index);
+                }
+
+                foreach (var index in selectedIndices)
+                {
+                    var target = mindShieldCandidates[index];
+                    cult.SelectedTargets.Add(target);
+                    EnsureComp<BloodCultObjectComponent>(target);
+                }
+                return;
+            }
+
+            foreach (var target in mindShieldCandidates)
+            {
+                cult.SelectedTargets.Add(target);
+                EnsureComp<BloodCultObjectComponent>(target);
+            }
+
+            var globalCandidates = new List<EntityUid>();
+            var globalEnumerator = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
+            while (globalEnumerator.MoveNext(out var uid, out _, out _))
+            {
+                if (cult.SelectedTargets.Contains(uid) || HasComp<BloodCultistComponent>(uid))
+                    continue;
+
+                globalCandidates.Add(uid);
+            }
+
+            while (cult.SelectedTargets.Count < 2 && globalCandidates.Count > 0)
+            {
+                var index = _random.Next(0, globalCandidates.Count);
+                var target = globalCandidates[index];
+                cult.SelectedTargets.Add(target);
+                EnsureComp<BloodCultObjectComponent>(target);
+                globalCandidates.RemoveAt(index);
+            }
+        }
+
+        private EntityUid? FindNewRandomTarget(BloodCultRuleComponent cult, EntityUid excludedTarget)
+        {
+            var mindShieldCandidates = new List<EntityUid>();
+
+            var mindShieldQuery = EntityQueryEnumerator<
+                HumanoidProfileComponent,
+                ActorComponent,
+                MindShieldStatusComponent>();
+
+            while (mindShieldQuery.MoveNext(out var uid, out _, out _, out var status))
+            {
+                if (!status.IsMindshielded
+                    || uid == excludedTarget
+                    || cult.SelectedTargets.Contains(uid)
+                    || HasComp<BloodCultistComponent>(uid)
+                    || HasComp<BloodCultObjectComponent>(uid))
+                    continue;
+
+                mindShieldCandidates.Add(uid);
+            }
+
+            if (mindShieldCandidates.Count > 0)
+            {
+                var index = _random.Next(0, mindShieldCandidates.Count);
+                return mindShieldCandidates[index];
+            }
+
+            var globalCandidates = new List<EntityUid>();
+
+            var globalQuery = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
+
+            while (globalQuery.MoveNext(out var uid, out _, out _))
+            {
+                if (uid == excludedTarget
+                    || cult.SelectedTargets.Contains(uid)
+                    || HasComp<BloodCultistComponent>(uid)
+                    || HasComp<BloodCultObjectComponent>(uid))
+                    continue;
+
+                globalCandidates.Add(uid);
+            }
+
+            if (globalCandidates.Count == 0)
+                return null;
+
+            var globalIndex = _random.Next(0, globalCandidates.Count);
+            return globalCandidates[globalIndex];
+        }
+
+        private void ReplaceTargetForAllCultists(EntityUid oldTarget, EntityUid newTarget)
+        {
+            var replacedObjectives = new List<EntityUid>();
+            var query = EntityQueryEnumerator<TargetObjectiveComponent, BloodCultTargetObjectiveComponent>();
+            while (query.MoveNext(out var objectiveUid, out var targetComp, out _))
+            {
+                if (targetComp.Target == oldTarget)
+                {
+                    replacedObjectives.Add(objectiveUid);
+                }
+            }
+
+            foreach (var objectiveUid in replacedObjectives)
+            {
+                _target.SetTarget(objectiveUid, newTarget);
+                var jobName = Loc.GetString("generic-unknown-title");
+
+                if (TryComp<MindContainerComponent>(newTarget, out var mindContainer)
+                    && mindContainer.Mind is { } targetMindId)
+                {
+                    jobName = _job.MindTryGetJobName(targetMindId);
+                }
+
+                _meta.SetEntityName(objectiveUid, Loc.GetString(
+                    "objective-condition-blood-ritual-person-title",
+                    ("targetName", Name(newTarget)),
+                    ("job", jobName)));
+            }
+        }
+
         private void MakeCultist(EntityUid ent)
         {
+            var cultist = EnsureComp<BloodCultistComponent>(ent);
             var actionPrototypes = new[]
             {
-                BloodCultistComponent.CultObjective,
-                BloodCultistComponent.CultCommunication,
                 BloodCultistComponent.BloodMagic,
                 BloodCultistComponent.RecallBloodDagger
             };
 
             foreach (var actionPrototype in actionPrototypes)
-            {
                 _action.AddAction(ent, actionPrototype);
-            }
 
             var componentsToRemove = new[]
             {
-                typeof(PacifiedComponent),
-                typeof(ClumsyComponent)
+                typeof(PacifiedComponent)
             };
 
             foreach (var compType in componentsToRemove)
-            {
-                if (HasComp(ent, compType))
-                    RemComp(ent, compType);
-            }
+                RemComp(ent, compType);
+
+            _effects.TryRemoveStatusEffect(ent, Clumsy);
+            _mindLink.AddChannel(ent, cultist.CultMindChannel);
 
             HandleMetabolism(ent);
+            CreateObjectivesForCultist(ent);
+        }
+
+        private void CreateObjectivesForCultist(EntityUid cultist)
+        {
+            var cult = GetActiveRule();
+            if (cult == null || cult.SelectedTargets.Count == 0)
+                return;
+
+            if (!_mind.TryGetMind(cultist, out var mindId, out var mind))
+                return;
+
+            foreach (var target in cult.SelectedTargets)
+            {
+                if (!Exists(target))
+                    continue;
+
+                var objective = _objectives.TryCreateObjective(mindId, mind, cult.ObjectivePrototype);
+                if (objective == null)
+                    continue;
+
+                _target.SetTarget(objective.Value, target);
+                var jobName = Loc.GetString("generic-unknown-title");
+
+                if (TryComp<MindContainerComponent>(target, out var mindContainer)
+                    && mindContainer.Mind is { } targetMindId)
+                {
+                    jobName = _job.MindTryGetJobName(targetMindId);
+                }
+
+                _meta.SetEntityName(objective.Value, Loc.GetString(
+                    "objective-condition-blood-ritual-person-title",
+                    ("targetName", Name(target)),
+                    ("job", jobName)));
+
+                _mind.AddObjective(mindId, mind, objective.Value);
+            }
+        }
+
+        private void HandleMetabolism(EntityUid cultist)
+        {
+            if (TryComp<BodyComponent>(cultist, out var bodyComponent) && bodyComponent.Organs != null)
+            {
+                foreach (var organ in bodyComponent.Organs.ContainedEntities)
+                {
+                    if (TryComp<MetabolizerComponent>(organ, out var metabolizer))
+                    {
+                        if (TryComp<StomachComponent>(organ, out _))
+                            _metabolism.ClearMetabolizerTypes(metabolizer);
+
+                        _metabolism.TryAddMetabolizerType(organ, "BloodCultist");
+                    }
+                }
+            }
         }
 
         private string MakeBriefing(EntityUid ent)
         {
-            string selectedGod = Loc.GetString("current-god-narsie");
+            string selectedGod = "";
             var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
+
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
                 selectedGod = cult.SelectedGod switch
                 {
-                    "Narsie" => Loc.GetString("current-god-narsie"),
-                    "Reaper" => Loc.GetString("current-god-reaper"),
-                    "Kharin" => Loc.GetString("current-god-kharin"),
+                    BloodCultGod.NarSi => Loc.GetString("current-god-narsie"),
+                    BloodCultGod.Reaper => Loc.GetString("current-god-reaper"),
+                    BloodCultGod.Kharin => Loc.GetString("current-god-kharin"),
                     _ => Loc.GetString("current-god-narsie")
                 };
                 break;
             }
 
-            var isHuman = HasComp<HumanoidAppearanceComponent>(ent);
+            var isHuman = HasComp<HumanoidProfileComponent>(ent);
             var briefing = isHuman
                 ? Loc.GetString("blood-cult-role-greeting-human", ("god", selectedGod))
                 : Loc.GetString("blood-cult-role-greeting-animal", ("god", selectedGod));
@@ -140,7 +390,7 @@ namespace Content.Server.GameTicking.Rules
                 return;
             }
 
-            _npcFaction.AddFaction(uid, BloodCultNpcFaction);
+            _npcFaction.AddFaction(uid, Faction);
             var culsistComp = EnsureComp<BloodCultistComponent>(uid);
             _adminLogManager.Add(LogType.Mind, LogImpact.Medium, $"{ToPrettyString(uid)} converted into a Blood Cult");
             if (mindId == default || !_role.MindHasRole<BloodCultistComponent>(mindId))
@@ -151,13 +401,13 @@ namespace Content.Server.GameTicking.Rules
 
             MakeCultist(uid);
             var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
-                string selectedDagger = cult.SelectedGod switch
+                EntProtoId selectedDagger = cult.SelectedGod switch
                 {
-                    "Narsie" => "WeaponBloodDagger",
-                    "Reaper" => "WeaponDeathDagger",
-                    "Kharin" => "WeaponHellDagger",
+                    BloodCultGod.NarSi => "WeaponBloodDagger",
+                    BloodCultGod.Reaper => "WeaponDeathDagger",
+                    BloodCultGod.Kharin => "WeaponHellDagger",
                     _ => "WeaponBloodDagger"
                 };
 
@@ -168,109 +418,258 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private void HandleMetabolism(EntityUid cultist)
-        {
-            if (TryComp<BodyComponent>(cultist, out var bodyComponent))
-            {
-                foreach (var organ in _body.GetBodyOrgans(cultist, bodyComponent))
-                {
-                    if (TryComp<MetabolizerComponent>(organ.Id, out var metabolizer))
-                    {
-                        if (TryComp<StomachComponent>(organ.Id, out _))
-                            _metabolism.ClearMetabolizerTypes(metabolizer);
+        #endregion
 
-                        _metabolism.TryAddMetabolizerType(metabolizer, "Cultist");
+        #region Stages
+
+        private void OnBloodCultObjectShutdown(EntityUid uid, BloodCultObjectComponent component, ComponentShutdown args)
+        {
+            var cult = GetActiveRule();
+            if (cult == null)
+                return;
+
+            if (!cult.SelectedTargets.Contains(uid))
+            {
+                CheckStage();
+                if (cult.SelectedTargets.Count == 0)
+                    RaiseLocalEvent(new BloodRitualConductedEvent());
+                return;
+            }
+
+            var newTarget = FindNewRandomTarget(cult, uid);
+            if (newTarget == null)
+                return;
+
+            ReplaceTargetForAllCultists(uid, newTarget.Value);
+
+            cult.SelectedTargets.Remove(uid);
+            cult.SelectedTargets.Add(newTarget.Value);
+
+            EnsureComp<BloodCultObjectComponent>(newTarget.Value);
+        }
+
+        private void CheckStage()
+        {
+            var cult = GetActiveRule();
+            if (cult == null)
+                return;
+
+            var totalCultEntities = GetCultEntities();
+            var playerCount = GetPlayerCount();
+
+            // Second
+            if (playerCount >= 100 && totalCultEntities >= playerCount * 0.1f || playerCount < 100 && totalCultEntities >= playerCount * 0.2f || cult.RitualStage)
+            {
+                foreach (var cultist in GetAllCultists())
+                {
+                    if (!HasComp<BloodCultistEyesComponent>(cultist))
+                    {
+                        UpdateCultistEyes(cultist);
+                        AddComp<BloodCultistEyesComponent>(cultist);
                     }
+                }
+
+                if (!cult.FirstTriggered)
+                {
+                    var actorFilter = Filter.Empty();
+                    var actorQuery = EntityQueryEnumerator<ActorComponent, BloodCultistComponent>();
+                    while (actorQuery.MoveNext(out var actorUid, out var actor, out _))
+                    {
+                        actorFilter.AddPlayer(actor.PlayerSession);
+                        _popup.PopupEntity(Loc.GetString("blood-cult-first-warning"), actorUid, actorUid, PopupType.SmallCaution);
+                    }
+
+                    _audio.PlayGlobal(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_eyes.ogg"), actorFilter, true);
+                    cult.FirstTriggered = true;
+                }
+            }
+
+            // Third
+            if (playerCount >= 100 && totalCultEntities >= playerCount * 0.2f || playerCount < 100 && totalCultEntities >= playerCount * 0.3f || cult.RitualStage)
+            {
+                foreach (var cultist in GetAllCultists())
+                {
+                    EnsureComp<BloodPentagramDisplayComponent>(cultist);
+                }
+
+                if (!cult.SecondTriggered)
+                {
+                    var actorFilter = Filter.Empty();
+                    var actorQuery = EntityQueryEnumerator<ActorComponent, BloodCultistComponent>();
+                    while (actorQuery.MoveNext(out var actorUid, out var actor, out _))
+                    {
+                        actorFilter.AddPlayer(actor.PlayerSession);
+                        _popup.PopupEntity(Loc.GetString("blood-cult-second-warning"), actorUid, actorUid, PopupType.SmallCaution);
+                    }
+
+                    _audio.PlayGlobal(new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_halos.ogg"), actorFilter, true);
+                    cult.SecondTriggered = true;
                 }
             }
         }
 
-        protected override void AppendRoundEndText(EntityUid uid,
-            BloodCultRuleComponent component,
-            GameRuleComponent gameRule,
+        private void UpdateCultistEyes(EntityUid cultist)
+        {
+            if (_visualBody.TryGatherMarkingsData(cultist, null, out var profiles, out _, out _))
+            {
+                var cultistEyeColor = Color.FromHex("#E22218FF");
+
+                var updatedProfiles = profiles.ToDictionary(
+                    pair => pair.Key,
+                    pair => pair.Value with { EyeColor = cultistEyeColor });
+
+                _visualBody.ApplyProfiles(cultist, updatedProfiles);
+            }
+        }
+
+        private int GetCultEntities()
+        {
+            var totalCultists = GetAllCultists().Count;
+            var totalConstructs = GetAllConstructs().Count;
+            return totalCultists + totalConstructs;
+        }
+
+        private int GetPlayerCount()
+        {
+            int count = 0;
+            var players = AllEntityQuery<HumanoidProfileComponent, ActorComponent, TransformComponent>();
+            while (players.MoveNext(out _, out _, out _, out _))
+                count++;
+
+            return count;
+        }
+
+        private List<EntityUid> GetAllCultists()
+        {
+            var cultists = new List<EntityUid>();
+            var enumerator = EntityQueryEnumerator<BloodCultistComponent>();
+            while (enumerator.MoveNext(out var uid, out _))
+                cultists.Add(uid);
+
+            return cultists;
+        }
+
+        private List<EntityUid> GetAllConstructs()
+        {
+            var constructs = new List<EntityUid>();
+            var enumerator = EntityQueryEnumerator<BloodCultConstructComponent>();
+            while (enumerator.MoveNext(out var uid, out _))
+                constructs.Add(uid);
+
+            return constructs;
+        }
+
+        #endregion
+
+        protected override void AppendRoundEndText(Entity<BloodCultRuleComponent> rule,
             ref RoundEndTextAppendEvent args)
         {
-            var winText = Loc.GetString($"blood-cult-{component.WinType.ToString().ToLower()}");
+            string selectedGod = "";
+            var query = QueryActiveRules();
+
+            var winText = Loc.GetString($"blood-cult-{rule.Comp.WinType.ToString().ToLower()}");
             args.AddLine(winText);
 
-            foreach (var cond in component.BloodCultWinCondition)
+            foreach (var cond in rule.Comp.BloodCultWinCondition)
             {
                 var text = Loc.GetString($"blood-cult-cond-{cond.ToString().ToLower()}");
                 args.AddLine(text);
             }
 
-            args.AddLine(Loc.GetString("blood-cultist-list-start"));
+            while (query.MoveNext(out _, out var cult, out _, out _))
+            {
+                selectedGod = cult.SelectedGod switch
+                {
+                    BloodCultGod.NarSi => Loc.GetString("current-god-narsie"),
+                    BloodCultGod.Reaper => Loc.GetString("current-god-reaper-list"),
+                    BloodCultGod.Kharin => Loc.GetString("current-god-kharin-list"),
+                    _ => Loc.GetString("current-god-narsie")
+                };
+                break;
+            }
 
-            var antags = _antag.GetAntagIdentifiers(uid);
+            args.AddLine(Loc.GetString("blood-cultist-list-start", ("god", selectedGod)));
+
+            var antags = _antag.GetAntagIdentifiers(rule.Owner);
             foreach (var (_, sessionData, name) in antags)
             {
                 args.AddLine(Loc.GetString("blood-cultist-list-name-user", ("name", name), ("user", sessionData.UserName)));
             }
         }
 
-        private void OnGodCalled(GodCalledEvent ev)
+        public BloodCultRuleComponent? GetActiveRule()
         {
             var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
+            while (query.MoveNext(out _, out var cult, out _, out _))
             {
-                if (cult.BloodCultWinCondition.Contains(BloodCultWinType.RitualConducted))
-                    cult.BloodCultWinCondition.Remove(BloodCultWinType.RitualConducted);
+                return cult;
+            }
+            return null;
+        }
 
-                cult.WinType = BloodCultWinType.GodCalled;
+        private void OnGodCalled(BloodGodCalledEvent ev)
+        {
+            var cult = GetActiveRule();
+            if (cult == null)
+                return;
 
-                if (!cult.BloodCultWinCondition.Contains(BloodCultWinType.GodCalled))
-                {
-                    cult.BloodCultWinCondition.Add(BloodCultWinType.GodCalled);
-                    _roundEndSystem.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, TimeSpan.FromMinutes(1f));
-                }
+            if (cult.BloodCultWinCondition.Contains(BloodCultWinType.RitualConducted))
+                cult.BloodCultWinCondition.Remove(BloodCultWinType.RitualConducted);
+
+            cult.WinType = BloodCultWinType.GodCalled;
+
+            if (!cult.BloodCultWinCondition.Contains(BloodCultWinType.GodCalled))
+            {
+                cult.BloodCultWinCondition.Add(BloodCultWinType.GodCalled);
+                _roundEndSystem.DoRoundEndBehavior(RoundEndBehavior.ShuttleCall, TimeSpan.FromMinutes(1f));
+            }
+
+            var cultists = GetAllCultists();
+            cultists.AddRange(GetAllConstructs());
+            foreach (var cultist in cultists)
+            {
+                // Yes, you have reached this stage, and it was achieved with your help.
+                _achievement.QueueAchievement(cultist, AchievementsEnum.BloodCult);
             }
         }
 
-        private void OnRitualConducted(RitualConductedEvent ev)
+        private void OnRitualConducted(BloodRitualConductedEvent ev)
         {
-            var query = QueryActiveRules();
-            while (query.MoveNext(out _, out _, out var cult, out _))
-            {
-                cult.WinType = BloodCultWinType.RitualConducted;
+            var cult = GetActiveRule();
+            if (cult == null)
+                return;
 
-                if (!cult.BloodCultWinCondition.Contains(BloodCultWinType.RitualConducted))
-                    cult.BloodCultWinCondition.Add(BloodCultWinType.RitualConducted);
-            }
+            cult.RitualStage = true;
+            cult.WinType = BloodCultWinType.RitualConducted;
+
+            CheckStage();
+
+            if (!cult.BloodCultWinCondition.Contains(BloodCultWinType.RitualConducted))
+                cult.BloodCultWinCondition.Add(BloodCultWinType.RitualConducted);
         }
 
         private void OnMobStateChanged(EntityUid uid, BloodCultistComponent component, MobStateChangedEvent ev)
         {
             if (ev.NewMobState == MobState.Dead)
-            {
-                var query = QueryActiveRules();
-                while (query.MoveNext(out var ruleUid, out _, out var cult, out _))
-                {
-                    CheckCultLose(ruleUid, cult);
-                }
-            }
+                CheckCultLose(GetActiveRule());
         }
 
         private void OnComponentRemove(EntityUid uid, BloodCultistComponent component, ComponentRemove args)
         {
-            var query = QueryActiveRules();
-            while (query.MoveNext(out var ruleUid, out _, out var cult, out _))
-            {
-                CheckCultLose(ruleUid, cult);
-            }
+            CheckCultLose(GetActiveRule());
         }
 
-        private void OnOperativeZombified(EntityUid uid, BloodCultistComponent component, EntityZombifiedEvent args)
+        private void OnCultistZombified(EntityUid uid, BloodCultistComponent component, EntityZombifiedEvent args)
         {
-            var query = QueryActiveRules();
-            while (query.MoveNext(out var ruleUid, out _, out var cult, out _))
-            {
-                CheckCultLose(ruleUid, cult);
-            }
+            CheckCultLose(GetActiveRule());
         }
 
-        private void CheckCultLose(EntityUid uid, BloodCultRuleComponent cult)
+        private void CheckCultLose(BloodCultRuleComponent? cult)
         {
-            var hasLivingCultists = EntityManager.EntityQuery<BloodCultistComponent>().Any();
+            if (cult == null)
+                return;
+
+            var hasLivingCultists = EntityQuery<BloodCultistComponent>().Any();
             if (!hasLivingCultists && !cult.BloodCultWinCondition.Contains(BloodCultWinType.GodCalled)
                 && !cult.BloodCultWinCondition.Contains(BloodCultWinType.RitualConducted))
             {

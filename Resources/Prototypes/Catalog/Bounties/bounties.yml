@@ -82,24 +82,8 @@
       - Carp
 
 - type: cargoBounty
-  id: BountyClownCostume
-  reward: 3250 # Corvax-Wega
-  description: bounty-description-clown-costume
-  entries:
-  - name: bounty-item-clown-mask
-    amount: 1
-    whitelist:
-      tags:
-      - ClownMask
-  - name: bounty-item-clown-shoes
-    amount: 1
-    whitelist:
-      tags:
-      - ClownShoes
-
-- type: cargoBounty
   id: BountyCorn
-  reward: 10000
+  reward: 3250 # Corvax-Wega
   description: bounty-description-corn
   entries:
   - name: bounty-item-corn
@@ -110,7 +94,7 @@
 
 - type: cargoBounty
   id: BountyCrayon
-  reward: 4000
+  reward: 1500
   description: bounty-description-crayon
   entries:
   - name: bounty-item-crayon
@@ -179,7 +163,7 @@
 
 - type: cargoBounty
   id: BountyHandcuffs
-  reward: 1750 # Corvax-Wega
+  reward: 1000
   description: bounty-description-handcuffs
   idPrefix: CC
   entries:
@@ -208,10 +192,8 @@
   - name: bounty-item-knife
     amount: 5
     whitelist:
-      components:
-      - Sharp
       tags:
-      - UtilityKnife # required because retracted utility knives are not Sharp
+      - Knife
 
 - type: cargoBounty
   id: BountyLemon
@@ -238,7 +220,7 @@
 
 - type: cargoBounty
   id: BountyLung
-  reward: 4000 # Corvax-Wega
+  reward: 2000
   description: bounty-description-lung
   entries:
   - name: bounty-item-lung
@@ -261,7 +243,7 @@
 
 - type: cargoBounty
   id: BountyMouse
-  reward: 6300 # Corvax-Wega
+  reward: 2400
   description: bounty-description-mouse
   idPrefix: SS13-
   entries:
@@ -273,11 +255,11 @@
 
 - type: cargoBounty
   id: BountyPancake
-  reward: 10000
+  reward: 5000
   description: bounty-description-pancake
   entries:
   - name: bounty-item-pancake
-    amount: 13
+    amount: 6
     whitelist:
       tags:
       - Pancake
@@ -470,7 +452,7 @@
 
 - type: cargoBounty
   id: BountyOrgans
-  reward: 3000 # Corvax-Wega
+  reward: 2000
   description: bounty-description-organs
   idPrefix: UNTH
   entries:
@@ -530,7 +512,7 @@
     amount: 6
     whitelist:
       components:
-      - HitscanBatteryAmmoProvider
+      - BatteryAmmoProvider
     blacklist:
       components:
       - PowerCell
@@ -548,7 +530,7 @@
       - Meat
     blacklist:
       components:
-      - SliceableFood
+      - ToolRefinable
 
 - type: cargoBounty
   id: BountyFruit
@@ -596,17 +578,6 @@
     whitelist:
       tags:
       - ChiliBowl
-
-- type: cargoBounty
-  id: BountyRollerskates
-  reward: 4000 # Corvax-Wega
-  description: bounty-description-rollerskates
-  entries:
-  - name: bounty-item-rollerskates
-    amount: 2
-    whitelist:
-      components:
-      - Skates
 
 - type: cargoBounty
   id: BountyBedsheet
@@ -709,7 +680,7 @@
 
 - type: cargoBounty
   id: BountyWine
-  reward: 3000
+  reward: 1500
   description: bounty-description-wine
   entries:
   - name: bounty-item-wine

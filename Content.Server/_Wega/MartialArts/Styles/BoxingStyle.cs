@@ -1,8 +1,6 @@
-using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Martial.Arts;
 using Content.Shared.Martial.Arts.Components;
-using Robust.Shared.Map;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 
@@ -11,9 +9,8 @@ namespace Content.Server.Martial.Arts;
 /// Boxe
 public sealed partial class MartialArtsSystem
 {
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private SharedPhysicsSystem _physics = default!;
+    [Dependency] private SharedMapSystem _map = default!;
 
     private void InitializeBoxing()
     {
@@ -55,7 +52,7 @@ public sealed partial class MartialArtsSystem
         var force = 1500f;
         if (TryComp(ent, out PhysicsComponent? physics))
         {
-            if (_mapMan.TryFindGridAt(entPosition, out _, out var grid) && grid != null)
+            if (_map.TryFindGridAt(entPosition, out _, out var grid) && grid != null)
             {
                 if (_map.TryGetTileRef(ent, grid, transform.Coordinates, out _))
                 {
@@ -89,7 +86,7 @@ public sealed partial class MartialArtsSystem
 
         if (TryComp<DamageableComponent>(target, out var damage))
         {
-            var totalDamage = damage.TotalDamage;
+            var totalDamage = _damage.GetTotalDamage((target, damage));
             if (totalDamage >= 125)
                 return;
 

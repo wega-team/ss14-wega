@@ -1,0 +1,133 @@
+- type: loadout
+  id: JumpsuitCasualBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualBlue
+  groupBy: "wegaCaJ"
+    
+- type: loadout
+  id: JumpskirtCasualBlue
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualBlue
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: JumpsuitCasualPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualPurple  
+  groupBy: "wegaCaJ"    
+    
+- type: loadout
+  id: JumpskirtCasualPurple
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualPurple
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: JumpsuitCasualRed
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualRed  
+  groupBy: "wegaCaJ"
+    
+- type: loadout
+  id: JumpskirtCasualRed
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualRed
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: JumpsuitCasualGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualGreen
+  groupBy: "wegaCaJ"    
+    
+- type: loadout
+  id: JumpskirtCasualGreen
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCasualGreen  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenElegantDress
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedElegantDress  
+  groupBy: "wegaCaJ"
+    
+- type: loadout
+  id: ClothingUniformJumpskirtBlueElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlueElegantDress
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtPurpleElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPurpleElegantDress
+  groupBy: "wegaCaJ"    
+    
+- type: loadout
+  id: ClothingUniformJumpskirtBlackElegantDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtBlackElegantDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtCyanStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtCyanStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtGreenStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtGreenStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtRedStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtRedStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtOrangeStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtOrangeStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtPinkStripedDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtPinkStripedDress  
+  groupBy: "wegaCaJ"
+
+- type: loadout
+  id: ClothingUniformJumpskirtYellowOldDress
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtYellowOldDress  
+  groupBy: "wegaCaJ"
+
+  # - ClothingUniformJumpskirtGreenElegantDress
+  # - ClothingUniformJumpskirtRedElegantDress
+  # - ClothingUniformJumpskirtBlueElegantDress
+  # - ClothingUniformJumpskirtPurpleElegantDress
+  # - ClothingUniformJumpskirtBlackElegantDress
+  # - ClothingUniformJumpskirtCyanStripedDress
+  # - ClothingUniformJumpskirtGreenStripedDress
+  # - ClothingUniformJumpskirtRedStripedDress
+  # - ClothingUniformJumpskirtOrangeStripedDress
+  # - ClothingUniformJumpskirtPinkStripedDress
+  # - ClothingUniformJumpskirtYellowOldDress
+  # - JumpsuitCasualBlue
+  # - JumpskirtCasualBlue
+  # - JumpsuitCasualPurple
+  # - JumpskirtCasualPurple
+  # - JumpsuitCasualRed
+  # - JumpskirtCasualRed
+  # - JumpsuitCasualGreen
+  # - JumpskirtCasualGreen 

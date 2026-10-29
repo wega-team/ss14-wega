@@ -20,17 +20,15 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: porkramen
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-          - ReagentId: Nutriment
-            Quantity: 15
-          - ReagentId: Protein
-            Quantity: 3
-          - ReagentId: Soysauce
-            Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
+      - ReagentId: Protein
+        Quantity: 3
+      - ReagentId: Soysauce
+        Quantity: 2
   - type: Tag
     tags:
     - Meat
@@ -47,19 +45,17 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/japanfood.rsi
     state: spicyporkramen
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-          - ReagentId: Nutriment
-            Quantity: 15
-          - ReagentId: Protein
-            Quantity: 3
-          - ReagentId: CapsaicinOil
-            Quantity: 2
-          - ReagentId: Soysauce
-            Quantity: 2
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Nutriment
+        Quantity: 15
+      - ReagentId: Protein
+        Quantity: 3
+      - ReagentId: CapsaicinOil
+        Quantity: 2
+      - ReagentId: Soysauce
+        Quantity: 2
   - type: Tag
     tags:
     - Meat

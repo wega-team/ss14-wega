@@ -1,0 +1,34 @@
+- type: stack
+  parent: BaseMediumStack
+  id: Sinew
+  name: stack-sinew
+  icon: { sprite: _Wega/Objects/Materials/sinew.rsi, state: sinew }
+  spawn: MaterialSinew1
+
+- type: stack
+  parent: BaseMediumStack
+  id: Chitin
+  name: stack-chitin
+  icon: { sprite: _Wega/Objects/Materials/chitin.rsi, state: chitin }
+  spawn: MaterialChitin1
+
+- type: stack
+  parent: BaseMediumStack
+  id: DragonHide
+  name: stack-dragon-hide
+  icon: { sprite: _Wega/Objects/Materials/dragon_hide.rsi, state: dragon_hide }
+  spawn: MaterialDragonHide1
+
+- type: stack
+  parent: BaseMediumStack
+  id: PolarBearHide
+  name: stack-polar-bear-hide
+  icon: { sprite: _Wega/Objects/Materials/polar_bear_hide.rsi, state: hide }
+  spawn: MaterialPolarBearHide1
+
+- type: stack
+  parent: BaseMediumStack
+  id: ConsecratedIngot
+  name: consecrated-ingot
+  icon: { sprite: _Wega/Objects/Materials/consecrated_ingot.rsi, state: consecrated_3 }
+  spawn: MaterialConsecratedIngot1

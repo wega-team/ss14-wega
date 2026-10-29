@@ -5,9 +5,9 @@ using Content.Shared.Interaction.Components;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class TelekinesisGenSystem : EntitySystem
+public sealed partial class TelekinesisGenSystem : EntitySystem
 {
-    [Dependency] private readonly HandsSystem _hands = default!;
+    [Dependency] private HandsSystem _hands = default!;
 
     public override void Initialize()
     {
@@ -22,7 +22,7 @@ public sealed class TelekinesisGenSystem : EntitySystem
         if (!HasComp<HandsComponent>(uid))
             return;
 
-        _hands.AddHand(uid, component.HandId, HandLocation.Middle);
+        _hands.AddHand(uid, component.HandId, component.HandPos);
 
         var coords = Transform(uid).Coordinates;
         var item = Spawn(component.ItemPrototype, coords);

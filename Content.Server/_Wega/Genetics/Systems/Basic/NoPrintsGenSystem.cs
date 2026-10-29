@@ -3,7 +3,7 @@ using Content.Shared.Genetics;
 
 namespace Content.Server.Genetics.System;
 
-public sealed class NoPrintsGenSystem : EntitySystem
+public sealed partial class NoPrintsGenSystem : EntitySystem
 {
     public override void Initialize()
     {
@@ -26,6 +26,9 @@ public sealed class NoPrintsGenSystem : EntitySystem
 
     private void OnShutdown(Entity<NoPrintsGenComponent> ent, ref ComponentShutdown args)
     {
+        if (TerminatingOrDeleted(ent))
+            return;
+
         EnsureComp<FingerprintComponent>(ent).Fingerprint = ent.Comp.OldPrints;
     }
 }

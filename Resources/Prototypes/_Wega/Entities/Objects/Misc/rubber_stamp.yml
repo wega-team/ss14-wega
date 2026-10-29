@@ -11,3 +11,15 @@
   - type: Sprite
     state: stamp-greytide
   - type: ChameleonStamp
+
+- type: entity
+  name: corner's rubber stamp
+  parent: RubberStampBase
+  id: RubberStampCorner
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-corner
+    stampedColor: "#323232"
+    stampState: "paper_stamp-greytide"
+  - type: Sprite
+    state: stamp-lawyer

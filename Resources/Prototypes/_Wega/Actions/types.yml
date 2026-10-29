@@ -1,0 +1,88 @@
+﻿- type: entity
+  parent: BaseAction
+  id: ActionSwitchHarpyFly
+  name: Fly
+  description: Take off, passing small obstacles and chasms
+  components:
+  - type: Action
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_harpy.rsi
+    layers:
+    - state: FlyOff
+      map: ["enum.ActionVisuals.Icon"]
+    - state: FlyOn
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:FlyAbilityEvent
+
+- type: entity
+  parent: BaseAction
+  id: InstantRegeneration
+  name: Instant regeneration
+  description: "Your second wind, your second chance"
+  components:
+  - type: Action
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/action_demon.rsi
+    layers:
+    - state: instant_regeneration
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:DamageOnActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionToggleHud
+  name: Toggle HUD
+  description: Toggles HUD of your cloth.
+  components:
+  - type: Action
+    priority: -20
+    useDelay: 1
+  - type: Sprite
+    layers:
+    - texture: Interface/Actions/eyeopen.png
+      map: ["enum.ActionVisuals.Icon"]
+    - texture: Interface/Actions/eyeclose.png
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleActionEvent
+
+- type: entity
+  parent: BaseSuicideAction
+  id: ActionActivateBluespaceLifeline
+  name: Activate Bluespace Lifeline
+  description: Activates your bluespace lifeline implant, teleporting you far-far away from this station. You won't be able to come back.
+  components:
+  - type: Action
+    checkCanInteract: false
+    checkConsciousness: false
+    itemIconStyle: BigAction
+    priority: -20
+  - type: Sprite
+    sprite: _Wega/Effects/bluespace_lifeline.rsi
+    layers:
+    - state: bluespace_lifeline
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateImplantEvent
+
+- type: entity
+  parent: BaseImplantAction
+  id: ActionActivateSmoke
+  name: Activate Smoke Implant
+  description: Releases a cloud of smoke.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    priority: -20
+    useDelay: 40
+  - type: Sprite
+    sprite: Objects/Weapons/Grenades/smoke.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:ActivateImplantEvent

@@ -6,12 +6,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Client.Shaders.Systems;
 
-public sealed class ColourblindnessOverlay : Overlay
+public sealed partial class ColourblindnessOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
+    private static readonly ProtoId<ShaderPrototype> Colourblindness = "Colourblindness";
     public override OverlaySpace Space => OverlaySpace.ScreenSpace;
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _desaturationShader;
@@ -19,7 +20,7 @@ public sealed class ColourblindnessOverlay : Overlay
     public ColourblindnessOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _desaturationShader = _prototypeManager.Index<ShaderPrototype>("Colourblindness").InstanceUnique();
+        _desaturationShader = _prototypeManager.Index(Colourblindness).InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

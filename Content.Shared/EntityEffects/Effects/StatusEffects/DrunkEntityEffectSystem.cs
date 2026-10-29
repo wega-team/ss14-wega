@@ -1,4 +1,4 @@
-﻿using Content.Shared.Drunk;
+using Content.Shared.Drunk;
 using Content.Shared.Genetics; // Corvax-Wega-Genetics
 using Robust.Shared.Prototypes;
 
@@ -11,7 +11,7 @@ namespace Content.Shared.EntityEffects.Effects.StatusEffects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class DrunkEntityEffectSystem : EntityEffectSystem<MetaDataComponent, Drunk>
 {
-    [Dependency] private readonly SharedDrunkSystem _drunk = default!;
+    [Dependency] private SharedDrunkSystem _drunk = default!;
 
     protected override void Effect(Entity<MetaDataComponent> entity, ref EntityEffectEvent<Drunk> args)
     {

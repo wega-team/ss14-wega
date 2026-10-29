@@ -39,7 +39,6 @@
     - FootstepSound
     - DoorBumpOpener
   - type: Butcherable
-    butcheringType: Knife
     spawned:
     - id: FoodMeatSlime
       amount: 2
@@ -52,8 +51,9 @@
         Asphyxiation: -1.0
     maxSaturation: 15
   - type: Damageable
-    damageContainer: Biological
     damageModifierSet: Slime
+  - type: Injurable
+    damageContainer: Biological
   - type: Bloodstream
     bloodReagent: Slime
     bloodlossDamage:
@@ -89,9 +89,6 @@
         type: Local
         messages: [ "slime-hurt-by-water-popup" ]
         probability: 0.25
-  - type: Body
-    prototype: Slimes
-    requiredLegs: 1
   - type: MeleeWeapon
     altDisarm: false
     soundHit:

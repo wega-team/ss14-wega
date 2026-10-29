@@ -9,10 +9,9 @@ namespace Content.Shared.Voucher;
 
 public sealed partial class VoucherSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedUserInterfaceSystem _ui = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -28,27 +27,29 @@ public sealed partial class VoucherSystem : EntitySystem
     {
         if (!TryComp<VoucherCardComponent>(args.Used, out var cardComp) || cardComp.CurrentKit == null)
         {
-            _popup.PopupClient(Loc.GetString("voucher-need-card"), args.User, args.User);
+            _popup.PopupEntity(Loc.GetString("voucher-need-card"), args.User, args.User);
             return;
         }
 
         if (entity.Comp.TypeVoucher != cardComp.TypeVoucher)
         {
-            _popup.PopupClient(Loc.GetString("voucher-wrong-type"), args.User, args.User);
+            _popup.PopupEntity(Loc.GetString("voucher-wrong-type"), args.User, args.User);
             return;
         }
 
-        if (!_prototype.TryIndex(cardComp.CurrentKit.Value, out var kit))
+        if (!ProtoMan.TryIndex(cardComp.CurrentKit.Value, out var kit))
             return;
 
-        foreach (var itemId in kit.Items)
+        var coords = Transform(entity).Coordinates;
+        foreach (var item in kit.Items)
         {
-            Spawn(itemId, Transform(entity).Coordinates);
+            for (var i = 0; i < item.Amount; i++)
+                Spawn(item.Id, coords);
         }
 
         QueueDel(args.Used);
 
-        _popup.PopupClient(Loc.GetString("voucher-kit-activated", ("kitName", kit.Name)), entity, args.User);
+        _popup.PopupEntity(Loc.GetString("voucher-kit-activated", ("kitName", Loc.GetString(kit.Name))), args.User, args.User);
         _audio.PlayPvs(entity.Comp.SoundVend, entity);
     }
 
@@ -64,7 +65,7 @@ public sealed partial class VoucherSystem : EntitySystem
     private void OnKitSelected(EntityUid uid, VoucherCardComponent component, VoucherKitSelectedMessage args)
     {
         component.CurrentKit = args.KitId;
-        _popup.PopupClient(Loc.GetString("voucher-kit-selected", ("kitName", _prototype.Index(args.KitId).Name)), uid);
+        _popup.PopupEntity(Loc.GetString("voucher-kit-selected", ("kitName", Loc.GetString(ProtoMan.Index(args.KitId).Name))), uid, uid);
     }
 
     private void OpenKitSelectionUI(EntityUid card, VoucherCardComponent component, EntityUid user)
@@ -73,7 +74,7 @@ public sealed partial class VoucherSystem : EntitySystem
 
         foreach (var kitId in component.Kits)
         {
-            if (_prototype.TryIndex(kitId, out var kit))
+            if (ProtoMan.TryIndex(kitId, out var kit))
                 availableKits.Add(kit);
         }
 

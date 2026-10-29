@@ -1,9 +1,7 @@
 using Content.Server.Disease.Components;
-using Content.Server.Nutrition.Components;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Power;
-using Content.Server.Station.Systems;
 using Content.Shared.Paper;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -20,23 +18,24 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Shared.Nutrition.Components;
+using Content.Shared.Station.Systems;
 
 namespace Content.Server.Disease
 {
     /// <summary>
     /// Everything that's about disease diangosis and machines is in here
     /// </summary>
-    public sealed class DiseaseDiagnosisSystem : EntitySystem
+    public sealed partial class DiseaseDiagnosisSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly MetaDataSystem _metaData = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
-        [Dependency] private readonly PaperSystem _paperSystem = default!;
-        [Dependency] private readonly StationSystem _stationSystem = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private MetaDataSystem _metaData = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
+        [Dependency] private PaperSystem _paperSystem = default!;
+        [Dependency] private StationSystem _stationSystem = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
 
         public override void Initialize()
         {
@@ -76,7 +75,8 @@ namespace Content.Server.Disease
 
             _removeQueue.Clear();
 
-            foreach (var (_, diseaseMachine) in EntityQuery<DiseaseMachineRunningComponent, DiseaseMachineComponent>())
+            var query = EntityQueryEnumerator<DiseaseMachineRunningComponent, DiseaseMachineComponent>();
+            while (query.MoveNext(out var uid, out _, out var diseaseMachine))
             {
                 diseaseMachine.Accumulator += frameTime;
 
@@ -84,8 +84,8 @@ namespace Content.Server.Disease
                 {
                     diseaseMachine.Accumulator -= diseaseMachine.Delay;
                     var ev = new DiseaseMachineFinishedEvent(diseaseMachine);
-                    RaiseLocalEvent(diseaseMachine.Owner, ev);
-                    _removeQueue.Enqueue(diseaseMachine.Owner);
+                    RaiseLocalEvent(uid, ev);
+                    _removeQueue.Enqueue(uid);
                 }
             }
         }
@@ -113,7 +113,7 @@ namespace Content.Server.Disease
             }
 
             if (_inventorySystem.TryGetSlotEntity(args.Target.Value, "mask", out var maskUid) &&
-                EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUid, out var blocker) &&
+                TryComp<IngestionBlockerComponent>(maskUid, out var blocker) &&
                 blocker.Enabled)
             {
                 _popupSystem.PopupEntity(Loc.GetString("swab-mask-blocked", ("target", Identity.Entity(args.Target.Value, EntityManager)), ("mask", maskUid)), args.User, args.User);
@@ -157,7 +157,7 @@ namespace Content.Server.Disease
             _addQueue.Enqueue(uid);
             UpdateAppearance(uid, true, true);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/diagnoser_printing.ogg"), uid, AudioParams.Default.WithLoop(false));
-            EntityManager.DeleteEntity(args.Used);
+            Del(args.Used);
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Content.Server.Disease
             _addQueue.Enqueue(uid);
             UpdateAppearance(uid, true, true);
             _audio.PlayPvs(new SoundPathSpecifier("/Audio/Machines/vaccinator_running.ogg"), uid, AudioParams.Default.WithLoop(false));
-            EntityManager.DeleteEntity(args.Used);
+            Del(args.Used);
         }
 
         /// <summary>
@@ -344,9 +344,12 @@ namespace Content.Server.Disease
 
                 var known = false;
 
-                foreach (var server in EntityQuery<DiseaseServerComponent>(true))
+                var serverQuery = EntityQueryEnumerator<DiseaseServerComponent>();
+                var currentStation = _stationSystem.GetOwningStation(uid);
+
+                while (serverQuery.MoveNext(out var serverUid, out var server))
                 {
-                    if (_stationSystem.GetOwningStation(server.Owner) != _stationSystem.GetOwningStation(uid))
+                    if (_stationSystem.GetOwningStation(serverUid) != currentStation)
                         continue;
 
                     if (ServerHasDisease(server, args.Machine.Disease))

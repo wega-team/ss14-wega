@@ -1,4 +1,4 @@
-﻿namespace Content.Shared.Chat;
+namespace Content.Shared.Chat;
 
 public static class ChatChannelExtensions
 {
@@ -11,6 +11,7 @@ public static class ChatChannelExtensions
             ChatChannel.LOOC => Color.MediumTurquoise,
             ChatChannel.OOC => Color.LightSkyBlue,
             ChatChannel.Dead => Color.MediumPurple,
+            ChatChannel.Mind => Color.Peru, // Corvax-Wega-MindChat
             ChatChannel.Admin => Color.Red,
             ChatChannel.AdminAlert => Color.Red,
             ChatChannel.AdminChat => Color.HotPink,

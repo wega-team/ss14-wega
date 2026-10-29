@@ -1,8 +1,9 @@
+#region Head Top
+
 - type: marking
   id: AndroidAntennaLeft
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -15,8 +16,7 @@
 - type: marking
   id: AndroidAntennaRight
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -29,8 +29,7 @@
 - type: marking
   id: AndroidAntennaCrown
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   coloring:
     default:
       type:
@@ -41,10 +40,26 @@
     state: head_antenna_crown
 
 - type: marking
+  id: AndroidHeadBulbs
+  bodyPart: HeadTop
+  groupWhitelist: [ Android ]
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Special
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: head_bulbs
+
+#endregion Head Top
+
+#region Torso
+
+- type: marking
   id: AndroidTorsoFemaleStandart
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -58,8 +73,7 @@
 - type: marking
   id: AndroidTorsoFemaleBreast
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -73,8 +87,7 @@
 - type: marking
   id: AndroidTorsoFemaleBigBreast
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -88,8 +101,7 @@
 - type: marking
   id: AndroidTorsoFemaleNoBreast
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Female ]
   sponsorOnly: false
   coloring:
@@ -103,8 +115,7 @@
 - type: marking
   id: AndroidTorsoMale
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sexRestriction: [ Male ]
   sponsorOnly: false
   coloring:
@@ -116,10 +127,110 @@
       state: body_m
 
 - type: marking
+  id: AndroidTorsoSpine
+  bodyPart: Special
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    layers:
+      body_spine:
+        type:
+          !type:SimpleColoring
+          color: "#ffffff"
+      body_spine_led:
+        type:
+          !type:CategoryColoring
+          category: Special
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_spine
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_spine_led
+
+- type: marking
+  id: AndroidTorsoFemaleSynt
+  bodyPart: Special
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_synt
+
+- type: marking
+  id: AndroidTorsoFemaleSmallBreastSynt
+  bodyPart: Special
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_synt_small
+
+
+- type: marking
+  id: AndroidTorsoFemaleBigBreastSynt
+  bodyPart: Special
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_synt_big
+
+- type: marking
+  id: AndroidTorsoFemaleSuperBigBreastSynt
+  bodyPart: Special
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: body_f_synt_superbig
+
+- type: marking
+  id: AndroidTorsoMaleSynt
+  bodyPart: Special
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Male ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: body_m_synt
+
+#endregion Torso
+
+#region Leds
+
+- type: marking
   id: AndroidLeds
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -133,8 +244,7 @@
 - type: marking
   id: AndroidLedsLove
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -148,8 +258,7 @@
 - type: marking
   id: AndroidLedsStripes
   bodyPart: Special
-  markingCategory: Special
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -161,10 +270,432 @@
       state: leds_stripes
 
 - type: marking
+  id: AndroidTempleLed
+  bodyPart: HeadTop
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Special
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: temple_led
+
+#endregion Leds
+
+#region Limbs
+
+# Scrap
+
+- type: marking
+  id: AndroidScrapArmLeft
+  bodyPart: LArm
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_arm_scrap
+
+- type: marking
+  id: AndroidScrapArmRight
+  bodyPart: RArm
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_arm_scrap
+
+- type: marking
+  id: AndroidScrapHandLeft
+  bodyPart: LHand
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_hand_scrap
+
+- type: marking
+  id: AndroidScrapHandRight
+  bodyPart: RHand
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_hand_scrap
+
+- type: marking
+  id: AndroidScrapLegLeft
+  bodyPart: LLeg
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_leg_scrap
+
+- type: marking
+  id: AndroidScrapLegRight
+  bodyPart: RLeg
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_leg_scrap
+
+- type: marking
+  id: AndroidScrapFootLeft
+  bodyPart: LFoot
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_foot_scrap
+
+- type: marking
+  id: AndroidScrapFootRight
+  bodyPart: RFoot
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_foot_scrap
+
+# Synth
+
+- type: marking
+  id: AndroidSyntArmLeft
+  bodyPart: LArm
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_arm_synt
+
+- type: marking
+  id: AndroidSyntArmRight
+  bodyPart: RArm
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_arm_synt
+
+- type: marking
+  id: AndroidSyntHandLeft
+  bodyPart: LHand
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_hand_synt
+
+- type: marking
+  id: AndroidSyntHandRight
+  bodyPart: RHand
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_hand_synt
+
+- type: marking
+  id: AndroidSyntLegLeft
+  bodyPart: LLeg
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_leg_synt
+
+- type: marking
+  id: AndroidSyntLegRight
+  bodyPart: RLeg
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_leg_synt
+
+- type: marking
+  id: AndroidSyntFootLeft
+  bodyPart: LFoot
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: l_foot_synt
+
+- type: marking
+  id: AndroidSyntFootRight
+  bodyPart: RFoot
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android.rsi
+      state: r_foot_synt
+
+#endregion Limbs
+
+#region Head
+
+- type: marking
+  id: AndroidEyesVisor
+  bodyPart: Eyes
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SkinColoring
+    layers:
+      eyes_visor_led:
+        type:
+          !type:CategoryColoring
+            category: Special
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: eyes_visor
+  - sprite: _Wega/Mobs/Customization/android.rsi
+    state: eyes_visor_led
+
+- type: marking
+  id: AndroidOldHead
+  bodyPart: HeadTop
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    layers:
+      old_base:
+        type:
+          !type:SkinColoring
+      old_lit:
+        type:
+          !type:EyeColoring
+      old_uncolor:
+        type:
+          !type:SimpleColoring
+            color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: old_base
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: old_uncolor
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: old_lit
+
+- type: marking
+  id: AndroidIpcHead
+  bodyPart: HeadTop
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    layers:
+      ipc_base:
+        type:
+          !type:SkinColoring
+      ipc_lit:
+        type:
+          !type:CategoryColoring
+            category: Special
+      ipc_uncolor:
+        type:
+          !type:SimpleColoring
+            color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: ipc_base
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: ipc_uncolor
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: ipc_lit
+
+- type: marking
+  id: AndroidScreenHead
+  bodyPart: Eyes
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    layers:
+      screen_base:
+        type:
+          !type:SkinColoring
+      screen_lit:
+        type:
+          !type:CategoryColoring
+            category: Special
+      screen_uncolor:
+        type:
+          !type:SimpleColoring
+            color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: screen_base
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: screen_uncolor
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: screen_lit
+
+- type: marking
+  id: AndroidAnimatronicHead
+  bodyPart: Head
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: animatronic
+
+- type: marking
+  id: AndroidHeadFemaleSynt
+  bodyPart: Head
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Female ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+  - sprite: _Wega/Mobs/Customization/android_heads.rsi
+    state: synt_f
+
+- type: marking
+  id: AndroidHeadMaleSynt
+  bodyPart: Head
+  groupWhitelist: [ Android ]
+  sexRestriction: [ Male ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:SimpleColoring
+          color: "#ffffff"
+  sprites:
+    - sprite: _Wega/Mobs/Customization/android_heads.rsi
+      state: synt_m
+
+- type: marking
+  id: AndroidTattooEyeRight
+  bodyPart: Eyes
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Special
+  sprites:
+  - sprite: Mobs/Customization/tattoos.rsi
+    state: tattoo_eye_r
+
+- type: marking
+  id: AndroidTattooEyeLeft
+  bodyPart: Eyes
+  groupWhitelist: [ Android ]
+  sponsorOnly: false
+  coloring:
+    default:
+      type:
+        !type:CategoryColoring
+          category: Special
+  sprites:
+  - sprite: Mobs/Customization/tattoos.rsi
+    state: tattoo_eye_l
+
+#endregion Head
+
+#region Misc
+
+- type: marking
   id: AndroidCatEars
   bodyPart: HeadTop
-  markingCategory: HeadTop
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -184,8 +715,7 @@
 - type: marking
   id: AndroidCatTail
   bodyPart: Tail
-  markingCategory: Tail
-  speciesRestriction: [ Android ]
+  groupWhitelist: [ Android ]
   sponsorOnly: false
   coloring:
     default:
@@ -203,23 +733,4 @@
   - sprite: _Wega/Mobs/Customization/android.rsi
     state: cat_tail_led
 
-- type: marking
-  id: AndroidEyesVisor
-  bodyPart: Eyes
-  markingCategory: Head
-  speciesRestriction: [ Android ]
-  sponsorOnly: false
-  coloring:
-    default:
-      type:
-        !type:SkinColoring
-    layers:
-      eyes_visor_led:
-        type:
-          !type:CategoryColoring
-            category: Special
-  sprites:
-  - sprite: _Wega/Mobs/Customization/android.rsi
-    state: eyes_visor
-  - sprite: _Wega/Mobs/Customization/android.rsi
-    state: eyes_visor_led
+#endregion Misc

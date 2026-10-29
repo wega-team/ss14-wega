@@ -1,0 +1,11 @@
+# Salvage rewards
+- type: entity
+  parent: CrateGenericSteel
+  id: CratePlasmaCutter
+  name: plasma cutter crate
+  description: Contains 2 plasma cutter for use by salvage.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage:
+        id: WeaponPlasmaCutter

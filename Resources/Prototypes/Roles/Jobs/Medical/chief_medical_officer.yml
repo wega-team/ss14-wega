@@ -26,11 +26,10 @@
       role: JobSurgeon
       time: 14400 #4 hrs
     # Corvax-Wega-Surgery-end
-  weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain
-  canBeAntag: false
+  guides: [ Command ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Medical
   - Command
@@ -55,7 +54,6 @@
   equipment:
     id: CMOPDA
     ears: ClothingHeadsetCMO
-    belt: ClothingBeltMedicalFilled
   storage:
     back:
     - Flash

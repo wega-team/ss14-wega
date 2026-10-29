@@ -12,3 +12,37 @@
           # amount: 1
         # - id: WiretappingCamera
           # amount: 4
+          
+- type: entity
+  id: BorgKit
+  parent: [BoxCardboard, BaseSyndicateContraband]
+  name: cyborg Kit
+  suffix: Filled
+  components:
+    - type: Sprite
+      layers:
+        - state: box_of_doom
+    - type: StorageFill
+      contents:
+        - id: ReinforcementRadioSyndicateCyborgAssault
+        - id: ModuleSyndiWeapon
+        - id: ModuleSyndiSupport
+        - id: Screwdriver
+
+- type: entity
+  id: SyndiBarmenKit
+  parent: [BoxCardboard, BaseSyndicateContraband]
+  name: syndi barmen Kit
+  description: The Syndicate's Young Bartender's Kit consists of six Syndi-shakers for the entire company.
+  components:
+    - type: Sprite
+      layers: 
+        - state: box_of_doom
+        - state: vials
+    - type: Storage
+      grid:
+      - 0,0,5,2
+    - type: StorageFill
+      contents:
+        - id: DrinkShakerSyndi
+          amount: 6

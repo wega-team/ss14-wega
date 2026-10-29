@@ -4,113 +4,93 @@
   id: BoxSurvivalAndroid
   suffix: Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: EmergencyNitrogenTankFilled
   - type: Sprite
     layers:
     - state: internals
     - sprite: _Wega/Objects/Storage/box_icons.rsi
       state: tyriumpack
   - type: Label
-    currentLabel: reagent-name-nitrogen
+    localizedLabel: reagent-name-nitrogen
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidExtended
   suffix: Extended Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: ExtendedEmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: ExtendedEmergencyNitrogenTankFilled
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidMedical
   suffix: Medical Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreathMedical
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreathMedical
+        - id: EmergencyNitrogenTankFilled
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidSecurity
   suffix: Security Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskGasSecurity
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasSecurity
+        - id: DoubleEmergencyNitrogenTankFilled
 
 - type: entity
   parent: BoxHug
   id: BoxAndroidHug
   suffix: Emergency Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskBreath
+        - id: EmergencyNitrogenTankFilled
   - type: Label
-    currentLabel: reagent-name-nitrogen
-
-- type: entity
-  parent: BoxSurvivalNitrogen
-  id: BoxAndroidMime
-  suffix: Mime Android
-  components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskBreath
-    - id: EmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+    localizedLabel: reagent-name-nitrogen
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidBlueShield
   suffix: Blue Shield Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskGasBlueShield
-    - id: ExtendedEmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasBlueShield
+        - id: ExtendedEmergencyNitrogenTankFilled
 
 - type: entity
   parent: BoxSurvivalAndroid
   id: BoxSurvivalAndroidSyndicate
   suffix: Syndicate Android
   components:
-  - type: StorageFill
-    contents:
-    - id: ClothingMaskGasSyndicate
-    - id: ExtendedEmergencyNitrogenTankFilled
-    - id: Flare
-    - id: Tyriumpack3
-    - id: WelderMini
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingMaskGasSyndicate
+        - id: ExtendedEmergencyNitrogenTankFilled
 
 # BlueShield
 - type: entity
@@ -123,11 +103,8 @@
   - type: StorageFill
     contents:
     - id: ClothingMaskGasBlueShield
-    - id: ExtendedEmergencyOxygenTankFilled
+    - id: DoubleEmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: Flare
-    - id: FoodSnackNutribrick
-    - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
     - state: internals
@@ -141,14 +118,11 @@
   - type: StorageFill
     contents:
     - id: ClothingMaskGasBlueShield
-    - id: ExtendedEmergencyNitrogenTankFilled
+    - id: DoubleEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: Flare
-    - id: FoodSnackNutribrick
-    - id: DrinkWaterBottleFull
   - type: Sprite
     layers:
     - state: internals
     - state: nitrogentank
   - type: Label
-    currentLabel: reagent-name-nitrogen
+    localizedLabel: reagent-name-nitrogen

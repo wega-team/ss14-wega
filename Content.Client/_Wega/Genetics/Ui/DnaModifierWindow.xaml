@@ -1,7 +1,6 @@
 <controls:FancyWindow
     xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    xmlns:customControls="clr-namespace:Content.Client.Administration.UI.CustomControls"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     Title="{Loc 'dna-modifier-ui-default-title'}"
@@ -30,7 +29,7 @@
                 <Control HorizontalExpand="True"/>
                 <ProgressBar Name="HealthBar" HorizontalExpand="True" MinValue="0" Value="1" MaxValue="1" SetWidth="400"/>
             </BoxContainer>
-            <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+            <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
             <BoxContainer Orientation="Horizontal" Margin="2">
                 <Label Text="{Loc 'dna-modifier-label-radiation'}" MinWidth="100"/>
                 <Control HorizontalExpand="True"/>
@@ -52,7 +51,7 @@
                 <Label Text="{Loc 'dna-modifier-label-sixteen'}" HorizontalAlignment="Center" StyleClasses="LabelSubText" Margin="0 4"/>
             </controls:StripeBack>
         </BoxContainer>
-        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
 
         <!-- Нижняя часть окна -->
         <BoxContainer Orientation="Vertical" VerticalExpand="False" Margin="10" MinHeight="500">
@@ -67,7 +66,7 @@
                             </PanelContainer.PanelOverride>
                             <BoxContainer Name="UiContainer"/>
                         </PanelContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <BoxContainer Orientation="Horizontal">
                             <Label Text="{Loc 'dna-modifier-label-target'}"/>
                             <Control MinWidth="10"/>
@@ -87,7 +86,7 @@
                             </PanelContainer.PanelOverride>
                             <BoxContainer Name="SeContainer"/>
                         </PanelContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <BoxContainer Orientation="Horizontal">
                             <Button MinSize="80 0" Name="Releveration2Button" Text="{Loc 'dna-modifier-button-releveration'}"/>
                         </BoxContainer>
@@ -104,7 +103,7 @@
                             <Button Name="RenameButton1" Text="{Loc 'dna-modifier-button-rename'}" Disabled="True"/>
                             <Button Name="ExportButton1" Text="{Loc 'dna-modifier-button-export'}" Disabled="True"/>
                         </BoxContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <BoxContainer Orientation="Horizontal">
                             <Label Text="{Loc 'dna-modifier-label-buffer-write'}"/>
                             <Control MinWidth="10"/>
@@ -128,7 +127,7 @@
                             <Button Name="RenameButton2" Text="{Loc 'dna-modifier-button-rename'}" Disabled="True"/>
                             <Button Name="ExportButton2" Text="{Loc 'dna-modifier-button-export'}" Disabled="True"/>
                         </BoxContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <BoxContainer Orientation="Horizontal">
                             <Label Text="{Loc 'dna-modifier-label-buffer-write'}"/>
                             <Control MinWidth="10"/>
@@ -152,7 +151,7 @@
                             <Button Name="RenameButton3" Text="{Loc 'dna-modifier-button-rename'}" Disabled="True"/>
                             <Button Name="ExportButton3" Text="{Loc 'dna-modifier-button-export'}" Disabled="True"/>
                         </BoxContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <BoxContainer Orientation="Horizontal">
                             <Label Text="{Loc 'dna-modifier-label-buffer-write'}"/>
                             <Control MinWidth="10"/>
@@ -174,7 +173,7 @@
                             <Button Name="ClearButtonDisk" Text="{Loc 'dna-modifier-button-clear'}" Disabled="True"/>
                             <Button Name="EjectButtonDisk" Access="Public" Text="{Loc 'dna-modifier-button-eject'}" Disabled="True"/>
                         </BoxContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <PanelContainer VerticalExpand="True">
                             <PanelContainer.PanelOverride>
                                 <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
@@ -191,7 +190,7 @@
                             <Control HorizontalExpand="True"/>
                             <Button Name="EjectRejuveButton" Access="Public" Text="{Loc 'dna-modifier-button-eject'}" Disabled="True"/>
                         </BoxContainer>
-                        <customControls:HSeparator StyleClasses="LowDivider" Margin="0 0 0 10"/>
+                        <controls:Separator StyleClasses="LowDivider" Margin="0 0 0 10"/>
                         <PanelContainer VerticalExpand="True" MinSize="0 200">
                             <PanelContainer.PanelOverride>
                                 <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />

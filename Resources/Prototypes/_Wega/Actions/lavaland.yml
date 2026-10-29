@@ -1,0 +1,775 @@
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantBeacon
+  name: Hierophant beacon
+  description: "Creates a beacon for teleportation. Repeated use teleports you and everyone around you to the beacon."
+  components:
+  - type: Action
+    useDelay: 3
+  - type: InstantAction
+    event: !type:HierophantBeaconActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionFireSelf
+  name: Fire self
+  description: "Set yourself on fire!"
+  components:
+  - type: Action
+    useDelay: 30
+    itemIconStyle: BigAction
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    layers:
+    - state: fire
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:FireSelfActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: BecomeToDrakeAction
+  name: Become a drake
+  description: "Transform into an inferior ash dragon."
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 30
+  - type: Sprite
+    sprite: Effects/fire.rsi
+    layers:
+    - state: fire
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:PolymorphActionEvent
+      protoId: LowerAshDrakePolymorph
+
+- type: entity
+  parent: BaseAction
+  id: ActionGoliathTentacle
+  name: "[color=red]Tentacle Slam[/color]"
+  description: Use your tentacles to grab and stun a target player!
+  components:
+  - type: Action
+    raiseOnUser: true
+    sound:
+      path: "/Audio/Weapons/slash.ogg"
+    useDelay: 12
+  - type: Sprite
+    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+    layers:
+    - state: goliath_tentacle_spawn
+      map: ["enum.ActionVisuals.Icon"]
+    - state: goliath_tentacle_wiggle
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: TargetAction
+    range: 7
+  - type: WorldTargetAction
+    event: !type:GoliathSummonTentacleAction
+
+- type: entity
+  parent: ActionGoliathTentacle
+  id: ActionGoliathBabyTentacle
+  name: "[color=red]Tentacle Slam[/color]"
+  description: Use your tentacles to grab and slow down the target!
+  components:
+  - type: WorldTargetAction
+    event: !type:GoliathSummonTentacleAction
+      entityId: EffectBabyGoliathTentacleSpawn
+      extraSpawns: 1
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionSummon
+  name: Summon skull
+  description: "Summon the Legion's skull."
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+    layers:
+    - state: legion_head_1
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:LegionSummonSkullAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantBlink
+  name: Blink
+  description: "Teleport to the specified position."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantBlinkActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantCross
+  name: Cross
+  description: "Create a cross of attacks."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantCrossActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantChaser
+  name: Chaser
+  description: "Summon the pursuers who attack the target."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantChaserActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHierophantDamageArea
+  name: Damage Area
+  description: "Create an area of attack around the target."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/hierophant_club.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HierophantDamageAreaActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionMegaLegion
+  name: Mega Legion attack
+  description: "GO AHEAD!"
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 1.5
+  - type: Sprite
+    sprite: _Wega/Mobs/Lavaland/legionskull.rsi
+    layers:
+    - state: legion_head_1
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:MegaLegionAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionBloodDrunkMinerDash
+  name: Dash
+  description: "Make a dash for the goal."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 10
+    sound:
+      path: "/Audio/Magic/blink.ogg"
+  - type: Sprite
+    sprite: Interface/Actions/jump.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: WorldTargetAction
+    event: !type:BloodDrunkMinerDashAction
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusFraction
+  name: Fraction
+  description: "Fire a fan of shells."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusFractionActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusCross
+  name: Cross
+  description: "Shoot a cross of shells."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusCrossActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusSpiral
+  name: Spiral
+  description: "Fire a spiral of projectiles."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusSpiralActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionColossusTripleFraction
+  name: Triple Fraction
+  description: "Fire three projectile fans."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 5
+    sound:
+      path: "/Audio/_Wega/Effects/narsie_attack.ogg"
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: throwing_knife
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:ColossusTripleFractionActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeConeFire
+  name: Cone Fire
+  description: "Exhale the cone of fire."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    layers:
+    - state: fireball
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeConeFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeBreathingFire
+  name: Breathing Fire
+  description: "Exhale a jet of fire."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+  - type: Sprite
+    sprite: Objects/Magic/magicactions.rsi
+    layers:
+    - state: fireball
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeBreathingFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionAshDrakeLava
+  name: Lava
+  description: "Create a lava area."
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 20
+  - type: Sprite
+    sprite: Tiles/Planet/lava.rsi
+    layers:
+    - state: lava
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 10
+  - type: EntityTargetAction
+    event: !type:AshDrakeLavaActionEvent
+      landingDamage:
+        types:
+          Blunt: 75
+      healingSpec:
+        types:
+          Blunt: -125
+          Slash: -125
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumRage
+  name: RAGE
+  description: Become temporarily invulnerable and attack faster!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 7
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:BubblegumRageActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumBloodDive
+  name: Blood Dive
+  description: Submerge into blood and emerge near your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 20
+  - type: EntityTargetAction
+    event: !type:BubblegumBloodDiveActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumTripleDash
+  name: Triple Dash
+  description: Perform three consecutive charges at your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 8
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 15
+  - type: EntityTargetAction
+    event: !type:BubblegumTripleDashActionEvent
+      dashDamage:
+        types:
+          Blunt: 30
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumIllusionDash
+  name: Illusion Dash
+  description: Summon illusions to surround and charge your target!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumIllusionDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumPentagramDash
+  name: Pentagram Dash
+  description: Surround your target with four illusions and charge from all sides!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumPentagramDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBubblegumChaoticIllusionDash
+  name: Chaotic Illusion Dash
+  description: Summon random illusions to charge from unpredictable directions!
+  components:
+  - type: Action
+    raiseOnUser: true
+    useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Effects/bubblegumeffects.rsi
+    layers:
+    - state: hand
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BubblegumChaoticIllusionDashActionEvent
+      illusionDamage:
+        types:
+          Blunt: 15
+
+- type: entity
+  parent: BaseAction
+  id: ActionBroodmotherTentaclePatch
+  name: Tentacle Patch
+  description: Creates a 3x3 square and 5x5 cross of tentacles around the target.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 1.5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: tentacle_patch
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BroodmotherTentaclePatchActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBroodmotherRage
+  name: Rage
+  description: Become faster for a short time, then slower.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 6
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: rage
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BroodmotherRageActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionBroodmotherSpawnChildren
+  name: Spawn Children
+  description: Spawn two Goliath children.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: spawn_children
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:BroodmotherSpawnChildrenActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionPandoraBlastLine
+  name: Blast Line
+  description: Fires a line of hierophant blasts.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 1
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: singular_shot
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:PandoraBlastLineActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionPandoraMagicBox
+  name: Magic Box
+  description: Surrounds target with a 6x6 box, leaving a 3x3 safe zone.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: magic_box
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:PandoraMagicBoxActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionPandoraTeleport
+  name: Teleport
+  description: Teleports after a short cue, leaving blasts at both locations.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: pandora_teleport
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:PandoraTeleportActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionPandoraAOEBlast
+  name: AOE Blast
+  description: Emits a 7x7 square of blasts, expanding from the center.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: aoe_squares
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:PandoraAOEBlastActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionnaireCharge
+  name: Legionnaire Charge
+  description: Charges forward after a short wind-up, dealing heavy damage and knockback.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: legionnaire_charge
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 4
+  - type: EntityTargetAction
+    event: !type:LegionnaireChargeActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionnaireDetachHead
+  name: Detach Head
+  description: Detaches the head to chase targets. Use again to recall it.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: head_detach
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 9
+  - type: EntityTargetAction
+    event: !type:LegionnaireDetachHeadActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionnaireBoneFire
+  name: Bone Fire
+  description: Creates a bone fire or swaps places with it.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 2
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: bonfire_teleport
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 9
+  - type: EntityTargetAction
+    event: !type:LegionnaireBoneFireActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionLegionnaireSmoke
+  name: Smoke Burst
+  description: Releases a cloud of smoke from the head or body.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 4
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: spew_smoke
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 9
+  - type: EntityTargetAction
+    event: !type:LegionnaireSmokeActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHeraldTriShot
+  name: Tri-Shot
+  description: Fires a volley of three death bolts. Fires twice below 50% health.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_trishot
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HeraldTriShotActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHeraldSpreadShot
+  name: Spread-Shot
+  description: Fires death bolts in all cardinal and diagonal directions. Fires twice below 50% health.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_directionalshot
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HeraldSpreadShotActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHeraldTeleShot
+  name: Tele-Shot
+  description: Fires a golden bolt that teleports the Herald upon impact.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 3
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_teleshot
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HeraldTeleShotActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionHeraldMirror
+  name: Mirror
+  description: Creates a mirror that mimics Herald's attacks.
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 2.5
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/actions_elites.rsi
+    layers:
+    - state: herald_mirror
+      map: ["enum.ActionVisuals.Icon"]
+  - type: TargetAction
+    range: 12
+  - type: EntityTargetAction
+    event: !type:HeraldMirrorActionEvent

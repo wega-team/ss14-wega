@@ -1,0 +1,21 @@
+- type: entity
+  parent: MarkerBase
+  id: SpawnerRandomNecropolisTendril
+  name: random tendril spawner
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Wega/Structures/Specific/Lavaland/tendril.rsi
+      state: tendril
+  - type: EntityTableSpawner
+    table: !type:NestedSelector
+      tableId: NecropolisTendrils
+
+- type: entityTable
+  id: NecropolisTendrils
+  table: !type:GroupSelector
+    children:
+    - id: GoliathNecropolisTendril
+    - id: LegionNecropolisTendril
+    - id: WatchersNecropolisTendril

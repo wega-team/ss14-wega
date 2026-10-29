@@ -51,3 +51,4 @@
   id: WhiteShoes
   equipment:
     shoes: ClothingShoesColorWhite
+  groupBy: "wegaJS" # Corvax-Wega-add

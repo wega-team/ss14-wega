@@ -1,0 +1,12 @@
+ent-ClothingEyesGlassesMedSecSunglasses = мед-охранные очки
+    .desc = Пара солнцезащитных очков с мед-охранным интерфейсом.
+ent-ClothingEyesGlassesMedSunglasses = медицинские очки
+    .desc = Пара солнцезащитных очков с мед-охранным интерфейсом.
+ent-ClothingEyesJudicialVisor = очки вершителя
+    .desc = Надёжные очки, при взгляде на которые вспоминается странное чувство греха.
+ent-ClothingEyesGlassesNightVision = очки ночного зрения
+    .desc = Очки, позволяющие вам видеть сквозь тьму.
+ent-ClothingEyesGlassesNightVisionNinja = очки ночного зрения клана паука
+    .desc = Модифицированные очки ночного видинья, позволяющие носителю не страдать от ярких вспышек.
+ent-ClothingEyesGlassesThermalVision = инженерные очки
+    .desc = Очки, позволяющие видеть тепловые сигнатуры живых существ сквозь стены и темноту. Замаскированы под обычные инженерные очки.

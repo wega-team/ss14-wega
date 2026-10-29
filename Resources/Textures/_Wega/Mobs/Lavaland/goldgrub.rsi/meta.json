@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/tgstation/tgstation",
+  "size": {
+    "x": 38,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "goldgrub",
+      "directions": 4
+    },
+    {
+      "name": "goldgrub_dead"
+    }
+  ]
+}

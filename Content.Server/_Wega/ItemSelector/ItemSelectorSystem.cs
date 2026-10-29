@@ -6,15 +6,17 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Prototypes;
 using Content.Server.Administration.Logs;
 using Content.Shared.Database;
+using Content.Shared.Interaction;
 
 namespace Content.Server.Item.Selector;
 
 public sealed partial class ItemSelectorSystem : EntitySystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly UserInterfaceSystem _ui = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly IComponentFactory _componentFactory = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private UserInterfaceSystem _ui = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedInteractionSystem _interaction = default!;
+    [Dependency] private IComponentFactory _componentFactory = default!;
 
     public override void Initialize()
     {
@@ -58,10 +60,17 @@ public sealed partial class ItemSelectorSystem : EntitySystem
 
     private void OnSelection(EntityUid uid, ItemSelectorComponent comp, ItemSelectorSelectionMessage args)
     {
-        var ent = Spawn(args.SelectedId, Transform(uid).Coordinates);
-        _hands.TryForcePickupAnyHand(GetEntity(args.User), ent);
+        if (!comp.Items.Contains(args.SelectedId))
+            return;
 
-        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(GetEntity(args.User)):user} selects a {ToPrettyString(ent):entity} instead of {ToPrettyString(uid):entity}");
+        var user = args.Actor;
+        if (!_interaction.InRangeUnobstructed(user, uid))
+            return;
+
+        var ent = Spawn(args.SelectedId, Transform(uid).Coordinates);
+        _hands.TryForcePickupAnyHand(user, ent);
+
+        _admin.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(user):user} selects a {ToPrettyString(ent):entity} instead of {ToPrettyString(uid):entity}");
 
         QueueDel(uid);
     }

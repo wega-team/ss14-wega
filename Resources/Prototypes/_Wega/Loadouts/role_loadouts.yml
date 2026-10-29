@@ -3,12 +3,17 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  - SponsorHead
+  - SponsorNeck
   - BartenderJumpsuit
   - BarberOuterClothing
   - CommonBackpack
   - Glasses
+  - BaseShoose
+  - AssistiveItems
   - Survival
   - Trinkets
+  # - ServiceWorkerJobTrinkets
   - GroupSpeciesBreathTool
   - Top
   - Bottom
@@ -22,11 +27,14 @@
   - BrigmedicJumpsuit
   - BrigmedicBackpack
   - BrigmedicOuterClothing
+  - WegaBrigmedBadge
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
+  - SecurityJobTrinkets
   - GroupSpeciesBreathTool
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
 
 - type: roleLoadout
@@ -34,12 +42,14 @@
   groups:
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
+  - SponsorHead
+  - SponsorNeck
   - GeneticsJumpsuit
-  - MedicalGloves
   - GeneticsBackpack
   - GeneticsOuterClothing
   - MedicalShoes
   - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -57,6 +67,7 @@
   - MedicalBackpack
   - MedicalShoes
   - Glasses
+  - AssistiveItems
   - SurvivalMedical
   - Trinkets
   - GroupSpeciesBreathToolMedical
@@ -73,8 +84,9 @@
   - MedicalBackpack
   - MedicalShoes
   - MedicalDoctorOuterClothing
-  - MedicalEyewear
+  - AssistiveItems
   - SurvivalMedical
+  - Glasses
   - Trinkets
   - GroupSpeciesBreathToolMedical
   - Top
@@ -88,7 +100,10 @@
   - BlueshieldHead
   - BlueShieldJumpsuit
   - BlueshieldBackpack
+  - BlueshieldBelt
   - BlueshielOuter
+  - BlueshieldNeck
+  - AssistiveItems
   - SurvivalBlueShield
   - Trinkets
   - LoadoutSpeciesBreathToolBlueShield
@@ -102,12 +117,78 @@
   - Inventory # Corvax-Loadouts
   - GroupTankHarness
   - PostmanHead
+  - SponsorNeck
   - PostmanJumpsuit
   - PostmanBackpack
   - Glasses
+  - BaseShoose
+  - AssistiveItems
+  - Survival
+  - Trinkets
+  # - CargoTechnicianJobTrinkets
+  - GroupSpeciesBreathTool
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobShaftMiner
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  # Corvax-Wega-Sponsors-start
+  - SponsorHead
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - ShaftMinerBackpack
+  - ShaftMinerJumpsuit
+  - ShaftMinerOuterClothing
+  - ShaftMinerShoes
+  - Glasses
+  - AssistiveItems
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobShaftMinerMedic
+  groups:
+  - Inventory # Corvax-Loadouts
+  - GroupTankHarness
+  - ShaftMinerMedicHead
+  # Corvax-Wega-Sponsors-start
+  - SponsorNeck
+  # Corvax-Wega-Sponsors-end
+  - ShaftMinerMedicBackpack
+  - ShaftMinerMedicJumpsuit
+  # - ShaftMinerMedicGloves
+  - Glasses
+  - AssistiveItems
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Top
+  - Bottom
+  - Socks
+
+- type: roleLoadout
+  id: JobWardenHelper
+  groups:
+  - Inventory # Corvax-Loadouts
+  - WardenJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - WardenOuterClothing
+  - WegaDefoltBadge
+  - SecurityShoes
+  - AssistiveItems
+  - SurvivalSecurity
+  - Trinkets
+  - WardenJobTrinkets
+  - GroupSpeciesBreathToolSecurity
   - Top
   - Bottom
   - Socks

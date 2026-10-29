@@ -6,6 +6,8 @@ using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
+using Content.Shared.Tools.Components; // Corvax-Wega-Lavaland
+using Content.Shared.Tools.Systems; // Corvax-Wega-Lavaland
 using Content.Shared.Weapons.Ranged.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Content.Shared.Weapons.Ranged.Upgrades.Components;
@@ -16,14 +18,15 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Weapons.Ranged.Upgrades;
 
-public sealed class GunUpgradeSystem : EntitySystem
+public sealed partial class GunUpgradeSystem : EntitySystem
 {
-    [Dependency] private readonly ISharedAdminLogManager _adminLog = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedGunSystem _gun = default!;
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private ISharedAdminLogManager _adminLog = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedGunSystem _gun = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedToolSystem _tool = default!; // Corvax-Wega-Lavaland
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -31,6 +34,7 @@ public sealed class GunUpgradeSystem : EntitySystem
         SubscribeLocalEvent<UpgradeableGunComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<UpgradeableGunComponent, AfterInteractUsingEvent>(OnAfterInteractUsing);
         SubscribeLocalEvent<UpgradeableGunComponent, ExaminedEvent>(OnExamine);
+        SubscribeLocalEvent<UpgradeableGunComponent, InteractUsingEvent>(OnInteractUsing); // Corvax-Wega-Lavaland
 
         SubscribeLocalEvent<UpgradeableGunComponent, GunRefreshModifiersEvent>(RelayEvent);
         SubscribeLocalEvent<UpgradeableGunComponent, GunShotEvent>(RelayEvent);
@@ -38,6 +42,9 @@ public sealed class GunUpgradeSystem : EntitySystem
         SubscribeLocalEvent<GunUpgradeFireRateComponent, GunRefreshModifiersEvent>(OnFireRateRefresh);
         SubscribeLocalEvent<GunUpgradeSpeedComponent, GunRefreshModifiersEvent>(OnSpeedRefresh);
         SubscribeLocalEvent<GunUpgradeDamageComponent, GunShotEvent>(OnDamageGunShot);
+        SubscribeLocalEvent<GunUpgradeAoEComponent, GunShotEvent>(OnAoEGunShot); // Corvax-Wega-Lavaland
+        SubscribeLocalEvent<GunUpgradeLifestealComponent, GunShotEvent>(OnLifestealShot); // Corvax-Wega-Lavaland
+        SubscribeLocalEvent<GunUpgradePressureComponent, GunShotEvent>(OnPressureShot); // Corvax-Wega-Lavaland
     }
 
     private void RelayEvent<T>(Entity<UpgradeableGunComponent> ent, ref T args) where T : notnull
@@ -71,7 +78,7 @@ public sealed class GunUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgrades(ent).Count >= ent.Comp.MaxUpgradeCount)
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-gun-popup-upgrade-limit"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-gun-popup-upgrade-limit"), ent, args.User);
             return;
         }
 
@@ -80,17 +87,37 @@ public sealed class GunUpgradeSystem : EntitySystem
 
         if (GetCurrentUpgradeTags(ent).ToHashSet().IsSupersetOf(upgradeComponent.Tags))
         {
-            _popup.PopupPredicted(Loc.GetString("upgradeable-gun-popup-already-present"), ent, args.User);
+            _popup.PopupEntity(Loc.GetString("upgradeable-gun-popup-already-present"), ent, args.User);
             return;
         }
 
-        _audio.PlayPredicted(ent.Comp.InsertSound, ent, args.User);
-        _popup.PopupClient(Loc.GetString("gun-upgrade-popup-insert", ("upgrade", args.Used),("gun", ent.Owner)), args.User);
-        _gun.RefreshModifiers(ent.Owner);
         args.Handled = _container.Insert(args.Used, _container.GetContainer(ent, ent.Comp.UpgradesContainerId));
+        _audio.PlayPredicted(ent.Comp.InsertSound, ent, args.User);
+        _popup.PopupEntity(Loc.GetString("gun-upgrade-popup-insert", ("upgrade", args.Used),("gun", ent.Owner)), args.User, args.User);
+        _gun.RefreshModifiers(ent.Owner);
 
         _adminLog.Add(LogType.Action, LogImpact.Low, $"{ToPrettyString(args.User):player} inserted gun upgrade {ToPrettyString(args.Used)} into {ToPrettyString(ent.Owner)}.");
     }
+
+    // Corvax-Wega-Lavaland-start
+    private void OnInteractUsing(Entity<UpgradeableGunComponent> ent, ref InteractUsingEvent args)
+    {
+        if (args.Handled || !_tool.HasQuality(args.Used, ent.Comp.Tool))
+            return;
+
+        _container.TryGetContainer(ent, ent.Comp.UpgradesContainerId, out var container);
+        if (container == null || container.ContainedEntities.Count == 0)
+        {
+            _popup.PopupPredicted(Loc.GetString("upgradeable-gun-popup-no-upgrades"), ent, args.User);
+            return;
+        }
+
+        var upgrade = container.ContainedEntities.Last();
+        args.Handled = _container.Remove(upgrade, container);
+        if (TryComp<ToolComponent>(args.Used, out var tool))
+            _tool.PlayToolSound(args.Used, tool, args.User);
+    }
+    // Corvax-Wega-Lavaland-end
 
     private void OnFireRateRefresh(Entity<GunUpgradeFireRateComponent> ent, ref GunRefreshModifiersEvent args)
     {
@@ -110,6 +137,39 @@ public sealed class GunUpgradeSystem : EntitySystem
                 proj.Damage += ent.Comp.Damage;
         }
     }
+
+    // Corvax-Wega-Lavaland-start
+    private void OnAoEGunShot(Entity<GunUpgradeAoEComponent> ent, ref GunShotEvent args)
+    {
+        foreach (var (ammo, _) in args.Ammo)
+        {
+            if (ammo == null || !HasComp<ProjectileComponent>(ammo.Value))
+                return;
+
+            EnsureComp<ProjectileAoEComponent>(ammo.Value);
+        }
+    }
+
+    private void OnLifestealShot(Entity<GunUpgradeLifestealComponent> ent, ref GunShotEvent args)
+    {
+        foreach (var (ammo, _) in args.Ammo)
+        {
+            if (ammo == null || !HasComp<ProjectileComponent>(ammo.Value))
+                return;
+
+            EnsureComp<ProjectileLifestealComponent>(ammo.Value).StealAmount = ent.Comp.StealAmount;
+        }
+    }
+    
+    private void OnPressureShot(Entity<GunUpgradePressureComponent> ent, ref GunShotEvent args)
+    {
+        foreach (var (ammo, _) in args.Ammo)
+        {
+            if (TryComp<ProjectilePressureComponent>(ammo, out var pressure))
+                pressure.Ignore = true;
+        }
+    }
+    // Corvax-Wega-Lavaland-end
 
     /// <summary>
     /// Gets the entities inside the gun's upgrade container.

@@ -72,6 +72,15 @@
       "name": "eye_module"
     },
     {
+      "name": "posibrain",
+      "delays":
+      [
+        [
+          0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1, 0.1
+        ]
+      ]
+    },
+    {
       "name": "module_part"
     },
     {
@@ -85,6 +94,12 @@
     },
     {
       "name": "charger_arm"
+    },
+    {
+      "name": "magnet_leg"
+    },
+    {
+      "name": "jump_leg"
     }
   ]
 }

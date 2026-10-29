@@ -27,6 +27,21 @@
         },
         {
             "name": "defib-on"
+        },
+        {
+            "name": "magboots-off"
+        },
+        {
+            "name": "magboots-on"
+        },
+        {
+            "name": "jump-action"
+        },
+        {
+            "name": "charge-action"
+        },
+        {
+            "name": "discharge-action"
         }
     ]
 }

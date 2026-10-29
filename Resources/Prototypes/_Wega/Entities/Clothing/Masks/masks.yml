@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingMaskGas, BaseRestrictedContraband]
+  parent: ClothingMaskGas
   id: ClothingMaskGasBlueShield
   name: blue shield gas mask
   description: A special protective gas mask for bodyguards.
@@ -17,3 +17,63 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.95
+
+- type: entity
+  parent: [ ClothingMaskGas, BaseCentcommContraband ]
+  id: ClothingMaskGasERTBlueSheild
+  name: blue shield gas mask ert
+  description: The gas mask of the elite squad of the ERT.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Mask/bs_ert.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Mask/bs_ert.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+  - type: HideLayerClothing
+    slots:
+    - Hair
+    - Snout
+    hideOnToggle: true
+  - type: ClothingSterility # Corvax-Wega-Surgery
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.95
+
+- type: entity
+  parent: [ClothingMaskBase, BaseChameleon]
+  id: ClothingMaskGasVoice
+  suffix: Voice Mask
+  components:
+    - type: Sprite
+      sprite: Clothing/Mask/gas.rsi
+    - type: Clothing
+      sprite: Clothing/Mask/gas.rsi
+    - type: BreathMask
+    - type: IdentityBlocker
+    - type: Dirtable
+      dirtState: gasmask
+      equippedDirtState: equipped-gasmask
+    - type: VoiceMask
+    - type: UIRequiresLock
+      userInterfaceKeys:
+        - enum.VoiceMaskUIKey.Key
+      accessDeniedSound: null
+      popup: null
+    - type: HideLayerClothing
+      slots:
+      - Snout
+    - type: UserInterface
+      interfaces:
+        enum.VoiceMaskUIKey.Key:
+          type: VoiceMaskBoundUserInterface
+    - type: Construction
+      graph: ModMasc
+      node: voiceMasc

@@ -1,0 +1,16 @@
+- type: entity
+  parent: ClothingBackpackERTLeader
+  id: ClothingBackpackERTAmmoAll
+  components:
+    - type: StorageFill
+      contents:
+        - id: MagazinePistolSubMachineGun
+          amount: 3
+        - id: MagazinePistolSubMachineGunTopMounted
+          amount: 3
+        - id: MagazineRifle
+          amount: 4
+        - id: BoxLethalshot
+          amount: 3
+        - id: BoxShotgunIncendiary
+          amount: 3

@@ -1,0 +1,97 @@
+- type: entity
+  parent: BaseItem
+  id: BaseVoucherCard
+  abstract: true
+  components:
+  - type: Item
+    storedRotation: 65
+  - type: ActivatableUI
+    key: enum.VoucherUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.VoucherUiKey.Key:
+        type: VoucherBoundUserInterface
+
+- type: entity
+  parent: BaseVoucherCard
+  id: SecurityVoucherCard
+  name: security voucher card
+  description: "A discount card issued for the security service provided by NanoTrasen for more efficient distribution of equipment among department employees. Used in SecTech."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: security
+  - type: VoucherCard
+    typeVoucher: Security
+    kits:
+    - SecurityDeterrentKit
+    - SecuritySpareWeaponsKit
+    - SecurityFirstAidKit
+    - SecurityRiotsKit
+    - SecuritySupervisionKit
+
+- type: entity
+  parent: BaseVoucherCard
+  id: SalvageVoucherCard
+  name: salvage voucher card
+  description: "Exchange it at a special terminal for a set of equipment for working in dangerous conditions."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: salvage
+  - type: VoucherCard
+    typeVoucher: Salvage
+    kits:
+    - SurvivalExplorerKit
+    - SurvivalFultonKit
+    - SurvivalCrusherKit
+    - SurvivalKineticKit
+    - SurvivalBaseKit
+
+- type: entity
+  parent: BaseVoucherCard
+  id: TheatherVoucherCard
+  name: theather voucher card
+  description: "A discount card issued for the security service provided by NanoTrasen for more efficient distribution of equipment among department employees. Used in SecTech."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: theather
+  - type: VoucherCard
+    typeVoucher: Theater
+    kits:
+    - ClownAlt1
+    - ClownAlt2
+    - Cardborg
+    - Aerostatic
+    - SchoolWhite
+    - SchoolBlack
+    - Sombrero
+    - SombreroClassik
+    - Pwig
+    - Santa
+    - Skub
+    - Chiken
+    - Shrine
+    - Witch
+    - Racoon
+    - DameDane
+    - Gladiator
+    - Casa
+
+- type: entity
+  parent: BaseVoucherCard
+  id: BlueShieldVoucherCard
+  name: blue shield voucher card
+  description: Voucher card for extend arsenal blue shield Officer.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/vouchers.rsi
+    state: blueshield
+  - type: VoucherCard
+    typeVoucher: Security
+    kits:
+    - BlueShieldkit1
+    - BlueShieldkit2
+    - BlueShieldkit3
+    - BlueShieldkit4

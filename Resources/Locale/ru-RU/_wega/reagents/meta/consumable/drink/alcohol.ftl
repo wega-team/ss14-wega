@@ -47,7 +47,6 @@ reagent-name-new-yorker = нью-йоркер
 reagent-name-flaming-moe = пылающий мо
 reagent-name-gin-sonic = джин-соник
 reagent-name-rainbow-sky = радужное небо
-reagent-name-three-mile-island-iced-tea = айсед ти три-майл-айленд
 reagent-name-box = бокс
 
 reagent-desc-aperol = Ох-ох-ох... Похоже, это засада для печени.
@@ -99,5 +98,4 @@ reagent-desc-new-yorker = Будь осторожен с биржей, инач�
 reagent-desc-flaming-moe = Экзотический напиток, который горит.
 reagent-desc-gin-sonic = Освежающий коктейль на основе джина тоника.
 reagent-desc-rainbow-sky = Красочный многослойный коктейль.
-reagent-desc-three-mile-island-iced-tea = Очень крепкий и опасный коктейль.
 reagent-desc-box = Необычный коктейль с земляным вкусом.

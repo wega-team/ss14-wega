@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using System.Text.RegularExpressions; // Corvax-Replacement-Filter
 using Content.Client.Administration.Managers;
 using Content.Client.Chat;
 using Content.Client.Chat.Managers;
@@ -10,19 +11,18 @@ using Content.Client.Examine;
 using Content.Client.Gameplay;
 using Content.Client.Ghost;
 using Content.Client.Mind;
-using Content.Client.Roles;
-using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Chat.Widgets;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared.Codewords;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Decals;
 using Content.Shared.Input;
+using Content.Shared.Mind; // Corvax-Wega-MindChat
 using Content.Shared.Radio;
-using Content.Shared.Roles.RoleCodeword;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -46,30 +46,31 @@ namespace Content.Client.UserInterface.Systems.Chat;
 
 public sealed partial class ChatUIController : UIController
 {
-    [Dependency] private readonly IClientAdminManager _admin = default!;
-    [Dependency] private readonly IChatManager _manager = default!;
-    [Dependency] private readonly IConfigurationManager _config = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly IEntityManager _ent = default!;
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly IClientNetManager _net = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IStateManager _state = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IReplayRecordingManager _replayRecording = default!;
+    [Dependency] private IClientAdminManager _admin = default!;
+    [Dependency] private IChatManager _manager = default!;
+    [Dependency] private IConfigurationManager _config = default!;
+    [Dependency] private IEyeManager _eye = default!;
+    [Dependency] private IEntityManager _ent = default!;
+    [Dependency] private IInputManager _input = default!;
+    [Dependency] private IClientNetManager _net = default!;
+    [Dependency] private IPlayerManager _player = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IStateManager _state = default!;
+    [Dependency] private IGameTiming _timing = default!;
+    [Dependency] private IReplayRecordingManager _replayRecording = default!;
 
-    [UISystemDependency] private readonly ExamineSystem? _examine = default;
-    [UISystemDependency] private readonly GhostSystem? _ghost = default;
-    [UISystemDependency] private readonly TypingIndicatorSystem? _typingIndicator = default;
-    [UISystemDependency] private readonly ChatSystem? _chatSys = default;
-    [UISystemDependency] private readonly TransformSystem? _transform = default;
-    [UISystemDependency] private readonly MindSystem? _mindSystem = default!;
-    [UISystemDependency] private readonly RoleCodewordSystem? _roleCodewordSystem = default!;
+    [UISystemDependency] private readonly ChatSystem? _chatSys = default!;
+    [UISystemDependency] private readonly CodewordSystem? _codeword = default!;
+    [UISystemDependency] private readonly ExamineSystem _examine = default!;
+    [UISystemDependency] private readonly GhostSystem _ghost = default!;
+    [UISystemDependency] private readonly TransformSystem _transform = default!;
+    [UISystemDependency] private readonly TypingIndicatorSystem _typingIndicator = default!;
 
+    private SharedChatSystem? _sharedChatSys;
     private static readonly ProtoId<ColorPalettePrototype> ChatNamePalette = "ChatNames";
     private string[] _chatNameColors = default!;
     private bool _chatNameColorsEnabled;
+    public bool ChatNameColorsEnabled { get; private set; }
 
     private ISawmill _sawmill = default!;
 
@@ -84,7 +85,8 @@ public sealed partial class ChatUIController : UIController
         {SharedChatSystem.EmotesAltPrefix, ChatSelectChannel.Emotes},
         {SharedChatSystem.AdminPrefix, ChatSelectChannel.Admin},
         {SharedChatSystem.RadioCommonPrefix, ChatSelectChannel.Radio},
-        {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead}
+        {SharedChatSystem.DeadPrefix, ChatSelectChannel.Dead},
+        {SharedChatSystem.MindPrefix, ChatSelectChannel.Mind} // Corvax-Wega-MindChat
     };
 
     public static readonly Dictionary<ChatSelectChannel, char> ChannelPrefixes = new()
@@ -97,7 +99,8 @@ public sealed partial class ChatUIController : UIController
         {ChatSelectChannel.Emotes, SharedChatSystem.EmotesPrefix},
         {ChatSelectChannel.Admin, SharedChatSystem.AdminPrefix},
         {ChatSelectChannel.Radio, SharedChatSystem.RadioCommonPrefix},
-        {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix}
+        {ChatSelectChannel.Dead, SharedChatSystem.DeadPrefix},
+        {ChatSelectChannel.Mind, SharedChatSystem.MindPrefix} // Corvax-Wega-MindChat
     };
 
     /// <summary>
@@ -134,6 +137,11 @@ public sealed partial class ChatUIController : UIController
     /// </summary>
     private readonly Dictionary<EntityUid, SpeechBubbleQueueData> _queuedSpeechBubbles
         = new();
+
+    /// <summary>
+    ///     The typing preview bubble currently displayed on screen, if any.
+    /// </summary>
+    private PreviewBubble? _previewBubble;
 
     private readonly HashSet<ChatBox> _chats = new();
     public IReadOnlySet<ChatBox> Chats => _chats;
@@ -186,7 +194,7 @@ public sealed partial class ChatUIController : UIController
         SubscribeNetworkEvent<DamageForceSayEvent>(OnDamageForceSay);
         _config.OnValueChanged(CCVars.ChatEnableColorName, (value) => { _chatNameColorsEnabled = value; });
         _chatNameColorsEnabled = _config.GetCVar(CCVars.ChatEnableColorName);
-
+        ChatNameColorsEnabled = _chatNameColorsEnabled;
         _speechBubbleRoot = new LayoutContainer();
 
         UpdateChannelPermissions();
@@ -427,8 +435,8 @@ public sealed partial class ChatUIController : UIController
     private void OnAttachedChanged(EntityUid uid)
     {
         UpdateChannelPermissions();
-
         UpdateAutoFillHighlights();
+        UpdateLinkLabels();
     }
 
     private void AddSpeechBubble(ChatMessage msg, SpeechBubble.SpeechType speechType)
@@ -534,6 +542,7 @@ public sealed partial class ChatUIController : UIController
             FilterableChannels |= ChatChannel.Whisper;
             FilterableChannels |= ChatChannel.Radio;
             FilterableChannels |= ChatChannel.Emotes;
+            FilterableChannels |= ChatChannel.Mind; // Corvax-Wega-MindChat
             FilterableChannels |= ChatChannel.Notifications;
 
             // Can only send local / radio / emote when attached to a non-ghost entity.
@@ -545,6 +554,8 @@ public sealed partial class ChatUIController : UIController
                 CanSendChannels |= ChatSelectChannel.Radio;
                 CanSendChannels |= ChatSelectChannel.Emotes;
             }
+
+            CanSendChannels |= ChatSelectChannel.Mind; // Corvax-Wega-MindChat
         }
 
         // Only ghosts and admins can send / see deadchat.
@@ -689,49 +700,69 @@ public sealed partial class ChatUIController : UIController
         radioChannel = null;
         return _player.LocalEntity is EntityUid { Valid: true } uid
            && _chatSys != null
-           && _chatSys.TryProccessRadioMessage(uid, text, out _, out radioChannel, quiet: true);
+           && _chatSys.TryProcessRadioMessage(uid, text, out _, out radioChannel, quiet: true);
     }
+
+    // Corvax-Wega-MindChat-start
+    private bool TryGetMindChannel(string text, out MindChannelPrototype? mindChannel)
+    {
+        mindChannel = null;
+        return _player.LocalEntity is EntityUid { Valid: true } uid
+           && _chatSys != null
+           && _chatSys.TryProcessMindMessage(uid, text, out _, out mindChannel, quiet: true);
+    }
+    // Corvax-Wega-MindChat-end
 
     public void UpdateSelectedChannel(ChatBox box)
     {
-        var (prefixChannel, _, radioChannel) = SplitInputContents(box.ChatInput.Input.Text.ToLower());
+        var (prefixChannel, text, radioChannel, mindChannel) = SplitInputContents(box.ChatInput.Input.Text.ToLower()); // Corvax-Wega-MindChat-Edit
 
         if (prefixChannel == ChatSelectChannel.None)
-            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(box.SelectedChannel, null);
+            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(box.SelectedChannel, null, null); // Corvax-Wega-MindChat-Edit
         else
-            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(prefixChannel, radioChannel);
+            box.ChatInput.ChannelSelector.UpdateChannelSelectButton(prefixChannel, radioChannel, mindChannel); // Corvax-Wega-MindChat-Edit
     }
 
-    public (ChatSelectChannel chatChannel, string text, RadioChannelPrototype? radioChannel) SplitInputContents(string text)
+    public (ChatSelectChannel chatChannel, string text, RadioChannelPrototype? radioChannel, MindChannelPrototype? mindChannel) SplitInputContents(string text) // Corvax-Wega-MindChat-Edit
     {
         text = text.Trim();
         if (text.Length == 0)
-            return (ChatSelectChannel.None, text, null);
+            return (ChatSelectChannel.None, text, null, null); // Corvax-Wega-MindChat-Edit
 
         // We only cut off prefix only if it is not a radio or local channel, which both map to the same /say command
         // because ????????
 
+        // Corvax-Wega-MindChat-Edit-start
         ChatSelectChannel chatChannel;
-        if (TryGetRadioChannel(text, out var radioChannel))
+        RadioChannelPrototype? radioChannel = null;
+        MindChannelPrototype? mindChannel = null;
+
+        if (TryGetRadioChannel(text, out radioChannel))
             chatChannel = ChatSelectChannel.Radio;
+        else if (TryGetMindChannel(text, out mindChannel))
+            chatChannel = ChatSelectChannel.Mind;
         else
             chatChannel = PrefixToChannel.GetValueOrDefault(text[0]);
 
         if ((CanSendChannels & chatChannel) == 0)
-            return (ChatSelectChannel.None, text, null);
+            return (ChatSelectChannel.None, text, null, null);
 
         if (chatChannel == ChatSelectChannel.Radio)
-            return (chatChannel, text, radioChannel);
+            return (chatChannel, text, radioChannel, null);
+
+        if (chatChannel == ChatSelectChannel.Mind)
+            return (chatChannel, text, null, mindChannel);
 
         if (chatChannel == ChatSelectChannel.Local)
         {
             if (_ghost?.IsGhost != true)
-                return (chatChannel, text, null);
+                return (chatChannel, text, null, null);
             else
                 chatChannel = ChatSelectChannel.Dead;
         }
 
-        return (chatChannel, text[1..].TrimStart(), null);
+        return (chatChannel, text[1..].TrimStart(), null, null);
+        // Corvax-Wega-MindChat-Edit-end
     }
 
     public void SendMessage(ChatBox box, ChatSelectChannel channel)
@@ -746,7 +777,7 @@ public sealed partial class ChatUIController : UIController
         if (string.IsNullOrWhiteSpace(text))
             return;
 
-        (var prefixChannel, text, var _) = SplitInputContents(text);
+        (var prefixChannel, text, var _, var _) = SplitInputContents(text); // Corvax-Wega-MindChat-Edit
 
         // Check if message is longer than the character limit
         if (text.Length > MaxMessageLength)
@@ -764,6 +795,12 @@ public sealed partial class ChatUIController : UIController
             // radio must have prefix as it goes through the say command.
             text = $";{text}";
         }
+        // Corvax-Wega-MindChat-start
+        else if (channel == ChatSelectChannel.Mind)
+        {
+            text = $"+{text}";
+        }
+        // Corvax-Wega-MindChat-end
 
         _manager.SendMessage(text, prefixChannel == 0 ? channel : prefixChannel);
     }
@@ -828,21 +865,31 @@ public sealed partial class ChatUIController : UIController
                 msg.WrappedMessage = SharedChatSystem.InjectTagInsideTag(msg, "Name", "color", GetNameColor(SharedChatSystem.GetStringInsideTag(msg, "Name")));
         }
 
+        // Corvax-Replacement-Filter-Start
+        foreach (var replacement in _replacements)
+        {
+            var pattern = $"(?i)({replacement.Keyword})(?-i)(?![^\\[]*\\])";
+
+            msg.WrappedMessage = new Regex(pattern).Replace(msg.WrappedMessage, replacement.Replacement);
+            msg.Message = new Regex($"(?i)({replacement.Keyword})(?-i)").Replace(msg.Message, replacement.Replacement);
+        }
+        // Corvax-Replacement-Filter-End
+
         // Color any words chosen by the client.
         foreach (var highlight in _highlights)
         {
             msg.WrappedMessage = SharedChatSystem.InjectTagAroundString(msg, highlight, "color", _highlightsColor);
         }
 
-        // Color any codewords for minds that have roles that use them
-        if (_player.LocalUser != null && _mindSystem != null && _roleCodewordSystem != null)
+        // In case we get messages outside of systems being init.
+        if (_codeword != null)
         {
-            if (_mindSystem.TryGetMind(_player.LocalUser.Value, out var mindId) && _ent.TryGetComponent(mindId, out RoleCodewordComponent? codewordComp))
+            // Color any codewords for minds that have roles that use them
+            foreach (var data in _codeword.GetPlayerCodewords(_player.LocalUser))
             {
-                foreach (var (_, codewordData) in codewordComp.RoleCodewords)
+                foreach (var codeword in data.Codewords)
                 {
-                    foreach (string codeword in codewordData.Codewords)
-                        msg.WrappedMessage = SharedChatSystem.InjectTagAroundString(msg, codeword, "color", codewordData.Color.ToHex());
+                    msg.WrappedMessage = SharedChatSystem.InjectTagAroundString(msg, codeword, "color", data.Color.ToHex());
                 }
             }
         }
@@ -880,10 +927,11 @@ public sealed partial class ChatUIController : UIController
                 break;
 
             case ChatChannel.Dead:
-                if (_ghost is not {IsGhost: true})
+                if (_ghost is not { IsGhost: true})
                     break;
 
-                AddSpeechBubble(msg, SpeechBubble.SpeechType.Say);
+                if (_ghost.GhostVisibility)
+                    AddSpeechBubble(msg, SpeechBubble.SpeechType.Say);
                 break;
 
             case ChatChannel.Emotes:
@@ -932,11 +980,81 @@ public sealed partial class ChatUIController : UIController
         _typingIndicator?.ClientChangedChatFocus(isFocused);
     }
 
+    /// <summary>
+    ///     Called by <see cref="ChatBox"/> every time the player's chat input text changes.
+    ///     Creates or updates a "typing preview" speech bubble above the player's character.
+    /// </summary>
+    /// <param name="box">
+    ///     The current chat input box.
+    /// </param>
+    public void UpdateTypingPreview(ChatBox box)
+    {
+        var text = box.ChatInput.Input.Text;
+
+        if (!_config.GetCVar(CCVars.ChatTypingPreviewEnabled)
+            || _player.LocalEntity is not { } player
+            || string.IsNullOrEmpty(text))
+        {
+            ClearTypingPreview();
+            return;
+        }
+
+        // If no preview bubble exists, create one.
+        if (_previewBubble == null)
+        {
+            _previewBubble = new PreviewBubble(player);
+            _speechBubbleRoot.AddChild(_previewBubble);
+        }
+
+        // For an existing bubble, update its text.
+        var heightDelta = _previewBubble.UpdateText(text);
+        if (heightDelta != 0 && _activeSpeechBubbles.TryGetValue(player, out var activeBubbles))
+        {
+            foreach (var bubble in activeBubbles)
+            {
+                bubble.VerticalOffset += heightDelta;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Removes and disposes the typing preview bubble if one is currently shown.
+    ///     Also shifts real speech bubbles back down to close the gap left by the removed preview.
+    /// </summary>
+    public void ClearTypingPreview()
+    {
+        if (_previewBubble == null)
+            return;
+
+        if (_previewBubble.ContentSize.Y > 0
+            && _player.LocalEntity is { } player
+            && _activeSpeechBubbles.TryGetValue(player, out var activeBubbles))
+        {
+            foreach (var bubble in activeBubbles)
+            {
+                bubble.VerticalOffset -= _previewBubble.ContentSize.Y;
+            }
+        }
+
+        _previewBubble.Dispose();
+        _previewBubble = null;
+    }
+
     public void Repopulate()
     {
         foreach (var chat in _chats)
         {
             chat.Repopulate();
+        }
+    }
+
+    private void UpdateLinkLabels()
+    {
+        _sharedChatSys ??= _ent.System<SharedChatSystem>();
+
+        foreach (var chat in _chats)
+        {
+            chat.UpdateTextLinkLabelProperties(_sharedChatSys);
         }
     }
 

@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: BaseItem
+  parent: [BaseCorvaxContraband433DepartmentsSecurity, BaseItem] # Corvax-Contraband
   id: BaseMagazineBoxLightRifle
   name: ammunition box (.30 rifle)
   components:
@@ -10,7 +10,7 @@
       tags:
         - CartridgeLightRifle
     proto: CartridgeLightRifle
-    capacity: 60
+    capacity: 120 # increase X2 Corvax-Wega-Edit
   - type: Item
     size: Small
   - type: ContainerContainer
@@ -60,7 +60,7 @@
   parent: BaseMagazineBoxLightRifle
   id: MagazineBoxLightRiflePractice
   name: ammunition box (.30 rifle practice)
-  description: A cardboard box of .30 rifle rounds. Intended to hold non-harmful chalk ammunition.
+  description: A cardboard box of .30 rifle rounds. Intended to hold harmless practice ammunition.
   components:
   - type: BallisticAmmoProvider
     proto: CartridgeLightRiflePractice
@@ -73,8 +73,8 @@
     - state: practice
 
 - type: entity
-  id: MagazineBoxLightRifleIncendiary
   parent: BaseMagazineBoxLightRifle
+  id: MagazineBoxLightRifleIncendiary
   name: ammunition box (.30 rifle incendiary)
   description: A cardboard box of .30 rifle rounds. Intended to hold self-igniting incendiary ammunition.
   components:

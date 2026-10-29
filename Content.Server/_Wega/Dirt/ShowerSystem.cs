@@ -2,6 +2,7 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Server.Power.EntitySystems;
 using Content.Shared.Audio;
 using Content.Shared.Chemistry;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.DirtVisuals;
@@ -10,15 +11,15 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Shower
 {
-    public sealed class ShowerSystem : EntitySystem
+    public sealed partial class ShowerSystem : EntitySystem
     {
-        [Dependency] private readonly SharedAmbientSoundSystem _ambient = default!;
-        [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-        [Dependency] private readonly SharedAudioSystem _audio = default!;
-        [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
-        [Dependency] private readonly PuddleSystem _puddle = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly ReactiveSystem _reactive = default!;
+        [Dependency] private SharedAmbientSoundSystem _ambient = default!;
+        [Dependency] private SharedAppearanceSystem _appearance = default!;
+        [Dependency] private SharedAudioSystem _audio = default!;
+        [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
+        [Dependency] private PuddleSystem _puddle = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private ReactiveSystem _reactive = default!;
 
         public override void Initialize()
         {
@@ -100,7 +101,14 @@ namespace Content.Server.Shower
 
         private void SprayWater(EntityUid uid, ShowerComponent component)
         {
-            if (!_solutionContainer.TryGetSolution(uid, "shower", out var showerSol, out var solution) || solution.Volume == 0)
+            if (!TryComp<SolutionComponent>(uid, out var showerSol))
+            {
+                StopSpraying(uid, component);
+                return;
+            }
+
+            var solution = showerSol.Solution;
+            if (solution.Volume == 0)
             {
                 StopSpraying(uid, component);
                 return;
@@ -112,12 +120,14 @@ namespace Content.Server.Shower
 
             foreach (var mob in mobsInRange)
             {
-                var mobSolution = _solutionContainer.SplitSolution(showerSol.Value, amountPerTarget);
-                _reactive.DoEntityReaction(mob, mobSolution, ReactionMethod.Touch);
+                var splitSolution = solution.SplitSolution(amountPerTarget);
+                _reactive.DoEntityReaction(mob, splitSolution, ReactionMethod.Touch);
             }
 
-            var floorSolution = _solutionContainer.SplitSolution(showerSol.Value, amountPerTarget);
+            var floorSolution = solution.SplitSolution(amountPerTarget);
             _puddle.TrySpillAt(coordinates, floorSolution, out _);
+
+            Dirty(uid, showerSol);
         }
     }
 }

@@ -45,10 +45,11 @@
       projectiles: !type:ContainerSlot
   - type: ContainerAmmoProvider
     container: projectiles
+  - type: CultAllowedGun # Corvax-Wega-Cult
 
 - type: entity
   id: BowImprovised
-  parent: BaseBow
+  parent: [BaseCorvaxContraband433DepartmentsSecurity, BaseBow] # Corvax-Contraband
   name: improvised shortbow
   components:
   - type: Sprite

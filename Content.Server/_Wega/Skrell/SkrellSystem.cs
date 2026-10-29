@@ -2,15 +2,19 @@ using Content.Shared.Inventory.Events;
 using Content.Shared.Skrell;
 using Content.Shared.Inventory;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.MagicMirror;
 using Robust.Shared.Timing;
+using Content.Shared.Body;
+using System.Linq;
 
 namespace Content.Server.Skrell;
 
-public sealed class SkrellSystem : EntitySystem
+public sealed partial class SkrellSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private InventorySystem _inventorySystem = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+
+    private static readonly string CurrentSlot = "pocket3";
 
     public override void Initialize()
     {
@@ -23,9 +27,9 @@ public sealed class SkrellSystem : EntitySystem
     private void OnEquip(Entity<SkrellComponent> entity, ref DidEquipEvent args)
     {
         var slot = args.Slot;
-        if (slot == "pocket3")
+        if (slot == CurrentSlot)
         {
-            var item = args.Equipee;
+            var item = args.EquipTarget;
             if (CheckCondition(entity))
             {
                 Timer.Spawn(1, () => _inventorySystem.TryUnequip(item, slot, force: true));
@@ -35,12 +39,12 @@ public sealed class SkrellSystem : EntitySystem
 
     private bool CheckCondition(EntityUid uid)
     {
-        if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
-        {
-            if (!humanoid.MarkingSet.TryGetCategory(MarkingCategories.Hair, out var hairMarkings) || hairMarkings.Count == 0)
-                return true;
-        }
-        return false;
+        if (!HasComp<VisualBodyComponent>(uid))
+            return false;
+
+        return !_visualBody.TryGatherMarkingsData(uid, null, out _, out _, out var applied)
+            || applied.Values.All(organMarkings => !organMarkings.ContainsKey(HumanoidVisualLayers.Hair)
+            || organMarkings[HumanoidVisualLayers.Hair].Count == 0);
     }
 
     private void OnRemoveSlot(HairMarkingRemovedEvent args)
@@ -49,9 +53,9 @@ public sealed class SkrellSystem : EntitySystem
         if (!HasComp<SkrellComponent>(target))
             return;
 
-        if (_inventorySystem.TryGetSlotEntity(target, "pocket3", out _))
+        if (_inventorySystem.TryGetSlotEntity(target, CurrentSlot, out _))
         {
-            _inventorySystem.TryUnequip(target, "pocket3");
+            _inventorySystem.TryUnequip(target, CurrentSlot);
         }
     }
 }

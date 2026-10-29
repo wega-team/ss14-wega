@@ -1,0 +1,48 @@
+- type: job
+  id: CBURN
+  name: job-name-cburn
+  description: job-description-cburn
+  playTimeTracker: JobCBURN
+  setPreference: false
+  startingGear: CBURNGear
+  icon: "JobIconCBURN"
+  supervisors: job-supervisors-centcom
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
+
+- type: startingGear
+  id: CBURNGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitColorBrown
+    back: ClothingBackpackDuffelCBURN
+    mask: ClothingMaskGasERT # Corvax-Wega-ERT
+    eyes: ClothingERTHud  # Corvax-Wega-ERT
+    ears: ClothingHeadsetAltCentCom
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitCBURN
+    shoes: ClothingShoesBootsMagCombat # Corvax-Wega-MagCombat
+    id: CBURNPDA
+    pocket1: RadioHandheld
+    pocket2: WeaponLaserGun
+    belt: ClothingBeltMercWebbing # Corvax-Wega-ERT
+  storage:
+    back:
+    - WeaponShotgunKammerer # Corvax-Wega-ERT
+    - BoxShotgunIncendiary
+    - GrenadeIncendiary # Corvax-Wega-ERT
+    - PillAmbuzolPlus
+    - PillAmbuzol
+
+- type: chameleonOutfit
+  id: CBURNChameleonOutfit
+  job: CBURN
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetCBURN
+    neck: ClothingNeckScarfStripedBrown

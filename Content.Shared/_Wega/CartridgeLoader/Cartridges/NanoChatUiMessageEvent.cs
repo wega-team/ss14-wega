@@ -5,7 +5,7 @@ namespace Content.Shared.CartridgeLoader.Cartridges;
 public interface INanoChatUiMessagePayload { }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatAddContact : INanoChatUiMessagePayload
+public sealed partial class NanoChatAddContact : INanoChatUiMessagePayload
 {
     public string ContactId { get; }
     public string ContactName { get; }
@@ -18,7 +18,7 @@ public sealed class NanoChatAddContact : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatEraseContact : INanoChatUiMessagePayload
+public sealed partial class NanoChatEraseContact : INanoChatUiMessagePayload
 {
     public string ContactId { get; }
 
@@ -29,12 +29,12 @@ public sealed class NanoChatEraseContact : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatMuted : INanoChatUiMessagePayload
+public sealed partial class NanoChatMuted : INanoChatUiMessagePayload
 {
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatSendMessage : INanoChatUiMessagePayload
+public sealed partial class NanoChatSendMessage : INanoChatUiMessagePayload
 {
     public string RecipientId { get; }
     public string Message { get; }
@@ -47,7 +47,7 @@ public sealed class NanoChatSendMessage : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatSetActiveChat : INanoChatUiMessagePayload
+public sealed partial class NanoChatSetActiveChat : INanoChatUiMessagePayload
 {
     public string ContactId { get; }
 
@@ -58,7 +58,7 @@ public sealed class NanoChatSetActiveChat : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatCreateGroup : INanoChatUiMessagePayload
+public sealed partial class NanoChatCreateGroup : INanoChatUiMessagePayload
 {
     public string GroupName { get; }
 
@@ -69,7 +69,7 @@ public sealed class NanoChatCreateGroup : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatJoinGroup : INanoChatUiMessagePayload
+public sealed partial class NanoChatJoinGroup : INanoChatUiMessagePayload
 {
     public string GroupId { get; }
 
@@ -80,7 +80,7 @@ public sealed class NanoChatJoinGroup : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatLeaveGroup : INanoChatUiMessagePayload
+public sealed partial class NanoChatLeaveGroup : INanoChatUiMessagePayload
 {
     public string GroupId { get; }
 
@@ -91,7 +91,7 @@ public sealed class NanoChatLeaveGroup : INanoChatUiMessagePayload
 }
 
 [Serializable, NetSerializable]
-public sealed class NanoChatUiMessageEvent : CartridgeMessageEvent
+public sealed partial class NanoChatUiMessageEvent : CartridgeMessageEvent
 {
     public readonly INanoChatUiMessagePayload Payload;
 

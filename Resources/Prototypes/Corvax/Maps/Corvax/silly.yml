@@ -1,7 +1,7 @@
 - type: gameMap
   id: CorvaxSilly
   mapName: 'Silly Island'
-  mapPath: /Maps/_Wega/wegasilly.yml #Corvax-Wega-Maps
+  mapPath: /Maps/Corvax/corvax_silly.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0
@@ -16,7 +16,15 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'ABK'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Corvax/Shuttles/emergency_corvaxsilly.yml
+          emergencyShuttlePath: /Maps/Corvax/Shuttles/Emergency/emergency_corvaxsilly.yml
+        - type: GridSpawn
+          groups:
+            trade: !type:GridSpawnGroup
+              addComponents:
+                - type: ProtectedGrid
+                - type: TradeStation
+              paths:
+                - /Maps/Corvax/Shuttles/trading_outpostcorvaxsilly.yml
         - type: StationCargoShuttle
           path: /Maps/Corvax/Shuttles/cargo_corvaxsilly.yml
         - type: StationJobs

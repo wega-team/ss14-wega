@@ -1,0 +1,427 @@
+# White top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorWhite
+  name: white top
+  description: A generic white jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+    - state: icon-down
+      color: "#b3b3b9"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+      - state: equipped-INNERCLOTHING-down
+        color: "#b3b3b9"
+      
+#Grey top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorGrey
+  name: grey top
+  description: A tasteful grey top that reminds you of the good old days.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#b3b3b9"
+    - state: icon-down
+      color: "#6c6c78"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#b3b3b9"
+      - state: equipped-INNERCLOTHING-down
+        color: "#6c6c78"
+
+# Black top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorBlack
+  name: black top
+  description: A generic black top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#3f3f3f"
+    - state: icon-down
+      color: "#34343e"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#3f3f3f"
+      - state: equipped-INNERCLOTHING-down
+        color: "#34343e"
+# Blue top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorBlue
+  name: blue top
+  description: A generic blue top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#52aecc"
+    - state: icon-down
+      color: "#5087ab"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#52aecc"
+      - state: equipped-INNERCLOTHING-down
+        color: "#5087ab"
+
+# Dark Blue top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorDarkBlue
+  name: dark blue top
+  description: A generic dark blue top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#3285ba"
+    - state: icon-down
+      color: "#255b8a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#3285ba"
+      - state: equipped-INNERCLOTHING-down
+        color: "#255b8a"
+
+# Teal top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorTeal
+  name: teal top
+  description: A generic teal top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#77f3b7"
+    - state: icon-down
+      color: "#5ab8a6"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#77f3b7"
+      - state: equipped-INNERCLOTHING-down
+        color: "#5ab8a6"
+
+# Green top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorGreen
+  name: green top
+  description: A generic green top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#9ed63a"
+    - state: icon-down
+      color: "#62993d"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#9ed63a"
+      - state: equipped-INNERCLOTHING-down
+        color: "#62993d"
+
+ # Dark Green top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorDarkGreen
+  name: dark green top
+  description: A generic dark green top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#007923"
+    - state: icon-down
+      color: "#0e471e"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#007923"
+      - state: equipped-INNERCLOTHING-down
+        color: "#0e471e"
+
+# Orange top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorOrange
+  name: orange top
+  description: Don't wear this near paranoid security officers.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#ff8c19"
+    - state: icon-down
+      color: "#b55024"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#ff8c19"
+      - state: equipped-INNERCLOTHING-down
+        color: "#b55024"
+
+# Pink top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorPink
+  name: pink top
+  description: Just looking at this makes you feel <i>fabulous</i>.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#ffa69b"
+    - state: icon-down
+      color: "#d1808d"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#ffa69b"
+      - state: equipped-INNERCLOTHING-down
+        color: "#d1808d"
+
+# Red top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorRed
+  name: red top
+  description: A generic red top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#eb0c07"
+    - state: icon-down
+      color: "#a11b3a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#eb0c07"
+      - state: equipped-INNERCLOTHING-down
+        color: "#a11b3a"
+
+# Yellow top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorYellow
+  name: yellow top
+  description: A generic yellow top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#ffe14d"
+    - state: icon-down
+      color: "#cf9748"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#ffe14d"
+      - state: equipped-INNERCLOTHING-down
+        color: "#cf9748"
+
+# Purple top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorPurple
+  name: purple top
+  description: A generic light purple top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#9f70cc"
+    - state: icon-down
+      color: "#614896"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#9f70cc"
+      - state: equipped-INNERCLOTHING-down
+        color: "#614896"
+
+# Light Brown top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorLightBrown
+  name: light brown top
+  description: A generic light brown top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#c59431"
+    - state: icon-down
+      color: "#a66329"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#c59431"
+      - state: equipped-INNERCLOTHING-down
+        color: "#a66329"
+
+# Brown top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorBrown
+  name: brown top
+  description: A generic brown top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#a17229"
+    - state: icon-down
+      color: "#914b26"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#a17229"
+      - state: equipped-INNERCLOTHING-down
+        color: "#914b26"
+
+# Maroon top
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopColorMaroon
+  name: maroon top
+  description: A generic maroon top with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    layers:
+    - state: icon-top
+      color: "#cc295f"
+    - state: icon-down
+      color: "#8f2b5b"
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/color-top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: equipped-INNERCLOTHING-top
+        color: "#cc295f"
+      - state: equipped-INNERCLOTHING-down
+        color: "#8f2b5b"
+
+## Topick
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopic
+  name: topic with openТо
+  description: A generic white jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/topic.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/topic.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformTopicCool
+  name: topic with skull
+  description: A generic white jumpsuit with no rank markings.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/cool-top.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/cool-top.rsi
+
+# Random
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformRandomWega
+  abstract: true
+  description: Generated by neural networks based on the latest fashion trends.
+  suffix: Random visual
+  components:
+  - type: SuitSensor
+  - type: Sprite
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/random_top.rsi
+    layers:
+    - state: base_torso_topik
+      map: [ "torso" ]
+    - state: base_leg_cshirt
+      map: [ "leg" ]
+  - type: Clothing
+    sprite: _Wega/Clothing/Uniforms/Jumpskirt/random_top.rsi
+    clothingVisuals:
+      jumpsuit:
+      - state: base_torso_topik
+        map: [ "torso" ]
+      - state: base_leg_cshirt
+        map: [ "leg" ]
+        
+- type: entity
+  parent: ClothingUniformRandomWega
+  id: ClothingUniformRandomBraWega
+  name: colorful bra and topik
+  components:
+  - type: RandomSprite
+    available:
+      - torso:
+          base_torso_bra: Sixteen
+          base_torso_topik: Sixteen
+        leg:
+          base_leg_cshirt: Sixteen
+          base_leg_skirt: Sixteen
+          base_leg_skirt_long: Sixteen

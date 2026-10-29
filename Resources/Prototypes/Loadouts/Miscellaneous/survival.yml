@@ -19,10 +19,10 @@
     - Moth
     - Reptilian
     #Corvax-Species-Start
-    - CorvaxVulpkanin
     - Vulpkanin
     - Tajaran
     #Corvax-Species-End
+    # Corvax-Wega-Species-start
     - Felinid # Corvax-Wega-UwU
     - Resomi # Corvax-Wega-Resomi
     - Skrell # Corvax-Wega-Skrell
@@ -30,6 +30,8 @@
     - Phantom # Corvax-Wega-Phantom
     - Harpy # Corvax-Wega-Harpy
     - Ariral # Corvax-Wega-Ariral
+    - Feroxi # Corvax-Wega-ГррррррПонедельник
+    # Corvax-Wega-Species-end
 - type: loadoutEffectGroup
   id: EffectSpeciesVox
   effects:
@@ -64,7 +66,7 @@
     proto: OxygenBreather
   storage:
     back:
-    - BoxHug
+    - BoxSurvivalHug
 
 - type: loadout
   id: EmergencyNitrogenClown
@@ -73,58 +75,7 @@
     proto: NitrogenBreather
   storage:
     back:
-    - BoxHugNitrogen
-
-# Mime
-- type: loadoutEffectGroup
-  id: OxygenBreatherMime
-  effects:
-  - !type:SpeciesLoadoutEffect
-    species:
-    - Arachnid
-    - Diona
-    - Dwarf
-    - Human
-    - Reptilian
-    #Corvax-Species-Start
-    - Vulpkanin
-    - CorvaxVulpkanin
-    - Tajaran
-    #Corvax-Species-End
-
-- type: loadoutEffectGroup
-  id: OxygenBreatherMimeMoth
-  effects:
-  - !type:SpeciesLoadoutEffect
-    species:
-    - Moth
-
-- type: loadout
-  id: EmergencyOxygenMime
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: OxygenBreatherMime
-  storage:
-    back:
-    - BoxMime
-
-- type: loadout
-  id: EmergencyNitrogenMime
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: NitrogenBreather
-  storage:
-    back:
-    - BoxMimeNitrogen
-
-- type: loadout
-  id: EmergencySpeciesMothMime
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: OxygenBreatherMimeMoth
-  storage:
-    back:
-    - BoxMimeMoth
+    - BoxSurvivalHugNitrogen
 
 # Engineering / Extended
 - type: loadout
@@ -183,7 +134,26 @@
     back:
     - BoxSurvivalSecurityNitrogen
 
-# Syndicate
+# Antagonist
+
+- type: loadout
+  id: EmergencyOxygenExtendedAntag
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  storage:
+    back:
+    - BoxSurvivalDeluxeExtended
+
+- type: loadout
+  id: EmergencyNitrogenExtendedAntag
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreather
+  storage:
+    back:
+    - BoxSurvivalDeluxeExtendedNitrogen
+
 - type: loadout
   id: EmergencyOxygenSyndicate
   effects:
@@ -201,6 +171,29 @@
   storage:
     back:
     - BoxSurvivalSyndicateNitrogen
+
+# Military / Double Extended
+- type: loadout
+  id: EmergencyOxygenMilitaryDouble
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: OxygenBreather
+  equipment:
+    pocket1: DoubleEmergencyOxygenTankFilled
+  storage:
+    back:
+    - BoxSurvivalMilitaryDouble
+
+- type: loadout
+  id: EmergencyNitrogenMilitaryDouble
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: NitrogenBreather
+  equipment:
+    pocket1: DoubleEmergencyNitrogenTankFilled
+  storage:
+    back:
+    - BoxSurvivalMilitaryDoubleNitrogen
 
 # Pre-equipped species gear
 

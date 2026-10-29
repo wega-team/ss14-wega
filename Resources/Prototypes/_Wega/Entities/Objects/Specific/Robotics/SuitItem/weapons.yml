@@ -1,0 +1,36 @@
+- type: entity
+  name: modsuit gun
+  parent: BaseWeaponBattery
+  id: WeaponLaserSuitModule
+  description: The power of the primordial element of lightning in your hands.
+  components:
+  - type: Battery
+    maxCharge: 1200
+    startingCharge: 1200
+  - type: Item
+    size: Large
+    shape:
+    - 0,0,2,1
+  - type: BatterySelfRecharger
+    autoRechargeRate: 50
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/modules.rsi
+    state: gun
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser.ogg
+    selectedMode: Burst
+    availableModes:
+    - Burst
+    minAngle: 2
+    maxAngle: 2
+    angleIncrease: 3
+    angleDecay: 15
+  - type: BatteryAmmoProvider
+    proto: RedLightLaser
+    fireCost: 100
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance

@@ -5,6 +5,7 @@
   - MobDamageable
   - MobAtmosExposed
   - MobCombat
+  - BaseMobAnimal
   abstract: true
   components:
   - type: Reactive
@@ -12,185 +13,190 @@
       Flammable: [Touch]
       Extinguish: [Touch]
       Acidic: [Touch, Ingestion]
-  - type: Body
-    prototype: Animal
   - type: Climbing
   - type: NameIdentifier
     group: GenericNumber
   - type: StatusEffects
     allowed:
     - Electrocution
-    - TemporaryBlindness
-    - RadiationProtection
     - Adrenaline
   - type: StandingState
   - type: Tag
     tags:
     - DoorBumpOpener
 
-- type: entity
-  id: MobGoliath
-  parent: [ BaseMobAsteroid, MobBloodstream ]
-  name: goliath
-  description: A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
-  components:
-  - type: Sprite
-    sprite: Mobs/Aliens/Asteroid/goliath.rsi
-    layers:
-    - map: ["enum.DamageStateVisualLayers.Base"]
-      state: goliath
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: goliath
-      Dead:
-        Base: goliath_dead
-  - type: MovementSpeedModifier
-    baseWalkSpeed : 2.00
-    baseSprintSpeed : 2.00
-  - type: Bloodstream
-    bloodMaxVolume: 350
-    chemicalMaxVolume: 0
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      150: Dead
-  - type: MeleeWeapon
-    soundHit:
-      path: "/Audio/Weapons/smash.ogg"
-    angle: 0
-    attackRate: 0.75
-    animation: WeaponArcPunch
-    damage:
-      types:
-        Slash: 10
-        Piercing: 10
-  - type: NpcFactionMember
-    factions:
-    - SimpleHostile
-  - type: HTN
-    constantlyReplan: false
-    rootTask:
-      task: GoliathCompound
-    blackboard:
-      VisionRadius: !type:Single
-        6
-      AggroVisionRadius: !type:Single
-        10
-      NavSmash: !type:Bool
-        true
-  - type: NPCUseActionOnTarget
-    actionId: ActionGoliathTentacle
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - Goliath
-    - FootstepSound
-  - type: NoSlip
-  - type: Butcherable
-    spawned:
-    - id: FoodMeatGoliath
-      amount: 3
-    - id: MaterialGoliathHide1
-      amount: 3
+# Corvax-Wega-Lavaland-Edit-start
+#- type: entity
+#  id: MobGoliath
+#  parent: [ BaseMobAsteroid, MobBloodstream, BaseSlicingRefinableButchering, BaseMobDestructible ]
+#  name: goliath
+#  description: A massive beast that uses long tentacles to ensnare its prey, threatening them is not advised under any conditions.
+#  components:
+#  - type: Sprite
+#    sprite: Mobs/Aliens/Asteroid/goliath.rsi
+#    layers:
+#    - map: ["enum.DamageStateVisualLayers.Base"]
+#      state: goliath
+#  - type: DamageStateVisuals
+#    states:
+#      Alive:
+#        Base: goliath
+#      Dead:
+#        Base: goliath_dead
+#  - type: MovementSpeedModifier
+#    baseWalkSpeed : 2.00
+#    baseSprintSpeed : 2.00
+#  - type: Bloodstream
+#    bloodReferenceSolution:
+#      reagents:
+#      - ReagentId: Blood
+#        Quantity: 350
+#  - type: MobThresholds
+#    thresholds:
+#      0: Alive
+#      150: Dead
+#  - type: MeleeWeapon
+#    soundHit:
+#      path: "/Audio/Weapons/smash.ogg"
+#    angle: 0
+#    attackRate: 0.75
+#    animation: WeaponArcPunch
+#    damage:
+#      types:
+#        Slash: 10
+#        Piercing: 10
+#  - type: NpcFactionMember
+#    factions:
+#    - SimpleHostile
+#  - type: HTN
+#    constantlyReplan: false
+#    rootTask:
+#      task: GoliathCompound
+#    blackboard:
+#      VisionRadius: !type:Single
+#        6
+#      AggroVisionRadius: !type:Single
+#        10
+#      NavSmash: !type:Bool
+#        true
+#  - type: NPCUseActionOnTarget
+#    actionId: ActionGoliathTentacle
+#  - type: Tag
+#    tags:
+#    - CannotSuicide
+#    - Goliath
+#    - FootstepSound
+#  - type: NoSlip
+#  - type: ToolRefinable
+#    refineResult:
+#    - id: FoodMeatGoliath
+#      amount: 3
+#    - id: MaterialGoliathHide1
+#      amount: 3
 
-- type: entity
-  parent: BaseAction
-  id: ActionGoliathTentacle
-  name: "[color=red]Tentacle Slam[/color]"
-  description: Use your tentacles to grab and stun a target player!
-  components:
-  - type: Action
-    raiseOnUser: true
-    icon:
-      sprite: Mobs/Aliens/Asteroid/goliath.rsi
-      state: goliath_tentacle_spawn
-    iconOn:
-      sprite: Mobs/Aliens/Asteroid/goliath.rsi
-      state: goliath_tentacle_wiggle
-    sound:
-      path: "/Audio/Weapons/slash.ogg"
-    useDelay: 8
-  - type: TargetAction
-    range: 10
-  - type: WorldTargetAction
-    event: !type:GoliathSummonTentacleAction
+# - type: entity
+#   parent: BaseAction
+#   id: ActionGoliathTentacle
+#   name: "[color=red]Tentacle Slam[/color]"
+#   description: Use your tentacles to grab and stun a target player!
+#   components:
+#   - type: Action
+#     raiseOnUser: true
+#     sound:
+#       path: "/Audio/Weapons/slash.ogg"
+#     useDelay: 8
+#   - type: Sprite
+#     sprite: Mobs/Aliens/Asteroid/goliath.rsi
+#     layers:
+#     - state: goliath_tentacle_spawn
+#       map: ["enum.ActionVisuals.Icon"]
+#     - state: goliath_tentacle_wiggle
+#       map: ["enum.ActionVisuals.IconToggled"]
+#       visible: false
+#   - type: TargetAction
+#     range: 10
+#   - type: WorldTargetAction
+#     event: !type:GoliathSummonTentacleAction
 
-- type: entity
-  id: GoliathTentacle
-  name: tentacle
-  components:
-  - type: Transform
-    anchored: True
-  - type: Physics
-    bodyType: Static
-    canCollide: true
-  - type: InteractionOutline
-  - type: Sprite
-    sprite: Mobs/Aliens/Asteroid/goliath.rsi
-    layers:
-    - state: goliath_tentacle_wiggle
-  - type: StunOnContact
-    blacklist:
-      tags:
-      - Goliath
-  - type: Fixtures
-    fixtures:
-      fix:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.45,-0.45,0.45,0.45"
-        mask:
-        - Impassable
-        layer:
-        - Impassable
-        hard: false
-  - type: TimedDespawn #do this shit by hand because of fucking course.
-    lifetime: 0.4
-  - type: SpawnOnDespawn
-    prototype: EffectGoliathTentacleRetract
+# - type: entity
+#   id: GoliathTentacle
+#   name: tentacle
+#   components:
+#   - type: Transform
+#     anchored: True
+#   - type: Physics
+#     bodyType: Static
+#     canCollide: true
+#   - type: InteractionOutline
+#   - type: Sprite
+#     sprite: Mobs/Aliens/Asteroid/goliath.rsi
+#     layers:
+#     - state: goliath_tentacle_wiggle
+#   - type: StunOnCollide
+#     stunAmount: 1
+#     knockdownAmount: 5
+#     fixture: fix
+#     blacklist:
+#       tags:
+#       - Goliath
+#   - type: Fixtures
+#     fixtures:
+#       fix:
+#         shape:
+#           !type:PhysShapeAabb
+#           bounds: "-0.45,-0.45,0.45,0.45"
+#         mask:
+#         - Impassable
+#         layer:
+#         - Impassable
+#         hard: false
+#   - type: TimedDespawn #do this shit by hand because of fucking course.
+#     lifetime: 0.4
+#   - type: SpawnOnDespawn
+#     prototype: EffectGoliathTentacleRetract
 
-- type: entity
-  id: BaseEffectGoliathTentacleSpawn
-  categories: [ HideSpawnMenu ]
-  name: tentacle
-  abstract: true
-  components:
-  - type: Transform
-    anchored: True
-  - type: Physics
-    bodyType: Static
-    canCollide: false
-  - type: Sprite
-    sprite: Mobs/Aliens/Asteroid/goliath.rsi
-  - type: InteractionOutline
-  - type: TimedDespawn
-    lifetime: 0.7
+# - type: entity
+#   id: BaseEffectGoliathTentacleSpawn
+#   categories: [ HideSpawnMenu ]
+#   name: tentacle
+#   abstract: true
+#   components:
+#   - type: Transform
+#     anchored: True
+#   - type: Physics
+#     bodyType: Static
+#     canCollide: false
+#   - type: Sprite
+#     sprite: Mobs/Aliens/Asteroid/goliath.rsi
+#   - type: InteractionOutline
+#   - type: TimedDespawn
+#     lifetime: 0.7
 
-- type: entity
-  id: EffectGoliathTentacleSpawn
-  parent: BaseEffectGoliathTentacleSpawn
-  categories: [ HideSpawnMenu ]
-  name: tentacle
-  components:
-    - type: Sprite
-      state: goliath_tentacle_spawn
-    - type: SpawnOnDespawn
-      prototype: GoliathTentacle
+# - type: entity
+#   id: EffectGoliathTentacleSpawn
+#   parent: BaseEffectGoliathTentacleSpawn
+#   categories: [ HideSpawnMenu ]
+#   name: tentacle
+#   components:
+#     - type: Sprite
+#       state: goliath_tentacle_spawn
+#     - type: SpawnOnDespawn
+#       prototype: GoliathTentacle
 
-- type: entity
-  id: EffectGoliathTentacleRetract
-  parent: BaseEffectGoliathTentacleSpawn
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Sprite
-    state: goliath_tentacle_retract
-  - type: EffectVisuals
-  - type: AnimationPlayer
+# - type: entity
+#   id: EffectGoliathTentacleRetract
+#   parent: BaseEffectGoliathTentacleSpawn
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Sprite
+#     state: goliath_tentacle_retract
+#   - type: EffectVisuals
+#   - type: AnimationPlayer
+# Corvax-Wega-Lavaland-Edit-end
 
 - type: entity
   id: MobHivelord
-  parent: [ BaseMobAsteroid, FlyingMobBase ]
+  parent: [ BaseMobAsteroid, FlyingMobBase, BaseSlicingRefinableButchering, BaseMobDestructible ]
   name: hivelord
   description: A truly alien creature, it is a mass of unknown organic material, constantly fluctuating. When attacking, pieces of it split off and attack in tandem with the original.
   components:
@@ -244,8 +250,8 @@
         9
       NavSmash: !type:Bool
         true
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: FoodHivelordRemains
 
 - type: entity
@@ -307,13 +313,11 @@
   name: hivelord remains
   description: All that remains of a hivelord, it seems to be what allows it to break pieces of itself off without being hurt... its healing properties will soon become inert if not used quickly. Try not to think about what you're eating.
   components:
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 5
-        reagents:
-        - ReagentId: Rororium
-          Quantity: 5
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Rororium
+        Quantity: 5
   - type: Sprite
     sprite: Objects/Consumable/Food/rorocore.rsi
     state: boiled
@@ -331,6 +335,8 @@
   - type: Tag
     tags:
     - HivelordRemains
+    - Meat
+    - Raw
 
 - type: entity
   id: FoodHivelordRemainsInert
@@ -350,11 +356,12 @@
   - type: Tag
     tags:
     - HivelordRemains
-
+    - Meat
+    - Raw
 
 - type: entity
   id: MobBasilisk
-  parent: [ BaseMobAsteroid, MobBloodstream ]
+  parent: [ BaseMobAsteroid, MobBloodstream, BaseSlicingRefinableButchering, BaseMobDestructible ]
   name: basilisk
   description: A territorial beast, covered in a thick shell that absorbs energy. Its stare causes victims to freeze from the inside.
   components:
@@ -401,8 +408,10 @@
     capacity: 1
     count: 1
   - type: Bloodstream
-    bloodMaxVolume: 200
-    chemicalMaxVolume: 0
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 200
   - type: NpcFactionMember
     factions:
     - SimpleHostile
@@ -420,8 +429,8 @@
     reflectProb: 1
     reflects:
     - Energy
-  - type: Butcherable
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: DiamondOre1
       amount: 1
       maxAmount: 3

@@ -7,7 +7,7 @@
   flavor: medicine
   color: "#9942f5"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemCureDisease
       - !type:HealthChange
@@ -24,7 +24,7 @@
   flavor: medicine
   color: "#64a0aa"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemCureDnaDisease
       - !type:HealthChange
@@ -41,16 +41,17 @@
   flavor: unholy
   color: "#0A0A4A"
   metabolisms:
-    Drink:
+    Digestion:
       effects:
-      - !type:SatiateThirst
+      - !type:Satiate
+        satiationType: Thirst
         factor: 3
-    Medicine:
+    Bloodstream:
       effects:
       - !type:HealthChange
         conditions:
         - !type:MetabolizerTypeCondition
-          type: [ Cultist ]
+          type: [ BloodCultist ]
         damage:
           types:
             Blunt: -0.4
@@ -79,15 +80,13 @@
   color: "#ffffff"
   worksOnTheDead: true
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
         - !type:HealthChange
           damage:
             types:
               Poison: 3
               Caustic: 0.5
-    Medicine:
-      effects:
         - !type:ApplyRotSlowdown
           factor: 0.3
           conditions:
@@ -98,9 +97,9 @@
             - !type:MobStateCondition
               mobstate: Dead
           damage:
-            groups:
-              Brute: -1
-              Burn: -1
+            types:
+              Blunt: -1
+              Heat: -1
   plantMetabolism:
     - !type:PlantAdjustHealth
       amount: -3
@@ -117,3 +116,25 @@
           damage:
             types:
               Caustic: 0.2
+
+- type: reagent
+  id: LavalandSerum
+  name: reagent-name-lavaland-serum
+  group: Medicine
+  desc: reagent-desc-lavaland-serum
+  physicalDesc: reagent-physical-desc-pungent
+  flavor: sharp
+  color: "#a88867"
+  metabolisms:
+    Bloodstream:
+      metabolismRate: 0.25 # It's basically pure energy so it metabolizes very fast
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:LavalandCondition
+        damage:
+          types:
+            Blunt: -1.5
+            Slash: -1.5
+            Piercing: -1.5
+            Heat: -1.5

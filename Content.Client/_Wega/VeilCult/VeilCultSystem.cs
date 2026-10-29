@@ -1,0 +1,62 @@
+using System.Numerics;
+using Content.Shared.Veil.Cult;
+using Content.Shared.Veil.Cult.Components;
+using Content.Shared.StatusIcon.Components;
+using Robust.Client.GameObjects;
+
+namespace Content.Client.Veil.Cult
+{
+    public sealed partial class VeilCultSystem : SharedVeilCultSystem
+    {
+        [Dependency] private SpriteSystem _sprite = default!;
+
+        [SubscribeLocalEvent]
+        private void GetCultistIcons(Entity<VeilCultistComponent> ent, ref GetStatusIconsEvent args)
+        {
+            var iconPrototype = ProtoMan.Index(ent.Comp.StatusIcon);
+            args.StatusIcons.Add(iconPrototype);
+        }
+
+        [SubscribeLocalEvent]
+        private void GetHalo(EntityUid uid, VeilCogDisplayComponent component, ComponentStartup args)
+        {
+            if (!TryComp<SpriteComponent>(uid, out var sprite))
+                return;
+
+            if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out _, false))
+                return;
+
+            var bounds = _sprite.GetLocalBounds((uid, sprite));
+            var adj = bounds.Height / 2 + 1.0f / 32 * 6.0f;
+
+            var layerData = new PrototypeLayerData
+            {
+                Shader = "unshaded",
+                RsiPath = "_Wega/Interface/Misc/veilcult_cog.rsi",
+                State = "halo",
+                Offset = new Vector2(0.0f, adj)
+            };
+
+            var layer = _sprite.AddLayer(uid, layerData, null);
+            _sprite.LayerMapSet(uid, CogKey.Halo, layer);
+        }
+
+        [SubscribeLocalEvent]
+        private void RemoveHalo(EntityUid uid, VeilCogDisplayComponent component, ComponentShutdown args)
+        {
+            if (_sprite.LayerMapTryGet(uid, CogKey.Halo, out var layer, false))
+                _sprite.RemoveLayer(uid, layer);
+        }
+
+        [SubscribeLocalEvent]
+        private void OnEnchantRemove(EntityUid uid, EnchantedComponent comp, ComponentRemove args)
+        {
+            _sprite.RemoveLayer(uid, 1, false);
+        }
+
+        private enum CogKey
+        {
+            Halo
+        }
+    }
+}

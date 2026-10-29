@@ -1,0 +1,371 @@
+- type: entity
+  name: mining drill
+  parent: BaseItem
+  id: SyndicateDrill
+  description: Powerful tool used to quickly drill through rocks.
+  components:
+  - type: Item
+    storedRotation: -90
+  - type: Tag
+    tags:
+    - Pickaxe
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/syndicate_drill.rsi
+    state: icon
+  - type: MeleeWeapon
+    autoAttack: true
+    angle: 0
+    wideAnimationRotation: -90
+    soundHit:
+      path: "/Audio/Items/drill_hit.ogg"
+    attackRate: 4
+    damage:
+      types:
+        Structural: 75
+        Piercing: 9
+
+- type: entity
+  parent: BaseItem
+  id: BorgWeaponSniperHristovAdvanced
+  suffix: Syndiborg
+  name: semi-aito Hristov
+  description: A portable anti-material rifle. Uses .60 anti-material ammo upgraded by gorlax marodeurs.
+  components:
+  - type: Item
+    size: Huge
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Snipers/new_hristov.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Gun
+    minAngle: 0
+    maxAngle: 0
+    fireRate: 0.7
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
+    soundEmpty:
+      path: /Audio/Weapons/Guns/Empty/empty.ogg
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 6
+    proto: CartridgeAntiMateriel
+    cycleable: false # No synthesizing ammo for your syndicate masters.
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 20s
+    affectedByEmp: true
+  - type: AmmoCounter
+  - type: Appearance
+  - type: StaticPrice
+    price: 5000
+
+# - type: entity
+#   name: L6C ROW
+#   id: WeaponLightMachineGunL6CEnergy
+#   suffix: Syndiborg
+#   parent: BaseItem
+#   description: A L6 SAW for use by cyborgs. Creates .30 rifle ammo on the fly from an internal ammo fabricator, which slowly self-charges.
+#   components:
+#     - type: Gun
+#       minAngle: 4
+#       maxAngle: 25
+#       angleIncrease: 4
+#       angleDecay: 16
+#       fireRate: 8
+#       selectedMode: FullAuto
+#       availableModes:
+#         - FullAuto
+#       soundGunshot:
+#         path: /Audio/Weapons/Guns/Gunshots/lmg.ogg
+#       soundEmpty:
+#         path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
+#     - type: Sprite
+#       sprite: Objects/Weapons/Guns/LMGs/l6.rsi
+#       layers:
+#         - state: base
+#           map: [ "enum.GunVisualLayers.Base" ]
+#         - state: mag-3
+#           map: [ "enum.GunVisualLayers.Mag" ]
+#     - type: Item
+#       size: Huge
+#     - type: BatteryAmmoProvider
+#       proto: CartridgeLightRifle
+#       fireCost: 50
+#     - type: BatterySelfRecharger
+#       autoRechargeRate: 50
+#       autoRechargePauseTime: 20
+#     - type: Battery
+#       maxCharge: 1500
+#     - type: AmmoCounter
+#     - type: Unremoveable
+
+- type: entity
+  name: china ROW
+  parent: [BaseWeaponLauncher, BaseSyndicateContraband]
+  id: WeaponLauncherChinaLakeBorg
+  suffix: Syndiborg
+  description: PLOOP.
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Launchers/china_lake.rsi
+    layers:
+      - state: icon
+        map: ["enum.GunVisualLayers.Base"]
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,2
+  - type: AmmoCounter
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - Grenade
+    capacity: 1
+    proto: GrenadeFrag
+    cycleable: false
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: StaticPrice
+    price: 10000
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 60
+    affectedByEmp: true
+
+- type: entity
+  parent: BaseItem
+  id: WeaponPistolDesertEagleBorg
+  suffix: Syndiborg
+  name: semi-aito desert eagle
+  description: A portable anti-material rifle. Uses .60 anti-material ammo upgraded by gorlax marodeurs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Small
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/deserteagle.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    fireRate: 2
+    selectedMode: SemiAuto
+    availableModes:
+      - SemiAuto
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/deserteagle.ogg
+      params:
+        volume: 2
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 7
+    proto: BulletMagnum
+    cycleable: false # No synthesizing ammo for your syndicate masters.
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 10s
+    affectedByEmp: true
+  - type: AmmoCounter
+  - type: Appearance
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  name: C-20r ROW #I think ROW stands for Recharging Onboard Weapon so i'm following the L6C's example
+  id: WeaponSubMachineGunC20rROWAdvensed
+  parent: BaseItem
+  description: A burst-fire C-20r submachine gun for use by cyborgs. Creates .35 caliber ammo on the fly from an internal ammo fabricator, which slowly self-charges.
+  components:
+  - type: Gun
+    minAngle: 2
+    maxAngle: 16
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 8
+    burstFireRate: 8
+    shotsPerBurst: 5
+    selectedMode: FullAuto
+    availableModes:
+    - Burst
+    - FullAuto
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/c-20r.ogg
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-5
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Huge
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - CartridgePistol
+    capacity: 30
+    proto: CartridgePistol
+    cycleable: false # No synthesizing ammo for your syndicate masters.
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 4s
+    affectedByEmp: true
+  - type: AmmoCounter
+
+- type: entity
+  parent: BaseItem
+  id: ModuleSyndiWeapon
+  name: Module weapon
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-w
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleSniper
+    - BorgModuleCR20Advensed
+    - BorgModuleL6C
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  parent: BaseItem
+  id: ModuleSyndiSupport
+  name: Module support
+  description: "An obsidian rod that strikes paranormal things."
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    layers:
+    - state: syndicate
+    - state: icon-syndicate
+  - type: Item
+    size: Small
+  - type: ItemSelector
+    items:
+    - BorgModuleNightVisonSyndi
+    - BorgModuleChina
+    - BorgModuleRepiarSyndi
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+
+- type: entity
+  name: handheld crew monitor
+  parent: DefibrillatorSyndicate
+  id: DefibrillatorSyndicateCyborg
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+        disableEject: true
+        swap: false
+
+- type: entity
+  parent: BorgHypo
+  id: BaseBorgHypoSyndie
+  name: borghypo
+  description: A sterile injector for rapid administration of drugs to patients. This integrated model is specialized for use by medical borgs.
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Medical/hypospray.rsi
+    layers:
+    - state: borghypo_s
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: borghypo_fill1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+
+- type: entity
+  parent: BaseBorgHypoGenerated
+  id: BaseBorgHypoGeneratedSyndie
+  name: borghypo
+  abstract: true
+  description: A sterile injector for rapid administration of drugs to patients. This integrated model is specialized for use by medical borgs.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/hyno.rsi
+    layers:
+    - state: borghypo_s
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: borghypo_fill1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+
+- type: entity
+  parent: BaseBorgHypoGeneratedSyndie
+  id: BorgHypoGeneratedSyndieGeneral
+  components:
+  - type: Solution
+    solution:
+      maxVol: 15
+  - type: SolutionRegeneration
+    generated:
+      reagents:
+      - ReagentId: Beer
+        Quantity: 0
+  - type: ChangeableReagent
+    reagents:
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 0
+      name: no-reagent
+    - reagent:
+      - ReagentId: Omnizine
+        Quantity: 1
+      name: reagent-name-omnizine
+    - reagent:
+      - ReagentId: Stimulants
+        Quantity: 1
+      name: reagent-name-stimulants
+    - reagent:
+      - ReagentId: DexalinPlus
+        Quantity: 1
+      name: reagent-name-dexalin-plus
+    - reagent:
+      - ReagentId: Mutadon
+        Quantity: 1
+      name: reagent-name-mutadon

@@ -3,7 +3,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.Client._Wega.Mining;
 
-public sealed class MiningConsoleBoundInterface : BoundUserInterface
+public sealed partial class MiningConsoleBoundInterface : BoundUserInterface
 {
     [ViewVariables]
     private MiningConsoleWindow? _window;

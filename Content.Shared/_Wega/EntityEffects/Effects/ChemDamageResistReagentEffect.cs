@@ -12,8 +12,8 @@ namespace Content.Shared.EntityEffects.Effects;
 /// <inheritdoc cref="EntityEffectSystem{T,TEffect}"/>
 public sealed partial class ChemDamageResistEntityEffectSystem : EntityEffectSystem<DamageResistComponent, ChemDamageResist>
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
 
     protected override void Effect(Entity<DamageResistComponent> entity, ref EntityEffectEvent<ChemDamageResist> args)
     {

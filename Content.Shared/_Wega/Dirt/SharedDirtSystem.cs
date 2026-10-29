@@ -15,13 +15,12 @@ using Robust.Shared.Random;
 
 namespace Content.Shared.DirtVisuals;
 
-public sealed class SharedDirtSystem : EntitySystem
+public sealed partial class SharedDirtSystem : EntitySystem
 {
-    [Dependency] private readonly InventorySystem _inventory = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private InventorySystem _inventory = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
 
     public const float MaxDirtLevel = 100f;
     private const float DirtAccumulationRate = 0.01f;
@@ -30,10 +29,14 @@ public sealed class SharedDirtSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        SubscribeLocalEvent<DirtableComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<DirtableComponent, ComponentGetState>(OnGetState);
         SubscribeLocalEvent<DirtableComponent, FoldedEvent>(OnFolded);
         SubscribeLocalEvent<DirtableComponent, ExaminedEvent>(OnExamined);
     }
+
+    private void OnInit(EntityUid uid, DirtableComponent comp, ref ComponentInit args)
+        => Dirty(uid, comp);
 
     private void OnGetState(EntityUid uid, DirtableComponent comp, ref ComponentGetState args)
     {
@@ -58,13 +61,12 @@ public sealed class SharedDirtSystem : EntitySystem
         float dirtPercentage = Math.Clamp(entity.Comp.CurrentDirtLevel.Float() / MaxDirtLevel * 100f, 0f, 100f);
         string colorHex = entity.Comp.DirtColor.ToHex();
 
-        string dirtLevel;
-        if (dirtPercentage < 30)
-            dirtLevel = Loc.GetString("dirt-examined-level-low");
-        else if (dirtPercentage < 70)
-            dirtLevel = Loc.GetString("dirt-examined-level-medium");
-        else
-            dirtLevel = Loc.GetString("dirt-examined-level-high");
+        string dirtLevel = dirtPercentage switch
+        {
+            < 30 => Loc.GetString("dirt-examined-level-low"),
+            < 70 => Loc.GetString("dirt-examined-level-medium"),
+            _ => Loc.GetString("dirt-examined-level-high")
+        };
 
         args.PushMarkup(
             Loc.GetString("dirt-examined-message", ("color", colorHex), ("percentage", (int)dirtPercentage), ("level", dirtLevel))
@@ -76,8 +78,16 @@ public sealed class SharedDirtSystem : EntitySystem
         if (!TryComp<BloodstreamComponent>(target, out var bloodstream))
             return;
 
-        var bloodTypes = new[] { "Slash", "Piercing", "Blunt" };
+        string? bloodReagentId = null;
+        if (bloodstream.BloodReferenceSolution.Contents.Count > 0)
+        {
+            bloodReagentId = bloodstream.BloodReferenceSolution.Contents[0].Reagent.Prototype;
+        }
 
+        if (bloodReagentId == null)
+            return;
+
+        var bloodTypes = new[] { "Slash", "Piercing", "Blunt" };
         FixedPoint2 bloodAmount = 0;
         foreach (var type in bloodTypes)
         {
@@ -89,7 +99,7 @@ public sealed class SharedDirtSystem : EntitySystem
             return;
 
         var bloodSolution = new Solution();
-        bloodSolution.AddReagent(bloodstream.BloodReagent, bloodAmount * (0.2f / DirtAccumulationRate));
+        bloodSolution.AddReagent(bloodReagentId, bloodAmount * (0.2f / DirtAccumulationRate));
 
         var slots = new List<string> { "outerClothing", "jumpsuit", "gloves", "belt", "mask", "head" };
         ApplyDirtToClothing(target, bloodSolution, _random.Pick(slots));
@@ -166,7 +176,7 @@ public sealed class SharedDirtSystem : EntitySystem
             if (reagent.Reagent.Prototype == "Water")
                 continue;
 
-            if (!_prototype.TryIndex<ReagentPrototype>(reagent.Reagent.Prototype, out var proto))
+            if (!ProtoMan.TryIndex<ReagentPrototype>(reagent.Reagent.Prototype, out var proto))
                 continue;
 
             colors.Add(proto.SubstanceColor);

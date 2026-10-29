@@ -9,19 +9,17 @@ using Content.Shared.Popups;
 using Content.Shared.Standing;
 using Content.Shared.Stunnable;
 using Content.Shared.Traits.Assorted;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Pain;
 
-public sealed class PainSystem : EntitySystem
+public sealed partial class PainSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _emoting = default!;
-    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
-    [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly VomitSystem _vomit = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
-    [Dependency] private readonly MovementModStatusSystem _movementMod = default!;
+    [Dependency] private ChatSystem _emoting = default!;
+    [Dependency] private SharedJitteringSystem _jittering = default!;
+    [Dependency] private SharedStunSystem _stun = default!;
+    [Dependency] private VomitSystem _vomit = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private MovementModStatusSystem _movementMod = default!;
 
     public override void Initialize()
     {
@@ -46,7 +44,7 @@ public sealed class PainSystem : EntitySystem
 
     private void OnInit(EntityUid uid, PainComponent component, ComponentInit args)
     {
-        if (!_proto.TryIndex<PainProfilePrototype>(component.Profile, out var profile))
+        if (!ProtoMan.TryIndex(component.Profile, out var profile))
             return;
 
         foreach (var (type, level) in profile.PainTypes)
@@ -102,12 +100,12 @@ public sealed class PainSystem : EntitySystem
         switch (effect.Effect)
         {
             case PainEffectType.Emote when effect.Message != null:
-                if (!HasComp<PainNumbnessComponent>(uid))
+                if (!HasComp<PainNumbnessStatusEffectComponent>(uid))
                     _emoting.TryEmoteWithoutChat(uid, effect.Message);
                 break;
 
             case PainEffectType.Popup when effect.Message != null:
-                if (!HasComp<PainNumbnessComponent>(uid))
+                if (!HasComp<PainNumbnessStatusEffectComponent>(uid))
                     _popup.PopupEntity(Loc.GetString(effect.Message), uid, uid, PopupType.SmallCaution);
                 break;
 

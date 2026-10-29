@@ -6,7 +6,7 @@ namespace Content.Shared.Disease.Events;
 /// specific cures. It will roll the dice to attempt
 /// to cure each disease on the target
 /// </summary>
-public sealed class CureDiseaseAttemptEvent : EntityEventArgs
+public sealed partial class CureDiseaseAttemptEvent : EntityEventArgs
 {
     public float CureChance { get; }
     public CureDiseaseAttemptEvent(float cureChance)

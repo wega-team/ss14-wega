@@ -64,6 +64,7 @@
   id: CargoWinterBoots
   equipment:
     shoes: ClothingShoesBootsWinterCargo
+  groupBy: "wegaJS" # Corvax-Wega-add
 
 # ID
 - type: loadout

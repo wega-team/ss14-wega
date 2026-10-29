@@ -1,0 +1,9 @@
+advertisement-fashion-1 = Стоять, это полиция моды!
+advertisement-fashion-2 = Полиция моды, вы арестованы!
+advertisement-fashion-3 = Полиция моды, предъявите ваш стиль!
+advertisement-fashion-4 = Полиция моды, где ваш гламур?!
+advertisement-fashion-5 = Это суд моды и вы приговорены к шоппингу!
+thankyou-fashion-1 = Сияй!
+thankyou-fashion-2 = Покажи этой полиции, что такое настоящая мода!
+thankyou-fashion-3 = Время навести гламур на этой станции!
+thankyou-fashion-4 = НаноТрайзен заботится о вашей моде!

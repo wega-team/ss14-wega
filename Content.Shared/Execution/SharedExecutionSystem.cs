@@ -1,37 +1,41 @@
 using Content.Shared.ActionBlocker;
-using Content.Shared.Chat;
 using Content.Shared.CombatMode;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Suicide;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Interaction.Events;
-using Content.Shared.Mind;
-using Robust.Shared.Player;
+using Content.Shared.Weapons.Ranged.Components; // Corvax-Wega-Suicide
+using Content.Shared.Weapons.Ranged.Systems; // Corvax-Wega-Suicide
+using Content.Shared.Projectiles; // Corvax-Wega-Suicide
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Timing; // Corvax-Wega-Suicide
 
 namespace Content.Shared.Execution;
 
 /// <summary>
 ///     Verb for violently murdering cuffed creatures.
 /// </summary>
-public sealed class SharedExecutionSystem : EntitySystem
+public sealed partial class SharedExecutionSystem : EntitySystem
 {
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedSuicideSystem _suicide = default!;
-    [Dependency] private readonly SharedCombatModeSystem _combat = default!;
-    [Dependency] private readonly SharedExecutionSystem _execution = default!;
-    [Dependency] private readonly SharedMeleeWeaponSystem _melee = default!;
+    [Dependency] private ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedSuicideSystem _suicide = default!;
+    [Dependency] private SharedCombatModeSystem _combat = default!;
+    [Dependency] private SharedExecutionSystem _execution = default!;
+    [Dependency] private SharedMeleeWeaponSystem _melee = default!;
+    [Dependency] private SharedGunSystem _gun = default!; // Corvax-Wega-Suicide
+    [Dependency] private SharedTransformSystem _transform = default!; // Corvax-Wega-Suicide
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -42,6 +46,7 @@ public sealed class SharedExecutionSystem : EntitySystem
         SubscribeLocalEvent<ExecutionComponent, GetMeleeDamageEvent>(OnGetMeleeDamage);
         SubscribeLocalEvent<ExecutionComponent, SuicideByEnvironmentEvent>(OnSuicideByEnvironment);
         SubscribeLocalEvent<ExecutionComponent, ExecutionDoAfterEvent>(OnExecutionDoAfter);
+        SubscribeLocalEvent<ProjectileComponent, ProjectileHitEvent>(OnProjectileHit); // Corvax-Wega-Suicide
     }
 
     private void OnGetInteractionsVerbs(EntityUid uid, ExecutionComponent comp, GetVerbsEvent<UtilityVerb> args)
@@ -55,6 +60,14 @@ public sealed class SharedExecutionSystem : EntitySystem
 
         if (!CanBeExecuted(victim, attacker))
             return;
+
+        // Corvax-Wega-Suicide-start
+        if (HasComp<GunComponent>(weapon) && !comp.CanGunExecute)
+            return;
+
+        if (HasComp<MeleeWeaponComponent>(weapon) && !comp.CanMeleeExecute)
+            return;
+        // Corvax-Wega-Suicide-end
 
         UtilityVerb verb = new()
         {
@@ -72,31 +85,67 @@ public sealed class SharedExecutionSystem : EntitySystem
         if (!CanBeExecuted(victim, attacker))
             return;
 
+        // Corvax-Wega-Suicide-Edit-start
+        string internalMsg;
+        string externalMsg;
+
         if (attacker == victim)
         {
-            ShowExecutionInternalPopup(comp.InternalSelfExecutionMessage, attacker, victim, weapon);
-            ShowExecutionExternalPopup(comp.ExternalSelfExecutionMessage, attacker, victim, weapon);
+            if (HasComp<GunComponent>(weapon))
+            {
+                internalMsg = comp.InternalSelfGunExecutionMessage;
+                externalMsg = comp.ExternalSelfGunExecutionMessage;
+            }
+            else
+            {
+                internalMsg = comp.InternalSelfExecutionMessage;
+                externalMsg = comp.ExternalSelfExecutionMessage;
+            }
+        }
+        else if (HasComp<GunComponent>(weapon))
+        {
+            internalMsg = comp.InternalGunExecutionMessage;
+            externalMsg = comp.ExternalGunExecutionMessage;
         }
         else
         {
-            ShowExecutionInternalPopup(comp.InternalMeleeExecutionMessage, attacker, victim, weapon);
-            ShowExecutionExternalPopup(comp.ExternalMeleeExecutionMessage, attacker, victim, weapon);
+            internalMsg = comp.InternalMeleeExecutionMessage;
+            externalMsg = comp.ExternalMeleeExecutionMessage;
         }
 
-        var doAfter =
-            new DoAfterArgs(EntityManager, attacker, comp.DoAfterDuration, new ExecutionDoAfterEvent(), weapon, target: victim, used: weapon)
-            {
-                BreakOnMove = true,
-                BreakOnDamage = true,
-                NeedHand = true
-            };
+        ShowExecutionPopup(internalMsg, externalMsg, attacker, victim, weapon);
+        // Corvax-Wega-Suicide-Edit-end
+
+        var doAfter = new DoAfterArgs(
+            EntityManager,
+            attacker,
+            comp.DoAfterDuration,
+            new ExecutionDoAfterEvent(),
+            weapon,
+            target: victim,
+            used: weapon)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true
+        };
 
         _doAfter.TryStartDoAfter(doAfter);
-
     }
 
+    /// <summary>
+    /// Check if someone can be executed.
+    /// </summary>
     public bool CanBeExecuted(EntityUid victim, EntityUid attacker)
     {
+        // Corvax-Wega-Suicide-start
+        if (victim == attacker)
+            return true;
+
+        if ((_transform.GetWorldPosition(victim) - _transform.GetWorldPosition(attacker)).Length() > 0.8f)
+            return false;
+        // Corvax-Wega-Suicide-end
+
         // No point executing someone if they can't take damage
         if (!HasComp<DamageableComponent>(victim))
             return false;
@@ -133,55 +182,42 @@ public sealed class SharedExecutionSystem : EntitySystem
         args.ResistanceBypass = true;
     }
 
+    // Corvax-Wega-Suicide-start
+    private void OnProjectileHit(EntityUid entity, ProjectileComponent component, ref ProjectileHitEvent e)
+    {
+        if (!TryComp<ExecutionComponent>(component.Weapon, out var execution) || !execution.Executing)
+            return;
+
+        var bonus = component.Damage * execution.DamageMultiplier - component.Damage;
+        e.Damage += bonus;
+    }
+    // Corvax-Wega-Suicide-end
+
     private void OnSuicideByEnvironment(Entity<ExecutionComponent> entity, ref SuicideByEnvironmentEvent args)
     {
         if (!TryComp<MeleeWeaponComponent>(entity, out var melee))
             return;
 
-        string? internalMsg = entity.Comp.CompleteInternalSelfExecutionMessage;
-        string? externalMsg = entity.Comp.CompleteExternalSelfExecutionMessage;
+        string internalMsg = entity.Comp.CompleteInternalSelfExecutionMessage;
+        string externalMsg = entity.Comp.CompleteExternalSelfExecutionMessage;
 
         if (!TryComp<DamageableComponent>(args.Victim, out var damageableComponent))
             return;
 
-        ShowExecutionInternalPopup(internalMsg, args.Victim, args.Victim, entity, false);
-        ShowExecutionExternalPopup(externalMsg, args.Victim, args.Victim, entity);
+        ShowExecutionPopup(internalMsg, externalMsg, args.Victim, args.Victim, entity);
         _audio.PlayPredicted(melee.HitSound, args.Victim, args.Victim);
-        _suicide.ApplyLethalDamage((args.Victim, damageableComponent), melee.Damage);
+        _suicide.ApplyLethalDamage((args.Victim, damageableComponent), melee.Damage * entity.Comp.DamageMultiplier);
         args.Handled = true;
     }
 
-    private void ShowExecutionInternalPopup(string locString, EntityUid attacker, EntityUid victim, EntityUid weapon, bool predict = true)
-    {
-        if (predict)
-        {
-            _popup.PopupClient(
-               Loc.GetString(locString, ("attacker", Identity.Entity(attacker, EntityManager)), ("victim", Identity.Entity(victim, EntityManager)), ("weapon", weapon)),
-               attacker,
-               attacker,
-               PopupType.MediumCaution
-               );
-        }
-        else
-        {
-            _popup.PopupEntity(
-               Loc.GetString(locString, ("attacker", Identity.Entity(attacker, EntityManager)), ("victim", Identity.Entity(victim, EntityManager)), ("weapon", weapon)),
-               attacker,
-               attacker,
-               PopupType.MediumCaution
-               );
-        }
-    }
-
-    private void ShowExecutionExternalPopup(string locString, EntityUid attacker, EntityUid victim, EntityUid weapon)
+    private void ShowExecutionPopup(string targetMessage, string otherMessage, EntityUid attacker, EntityUid victim, EntityUid weapon)
     {
         _popup.PopupEntity(
-            Loc.GetString(locString, ("attacker", Identity.Entity(attacker, EntityManager)), ("victim", Identity.Entity(victim, EntityManager)), ("weapon", weapon)),
+            Loc.GetString(targetMessage, ("attacker", Identity.Entity(attacker, EntityManager)), ("victim", Identity.Entity(victim, EntityManager)), ("weapon", weapon)),
+            Loc.GetString(otherMessage, ("attacker", Identity.Entity(attacker, EntityManager)), ("victim", Identity.Entity(victim, EntityManager)), ("weapon", weapon)),
             attacker,
-            Filter.PvsExcept(attacker),
-            true,
-            PopupType.MediumCaution
-            );
+            attacker,
+            PopupType.MediumCaution);
     }
 
     private void OnExecutionDoAfter(Entity<ExecutionComponent> entity, ref ExecutionDoAfterEvent args)
@@ -189,23 +225,60 @@ public sealed class SharedExecutionSystem : EntitySystem
         if (args.Handled || args.Cancelled || args.Used == null || args.Target == null)
             return;
 
-        if (!TryComp<MeleeWeaponComponent>(entity, out var meleeWeaponComp))
-            return;
-
+        // Corvax-Wega-Suicide-Edit-start
         var attacker = args.User;
         var victim = args.Target.Value;
         var weapon = args.Used.Value;
 
-        if (!_execution.CanBeExecuted(victim, attacker))
+        if (!CanBeExecuted(victim, attacker))
             return;
 
-        // This is needed so the melee system does not stop it.
-        var prev = _combat.IsInCombatMode(attacker);
-        _combat.SetInCombatMode(attacker, true);
         entity.Comp.Executing = true;
 
-        var internalMsg = entity.Comp.CompleteInternalMeleeExecutionMessage;
-        var externalMsg = entity.Comp.CompleteExternalMeleeExecutionMessage;
+        TimeSpan time = TimeSpan.FromSeconds(0.1);
+        if (TryComp<GunComponent>(weapon, out var gun))
+        {
+            var prev = _combat.IsInCombatMode(attacker);
+            _combat.SetInCombatMode(attacker, true);
+
+            if (!_gun.AttemptDirectShoot(attacker, weapon, victim, gun))
+            {
+                _combat.SetInCombatMode(attacker, prev);
+                entity.Comp.Executing = false;
+                return;
+            }
+
+            _combat.SetInCombatMode(attacker, prev);
+
+            if (attacker == victim)
+            {
+                ShowExecutionPopup(entity.Comp.CompleteInternalSelfGunExecutionMessage, entity.Comp.CompleteExternalSelfGunExecutionMessage, attacker, victim, weapon);
+            }
+            else
+            {
+                ShowExecutionPopup(entity.Comp.CompleteInternalGunExecutionMessage, entity.Comp.CompleteExternalGunExecutionMessage, attacker, victim, weapon);
+            }
+        }
+        else if (TryComp<MeleeWeaponComponent>(weapon, out var melee))
+        {
+            var prev = _combat.IsInCombatMode(attacker);
+            _combat.SetInCombatMode(attacker, true);
+
+            _melee.AttemptLightAttack(attacker, weapon, melee, victim);
+
+            _combat.SetInCombatMode(attacker, prev);
+
+            if (attacker == victim)
+            {
+                ShowExecutionPopup(entity.Comp.CompleteInternalSelfExecutionMessage, entity.Comp.CompleteExternalSelfExecutionMessage, attacker, victim, weapon);
+            }
+            else
+            {
+                ShowExecutionPopup(entity.Comp.CompleteInternalMeleeExecutionMessage, entity.Comp.CompleteExternalMeleeExecutionMessage, attacker, victim, weapon);
+            }
+
+            time = TimeSpan.Zero;
+        }
 
         if (attacker == victim)
         {
@@ -215,19 +288,11 @@ public sealed class SharedExecutionSystem : EntitySystem
             var suicideGhostEvent = new SuicideGhostEvent(victim);
             RaiseLocalEvent(victim, suicideGhostEvent);
         }
-        else
-        {
-            _melee.AttemptLightAttack(attacker, weapon, meleeWeaponComp, victim);
-        }
 
-        _combat.SetInCombatMode(attacker, prev);
-        entity.Comp.Executing = false;
+        // Temporarily increased weapon damage.
+        Timer.Spawn(time, () => { entity.Comp.Executing = false; });
+
         args.Handled = true;
-
-        if (attacker != victim)
-        {
-            _execution.ShowExecutionInternalPopup(internalMsg, attacker, victim, entity);
-            _execution.ShowExecutionExternalPopup(externalMsg, attacker, victim, entity);
-        }
+        // Corvax-Wega-Suicide-Edit-end
     }
 }

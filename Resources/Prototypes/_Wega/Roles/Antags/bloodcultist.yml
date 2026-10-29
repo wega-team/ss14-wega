@@ -7,7 +7,35 @@
   guides: [ BloodCult ]
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 54000 # 15h # Corvax-RoleTime
+    time: 50h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 25h
+
+- type: antagSpecifier
+  parent: RestrictedAntag
+  id: BloodCultist
+  prefRoles:
+  - BloodCultist
+  allowNonHumans: true
+  multiAntagSetting: None
+  blacklist:
+    components:
+    - AntagImmune
+    - BibleUser
+    - Android
+    - Ipc
+  components:
+  - type: BloodCultist
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: FriendlyFaction
+    faction: BloodCult
+  mindRoles:
+  - MindRoleBloodCultist
+  briefing:
+    sound: "/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"
 
 # Ability gears
 - type: startingGear
@@ -66,37 +94,3 @@
   inhand:
     - WeaponHellDagger
 
-- type: startingGear
-  id: BloodCultSpellStunGear
-  inhand:
-    - BloodCultSpellStun
-
-- type: startingGear
-  id: BloodCultSpellTeleportGear
-  inhand:
-    - BloodCultSpellTeleport
-
-- type: startingGear
-  id: BloodCultSpellShadowShacklesGear
-  inhand:
-    - BloodCultSpellShadowShackles
-
-- type: startingGear
-  id: BloodCultSpellTwistedConstructionGear
-  inhand:
-    - BloodCultSpellTwistedConstruction
-
-- type: startingGear
-  id: BloodCultSpellSummonEquipmentGear
-  inhand:
-    - BloodCultSpellSummonEquipment
-
-- type: startingGear
-  id: BloodCultSpellBloodRitesGear
-  inhand:
-    - BloodCultSpellBloodRites
-
-- type: startingGear
-  id: BloodCultSpellBloodBarrageGear
-  inhand:
-    - BloodCultSpellBloodBarrage

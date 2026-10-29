@@ -7,7 +7,7 @@ namespace Content.Client.Disease
     /// Controls client-side visuals for the
     /// disease machines.
     /// </summary>
-    public sealed class DiseaseMachineSystem : VisualizerSystem<DiseaseMachineVisualsComponent>
+    public sealed partial class DiseaseMachineSystem : VisualizerSystem<DiseaseMachineVisualsComponent>
     {
         protected override void OnAppearanceChange(EntityUid uid, DiseaseMachineVisualsComponent component, ref AppearanceChangeEvent args)
         {
@@ -18,12 +18,13 @@ namespace Content.Client.Disease
                 && AppearanceSystem.TryGetData<bool>(uid, DiseaseMachineVisuals.IsRunning, out var isRunning, args.Component))
             {
                 var state = isRunning ? component.RunningState : component.IdleState;
-                args.Sprite.LayerSetVisible(DiseaseMachineVisualLayers.IsOn, isOn);
-                args.Sprite.LayerSetState(DiseaseMachineVisualLayers.IsRunning, state);
+                SpriteSystem.LayerSetVisible(uid, DiseaseMachineVisualLayers.IsOn, isOn);
+                SpriteSystem.LayerSetRsiState(uid, DiseaseMachineVisualLayers.IsRunning, state);
             }
         }
     }
 }
+
 public enum DiseaseMachineVisualLayers : byte
 {
     IsOn,

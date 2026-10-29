@@ -3,9 +3,13 @@
   name: metabolizer-type-vampire
 
 - type: metabolizerType
-  id: Cultist
-  name: metabolizer-type-cultist
+  id: BloodCultist
+  name: metabolizer-type-blood-cultist
 
 - type: metabolizerType
   id: Ariral
   name: metabolizer-type-ariral
+
+- type: metabolizerType
+  id: Feroxi
+  name: metabolizer-type-feroxi

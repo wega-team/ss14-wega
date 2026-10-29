@@ -50,13 +50,13 @@
   parent: SprayBottle
   suffix: Ethanol
   components:
-  - type: SolutionContainerManager
-    solutions:
-      spray:
-        maxVol: 100
-        reagents:
-        - ReagentId: Ethanol
-          Quantity: 100
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Ethanol
+        Quantity: 60
+  - type: Label
+    localizedLabel: reagent-name-ethanol
   - type: Tag
     tags:
       - Spray
@@ -75,13 +75,13 @@
     sprite: _Wega/Objects/Specific/Medical/Surgery/bonesaw.rsi
   - type: Tool
     qualities:
-    - BoneSetter 
+    - BoneSetter
     - Sawing
     - BoneGel
   - type: MeleeWeapon
     damage:
-      groups:
-        Brute: 15
+      types:
+        Slash: 15
     soundHit:
       path: /Audio/Items/drill_hit.ogg
   - type: SurgicalTool
@@ -102,11 +102,12 @@
     qualities:
       - FixOVein
     speedModifier: 1.5
-    useSound: /Audio/Items/drill_use.ogg
+    useSound:
+      path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
   - type: MultipleTool
     statusShowBehavior: true
     entries:
-      - behavior: FixOVein
+      - behavior: [ FixOVein ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_v
@@ -114,7 +115,7 @@
           path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
-      - behavior: Retractor
+      - behavior: [ Retractor ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_r
@@ -122,7 +123,7 @@
           path: /Audio/_Wega/Medical/Surgery/retractor1.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
-      - behavior: Hemostat
+      - behavior: [ Hemostat ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_h
@@ -215,6 +216,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: bone setter
@@ -224,7 +249,31 @@
   components:
   - type: Sterile
     alwaysSterile: true
-      
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
+
 - type: entity
   name: bone gel
   parent: BoneGel
@@ -233,7 +282,31 @@
   components:
   - type: Sterile
     alwaysSterile: true
-      
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
+
 - type: entity
   name: Scalpel
   parent: Scalpel
@@ -242,6 +315,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: cautery
@@ -251,6 +348,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: retractor
@@ -260,6 +381,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: hemostat
@@ -269,6 +414,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: metal saw
@@ -278,6 +447,30 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool
 
 - type: entity
   name: drill
@@ -287,3 +480,27 @@
   components:
   - type: Sterile
     alwaysSterile: true
+  - type: Unremoveable
+  - type: ItemSelector
+    items:
+    - ScalpelAS
+    - CauteryAS
+    - RetractorAS
+    - HemostatAS
+    - FixOVeinAS
+    - BoneSetterAS
+    - BoneGelAS
+    - SawAS
+    - DrillAS
+  - type: ActivatableUI
+    key: enum.ItemSelectorUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.TransferAmountUiKey.Key:
+        type: TransferAmountBoundUserInterface
+      enum.ItemSelectorUiKey.Key:
+        type: ItemSelectorBoundUserInterface
+  - type: Tag
+    tags:
+    - Itemborg
+    - SurgeryTool

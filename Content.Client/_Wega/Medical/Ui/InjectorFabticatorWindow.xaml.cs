@@ -14,8 +14,8 @@ namespace Content.Client._Wega.Medical.Ui;
 [GenerateTypedNameReferences]
 public sealed partial class InjectorFabticatorWindow : FancyWindow
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
 
     public event Action? EjectButtonPressed;
     public event Action<int, string?>? ProduceButtonPressed;

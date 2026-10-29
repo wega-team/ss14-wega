@@ -1,0 +1,32 @@
+- type: vendingMachineInventory
+  id: FashionOMatInventory
+  startingInventory:
+    ClothingHeadHatSolidHeadband: 3
+    ClothingHeadHatAnimalCatBlack: 2
+    ClothingHeadHatAnimalCat: 2
+    ClothingEyesSalesman: 3
+    ClothingEyesGlassesJensen: 3
+    ClothingEyesEyepatch: 3
+    ClothingEyesGlassesMonocle: 3
+    ClothingMaskNeckGaiter: 3
+    ClothingMaskNeckGaiterRed: 3
+    ClothingNeckGoldTie: 5
+    ClothingBeltSuspendersRed: 3
+    ClothingBeltSuspendersBlack: 3
+    ClothingBeltBrownSuspenders: 5
+    OfficalSelector: 15
+    OtherModeSuitSelector: 15
+    OtherClouthSelector: 10
+    ClothingHandsCatPawsWhite: 3
+    ClothingHandsCatPawsBrown: 3
+    ClothingHandsCatPawsBlack: 3
+    ClothingHandsCatPawsBlackWhite: 3
+    ChoeckerSelector: 10
+  contrabandInventory:
+    ClothingNeckScarfUnrobust: 1
+    ClothingUniformJumpsuitOperative: 3
+    ClothingUniformJumpskirtOperative: 3
+    ClothingHeadHatSyndieMAA: 2
+    ClothingNeckScarfStripedSyndieRed: 2
+    ClothingNeckScarfStripedSyndieGreen: 2
+    ClothingHandsCatPawsWhiteBlackCombat: 1

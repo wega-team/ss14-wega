@@ -1,4 +1,4 @@
-﻿using Content.Shared.Damage;
+using Content.Shared.Damage;
 using Content.Shared.Inventory;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
@@ -8,13 +8,13 @@ namespace Content.Shared.Armor;
 /// <summary>
 /// Used for clothing that reduces damage when worn.
 /// </summary>
-[RegisterComponent, NetworkedComponent, Access(typeof(SharedArmorSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Access(typeof(SharedArmorSystem))] Corvax-Wega-Edit
 public sealed partial class ArmorComponent : Component
 {
     /// <summary>
     /// The damage reduction
     /// </summary>
-    [DataField(required: true)]
+    [DataField(required: true), AutoNetworkedField] // Corvax-Wega-Edit
     public DamageModifierSet Modifiers = default!;
 
     /// <summary>

@@ -3,8 +3,8 @@ using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;
 using Content.Shared.Disease;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 using Content.Shared.Body.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Disease.Effects
 {
@@ -17,19 +17,19 @@ namespace Content.Server.Disease.Effects
         /// <summary>
         /// The reagent ID to add or remove.
         /// </summary>
-        [DataField("reagent", customTypeSerializer: typeof(PrototypeIdSerializer<ReagentPrototype>))]
-        public string? Reagent = null;
+        [DataField("reagent")]
+        public ProtoId<ReagentPrototype>? Reagent = null;
 
         [DataField("amount", required: true)]
         public FixedPoint2 Amount = default!;
 
         public override void Effect(DiseaseEffectArgs args)
         {
-            if (!args.EntityManager.TryGetComponent<BloodstreamComponent>(args.DiseasedEntity, out var bloodstream))
+            if (!args.EntityManager.HasComponent<BloodstreamComponent>(args.DiseasedEntity))
                 return;
 
             var solutionSys = args.EntityManager.EntitySysManager.GetEntitySystem<SharedSolutionContainerSystem>();
-            if (Reagent is null || !solutionSys.TryGetSolution(args.DiseasedEntity, null, out var solutionEntity, out var solution) || solutionEntity is null)
+            if (Reagent is null || !solutionSys.TryGetSolution(args.DiseasedEntity, BloodstreamComponent.DefaultBloodSolutionName, out var solutionEntity, out var solution) || solutionEntity is null)
                 return;
 
             var reagentId = new ReagentId(Reagent, new List<ReagentData>());

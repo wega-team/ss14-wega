@@ -2,26 +2,23 @@
 - type: marking
   id: VulpBellyCrest
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Vulpkanin ]
+  groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: belly_crest
 
 - type: marking
   id: VulpBellyFull
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Vulpkanin ]
+  groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: belly_full
 
 - type: marking
   id: VulpBellyFox
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [ Vulpkanin ]
+  groupWhitelist: [ Vulpkanin ]
   sprites:
-    - sprite: Mobs/Customization/Vulpkanin/body_markings.rsi
+    - sprite: _Wega/Mobs/Customization/Vulpkanin/body_markings.rsi # Corvax-Wega-Marking-Edit
       state: belly_fox

@@ -1,0 +1,20 @@
+- type: entity
+  parent: BoxCardboard
+  id: BoxHandheldBeacons
+  name: beacons box
+  components:
+  - type: Sprite
+    layers:
+    - state: box
+  - type: Storage
+    grid:
+    - 0,0,5,3
+    whitelist:
+      tags:
+      - HandheldBeacon
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: HandheldBeacon
+          amount: 24

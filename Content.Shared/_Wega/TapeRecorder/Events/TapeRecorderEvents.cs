@@ -8,7 +8,7 @@ namespace Content.Shared.TapeRecorder.Events;
 public sealed partial class TapeCassetteRepairDoAfterEvent : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
-public sealed class ChangeModeTapeRecorderMessage : BoundUserInterfaceMessage
+public sealed partial class ChangeModeTapeRecorderMessage : BoundUserInterfaceMessage
 {
     public TapeRecorderMode Mode;
 
@@ -19,10 +19,10 @@ public sealed class ChangeModeTapeRecorderMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class PrintTapeRecorderMessage : BoundUserInterfaceMessage;
+public sealed partial class PrintTapeRecorderMessage : BoundUserInterfaceMessage;
 
 [Serializable, NetSerializable]
-public sealed class TapeRecorderState : BoundUserInterfaceState
+public sealed partial class TapeRecorderState : BoundUserInterfaceState
 {
     // TODO: check the itemslot on client instead of putting easy casette stuff in the state
     public bool HasCasette;

@@ -9,7 +9,7 @@ namespace Content.Shared.Surgery
     }
 
     [Serializable, NetSerializable]
-    public sealed class BodyScannerBoundUserInterfaceState : BoundUserInterfaceState
+    public sealed partial class BodyScannerBoundUserInterfaceState : BoundUserInterfaceState
     {
         public readonly string? PatientName;
         public readonly string? PatientStatus;
@@ -30,7 +30,7 @@ namespace Content.Shared.Surgery
     }
 
     [Serializable, NetSerializable]
-    public sealed class BodyScannerDamageInfo
+    public sealed partial class BodyScannerDamageInfo
     {
         public readonly string DamageName;
         public readonly List<string> AffectedParts;

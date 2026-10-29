@@ -68,10 +68,74 @@ public sealed partial class ExecutionComponent : Component
     [DataField]
     public LocId CompleteExternalSelfExecutionMessage = "execution-popup-self-complete-external";
 
+    // Corvax-Wega-Suicide-start
+    /// <summary>
+    /// Shown to the person performing a gun execution (attacker) upon starting a gun execution.
+    /// </summary>
+    [DataField]
+    public LocId InternalGunExecutionMessage = "execution-popup-gun-initial-internal";
+
+    /// <summary>
+    /// Shown to bystanders and the victim of a gun execution when a gun execution is started.
+    /// </summary>
+    [DataField]
+    public LocId ExternalGunExecutionMessage = "execution-popup-gun-initial-external";
+
+    /// <summary>
+    /// Shown to the attacker upon completion of a gun execution.
+    /// </summary>
+    [DataField]
+    public LocId CompleteInternalGunExecutionMessage = "execution-popup-gun-complete-internal";
+
+    /// <summary>
+    /// Shown to bystanders and the victim of a gun execution when a gun execution is completed.
+    /// </summary>
+    [DataField]
+    public LocId CompleteExternalGunExecutionMessage = "execution-popup-gun-complete-external";
+
+    /// <summary>
+    /// Shown to the person performing a self gun execution when starting one.
+    /// </summary>
+    [DataField]
+    public LocId InternalSelfGunExecutionMessage = "execution-popup-self-gun-initial-internal";
+
+    /// <summary>
+    /// Shown to bystanders near a self gun execution when one is started.
+    /// </summary>
+    [DataField]
+    public LocId ExternalSelfGunExecutionMessage = "execution-popup-self-gun-initial-external";
+
+    /// <summary>
+    /// Shown to the person performing a self gun execution upon completion.
+    /// </summary>
+    [DataField]
+    public LocId CompleteInternalSelfGunExecutionMessage = "execution-popup-self-gun-complete-internal";
+
+    /// <summary>
+    /// Shown to bystanders when a self gun execution is completed.
+    /// </summary>
+    [DataField]
+    public LocId CompleteExternalSelfGunExecutionMessage = "execution-popup-self-gun-complete-external";
+    // Corvax-Wega-Suicide-end
+
     // Not networked because this is transient inside of a tick.
     /// <summary>
     /// True if it is currently executing for handlers.
     /// </summary>
     [DataField]
     public bool Executing = false;
+
+    // Corvax-Wega-Suicide-start
+    /// <summary>
+    /// Whether this weapon can be used for gun executions.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool CanGunExecute = true;
+
+    /// <summary>
+    /// Whether this weapon can be used for melee executions.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool CanMeleeExecute = true;
+    // Corvax-Wega-Suicide-end
 }

@@ -1,0 +1,23 @@
+- type: construction
+  id: PxpPackage
+  graph: PxpPackage
+  startNode: start
+  targetNode: explosionPack
+  category: construction-category-weapons
+  objectType: Item
+
+- type: construction
+  id: RazGlove
+  graph: RazGlove
+  startNode: start
+  targetNode: RazorGlov
+  category: construction-category-weapons
+  objectType: Item
+
+- type: construction
+  id: CirSaw
+  graph: CirSaw
+  startNode: start
+  targetNode: circular
+  category: construction-category-weapons
+  objectType: Item

@@ -4,16 +4,16 @@ using Content.Server.CoreTempChange.Components;
 
 namespace Content.Server.CoreTempChange.Effects;
 
-public sealed class CoreTempChangeSystem : EntitySystem
+public sealed partial class CoreTempChangeSystem : EntitySystem
 {
-    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
-    [Dependency] private readonly TransformSystem _xform = default!;
+    [Dependency] private AtmosphereSystem _atmosphere = default!;
+    [Dependency] private TransformSystem _xform = default!;
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<CoreTempChangeComponent , TransformComponent>();
+        var query = EntityQueryEnumerator<CoreTempChangeComponent, TransformComponent>();
         while (query.MoveNext(out var ent, out var comp, out var xform))
         {
             var grid = xform.GridUid;

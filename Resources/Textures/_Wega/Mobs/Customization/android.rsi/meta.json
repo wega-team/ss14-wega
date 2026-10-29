@@ -1,7 +1,7 @@
 ﻿{
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Made with love by Misha_Unity and Melissandra >//<",
+    "copyright": "Made with love by Misha_Unity and Melissandra >//<; Syth sprites are made by Admiral Eisenberger",
     "size": {
         "x": 32,
         "y": 32
@@ -28,6 +28,14 @@
             "directions": 4
         },
         {
+            "name": "body_spine",
+            "directions": 4
+        },
+        {
+            "name": "body_spine_led",
+            "directions": 4
+        },
+        {
             "name": "leds",
             "directions": 4
         },
@@ -37,6 +45,10 @@
         },
         {
             "name": "leds_stripes",
+            "directions": 4
+        },
+        {
+            "name": "temple_led",
             "directions": 4
         },
         {
@@ -96,11 +108,99 @@
             "directions": 4
         },
         {
+            "name": "head_bulbs",
+            "directions": 4
+        },
+        {
             "name": "eyes_visor",
             "directions": 4
         },
         {
             "name": "eyes_visor_led",
+            "directions": 4
+        },
+        {
+            "name": "l_arm_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_arm_scrap",
+            "directions": 4
+        },
+        {
+            "name": "l_hand_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_scrap",
+            "directions": 4
+        },
+        {
+            "name": "l_leg_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_leg_scrap",
+            "directions": 4
+        },
+        {
+            "name": "l_foot_scrap",
+            "directions": 4
+        },
+        {
+            "name": "r_foot_scrap",
+            "directions": 4
+        },
+        {
+            "name": "body_f_synt",
+            "directions": 4
+        },
+        {
+            "name": "body_f_synt_small",
+            "directions": 4
+        },
+        {
+            "name": "body_f_synt_big",
+            "directions": 4
+        },
+        {
+            "name": "body_f_synt_superbig",
+            "directions": 4
+        },
+        {
+            "name": "body_m_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_arm_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_arm_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_hand_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_hand_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_leg_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_leg_synt",
+            "directions": 4
+        },
+        {
+            "name": "l_foot_synt",
+            "directions": 4
+        },
+        {
+            "name": "r_foot_synt",
             "directions": 4
         }
     ]

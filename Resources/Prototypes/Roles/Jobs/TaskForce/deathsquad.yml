@@ -1,0 +1,55 @@
+- type: job
+  id: DeathSquad
+  name: job-name-deathsquad
+  description: job-description-deathsquad
+  playTimeTracker: JobDeathSquad
+  setPreference: false
+  startingGear: DeathSquadGear
+  icon: "JobIconDeathSquad"
+  supervisors: job-supervisors-centcom
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+  - BlueShieldOfficer # Corwax-Wega-BSO-Access
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, DeathRattleImplantCentcomm, BluespaceLifelineImplant ] # Corvax-Wega-Add
+
+- type: startingGear
+  id: DeathSquadGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDeathSquad
+    back: ClothingModularControllerApocryphalPreassembled # Corvax-Wega-ModularSuits-Edit
+    mask: ClothingMaskGasDeathSquad
+    eyes: ClothingERTHud # Corvax-Wega-ERT
+    ears: ClothingHeadsetAltCentCom
+    gloves: ClothingHandsGlovesCombat
+    # outerClothing: ClothingOuterHardsuitDeathsquad # Corvax-Wega-ModularSuits-Edit
+    shoes: ClothingShoesBootsMagAdv
+    id: DeathsquadPDA
+    pocket1: EnergySword
+    pocket2: EnergyShield
+    belt: ClothingBeltMilitaryWebbingMedFilled
+  storage:
+    back:
+    - WeaponPulsePistol
+    - WeaponRevolverMatebaAP
+    - SpeedLoaderMagnumAP
+    - SpeedLoaderMagnumAP
+    - BoxFlashbang
+    - ToolDebug # spanish army knife
+    - WelderExperimental
+    - Hypospray
+    - DeathAcidifierImplanter # crew will try to steal their amazing hardsuits
+    - FreedomImplanter
+  inhand:
+  - WeaponPulseRifle
+
+- type: chameleonOutfit
+  id: DeathSquadChameleonOutfit
+  job: DeathSquad
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHelmetHardsuitDeathsquad
+    neck: ClothingNeckBronzeheart

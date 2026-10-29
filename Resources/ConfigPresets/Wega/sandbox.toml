@@ -14,27 +14,12 @@ role_loadout_timers = false
 [net]
 tickrate = 30
 
-[netres]
-limit = 25.0
-
-[viewport]
-maximum_width = 26
-
-[admin]
-admins_count_in_playercount = true
-
 [events]
 enabled = false
 
 [ghost]
 role_time = 0.5
 quick_lottery = true
-
-[gateway]
-generator_enabled = false
-
-[movement]
-mob_pushing = false
 
 [physics]
 # Makes mapping annoying
@@ -71,3 +56,6 @@ preload_grids = false
 random_characters = true
 random_species_weights = ""
 ssd_sleep_time = 3600
+
+[lavaland]
+enabled = false

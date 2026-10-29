@@ -25,14 +25,21 @@
       tags:
         - ArtifactFragment
         - Ore
+        - Gems # Corvax-Wega-Lavaland
+        - MagmiteAlloy # Corvax-Wega-Lavaland
   - type: Dumpable
 
+## Corvax-Wega-Start
 - type: entity
   parent: OreBag
   id: BorgOreBag
   name: integrated ore bag
-  description: A large ore bag built into the frame of a mining cyborg.
+  description: A large ore bag built into the frame of a mining cyborg. Magnetises any nearby ores when held.
   components:
+    - type: MagnetPickup
+      range: 5 # Corvax-Wega-Change
+      slotFlags: null
+      requireActiveHand: true
     - type: Storage
       grid:
       - 0,0,9,5

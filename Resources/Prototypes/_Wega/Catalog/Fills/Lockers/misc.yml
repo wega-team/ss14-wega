@@ -1,0 +1,8 @@
+- type: entityTable
+  id: MaintModsuitModulesTable
+  table: !type:GroupSelector
+    children:
+    - id: SpringlockSuitModule
+    - id: RaveVisorSuitModule
+    - id: TanningSuitModule
+    - id: AtrocinatorSuitModule

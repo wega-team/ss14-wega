@@ -1,5 +1,6 @@
 - type: emoteSounds
-  id: FelinidSoundM
+  id: MaleFelinid
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -37,7 +38,8 @@
       collection: MaleMoans
 
 - type: emoteSounds
-  id: FelinidSoundF
+  id: FemaleFelinid
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -76,6 +78,7 @@
 
 - type: emoteSounds
   id: MaleResomi
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -108,6 +111,7 @@
 
 - type: emoteSounds
   id: FemaleResomi
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -140,6 +144,7 @@
 
 - type: emoteSounds
   id: MaleAndroid
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -147,8 +152,6 @@
       collection: MaleScreams
     Laugh:
       collection: MaleLaugh
-    Sneeze:
-      collection: MaleSneezes
     Cough:
       collection: MaleCoughs
     Yawn:
@@ -163,6 +166,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    LPCmoan:
+      collection: LPCMoans
     Gasp:
       path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
@@ -178,6 +183,7 @@
 
 - type: emoteSounds
   id: FemaleAndroid
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -185,8 +191,6 @@
       collection: FemaleScreams
     Laugh:
       collection: FemaleLaugh
-    Sneeze:
-      collection: FemaleSneezes
     Cough:
       collection: FemaleCoughs
     Yawn:
@@ -201,6 +205,8 @@
       collection: Whistles
     Weh:
       collection: Weh
+    LPCmoan:
+      collection: LPCMoans
     Gasp:
       path: /Audio/_Wega/Voice/Android/android_gasp.ogg
     DefaultDeathgasp:
@@ -215,22 +221,25 @@
       path: /Audio/Effects/Cargo/ping.ogg
 
 - type: emoteSounds
-  id: SoundsHarpy
+  id: MaleHarpy
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
     Scream:
-      collection: HarpyScreams
+      collection: MaleScreams
     Laugh:
-      collection: HarpyLaugh
-    Sneeze:
-      collection: MaleSneezes
+      collection: MaleLaugh
     Cough:
       collection: MaleCoughs
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
     Sigh:
       collection: MaleSigh
     Crying:
-      collection: HarpyCry
+      collection: MaleCry
     Whistle:
       collection: Whistles
     CatHisses:
@@ -257,9 +266,61 @@
       collection: HarpyClicks
     Squeak:
       collection: HarpySqueak
+    Weh:
+      collection: Weh
+
+- type: emoteSounds
+  id: FemaleHarpy
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: FemaleScreams
+    Laugh:
+      collection: FemaleLaugh
+    Cough:
+      collection: FemaleCoughs
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
+    Sigh:
+      collection: FemaleSigh
+    Crying:
+      collection: FemaleCry
+    Whistle:
+      collection: Whistles
+    CatHisses:
+      collection: HarpyHisses
+    CatMeow:
+      collection: HarpyMeows
+    Growl:
+      collection: HarpyGrowls
+    Purr:
+      collection: HarpyPurrs
+    HarpyRing:
+      collection: HarpyRings
+    Honk:
+      collection: HarpyHonks
+    HarpyPew:
+      collection: HarpyPews
+    HarpyBang:
+      collection: HarpyBangs
+    Beep:
+      collection: HarpyBeeps
+    HarpyRev:
+      collection: HarpyRevs
+    Click:
+      collection: HarpyClicks
+    Squeak:
+      collection: HarpySqueak
+    Weh:
+      collection: Weh
 
 - type: emoteSounds
   id: MaleAriral
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
   params:
     variation: 0.125
   sounds:
@@ -299,9 +360,12 @@
       collection: MaleGasp
     DefaultDeathgasp:
       collection: MaleDeathGasp
+    FilinidMeows:
+      collection: FelinidMeowsSound
 
 - type: emoteSounds
   id: FemaleAriral
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
   params:
     variation: 0.125
   sounds:
@@ -341,3 +405,5 @@
       collection: FemaleGasp
     DefaultDeathgasp:
       collection: FemaleDeathGasp
+    FilinidMeows:
+      collection: FelinidMeowsSound

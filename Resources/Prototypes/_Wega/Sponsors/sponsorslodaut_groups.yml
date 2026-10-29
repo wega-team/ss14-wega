@@ -1,0 +1,35 @@
+- type: loadoutGroup
+  id: SponsorHead
+  name: loadout-group-sponsor-head
+  minLimit: 0
+  loadouts:
+  - ClothingHeadHatMagic
+  - ClothingEyesGlassesGarGigaSponsor
+  - ClothingHeadHatElegantTacticalmaid
+
+- type: loadoutGroup
+  id: SponsorNeck
+  name: loadout-group-sponsor-neck
+  minLimit: 0
+  loadouts:
+  - ClothingNeckCloakMagic
+  - ClothingNeckCloakManly
+  - ClothingNeckCloakSponsorRed
+  - ClothingNeckCloakSponsorBlac
+  - ClothingNeckCloakSponsorWithe
+  - ClothingNeckCloakSponsorBlue
+  - ClothingNeckChocerMoo
+
+- type: loadoutGroup
+  id: SponsorGloves
+  name: loadout-group-sponsor-gloves
+  minLimit: 0
+  loadouts:
+  - ClothingHandsGlovesElegantTacticalmaid
+
+- type: loadoutGroup
+  id: SponsorOuterClothing
+  name: loadout-group-sponsor-outer
+  minLimit: 0
+  loadouts:
+  - ClothingOuterCyberJacket

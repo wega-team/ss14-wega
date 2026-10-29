@@ -1,4 +1,4 @@
-namespace Content.Shared._Wega.Resomi.Abilities;
+namespace Content.Shared.Resomi.Abilities;
 
 
 /// <summary>

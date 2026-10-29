@@ -1,0 +1,268 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Taken from https://github.com/Skyrat-SS13/Skyrat-tg and modified.",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "tile"
+        },
+        {
+            "name": "tile_edge"
+        },
+        {
+            "name": "tile_half"
+        },
+        {
+            "name": "tile_corner"
+        },
+        {
+            "name": "tile_large"
+        },
+        {
+            "name": "tile_small"
+        },
+        {
+            "name": "tile_diagonal"
+        },
+        {
+            "name": "tile_herringbone"
+        },
+        {
+            "name": "tile_dark"
+        },
+        {
+            "name": "tile_dark_edge"
+        },
+        {
+            "name": "tile_dark_half"
+        },
+        {
+            "name": "tile_dark_corner"
+        },
+        {
+            "name": "tile_dark_large"
+        },
+        {
+            "name": "tile_dark_small"
+        },
+        {
+            "name": "tile_dark_diagonal"
+        },
+        {
+            "name": "tile_dark_herringbone"
+        },
+        {
+            "name": "tile_checker"
+        },
+        {
+            "name": "tile_darkside"
+        },
+        {
+            "name": "tile_darkcorner"
+        },
+        {
+            "name": "tile_white"
+        },
+        {
+            "name": "tile_white_edge"
+        },
+        {
+            "name": "tile_white_half"
+        },
+        {
+            "name": "tile_white_corner"
+        },
+        {
+            "name": "tile_white_large"
+        },
+        {
+            "name": "tile_white_small"
+        },
+        {
+            "name": "tile_white_diagonal"
+        },
+        {
+            "name": "tile_white_herringbone"
+        },
+        {
+            "name": "tile_cafeteria"
+        },
+        {
+            "name": "tile_whiteside"
+        },
+        {
+            "name": "tile_whitecorner"
+        },
+        {
+            "name": "tile_textured"
+        },
+        {
+            "name": "tile_textured_edge"
+        },
+        {
+            "name": "tile_textured_half"
+        },
+        {
+            "name": "tile_textured_corner"
+        },
+        {
+            "name": "tile_textured_large"
+        },
+        {
+            "name": "tile_textured_dark"
+        },
+        {
+            "name": "tile_textured_dark_edge"
+        },
+        {
+            "name": "tile_textured_dark_half"
+        },
+        {
+            "name": "tile_textured_dark_corner"
+        },
+        {
+            "name": "tile_textured_dark_large"
+        },
+        {
+            "name": "tile_textured_white"
+        },
+        {
+            "name": "tile_textured_white_edge"
+        },
+        {
+            "name": "tile_textured_white_half"
+        },
+        {
+            "name": "tile_textured_white_corner"
+        },
+        {
+            "name": "tile_textured_white_large"
+        },
+        {
+            "name": "tile_smooth"
+        },
+        {
+            "name": "tile_smooth_edge"
+        },
+        {
+            "name": "tile_smooth_half"
+        },
+        {
+            "name": "tile_smooth_corner"
+        },
+        {
+            "name": "tile_smooth_large"
+        },
+        {
+            "name": "tile_recharge",
+            "delays": [
+                [
+                    0.6,
+                    0.6
+                ]
+            ]
+        },
+        {
+            "name": "tile_terracotta"
+        },
+        {
+            "name": "tile_terracotta_small"
+        },
+        {
+            "name": "tile_terracotta_diagonal"
+        },
+        {
+            "name": "tile_terracotta_herringbone"
+        },
+        {
+            "name": "tile_kitchen"
+        },
+        {
+            "name": "tile_kitchen_small"
+        },
+        {
+            "name": "tile_kitchen_diagonal"
+        },
+        {
+            "name": "tile_kitchen_herringbone"
+        },
+        {
+            "name": "tile_chapel"
+        },
+        {
+            "name": "tile_showroom"
+        },
+        {
+            "name": "tile_solarpanel"
+        },
+        {
+            "name": "tile_freezer"
+        },
+        {
+            "name": "tile_grimy"
+        },
+        {
+            "name": "tile_bluespace",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1
+                ]
+            ]
+        },
+        {
+            "name": "tile_sepia"
+        },
+        {
+            "name": "tile_plaque"
+        },
+        {
+            "name": "tile_engine"
+        },
+        {
+            "name": "tile_pinkblack"
+        },
+        {
+            "name": "tile_plastic"
+        },
+        {
+            "name": "tile_plastitanium"
+        },
+        {
+            "name": "tile_plastitanium_red"
+        },
+        {
+            "name": "tile_titanium"
+        },
+        {
+            "name": "tile_titaniumblue"
+        },
+        {
+            "name": "tile_titaniumpurple"
+        },
+        {
+            "name": "tile_titaniumwhite"
+        },
+        {
+            "name": "tile_titaniumyellow"
+        }
+    ]
+}

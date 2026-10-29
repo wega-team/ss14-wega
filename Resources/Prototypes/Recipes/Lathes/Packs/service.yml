@@ -26,8 +26,15 @@
   - Holoprojector
   - WetFloorSign
   - WireBrush
-  - CassetteTape # Corvax-Wega-Recorder
-  - TapeRecorder # Corvax-Wega-Recorder
+# Corvax-Wega-Start
+  - CassetteTape
+  - TapeRecorder
+  - CassetteTapeLong
+  - PouchBase
+  - PouchMaterial
+  - CargoHoloprojectorField
+  - TravelCameraCivilian
+# Corvax-Wega-End
 
 - type: latheRecipePack
   id: ServiceBoardsStatic
@@ -43,6 +50,16 @@
   - PrinterDocMachineCircuitboard # Corvax-Printer
   - WashingMachineCircuitboard # Corvax-Wega-Dirtable
 
+- type: latheRecipePack
+  id: HydroponicsStatic
+  recipes:
+  - HydroponicsToolMiniHoe
+  - HydroponicsToolScythe
+  - HydroponicsToolHatchet
+  - HydroponicsToolSpade
+  - HydroponicsToolClippers
+  - PlantAnalyzer
+
 ## Dynamic
 
 - type: latheRecipePack
@@ -52,6 +69,17 @@
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
   - MegaSprayBottle
+  - TrashBagHolding
+  - BoxLighttube
+  - BoxExteriorLighttube
+  - BoxLedLighttube
+  - BoxSodiumLighttube
+  - BoxLightbulb
+  - BoxDimLightbulb
+  - BoxWarmLightbulb
+  - BoxLedLightbulb
+  - BoxLightMixed
+  - BoxLedLightMixed
 
 - type: latheRecipePack
   id: Instruments

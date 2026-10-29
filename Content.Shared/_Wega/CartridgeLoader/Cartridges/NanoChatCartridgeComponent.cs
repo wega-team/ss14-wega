@@ -3,7 +3,6 @@ using Robust.Shared.Audio;
 namespace Content.Shared.CartridgeLoader.Cartridges;
 
 [RegisterComponent, AutoGenerateComponentPause]
-// [Access(typeof(SharedNanoChatCartridgeSystem))]
 public sealed partial class NanoChatCartridgeComponent : Component
 {
     [DataField]

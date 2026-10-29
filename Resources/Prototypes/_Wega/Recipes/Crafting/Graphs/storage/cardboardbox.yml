@@ -1,0 +1,13 @@
+- type: constructionGraph
+  id: BoxHugEmpty
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: boxhugempty
+      steps:
+      - material: Cardboard
+        amount: 1
+        doAfter: 4
+  - node: boxhugempty
+    entity: BoxHugEmpty

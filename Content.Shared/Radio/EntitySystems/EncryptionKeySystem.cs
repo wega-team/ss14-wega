@@ -10,10 +10,8 @@ using Content.Shared.Tools.Components;
 using Content.Shared.Wires;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
-using Robust.Shared.Timing;
 using SharedToolSystem = Content.Shared.Tools.Systems.SharedToolSystem;
 
 namespace Content.Shared.Radio.EntitySystems;
@@ -23,13 +21,12 @@ namespace Content.Shared.Radio.EntitySystems;
 /// </summary>
 public sealed partial class EncryptionKeySystem : EntitySystem
 {
-    [Dependency] private readonly IPrototypeManager _protoManager = default!;
-    [Dependency] private readonly SharedToolSystem _tool = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedWiresSystem _wires = default!;
+    [Dependency] private SharedToolSystem _tool = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedWiresSystem _wires = default!;
 
     public override void Initialize()
     {
@@ -56,7 +53,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
             _hands.PickupOrDrop(args.User, ent, dropNear: true);
         }
 
-        _popup.PopupPredicted(Loc.GetString("encryption-keys-all-extracted"), uid, args.User);
+        _popup.PopupEntity(Loc.GetString("encryption-keys-all-extracted"), uid, args.User);
         _audio.PlayPredicted(component.KeyExtractionSound, uid, args.User);
     }
 
@@ -97,6 +94,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
             TryInsertKey(uid, component, args);
         }
         else if (TryComp<ToolComponent>(args.Used, out var tool)
+                 && component.KeysExtractionMethod != null // Corvax-Wega-Add
                  && _tool.HasQuality(args.Used, component.KeysExtractionMethod, tool)
                  && component.KeyContainer.ContainedEntities.Count > 0) // dont block deconstruction
         {
@@ -109,25 +107,25 @@ public sealed partial class EncryptionKeySystem : EntitySystem
     {
         if (!component.KeysUnlocked)
         {
-            _popup.PopupClient(Loc.GetString("encryption-keys-are-locked"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-keys-are-locked"), uid, args.User);
             return;
         }
 
         if (TryComp<WiresPanelComponent>(uid, out var panel) && !panel.Open)
         {
-            _popup.PopupClient(Loc.GetString("encryption-keys-panel-locked"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-keys-panel-locked"), uid, args.User);
             return;
         }
 
         if (component.KeySlots <= component.KeyContainer.ContainedEntities.Count)
         {
-            _popup.PopupClient(Loc.GetString("encryption-key-slots-already-full"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-key-slots-already-full"), uid, args.User);
             return;
         }
 
         if (_container.Insert(args.Used, component.KeyContainer))
         {
-            _popup.PopupClient(Loc.GetString("encryption-key-successfully-installed"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-key-successfully-installed"), uid, args.User);
             _audio.PlayPredicted(component.KeyInsertionSound, args.Target, args.User);
             args.Handled = true;
             return;
@@ -139,23 +137,28 @@ public sealed partial class EncryptionKeySystem : EntitySystem
     {
         if (!component.KeysUnlocked)
         {
-            _popup.PopupClient(Loc.GetString("encryption-keys-are-locked"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-keys-are-locked"), uid, args.User);
             return;
         }
 
         if (!_wires.IsPanelOpen(uid))
         {
-            _popup.PopupClient(Loc.GetString("encryption-keys-panel-locked"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-keys-panel-locked"), uid, args.User);
             return;
         }
 
         if (component.KeyContainer.ContainedEntities.Count == 0)
         {
-            _popup.PopupClient(Loc.GetString("encryption-keys-no-keys"), uid, args.User);
+            _popup.PopupEntity(Loc.GetString("encryption-keys-no-keys"), uid, args.User);
             return;
         }
 
-        _tool.UseTool(args.Used, args.User, uid, 1f, component.KeysExtractionMethod, new EncryptionRemovalFinishedEvent(), toolComponent: tool);
+        // Corvax-Wega-Add-start
+        if (component.KeysExtractionMethod == null)
+            return;
+        // Corvax-Wega-Add-end
+
+        _tool.UseTool(args.Used, args.User, uid, 1f, component.KeysExtractionMethod.Value, new EncryptionRemovalFinishedEvent(), toolComponent: tool); // Corvax-Wega-Edit
     }
 
     private void OnStartup(EntityUid uid, EncryptionKeyHolderComponent component, ComponentStartup args)
@@ -183,7 +186,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
                 AddChannelsExamine(component.Channels,
                     component.DefaultChannel,
                     args,
-                    _protoManager,
+                    ProtoMan,
                     "examine-encryption-channel");
             }
         }
@@ -197,7 +200,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
         if(component.Channels.Count > 0)
         {
             args.PushMarkup(Loc.GetString("examine-encryption-channels-prefix"));
-            AddChannelsExamine(component.Channels, component.DefaultChannel, args, _protoManager, "examine-encryption-channel");
+            AddChannelsExamine(component.Channels, component.DefaultChannel, args, ProtoMan, "examine-encryption-channel");
         }
     }
 
@@ -212,7 +215,7 @@ public sealed partial class EncryptionKeySystem : EntitySystem
         RadioChannelPrototype? proto;
         foreach (var id in channels)
         {
-            proto = _protoManager.Index<RadioChannelPrototype>(id);
+            proto = ProtoMan.Index<RadioChannelPrototype>(id);
 
             var key = id == SharedChatSystem.CommonChannel
                 ? SharedChatSystem.RadioCommonPrefix.ToString()
@@ -222,10 +225,10 @@ public sealed partial class EncryptionKeySystem : EntitySystem
                 ("color", proto.Color),
                 ("key", key),
                 ("id", proto.LocalizedName),
-                ("freq", proto.Frequency / 10f)));
+                ("freq", proto.Frequency)));
         }
 
-        if (defaultChannel != null && _protoManager.TryIndex(defaultChannel, out proto))
+        if (defaultChannel != null && ProtoMan.TryIndex(defaultChannel, out proto))
         {
             if (HasComp<HeadsetComponent>(examineEvent.Examined))
             {

@@ -14,16 +14,21 @@
   startingGear: SecurityOfficerGear
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-hos
-  canBeAntag: false
+  guides: [ Security ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Security
   - Brig
   - Maintenance
-  - Service
+  - LavalandAvanpost # Corvax-Wega-Lavaland
   - External
   - Cryogenics
-  - GenpopEnter
-  - GenpopLeave
+  # Corvax-Wega-SubRoles-start
+  subRoles:
+  - SeniorOfficer
+  - Pilot
+  - Brigmedic
+  - WardenHelper
+  # Corvax-Wega-SubRoles-end
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -38,6 +43,7 @@
     back:
     - Flash
     - MagazinePistol
+    - SecurityVoucherCard # Corvax-Wega-Voucher
 
 - type: chameleonOutfit
   id: SecurityOfficerChameleonOutfit

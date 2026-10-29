@@ -13,9 +13,19 @@ vampire-role-greeting-human =
 vampire-role-greeting-animal =
     Вы - кровососущее животное.
     Ваша жизнь лишь в том, что вам нужна кровь.
+free-vampire-greeting =
+    Вы - Вампир!
+    Вы были прокляты могущественным вампиром и восстали из мёртвых в "новом" для вас теле. Теперь вы вынуждены пить кровь, чтобы жить.
+    Вы не подчиняетесь проклявшему вас вампиру и обладаете свободной волей.
+    Вы не являетесь полноценным антагонистом и не должны убивать, за исключением случаев самообороны.
+
 objective-issuer-vampire = [color=purple]Вампир[/color]
-vampires-drank-total-blood = Было выпито { $bloodAmount } единиц крови.
+
 vampire-round-end-name = вампир
+vampire-round-end-header = [color=purple]Вампиры:[/color]
+vampire-round-end-info = [color=white]{ $name }[/color] ([color={ $color }]{ $class }[/color]) выпил [color=crimson]{ $blood }[/color] ед. крови.
+vampires-drank-total-blood = Всего было выпито [color=crimson]{ $bloodAmount }[/color] ед. крови.
+
 thrall-greeting =
     Ваш разум затуманился, вы чувствуете холод.
     Ваша цель следовать приказам хозяина!

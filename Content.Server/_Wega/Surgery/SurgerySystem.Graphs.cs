@@ -1,6 +1,6 @@
 using System.Linq;
 using Content.Server.Stack;
-using Content.Shared.Body.Organ;
+using Content.Shared.Body;
 using Content.Shared.DoAfter;
 using Content.Shared.Hands.Components;
 using Content.Shared.Implants.Components;
@@ -17,11 +17,11 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly StackSystem _stack = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private TagSystem _tag = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private StackSystem _stack = default!;
 
     private void GraphsInitialize()
     {
@@ -37,7 +37,7 @@ public sealed partial class SurgerySystem
     /// <param name="args">The SurgeryStartMessage containing details about the surgery start request.</param>
     private void OnSurgeryStart(EntityUid uid, OperatedComponent comp, SurgeryStartMessage args)
     {
-        var user = GetEntity(args.User);
+        var user = args.Actor;
         if (comp.GraphId == null)
             return;
 
@@ -66,8 +66,8 @@ public sealed partial class SurgerySystem
         if (args.Cancelled || args.Handled || comp.GraphId == null)
             return;
 
-        var graph = _proto.Index(comp.GraphId.Value);
-        var currentNodeProto = _proto.Index(comp.CurrentNode);
+        var graph = ProtoMan.Index(comp.GraphId.Value);
+        var currentNodeProto = ProtoMan.Index(comp.CurrentNode);
         if (currentNodeProto == null)
             return;
 
@@ -115,7 +115,7 @@ public sealed partial class SurgerySystem
 
             // For stacks
             if (TryComp<StackComponent>(item, out var stack) && stack.Count > 1)
-                _stack.SetCount(item, stack.Count - 1);
+                _stack.ReduceCount(item, 1);
 
             bool foundMatch = false;
             float successModifier = 1f;
@@ -162,7 +162,7 @@ public sealed partial class SurgerySystem
         }
 
         CheckTransitionProgress(uid, comp, graph, transition);
-        UpdateUi(uid, comp, graph);
+        UpdateUi(uid, args.User, comp, graph);
     }
 
     #region Handle Steps
@@ -250,7 +250,7 @@ public sealed partial class SurgerySystem
         var transitions = new List<SurgeryTransition>();
         foreach (var transitionId in proto.AllTransitions)
         {
-            if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto))
+            if (ProtoMan.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto))
             {
                 transitions.Add(new SurgeryTransition
                 {
@@ -294,10 +294,10 @@ public sealed partial class SurgerySystem
         if (comp.GraphId == null || targetNode == null)
             return;
 
-        var graph = _proto.Index(comp.GraphId.Value);
+        var graph = ProtoMan.Index(comp.GraphId.Value);
         SurgeryNodePrototype? currentNodeProto = comp.CurrentNode == "Default"
             ? graph.GetStartNodes().FirstOrDefault(n => HasTransitionToTarget(n, targetNode.Value))
-            : _proto.Index(comp.CurrentNode);
+            : ProtoMan.Index(comp.CurrentNode);
 
         if (currentNodeProto == null)
             return;
@@ -387,12 +387,21 @@ public sealed partial class SurgerySystem
             }
         }
 
-        bool toolValid = step.Tool == null || step.Tool.Count == 0 || step.Action == SurgeryActionType.StoreItem
-            || step.Tool.Any(tool => _tool.HasQuality(item.Value, tool));
-        bool tagValid = step.Tag == null || step.Tag.Count == 0 || step.Action == SurgeryActionType.StoreItem
-            || step.Tag.Any(tag => _tag.HasTag(item.Value, tag));
+        bool hasTool = step.Tool != null && step.Tool.Count != 0;
+        bool hasTag = step.Tag != null && step.Tag.Count != 0;
+        bool toolValid = !hasTool || step.Action == SurgeryActionType.StoreItem || step.Tool!.Any(tool => _tool.HasQuality(item.Value, tool));
+        bool tagValid = !hasTag || step.Action == SurgeryActionType.StoreItem || step.Tag!.Any(tag => _tag.HasTag(item.Value, tag));
 
-        if (!toolValid && !tagValid)
+        bool valid = false;
+
+        if (hasTool)
+            valid = toolValid || tagValid;
+        else if (hasTag)
+            valid = tagValid;
+        else
+            valid = true;
+
+        if (!valid)
         {
             _popup.PopupEntity(Loc.GetString("surgery-missing-tool"), user, user);
             return;
@@ -452,7 +461,6 @@ public sealed partial class SurgerySystem
             comp.ResetOperationState(transition.Target);
             comp.CurrentNode = transition.Target;
             Dirty(uid, comp);
-            UpdateUi(uid, comp, graph);
         }
     }
 
@@ -490,7 +498,7 @@ public sealed partial class SurgerySystem
     {
         foreach (var transitionId in node.AllTransitions)
         {
-            if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto) &&
+            if (ProtoMan.TryIndex(transitionId, out SurgeryTransitionPrototype? transitionProto) &&
                 transitionProto.Target == targetNode)
             {
                 return new SurgeryTransition
@@ -514,7 +522,7 @@ public sealed partial class SurgerySystem
     {
         foreach (var transitionId in node.AllTransitions)
         {
-            if (_proto.TryIndex(transitionId, out SurgeryTransitionPrototype? transition) &&
+            if (ProtoMan.TryIndex(transitionId, out SurgeryTransitionPrototype? transition) &&
                 transition.Target == target)
             {
                 return true;

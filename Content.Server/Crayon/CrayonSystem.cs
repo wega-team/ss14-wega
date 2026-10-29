@@ -7,25 +7,26 @@ using Content.Shared.Charges.Systems;
 using Content.Shared.Crayon;
 using Content.Shared.Database;
 using Content.Shared.Decals;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Nutrition.EntitySystems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server.Crayon;
 
-public sealed class CrayonSystem : SharedCrayonSystem
+public sealed partial class CrayonSystem : SharedCrayonSystem
 {
-    [Dependency] private readonly IAdminLogManager _adminLogger = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly DecalSystem _decals = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedChargesSystem _charges = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private IAdminLogManager _adminLogger = default!;
+    [Dependency] private DecalSystem _decals = default!;
+    [Dependency] private PopupSystem _popup = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedChargesSystem _charges = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedHandsSystem _hands = default!; // Corvax-Wega-Add
+    [Dependency] private SharedTransformSystem _transform = default!; // Corvax-Wega-Add
 
     public override void Initialize()
     {
@@ -37,12 +38,14 @@ public sealed class CrayonSystem : SharedCrayonSystem
         SubscribeLocalEvent<CrayonComponent, UseInHandEvent>(OnCrayonUse);
         SubscribeLocalEvent<CrayonComponent, AfterInteractEvent>(OnCrayonAfterInteract, after: [typeof(IngestionSystem)]);
         SubscribeLocalEvent<CrayonComponent, DroppedEvent>(OnCrayonDropped);
+
+        SubscribeNetworkEvent<CrayonRotateEvent>(OnCrayonRotate); // Corvax-Wega-Add
     }
 
     private void OnMapInit(Entity<CrayonComponent> ent, ref MapInitEvent args)
     {
         // Get the first one from the catalog and set it as default
-        var decal = _prototypeManager.EnumeratePrototypes<DecalPrototype>().FirstOrDefault(x => x.Tags.Contains("crayon"));
+        var decal = ProtoMan.EnumeratePrototypes<DecalPrototype>().FirstOrDefault(x => x.Tags.Contains("crayon"));
         ent.Comp.SelectedState = decal?.ID ?? string.Empty;
         Dirty(ent);
     }
@@ -71,15 +74,27 @@ public sealed class CrayonSystem : SharedCrayonSystem
             return;
         }
 
-        if (!_decals.TryAddDecal(component.SelectedState, args.ClickLocation.Offset(new Vector2(-0.5f, -0.5f)), out _, component.Color, cleanable: true))
+        // Corvax-Wega-Edit-start
+        var grid = _transform.GetGrid(args.User);
+        Angle rot = grid != null ? _transform.GetWorldRotation(grid.Value) : 0;
+
+        if (!_decals.TryAddDecal(component.SelectedState, args.ClickLocation.Offset(new Vector2(-0.5f, -0.5f)),
+            out _, component.Color, rot + component.Angle, cleanable: true))
             return;
+        // Corvax-Wega-Edit-end
 
         if (component.UseSound != null)
-            _audio.PlayPvs(component.UseSound, uid, AudioParams.Default.WithVariation(0.125f));
+        {
+            var audioParams = component.UseSound?.Params ?? AudioParams.Default;
+            audioParams = audioParams.WithVariation(0.125f);
+            _audio.PlayPvs(component.UseSound, uid, audioParams);
+        }
 
         _charges.TryUseCharge(uid);
 
-        _adminLogger.Add(LogType.CrayonDraw, LogImpact.Low, $"{ToPrettyString(args.User):user} drew a {component.Color:color} {component.SelectedState}");
+        _adminLogger.Add(LogType.CrayonDraw, LogImpact.Low,
+            $"{ToPrettyString(args.User):user} drew a {component.Color:color} {component.SelectedState}");
+
         args.Handled = true;
 
         if (component.DeleteEmpty && _charges.IsEmpty(uid))
@@ -90,7 +105,6 @@ public sealed class CrayonSystem : SharedCrayonSystem
 
     private void OnCrayonUse(EntityUid uid, CrayonComponent component, UseInHandEvent args)
     {
-        // Open crayon window if neccessary.
         if (args.Handled)
             return;
 
@@ -106,7 +120,7 @@ public sealed class CrayonSystem : SharedCrayonSystem
     private void OnCrayonBoundUI(EntityUid uid, CrayonComponent component, CrayonSelectMessage args)
     {
         // Check if the selected state is valid
-        if (!_prototypeManager.TryIndex<DecalPrototype>(args.State, out var prototype) || !prototype.Tags.Contains("crayon"))
+        if (!ProtoMan.TryIndex<DecalPrototype>(args.State, out var prototype) || !prototype.Tags.Contains("crayon"))
             return;
 
         component.SelectedState = args.State;
@@ -134,4 +148,19 @@ public sealed class CrayonSystem : SharedCrayonSystem
         _popup.PopupEntity(Loc.GetString("crayon-interact-used-up-text", ("owner", uid)), user, user);
         QueueDel(uid);
     }
+
+    // Corvax-Wega-Add-start
+    private void OnCrayonRotate(CrayonRotateEvent args, EntitySessionEventArgs eventArgs)
+    {
+        if (eventArgs.SenderSession.AttachedEntity is not { } player)
+            return;
+
+        var active = _hands.GetActiveItem(player);
+        if (!TryComp<CrayonComponent>(active, out var crayon))
+            return;
+
+        crayon.Angle += args.Angle;
+        Dirty(active.Value, crayon);
+    }
+    // Corvax-Wega-Add-end
 }

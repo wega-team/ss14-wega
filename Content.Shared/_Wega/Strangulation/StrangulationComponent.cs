@@ -27,9 +27,6 @@ namespace Content.Shared.Strangulation
         [ViewVariables(VVAccess.ReadWrite)]
         public DamageSpecifier Damage = new DamageSpecifier { DamageDict = { { "Asphyxiation", 2 } } };
 
-        //[DataField("canStillInteract"), ViewVariables(VVAccess.ReadWrite)]
-        //public bool CanStillInteract = true;
-
         [DataField]
         public ProtoId<AlertPrototype> StrangledAlert = "StrangledAlert";
     }

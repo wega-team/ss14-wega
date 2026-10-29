@@ -3,7 +3,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.NPC.HTN;
 using Content.Server.Speech.Components;
 using Content.Shared.Chat;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
@@ -15,14 +15,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Xenobiology;
 
-public sealed class SlimeSocialSystem : EntitySystem
+public sealed partial class SlimeSocialSystem : EntitySystem
 {
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly HTNSystem _htn = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private HTNSystem _htn = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
 
     private static readonly TimeSpan MinCommandInterval = TimeSpan.FromSeconds(6);
 
@@ -90,7 +90,7 @@ public sealed class SlimeSocialSystem : EntitySystem
         SubscribeLocalEvent<SlimeSocialComponent, MapInitEvent>(OnSlimeInit);
         SubscribeLocalEvent<SlimeSocialComponent, ListenEvent>(OnSlimeHear);
 
-        SubscribeLocalEvent<SlimeSocialComponent, DamageChangedEvent>(OnSlimeDamaged);
+        SubscribeLocalEvent<SlimeSocialComponent, DamageDealtEvent>(OnSlimeDamaged);
     }
 
     public override void Update(float frameTime)
@@ -282,9 +282,9 @@ public sealed class SlimeSocialSystem : EntitySystem
         _chat.TrySendInGameICMessage(slime, response, InGameICChatType.Speak, false);
     }
 
-    private void OnSlimeDamaged(EntityUid uid, SlimeSocialComponent social, DamageChangedEvent args)
+    private void OnSlimeDamaged(EntityUid uid, SlimeSocialComponent social, DamageDealtEvent args)
     {
-        if (!args.DamageIncreased || args.Origin == null)
+        if (args.Damage.GetTotal() < 0 || args.Origin == null)
             return;
 
         var attacker = args.Origin.Value;

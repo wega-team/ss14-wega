@@ -1,6 +1,6 @@
 ﻿namespace Content.Shared.Xenobiology.Events;
 
-public sealed class CellAdded : EntityEventArgs
+public sealed partial class CellAdded : EntityEventArgs
 {
     public readonly NetEntity Entity;
     public readonly Cell Cell;

@@ -1,0 +1,15 @@
+- type: interactionAction
+  id: BaseAliveMobAction
+  abstract: true
+  conditions:
+  - !type:MobStateCondition
+    invert: true
+    state: Dead
+
+- type: interactionAction
+  parent: BaseAliveMobAction
+  id: BaseHarmAction
+  abstract: true
+  conditions:
+  - !type:DistanceCondition
+    maxRange: 0.8

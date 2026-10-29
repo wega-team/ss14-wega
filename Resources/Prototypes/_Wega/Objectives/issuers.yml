@@ -1,0 +1,11 @@
+- type: objectiveIssuer
+  id: BloodCultGod
+  name: objective-issuer-blood-god
+
+- type: objectiveIssuer
+  id: Vampire
+  name: objective-issuer-vampire
+
+- type: objectiveIssuer
+  id: VeilCultGod
+  name: objective-issuer-veil-god

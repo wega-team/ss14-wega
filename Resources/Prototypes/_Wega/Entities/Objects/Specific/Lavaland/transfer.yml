@@ -1,0 +1,21 @@
+- type: entity
+  parent: BaseItem
+  id: TransferCard500
+  name: A card for transferring points
+  description: "A special binary card that can transfer a certain number of points to a crew member's identification card."
+  suffix: 500
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Lavaland/transfer.rsi
+    state: icon
+  - type: PointsCapital
+    cardTransfer: true
+    points: 500
+
+- type: entity
+  parent: TransferCard500
+  id: TransferCardDebug
+  suffix: DEBUG
+  components:
+  - type: PointsCapital
+    points: 999999

@@ -43,4 +43,263 @@
     tags:
     - HighRiskItem
   - type: StealTarget
-    stealGroup: CombatRCD
+    stealGroup:
+    - CombatRCD
+
+- type: entity
+  id: CombatRCDExperimental
+  parent: RCD
+  name: experimental combat RCD
+  suffix: ERT and Admin
+  description: The rapid construction device can be used to quickly place and remove various station structures and fixtures. Requires compressed matter to function. This RCD has been specially improved for working with reinforced materials.
+  components:
+  - type: RCD
+    reinforced: true
+    availablePrototypes:
+    - WallSolid
+    - WallReinforced
+    - FloorSteel
+    - Plating
+    - Catwalk
+    - Grille
+    - Window
+    - WindowDirectional
+    - WindowReinforcedDirectional
+    - ReinforcedWindow
+    - Airlock
+    - AirlockGlass
+    - Firelock
+    - TubeLight
+    - BulbLight
+    - LVCable
+    - MVCable
+    - HVCable
+    - CableTerminal
+    - Deconstruct
+  - type: LimitedCharges
+    maxCharges: 50
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/combat-rcd.rsi
+    quickEquip: false
+    slots:
+    - Belt
+  - type: StaticPrice
+    price: 1000
+  - type: AutoRecharge
+    rechargeDuration: 5
+
+- type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
+  parent: HandheldGPSBasic
+  id: HandheldGPSBasicOff
+  categories: [ HideSpawnMenu ]
+  suffix: Off
+  components:
+  # Corvax-Wega-Lavaland-start
+  - type: HandheldGpsUi
+    broadcastEnabled: false
+  # Corvax-Wega-Lavaland-end
+
+- type: entity #why does this exist? Well, "global positioning system" is too long to fit in the cyborg's hand slot.
+  parent: HandheldGPSBasic
+  categories: [ HideSpawnMenu ]
+  id: HandheldGPSBasicBorgOn
+  suffix: Borg
+  components:
+  - type: HandheldGPS
+    gPSName: Киборг
+
+- type: entity
+  parent: AccessConfigurator
+  id: AccessConfiguratorCargo
+  name: cargo access configurator
+  description: A modified access configurator used by the cargo.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/cargo_access_configurator.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/cargo_access_configurator.rsi
+  - type: AccessOverrider
+    showPrivilegedId: false
+    accessLevels:
+    - Cargo
+    - Salvage
+    - LavalandAvanpost
+    - Quartermaster
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      startingItem: QuartermasterIDCard
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      disableEject: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5
+
+- type: entity
+  parent: AccessConfigurator
+  id: AccessConfiguratorSci
+  name: scie access configurator
+  description: A modified access configurator used by the cargo.
+  components:
+  - type: Item
+    size: Small
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/sci_access_configurator.rsi
+  - type: Clothing
+    sprite: _Wega/Objects/Tools/sci_access_configurator.rsi
+  - type: AccessOverrider
+    showPrivilegedId: false
+    accessLevels:
+    - Research
+    - ResearchDirector
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      startingItem: RDIDCard
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      disableEject: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5
+
+- type: entity
+  parent: AccessConfigurator
+  id: AccessConfiguratorAllAccses
+  name: borg access configurator
+  description: A modified access configurator used by the cargo.
+  components:
+  - type: Item
+    size: Small
+  - type: AccessOverrider
+    showPrivilegedId: false
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      startingItem: CaptainIDCard
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      disableEject: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    denialSound:
+      path: /Audio/Machines/custom_deny.ogg
+    doAfter: 0.5
+
+- type: entity
+  id: RPD
+  parent: RCD
+  name: RPD
+  description: The rapid piping device allows for the quick placement and removal of atmospheric-related buildings requires compressive matter to use.
+  components:
+  - type: RCD
+    availablePrototypes:
+    - PipeFourway
+    - PipeStraight
+    - PipeBend
+    - PipeTJunction
+    - PipeManifold
+    - OutletInjector
+    - ManualValve
+    - VolumetricPump
+    - PressurePump
+    - PressureRegulator
+    - VentScrubber
+    - PressureValve
+    - DualPortVent
+    - VentGas
+    - VentPassive
+    - MixerGas
+    - Radiator
+    - RadiatorBend
+    - SignalValve
+    - CanisterPort
+    - FilterGas
+  - type: LimitedCharges
+    maxCharges: 90
+  - type: Sprite
+    sprite: _Wega/Objects/Tools/rpd.rsi
+
+- type: entity
+  id: SlimeLight
+  parent: BaseItem
+  name: slime core
+  description: "It emits small bursts of energy. Can it be used as a battery?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+    state: yellow
+  - type: PointLight
+    radius: 10
+    energy: 2
+    
+- type: entity
+  id: SlimePoisonSpeed
+  parent: BaseItem
+  name: slime core
+  description: "It emits small bursts of energy. Can it be used as a battery?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+    state: red
+  - type: SlimeSpeed
+  
+- type: entity
+  id: SlimePoisonArmorRadiation
+  parent: BaseItem
+  name: slime core
+  description: "It emits small bursts of energy. Can it be used as a battery?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+    state: pyrite
+  - type: SlimeArmor
+    modifiers:
+      coefficients:
+        Radiation: 0.85
+        
+- type: entity
+  id: SlimePoisonArmorHeat
+  parent: BaseItem
+  name: slime core
+  description: "It emits small bursts of energy. Can it be used as a battery?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+    state: pink
+  - type: SlimeArmor
+    modifiers:
+      coefficients:
+        Heat: 0.9
+        
+- type: entity
+  id: SlimePoisonArmorBrute
+  parent: BaseItem
+  name: slime core
+  description: "It emits small bursts of energy. Can it be used as a battery?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Consumable/Food/extracts.rsi
+    state: adamantine
+  - type: SlimeArmor
+    modifiers:
+      coefficients:
+        Blunt: 0.9        
+        Piercing: 0.9   
+        Slash: 0.9   

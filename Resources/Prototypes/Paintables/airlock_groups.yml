@@ -18,6 +18,16 @@
     science: AirlockScience
     security: AirlockSecurity
     virology: AirlockVirology
+    # Corvax-Wega-Door-Sprite-Start
+    captain: AirlockCaptainLocked
+    headofpersonal: AirlockHeadOfPersonnelLocked
+    headofsecurity: AirlockHeadOfSecurityLocked
+    chiefmedicalofficer: AirlockChiefMedicalOfficerLocked
+    chiefengineer: AirlockChiefEngineerLocked
+    researchdirector: AirlockResearchDirectorLocked
+    quartermaster: AirlockQuartermasterLocked
+    blueshield: AirlockBlueShieldOfficerLocked
+    # Corvax-Wega-Door-Sprite-End
 
 - type: paintableGroup
   id: AirlockGlass
@@ -38,3 +48,13 @@
     science: AirlockScienceGlass
     security: AirlockSecurityGlass
     virology: AirlockVirologyGlass
+    # Corvax-Wega-Door-Sprite-Start
+    captain: AirlockCommandGlass 
+    headofpersonal: AirlockCommandGlass
+    headofsecurity: AirlockHeadOfSecurityGlassLocked
+    chiefmedicalofficer: AirlockChiefMedicalOfficerGlassLocked
+    chiefengineer: AirlockChiefEngineerGlassLocked
+    researchdirector: AirlockResearchDirectorGlassLocked
+    quartermaster: AirlockQuartermasterGlassLocked
+    blueshield: AirlockBlueShieldOfficerGlassLocked
+    # Corvax-Wega-Door-Sprite-End

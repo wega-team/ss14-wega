@@ -1,0 +1,109 @@
+# security borg
+- type: borgType
+  id: security
+
+  # Description
+  dummyPrototype: BorgChassisSecurity
+
+  # Functional
+  extraModuleCount: 4
+  moduleWhitelist:
+    tags:
+    - BorgModuleGeneric
+    - BorgModuleSecurity
+
+  defaultModules:
+  - BorgModulePrying
+  - BorgModuleDisabler
+  - BorgModuleDetective
+
+  radioChannels:
+  - Science
+  - Security
+
+  addComponents:
+  - type: ShowJobIcons
+  - type: ShowSquadIcons
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: ShowContrabandDetails
+  - type: FlashImmunity
+  - type: UserInterface
+    interfaces:
+      enum.SiliconLawsUiKey.Key:
+        type: SiliconLawBoundUserInterface
+        requireInputValidation: false
+      enum.BorgUiKey.Key:
+        type: BorgBoundUserInterface
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.BorgSwitchableTypeUiKey.SelectBorgType:
+        type: BorgSelectTypeUserInterface
+      enum.GeneralStationRecordConsoleKey.Key:
+        type: GeneralStationRecordConsoleBoundUserInterface
+  - type: IntrinsicUI
+    uis:
+      enum.GeneralStationRecordConsoleKey.Key:
+        toggleAction: ActionAGhostShowStationRecords
+  - type: GeneralStationRecordConsole
+
+  # Visual
+  inventoryTemplateId: borgTall
+  spriteBodyState: security
+  spriteHasMindState: security_e
+  spriteNoMindState: security_e_r
+  spriteToggleLightState: security_l
+
+  # Pet
+  petSuccessString: petting-success-security-cyborg
+  petFailureString: petting-failure-security-cyborg
+  
+  lawset: NTDefaultSec
+
+# science borg
+- type: borgType
+  id: science
+
+  # Description
+  dummyPrototype: BorgChassisScience
+
+  # Functional
+  extraModuleCount: 4
+  moduleWhitelist:
+    tags:
+    - BorgModuleGeneric
+    - BorgModuleScience
+
+  defaultModules:
+  - BorgModulePrying
+  - BorgModuleTool
+  - BorgModuleArtifact
+  - BorgModuleAnomaly
+  - BorgModuleSlime
+
+  radioChannels:
+  - Science
+
+  addComponents:
+  - type: SolutionScanner
+
+  # Visual
+  inventoryTemplateId: borgShort
+  spriteBodyState: science
+  spriteHasMindState: science_e
+  spriteNoMindState: science_e_r
+  spriteToggleLightState: science_l
+
+  # Pet
+  petSuccessString: petting-success-science-cyborg
+  petFailureString: petting-failure-science-cyborg
+
+  # Sounds
+  footstepCollection:
+    collection: FootstepHoverBorg
+
+  # tts
+  voicePrototypeId: Glados
+
+  blacklist:
+    components:

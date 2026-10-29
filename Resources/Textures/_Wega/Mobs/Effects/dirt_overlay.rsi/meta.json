@@ -39,6 +39,9 @@
       "name": "jackboots"
     },
     {
+      "name": "salvageboots"
+    },
+    {
       "name": "galoshes"
     },
     {
@@ -123,6 +126,13 @@
     },
     {
       "name": "equipped-bio",
+      "directions": 4
+    },
+    {
+      "name": "explorersuit"
+    },
+    {
+      "name": "equipped-explorersuit",
       "directions": 4
     },
     {
@@ -248,6 +258,13 @@
     },
     {
       "name": "on-equipped-hardhat",
+      "directions": 4
+    },
+    {
+      "name": "explorer-hood"
+    },
+    {
+      "name": "equipped-explorer-hood",
       "directions": 4
     },
     {

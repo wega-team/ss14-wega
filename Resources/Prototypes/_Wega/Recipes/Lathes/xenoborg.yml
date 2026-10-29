@@ -1,0 +1,68 @@
+- type: latheRecipe
+  id: AntimovCircuitBoard
+  categories:
+  - Circuitry
+  completetime: 5
+  result: AntimovCircuitBoard
+  materials:
+    XenoborgCrystal: 300
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleCommonRepeir
+  result: XenoborgModuleCommonRepeir
+  materials:
+    XenoborgCrystal: 50
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: BorgModuleNightVisoXenoborg
+  result: BorgModuleNightVisoXenoborg
+  materials:
+    XenoborgCrystal: 50
+  
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleCommonSpeed
+  result: XenoborgModuleCommonSpeed
+  materials:
+    XenoborgCrystal: 50
+    
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleEMP
+  result: XenoborgModuleEMP
+  materials:
+    XenoborgCrystal: 300
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: ModuleXenoborgModule
+  result: ModuleXenoborgModule
+  materials:
+    XenoborgCrystal: 200
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  id: XenoborgModuleLexorinHypo
+  result: XenoborgModuleLexorinHypo
+  materials:
+    XenoborgCrystal: 300
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  categories:
+  - Robotics
+  id: XPositronicBrain
+  result: UpgradeKitBrain
+  materials:
+    XenoborgCrystal: 1
+
+- type: latheRecipe
+  parent: BaseXenoborgModulesRecipe
+  categories:
+  - Circuitry
+  id: ClothingHeadHatChameleonXenoborg
+  result: ClothingHeadHatChameleonXenoborg
+  materials:
+    Steel: 1

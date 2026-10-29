@@ -1,42 +1,70 @@
-- type: entity
-  abstract: true
-  id: ClothingUniformDamageableBase
-  components:
-  - type: TearableClothing
-  - type: Damageable
-    damageContainer: Clothing
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 51 # 3 saber strikes
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: TearClothing
-      - !type:EmptyContainersBehaviour
-        containers:
-        - storagebase
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          MaterialCloth1:
-            min: 3
-            max: 3
+# - type: entity
+#   abstract: true
+#   id: ClothingUniformDamageableBase
+#   components:
+#   - type: TearableClothing
+#   - type: Damageable
+#   - type: Injurable
+#     damageContainer: Clothing
+#   - type: Destructible
+#     thresholds:
+#     - trigger:
+#         !type:DamageTrigger
+#         damage: 51 # 3 saber strikes
+#       behaviors:
+#       - !type:PlaySoundBehavior
+#         sound:
+#           collection: TearClothing
+#       - !type:EmptyContainersBehaviour
+#         containers:
+#         - storagebase
+#       - !type:DoActsBehavior
+#         acts: [ "Destruction" ]
+#       - !type:SpawnEntitiesBehavior
+#         spawn:
+#           MaterialCloth1:
+#             min: 3
+#             max: 3
 
 - type: entity
   abstract: true
-  parent: ClothingUniformBase
+  parent: UnsensoredClothingUniformBase
+  id: UnsensoredClothingUniformToggleableBase
+  components:
+  - type: ToggleableSpriteClothing
+    defaultSuffix: "-down"
+
+- type: entity
+  abstract: true
+  parent: UnsensoredClothingUniformSkirtBase
+  id: UnsensoredClothingUniformSkirtToggleableBase
+  components:
+  - type: ToggleableSpriteClothing
+    defaultSuffix: "-down"
+
+- type: entity
+  abstract: true
+  parent: [ ClothingUniformBase, UnsensoredClothingUniformToggleableBase ]
   id: ClothingUniformToggleableBase
-  components:
-  - type: ToggleableSpriteClothing
-    defaultSuffix: "-down"
 
 - type: entity
   abstract: true
-  parent: ClothingUniformSkirtBase
+  parent: [ ClothingUniformSkirtBase, UnsensoredClothingUniformSkirtToggleableBase ]
   id: ClothingUniformSkirtToggleableBase
+
+- type: entity
+  abstract: true
+  id: ClothingSecurityUniformBase
   components:
-  - type: ToggleableSpriteClothing
-    defaultSuffix: "-down"
+  - type: SuitSensor
+    randomMode: false
+    mode: SensorCords
+
+- type: entity
+  abstract: true
+  id: BaseUpgradableClothingUniform
+  components:
+  - type: UpgradeableClothing
+    whitelist:
+      tags:
+        - UniformUpgrade

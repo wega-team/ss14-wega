@@ -1,0 +1,195 @@
+<ui:GpsWindow
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client._Wega.GPS.UI"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+    SetSize="550 750" MouseFilter="Stop">
+
+    <PanelContainer Name="Background" StyleClasses="PdaBackgroundRect" ModulateSelfOverride="#1a1a2e"/>
+    <PanelContainer Name="Border" StyleClasses="PdaBorderRect" Modulate="#2d3047"/>
+
+    <BoxContainer Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+
+        <!-- Header -->
+        <BoxContainer SetHeight="35" Margin="15 10 10 5" Orientation="Horizontal" HorizontalExpand="True">
+            <TextureRect TexturePath="/Textures/Interface/Nano/ntlogo.svg.png" SetSize="28 28" Margin="0 0 10 0"/>
+            <Label Text="{Loc 'gps-ui-title'}" StyleClasses="ConsoleHeadingBig"
+                   HorizontalExpand="True" FontColorOverride="#9d4edd"/>
+            <TextureButton Name="CloseButton" StyleClasses="windowCloseButton"
+                           Modulate="#ff6b6b" VerticalAlignment="Center"/>
+        </BoxContainer>
+
+        <Control Margin="10" RectClipContent="True" VerticalExpand="True"
+                 HorizontalExpand="True">
+            <PanelContainer Name="ContentBorder" StyleClasses="PdaBackground" Modulate="#2a1747"/>
+
+            <BoxContainer Orientation="Vertical" Margin="10" HorizontalExpand="True" VerticalExpand="True">
+
+                <!-- Current GPS Info -->
+                <PanelContainer StyleClasses="AngleRect" Margin="0 0 0 10" HorizontalExpand="True">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#3d235e" BorderColor="#9d4edd" BorderThickness="2" />
+                    </PanelContainer.PanelOverride>
+
+                    <BoxContainer Orientation="Vertical" Margin="10" HorizontalExpand="True">
+                        <BoxContainer Orientation="Horizontal" Margin="0 0 0 5" HorizontalExpand="True">
+                            <Label Text="{Loc 'gps-ui-current-device'}" StyleClasses="ConsoleSubHeading"
+                                   FontColorOverride="#9d4edd" HorizontalExpand="True"/>
+                            <Label Name="BroadcastStatusLabel" StyleClasses="LabelSubText"
+                                   FontColorOverride="#ffd166" HorizontalAlignment="Right"/>
+                        </BoxContainer>
+
+                        <BoxContainer Orientation="Vertical" Margin="5 0 0 0" HorizontalExpand="True">
+                            <BoxContainer Orientation="Horizontal" Margin="0 0 0 3" HorizontalExpand="True">
+                                <Label Text="{Loc 'gps-ui-name'}" StyleClasses="ConsoleText"
+                                       FontColorOverride="#c77dff" MinWidth="120"/>
+                                <LineEdit Name="GpsNameEdit" PlaceHolder="{Loc 'gps-ui-name-placeholder'}"
+                                         HorizontalExpand="True" StyleClasses="ConsoleLineEdit"/>
+                                <Button Name="SaveNameButton" Text="{Loc 'gps-ui-save'}"
+                                        MinWidth="60" Margin="5 0 0 0" StyleClasses="ButtonViolet"/>
+                            </BoxContainer>
+
+                            <BoxContainer Orientation="Horizontal" Margin="0 5 0 3" HorizontalExpand="True">
+                                <Label Text="{Loc 'gps-ui-description'}" StyleClasses="ConsoleText"
+                                       FontColorOverride="#c77dff" MinWidth="120"/>
+                                <LineEdit Name="GpsDescEdit" PlaceHolder="{Loc 'gps-ui-desc-placeholder'}"
+                                         HorizontalExpand="True" StyleClasses="ConsoleLineEdit"/>
+                                <Button Name="SaveDescButton" Text="{Loc 'gps-ui-save'}"
+                                        MinWidth="60" Margin="5 0 0 0" StyleClasses="ButtonViolet"/>
+                            </BoxContainer>
+
+                            <BoxContainer Orientation="Horizontal" Margin="0 5 0 0" HorizontalExpand="True">
+                                <Label Text="{Loc 'gps-ui-current-coords'}" StyleClasses="ConsoleText"
+                                       FontColorOverride="#c77dff" HorizontalExpand="True"/>
+                                <Label Name="CoordinatesLabel" StyleClasses="ConsoleHeading"
+                                       FontColorOverride="#ffd166" HorizontalAlignment="Right"/>
+                            </BoxContainer>
+                        </BoxContainer>
+                    </BoxContainer>
+                </PanelContainer>
+
+                <!-- Tabs  -->
+                <TabContainer Name="Tabs" VerticalExpand="True" HorizontalExpand="True"
+                              TabFontColorOverride="#9d4edd" TabFontColorInactiveOverride="#c77dff">
+
+                    <!-- Other GPS Devices -->
+                    <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="5">
+                        <BoxContainer Orientation="Horizontal" Margin="0 0 0 5" HorizontalExpand="True">
+                            <Label Text="{Loc 'gps-ui-other-devices'}" StyleClasses="ConsoleSubHeading"
+                                   FontColorOverride="#9d4edd" HorizontalExpand="True"/>
+                            <Label Name="DevicesCountLabel" StyleClasses="ConsoleText"
+                                   FontColorOverride="#ffd166" HorizontalAlignment="Right"/>
+                        </BoxContainer>
+
+                        <PanelContainer StyleClasses="AngleRect" VerticalExpand="True" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#3d235e" BorderColor="#9d4edd" BorderThickness="2" />
+                            </PanelContainer.PanelOverride>
+
+                            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                                <BoxContainer Name="DevicesContainer" Orientation="Vertical"
+                                              VerticalExpand="True" HorizontalExpand="True" Margin="5"/>
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <!-- Navigation Beacons -->
+                    <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="5">
+                        <BoxContainer Orientation="Horizontal" Margin="0 0 0 5" HorizontalExpand="True">
+                            <Label Text="{Loc 'gps-ui-nav-beacons'}" StyleClasses="ConsoleSubHeading"
+                                   FontColorOverride="#9d4edd" HorizontalExpand="True"/>
+                            <Label Name="BeaconsCountLabel" StyleClasses="ConsoleText"
+                                   FontColorOverride="#ffd166" HorizontalAlignment="Right"/>
+                        </BoxContainer>
+
+                        <PanelContainer StyleClasses="AngleRect" VerticalExpand="True" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#3d235e" BorderColor="#9d4edd" BorderThickness="2" />
+                            </PanelContainer.PanelOverride>
+
+                            <ScrollContainer VerticalExpand="True" HorizontalExpand="True" HScrollEnabled="False">
+                                <BoxContainer Name="BeaconsContainer" Orientation="Vertical"
+                                              VerticalExpand="True" HorizontalExpand="True" Margin="5"/>
+                            </ScrollContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                    <!-- NavMap -->
+                    <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" Margin="5">
+                        <BoxContainer Orientation="Horizontal" Margin="0 0 0 5" HorizontalExpand="True">
+                            <Label Text="{Loc 'gps-ui-nav-map'}" StyleClasses="ConsoleSubHeading"
+                                FontColorOverride="#9d4edd" HorizontalExpand="True"/>
+                            <Label Name="MapZoomLabel" StyleClasses="ConsoleText"
+                                FontColorOverride="#ffd166" HorizontalAlignment="Right"/>
+                        </BoxContainer>
+
+                        <Control Name="NavMapContainer"
+                                VerticalExpand="True"
+                                HorizontalExpand="True"
+                                MinHeight="300">
+                        </Control>
+
+                        <BoxContainer Orientation="Horizontal" Margin="5 5 5 0" HorizontalExpand="True">
+                            <Button Name="ZoomInButton" Text="+"
+                                    MinWidth="30" StyleClasses="ButtonViolet" Margin="0 0 5 0"/>
+                            <Button Name="ZoomOutButton" Text="-"
+                                    MinWidth="30" StyleClasses="ButtonViolet" Margin="0 0 5 0"/>
+                            <Button Name="CenterMapButton" Text="{Loc 'gps-ui-center-map'}"
+                                    StyleClasses="ButtonViolet" Margin="0 0 5 0" HorizontalExpand="True"/>
+                            <Button Name="ToggleBeaconsButton" Text="{Loc 'gps-ui-toggle-beacons'}"
+                                    StyleClasses="ButtonViolet" MinWidth="120"/>
+                        </BoxContainer>
+
+                        <PanelContainer StyleClasses="AngleRect" Margin="5 5 5 0" HorizontalExpand="True">
+                            <PanelContainer.PanelOverride>
+                                <gfx:StyleBoxFlat BackgroundColor="#3d235e" BorderColor="#9d4edd" BorderThickness="1" />
+                            </PanelContainer.PanelOverride>
+
+                            <BoxContainer Orientation="Horizontal" Margin="8" HorizontalExpand="True">
+                                <BoxContainer Orientation="Horizontal" Margin="0 0 15 0">
+                                    <PanelContainer MinSize="12 12" Margin="0 0 5 0">
+                                        <PanelContainer.PanelOverride>
+                                            <gfx:StyleBoxFlat BackgroundColor="#4cc9f0" />
+                                        </PanelContainer.PanelOverride>
+                                    </PanelContainer>
+                                    <Label Text="{Loc 'gps-ui-legend-gps'}" FontColorOverride="#c77dff" />
+                                </BoxContainer>
+
+                                <BoxContainer Orientation="Horizontal" Margin="0 0 15 0">
+                                    <PanelContainer MinSize="12 12" Margin="0 0 5 0">
+                                        <PanelContainer.PanelOverride>
+                                            <gfx:StyleBoxFlat BackgroundColor="#ffa502" />
+                                        </PanelContainer.PanelOverride>
+                                    </PanelContainer>
+                                    <Label Text="{Loc 'gps-ui-legend-beacons'}" FontColorOverride="#c77dff" />
+                                </BoxContainer>
+                            </BoxContainer>
+                        </PanelContainer>
+                    </BoxContainer>
+
+                </TabContainer>
+
+                <!-- Footer -->
+                <BoxContainer Orientation="Vertical" VerticalExpand="False" Margin="0 5 0 0">
+                    <controls:StripeBack HasBottomEdge="False" HasMargins="False" HorizontalExpand="True">
+                        <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+                            <Label Text="{Loc 'gps-ui-broadcast'}" HorizontalAlignment="Left"
+                                   Margin="5 0" StyleClasses="LabelSubText" FontColorOverride="#c77dff"/>
+                            <Button Name="ToggleBroadcastButton" Text="{Loc 'gps-ui-toggle-broadcast'}"
+                                    HorizontalAlignment="Right" Margin="0 0 5 0" MinWidth="120" StyleClasses="ButtonViolet"/>
+                        </BoxContainer>
+                    </controls:StripeBack>
+                </BoxContainer>
+
+            </BoxContainer>
+        </Control>
+
+        <!-- OS Footer -->
+        <BoxContainer Orientation="Horizontal" SetHeight="25" Margin="0 5 0 5">
+            <Label Name="Footer" Text="{Loc 'gps-ui-os-footer'}"
+                   StyleClasses="ConsoleSubText" FontColorOverride="#c77dff"
+                   HorizontalExpand="True" HorizontalAlignment="Right" Margin="10 0"/>
+        </BoxContainer>
+
+    </BoxContainer>
+</ui:GpsWindow>

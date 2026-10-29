@@ -11,7 +11,7 @@
     layers:
     - state: core
     - state: pulse
-      map: ["decay"]
+      # map: ["decay"] Corvax-Wega-Change
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -32,12 +32,12 @@
   - type: Tag
     tags:
     - ForceableFollow
+    - AnomalyCore # Corvax-Wega-add
   - type: AnomalyCore
     timeToDecay: 600
     startPrice: 10000
     endPrice: 200
 
-## Corvax-Wega-Anomaly-start
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCorePyroclastic
@@ -47,14 +47,31 @@
     sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
   - type: PointLight
     radius: 1.5
-    energy: 1.5
+    energy: 2.7
     color: "#E25822"
     castShadows: false
+## Corvax-Wega-Anomaly-start
   - type: IgnitionSource
-    temperature: 400
+    temperature: 700
     ignited: true
-  - type: CoreTempChange
-    tempChangePerSecond: 25
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileAnomalyFireballMax
+    capacity: 3
+    count: 3
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FlameCore
+## Corvax-Wega-Anomaly-end
 
 - type: entity
   parent: BaseAnomalyCore
@@ -68,8 +85,24 @@
     energy: 10
     color: "#1e070e"
     castShadows: false
-  - type: RadiationSource
-    intensity: 5
+  # Corvax-Wega-Add-start
+  - type: MeleeThrowOnHit
+  - type: MeleeWeapon
+    attackRate: 0.5
+    angle: 0
+    animation: WeaponArcFist
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 0
+    soundHit:
+      path: "/Audio/Effects/radpulse8.ogg"
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - GravityCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore
@@ -80,12 +113,28 @@
     sprite: Structures/Specific/Anomalies/Cores/ice_core.rsi
   - type: PointLight
     radius: 1.5
-    energy: 1.5
+    energy: 2.7
     color: "#befaff"
     castShadows: false
-  - type: CoreTempChange
-    tempChangePerSecond: -25
-## Corvax-Wega-Anomaly-end
+  # Corvax-Wega-Add-start
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: ProjectileIcicle
+    capacity: 3
+    count: 3
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - IceCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore
@@ -100,32 +149,45 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
-
 ## Corvax-Wega-Anomaly-start
+  - type: Healing
+    damageContainers:
+    - Biological
+    damage:
+      types: # these are all split across multiple types
+        Blunt: -200
+        Piercing: -200
+        Slash: -200
+        Heat: -200
+        Cold: -200
+        Shock: -200
+        Poison: -150
+        Radiation: -200
+    bloodlossModifier: -20
+    delay: 1
+    selfHealPenaltyMultiplier: 0
+    healingBeginSound:
+      path: "/Audio/Items/Medical/ointment_begin.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+    healingEndSound:
+      path: "/Audio/Items/Medical/ointment_end.ogg"
+      params:
+        volume: 1.0
+        variation: 0.125
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FleshCore
+## Corvax-Wega-Anomaly-end
+
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreRock
   suffix: Rock
   components:
-  - type: OreVein
-    oreChance: 1
-    oreRarityPrototypeId: RandomOreDistributionCore
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: Rock
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 2000
-      behaviors:
-      - !type:DoActsBehavior
-        acts: ["Destruction"]
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Effects/break_stone.ogg
-          params:
-            volume: -6
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/rock_core.rsi
   - type: PointLight
@@ -133,36 +195,51 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
-
 ## Corvax-Wega-Anomaly-start
+  - type: ItemToggle
+  - type: MiningScanner
+    range: 10
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Ambience/Objects/light_hum.ogg
+      params:
+        volume: -10
+        maxDistance: 1
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - RockCore
+## Corvax-Wega-Anomaly-end
+
 - type: entity
-  parent: BaseAnomalyCore
+  parent: [BaseAnomalyCore, BaseHypospray]
   id: AnomalyCoreLiquid
   suffix: Liquid
   components:
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        maxVol: 150
-  - type: FitsInDispenser
-    solution: beaker
-  - type: RefillableSolution
-    solution: beaker
-  - type: DrainableSolution
-    solution: beaker
-  - type: ExaminableSolution
-    solution: beaker
-  - type: DrawableSolution
-    solution: beaker
-  - type: InjectableSolution
-    solution: beaker
-  - type: SolutionTransfer
-    canChangeTransferAmount: true
-  - type: Edible
-    edible: Drink
-    solution: beaker
-    destroyOnEmpty: false
-    utensil: None
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/liquid_core.rsi
+    noRot: true
+    layers:
+    - state: core
+    - state: pulse
+      map: ["decay"]
+  - type: PointLight
+    radius: 1.5
+    energy: 3.5
+    color: "#ffffff"
+    castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Solution
+    solution:
+      maxVol: 10
+  - type: Injector
+    solutionName: hypospray
+    ignoreClosed: false
+    activeModeProtoId: HyposprayDynamicMode
+    allowedModes:
+    - HyposprayDynamicMode
+    - HyposprayInjectMode
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -177,31 +254,30 @@
       collection: RadiationPulse
   - type: UseDelay
     delay: 2
-  - type: Tag
-    tags:
-    - ForceableFollow
   - type: AnomalyCore
     timeToDecay: 600
     startPrice: 10000
     endPrice: 200
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/Cores/liquid_core.rsi
-    noRot: true
-    layers:
-    - state: core
-    - state: pulse
-      map: ["decay"]
-  - type: PointLight
-    radius: 1.5
-    energy: 3.5
-    color: "#ffffff"
-    castShadows: false
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ChemCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreBluespace
   suffix: Bluespace
   components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
+  - type: PointLight
+    radius: 1.5
+    energy: 3.5
+    color: "#00ccff"
+    castShadows: false
+  # Corvax-Wega-Add-start
   - type: UserInterface
     interfaces:
       enum.StorageUiKey.Key:
@@ -209,15 +285,10 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
-  - type: Construction
-    graph: BoxCardboard
-    node: boxcardboard
-    containers:
-      - entity_storage
   - type: Item
     size: Ginormous
     shape:
-    - 0,0,19,9
+    - 0,0,0,0
   - type: Storage
     maxItemSize: Huge
     grid:
@@ -226,26 +297,18 @@
     storageCloseSound: /Audio/Effects/radpulse5.ogg
     storageInsertSound: /Audio/Effects/radpulse12.ogg
     storageRemoveSound: /Audio/Effects/radpulse1.ogg
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/Cores/bluespace_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 3.5
-    color: "#00ccff"
-    castShadows: false
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - BluespaceCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreElectricity
   suffix: Electricity
   components:
-  - type: PowerCell
-  - type: Battery
-    maxCharge: 360
-    startingCharge: 0
-  - type: BatterySelfRecharger
-    autoRecharge: true
-    autoRechargeRate: 12
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/electric_core.rsi
   - type: PointLight
@@ -253,16 +316,32 @@
     energy: 2.0
     color: "#ffffaa"
     castShadows: false
+## Corvax-Wega-Anomaly-start
   - type: Electrified
-## Corvax-Wega-Anomaly-end
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: IonScan
+    capacity: 2
+    count: 2
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ElecCore
+## Corvax-Wega-Anomaly-End
 
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreFlora
   suffix: Flora
   components:
-  - type: Seed
-    seedId: anomalyBerry
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/flora_core.rsi
   - type: PointLight
@@ -270,15 +349,33 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  # - type: Seed
+    # plantId: AnomalyBerryPlants
+  - type: Gun
+    fireRate: 0.75
+    soundGunshot:
+      path: /Audio/Magic/fireball.ogg
+    projectileSpeed: 25
+  - type: BasicEntityAmmoProvider
+    proto: ProjectilePolyboltLightPerson
+    capacity: 3
+    count: 3
+  - type: AmmoCounter
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 30
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FloraCore
+## Corvax-Wega-Anomaly-End
 
-# Corvax-Wega-Anomaly-start
 - type: entity
-  parent: [ BaseAnomalyCore, BaseShadow ]
+  parent: BaseAnomalyCore # Corvax-Wega-add BaseShadow
   id: AnomalyCoreShadow
   suffix: Shadow
   components:
-  - type: SpawnOnTrigger
-    proto: ShadowKudzu
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/shadow_core.rsi
   - type: PointLight
@@ -286,15 +383,21 @@
     energy: 2.0
     color: "#793a80"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: SpawnOnTrigger
+    proto: ShadowKudzu
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ShadowCore
+## Corvax-Wega-Anomaly-End
 
 - type: entity
   parent: BaseAnomalyCore
   id: AnomalyCoreTech
   suffix: Tech
   components:
-  - type: Emag
-  - type: LimitedCharges
-    maxCharges: 1
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/tech_core.rsi
   - type: PointLight
@@ -302,6 +405,17 @@
     energy: 2.0
     color: "#56c1e8"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: AutoRecharge
+    rechargeDuration: 600
+  - type: Emag
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - TechCore
 ## Corvax-Wega-Anomaly-end
 
 - type: entity
@@ -318,7 +432,6 @@
     castShadows: false
 
 # Inert cores
-
 - type: entity
   parent: BaseAnomalyCore
   id: BaseAnomalyInertCore
@@ -339,13 +452,30 @@
   id: AnomalyCorePyroclasticInert
   suffix: Pyroclastic, Inert
   components:
-  - type: Sprite
-    sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 1.5
-    color: "#fca3c0"
-    castShadows: false
+    - type: Sprite
+      sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
+## Corvax-Wega-Anomaly-start
+    - type: ItemToggle
+    - type: ComponentToggler
+      components:
+      - type: CoreTempChange
+        tempChangePerSecond: 20
+      - type: PointLight
+        radius: 2.5
+        energy: 10
+        color: "#fca3c0"
+        castShadows: false
+    # - type: PointLight
+      # radius: 1.5
+      # energy: 10
+      # color: "#fca3c0"
+      # castShadows: false
+    - type: Tag
+      tags:
+      - ForceableFollow
+      - AnomalyCore
+      - FlameCore
+## Corvax-Wega-Anomaly-End
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -354,11 +484,29 @@
   components:
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/gravity_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 10
-    color: "#1e070e"
-    castShadows: false
+ ## Corvax-Wega-Anomaly-start
+  - type: ItemToggle
+  - type: ComponentToggler
+    components:
+    - type: PointLight
+      radius: 5.5
+      energy: 100
+      color: "#1e070e"
+      castShadows: false
+    - type: RadiationSource
+      intensity: 3
+  # - type: PointLight
+    # radius: 1.5
+    # energy: 10
+    # color: "#1e070e"
+    # castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - GravityCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -367,11 +515,28 @@
   components:
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/ice_core.rsi
-  - type: PointLight
-    radius: 1.5
-    energy: 1.5
-    color: "#befaff"
-    castShadows: false
+ ## Corvax-Wega-Anomaly-start
+  - type: ItemToggle
+  - type: ComponentToggler
+    components:
+    - type: CoreTempChange
+      tempChangePerSecond: -20
+    - type: PointLight
+      radius: 2.5
+      energy: 10
+      color: "#befaff"
+      castShadows: false
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - IceCore
+  # Corvax-Wega-Add-end
+  # - type: PointLight
+    # radius: 1.5
+    # energy: 2.7
+    # color: "#befaff"
+    # castShadows: false
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -386,6 +551,13 @@
     energy: 3.5
     color: "#cb5b7e"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FleshCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -399,6 +571,32 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: OreVein
+    oreChance: 1
+    oreRarityPrototypeId: RandomOreDistributionCore
+  - type: Damageable
+    damageModifierSet: Rock
+  - type: Injurable
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/break_stone.ogg
+          params:
+            volume: -6
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - RockCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -412,6 +610,52 @@
     energy: 3.5
     color: "#ffffff"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: Solution
+    id: beaker
+    solution:
+      maxVol: 480
+  - type: FitsInDispenser
+    solution: beaker
+  - type: RefillableSolution
+    solution: beaker
+  - type: DrainableSolution
+    solution: beaker
+  - type: ExaminableSolution
+    solution: beaker
+  - type: DrawableSolution
+    solution: beaker
+  - type: InjectableSolution
+    solution: beaker
+  - type: SolutionTransfer
+    canChangeTransferAmount: true
+  - type: SolutionItemStatus
+    solution: beaker
+  - type: Edible
+    edible: Drink
+    solution: beaker
+    destroyOnEmpty: false
+    utensil: None
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.AnomalyCoreVisuals.Decaying:
+        decay:
+          True: { visible: true }
+          False: { visible: false }
+  - type: Item
+    size: Normal
+  - type: EmitSoundOnUse #placeholder for future unical mechanic
+    sound:
+      collection: RadiationPulse
+  - type: UseDelay
+    delay: 2
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore # Corvax-Wega-add
+    - ChemCore
+## Corvax-Wega-Anomaly-End
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -425,6 +669,32 @@
     energy: 3.5
     color: "#00ccff"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: UserInterface
+    interfaces:
+      enum.StorageUiKey.Key:
+        type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,0,0
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,2,2
+    storageOpenSound: /Audio/Effects/radpulse8.ogg
+    storageCloseSound: /Audio/Effects/radpulse5.ogg
+    storageInsertSound: /Audio/Effects/radpulse12.ogg
+    storageRemoveSound: /Audio/Effects/radpulse1.ogg
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - BluespaceCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -438,6 +708,20 @@
     energy: 2.0
     color: "#ffffaa"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: PowerCell
+  - type: Battery
+    maxCharge: 720
+    startingCharge: 0
+  - type: BatterySelfRecharger
+    autoRechargeRate: 720
+    autoRechargePauseTime: 5
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ElecCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -445,7 +729,7 @@
   suffix: Flora, Inert
   components:
   - type: Seed
-    seedId: anomalyBerry
+    plantId: AnomalyBerryPlants
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/flora_core.rsi
   - type: PointLight
@@ -453,6 +737,13 @@
     energy: 2.0
     color: "#6270bb"
     castShadows: false
+  # Corvax-Wega-Add-start
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - FloraCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: [ BaseAnomalyInertCore, BaseShadow ]
@@ -466,6 +757,15 @@
     energy: 2.0
     color: "#793a80"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: SpawnOnTrigger
+    proto: ShadowKudzu
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - ShadowCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore
@@ -479,6 +779,20 @@
     energy: 2.0
     color: "#56c1e8"
     castShadows: false
+## Corvax-Wega-Anomaly-start
+  - type: Emag
+    emagImmuneTag: AccessBreakerImmune
+    emagType: Access
+  - type: LimitedCharges
+    maxCharges: 1
+  - type: AutoRecharge
+    rechargeDuration: 300
+  - type: Tag
+    tags:
+    - ForceableFollow
+    - AnomalyCore
+    - TechCore
+  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseAnomalyInertCore

@@ -3,6 +3,7 @@
   name: job-name-brigmedic
   description: job-description-brigmedic
   playTimeTracker: JobBrigmedic
+  isSubRole: true
   requirements:
   - !type:DepartmentTimeRequirement
     department: Medical
@@ -17,11 +18,11 @@
   startingGear: BrigmedicGear
   icon: "JobIconBrigmedic"
   supervisors: job-supervisors-hos
-  canBeAntag: false
   access:
     - Brig
     - Detective
     - External
+    - LavalandAvanpost
     - Medical
     - Security
     - Maintenance

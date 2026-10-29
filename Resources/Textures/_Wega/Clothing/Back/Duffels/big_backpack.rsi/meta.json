@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Modified from Paradise at commit https://github.com/ss220-space/Paradise/blob/master220/icons/obj/storage.dmi by 4_ydo",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-BACKPACK",
+      "directions": 4
+    }
+  ]
+}

@@ -20,9 +20,30 @@
   - Maintenance
   - Medical
   - Research
+  - LavalandAvanpost
   - Salvage
   - Security
   - Service
   - Theatre
   - GenpopEnter
   - GenpopLeave
+
+- type: accessGroup
+  id: AncillaryAccess
+  name: ancillary-access-group
+  consoleAvaible: true
+  tags:
+  - Bar
+  - Cargo
+  - Chapel
+  - Engineering
+  - External
+  - Hydroponics
+  - Janitor
+  - Kitchen
+  - Maintenance
+  - Medical
+  - Research
+  - Salvage
+  - Service
+  - Theatre

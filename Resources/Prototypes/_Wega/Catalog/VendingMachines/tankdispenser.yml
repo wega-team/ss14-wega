@@ -1,0 +1,4 @@
+- type: vendingMachineInventory
+  id: TankDispenserExtO2Inventory
+  startingInventory:
+    OxygenTankFilled: 20

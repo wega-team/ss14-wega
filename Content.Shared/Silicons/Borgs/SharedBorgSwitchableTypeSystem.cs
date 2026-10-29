@@ -6,8 +6,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Silicons.Borgs.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Content.Shared.Corvax.TTS; // Corvax-Wega-tts-borg
-
+using Content.Shared.Lock; // Corvax-Wega-borg
 
 namespace Content.Shared.Silicons.Borgs;
 
@@ -15,14 +14,14 @@ namespace Content.Shared.Silicons.Borgs;
 /// Implements borg type switching.
 /// </summary>
 /// <seealso cref="BorgSwitchableTypeComponent"/>
-public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
+public abstract partial class SharedBorgSwitchableTypeSystem : EntitySystem
 {
     // TODO: Allow borgs to be reset to default configuration.
 
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly SharedUserInterfaceSystem _userInterface = default!;
-    [Dependency] protected readonly IPrototypeManager Prototypes = default!;
-    [Dependency] private readonly InteractionPopupSystem _interactionPopup = default!;
+    [Dependency] private SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private SharedUserInterfaceSystem _userInterface = default!;
+    [Dependency] private InteractionPopupSystem _interactionPopup = default!;
+    [Dependency] private LockingWhitelistSystem _lockingWhiteList = default!; // Corvax-Wega-borg
 
     public static readonly EntProtoId ActionId = "ActionSelectBorgType";
 
@@ -76,7 +75,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
         if (ent.Comp.SelectedBorgType != null)
             return;
 
-        if (!Prototypes.HasIndex(args.Prototype))
+        if (!ProtoMan.HasIndex(args.Prototype))
             return;
 
         SelectBorgModule(ent, args.Prototype);
@@ -103,7 +102,7 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
 
     protected void UpdateEntityAppearance(Entity<BorgSwitchableTypeComponent> entity)
     {
-        if (!Prototypes.Resolve(entity.Comp.SelectedBorgType, out var proto))
+        if (!ProtoMan.Resolve(entity.Comp.SelectedBorgType, out var proto))
             return;
 
         UpdateEntityAppearance(entity, proto);
@@ -130,6 +129,12 @@ public abstract class SharedBorgSwitchableTypeSystem : EntitySystem
             tts.VoicePrototypeId = prototype.VoicePrototypeId;
         }
         // Corvax-TTS-end
+        // Corvax-Wega-Start
+        if (TryComp(entity, out LockingWhitelistComponent? locking) && prototype.Blacklist != null)
+        {
+            _lockingWhiteList.SetList((entity.Owner, locking), prototype.Blacklist);
+        }
+        // Corvax-Wega-End
 
         if (prototype.SpriteBodyMovementState is { } movementState)
         {

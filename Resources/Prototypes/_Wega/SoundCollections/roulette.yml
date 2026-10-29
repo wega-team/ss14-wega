@@ -1,0 +1,5 @@
+- type: soundCollection
+  id: CoinDrop
+  files:
+    - /Audio/_Wega/Machines/Roulette/coindrop.ogg
+    - /Audio/_Wega/Machines/Roulette/coindrop2.ogg

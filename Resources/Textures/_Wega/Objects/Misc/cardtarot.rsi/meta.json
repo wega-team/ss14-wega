@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from https://github.com/ParadiseSS13/Paradise/blob/HEAD/icons/obj/playing_cards.dmi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "box"
+    },
+    {
+      "name": "deck"
+    },
+    {
+      "name": "notenchanted"
+    },
+    {
+      "name": "chariot"
+    },
+    {
+      "name": "chariot-reversed"
+    },
+    {
+      "name": "death"
+    },
+    {
+      "name": "death-reversed"
+    },
+    {
+      "name": "devil"
+    },
+    {
+      "name": "devil-reversed"
+    },
+    {
+      "name": "emperor"
+    },
+    {
+      "name": "emperor-reversed"
+    },
+    {
+      "name": "empress"
+    },
+    {
+      "name": "empress-reversed"
+    },
+    {
+      "name": "fool"
+    },
+    {
+      "name": "fool-reversed"
+    },
+    {
+      "name": "hangedman"
+    },
+    {
+      "name": "hangedman-reversed"
+    },
+    {
+      "name": "hermit"
+    },
+    {
+      "name": "hermit-reversed"
+    },
+    {
+      "name": "hierophant"
+    },
+    {
+      "name": "hierophant-reversed"
+    },
+    {
+      "name": "highpriestess"
+    },
+    {
+      "name": "highpriestess-reversed"
+    },
+    {
+      "name": "judgement"
+    },
+    {
+      "name": "judgement-reversed"
+    },
+    {
+      "name": "justice"
+    },
+    {
+      "name": "justice-reversed"
+    },
+    {
+      "name": "lovers"
+    },
+    {
+      "name": "lovers-reversed"
+    },
+    {
+      "name": "magician"
+    },
+    {
+      "name": "magician-reversed"
+    },
+    {
+      "name": "moon"
+    },
+    {
+      "name": "moon-reversed"
+    },
+    {
+      "name": "stars"
+    },
+    {
+      "name": "stars-reversed"
+    },
+    {
+      "name": "strength"
+    },
+    {
+      "name": "strength-reversed"
+    },
+    {
+      "name": "sun"
+    },
+    {
+      "name": "sun-reversed"
+    },
+    {
+      "name": "temperance"
+    },
+    {
+      "name": "temperance-reversed"
+    },
+    {
+      "name": "theworld"
+    },
+    {
+      "name": "theworld-reversed"
+    },
+    {
+      "name": "tower"
+    },
+    {
+      "name": "tower-reversed"
+    },
+    {
+      "name": "unknown"
+    },
+    {
+      "name": "wheeloffortune"
+    },
+    {
+      "name": "wheeloffortune-reversed"
+    }
+  ]
+}

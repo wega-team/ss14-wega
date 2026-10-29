@@ -22,6 +22,8 @@
   - type: TimedDespawn
     lifetime: 30.0
 
+# Mind breaker
+
 - type: entity
   parent: BaseEntityHallucination
   id: HallucinationMobBearSpace
@@ -54,6 +56,8 @@
     damage:
       types:
         Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -73,6 +77,328 @@
     baseSprintSpeed: 4
   - type: HTN
     rootTask:
-      task: IdleCompound
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
   - type: TimedDespawn
     lifetime: 30.0
+
+# Vampire
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobVampV1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/greytide_stanbaton.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - Vampire
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+    
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobVampV2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/greytide_toolbox.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - Vampire
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+
+# VampireUlt
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobVampUV1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/greytide_stanbaton.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - Vampire
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 3
+  - type: TimedDespawn
+    lifetime: 30.0
+    
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobVampUV2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/greytide_toolbox.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - Vampire
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 3
+  - type: TimedDespawn
+    lifetime: 30.0
+
+
+# BloodCult
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobBloodcultV1
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/bloodcult_ako_blood.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobBloodcultV2
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/bloodcult_ako_hell.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobBloodcultV3
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/bloodcult_ako_death.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobBloodcultV4
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/bloodcult_stand_blood.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobBloodcultV5
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/bloodcult_stand_death.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+
+- type: entity
+  parent: BaseEntityHallucination
+  id: HallucinationMobBloodcultV6
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Hallucination/bloodcult_stand_hell.rsi
+    state: icon
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+    - BloodCult
+  - type: CombatMode
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/_Wega/Effects/null.ogg
+    angle: 0
+    damage:
+      types:
+        Blunt: 0
+  - type: StaminaDamageOnHit
+    damage: 5
+  - type: TimedDespawn
+    lifetime: 30.0
+

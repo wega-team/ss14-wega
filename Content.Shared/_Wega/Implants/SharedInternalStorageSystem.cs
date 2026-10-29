@@ -1,7 +1,4 @@
 using Content.Shared.Actions;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
-using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
@@ -15,23 +12,18 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Implants;
 
-public sealed class SharedInternalStorageSystem : EntitySystem
+public abstract partial class SharedInternalStorageSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly StomachSystem _stomach = default!;
-    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainer = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private SharedContainerSystem _container = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private SharedSolutionContainerSystem _solutionContainer = default!;
 
-    [ValidatePrototypeId<EntityPrototype>]
-    private const string ToothImplantAction = "ActionToothImplant";
+    private static readonly EntProtoId ToothImplantAction = "ActionToothImplant";
 
     public override void Initialize()
     {
-        base.Initialize();
-
         SubscribeLocalEvent<InternalStorageComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<InternalStorageComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<InternalStorageComponent, ToothImplantActionEvent>(OnToothImplantAction);
@@ -75,8 +67,8 @@ public sealed class SharedInternalStorageSystem : EntitySystem
         _action.RemoveAction(ent.Owner, ent.Comp.ToothImplantActionEntity);
         Del(pill);
 
-        _popup.PopupClient(Loc.GetString("internal-storage-eat-pill"), ent, ent);
-        _audio.PlayPredicted(new SoundPathSpecifier("/Audio/Items/pill.ogg"), ent, ent);
+        _popup.PopupEntity(Loc.GetString("internal-storage-eat-pill"), ent, ent);
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Items/pill.ogg"), ent);
 
         args.Handled = true;
     }

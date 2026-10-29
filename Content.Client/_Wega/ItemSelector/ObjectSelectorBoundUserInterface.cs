@@ -5,7 +5,7 @@ using Robust.Client.UserInterface;
 namespace Content.Client._Wega.Item.Selector.UI;
 
 [UsedImplicitly]
-public sealed class ObjectSelectorBoundUserInterface : BoundUserInterface
+public sealed partial class ObjectSelectorBoundUserInterface : BoundUserInterface
 {
     [ViewVariables]
     private ObjectSelectorWindow? _window;

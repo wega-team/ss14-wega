@@ -1,13 +1,16 @@
 using Content.Server.NPC.Components;
 using Content.Server.NPC.HTN;
 using Content.Shared.Actions;
+using Content.Shared.Mobs.Systems; // Corvax-Wega-Add
 using Robust.Shared.Timing;
 
 namespace Content.Server.NPC.Systems;
 
-public sealed class NPCUseActionOnTargetSystem : EntitySystem
+public sealed partial class NPCUseActionOnTargetSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private SharedActionsSystem _actions = default!;
+    [Dependency] private MobStateSystem _mobState = default!; // Corvax-Wega-Add
+    [Dependency] private NPCSystem _npc = default!; // Corvax-Wega-Add
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -50,6 +53,17 @@ public sealed class NPCUseActionOnTargetSystem : EntitySystem
         {
             if (!htn.Blackboard.TryGetValue<EntityUid>(comp.TargetKey, out var target, EntityManager))
                 continue;
+
+            // Corvax-Wega-Add-start
+            if (htn.Plan == null)
+                continue;
+
+            if (_mobState.IsIncapacitated(uid))
+            {
+                _npc.SleepNPC(uid, htn);
+                continue;
+            }
+            // Corvax-Wega-Add-end
 
             TryUseTentacleAttack((uid, comp), target);
         }

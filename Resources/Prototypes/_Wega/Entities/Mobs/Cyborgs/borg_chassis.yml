@@ -1,0 +1,259 @@
+- type: entity
+  id: BorgChassisSecurity
+  parent: BorgChassisSelectable
+  name: security cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: security
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+
+- type: entity
+  id: BorgChassisScience
+  parent: BorgChassisSelectable
+  name: science cyborg
+  components:
+  - type: BorgSwitchableType
+    selectedBorgType: science
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+
+- type: entity
+  id: BorgChassisSecurityPlayer
+  parent: BorgChassisSecurity
+  name: security cyborg
+  suffix: Sec
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleGranader
+      - BorgModuleLethal
+      - BorgModuleSecRare
+      - BorgModuleSheild
+
+- type: entity
+  id: BorgChassisSciencePlayer
+  parent: BorgChassisScience
+  name: science cyborg
+  suffix: Science
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleRobotics
+      - BorgModuleAdvancedAnomaly
+      - BorgModuleScienceRND
+      - BorgModuleDNA
+
+- type: entity
+  id: BorgChassisGenericPlayer
+  parent: BorgChassisGeneric
+  suffix: Generetic
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleArtistry
+      - BorgModuleFireExtinguisher
+      - BorgModuleMusique
+      - BorgModuleCommonHand
+      - BorgModuleCommonRepeir
+      - BorgModuleInflatable
+      - BorgModuleCommonSpeed
+      - BorgModuleCommonPen
+      - BorgModuleFulton
+
+- type: entity
+  id: BorgChassisMiningPlayer
+  parent: BorgChassisMining
+  suffix: Mining
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleAdvancedMining
+      - BorgModuleKinetic
+      - BorgModuleCargoRare
+
+- type: entity
+  id: BorgChassisEngineerPlayer
+  parent: BorgChassisEngineer
+  suffix: Eng
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleEngenerRare
+      - BorgModuleAdvancedTool
+
+- type: entity
+  id: BorgChassisJanitorPlayer
+  parent: BorgChassisJanitor
+  suffix: Janitor
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleCleanerRare
+      - BorgModuleAdvancedCleaning
+
+- type: entity
+  id: BorgChassisMedicalPlayer
+  parent: BorgChassisMedical
+  suffix: Medical
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleAdvancedTopical
+      - BorgModuleSurgery
+      - BorgModuleMedicalRare
+
+- type: entity
+  id: BorgChassisServicePlayer
+  parent: BorgChassisService
+  suffix: Service
+  components:
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor
+      gps_slot:
+        name: gps-slot-name
+        insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+        ejectSound: /Audio/Weapons/Guns/MagOut/pistol_magout.ogg
+        startingItem: HandheldGPSBasicBorgOn
+        whitelist:
+          components:
+          - HandheldGPS
+  - type: ContainerFill
+    containers:
+      borg_module:
+      - BorgModuleClowning
+      - BorgModuleAdvancedClowning
+      - BorgModuleServiceRare
+
+## Xenoborg proded
+- type: entity
+  parent: XenoborgScout
+  id: XenoborgAllmodule
+  suffix: All module
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - MMI
+      borg_module:
+      - XenoborgModuleBasic
+      - XenoborgModuleTool
+      - XenoborgModuleEnergySword
+      - XenoborgModuleSpaceMovement
+      - XenoborgModuleDoorControl
+      - XenoborgModuleHeavyLaser
+      - XenoborgModuleEnergySword
+      - XenoborgModuleSuperCloakDevice
+      - XenoborgModuleCommonRepeir
+      - XenoborgModuleCommonSpeed
+      - XenoborgModuleEMP
+      - BorgModuleNightVisoXenoborg
+      - XenoborgModuleTileGun
+      - ModuleXenoborgModule
+      - XenoborgModuleNaniteGun
+      - XenoborgModuleBurstFireLaser
+      - XenoborgModuleLexorinHypo
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMicroreactor

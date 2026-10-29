@@ -7,9 +7,3 @@
   - type: Sprite
     sprite: _Wega/Objects/Consumable/Food/meat.rsi
     state: skrell
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: UncookedAnimalProteins
-          Quantity: 9

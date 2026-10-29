@@ -1,0 +1,25 @@
+﻿- type: surgeryNode
+  id: VeilCultistDeconvertationOperation
+  description: Извлечь подозрительную латунную шестерню
+  transitions:
+    - PerformVeilCultistDeconvertationTransition
+    - EndVeilCultistDeconvertationTransition
+
+- type: surgeryNode
+  id: SlimeVeilCultistDeconvertationOperation
+  description: Извлечь подозрительную латунную шестерню
+  transitions:
+    - PerformVeilCultistDeconvertationTransition
+    - EndSlimeVeilCultistDeconvertationTransition
+
+- type: surgeryNode
+  id: AndroidVeilCultistDeconvertationOperation
+  description: Извлечь подозрительную латунную шестерню
+  transitions:
+    - EndAndroidVeilCultistDeconvertationTransition
+
+- type: surgeryNode
+  id: IpcVeilCultistDeconvertationOperation
+  description: Извлечь подозрительную латунную шестерню
+  transitions:
+    - EndIpcVeilCultistDeconvertationTransition

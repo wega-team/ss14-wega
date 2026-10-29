@@ -10,7 +10,7 @@ public enum MiningConsoleUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleBoundInterfaceState : BoundUserInterfaceState
+public sealed partial class MiningConsoleBoundInterfaceState : BoundUserInterfaceState
 {
     public float Credits;
     public float ResearchPoints;
@@ -34,17 +34,17 @@ public sealed class MiningConsoleBoundInterfaceState : BoundUserInterfaceState
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleToggleModeMessage : BoundUserInterfaceMessage
+public sealed partial class MiningConsoleToggleModeMessage : BoundUserInterfaceMessage
 {
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleToggleActivationMessage : BoundUserInterfaceMessage
+public sealed partial class MiningConsoleToggleActivationMessage : BoundUserInterfaceMessage
 {
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleToggleServerActivationMessage : BoundUserInterfaceMessage
+public sealed partial class MiningConsoleToggleServerActivationMessage : BoundUserInterfaceMessage
 {
     public NetEntity ServerUid;
 
@@ -55,7 +55,7 @@ public sealed class MiningConsoleToggleServerActivationMessage : BoundUserInterf
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleChangeServerStageMessage : BoundUserInterfaceMessage
+public sealed partial class MiningConsoleChangeServerStageMessage : BoundUserInterfaceMessage
 {
     public NetEntity ServerUid;
     public int Delta;
@@ -68,12 +68,12 @@ public sealed class MiningConsoleChangeServerStageMessage : BoundUserInterfaceMe
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleToggleUpdateMessage : BoundUserInterfaceMessage
+public sealed partial class MiningConsoleToggleUpdateMessage : BoundUserInterfaceMessage
 {
 }
 
 [Serializable, NetSerializable]
-public sealed class MiningConsoleWithdrawMessage : BoundUserInterfaceMessage
+public sealed partial class MiningConsoleWithdrawMessage : BoundUserInterfaceMessage
 {
 }
 

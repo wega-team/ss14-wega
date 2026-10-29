@@ -1,6 +1,6 @@
 - type: entity
   abstract: true
-  parent: Clothing
+  parent: [SolutionFood, SolutionToolSmall, Clothing]
   id: ClothingHandsBase
   components:
   - type: Sprite
@@ -14,13 +14,11 @@
   - type: Item
     size: Small
     storedRotation: -90
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 10
-        reagents:
-        - ReagentId: Fiber
-          Quantity: 10
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 15
   - type: Tag
     tags:
     - ClothMade
@@ -37,14 +35,12 @@
 
 - type: entity
   abstract: true
-  parent: [ ClothingHandsBase, ClothingHandsDamageableBase ] # Corvax-Wega-Edit
+  parent: [ClothingHandsBase, BaseSlicingRefinable]
   id: ClothingHandsButcherable
   components:
-  - type: Butcherable
-    butcheringType: Knife
-    spawned:
+  - type: ToolRefinable
+    refineResult:
     - id: MaterialCloth1
-      amount: 1
   - type: PhysicalComposition # 50% of the amount of cloth you'd obtain upon butchering
     materialComposition:
       Cloth: 50
@@ -63,6 +59,11 @@
   - type: Fiber
     fiberMaterial: fibers-synthetic
   - type: FingerprintMask
+    # Corvax-Wega-Edit-Start
+  - type: Tag
+    tags:
+    - Gloves
+    # Corvax-Wega-Edit-End
 
 - type: entity
   abstract: true

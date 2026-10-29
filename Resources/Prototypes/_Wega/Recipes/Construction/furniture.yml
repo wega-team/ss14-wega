@@ -310,3 +310,16 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  name: construction-recipe-hedge
+  id: TableCounterHedge
+  graph: Table
+  startNode: start
+  targetNode: CounterHedge
+  category: construction-category-furniture
+  objectType: Structure
+  canBuildInImpassable: false
+  placementMode: SnapgridCenter
+  conditions:
+    - !type:TileNotBlocked

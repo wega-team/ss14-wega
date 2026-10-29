@@ -1,0 +1,24 @@
+- files: ["roar.ogg, roar2.ogg, roar3.ogg, hiss2.ogg, rumble.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "SS13 Skyrat"
+  source: "https://github.com/Skyrat-SS13/Skyrat13/tree/master"
+  
+- files: ["hiss.ogg, lizard_hiss.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "SS13 Tgstation"
+  source: "https://github.com/tgstation/tgstation/tree/master"
+
+- files: ["urr1.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "by krikun12 on DC"
+  source: "https://soundcloud.com/krikun12/urr1/s-YUM4jqtqyo0"
+
+- files: ["urr2.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "by krikun12 on DC"
+  source: "https://soundcloud.com/krikun12/urr2/s-Vv4oNFx8waR"
+
+- files: ["urr3.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "by krikun12 on DC"
+  source: "https://soundcloud.com/krikun12/urr3/s-zkogHje3OE1"

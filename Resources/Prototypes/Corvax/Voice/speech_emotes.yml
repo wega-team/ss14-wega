@@ -1,67 +1,15 @@
-#- type: emote
-#  id: CorvaxVulpkaninHowl
-#  name: chat-emote-name-howl
-# category: Vocal
-#  available: false
-#  icon: Interface/Actions/scream.png
-#  whitelist:
-#    components:
-#    - Vocal
-#  blacklist:
-#    components:
-#    - BorgChassis
-#  chatMessages: ["chat-emote-msg-howl"]
-#  chatTriggers:
-#  - howl
-#  - howl.
-# - howl!
-#  - howls
-#  - howls.
-#  - howls!
-#  - воет
-#  - воет.
-#  - воет!
-#  - завывает
-#  - завывает.
-#  - завывает!
-
-#- type: emote
-#  id: CorvaxVulpkaninGrowl
-#  name: chat-emote-name-growl
-#  category: Vocal
-#  available: false
-#  icon: Interface/Actions/scream.png
-#  whitelist:
-#    components:
-#    - Vocal
-#  blacklist:
-#    components:
-#    - BorgChassis
-#  chatMessages: ["chat-emote-msg-growl"]
-#  chatTriggers:
-#  - growl
-#  - growl.
-#  - growl!
-#  - growls
-#  - growls.
-#  - growls!
-#  - рычит
-#  - рычит.
-#  - рычит!
-
 - type: emote
   id: Purr
-  name: chat-emote-name-purr
+  name: chat-emote-name-purring
   category: Vocal
   available: false
-  icon: Corvax/Interface/Emotes/purr.png
   whitelist:
     components:
     - Vocal
   blacklist:
     components:
     - BorgChassis
-  chatMessages: ["chat-emote-msg-purr"]
+  chatMessages: ["chat-emote-msg-purring"]
   chatTriggers:
   - purr
   - purr.
@@ -75,6 +23,10 @@
   - мурлычет
   - мурлычет.
   - мурлычет!
+  - урчит
+  - урчит.
+  - урчит!
+  - урчать
 
 - type: emote
   id: BeepIpc
@@ -156,6 +108,11 @@
     components:
     - Vocal
     - BorgChassis
+# Corvax-wega-start
+  blacklist:
+    tags:
+    - SiliconEmotes
+# Corvax-wega-end
   chatMessages: ["chat-emote-msg-honk"]
   chatTriggers:
     - хонкает

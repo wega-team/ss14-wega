@@ -6,11 +6,14 @@
   objective: roles-antag-nuclear-operative-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 15h # Corvax-RoleTime 5
+    time: 80h # Corvax-Wega-Edit
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 5h # Corvax-RoleTime
+    time: 20h # Corvax-Wega-Edit
   guides: [ NuclearOperatives ]
+  tags:
+  - OffStation
+  - Roundstart
 
 - type: antag
   id: NukeopsMedic
@@ -20,14 +23,17 @@
   objective: roles-antag-nuclear-operative-agent-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 15h # Corvax-RoleTime 5
+    time: 100h # Corvax-Wega-Edit
   - !type:RoleTimeRequirement
     role: JobChemist
-    time: 10h # Corvax-RoleTime 3
+    time: 30h # Corvax-Wega-Edit
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 10h # Corvax-RoleTime
+    time: 30h # Corvax-Wega-Edit
   guides: [ NuclearOperatives ]
+  tags:
+  - OffStation
+  - Roundstart
 
 - type: antag
   id: NukeopsCommander
@@ -37,12 +43,92 @@
   objective: roles-antag-nuclear-operative-commander-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 30h # Corvax-RoleTime 5
+    time: 150h # Corvax-Wega-Edit
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 15h # Corvax-RoleTime 5
+    time: 50h # Corvax-Wega-Edit
   # should be changed to nukie playtime when thats tracked (wyci)
   guides: [ NuclearOperatives ]
+  tags:
+  - OffStation
+  - Roundstart
+
+- type: antagSpecifier
+  abstract: true
+  parent: RestrictedAntag
+  id: BaseNukeops
+  prefRoles:
+  - GenericTeamAntagonist # For antag ban purposes
+  roleLoadout:
+  - RoleSurvivalNukie
+  components:
+  - type: NukeOperative
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: NukeopsCommander
+  prefRoles:
+  - NukeopsCommander
+  spawnerPrototype: SpawnPointNukeopsCommander
+  startingGear: SyndicateCommanderGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateElite
+    nameFormat: name-format-nukie-commander
+  mindRoles:
+  - MindRoleNukeopsCommander
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: NukeopsMedic
+  prefRoles:
+  - NukeopsMedic
+  spawnerPrototype: SpawnPointNukeopsMedic
+  startingGear: SyndicateOperativeMedicFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-agent
+  - type: SurgicalSkill # Corvax-Wega-Surgery
+    modifier: 0.4 # Corvax-Wega-Surgery
+  mindRoles:
+  - MindRoleNukeopsMedic
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: NukeopsOperative
+  prefRoles:
+  - Nukeops
+  spawnerPrototype: SpawnPointNukeopsOperative
+  startingGear: SyndicateOperativeGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-operator
+  mindRoles:
+  - MindRoleNukeops
+
+- type: antagSpecifier
+  parent: BaseNukeops
+  id: LoneOp
+  spawnerPrototype: SpawnPointLoneNukeOperative
+  pickPlayer: false
+  startingGear: SyndicateLoneOperativeGearFull
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSyndicatePrefix
+    - NamesSyndicateNormal
+    nameFormat: name-format-nukie-generic
+  mindRoles:
+  - MindRoleLoneops
 
 - type: startingGear
   id: SyndicateOperativeGearFullNoUplink
@@ -53,8 +139,8 @@
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitSyndie
-    shoes: ClothingShoesBootsCombatFilled
+    # outerClothing: ClothingOuterHardsuitSyndie # Corvax-Wega-ModularSuits-Edit
+    shoes: ClothingShoesBootsMagSyndie
     id: SyndiOperativePDA
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
@@ -64,6 +150,7 @@
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
     - DeathAcidifierImplanter
+    - HardsuitOperSelector # Corvax-Wega-ModularSuits-Edit
 
 #Nuclear Operative Gear
 - type: startingGear
@@ -76,7 +163,7 @@
   id: NukeopsOutfit
   name: roles-antag-nuclear-operative-name
   startingGear: SyndicateOperativeGearFullNoUplink
-  icon: "JobIconSyndicate"
+  icon: "JobIconSyndicateOperative"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndie
     neck: ClothingNeckScarfStripedSyndieRed
@@ -88,7 +175,15 @@
   equipment:
     id: SyndiCommanderPDA
     neck: SyndicateWhistle
+    back: ClothingBackpackDuffelSyndicate # Corvax-Wega
     outerClothing: ClothingOuterHardsuitSyndieCommander
+ # Corvax-Wega-start
+  storage:
+    back:
+    - WeaponPistolViper
+    - PinpointerSyndicateNuclear
+    - DeathAcidifierImplanter
+ # Corvax-Wega-End
   inhand:
   - NukeOpsDeclarationOfWar
 
@@ -96,7 +191,7 @@
   id: NukeopsCommanderOutfit
   name: roles-antag-nuclear-operative-commander-name
   startingGear: SyndicateCommanderGearFull
-  icon: "JobIconSyndicate"
+  icon: "JobIconSyndicateCommander"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieCommander
     neck: ClothingNeckScarfStripedSyndieGreen
@@ -107,8 +202,7 @@
   parent: SyndicateOperativeGearFull
   equipment:
     eyes: ClothingEyesHudSyndicateAgent
-    outerClothing: ClothingOuterHardsuitSyndieMedic
-    shoes: ClothingShoesBootsMagSyndie
+    # outerClothing: ClothingOuterHardsuitSyndieMedic # Corvax-Wega-ModularSuits-Edit
     id: SyndiCorpsmanPDA
     belt: ClothingBeltMilitaryWebbingMedFilled
   storage:
@@ -116,20 +210,21 @@
     - SyndiHypo
     # - SawAdvanced # Corvax-Wega-Surgery
     # - Cautery # Corvax-Wega-Surgery
-    - CombatKnife
+    # - CombatKnife # Corvax-Wega-edit
     - WeaponPistolViper
     - PinpointerSyndicateNuclear
-    - HandheldHealthAnalyzer
+    # - HandheldHealthAnalyzer # Corvax-Wega-edit
     - CombatMedipen
     - DeathAcidifierImplanter
   inhand: # Corvax-Wega-Surgery
   - SurgerykitFilledSyndie # Corvax-Wega-Surgery
+  - HardsuitOperMedSelector # Corvax-Wega-ModularSuits-Edit
 
 - type: chameleonOutfit
   id: NukeopsMedicOutfit
   name: roles-antag-nuclear-operative-agent-name
   startingGear: SyndicateOperativeMedicFull
-  icon: "JobIconSyndicate"
+  icon: "JobIconSyndicateCorpsman"
   equipment:
     head: ClothingHeadHelmetHardsuitSyndieMedic
     neck: ClothingNeckScarfStripedLightBlue

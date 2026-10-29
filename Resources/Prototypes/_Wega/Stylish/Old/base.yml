@@ -1,0 +1,22 @@
+- type: stylishPreset
+  id: BaseStylishOld
+  style: Old
+  abstract: true
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: BaseStylishDoorOld
+  abstract: true
+  rotation: 0
+
+- type: stylishPreset
+  parent: BaseStylishDoorOld
+  id: BaseStylishAirlockOld
+  abstract: true
+  layers:
+    enum.DoorVisualLayers.BaseUnlit: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseBolted: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmagging: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.DoorVisualLayers.BaseEmergencyAccess: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WiresVisualLayers.MaintenancePanel: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi
+    enum.WeldableLayers.BaseWelded: _Wega/Stylish/Old/Doors/Airlocks/Effects/airlock-effects.rsi

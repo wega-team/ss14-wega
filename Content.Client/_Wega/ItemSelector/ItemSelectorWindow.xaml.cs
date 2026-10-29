@@ -11,7 +11,7 @@ namespace Content.Client._Wega.Item.Selector.UI;
 [GenerateTypedNameReferences]
 public sealed partial class ItemSelectorWindow : RadialMenu
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
 
     public event Action<EntProtoId>? OnItemSelected;
 

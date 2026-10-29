@@ -8,7 +8,7 @@ namespace Content.Shared.Crayon;
 /// Component holding the state of a crayon-like component
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedCrayonSystem))]
+// [Access(typeof(SharedCrayonSystem))] // Corvax-Wega-Edit
 public sealed partial class CrayonComponent : Component
 {
     /// <summary>
@@ -22,6 +22,9 @@ public sealed partial class CrayonComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public Color Color;
+
+    [DataField, AutoNetworkedField] // Corvax-Wega-Add
+    public Angle Angle; // Corvax-Wega-Add
 
     /// <summary>
     /// Play a sound when drawing if specified.
@@ -117,3 +120,16 @@ public sealed class CrayonBoundUserInterfaceState : BoundUserInterfaceState
         Color = color;
     }
 }
+
+// Corvax-Wega-Add-start
+[Serializable, NetSerializable]
+public sealed class CrayonRotateEvent : EntityEventArgs
+{
+    public readonly Angle Angle;
+
+    public CrayonRotateEvent(Angle angle)
+    {
+        Angle = angle;
+    }
+}
+// Corvax-Wega-Add-end

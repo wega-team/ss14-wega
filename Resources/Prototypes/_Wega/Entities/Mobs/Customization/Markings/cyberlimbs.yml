@@ -1,0 +1,55 @@
+- type: marking
+  id: Malstrem
+  bodyPart: Eyes
+  markingType: NonGenetics
+  groupWhitelist: [Human]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
+    state: malstrem
+
+- type: marking
+  id: Beholder
+  bodyPart: Eyes
+  markingType: NonGenetics
+  groupWhitelist: [Human]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
+    state: beholder
+
+- type: marking
+  id: Terminator
+  bodyPart: Eyes
+  markingType: NonGenetics
+  groupWhitelist: [Human]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
+    state: terminator
+
+- type: marking
+  id: IronJaw
+  bodyPart: Eyes
+  markingType: NonGenetics
+  groupWhitelist: [Human]
+  coloring:
+    default:
+      type:
+        !type:EyeColoring
+          negative: true
+  sprites:
+  - sprite: _Wega/Mobs/Customization/headaugs.rsi
+    state: iron_jaw

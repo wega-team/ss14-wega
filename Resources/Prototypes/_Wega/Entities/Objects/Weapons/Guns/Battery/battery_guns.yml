@@ -3,6 +3,7 @@
   id: WeaponBlueLaserPistol
   name: blue laser pistol
   description: "Standard officer 'Blue Shield' laser with mode selector. Has non-lethal fire options for suppressing threats and lethal fire for neutralization. Chrome finish and ergonomic grip ensure accuracy and reliability in critical situations."
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/bluerantiquelasergun.rsi
@@ -27,7 +28,7 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: RedMediumLaser
     fireCost: 100
   - type: BatteryWeaponFireModes
@@ -57,14 +58,15 @@
     tags:
     - HighRiskItem
     - Sidearm
-  - type: StealTarget
-    stealGroup: WeaponBlueLaserPistol
+  - type: EmpResistance
+    strengthMultiplier: 0
 
 - type: entity
   parent: BaseWeaponBatterySmall
   id: WeaponDominator
   name: laser pistol 'Dominator'
   description: A high-tech weapon created by the environmental organization Sibyl System, specifically designed to fight crime.
+  suffix: Pistol
   components:
   - type: Sprite
     sprite: _Wega/Objects/Weapons/Guns/Battery/dominator.rsi
@@ -89,7 +91,7 @@
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletLaserAdvanced
     fireCost: 100
   - type: BatteryWeaponFireModes
@@ -116,3 +118,307 @@
   - type: Tag
     tags:
     - Sidearm
+
+- type: entity
+  name: plasma cutter
+  parent: BaseWeaponBatterySmall
+  id: WeaponPlasmaCutter
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/cutter.rsi
+    state: icon
+  - type: Gun
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/plasma_cutter.ogg
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,1
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: BatterySelfRecharger
+    autoRechargeRate: 25
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutter
+    fireCost: 75
+  - type: Appearance
+
+- type: entity
+  parent: WeaponPlasmaCutter
+  id: WeaponPlasmaCutterEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 0
+
+- type: entity
+  name: plasma cutter adv
+  parent: WeaponPlasmaCutter
+  id: WeaponPlasmaCutterAdv
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/adv_cutter.rsi
+    state: icon
+  - type: Gun
+    fireRate: 1.5
+  - type: Battery
+    maxCharge: 2500
+    startingCharge: 2500
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterAdv
+    fireCost: 75
+
+- type: entity
+  parent: WeaponPlasmaCutterAdv
+  id: WeaponPlasmaCutterAdvEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 2500
+    startingCharge: 0
+
+- type: entity
+  parent: BaseWeaponBatterySmall
+  id: WeaponIndustrialFanPlasmaCutter
+  name: industrial fan cutter
+  description: A plasma cutter that shoots 'buckshot'.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/shotgun_cutter.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-2
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    zeroVisible: true
+    magState: mag
+    steps: 3
+  - type: Appearance
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/shotgun_cutter.rsi
+  - type: Gun
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/plasma_cutter.ogg
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterSpreadNarrow
+    fireCost: 80
+  - type: Battery
+    maxCharge: 480
+    startingCharge: 480
+  - type: BatterySelfRecharger
+    autoRechargeRate: 5
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,1
+
+- type: entity
+  parent: WeaponIndustrialFanPlasmaCutter
+  id: WeaponIndustrialFanPlasmaCutterEmpty
+  suffix: Empty
+  components:
+  - type: Battery
+    maxCharge: 480
+    startingCharge: 0
+
+- type: entity
+  parent: WeaponPlasmaCutter
+  id: WeaponMagmitePlasmaCutter
+  name: magmite plasmacutter
+  description: "A magmitic version of a conventional plasma cutter. At what cost?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/magmite_cutter.rsi
+    layers:
+    - state: icon
+    - state: icon-uncharged
+      visible: false
+      map: [ "empty-icon" ]
+  - type: Gun
+    fireRate: 1.75
+  - type: Battery
+    maxCharge: 5000
+    startingCharge: 5000
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterMagma
+    fireCost: 100
+  - type: StaticPrice
+    price: 3000
+
+- type: entity
+  parent: WeaponIndustrialFanPlasmaCutter
+  id: WeaponMagmiteFanPlasmaCutter
+  name: magmite fan cutter
+  description: "A magmitic version of a conventional fan cutter. At what cost?"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Plasma/magmite_shotgun_cutter.rsi
+  - type: Gun
+    fireRate: 1.75
+  - type: Battery
+    maxCharge: 960
+    startingCharge: 960
+  - type: BatteryAmmoProvider
+    proto: BulletPlasmaCutterMagmaSpreadNarrow
+    fireCost: 80
+  - type: BatterySelfRecharger
+    autoRechargeRate: 20
+  - type: StaticPrice
+    price: 3000
+
+- type: entity
+  name: ion carabine
+  parent: [BaseWeaponBattery, BaseSecurityContraband, BaseGunWieldable]
+  id: WeaponIonCarabine
+  description: A good mining tool that can help to break through the rocks really fast
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/iongun.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-2
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    zeroVisible: true
+    magState: mag
+    steps: 3
+  - type: Appearance
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/iongun.rsi
+    slots:
+    - Belt
+    - suitStorage
+  - type: Gun
+    fireRate: 1
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,2,1
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: BatteryAmmoProvider
+    proto: IonScan
+    fireCost: 250
+
+- type: entity
+  name: energy carabine "Pulsar"
+  parent: [BaseWeaponBattery, BaseSecurityContraband, BaseGunWieldable]
+  id: WeaponEnergyPulsar
+  description: High stop-power energy carabine.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulsar.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+  - type: Gun
+    selectedMode: FullAuto
+    fireRate: 2.8
+    availableModes:
+      - SemiAuto
+      - FullAuto
+    projectileSpeed: 40
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+  - type: BatteryAmmoProvider
+    proto: PulsarProjectile
+    fireCost: 200
+  - type: Battery
+    maxCharge: 3200
+    startingCharge: 3200
+  - type: BatterySelfRecharger
+    autoRechargeRate: 35
+  - type: Item
+    size: Large
+    
+- type: entity
+  name: pulse shotgun
+  parent: BaseWeaponBattery
+  id: WeaponPulseShotgun
+  description: The final prototype of the energy shotgun, specially designed for death squads. Devoid of firing modes, but more deadly.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/pulseshotgun.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-unshaded-4
+        map: ["enum.GunVisualLayers.MagUnshaded"]
+        shader: unshaded
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Gun
+    fireRate: 1.5
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/laser3.ogg
+  - type: Wieldable
+    unwieldOnUse: false
+  - type: BatteryAmmoProvider
+    proto: BulletPulseSpread
+    fireCost: 100
+  - type: Item
+    size: Large
+    sprite: _Wega/Objects/Weapons/Guns/Battery/inhands_64.rsi
+    heldPrefix: pulse
+  - type: GunRequiresWield
+  - type: Battery
+    maxCharge: 1000
+    startingCharge: 1000
+  - type: Appearance
+
+- type: entity
+  name: x-ray cannon
+  parent: [BaseWeaponBattery, BaseGunWieldable, BaseSecurityContraband]
+  id: WeaponImporator
+  description: An experimental weapon that uses concentrated x-ray energy against its target.
+  components:
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,4,1
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Battery/imolator.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-0
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Battery/imolator.rsi
+  - type: Gun
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/xenofirebeam.ogg
+  - type: BatteryAmmoProvider
+    proto: FireLaser
+    fireCost: 100
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: true
+  - type: Appearance

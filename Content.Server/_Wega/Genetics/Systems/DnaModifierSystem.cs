@@ -7,6 +7,7 @@ using Content.Server.Prayer;
 using Content.Shared.Buckle;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
@@ -20,6 +21,8 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew.Components;
 using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -29,24 +32,26 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 {
-    [Dependency] private readonly IAdminLogManager _admin = default!;
-    [Dependency] private readonly SharedBuckleSystem _buckle = default!;
-    [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly DamageableSystem _damage = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-    [Dependency] private readonly EnsureMarkingSystem _ensureMarking = default!;
-    [Dependency] private readonly StructuralEnzymesIndexerSystem _enzymesIndexer = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly ServerInventorySystem _inventory = default!;
-    [Dependency] private readonly MarkingPrototypesIndexerSystem _markingIndexer = default!;
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly PrayerSystem _prayerSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private SharedBuckleSystem _buckle = default!;
+    [Dependency] private ChatSystem _chat = default!;
+    [Dependency] private DamageableSystem _damage = default!;
+    [Dependency] private IEntityManager _entManager = default!;
+    [Dependency] private EnsureMarkingSystem _ensureMarking = default!;
+    [Dependency] private StructuralEnzymesIndexerSystem _enzymesIndexer = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private ServerInventorySystem _inventory = default!;
+    [Dependency] private MarkingPrototypesIndexerSystem _markingIndexer = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private SharedMindSystem _mindSystem = default!;
+    [Dependency] private MobStateSystem _mobState = default!;
+    [Dependency] private MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+
+    private static readonly ProtoId<EmotePrototype> Scream = "Scream";
 
     public override void Initialize()
     {
@@ -61,7 +66,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         SubscribeLocalEvent<DnaModifierComponent, CureDnaDiseaseAttemptEvent>(OnTryCureDnaDisease);
         SubscribeLocalEvent<DnaModifierComponent, MutateDnaAttemptEvent>(OnTryMutateDna);
 
-        SubscribeLocalEvent<DnaModifierComponent, DamageChangedEvent>(OnDamageChanged);
+        SubscribeLocalEvent<DnaModifierComponent, DamageDealtEvent>(OnDamageChanged);
     }
 
     public override void Update(float frameTime)
@@ -74,8 +79,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             if (instabilityComponent.NextTimeTick <= 0)
             {
                 instabilityComponent.NextTimeTick = 10;
-                if (!TryComp<MobThresholdsComponent>(uid, out var uidThresholds)
-                    || uidThresholds.CurrentThresholdState is MobState.Dead)
+                if (_mobState.IsDead(uid))
                     return;
 
                 switch (instabilityComponent.Stage)
@@ -105,7 +109,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         var diseaseEnzymes = dnaModifier.EnzymesPrototypes
             .Where(enzyme =>
             {
-                if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                     return false;
 
                 return enzymePrototype.TypeDeviation == EnzymesType.Disease;
@@ -144,12 +148,12 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
 
     #region Deep Cloning
-    public UniqueIdentifiersPrototype? CloneUniqueIdentifiers(UniqueIdentifiersPrototype? source)
+    public UniqueIdentifiersData? CloneUniqueIdentifiers(UniqueIdentifiersData? source)
     {
         if (source == null)
             return null;
 
-        return (UniqueIdentifiersPrototype)source.Clone();
+        return source.Clone(source);
     }
 
     public List<EnzymesPrototypeInfo>? CloneEnzymesPrototypes(List<EnzymesPrototypeInfo>? source)
@@ -162,295 +166,281 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     #endregion
 
     #region Initialize U.I.
-    private void InitializeUniqueIdentifiers(EntityUid uid, DnaModifierComponent component)
+    private void InitializeUniqueIdentifiers(EntityUid uid, DnaModifierComponent component, HumanoidProfileComponent? humanoid = null)
     {
-        if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
+        if (!Resolve(uid, ref humanoid, false))
         {
-            var uniqueIdentifiers = new UniqueIdentifiersPrototype
+            InitializeEmptyUniqueIdentifiers(uid, component);
+            return;
+        }
+
+        var uniqueIdentifiers = new UniqueIdentifiersData
+        {
+            ID = $"UniqueIdentifiers{uid}",
+        };
+
+        var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
+        var speciesProto = ProtoMan.Index<SpeciesPrototype>(humanoid.Species);
+
+        var empty = new[] { "0", "0", "0" };
+
+        // Get all applied markings and profiles
+        if (!_visualBody.TryGatherMarkingsData(uid, null, out var profiles, out _, out var applied))
+        {
+            InitializeEmptyUniqueIdentifiers(uid, component);
+            return;
+        }
+
+        // Helper to get markings for a specific layer
+        List<Marking> GetMarkingsForLayer(HumanoidVisualLayers layer)
+        {
+            foreach (var organMarkings in applied.Values)
             {
-                ID = $"UniqueIdentifiers{uid}",
-            };
+                if (organMarkings.TryGetValue(layer, out var markings))
+                    return markings;
+            }
+            return new List<Marking>();
+        }
 
-            var markingSet = humanoid.MarkingSet;
-            var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
-            var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Species);
+        // Get skin color from first available profile (all organs should have same skin color)
+        Color skinColor = Color.White;
+        Color eyeColor = Color.White;
+        foreach (var profile in profiles.Values)
+        {
+            skinColor = profile.SkinColor;
+            eyeColor = profile.EyeColor;
+            break;
+        }
 
-            var empty = new[] { "0", "0", "0" };
+        // Hair
+        var hairMarkings = GetMarkingsForLayer(HumanoidVisualLayers.Hair);
+        if (hairMarkings.Count > 0)
+        {
+            var hairColor = hairMarkings[0].MarkingColors.Count > 0 ? hairMarkings[0].MarkingColors[0] : Color.White;
+            var hairColorArray = ConvertColorToHexArray(hairColor);
+            uniqueIdentifiers.HairColorR = new[] { hairColorArray[0], hairColorArray[1], hairColorArray[2] };
+            uniqueIdentifiers.HairColorG = new[] { hairColorArray[3], hairColorArray[4], hairColorArray[5] };
+            uniqueIdentifiers.HairColorB = new[] { hairColorArray[6], hairColorArray[7], hairColorArray[8] };
 
-            // Цвет волос (блоки 1-3) и Вторичный цвет волос (блоки 4-6)
-            if (markingSet.TryGetCategory(MarkingCategories.Hair, out var hairMarkings))
+            var markingId = hairMarkings[0].MarkingId;
+            var markingPrototype = markingPrototypes.FirstOrDefault(m => m.MarkingPrototypeId == markingId);
+            uniqueIdentifiers.HairStyle = markingPrototype?.HexValue ?? empty;
+
+            if (hairMarkings.Count > 1 && hairMarkings[1].MarkingColors.Count > 0)
             {
-                // блоки 1-3
-                var hairColor = GetFirstMarkingColor(hairMarkings);
-                var hairColorArray = ConvertColorToHexArray(hairColor);
-                uniqueIdentifiers.HairColorR = new[] { hairColorArray[0], hairColorArray[1], hairColorArray[2] };
-                uniqueIdentifiers.HairColorG = new[] { hairColorArray[3], hairColorArray[4], hairColorArray[5] };
-                uniqueIdentifiers.HairColorB = new[] { hairColorArray[6], hairColorArray[7], hairColorArray[8] };
-
-                // блок 34
-                var markingId = hairMarkings.FirstOrDefault()?.MarkingId;
-                var markingPrototype = markingPrototypes
-                    .FirstOrDefault(m => m.MarkingPrototypeId == markingId);
-
-                uniqueIdentifiers.HairStyle = markingPrototype != null
-                    ? markingPrototype.HexValue
-                    : empty;
-
-                // блоки 4-6
-                if (hairMarkings.Count > 1)
-                {
-                    var secondaryHairColor = hairMarkings[1].MarkingColors.Count > 0
-                        ? hairMarkings[1].MarkingColors[0]
-                        : Color.White;
-                    var secondaryHairColorArray = ConvertColorToHexArray(secondaryHairColor);
-                    uniqueIdentifiers.SecondaryHairColorR = new[] { secondaryHairColorArray[0], secondaryHairColorArray[1], secondaryHairColorArray[2] };
-                    uniqueIdentifiers.SecondaryHairColorG = new[] { secondaryHairColorArray[3], secondaryHairColorArray[4], secondaryHairColorArray[5] };
-                    uniqueIdentifiers.SecondaryHairColorB = new[] { secondaryHairColorArray[6], secondaryHairColorArray[7], secondaryHairColorArray[8] };
-                }
-                else
-                {
-                    uniqueIdentifiers.SecondaryHairColorR = GenerateRandomHexValues();
-                    uniqueIdentifiers.SecondaryHairColorG = GenerateRandomHexValues();
-                    uniqueIdentifiers.SecondaryHairColorB = GenerateRandomHexValues();
-                }
+                var secondaryHairColor = hairMarkings[1].MarkingColors[0];
+                var secondaryHairColorArray = ConvertColorToHexArray(secondaryHairColor);
+                uniqueIdentifiers.SecondaryHairColorR = new[] { secondaryHairColorArray[0], secondaryHairColorArray[1], secondaryHairColorArray[2] };
+                uniqueIdentifiers.SecondaryHairColorG = new[] { secondaryHairColorArray[3], secondaryHairColorArray[4], secondaryHairColorArray[5] };
+                uniqueIdentifiers.SecondaryHairColorB = new[] { secondaryHairColorArray[6], secondaryHairColorArray[7], secondaryHairColorArray[8] };
             }
             else
             {
-                // блоки 1-3
-                uniqueIdentifiers.HairColorR = GenerateRandomHexValues();
-                uniqueIdentifiers.HairColorG = GenerateRandomHexValues();
-                uniqueIdentifiers.HairColorB = GenerateRandomHexValues();
-                // блоки 4-6
                 uniqueIdentifiers.SecondaryHairColorR = GenerateRandomHexValues();
                 uniqueIdentifiers.SecondaryHairColorG = GenerateRandomHexValues();
                 uniqueIdentifiers.SecondaryHairColorB = GenerateRandomHexValues();
-
-                // блок 34
-                uniqueIdentifiers.HairStyle = empty;
             }
-
-            // Цвет бороды (блоки 7-9)
-            if (markingSet.TryGetCategory(MarkingCategories.FacialHair, out var facialHairMarkings))
-            {
-                var facialHairColor = GetFirstMarkingColor(facialHairMarkings);
-                var facialHairColorArray = ConvertColorToHexArray(facialHairColor);
-                uniqueIdentifiers.BeardColorR = new[] { facialHairColorArray[0], facialHairColorArray[1], facialHairColorArray[2] };
-                uniqueIdentifiers.BeardColorG = new[] { facialHairColorArray[3], facialHairColorArray[4], facialHairColorArray[5] };
-                uniqueIdentifiers.BeardColorB = new[] { facialHairColorArray[6], facialHairColorArray[7], facialHairColorArray[8] };
-
-                // блок 33
-                var markingId = facialHairMarkings.FirstOrDefault()?.MarkingId;
-                var markingPrototype = markingPrototypes
-                    .FirstOrDefault(m => m.MarkingPrototypeId == markingId);
-
-                uniqueIdentifiers.BeardStyle = markingPrototype != null
-                    ? markingPrototype.HexValue
-                    : empty;
-            }
-            else
-            {
-                uniqueIdentifiers.BeardColorR = GenerateRandomHexValues();
-                uniqueIdentifiers.BeardColorG = GenerateRandomHexValues();
-                uniqueIdentifiers.BeardColorB = GenerateRandomHexValues();
-
-                // блок 33
-                uniqueIdentifiers.BeardStyle = empty;
-            }
-
-            // Тон кожи или цвет меха (блоки 13-16)
-            var skinColorationProto = _prototype.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
-            switch (skinColorationProto.Strategy.InputType)
-            {
-                // Для Unary заполняем блок 13 (тон кожи)
-                case SkinColorationStrategyInput.Unary:
-                    uniqueIdentifiers.SkinTone = ConvertSkinToneToHexArray(humanoid.SkinColor);
-                    break;
-
-                // Для Color заполняем блоки 14-16 (цвет меха)
-                case SkinColorationStrategyInput.Color:
-                    var furColorArray = ConvertColorToHexArray(humanoid.SkinColor);
-                    uniqueIdentifiers.FurColorR = new[] { furColorArray[0], furColorArray[1], furColorArray[2] };
-                    uniqueIdentifiers.FurColorG = new[] { furColorArray[3], furColorArray[4], furColorArray[5] };
-                    uniqueIdentifiers.FurColorB = new[] { furColorArray[6], furColorArray[7], furColorArray[8] };
-                    break;
-            }
-
-            // Цвет головного аксессуара (блоки 17-19)
-            if (markingSet.TryGetCategory(MarkingCategories.HeadTop, out var headTopMarkings))
-            {
-                var headTopColor = GetFirstMarkingColor(headTopMarkings);
-                var headTopColorArray = ConvertColorToHexArray(headTopColor);
-                uniqueIdentifiers.HeadAccessoryColorR = new[] { headTopColorArray[0], headTopColorArray[1], headTopColorArray[2] };
-                uniqueIdentifiers.HeadAccessoryColorG = new[] { headTopColorArray[3], headTopColorArray[4], headTopColorArray[5] };
-                uniqueIdentifiers.HeadAccessoryColorB = new[] { headTopColorArray[6], headTopColorArray[7], headTopColorArray[8] };
-
-                // блок 35
-                var markingId = headTopMarkings.FirstOrDefault()?.MarkingId;
-                var markingPrototype = markingPrototypes
-                    .FirstOrDefault(m => m.MarkingPrototypeId == markingId);
-
-                uniqueIdentifiers.HeadAccessoryStyle = markingPrototype != null
-                    ? markingPrototype.HexValue
-                    : empty;
-            }
-            else
-            {
-                uniqueIdentifiers.HeadAccessoryColorR = GenerateRandomHexValues();
-                uniqueIdentifiers.HeadAccessoryColorG = GenerateRandomHexValues();
-                uniqueIdentifiers.HeadAccessoryColorB = GenerateRandomHexValues();
-
-                // блок 35
-                uniqueIdentifiers.HeadAccessoryStyle = empty;
-            }
-
-            // Цвет разметки головы (блоки 20-22)
-            if (markingSet.TryGetCategory(MarkingCategories.Head, out var headMarkings))
-            {
-                var headColor = GetFirstMarkingColor(headMarkings);
-                var headColorArray = ConvertColorToHexArray(headColor);
-                uniqueIdentifiers.HeadMarkingColorR = new[] { headColorArray[0], headColorArray[1], headColorArray[2] };
-                uniqueIdentifiers.HeadMarkingColorG = new[] { headColorArray[3], headColorArray[4], headColorArray[5] };
-                uniqueIdentifiers.HeadMarkingColorB = new[] { headColorArray[6], headColorArray[7], headColorArray[8] };
-
-                // блок 36
-                var markingId = headMarkings.FirstOrDefault()?.MarkingId;
-                var markingPrototype = markingPrototypes
-                    .FirstOrDefault(m => m.MarkingPrototypeId == markingId);
-
-                uniqueIdentifiers.HeadMarkingStyle = markingPrototype != null
-                    ? markingPrototype.HexValue
-                    : empty;
-            }
-            else
-            {
-                uniqueIdentifiers.HeadMarkingColorR = GenerateRandomHexValues();
-                uniqueIdentifiers.HeadMarkingColorG = GenerateRandomHexValues();
-                uniqueIdentifiers.HeadMarkingColorB = GenerateRandomHexValues();
-
-                // блок 36
-                uniqueIdentifiers.HeadMarkingStyle = empty;
-            }
-
-            // Цвет маркировки тела (блоки 23-25)
-            if (markingSet.TryGetCategory(MarkingCategories.Chest, out var chestMarkings))
-            {
-                var chestColor = GetFirstMarkingColor(chestMarkings);
-                var chestColorArray = ConvertColorToHexArray(chestColor);
-                uniqueIdentifiers.BodyMarkingColorR = new[] { chestColorArray[0], chestColorArray[1], chestColorArray[2] };
-                uniqueIdentifiers.BodyMarkingColorG = new[] { chestColorArray[3], chestColorArray[4], chestColorArray[5] };
-                uniqueIdentifiers.BodyMarkingColorB = new[] { chestColorArray[6], chestColorArray[7], chestColorArray[8] };
-
-                // блок 37
-                var markingId = chestMarkings.FirstOrDefault()?.MarkingId;
-                var markingPrototype = markingPrototypes
-                    .FirstOrDefault(m => m.MarkingPrototypeId == markingId);
-
-                uniqueIdentifiers.BodyMarkingStyle = markingPrototype != null
-                    ? markingPrototype.HexValue
-                    : empty;
-            }
-            else
-            {
-                uniqueIdentifiers.BodyMarkingColorR = GenerateRandomHexValues();
-                uniqueIdentifiers.BodyMarkingColorG = GenerateRandomHexValues();
-                uniqueIdentifiers.BodyMarkingColorB = GenerateRandomHexValues();
-
-                // блок 37
-                uniqueIdentifiers.BodyMarkingStyle = empty;
-            }
-
-            // Цвет маркировки хвоста (блоки 26-28)
-            if (markingSet.TryGetCategory(MarkingCategories.Tail, out var tailMarkings))
-            {
-                var tailColor = GetFirstMarkingColor(tailMarkings);
-                var tailColorArray = ConvertColorToHexArray(tailColor);
-                uniqueIdentifiers.TailMarkingColorR = new[] { tailColorArray[0], tailColorArray[1], tailColorArray[2] };
-                uniqueIdentifiers.TailMarkingColorG = new[] { tailColorArray[3], tailColorArray[4], tailColorArray[5] };
-                uniqueIdentifiers.TailMarkingColorB = new[] { tailColorArray[6], tailColorArray[7], tailColorArray[8] };
-
-                // блок 38
-                var markingId = tailMarkings.FirstOrDefault()?.MarkingId;
-                var markingPrototype = markingPrototypes
-                    .FirstOrDefault(m => m.MarkingPrototypeId == markingId);
-
-                uniqueIdentifiers.TailMarkingStyle = markingPrototype != null
-                    ? markingPrototype.HexValue
-                    : empty;
-            }
-            else
-            {
-                uniqueIdentifiers.TailMarkingColorR = GenerateRandomHexValues();
-                uniqueIdentifiers.TailMarkingColorG = GenerateRandomHexValues();
-                uniqueIdentifiers.TailMarkingColorB = GenerateRandomHexValues();
-
-                // блок 38
-                uniqueIdentifiers.TailMarkingStyle = empty;
-            }
-
-            // Цвет глаз (блоки 29-31)
-            var eyeColorArray = ConvertColorToHexArray(humanoid.EyeColor);
-            uniqueIdentifiers.EyeColorR = new[] { eyeColorArray[0], eyeColorArray[1], eyeColorArray[2] };
-            uniqueIdentifiers.EyeColorG = new[] { eyeColorArray[3], eyeColorArray[4], eyeColorArray[5] };
-            uniqueIdentifiers.EyeColorB = new[] { eyeColorArray[6], eyeColorArray[7], eyeColorArray[8] };
-
-            // Пол (блок 32)
-            uniqueIdentifiers.Gender = humanoid.Sex switch
-            {
-                Sex.Female => GenerateTripleHexValues(0x0, 0x5, 0x0, 0x7, 0x0, 0x3), // <= 0x5 <= 0x7 <= 0x3
-                Sex.Male => GenerateTripleHexValues(0x0, 0x7, 0x0, 0x7, 0x0, 0x8), // < 0x8 <= 0x7 < 0x9
-                Sex.Unsexed => GenerateTripleHexValues(0x8, 0xF, 0x7, 0xF, 0x9, 0xF), // >= 0x8 >= 0x7 >= 0x9
-                _ => GenerateRandomHexValues()
-            };
-
-            component.UniqueIdentifiers = uniqueIdentifiers;
         }
         else
         {
-            var empty = new[] { "0", "0", "0" };
-            var uniqueIdentifiers = new UniqueIdentifiersPrototype
-            {
-                ID = $"StructuralEnzymes{uid}",
-                HairColorR = GenerateRandomHexValues(),
-                HairColorG = GenerateRandomHexValues(),
-                HairColorB = GenerateRandomHexValues(),
-                SecondaryHairColorR = GenerateRandomHexValues(),
-                SecondaryHairColorG = GenerateRandomHexValues(),
-                SecondaryHairColorB = GenerateRandomHexValues(),
-                BeardColorR = GenerateRandomHexValues(),
-                BeardColorG = GenerateRandomHexValues(),
-                BeardColorB = GenerateRandomHexValues(),
-                SkinTone = GenerateRandomToneValues(),
-                FurColorR = GenerateRandomHexValues(),
-                FurColorG = GenerateRandomHexValues(),
-                FurColorB = GenerateRandomHexValues(),
-                HeadAccessoryColorR = GenerateRandomHexValues(),
-                HeadAccessoryColorG = GenerateRandomHexValues(),
-                HeadAccessoryColorB = GenerateRandomHexValues(),
-                HeadMarkingColorR = GenerateRandomHexValues(),
-                HeadMarkingColorG = GenerateRandomHexValues(),
-                HeadMarkingColorB = GenerateRandomHexValues(),
-                BodyMarkingColorR = GenerateRandomHexValues(),
-                BodyMarkingColorG = GenerateRandomHexValues(),
-                BodyMarkingColorB = GenerateRandomHexValues(),
-                TailMarkingColorR = GenerateRandomHexValues(),
-                TailMarkingColorG = GenerateRandomHexValues(),
-                TailMarkingColorB = GenerateRandomHexValues(),
-                EyeColorR = GenerateRandomHexValues(),
-                EyeColorG = GenerateRandomHexValues(),
-                EyeColorB = GenerateRandomHexValues(),
-                Gender = _random.Next(0, 2) == 0
-                    ? GenerateRandomGenderHexValue(0x000, 0x23D) // Женщина
-                    : GenerateRandomGenderHexValue(0x23E, 0x320), // Мужчина
-                HairStyle = GenerateRandomHexValues(),
-                BeardStyle = GenerateRandomHexValues(),
-                HeadAccessoryStyle = empty,
-                HeadMarkingStyle = empty,
-                BodyMarkingStyle = empty,
-                TailMarkingStyle = empty
-            };
-
-            component.UniqueIdentifiers = uniqueIdentifiers;
+            uniqueIdentifiers.HairColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.HairColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.HairColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.SecondaryHairColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.SecondaryHairColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.SecondaryHairColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.HairStyle = empty;
         }
+
+        // Facial Hair
+        var facialHairMarkings = GetMarkingsForLayer(HumanoidVisualLayers.FacialHair);
+        if (facialHairMarkings.Count > 0)
+        {
+            var facialHairColor = facialHairMarkings[0].MarkingColors.Count > 0 ? facialHairMarkings[0].MarkingColors[0] : Color.White;
+            var facialHairColorArray = ConvertColorToHexArray(facialHairColor);
+            uniqueIdentifiers.BeardColorR = new[] { facialHairColorArray[0], facialHairColorArray[1], facialHairColorArray[2] };
+            uniqueIdentifiers.BeardColorG = new[] { facialHairColorArray[3], facialHairColorArray[4], facialHairColorArray[5] };
+            uniqueIdentifiers.BeardColorB = new[] { facialHairColorArray[6], facialHairColorArray[7], facialHairColorArray[8] };
+
+            var markingId = facialHairMarkings[0].MarkingId;
+            var markingPrototype = markingPrototypes.FirstOrDefault(m => m.MarkingPrototypeId == markingId);
+            uniqueIdentifiers.BeardStyle = markingPrototype?.HexValue ?? empty;
+        }
+        else
+        {
+            uniqueIdentifiers.BeardColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.BeardColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.BeardColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.BeardStyle = empty;
+        }
+
+        // Skin color or fur color
+        var skinColorationProto = ProtoMan.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
+        switch (skinColorationProto.Strategy.InputType)
+        {
+            case SkinColorationStrategyInput.Unary:
+                uniqueIdentifiers.SkinTone = ConvertSkinToneToHexArray(skinColor);
+                break;
+            case SkinColorationStrategyInput.Color:
+                var furColorArray = ConvertColorToHexArray(skinColor);
+                uniqueIdentifiers.FurColorR = new[] { furColorArray[0], furColorArray[1], furColorArray[2] };
+                uniqueIdentifiers.FurColorG = new[] { furColorArray[3], furColorArray[4], furColorArray[5] };
+                uniqueIdentifiers.FurColorB = new[] { furColorArray[6], furColorArray[7], furColorArray[8] };
+                break;
+        }
+
+        // Head accessories
+        var headTopMarkings = GetMarkingsForLayer(HumanoidVisualLayers.HeadTop);
+        if (headTopMarkings.Count > 0)
+        {
+            var headTopColor = headTopMarkings[0].MarkingColors.Count > 0 ? headTopMarkings[0].MarkingColors[0] : Color.White;
+            var headTopColorArray = ConvertColorToHexArray(headTopColor);
+            uniqueIdentifiers.HeadAccessoryColorR = new[] { headTopColorArray[0], headTopColorArray[1], headTopColorArray[2] };
+            uniqueIdentifiers.HeadAccessoryColorG = new[] { headTopColorArray[3], headTopColorArray[4], headTopColorArray[5] };
+            uniqueIdentifiers.HeadAccessoryColorB = new[] { headTopColorArray[6], headTopColorArray[7], headTopColorArray[8] };
+
+            var markingId = headTopMarkings[0].MarkingId;
+            var markingPrototype = markingPrototypes.FirstOrDefault(m => m.MarkingPrototypeId == markingId);
+            uniqueIdentifiers.HeadAccessoryStyle = markingPrototype?.HexValue ?? empty;
+        }
+        else
+        {
+            uniqueIdentifiers.HeadAccessoryColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.HeadAccessoryColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.HeadAccessoryColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.HeadAccessoryStyle = empty;
+        }
+
+        // Head markings
+        var headMarkings = GetMarkingsForLayer(HumanoidVisualLayers.Head);
+        if (headMarkings.Count > 0)
+        {
+            var headColor = headMarkings[0].MarkingColors.Count > 0 ? headMarkings[0].MarkingColors[0] : Color.White;
+            var headColorArray = ConvertColorToHexArray(headColor);
+            uniqueIdentifiers.HeadMarkingColorR = new[] { headColorArray[0], headColorArray[1], headColorArray[2] };
+            uniqueIdentifiers.HeadMarkingColorG = new[] { headColorArray[3], headColorArray[4], headColorArray[5] };
+            uniqueIdentifiers.HeadMarkingColorB = new[] { headColorArray[6], headColorArray[7], headColorArray[8] };
+
+            var markingId = headMarkings[0].MarkingId;
+            var markingPrototype = markingPrototypes.FirstOrDefault(m => m.MarkingPrototypeId == markingId);
+            uniqueIdentifiers.HeadMarkingStyle = markingPrototype?.HexValue ?? empty;
+        }
+        else
+        {
+            uniqueIdentifiers.HeadMarkingColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.HeadMarkingColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.HeadMarkingColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.HeadMarkingStyle = empty;
+        }
+
+        // Body markings (chest)
+        var chestMarkings = GetMarkingsForLayer(HumanoidVisualLayers.Chest);
+        if (chestMarkings.Count > 0)
+        {
+            var chestColor = chestMarkings[0].MarkingColors.Count > 0 ? chestMarkings[0].MarkingColors[0] : Color.White;
+            var chestColorArray = ConvertColorToHexArray(chestColor);
+            uniqueIdentifiers.BodyMarkingColorR = new[] { chestColorArray[0], chestColorArray[1], chestColorArray[2] };
+            uniqueIdentifiers.BodyMarkingColorG = new[] { chestColorArray[3], chestColorArray[4], chestColorArray[5] };
+            uniqueIdentifiers.BodyMarkingColorB = new[] { chestColorArray[6], chestColorArray[7], chestColorArray[8] };
+
+            var markingId = chestMarkings[0].MarkingId;
+            var markingPrototype = markingPrototypes.FirstOrDefault(m => m.MarkingPrototypeId == markingId);
+            uniqueIdentifiers.BodyMarkingStyle = markingPrototype?.HexValue ?? empty;
+        }
+        else
+        {
+            uniqueIdentifiers.BodyMarkingColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.BodyMarkingColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.BodyMarkingColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.BodyMarkingStyle = empty;
+        }
+
+        // Tail markings
+        var tailMarkings = GetMarkingsForLayer(HumanoidVisualLayers.Tail);
+        if (tailMarkings.Count > 0)
+        {
+            var tailColor = tailMarkings[0].MarkingColors.Count > 0 ? tailMarkings[0].MarkingColors[0] : Color.White;
+            var tailColorArray = ConvertColorToHexArray(tailColor);
+            uniqueIdentifiers.TailMarkingColorR = new[] { tailColorArray[0], tailColorArray[1], tailColorArray[2] };
+            uniqueIdentifiers.TailMarkingColorG = new[] { tailColorArray[3], tailColorArray[4], tailColorArray[5] };
+            uniqueIdentifiers.TailMarkingColorB = new[] { tailColorArray[6], tailColorArray[7], tailColorArray[8] };
+
+            var markingId = tailMarkings[0].MarkingId;
+            var markingPrototype = markingPrototypes.FirstOrDefault(m => m.MarkingPrototypeId == markingId);
+            uniqueIdentifiers.TailMarkingStyle = markingPrototype?.HexValue ?? empty;
+        }
+        else
+        {
+            uniqueIdentifiers.TailMarkingColorR = GenerateRandomHexValues();
+            uniqueIdentifiers.TailMarkingColorG = GenerateRandomHexValues();
+            uniqueIdentifiers.TailMarkingColorB = GenerateRandomHexValues();
+            uniqueIdentifiers.TailMarkingStyle = empty;
+        }
+
+        // Eye color
+        var eyeColorArray = ConvertColorToHexArray(eyeColor);
+        uniqueIdentifiers.EyeColorR = new[] { eyeColorArray[0], eyeColorArray[1], eyeColorArray[2] };
+        uniqueIdentifiers.EyeColorG = new[] { eyeColorArray[3], eyeColorArray[4], eyeColorArray[5] };
+        uniqueIdentifiers.EyeColorB = new[] { eyeColorArray[6], eyeColorArray[7], eyeColorArray[8] };
+
+        // Gender
+        uniqueIdentifiers.Gender = humanoid.Sex switch
+        {
+            Sex.Female => GenerateTripleHexValues(0x0, 0x5, 0x0, 0x7, 0x0, 0x3),
+            Sex.Male => GenerateTripleHexValues(0x0, 0x7, 0x0, 0x7, 0x0, 0x8),
+            Sex.Unsexed => GenerateTripleHexValues(0x8, 0xF, 0x7, 0xF, 0x9, 0xF),
+            _ => GenerateRandomHexValues()
+        };
+
+        component.UniqueIdentifiers = uniqueIdentifiers;
+    }
+
+    private void InitializeEmptyUniqueIdentifiers(EntityUid uid, DnaModifierComponent component)
+    {
+        var empty = new[] { "0", "0", "0" };
+        var uniqueIdentifiers = new UniqueIdentifiersData
+        {
+            ID = $"StructuralEnzymes{uid}",
+            HairColorR = GenerateRandomHexValues(),
+            HairColorG = GenerateRandomHexValues(),
+            HairColorB = GenerateRandomHexValues(),
+            SecondaryHairColorR = GenerateRandomHexValues(),
+            SecondaryHairColorG = GenerateRandomHexValues(),
+            SecondaryHairColorB = GenerateRandomHexValues(),
+            BeardColorR = GenerateRandomHexValues(),
+            BeardColorG = GenerateRandomHexValues(),
+            BeardColorB = GenerateRandomHexValues(),
+            SkinTone = GenerateRandomToneValues(),
+            FurColorR = GenerateRandomHexValues(),
+            FurColorG = GenerateRandomHexValues(),
+            FurColorB = GenerateRandomHexValues(),
+            HeadAccessoryColorR = GenerateRandomHexValues(),
+            HeadAccessoryColorG = GenerateRandomHexValues(),
+            HeadAccessoryColorB = GenerateRandomHexValues(),
+            HeadMarkingColorR = GenerateRandomHexValues(),
+            HeadMarkingColorG = GenerateRandomHexValues(),
+            HeadMarkingColorB = GenerateRandomHexValues(),
+            BodyMarkingColorR = GenerateRandomHexValues(),
+            BodyMarkingColorG = GenerateRandomHexValues(),
+            BodyMarkingColorB = GenerateRandomHexValues(),
+            TailMarkingColorR = GenerateRandomHexValues(),
+            TailMarkingColorG = GenerateRandomHexValues(),
+            TailMarkingColorB = GenerateRandomHexValues(),
+            EyeColorR = GenerateRandomHexValues(),
+            EyeColorG = GenerateRandomHexValues(),
+            EyeColorB = GenerateRandomHexValues(),
+            Gender = _random.Next(0, 2) == 0
+                ? GenerateRandomGenderHexValue(0x000, 0x23D) // Male
+                : GenerateRandomGenderHexValue(0x23E, 0x320), // Female
+            HairStyle = GenerateRandomHexValues(),
+            BeardStyle = GenerateRandomHexValues(),
+            HeadAccessoryStyle = empty,
+            HeadMarkingStyle = empty,
+            BodyMarkingStyle = empty,
+            TailMarkingStyle = empty
+        };
+
+        component.UniqueIdentifiers = uniqueIdentifiers;
     }
     #endregion
 
@@ -459,7 +449,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     {
         var enzymesPrototypes = _enzymesIndexer.GetAllEnzymesPrototypes();
         var uniqueEnzymesPrototypes = new List<EnzymesPrototypeInfo>();
-        bool hasHumanoidAppearance = HasComp<HumanoidAppearanceComponent>(uid);
+        bool hasHumanoidAppearance = HasComp<HumanoidProfileComponent>(uid);
         foreach (var enzymePrototype in enzymesPrototypes)
         {
             var uniqueEnzyme = new EnzymesPrototypeInfo
@@ -534,24 +524,94 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         int totalInstability = component.Instability;
         foreach (var enzyme in component.EnzymesPrototypes)
         {
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
-            bool hasComponent = enzymePrototype.AddComponent != null && enzymePrototype.AddComponent
-                .Any(componentEntry =>
+            bool hasComponent = false;
+            if (enzymePrototype.AddComponent != null)
+            {
+                foreach (var componentEntry in enzymePrototype.AddComponent)
                 {
                     var componentType = componentEntry.Value.Component?.GetType();
-                    return componentType != null && HasComp(uid, componentType);
-                });
+                    if (componentType == null)
+                        continue;
 
-            if (hasComponent && enzymePrototype.TypeDeviation == EnzymesType.Disease)
+                    if (componentType == typeof(PermanentStatusEffectsComponent))
+                    {
+                        var permComp = componentEntry.Value.Component as PermanentStatusEffectsComponent;
+                        if (permComp?.StatusEffects != null)
+                        {
+                            foreach (var effect in permComp.StatusEffects)
+                            {
+                                if (HasPermanentStatusEffect(uid, effect.Id))
+                                {
+                                    hasComponent = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (HasComp(uid, componentType))
+                            hasComponent = true;
+                    }
+
+                    if (hasComponent)
+                        break;
+                }
+            }
+
+            if (hasComponent)
             {
-                enzyme.HexCode = GetHexCodeDisease();
+                enzyme.HexCode = GetHexCodeForType(enzymePrototype.TypeDeviation);
                 totalInstability += enzymePrototype.CostInstability;
+
+                if (enzymePrototype.TypeDeviation != EnzymesType.Disease &&
+                    enzymePrototype.AddComponent != null)
+                {
+                    foreach (var componentEntry in enzymePrototype.AddComponent)
+                    {
+                        var componentType = componentEntry.Value.Component?.GetType();
+                        if (componentType != null && HasComp(uid, componentType))
+                            component.InitialAbilities.Add(componentType);
+                    }
+                }
             }
         }
 
         UpdateInstability(uid, component, totalInstability);
+    }
+
+    private string[] GetHexCodeForType(EnzymesType type)
+    {
+        int firstDigit;
+        switch (type)
+        {
+            case EnzymesType.Disease:
+            case EnzymesType.Minor:
+                firstDigit = 9;
+                break;
+
+            case EnzymesType.Intermediate:
+                firstDigit = 0xC;
+                break;
+
+            case EnzymesType.Base:
+                firstDigit = 0xE;
+                break;
+
+            default:
+                firstDigit = _random.Next(0, 16);
+                break;
+        }
+
+        return new[]
+        {
+            firstDigit.ToString("X1"),
+            _random.Next(0, 16).ToString("X1"),
+            _random.Next(0, 16).ToString("X1")
+        };
     }
 
     private string[] GetHexCodeDisease()
@@ -583,7 +643,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(uid, ProtoMan.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-two"), uid, uid, PopupType.SmallCaution);
         }
     }
@@ -596,7 +656,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
             _damage.TryChangeDamage(uid, damage, true);
 
-            _chat.TryEmoteWithoutChat(uid, _prototype.Index<EmotePrototype>("Scream"), true);
+            _chat.TryEmoteWithoutChat(uid, ProtoMan.Index(Scream), true);
             _popup.PopupEntity(Loc.GetString("dna-instability-stage-three"), uid, uid, PopupType.LargeCaution);
         }
     }
@@ -633,7 +693,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
     #region Modify U.I.
 
-    private void TryChangeUniqueIdentifiers(Entity<DnaModifierComponent> ent, HumanoidAppearanceComponent? humanoid = null)
+    private void TryChangeUniqueIdentifiers(Entity<DnaModifierComponent> ent, HumanoidProfileComponent? humanoid = null)
     {
         if (!Resolve(ent, ref humanoid) || ent.Comp.UniqueIdentifiers == null)
             return;
@@ -647,16 +707,16 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         Dirty(ent, humanoid);
     }
 
-    private void UpdateSkin(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateSkin(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
-        var speciesProto = _prototype.Index<SpeciesPrototype>(humanoid.Comp.Species);
-        var skinColorationProto = _prototype.Index<SkinColorationPrototype>(speciesProto.SkinColoration);
+        var speciesProto = ProtoMan.Index(humanoid.Comp.Species);
+        var skinColorationProto = ProtoMan.Index(speciesProto.SkinColoration);
 
+        Color newSkinColor;
         switch (skinColorationProto.Strategy.InputType)
         {
             case SkinColorationStrategyInput.Unary:
-                var color = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
-                humanoid.Comp.SkinColor = skinColorationProto.Strategy.EnsureVerified(color);
+                newSkinColor = ConvertSkinToneToColor(uniqueIdentifiers.SkinTone);
                 break;
 
             case SkinColorationStrategyInput.Color:
@@ -668,30 +728,54 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 int green = Convert.ToInt32(greenHex, 16);
                 int blue = Convert.ToInt32(blueHex, 16);
 
-                float redNormalized = red / 255f;
-                float greenNormalized = green / 255f;
-                float blueNormalized = blue / 255f;
-
-                var newColor = new Color(redNormalized, greenNormalized, blueNormalized);
-                humanoid.Comp.SkinColor = skinColorationProto.Strategy.EnsureVerified(newColor);
+                newSkinColor = new Color(red / 255f, green / 255f, blue / 255f);
                 break;
+
+            default:
+                return;
+        }
+
+        newSkinColor = skinColorationProto.Strategy.EnsureVerified(newSkinColor);
+        if (_visualBody.TryGatherMarkingsData(humanoid.Owner, null, out var profiles, out _, out _))
+        {
+            var updatedProfiles = profiles.ToDictionary(
+                pair => pair.Key,
+                pair => pair.Value with { SkinColor = newSkinColor });
+            _visualBody.ApplyProfiles(humanoid.Owner, updatedProfiles);
         }
     }
 
-    private void UpdateMarkings(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateMarkings(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
-        var markingSet = humanoid.Comp.MarkingSet;
         var markingPrototypes = _markingIndexer.GetAllMarkingPrototypes();
 
-        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Hair, uniqueIdentifiers.HairColorR, uniqueIdentifiers.HairColorG, uniqueIdentifiers.HairColorB, uniqueIdentifiers.HairStyle, humanoid.Comp.Species, markingPrototypes, uniqueIdentifiers.SecondaryHairColorR, uniqueIdentifiers.SecondaryHairColorG, uniqueIdentifiers.SecondaryHairColorB);
-        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.FacialHair, uniqueIdentifiers.BeardColorR, uniqueIdentifiers.BeardColorG, uniqueIdentifiers.BeardColorB, uniqueIdentifiers.BeardStyle, humanoid.Comp.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.HeadTop, uniqueIdentifiers.HeadAccessoryColorR, uniqueIdentifiers.HeadAccessoryColorG, uniqueIdentifiers.HeadAccessoryColorB, uniqueIdentifiers.HeadAccessoryStyle, humanoid.Comp.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Head, uniqueIdentifiers.HeadMarkingColorR, uniqueIdentifiers.HeadMarkingColorG, uniqueIdentifiers.HeadMarkingColorB, uniqueIdentifiers.HeadMarkingStyle, humanoid.Comp.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Chest, uniqueIdentifiers.BodyMarkingColorR, uniqueIdentifiers.BodyMarkingColorG, uniqueIdentifiers.BodyMarkingColorB, uniqueIdentifiers.BodyMarkingStyle, humanoid.Comp.Species, markingPrototypes);
-        _ensureMarking.UpdateMarkingCategory(humanoid, markingSet, MarkingCategories.Tail, uniqueIdentifiers.TailMarkingColorR, uniqueIdentifiers.TailMarkingColorG, uniqueIdentifiers.TailMarkingColorB, uniqueIdentifiers.TailMarkingStyle, humanoid.Comp.Species, markingPrototypes);
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Hair,
+            uniqueIdentifiers.HairColorR, uniqueIdentifiers.HairColorG, uniqueIdentifiers.HairColorB,
+            uniqueIdentifiers.HairStyle, humanoid.Comp.Species, markingPrototypes,
+            uniqueIdentifiers.SecondaryHairColorR, uniqueIdentifiers.SecondaryHairColorG, uniqueIdentifiers.SecondaryHairColorB);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.FacialHair,
+            uniqueIdentifiers.BeardColorR, uniqueIdentifiers.BeardColorG, uniqueIdentifiers.BeardColorB,
+            uniqueIdentifiers.BeardStyle, humanoid.Comp.Species, markingPrototypes);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.HeadTop,
+            uniqueIdentifiers.HeadAccessoryColorR, uniqueIdentifiers.HeadAccessoryColorG, uniqueIdentifiers.HeadAccessoryColorB,
+            uniqueIdentifiers.HeadAccessoryStyle, humanoid.Comp.Species, markingPrototypes);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Head,
+            uniqueIdentifiers.HeadMarkingColorR, uniqueIdentifiers.HeadMarkingColorG, uniqueIdentifiers.HeadMarkingColorB,
+            uniqueIdentifiers.HeadMarkingStyle, humanoid.Comp.Species, markingPrototypes);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Chest,
+            uniqueIdentifiers.BodyMarkingColorR, uniqueIdentifiers.BodyMarkingColorG, uniqueIdentifiers.BodyMarkingColorB,
+            uniqueIdentifiers.BodyMarkingStyle, humanoid.Comp.Species, markingPrototypes);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Tail,
+            uniqueIdentifiers.TailMarkingColorR, uniqueIdentifiers.TailMarkingColorG, uniqueIdentifiers.TailMarkingColorB,
+            uniqueIdentifiers.TailMarkingStyle, humanoid.Comp.Species, markingPrototypes);
     }
 
-    private void UpdateEyeColor(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateEyeColor(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         string redHex = uniqueIdentifiers.EyeColorR[0] + uniqueIdentifiers.EyeColorR[1];
         string greenHex = uniqueIdentifiers.EyeColorG[0] + uniqueIdentifiers.EyeColorG[1];
@@ -701,16 +785,17 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         int green = Convert.ToInt32(greenHex, 16);
         int blue = Convert.ToInt32(blueHex, 16);
 
-        float redNormalized = red / 255f;
-        float greenNormalized = green / 255f;
-        float blueNormalized = blue / 255f;
-
-        var eyeColor = new Color(redNormalized, greenNormalized, blueNormalized);
-
-        humanoid.Comp.EyeColor = eyeColor;
+        var eyeColor = new Color(red / 255f, green / 255f, blue / 255f);
+        if (_visualBody.TryGatherMarkingsData(humanoid.Owner, null, out var profiles, out _, out _))
+        {
+            var updatedProfiles = profiles.ToDictionary(
+                pair => pair.Key,
+                pair => pair.Value with { EyeColor = eyeColor });
+            _visualBody.ApplyProfiles(humanoid.Owner, updatedProfiles);
+        }
     }
 
-    private void UpdateGender(Entity<HumanoidAppearanceComponent> humanoid, UniqueIdentifiersPrototype uniqueIdentifiers)
+    private void UpdateGender(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData uniqueIdentifiers)
     {
         int[] values = uniqueIdentifiers.Gender
             .Select(hex => Convert.ToInt32(hex, 16))
@@ -754,19 +839,82 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 continue;
             }
 
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             bool meetsCondition = CheckHexCodeCondition(enzyme.HexCode, enzymePrototype.TypeDeviation);
-            if (enzymePrototype.AddComponent != null)
+            if (enzymePrototype.AddComponent == null)
+                continue;
+
+            foreach (var componentEntry in enzymePrototype.AddComponent)
             {
+                var componentType = componentEntry.Value.Component?.GetType();
+                if (componentType == null)
+                    continue;
+
+                if (componentType == typeof(PermanentStatusEffectsComponent))
+                {
+                    var permComp = componentEntry.Value.Component as PermanentStatusEffectsComponent;
+                    if (permComp?.StatusEffects == null)
+                        continue;
+
+                    if (meetsCondition)
+                    {
+                        if (_random.NextFloat() <= enzymePrototype.ChanceAssimilation)
+                        {
+                            foreach (var effect in permComp.StatusEffects)
+                            {
+                                if (!HasPermanentStatusEffect(ent, effect.Id))
+                                    AddPermanentStatusEffect(ent, effect.Id);
+                            }
+                            totalInstability += enzymePrototype.CostInstability;
+
+                            if (!string.IsNullOrEmpty(enzymePrototype.Message))
+                                messagesToShow.Add(enzymePrototype.Message);
+
+                            _admin.Add(LogType.Action, LogImpact.Medium,
+                                $"{ToPrettyString(ent):user} acquires gene type: '{enzymePrototype.ID}'.");
+                        }
+                    }
+                    else
+                    {
+                        foreach (var effect in permComp.StatusEffects)
+                        {
+                            if (HasPermanentStatusEffect(ent, effect.Id) &&
+                                !ent.Comp.InitialAbilities.Contains(componentType))
+                            {
+                                RemovePermanentStatusEffect(ent, effect.Id);
+                            }
+                        }
+
+                        bool removedAny = false;
+                        foreach (var effect in permComp.StatusEffects)
+                        {
+                            if (HasPermanentStatusEffect(ent, effect.Id) &&
+                                !ent.Comp.InitialAbilities.Contains(componentType))
+                            {
+                                RemovePermanentStatusEffect(ent, effect.Id);
+                                removedAny = true;
+                            }
+                        }
+                        if (removedAny)
+                        {
+                            totalInstability -= enzymePrototype.CostInstability;
+                            _admin.Add(LogType.Action, LogImpact.Medium,
+                                $"{ToPrettyString(ent):user} loses gene type: '{enzymePrototype.ID}'.");
+                        }
+                    }
+
+                    continue;
+                }
+
                 if (meetsCondition)
                 {
                     bool hasAnyComponent = enzymePrototype.AddComponent
-                        .Any(componentEntry =>
+                        .Any(entry =>
                         {
-                            var componentType = componentEntry.Value.Component?.GetType();
-                            return componentType != null && HasComp(ent, componentType);
+                            var t = entry.Value.Component?.GetType();
+                            return t != null && HasComp(ent, t);
                         });
 
                     if (!hasAnyComponent && _random.NextFloat() <= enzymePrototype.ChanceAssimilation)
@@ -777,21 +925,19 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                         if (!string.IsNullOrEmpty(enzymePrototype.Message))
                             messagesToShow.Add(enzymePrototype.Message);
 
-                        _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):user} acquires a gene type: '{enzymePrototype.ID}'.");
+                        _admin.Add(LogType.Action, LogImpact.Medium,
+                            $"{ToPrettyString(ent):user} acquires a gene type: '{enzymePrototype.ID}'.");
                     }
                 }
                 else
                 {
-                    foreach (var componentEntry in enzymePrototype.AddComponent)
+                    if (HasComp(ent, componentType) && !ent.Comp.InitialAbilities.Contains(componentType))
                     {
-                        var componentType = componentEntry.Value.Component?.GetType();
-                        if (componentType != null && HasComp(ent, componentType))
-                        {
-                            RemComp(ent, componentType);
-                            totalInstability -= enzymePrototype.CostInstability;
+                        RemComp(ent, componentType);
+                        totalInstability -= enzymePrototype.CostInstability;
 
-                            _admin.Add(LogType.Action, LogImpact.Medium, $"{ToPrettyString(ent):user} loses the gene type: '{enzymePrototype.ID}'.");
-                        }
+                        _admin.Add(LogType.Action, LogImpact.Medium,
+                            $"{ToPrettyString(ent):user} loses the gene type: '{enzymePrototype.ID}'.");
                     }
                 }
             }
@@ -812,17 +958,14 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         int hexValue = Convert.ToInt32(enzyme.HexCode[0], 16);
         if (hexValue < 8)
         {
-            if (!HasComp<HumanoidAppearanceComponent>(target))
+            if (!HasComp<HumanoidProfileComponent>(target))
                 return;
 
             // Zero add an entity
             _buckle.TryUnbuckle(target, target, true);
             var child = _entManager.SpawnEntity(component.Lowest, Transform(target).Coordinates);
-            if (TryComp<DamageableComponent>(child, out var damageParent)
-                && _mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
-            {
-                _damage.SetDamage(child, damageParent, damage);
-            }
+            if (_mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
+                _damage.SetDamage(child, damage);
 
             EnsureComp<DnaLowestComponent>(child).Parent = target;
 
@@ -871,7 +1014,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         }
         else
         {
-            if (HasComp<HumanoidAppearanceComponent>(target))
+            if (HasComp<HumanoidProfileComponent>(target))
                 return;
 
             // Minus one check parent
@@ -900,11 +1043,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 if (_mindSystem.TryGetMind(target, out var mindIdLowest, out var mindLowest))
                     _mindSystem.TransferTo(mindIdLowest, parent, mind: mindLowest);
 
-                if (TryComp<DamageableComponent>(parent, out var parentDamage)
-                    && _mobThreshold.GetScaledDamage(target, parent, out var damageLowest) && damageLowest != null)
-                {
-                    _damage.SetDamage(parent, parentDamage, damageLowest);
-                }
+                if (_mobThreshold.GetScaledDamage(target, parent, out var damageLowest) && damageLowest != null)
+                    _damage.SetDamage(parent, damageLowest);
 
                 if (TryComp<DnaModifierComponent>(parent, out var dnaModifier))
                 {
@@ -929,11 +1069,8 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             // Zero add an entity
             _buckle.TryUnbuckle(target, target, true);
             var child = _entManager.SpawnEntity(component.Upper, Transform(target).Coordinates);
-            if (TryComp<DamageableComponent>(child, out var damageParent)
-                && _mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
-            {
-                _damage.SetDamage(child, damageParent, damage);
-            }
+            if (_mobThreshold.GetScaledDamage(target, child, out var damage) && damage != null)
+                _damage.SetDamage(child, damage);
 
             // First undress
             if (_inventory.TryGetContainerSlotEnumerator(target, out var enumerator))
@@ -1019,7 +1156,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
         foreach (var enzyme in component.EnzymesPrototypes)
         {
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             if (enzymePrototype.TypeDeviation == EnzymesType.Disease)
@@ -1050,7 +1187,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
                 continue;
             }
 
-            if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+            if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                 continue;
 
             if (enzymePrototype.TypeDeviation == EnzymesType.Disease)
@@ -1065,13 +1202,15 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     }
     #endregion
 
-    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageChangedEvent args)
+    private void OnDamageChanged(EntityUid uid, DnaModifierComponent component, DamageDealtEvent args)
     {
-        if (args.DamageDelta == null || !args.DamageIncreased || !args.DamageDelta.DamageDict.ContainsKey("Radiation"))
+        if (args.Damage.GetTotal() <= 0)
             return;
 
-        var radiationDamage = args.DamageDelta.DamageDict["Radiation"];
-        if (radiationDamage < 1f)
+        if (!args.Damage.DamageDict.TryGetValue("Radiation", out var radiationDamage))
+            return;
+
+        if (radiationDamage < 1.5f)
             return;
 
         if (component.EnzymesPrototypes == null)
@@ -1084,7 +1223,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             var diseaseEnzymes = component.EnzymesPrototypes
                 .Where(enzyme =>
                 {
-                    if (!_prototype.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
+                    if (!ProtoMan.TryIndex<StructuralEnzymesPrototype>(enzyme.EnzymesPrototypeId, out var enzymePrototype))
                         return false;
 
                     return enzymePrototype.TypeDeviation == EnzymesType.Disease;
@@ -1106,4 +1245,40 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             Dirty(uid, component);
         }
     }
+
+    #region Temp
+    private bool HasPermanentStatusEffect(EntityUid uid, EntProtoId effect)
+    {
+        return TryComp<PermanentStatusEffectsComponent>(uid, out var perm)
+               && perm.StatusEffects?.Contains(effect.Id) == true;
+    }
+
+    private void AddPermanentStatusEffect(EntityUid uid, EntProtoId effect)
+    {
+        var perm = EnsureComp<PermanentStatusEffectsComponent>(uid);
+        perm.StatusEffects ??= new HashSet<EntProtoId>();
+        if (!perm.StatusEffects.Contains(effect.Id))
+        {
+            perm.StatusEffects.Add(effect.Id);
+            Dirty(uid, perm);
+        }
+    }
+
+    private void RemovePermanentStatusEffect(EntityUid uid, EntProtoId effect)
+    {
+        if (!TryComp<PermanentStatusEffectsComponent>(uid, out var perm))
+            return;
+
+        if (perm.StatusEffects?.Remove(effect.Id) == true)
+        {
+            if (perm.StatusEffects.Count == 0)
+            {
+                RemComp<PermanentStatusEffectsComponent>(uid);
+                return;
+            }
+
+            Dirty(uid, perm);
+        }
+    }
+    #endregion
 }

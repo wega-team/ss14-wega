@@ -1,0 +1,336 @@
+## bottom
+- type: entity
+  parent: ClothingUnderBottomBoxers
+  id: ClothingUnderBottomBoxersGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/boxers.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/boxers.rsi
+    clothingVisuals:
+      underwearbottom:  
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"  
+
+- type: entity
+  parent: ClothingUnderBottomFBriefs
+  id: ClothingUnderBottomFBriefsGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/fbriefs.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/fbriefs.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a" 
+
+- type: entity
+  parent: ClothingUnderBottomMBriefs
+  id: ClothingUnderBottomMBriefsGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/mbriefs.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/mbriefs.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a" 
+
+- type: entity
+  parent: ClothingUnderBottomSport
+  id: ClothingUnderBottomSportGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/sport.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sport.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a" 
+
+- type: entity
+  parent: ClothingUnderBottomThong
+  id: ClothingUnderBottomThongGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/thong.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/thong.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a" 
+
+- type: entity
+  parent: ClothingUnderBottomPanties
+  id: ClothingUnderBottomPantiesGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/panties.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/panties.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a" 
+
+- type: entity
+  parent: ClothingUnderBottomBabydoll
+  id: ClothingUnderBottomBabydollGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/babydoll.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/babydoll.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a" 
+
+- type: entity
+  parent: ClothingUnderBottomLizard
+  id: ClothingUnderBottomLizardGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/lizarded.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/lizarded.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderBottomMankiny
+  id: ClothingUnderBottomMankinyGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/mankiny.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/mankiny.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderBottomSwimStripe
+  id: ClothingUnderBottomSwimStripeGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swimstripe.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swimstripe.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderBottomSwimHalter
+  id: ClothingUnderBottomSwimHalterGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swimhalter.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swimhalter.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderBottomSwimOnePiece
+  id: ClothingUnderBottomSwimOnePieceGreen
+  name: swimsuit
+  description: "This bathing suit combines style and comfort, perfect for relaxing on the beach or by the pool. The elegant design emphasizes the figure, and the high-quality material provides reliable support and quick drying, allowing you to enjoy summer days to the fullest."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swimonepiece.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swimonepiece.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderBottomSwimStrapless
+  id: ClothingUnderBottomSwimStraplessGreen
+  name: swimsuit
+  description: "This bathing suit combines style and comfort, perfect for relaxing on the beach or by the pool. The elegant design emphasizes the figure, and the high-quality material provides reliable support and quick drying, allowing you to enjoy summer days to the fullest."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/swimstrapless.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/swimstrapless.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#9ed63a"
+
+# Top
+
+- type: entity
+  parent: ClothingUnderTopCorset
+  id: ClothingUnderTopCorsetGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/corset.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/corset.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderTopBraSport
+  id: ClothingUnderTopBraSportGreen
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/sport.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sport.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderTopBraNekoWhite
+  id: ClothingUnderTopBraNekoGreen
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/nekowhite.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/nekowhite.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderTopBraFishnet
+  id: ClothingUnderTopBraFishnetGreen
+  name: fishnet bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/fishnetbody.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/fishnetbody.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderTopBraStrapless
+  id: ClothingUnderTopBraStraplessGreen
+  name: strapless bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/strapless.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/strapless.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderTopBraThong
+  id: ClothingUnderTopBraThongGreen
+  name: bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/thong.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/thong.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"
+
+- type: entity
+  parent: ClothingUnderTopBikini
+  id: ClothingUnderTopBikiniGreen
+  name: bikini
+  description: "An element of a bathing suit that supports the chest."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/bikini.rsi
+    layers:
+    - state: icon
+      color: "#9ed63a"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/bikini.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#9ed63a"

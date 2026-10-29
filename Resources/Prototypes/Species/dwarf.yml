@@ -3,12 +3,20 @@
   name: species-name-dwarf
   roundStart: true
   prototype: MobDwarf
-  sprites: MobHumanSprites
-  markingLimits: MobHumanMarkingLimits
-  dollPrototype: MobDwarfDummy
+  dollPrototype: AppearanceDwarf
   skinColoration: HumanToned
+  defaultSoundsBySex:
+  - UnisexDwarf
+  - FemaleDwarf
+  - UnisexDwarf
+  voices:
+  - UnisexDwarf
+  - FemaleDwarf
   # Corvax-SpeciesAgeLore-Start
   youngAge: 60
   oldAge: 300
   maxAge: 600
   # Corvax-SpeciesAgeLore-End
+  # Вот тут мне пох на лор
+  minHeight: 150 # Corvax-Wega-Height
+  maxHeight: 170 # Corvax-Wega-Height

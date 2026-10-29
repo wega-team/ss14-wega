@@ -1,0 +1,37 @@
+- type: entity
+  parent: BaseItem
+  id: HandCapsule
+  name: hand capsule
+  description: "Your good friend, who saves you when you need it."
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/capsule.rsi
+    state: capsule
+  - type: Item
+    storedRotation: -45
+  - type: HandCapsule
+    capsulePath: "/Maps/_Wega/Nonstations/capsule.yml"
+  - type: UseDelay
+    delay: 5
+
+- type: entity
+  parent: HandCapsule
+  id: HandLuxuriousCapsule
+  name: luxurious hand capsule
+  description: "Your good friend, who saves you when you need it. But more serious."
+  components:
+  - type: Sprite
+    state: gold_capsule
+  - type: HandCapsule
+    capsulePath: "/Maps/_Wega/Nonstations/luxuriouscapsule.yml"
+
+- type: entity
+  parent: HandCapsule
+  id: HandCapsuleBar
+  name: hand capsule bar
+  description: "Your best friend in this world. I'm serious."
+  components:
+  - type: Sprite
+    state: blue_capsule
+  - type: HandCapsule
+    capsulePath: "/Maps/_Wega/Nonstations/capsulebar.yml"

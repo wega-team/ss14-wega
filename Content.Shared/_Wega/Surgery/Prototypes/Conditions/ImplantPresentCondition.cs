@@ -1,6 +1,5 @@
 using Content.Shared.Implants.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Surgery;
 
@@ -8,8 +7,8 @@ namespace Content.Shared.Surgery;
 [DataDefinition]
 public sealed partial class ImplantPresentCondition : SurgeryStepCondition
 {
-    [DataField("implant", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string ImplantId { get; private set; } = default!;
+    [DataField("implant", required: true)]
+    public EntProtoId ImplantId { get; private set; } = default!;
 
     public override bool Check(EntityUid patient, IEntityManager entityManager)
     {
@@ -19,7 +18,8 @@ public sealed partial class ImplantPresentCondition : SurgeryStepCondition
         foreach (var implant in implanted.ImplantContainer.ContainedEntities)
         {
             var meta = entityManager.GetComponent<MetaDataComponent>(implant);
-            if (meta.EntityPrototype?.ID == ImplantId)
+            var entProto = meta.EntityPrototype?.ID;
+            if (!string.IsNullOrEmpty(entProto) && entProto == ImplantId)
                 return true;
         }
 

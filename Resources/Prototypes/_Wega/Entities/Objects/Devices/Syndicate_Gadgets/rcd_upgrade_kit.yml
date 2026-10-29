@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     sprite: Objects/Misc/module.rsi
-    state: beaker_holder
+    state: abductor_mod
   - type: RCDUpgradeKit
   - type: Item
     size: Small

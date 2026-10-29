@@ -1,6 +1,6 @@
 ﻿using Content.Server.DoAfter;
 using Content.Server.Popups;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -14,13 +14,13 @@ using Robust.Server.GameObjects;
 
 namespace Content.Server.Xenobiology;
 
-public sealed class CellSystem : SharedCellSystem
+public sealed partial class CellSystem : SharedCellSystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly DoAfterSystem _doAfter = default!;
-    [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private DoAfterSystem _doAfter = default!;
+    [Dependency] private EntityWhitelistSystem _entityWhitelist = default!;
+    [Dependency] private PopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -70,7 +70,7 @@ public sealed class CellSystem : SharedCellSystem
             case CellCollectorDirection.Collection:
                 CopyCells(ent.Owner, args.Target.Value);
 
-                _popup.PopupPredicted(Loc.GetString("cell-collector-collected"), ent, null);
+                _popup.PopupEntity(Loc.GetString("cell-collector-collected"), ent);
 
                 if (ent.Comp.Damage is not null)
                     _damageable.TryChangeDamage(args.Target.Value, ent.Comp.Damage);
@@ -82,7 +82,7 @@ public sealed class CellSystem : SharedCellSystem
                 CopyCells(args.Target.Value, ent.Owner);
                 ClearCells(ent.Owner);
 
-                _popup.PopupPredicted(Loc.GetString("cell-collector-transfer"), ent, null);
+                _popup.PopupEntity(Loc.GetString("cell-collector-transfer"), ent);
                 break;
 
             default:
@@ -117,7 +117,7 @@ public sealed class CellSystem : SharedCellSystem
                     if (!popup)
                         return false;
 
-                    _popup.PopupPredicted(Loc.GetString("cell-collector-full"), ent, null, PopupType.SmallCaution);
+                    _popup.PopupEntity(Loc.GetString("cell-collector-full"), ent, PopupType.SmallCaution);
                     return false;
                 }
 
@@ -126,7 +126,7 @@ public sealed class CellSystem : SharedCellSystem
                     if (!popup)
                         return false;
 
-                    _popup.PopupPredicted(Loc.GetString("cell-collector-already-used"), ent, null, PopupType.SmallCaution);
+                    _popup.PopupEntity(Loc.GetString("cell-collector-already-used"), ent, PopupType.SmallCaution);
                     return false;
                 }
 
@@ -135,7 +135,7 @@ public sealed class CellSystem : SharedCellSystem
                     if (!popup)
                         return false;
 
-                    _popup.PopupPredicted(Loc.GetString("cell-collector-target-cant-collected"), ent, null, PopupType.SmallCaution);
+                    _popup.PopupEntity(Loc.GetString("cell-collector-target-cant-collected"), ent, PopupType.SmallCaution);
                     return false;
                 }
                 break;
@@ -151,7 +151,7 @@ public sealed class CellSystem : SharedCellSystem
                     if (!popup)
                         return false;
 
-                    _popup.PopupPredicted(Loc.GetString("cell-collector-empty"), ent, null, PopupType.SmallCaution);
+                    _popup.PopupEntity(Loc.GetString("cell-collector-empty"), ent, PopupType.SmallCaution);
                     return false;
                 }
                 break;

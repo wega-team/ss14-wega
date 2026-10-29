@@ -13,8 +13,8 @@ namespace Content.Client._Wega.Voucher;
 [GenerateTypedNameReferences]
 public sealed partial class VoucherKitWindow : RadialMenu
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private IEntityManager _entMan = default!;
+    [Dependency] private IPrototypeManager _prototype = default!;
     private readonly SpriteSystem _sprite;
 
     public event Action<ProtoId<VoucherKitPrototype>>? OnKitSelected;
@@ -70,7 +70,7 @@ public sealed partial class VoucherKitWindow : RadialMenu
             };
             container.AddChild(icon);
         }
-        else if (kit.Items.Count > 0 && _prototype.TryIndex<EntityPrototype>(kit.Items[0], out var firstItem))
+        else if (kit.Items.Count > 0 && _prototype.TryIndex<EntityPrototype>(kit.Items[0].Id, out var firstItem))
         {
             var entityView = new EntityPrototypeView
             {

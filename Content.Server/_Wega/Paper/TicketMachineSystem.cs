@@ -1,22 +1,23 @@
 using Content.Shared.Interaction;
-using Content.Shared.Timing;
 using Content.Shared.Popups;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Examine;
 using Content.Shared.Paper;
+using Content.Shared.Timing.Components;
+using Content.Shared.Timing.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 
 namespace Content.Server.Paper;
 
-public sealed class TicketMachineSystem : EntitySystem
+public sealed partial class TicketMachineSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly PaperSystem _paperSystem = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private PaperSystem _paperSystem = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private SharedHandsSystem _hands = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {

@@ -1,7 +1,8 @@
+using Content.Shared.Body;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Dataset;
 using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
@@ -42,18 +43,6 @@ public sealed partial class SpeciesPrototype : IPrototype
     public bool SponsorOnly { get; private set; } = false;
     // Corvax-Sponsors-End
 
-    // The below two are to avoid fetching information about the species from the entity
-    // prototype.
-
-    // This one here is a utility field, and is meant to *avoid* having to duplicate
-    // the massive SpriteComponent found in every species.
-    // Species implementors can just override SpriteComponent if they want a custom
-    // sprite layout, and leave this null. Keep in mind that this will disable
-    // sprite accessories.
-
-    [DataField("sprites")]
-    public ProtoId<HumanoidSpeciesBaseSpritesPrototype> SpriteSet { get; private set; } = default!;
-
     /// <summary>
     ///     Default skin tone for this species. This applies for non-human skin tones.
     /// </summary>
@@ -66,12 +55,6 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int DefaultHumanSkinTone { get; private set; } = 20;
-
-    /// <summary>
-    ///     The limit of body markings that you can place on this species.
-    /// </summary>
-    [DataField("markingLimits")]
-    public ProtoId<MarkingPointsPrototype> MarkingPoints { get; private set; } = default!;
 
     /// <summary>
     ///     Humanoid species variant used by this entity.
@@ -117,6 +100,18 @@ public sealed partial class SpeciesPrototype : IPrototype
     // Corvax-Wega-end
 
     /// <summary>
+    ///     Emote sounds prototype conversion id for every sex. This is ALWAYS in the order: Male; Female; Unsexed.
+    /// </summary>
+    [DataField]
+    public ProtoId<EmoteSoundsPrototype>[] DefaultSoundsBySex = ["MaleHuman", "FemaleHuman", "MaleHuman"];
+
+    /// <summary>
+    ///     List of user selectable voices in the menu. This should at least have the same sound banks as the defaults.
+    /// </summary>
+    [DataField]
+    public HashSet<ProtoId<EmoteSoundsPrototype>> Voices = ["MaleHuman", "FemaleHuman"];
+
+    /// <summary>
     ///     Characters younger than this are too young to be hired by Nanotrasen.
     /// </summary>
     [DataField]
@@ -140,6 +135,14 @@ public sealed partial class SpeciesPrototype : IPrototype
     /// </summary>
     [DataField]
     public int MaxAge = 120;
+
+    // Corvax-Wega-Height-start
+    [DataField]
+    public float MinHeight = 150.0f;
+
+    [DataField]
+    public float MaxHeight = 205.0f;
+    // Corvax-Wega-Height-end
 }
 
 public enum SpeciesNaming : byte

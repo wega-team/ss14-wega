@@ -13,43 +13,51 @@
   id: CaptainJumpsuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCaptain
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainJumpskirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCaptain
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainFormalSuit
   equipment:
     jumpsuit: ClothingUniformJumpsuitCapFormal
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainFormalSkirt
   equipment:
     jumpsuit: ClothingUniformJumpskirtCapFormalDress
+  groupBy: "wegaCaC" # Corvax-Wega
 
 # Head
 - type: loadout
   id: CaptainHead
   equipment:
     head: ClothingHeadHatCaptain
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainCap
   equipment:
     head: ClothingHeadHatCapcap
+  groupBy: "wegaCaC" # Corvax-Wega
 
 # Neck
 - type: loadout
   id: CaptainCloak
   equipment:
     neck: ClothingNeckCloakCap
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainCloakFormal
   equipment:
     neck: ClothingNeckCloakCapFormal
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainMantle
@@ -58,6 +66,7 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: MasterCap
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: startingGear
   id: CaptainMantle
@@ -69,24 +78,29 @@
   id: CaptainBackpack
   equipment:
     back: ClothingBackpackCaptain
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainSatchel
   equipment:
     back: ClothingBackpackSatchelCaptain
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
   id: CaptainDuffel
   equipment:
     back: ClothingBackpackDuffelCaptain
+  groupBy: "wegaCaC" # Corvax-Wega
 
 # Outer clothing
 - type: loadout
   id: CaptainOuterClothing
   equipment:
     outerClothing: ClothingOuterArmorCaptainCarapace
+  groupBy: "wegaCaC" # Corvax-Wega
 
 - type: loadout
-  id: CaptainWintercoat
+  id: ClothingOuterCoatCaptain  # Corvax-Wega
   equipment:
-    outerClothing: ClothingOuterWinterCap
+    outerClothing: ClothingOuterCoatCaptain  # Corvax-Wega
+  groupBy: "wegaCaC" # Corvax-Wega

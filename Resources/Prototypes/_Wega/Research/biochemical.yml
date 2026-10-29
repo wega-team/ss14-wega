@@ -11,12 +11,9 @@
   cost: 5000
   recipeUnlocks:
   - LargeBeaker
-  - Dropper
   - HotplateMachineCircuitboard
   - ChemicalPayload
-  - ClothingEyesGlassesChemical
-  - ChemistryEmptyBottle01
-  - Jug
+  - SolutionScannerSuitModule
 
 - type: technology
   id: SurgicalTools
@@ -52,6 +49,21 @@
   - VaccinatorMachineCircuitboard
   - DiagnoserMachineCircuitboard
 
+- type: technology
+  id: MedicalModifier
+  name: research-technology-medical-modifier
+  icon:
+    sprite: _Wega/Clothing/Modular/Medical/control.rsi
+    state: icon
+  discipline: Biochemical
+  tier: 1
+  cost: 10000
+  recipeUnlocks:
+  # - ArmSyntheticDefib
+  - DefibrillatorSuitModule
+  - InjectorSuitModule
+  - MedicalPlating
+
 # Tier 2
 
 - type: technology
@@ -71,17 +83,17 @@
 
 - type: technology
   id: MechanizedTreatment
-  name: research-technology-mechanized-treatment
+  name: research-technology-mechanized-treatment-wega
   icon:
-    sprite: Mobs/Silicon/chassis.rsi
-    state: medical
+    sprite: Objects/Specific/Medical/advanced_jetinjector.rsi
+    state: jetinjector_base
   discipline: Biochemical
   tier: 2
   cost: 12500
   recipeUnlocks:
-  - BorgModuleAdvancedChemical
+  - BorgModuleAdvancedTopical
+  - AdvancedJetInjector
   - Hynospray
-  - BorgModuleSurgery
   - DefibrillatorCompact
   - ArmSyntheticDefib
 
@@ -114,6 +126,7 @@
   recipeUnlocks:
   - MedicalScannerMachineCircuitboard
   - DnaModifierComputerCircuitboard
+  - BorgModuleDNA
 
 - type: technology
   id: ProSurgery
@@ -128,6 +141,22 @@
   - Hemrevein
   - Bonesaw
   - ScalpelLaser
+  - BorgModuleSurgery
+  technologyPrerequisites:
+  - SurgicalTools
+
+- type: technology
+  id: LauncherSyringe
+  name: research-technology-launcher-syringe
+  icon:
+    sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
+    state: syringe_gun
+  discipline: Biochemical
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+  - LauncherSyringe
+  - MiniSyringe
 
 # Tier 3
 
@@ -145,17 +174,16 @@
   - SyringeBluespace
 
 - type: technology
-  id: LauncherSyringe
-  name: research-technology-launcher-syringe
+  id: BorgModuleT3Biochemical
+  name: research-technology-biochemical-chemistry
   icon:
-    sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
-    state: syringe_gun
+    sprite: Mobs/Silicon/chassis.rsi
+    state: medical
   discipline: Biochemical
   tier: 3
-  cost: 15000
+  cost: 10000
   recipeUnlocks:
-  - LauncherSyringe
-  - MiniSyringe
+  - BorgModuleMedicalRare
 
 # look into revisiting this later once medical isn't a hellhole
 #- type: technology

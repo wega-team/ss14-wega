@@ -1,0 +1,12 @@
+ent-BloodBrotherSharedEscapeObjective = Доберись до центкомма живым и невредимым вместе со своим братом.
+    .desc = И вы, и ваш кровный брат должны добраться до центкомма живыми и невредимыми.
+ent-BloodBrotherSharedHijackShuttleObjective = Захвати эвакуационный шаттл вместе со своим кровным братом
+    .desc = Действуйте сообща со своим кровным братом, чтобы захватить эвакуационный шаттл. Вы оба должны быть на борту и уничтожить или задержать всех членов экипажа.
+ent-BloodBrotherSharedProtectRandomPersonObjective = { ent-BaseObjective }
+    .desc = Убедитесь, что цель доживет до конца смены вместе со своим кровным братом.
+ent-BloodBrotherSharedKillRandomPersonObjective = { ent-BaseObjective }
+    .desc = Проследите, чтобы цель не покинула станцию живой вместе со своим кровным братом. Вы можете уничтожить или захватить их в плен - выбор за вами.
+ent-BloodBrotherSharedEliminateRandomPersonObjective = { ent-BaseObjective }
+    .desc = Действуйте сообща со своим кровным братом, чтобы уничтожить цель. Используйте скрытность и хитрые методы в этой деликатной операции.
+ent-BloodBrotherSharedEliminateRandomHeadObjective = { ent-BaseObjective }
+    .desc = Действуйте сообща со своим кровным братом, чтобы убить главу. Это важная цель - используйте осмотрительность и координацию.

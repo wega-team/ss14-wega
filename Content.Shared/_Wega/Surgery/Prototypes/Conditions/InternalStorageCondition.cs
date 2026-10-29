@@ -20,39 +20,22 @@ public sealed partial class InternalStorageCondition : SurgeryStepCondition
         if (!entityManager.TryGetComponent<InternalStorageComponent>(patient, out var storage))
             return false;
 
-        switch (Part)
+        var hasItem = Part switch
         {
-            case "head":
-                if (CheckForSpace)
-                {
-                    return storage.HeadContainer.ContainedEntity == null;
-                }
-                else
-                {
-                    return storage.HeadContainer.ContainedEntity != null;
-                }
+            "head" => storage.HeadContainer.ContainedEntity != null,
+            "torso" => storage.BodyContainer.ContainedEntities.Count > 0,
+            "tooth" => storage.ToothContainer.ContainedEntity != null,
+            _ => false
+        };
 
-            case "torso":
-                if (CheckForSpace)
-                {
-                    return storage.BodyContainer.ContainedEntities.Count < 3;
-                }
-                else
-                {
-                    return storage.BodyContainer.ContainedEntities.Count > 0;
-                }
+        var hasSpace = Part switch
+        {
+            "head" => storage.HeadContainer.ContainedEntity == null,
+            "torso" => storage.BodyContainer.ContainedEntities.Count < 3,
+            "tooth" => storage.ToothContainer.ContainedEntity == null,
+            _ => false
+        };
 
-            case "tooth":
-                if (CheckForSpace)
-                {
-                    return storage.ToothContainer.ContainedEntity == null;
-                }
-                else
-                {
-                    return storage.ToothContainer.ContainedEntity != null;
-                }
-        }
-
-        return false;
+        return CheckForSpace ? hasSpace : hasItem;
     }
 }

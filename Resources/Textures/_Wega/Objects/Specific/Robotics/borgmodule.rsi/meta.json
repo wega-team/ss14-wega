@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CC0-1.0",
-    "copyright": "Created by EmoGarbage404 (github) for Space Station 14. icon-construction.png created by deltanedas (github). syndicateborgbomb.png created by Mangohydra (github). layered inhands by mubururu_ (github), icon-chem.png & icon-mining-adv.png created by mubururu_ (github), Xenoborg modules sprites by Samuka-C (github),surgery and kinetic by <@500744677352407051>",
+    "copyright": "Created by EmoGarbage404 (github) for Space Station 14. icon-construction.png created by deltanedas (github). syndicateborgbomb.png created by Mangohydra (github). layered inhands by mubururu_ (github), icon-chem.png & icon-mining-adv.png created by mubururu_ (github), Xenoborg modules sprites by Samuka-C (github),surgery and kinetic by <@500744677352407051>, icon-xenoborg-holowall by github Samuka-C>, icon-anomalies-adv created by Davyei (Discord)",
     "size": {
         "x": 32,
         "y": 32
@@ -23,6 +23,36 @@
             "name": "cargo"
         },
         {
+            "name": "command"
+        },
+        {
+            "name": "janitor"
+        },
+        {
+            "name": "security"
+        },
+        {
+            "name": "science"
+        },
+        {
+            "name": "syndicate"
+        },
+        {
+            "name": "xenoborg_generic"
+        },
+        {
+            "name": "xenoborg_heavy"
+        },
+        {
+            "name": "xenoborg_engi"
+        },
+        {
+            "name": "xenoborg_stealth"
+        },
+        {
+            "name": "clockwork"
+        },
+        {
             "name": "icon-kinetic"
         },
         {
@@ -35,7 +65,115 @@
             "name": "icon-fight-common"
         },
         {
+            "name": "icon-repeir"
+        },
+        {
             "name": "icon-treatment-common"
+        },
+        {
+            "name": "icon-candy"
+        },
+        {
+            "name": "icon-hand"
+        },
+        {
+            "name": "icon-sheild"
+        },
+        {
+            "name": "icon-sheild-laser"
+        },
+        {
+            "name": "icon-sheild-riot"
+        },
+        {
+            "name": "icon-sheild-bullet"
+        },
+        {
+            "name": "icon-gun"
+        },
+        {
+            "name": "icon-restock"
+        },
+        {
+            "name": "icon-xenoborg-hypo2"
+        },
+        {
+            "name": "icon-grenade"
+        },
+        {
+            "name": "icon-dec"
+        },
+        {
+            "name": "icon-dis"
+        },
+        {
+            "name": "icon-cr20-gun"
+        },
+        {
+            "name": "icon-nightvison"
+        },
+        {
+            "name": "icon-nightvison-xenoborg"
+        },
+        {
+            "name": "icon-sniper"
+        },
+        {
+            "name": "icon-treatment-syndi"
+        },
+        {
+            "name": "icon-speed"
+        },
+        {
+            "name": "icon-fugas"
+        },
+        {
+            "name": "icon-w"
+        },
+        {
+            "name": "icon-magboots"
+        },
+        {
+            "name": "icon-cook-rare"
+        },
+        {
+            "name": "icon-gun-rare"
+        },
+        {
+            "name": "icon-mining-rare"
+        },
+        {
+            "name": "icon-mop-rare"
+        },
+        {
+            "name": "icon-rcd-rare"
+        },
+        {
+            "name": "icon-doc-rare"
+        },
+        {
+            "name": "icon-anomalies-adv"
+        },
+        {
+            "name": "icon-slime"
+        },
+        {
+            "name": "icon-robotic"
+        },
+        {
+            "name": "icon-rnd-rare"
+        },
+        {
+            "name": "icon-dna"
+        },
+        {
+            "name": "icon-fulton"
+        },
+        {
+            "name": "icon-emp"
+        },
+        {
+            "name": "icon-xenoborg-holowall"
         },
         {
             "name": "base-icon-inhand-left",

@@ -198,6 +198,26 @@
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
   parent: BaseAntagSpawner
+  id: SpawnPointGhostSpaceChangeling
+  components:
+  - type: GhostRole
+    name: ghost-role-information-space-changeling-name
+    description: ghost-role-information-space-changeling-description
+    rules: ghost-role-information-antagonist-rules
+    mindRoles:
+    - MindRoleChangeling
+    raffle:
+      settings: default
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Objects/Weapons/Melee/armblade.rsi
+      state: icon
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
   id: SpawnPointGhostParadoxClone
   components:
   - type: GhostRole
@@ -246,6 +266,50 @@
     - state: green
     - sprite: Mobs/Silicon/chassis.rsi
       state: derelict_icon
+
+- type: entity
+  categories: [ Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostRoleMothershipCore
+  components:
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - MothershipCoreGhostrole
+  - type: GhostRole
+    name: ghost-role-information-mothership-core-name
+    description: ghost-role-information-mothership-core-desc
+    rules: ghost-role-information-silicon-rules
+    mindRoles:
+    - MindRoleMothershipCore
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Mobs/Silicon/mothership_core.rsi
+      state: core-idle
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostRoleXenoborg
+  components:
+  - type: Tag
+    tags:
+    - ForceFixRotations
+    - XenoborgGhostrole
+  - type: GhostRole
+    name: ghost-role-information-xenoborg-name
+    description: ghost-role-information-xenoborg-desc
+    rules: ghost-role-information-silicon-rules
+    mindRoles:
+    - MindRoleXenoborg
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+    - state: green
+    - sprite: Mobs/Silicon/chassis.rsi
+      state: xenoborg_engi
 
 - type: entity
   categories: [ HideSpawnMenu, Spawner ]
@@ -305,6 +369,7 @@
   - type: GhostRole
     name: ghost-role-information-wizard-name
     description: ghost-role-information-wizard-desc
+    rules: ghost-role-information-antagonist-rules
     mindRoles:
     - MindRoleWizard
     raffle:
@@ -313,5 +378,5 @@
     sprite: Markers/jobs.rsi
     layers:
     - state: green
-    - sprite: Clothing/Head/Hats/wizardhat.rsi
+    - sprite: Clothing/Head/Hats/wizard_blue.rsi
       state: icon

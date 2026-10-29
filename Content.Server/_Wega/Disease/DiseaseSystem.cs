@@ -1,7 +1,9 @@
+using System.Linq;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Shared.Body.Events;
 using Content.Shared.Chat;
+using Content.Shared.Chat.Prototypes;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
@@ -26,17 +28,18 @@ namespace Content.Server.Disease
     /// <summary>
     /// Handles disease propagation & curing
     /// </summary>
-    public sealed class DiseaseSystem : SharedDiseaseSystem
+    public sealed partial class DiseaseSystem : SharedDiseaseSystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-        [Dependency] private readonly PopupSystem _popupSystem = default!;
-        [Dependency] private readonly EntityLookupSystem _lookup = default!;
-        [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
-        [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-        [Dependency] private readonly ChatSystem _chatSystem = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+        [Dependency] private PopupSystem _popupSystem = default!;
+        [Dependency] private EntityLookupSystem _lookup = default!;
+        [Dependency] private SharedInteractionSystem _interactionSystem = default!;
+        [Dependency] private InventorySystem _inventorySystem = default!;
+        [Dependency] private MobStateSystem _mobStateSystem = default!;
+        [Dependency] private ChatSystem _chatSystem = default!;
+
+        private static readonly ProtoId<EmotePrototype> CougheId = "Cough";
 
         public override void Initialize()
         {
@@ -56,7 +59,7 @@ namespace Content.Server.Disease
             SubscribeLocalEvent<DiseaseVaccineComponent, VaccineDoAfterEvent>(OnDoAfter);
         }
 
-        private Queue<(DiseaseCarrierComponent carrier, DiseasePrototype disease)> _cureQueue = new();
+        private Queue<(EntityUid uid, DiseaseCarrierComponent carrier, DiseasePrototype disease)> _cureQueue = new();
 
         /// <summary>
         /// First, adds or removes diseased component from the queues and clears them.
@@ -66,30 +69,33 @@ namespace Content.Server.Disease
         public override void Update(float frameTime)
         {
             base.Update(frameTime);
-            foreach (var entity in _addQueue)
+
+            var toProcess = AddQueue.Where(e => !TerminatingOrDeleted(e)).ToList();
+            foreach (var entity in toProcess)
             {
                 EnsureComp<DiseasedComponent>(entity);
             }
 
-            _addQueue.Clear();
+            AddQueue.Clear();
 
             foreach (var tuple in _cureQueue)
             {
                 if (tuple.carrier.Diseases.Count == 1) //This is reliable unlike testing Count == 0 right after removal for reasons I don't quite get
-                    RemComp<DiseasedComponent>(tuple.carrier.Owner);
+                    RemComp<DiseasedComponent>(tuple.uid);
                 tuple.carrier.PastDiseases.Add(tuple.disease);
                 tuple.carrier.Diseases.Remove(tuple.disease);
             }
             _cureQueue.Clear();
 
-            foreach (var (_, carrierComp, mobState) in EntityQuery<DiseasedComponent, DiseaseCarrierComponent, MobStateComponent>())
+            var query = EntityQueryEnumerator<DiseasedComponent, DiseaseCarrierComponent, MobStateComponent>();
+            while (query.MoveNext(out var uid, out var diseased, out var carrierComp, out var mobState))
             {
                 DebugTools.Assert(carrierComp.Diseases.Count > 0);
 
-                if (_mobStateSystem.IsDead(mobState.Owner, mobState))
+                if (_mobStateSystem.IsDead(uid, mobState))
                 {
                     if (_random.Prob(0.005f * frameTime)) //Mean time to remove is 200 seconds per disease
-                        CureDisease(carrierComp, _random.Pick(carrierComp.Diseases));
+                        CureDisease(uid, carrierComp, _random.Pick(carrierComp.Diseases));
 
                     continue;
                 }
@@ -104,7 +110,7 @@ namespace Content.Server.Disease
 
                     // if the disease is on the silent disease list, don't do effects
                     var doEffects = carrierComp.CarrierDiseases?.Contains(disease.ID) != true;
-                    var args = new DiseaseEffectArgs(carrierComp.Owner, disease, EntityManager);
+                    var args = new DiseaseEffectArgs(uid, disease, EntityManager);
                     disease.Accumulator -= disease.TickTime;
 
                     int stage = 0; //defaults to stage 0 because you should always have one
@@ -122,7 +128,7 @@ namespace Content.Server.Disease
                     foreach (var cure in disease.Cures)
                     {
                         if (cure.Stages.AsSpan().Contains(stage) && cure.Cure(args))
-                            CureDisease(carrierComp, disease);
+                            CureDisease(uid, carrierComp, disease);
                     }
 
                     if (doEffects)
@@ -151,11 +157,11 @@ namespace Content.Server.Disease
 
             foreach (var immunity in component.NaturalImmunities)
             {
-                if (_prototypeManager.TryIndex<DiseasePrototype>(immunity, out var disease))
+                if (ProtoMan.TryIndex<DiseasePrototype>(immunity, out var disease))
                     component.PastDiseases.Add(disease);
                 else
                 {
-                    Logger.Error($"Failed to index disease prototype {immunity} for {uid}");
+                    Log.Error($"Failed to index disease prototype {immunity} for {uid}");
                 }
             }
         }
@@ -174,12 +180,12 @@ namespace Content.Server.Disease
                     return;
                 if (cureProb > 1)
                 {
-                    CureDisease(component, disease);
+                    CureDisease(uid, component, disease);
                     return;
                 }
                 if (_random.Prob(cureProb))
                 {
-                    CureDisease(component, disease);
+                    CureDisease(uid, component, disease);
                     return;
                 }
             }
@@ -204,7 +210,7 @@ namespace Content.Server.Disease
             if (!clothing.Slots.HasFlag(args.SlotFlags))
                 return;
             // Give the user the component's disease resist
-            if (TryComp<DiseaseCarrierComponent>(args.Equipee, out var carrier))
+            if (TryComp<DiseaseCarrierComponent>(args.EquipTarget, out var carrier))
                 carrier.DiseaseResist += component.Protection;
             // Set the component to active to the unequip check isn't CBT
             component.IsActive = true;
@@ -220,7 +226,7 @@ namespace Content.Server.Disease
             // Only undo the resistance if it was affecting the user
             if (!component.IsActive)
                 return;
-            if (TryComp<DiseaseCarrierComponent>(args.Equipee, out var carrier))
+            if (TryComp<DiseaseCarrierComponent>(args.EquipTarget, out var carrier))
                 carrier.DiseaseResist -= component.Protection;
             component.IsActive = false;
         }
@@ -230,11 +236,11 @@ namespace Content.Server.Disease
         /// so it can be safely queued up to be removed from the target
         /// and added to past disease history (for immunity)
         /// </summary>
-        private void CureDisease(DiseaseCarrierComponent carrier, DiseasePrototype disease)
+        private void CureDisease(EntityUid uid, DiseaseCarrierComponent carrier, DiseasePrototype disease)
         {
-            var сureTuple = (carrier, disease);
-            _cureQueue.Enqueue(сureTuple);
-            _popupSystem.PopupEntity(Loc.GetString("disease-cured"), carrier.Owner, carrier.Owner);
+            var cureTuple = (uid, carrier, disease);
+            _cureQueue.Enqueue(cureTuple);
+            _popupSystem.PopupEntity(Loc.GetString("disease-cured"), uid, uid);
         }
 
         public void CureAllDiseases(EntityUid uid, DiseaseCarrierComponent? carrier = null)
@@ -244,7 +250,7 @@ namespace Content.Server.Disease
 
             foreach (var disease in carrier.Diseases)
             {
-                CureDisease(carrier, disease);
+                CureDisease(uid, carrier, disease);
             }
         }
 
@@ -260,7 +266,7 @@ namespace Content.Server.Disease
         {
             if (TryComp<DiseaseCarrierComponent>(uid, out var carrier))
             {
-                SneezeCough(uid, _random.Pick(carrier.Diseases), string.Empty);
+                SneezeCough(uid, _random.Pick(carrier.Diseases), CougheId);
             }
         }
 
@@ -331,7 +337,7 @@ namespace Content.Server.Disease
                 return;
 
             var disease = _random.Pick(diseasedCarrier.Diseases);
-            TryInfect(carrier, disease, 0.4f);
+            TryInfect(target, carrier, disease, 0.4f);
         }
 
         /// <summary>
@@ -340,11 +346,12 @@ namespace Content.Server.Disease
         /// rolls the dice to see if they get
         /// the disease.
         /// </summary>
+        /// <param name="uid">The target entity UID</param>
         /// <param name="carrier">The target of the disease</param>
         /// <param name="disease">The disease to apply</param>
         /// <param name="chance">% chance of the disease being applied, before considering resistance</param>
         /// <param name="forced">Bypass the disease's infectious trait.</param>
-        public void TryInfect(DiseaseCarrierComponent carrier, DiseasePrototype? disease, float chance = 0.7f, bool forced = false)
+        public void TryInfect(EntityUid uid, DiseaseCarrierComponent carrier, DiseasePrototype? disease, float chance = 0.7f, bool forced = false)
         {
             if (disease == null || !forced && !disease.Infectious)
                 return;
@@ -352,15 +359,15 @@ namespace Content.Server.Disease
             if (infectionChance <= 0)
                 return;
             if (_random.Prob(infectionChance))
-                TryAddDisease(carrier.Owner, disease, carrier);
+                TryAddDisease(uid, disease, carrier);
         }
 
-        public void TryInfect(DiseaseCarrierComponent carrier, string? disease, float chance = 0.7f, bool forced = false)
+        public void TryInfect(EntityUid uid, DiseaseCarrierComponent carrier, string? disease, float chance = 0.7f, bool forced = false)
         {
-            if (disease == null || !_prototypeManager.TryIndex<DiseasePrototype>(disease, out var d))
+            if (disease == null || !ProtoMan.TryIndex<DiseasePrototype>(disease, out var d))
                 return;
 
-            TryInfect(carrier, d, chance, forced);
+            TryInfect(uid, carrier, d, chance, forced);
         }
 
         /// <summary>
@@ -371,7 +378,8 @@ namespace Content.Server.Disease
         /// </summary>
         public bool SneezeCough(EntityUid uid, DiseasePrototype? disease, string emoteId, bool airTransmit = true, TransformComponent? xform = null)
         {
-            if (!Resolve(uid, ref xform)) return false;
+            if (!Resolve(uid, ref xform))
+                return false;
 
             if (_mobStateSystem.IsDead(uid)) return false;
 
@@ -385,18 +393,18 @@ namespace Content.Server.Disease
                 return true;
 
             if (_inventorySystem.TryGetSlotEntity(uid, "mask", out var maskUid) &&
-                EntityManager.TryGetComponent<IngestionBlockerComponent>(maskUid, out var blocker) &&
+                TryComp<IngestionBlockerComponent>(maskUid, out var blocker) &&
                 blocker.Enabled)
                 return true;
 
             var carrierQuery = GetEntityQuery<DiseaseCarrierComponent>();
 
-            foreach (var entity in _lookup.GetEntitiesInRange(xform.MapPosition, 2f))
+            foreach (var entity in _lookup.GetEntitiesInRange(xform.Coordinates, 2f))
             {
                 if (!carrierQuery.TryGetComponent(entity, out var carrier) ||
                     !_interactionSystem.InRangeUnobstructed(uid, entity)) continue;
 
-                TryInfect(carrier, disease, 0.3f);
+                TryInfect(entity, carrier, disease, 0.3f);
             }
             return true;
         }
@@ -422,7 +430,7 @@ namespace Content.Server.Disease
                 return;
 
             Vaccinate(carrier, component.Disease);
-            EntityManager.DeleteEntity(uid);
+            Del(uid);
             args.Handled = true;
         }
     }

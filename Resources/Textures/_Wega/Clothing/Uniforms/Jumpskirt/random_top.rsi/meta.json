@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made with love by Melissandra and random clouth copy",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base_leg_cshirt",
+      "directions": 4
+    },
+    {
+      "name": "base_leg_skirt",
+      "directions": 4
+    },
+    {
+      "name": "base_leg_skirt_long",
+      "directions": 4
+    },
+    {
+      "name": "base_torso_bra",
+      "directions": 4
+    },
+    {
+      "name": "base_torso_topik",
+      "directions": 4
+    }
+  ]
+}

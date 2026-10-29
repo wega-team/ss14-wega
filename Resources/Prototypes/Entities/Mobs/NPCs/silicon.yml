@@ -2,13 +2,14 @@
 - type: entity
   save: false
   abstract: true
-  parent: BaseMob
+  parent: [BaseMob, TTS_speaker] # Corvax-TTS
   id: MobRobotic
   components:
   - type: Reactive
     groups:
       Acidic: [Touch]
   - type: Damageable
+  - type: Injurable
     damageContainer: Inorganic
   - type: MovedByPressure
   - type: Physics
@@ -17,8 +18,9 @@
     allowed:
     - Electrocution
   - type: Repairable
-    doAfterDelay: 8
-    fuelCost: 15
+    damageValue: -15 # 8 seconds to repair from dead
+    doAfterDelay: 1
+    fuelCost: 0.5
   - type: Pullable
   - type: Tag
     tags:
@@ -43,8 +45,7 @@
   - type: TypingIndicator
     proto: robot
   - type: Vocal
-    sounds:
-      Unsexed: UnisexSilicon
+    emoteSounds: UnisexSilicon
   - type: Emoting
   - type: ZombieImmune
   - type: ProtectedFromStepTriggers
@@ -82,7 +83,7 @@
     baseWalkSpeed : 3
     baseSprintSpeed : 4
   - type: Stamina
-    critThreshold: 120
+    baseCritThreshold: 120
   - type: Destructible
     thresholds:
     - trigger:
@@ -105,14 +106,12 @@
     - SiliconEmotes
     - Bot
     - Unimplantable
-  - type: Body
-    prototype: Bot
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai #couldn't decide if this should be borg or pai sounds so I flipped a coin.
 
 - type: entity
-  parent: MobSiliconBase
+  parent: [MobSiliconBase, SolutionFireExtinguisherMini]
   id: MobFireBot
   name: firebot
   description: A little fire extinguishing bot. He looks rather anxious.
@@ -126,15 +125,7 @@
   - type: HTN
     rootTask:
       task: FirebotCompound
-  - type: SolutionContainerManager
-    solutions:
-      spray:
-        maxVol: 10
-        reagents:
-        - ReagentId: Water
-          Quantity: 10
   - type: SolutionRegeneration
-    solution: spray
     generated:
       reagents:
         - ReagentId: Water
@@ -160,7 +151,7 @@
     dataset: FirebotAd
 
 - type: entity
-  parent: MobSiliconBase
+  parent: [ MobSiliconBase, MobCombat ] # Corvax-Wega-Add
   id: MobHonkBot
   name: honkbot
   description: Horrifying.
@@ -221,6 +212,16 @@
       path: /Audio/Items/bikehorn.ogg
       params:
         variation: 0.125
+  # Corvax-Wega-start
+  - type: MeleeWeapon
+    attackRate: 0.75
+    hidden: true
+    soundHit:
+      collection: BananiumHorn
+    damage:
+      types:
+        Blunt: 0
+  # Corvax-Wega-end
 
 - type: entity
   parent: MobHonkBot
@@ -253,8 +254,7 @@
       params:
         variation: 0.125
   - type: Vocal
-    sounds:
-      Unsexed: Cluwne
+    emoteSounds: Cluwne
   - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: Default
@@ -264,7 +264,7 @@
     canCreateVacuum: false
 
 - type: entity
-  parent: MobSiliconBase
+  parent: [MobSiliconBase, SolutionMopNormal]
   id: MobCleanBot
   name: cleanbot
   description: The creep of automation now threatening space janitors.
@@ -280,28 +280,20 @@
   - type: UseDelay
     delay: 2
   - type: SolutionRegeneration
-    solution: absorbed
     generated:
       reagents:
         - ReagentId: Water
           Quantity: 10
   - type: SolutionPurge
-    solution: absorbed
     preserve:
       - Water
     quantity: 10
-  - type: SolutionContainerManager
-    solutions:
-      absorbed:
-        maxVol: 50
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3
   - type: HTN
     rootTask:
       task: CleanbotCompound
-  - type: DrainableSolution
-    solution: drainBuffer
   - type: InteractionPopup
     interactSuccessString: petting-success-cleanbot
     interactFailureString: petting-failure-cleanbot
@@ -322,8 +314,6 @@
       Alive:
         reagent: Tricordrazine
         quantity: 30
-        minDamage: 0
-        maxDamage: 50
       Critical:
         reagent: Inaprovaline
         quantity: 15
@@ -391,7 +381,7 @@
     templateId: head
 
 - type: entity
-  parent: MobSiliconBase
+  parent: [MobSiliconBase, StripableInventoryBase] # Corvax-Wega-Add
   id: MobSupplyBot
   name: supplybot
   description: Delivers cargo!
@@ -433,6 +423,10 @@
     interfaces:
       enum.StorageUiKey.Key:
         type: StorageBoundUserInterface
+      # Corvax-Wega-start
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      # Corvax-Wega-end
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -442,7 +436,7 @@
     enabled: false
     radius: 3.5
     softness: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
   - type: FootstepModifier
     footstepSoundCollection:
@@ -460,6 +454,27 @@
     - Supply
   - type: Puller
     needsHands: false
+  - type: Strap
+    position: Down
+    rotation: -90
+  # Corvax-Wega-start
+  - type: ComplexInteraction
+  - type: Hands
+    showInHands: false
+    canBeStripped: true
+    activeHandId: Right
+    hands:
+      hand_right:
+        location: Right
+      hand_left:
+        location: Left
+    sortedHands:
+    - hand_right
+    - hand_left
+  - type: Inventory
+    templateId: bots
+  - type: OfferGiver
+  # Corvax-Wega-end
 
 - type: entity
   parent: [ MobSiliconBase, MobCombat ]
@@ -488,8 +503,6 @@
   - type: Hands # This probably REALLY needs hand whitelisting, but we NEED hands for hugs, so...
   - type: ComplexInteraction # Hugging is a complex interaction, apparently.
   - type: HugBot
-  - type: Body
-    prototype: HugBot
   - type: HTN
     rootTask:
       task: HugBotCompound

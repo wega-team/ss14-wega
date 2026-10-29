@@ -84,24 +84,21 @@
     - Syndicate
     globalReceive: true
   - type: Physics
-    bodyType: Dynamic
     bodyStatus: InAir
   - type: CanMoveInAir
   # singulose components
-  #- type: EventHorizon
-  #  radius: 5
-  #  canBreachContainment: true
-  #- type: GravityWell
-  #  baseRadialAcceleration: 6
-  #  maxRange: 8
+  # Corvax-Wega-Blood-Cult-start
+  # - type: EventHorizon
+  #   radius: 5
+  #   canBreachContainment: true
+  # - type: GravityWell
+  #   baseRadialAcceleration: 6
+  #   maxRange: 8
+  # Corvax-Wega-Blood-Cult-end
   - type: WarpPoint
     follow: true
-    location: Nar'Sie
-    blacklist:
-      tags:
-      - GhostOnlyWarp
+    location: location-nar-sie
   # Corvax-Wega-Blood-Cult-start
-  - type: Timer
   - type: TimedSpawner
     prototypes:
     - MobConstructHarvester

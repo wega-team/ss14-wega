@@ -1,7 +1,6 @@
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared._Wega.Implants.Components;
 
@@ -23,23 +22,19 @@ public sealed partial class HandItemImplantComponent : Component
 [DataRecord]
 public partial struct HandItemImplantSlot
 {
-    [DataField("hand")]
-    public string HandId;
-
-    [DataField("prototype")]
+    [DataField]
     public string ItemPrototype;
     public EntityUid? ItemEntity;
 
-    [DataField("toggleAction")]
+    [DataField]
     public string ToggleActionPrototype;
     public EntityUid? ToggleActionEntity;
 
     [DataField]
     public EntityUid? ImplantEntity;
 
-    public HandItemImplantSlot(string handId, string itemPrototype, string toggleAction, EntityUid? implant = null)
+    public HandItemImplantSlot(string itemPrototype, string toggleAction, EntityUid? implant = null)
     {
-        HandId = handId;
         ItemPrototype = itemPrototype;
         ToggleActionPrototype = toggleAction;
         ImplantEntity = implant;

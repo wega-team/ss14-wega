@@ -6,7 +6,7 @@ namespace Content.Server.NPC.HTN.Preconditions;
 [UsedImplicitly]
 public sealed partial class UpdateFollowCoordinatesOperator : HTNOperator
 {
-    [Dependency] private readonly IEntityManager _entManager = default!;
+    [Dependency] private IEntityManager _entManager = default!;
 
     [DataField("followTargetKey")]
     public string FollowTargetKey = "FollowTarget";

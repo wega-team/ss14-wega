@@ -1,0 +1,74 @@
+- type: entity
+  parent: [ClothingHandsKnuckleDusters, BaseMinorContraband]
+  id: ClothingHandsRazorGloves
+  name: razor gloves
+  description: Everything ingenious is simple.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Hands/Gloves/razor_gloves.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Wega/Clothing/Hands/Gloves/razor_gloves.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - Kangaroo
+  - type: MeleeWeapon
+    attackRate: 2
+    damage:
+      types:
+       Slash: 8
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    animation: WeaponArcFist
+    mustBeEquippedToUse: true
+  - type: Construction
+    graph: RazGlove
+    node: RazorGlov
+
+- type: entity
+  name: Breaching Hammer
+  parent: [BaseItem, BaseSecurityContraband]
+  id: HammerBreachingNT
+  description: A robust heavy hammer made for breaching through walls and doors. Its reinforced head and sturdy handle make it ideal for demolition tasks.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/BreachingHammer.rsi
+    state: icon
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    attackRate: 0.7
+    damage:
+      types:
+        Blunt: 10
+        Structural: 10
+    soundHit:
+      collection: MetalThud
+  - type: Wieldable
+  - type: IncreaseDamageOnWield
+    damage:
+      types:
+        Blunt: 10
+        Structural: 20
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,1,4
+  - type: Tool
+    qualities:
+    - Prying
+    useSound: /Audio/Items/jaws_pry.ogg
+  - type: Prying
+    speedModifier: 1.5
+    pryPowered: true
+    useSound: /Audio/Items/jaws_pry.ogg
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - back
+    - suitStorage
+  - type: UseDelay
+    delay: 2
+  - type: PhysicalComposition
+    materialComposition:
+      Steel: 500

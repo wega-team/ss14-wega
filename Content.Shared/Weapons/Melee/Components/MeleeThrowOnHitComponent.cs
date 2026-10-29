@@ -1,3 +1,4 @@
+using Content.Shared.Throwing;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared.Weapons.Melee.Components;
@@ -7,7 +8,7 @@ namespace Content.Shared.Weapons.Melee.Components;
 /// until it hits a wall or a time limit is exhausted.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
-[Access(typeof(MeleeThrowOnHitSystem))]
+// [Access(typeof(MeleeThrowOnHitSystem))] Corvax-Wega-Edit
 public sealed partial class MeleeThrowOnHitComponent : Component
 {
     /// <summary>
@@ -26,7 +27,7 @@ public sealed partial class MeleeThrowOnHitComponent : Component
     /// Whether or not anchorable entities should be unanchored when hit.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public bool UnanchorOnHit;
+    public ThrowingUnanchorStrength UnanchorOnHit = ThrowingUnanchorStrength.None;
 
     /// <summary>
     /// How long should this stun the target, if applicable?

@@ -8,9 +8,6 @@
     },
     "states": [
         {
-            "name": "bg_bloodcult"
-        },
-        {
             "name": "barrage"
         },
         {
@@ -18,9 +15,6 @@
         },
         {
             "name": "blood_rites"
-        },
-        {
-            "name": "comms"
         },
         {
             "name": "concealpresence"
@@ -66,9 +60,6 @@
         },
         {
             "name": "twistedconstruction"
-        },
-        {
-            "name": "vote"
         },
         {
             "name": "wraith_teleport"

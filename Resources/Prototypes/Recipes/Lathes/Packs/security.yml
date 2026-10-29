@@ -10,6 +10,8 @@
   - TargetHuman
   - TargetSyndicate
   - Zipties
+  - SecurityBola
+  - PouchSec # Corvax-Wega-Add
 
 # Practice ammo/mags and practice weapons
 - type: latheRecipePack
@@ -69,6 +71,8 @@
   - HoloprojectorSecurity
   - PortableRecharger
 # Corvax-Wega-Arsenal-start
+  - WeaponIonCarabine
+  - WeaponImporator
   - WeaponDominator
   - WeaponTaser
   - PortableRechargerBag
@@ -76,6 +80,7 @@
   - PortableRechargerTurboBag
   - ClothingHeadHelmetFlash
   - ClothingNeckFlashNeck
+  - ClothingEyesGlassesNightVision
   - ExmFlash
 # Corvax-Wega-Arsenal-end
   - PowerCageHigh
@@ -129,8 +134,6 @@
   - MagazinePistolSubMachineGunUranium
   - MagazineRifleIncendiary
   - MagazineRifleUranium
-  - MagazineShotgunBeanbag
-  - MagazineShotgunIncendiary
   - SpeedLoaderMagnumIncendiary
   - SpeedLoaderMagnumUranium
 

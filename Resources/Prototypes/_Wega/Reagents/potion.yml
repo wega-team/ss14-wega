@@ -13,7 +13,7 @@
   - !type:PlantAdjustHealth
     amount: -1
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:ChemReinforcedExtracts
         conditions:
@@ -47,7 +47,7 @@
   flavor: medicine
   color: "#1E90FF"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemStabilizeMutationChance
         conditions:
@@ -78,7 +78,7 @@
       - !type:AdjustTemperature
         amount: -5000
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
         - !type:GenericStatusEffect
           key: SlowMetabolism
@@ -94,7 +94,7 @@
   flavor: medicine
   color: "#007FFF"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemReinforcedExtracts
         conditions:
@@ -103,9 +103,9 @@
           min: 5
       - !type:HealthChange
         damage:
-          groups:
-            Brute: -0.5
-            Burn: -0.5
+          types:
+            Blunt: -0.5
+            Heat: -0.5
         conditions:
         - !type:ReagentCondition
           reagent: SlimeReinforcer
@@ -123,7 +123,7 @@
   flavor: toxinsspecial
   color: "#007FFF"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:ChemIncreaseMutationChance
         conditions:
@@ -140,11 +140,11 @@
   flavor: medicine
   color: "#303030"
   metabolisms:
-    Narcotic:
+    Bloodstream:
       effects:
       - !type:MovementSpeedModifier
-        walkSpeedModifier: 1.35
-        sprintSpeedModifier: 1.35
+        walkSpeedModifier: 2
+        sprintSpeedModifier: 2
       - !type:GenericStatusEffect
         key: Stutter
         component: StutteringAccent
@@ -157,8 +157,8 @@
         key: KnockedDown
         time: 3
         type: Remove
-      - !type:SatiateHunger
-        factor: -3
+      # - !type:SatiateHunger
+        # factor: -3
 
 - type: reagent
   id: MindPotion
@@ -169,7 +169,7 @@
   flavor: medicine
   color: "#FFB6C1"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:MakeSentient
         conditions:
@@ -186,7 +186,7 @@
   flavor: medicine
   color: "#FFC0CB"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
       - !type:ChemIncreaseFriendship
         conditions:
@@ -203,7 +203,7 @@
   flavor: bitter
   color: "#000000"
   metabolisms:
-    Poison:
+    Bloodstream:
       effects:
       - !type:HealthChange
         damage:
@@ -222,23 +222,18 @@
   physicalDesc: reagent-physical-desc-opaque
   flavor: medicine
   color: "#FAFAD2"
+  # metabolismRate: 0.1
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Heat" ]
-        conditions:
-        - !type:ReagentCondition
-          reagent: HeatResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectHeatProtectionSlime
+        time: 2
+        type: Add
       - !type:HealthChange
         damage:
           types:
             Cold: 0.5
-        conditions:
-        - !type:ReagentCondition
-          reagent: HeatResistPotion
-          min: 10
 
 - type: reagent
   id: RadiationResistPotion
@@ -249,14 +244,12 @@
   flavor: medicine
   color: "#FAFAD2"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Radiation" ]
-        conditions:
-        - !type:ReagentCondition
-          reagent: RadiationResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectRadiationProtectionSlime
+        time: 2
+        type: Add
       - !type:HealthChange
         damage:
           types:
@@ -271,14 +264,12 @@
   flavor: medicine
   color: "#00FF00"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Cellular" ]
-        conditions:
-        - !type:ReagentCondition
-          reagent: CellularResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectCellularProtectionSlime
+        time: 2
+        type: Add
 
 - type: reagent
   id: IronSkinResistPotion
@@ -289,15 +280,26 @@
   flavor: medicine
   color: "#66FF66"
   metabolisms:
-    Medicine:
+    Bloodstream:
       effects:
-      - !type:ChemDamageResist
-        damageTypes: [ "Blunt", "Piercing", "Slash" ]
-        resistFactor: 0.1
-        conditions:
-        - !type:ReagentCondition
-          reagent: IronSkinResistPotion
-          min: 5
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectIronSkinProtectionSlime
+        time: 2
+        type: Add
       - !type:MovementSpeedModifier
-        walkSpeedModifier: 0.95
-        sprintSpeedModifier: 0.95
+        walkSpeedModifier: 0.45
+        sprintSpeedModifier: 0.45
+
+- type: reagent
+  id: StabilizingSerumPotion
+  name: reagent-name-stabilizing-serum-potion
+  group: Medicine
+  desc: reagent-desc-stabilizing-serum-potion
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: medicine
+  color: "#fe0958"
+  reactiveEffects:
+    Special:
+      methods: [ Touch ]
+      effects:
+      - !type:ChemLegionCoreStabilize

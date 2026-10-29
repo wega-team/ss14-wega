@@ -3,3 +3,7 @@ ent-HoloprojectorSex = проектор голобарьера
 ent-HoloprojectorSexEmpty = { ent-HoloprojectorSex }
     .desc = { ent-HoloprojectorSex.desc }
     .suffix = Пустой
+ent-SyndiHoloprojectorField = кроваво-красный сдерживающий голопроектор
+    .desc = Улучшенная версия голопроектора подходящая для проведения наступления.
+ent-CargoHoloprojectorField = голопроектор ящиков
+    .desc = Вместо 1000 стальных ящиков, один проектор!

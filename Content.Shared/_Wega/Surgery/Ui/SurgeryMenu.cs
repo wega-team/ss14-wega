@@ -10,20 +10,20 @@ public enum SurgeryUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryProcedureDto : BoundUserInterfaceMessage
+public sealed partial class SurgeryProcedureDtoState : BoundUserInterfaceState
 {
     public List<SurgeryGroupDto> Groups;
-    public NetEntity PatientId;
+    public SurgerySterilityInfo SterilityInfo;
 
-    public SurgeryProcedureDto(List<SurgeryGroupDto> groups, NetEntity patientId)
+    public SurgeryProcedureDtoState(List<SurgeryGroupDto> groups, SurgerySterilityInfo sterilityInfo)
     {
         Groups = groups;
-        PatientId = patientId;
+        SterilityInfo = sterilityInfo;
     }
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryGroupDto
+public sealed partial class SurgeryGroupDto
 {
     public string GroupName;
     public string Description;
@@ -40,7 +40,7 @@ public sealed class SurgeryGroupDto
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryStepDto
+public sealed partial class SurgeryStepDto
 {
     public string Name;
     public bool IsCompleted;
@@ -70,16 +70,40 @@ public sealed class SurgeryStepDto
 }
 
 [Serializable, NetSerializable]
-public sealed class SurgeryStartMessage : BoundUserInterfaceMessage
+public sealed partial class SurgerySterilityInfo
 {
-    public NetEntity User;
+    public float Sterility;
+    public List<string> NegativeFactors;
+    public List<string> PositiveFactors;
+
+    public SurgerySterilityInfo(float sterility, List<string> negativeFactors, List<string> positiveFactors)
+    {
+        Sterility = sterility;
+        NegativeFactors = negativeFactors;
+        PositiveFactors = positiveFactors;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class SurgerySterilityUpdateMessage : BoundUserInterfaceMessage
+{
+    public SurgerySterilityInfo SterilityInfo;
+
+    public SurgerySterilityUpdateMessage(SurgerySterilityInfo sterilityInfo)
+    {
+        SterilityInfo = sterilityInfo;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class SurgeryStartMessage : BoundUserInterfaceMessage
+{
     public ProtoId<SurgeryNodePrototype> TargetNode;
     public int StepIndex;
     public bool IsParallel;
 
-    public SurgeryStartMessage(NetEntity user, ProtoId<SurgeryNodePrototype> targetNode, int stepIndex, bool isParallel)
+    public SurgeryStartMessage(ProtoId<SurgeryNodePrototype> targetNode, int stepIndex, bool isParallel)
     {
-        User = user;
         TargetNode = targetNode;
         StepIndex = stepIndex;
         IsParallel = isParallel;

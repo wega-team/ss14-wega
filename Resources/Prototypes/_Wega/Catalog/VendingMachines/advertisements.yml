@@ -9,3 +9,9 @@
   values:
     prefix: advertisement-cosinessmat-
     count: 20
+    
+- type: localizedDataset
+  id: FashionOMatAds
+  values:
+    prefix: advertisement-fashion-
+    count: 5

@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Content.Shared.Xenobiology.Components;
 using Content.Shared.Xenobiology.Components.Container;
 using Content.Shared.Xenobiology.Systems;
 using Robust.Shared.Prototypes;
@@ -25,7 +24,7 @@ namespace Content.Shared.Xenobiology;
 /// <seealso cref="CellContainerComponent"/>
 /// <seealso cref="SharedCellSystem"/>
 [Serializable, NetSerializable]
-public sealed class Cell : IEquatable<Cell>
+public sealed partial class Cell : IEquatable<Cell>
 {
     /// <summary>
     /// Reflects the prototype on which the cell is based,

@@ -1,0 +1,83 @@
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassShuttleLavalandStation
+  suffix: External, Lavaland, Glass, Station
+  components:
+  - type: PriorityDock
+    tag: DockLavalandStation
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassShuttleLavalandOutpost
+  suffix: External, Lavaland, Glass, Outpost
+  components:
+  - type: PriorityDock
+    tag: DockLavalandOutpost
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassPenalServitudeShuttleLavalandStation
+  suffix: External, Lavaland, Glass, Penal servitude, Station
+  components:
+  - type: PriorityDock
+    tag: DockPenalServitudeStation
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockGlassShuttle
+  id: AirlockExternalGlassPenalServitudeShuttleLavaland
+  suffix: External, Lavaland, Glass, Penal servitude
+  components:
+  - type: PriorityDock
+    tag: DockPenalServitude
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockSalvage
+  id: AirlockLavalandAvanpostLocked
+  suffix: Avanpost, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockSalvageGlass
+  id: AirlockLavalandAvanpostGlassLocked
+  suffix: Avanpost, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLavalandAvanpost ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockBlueShieldOfficerLocked
+  suffix: BlueShieldOfficer, Locked
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Standard/blueshield.rsi
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBlueShieldOfficer ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockBlueShieldOfficerGlassLocked
+  suffix: BlueShieldOfficer, Locked, Glass
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Doors/Airlocks/Glass/blueshield.rsi
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsBlueShieldOfficer ]

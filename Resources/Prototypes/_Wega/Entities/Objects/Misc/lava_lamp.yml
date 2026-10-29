@@ -1,0 +1,90 @@
+- type: entity
+  name: lava lamp pink
+  description: Рypnotize your moth.
+  parent: BaseItem
+  id: LavaLampPink
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Objects/Misc/lava_lamp.rsi
+    layers:
+      - state: base_pink
+      - state: light_pink
+        shader: unshaded
+  - type: PointLight
+    color: "#b60aff"
+    radius: 2
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - anal
+
+- type: entity
+  name: lava lamp blue
+  description: Рypnotize your moth.
+  parent: LavaLampPink
+  id: LavaLampBlue
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Objects/Misc/lava_lamp.rsi
+    layers:
+      - state: base_blue
+      - state: light_blue
+        shader: unshaded
+  - type: PointLight
+    color: "#6600FF"
+    radius: 2
+
+- type: entity
+  name: lava lamp green
+  description: Рypnotize your moth.
+  parent: LavaLampPink
+  id: LavaLampGreen
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Objects/Misc/lava_lamp.rsi
+    layers:
+      - state: base_green
+      - state: light_green
+        shader: unshaded
+  - type: PointLight
+    color: "#00e600"
+    radius: 2
+
+- type: entity
+  name: lava lamp red
+  description: Рypnotize your moth.
+  parent: LavaLampPink
+  id: LavaLampRed
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Objects/Misc/lava_lamp.rsi
+    layers:
+      - state: base_red
+      - state: light_red
+        shader: unshaded
+  - type: PointLight
+    color: "#FF2400"
+    radius: 2
+
+- type: entity
+  name: lava lamp yellow
+  description: Рypnotize your moth.
+  parent: LavaLampPink
+  id: LavaLampYellow
+  components:
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Objects/Misc/lava_lamp.rsi
+    layers:
+      - state: base_yellow
+      - state: light_yellow
+        shader: unshaded
+  - type: PointLight
+    color: "#ffd700"
+    radius: 2

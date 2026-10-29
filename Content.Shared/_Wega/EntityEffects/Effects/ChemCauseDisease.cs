@@ -1,7 +1,6 @@
 using Content.Shared.Disease;
 using Content.Shared.Disease.Components;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.EntityEffects.Effects;
 
@@ -26,8 +25,8 @@ public sealed partial class ChemCauseDisease : EntityEffectBase<ChemCauseDisease
     /// <summary>
     ///     The disease to add.
     /// </summary>
-    [DataField("disease", customTypeSerializer: typeof(PrototypeIdSerializer<DiseasePrototype>), required: true)]
-    public string Disease = default!;
+    [DataField("disease", required: true)]
+    public ProtoId<DiseasePrototype> Disease = default!;
 
     /// <summary>
     ///     Chance it has each tick to cause disease, between 0 and 1

@@ -1,3 +1,148 @@
+#Jumpsuit
+- type: loadout
+  id: ClothingUniformJumpsuitSheriff
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSheriff
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingUniformJumpsuitCommandCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCommandCaptain
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingUniformJumpsuitWhiteCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitWhiteCaptain
+  groupBy: "wegaCaW"
+
+- type: loadout
+  id: ClothingUniformJumpskirtWhiteCaptain
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtWhiteCaptain
+  groupBy: "wegaCaW"
+  
+#Head
+- type: loadout
+  id: ClothingHeadHatBeretCaptainWhite
+  equipment:
+    head: ClothingHeadHatBeretCaptainWhite
+  groupBy: "wegaCaW" # Corvax-Wega
+
+- type: loadout
+  id: ClothingHeadHatCapcapWhite
+  equipment:
+    head: ClothingHeadHatCapcapWhite
+  groupBy: "wegaCaW" # Corvax-Wega
+
+- type: loadout
+  id: ClothingHeadHatCapcapSheriff
+  equipment:
+    head: ClothingHeadHatCapcapSheriff
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingHeadHatBeretSheriff
+  equipment:
+    head: ClothingHeadHatBeretSheriff
+  groupBy: "wegaCaS" 
+# Neck
+- type: loadout
+  id: ClothingNeckCaptainWide
+  equipment:
+    neck: ClothingNeckCaptainWide
+  groupBy: "wegaCaC"
+
+- type: loadout
+  id: ClothingNeckCloakRoyalCaptain
+  equipment:
+    neck: ClothingNeckCloakRoyalCaptain
+  groupBy: "wegaCaW"
+  
+- type: loadout
+  id: ClothingNeckWhiteMantleCaptain
+  equipment:
+    neck: ClothingNeckWhiteMantleCaptain
+  groupBy: "wegaCaW"
+# Gloves
+- type: loadout
+  id: ClothingHandsGlovesCaptain
+  equipment:
+    gloves: ClothingHandsGlovesCaptain
+  groupBy: "wegaCaC"
+
+- type: loadout
+  id: ClothingHandsGlovesSheriff
+  equipment:
+    gloves: ClothingHandsGlovesSheriff
+  groupBy: "wegaCaS"
+  
+- type: loadout
+  id: ClothingHandsGlovesCaptainWhite
+  equipment:
+    gloves: ClothingHandsGlovesCaptainWhite
+  groupBy: "wegaCaW"
+# Back
+- type: loadout
+  id: ClothingBackpackCapitanWhite
+  equipment:
+    back: ClothingBackpackCapitanWhite
+  groupBy: "wegaCaW"
+
+- type: loadout
+  id: ClothingSatchelsCapitanWhite
+  equipment:
+    back: ClothingSatchelsCapitanWhite
+  groupBy: "wegaCaW"
+
+- type: loadout
+  id: ClothingDuffelsCapitanWhite
+  equipment:
+    back: ClothingDuffelsCapitanWhite
+  groupBy: "wegaCaW"
+
+- type: loadout
+  id: ClothingBackpackCapitanGreen
+  equipment:
+    back: ClothingBackpackCapitanGreen
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingSatchelsCapitanGreen
+  equipment:
+    back: ClothingSatchelsCapitanGreen
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingDuffelsCapitanGreen
+  equipment:
+    back: ClothingDuffelsCapitanGreen
+  groupBy: "wegaCaS"
+# Outer clothing
+- type: loadout
+  id: ClothingOuterArmorSherifCarapace
+  equipment:
+    outerClothing: ClothingOuterArmorSherifCarapace
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingOuterCoatSherif
+  equipment:
+    outerClothing: ClothingOuterCoatSherif
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingOuterArmorCaptainCarapaceWhite
+  equipment:
+    outerClothing: ClothingOuterArmorCaptainCarapaceWhite
+  groupBy: "wegaCaW"
+
+- type: loadout
+  id: ClothingOuterCoatWhite
+  equipment:
+    outerClothing: ClothingOuterCoatWhite
+  groupBy: "wegaCaW"
 #Top
 - type: loadout
   id: ClothingUnderTopBraCap
@@ -6,12 +151,32 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FemaleRequired
+  groupBy: "wegaCaC"
+
+- type: loadout
+  id: ClothingUnderTopBraCapS
+  equipment:
+    underweartop: ClothingUnderTopBraCapS
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingUnderTopBraCapW
+  equipment:
+    underweartop: ClothingUnderTopBraCapW
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegaCaW"
 
 #Bottom
 - type: loadout
   id: ClothingUnderBottomMCaptain
   equipment:
     underwearbottom: ClothingUnderBottomMCaptain
+  groupBy: "wegaCaC"
 
 - type: loadout
   id: ClothingUnderBottomFCaptain
@@ -20,6 +185,37 @@
   effects:
   - !type:GroupLoadoutEffect
     proto: FemaleRequired
+  groupBy: "wegaCaC"
+
+- type: loadout
+  id: ClothingUnderBottomMCaptainS
+  equipment:
+    underwearbottom: ClothingUnderBottomMCaptainS
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingUnderBottomFCaptainS
+  equipment:
+    underwearbottom: ClothingUnderBottomFCaptainS
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegaCaS"
+
+- type: loadout
+  id: ClothingUnderBottomMCaptainW
+  equipment:
+    underwearbottom: ClothingUnderBottomMCaptainW
+  groupBy: "wegaCaW"
+
+- type: loadout
+  id: ClothingUnderBottomFCaptainW
+  equipment:
+    underwearbottom: ClothingUnderBottomFCaptainW
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegaCaW"
 
 #Socks
 - type: loadout

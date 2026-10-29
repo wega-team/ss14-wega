@@ -1,5 +1,6 @@
 using Content.Server.Fax;
-using Content.Server.Station.Systems;
+using Content.Server.MassMedia.Systems;
+using Content.Shared.Station.Systems;
 using Content.Shared.Corvax.CCCVars;
 using Content.Shared.Fax.Components;
 using Content.Shared.GameTicking;
@@ -13,14 +14,15 @@ namespace Content.Server.Corvax.StationGoal
     /// <summary>
     ///     System to spawn paper with station goal.
     /// </summary>
-    public sealed class StationGoalPaperSystem : EntitySystem
+    public sealed partial class StationGoalPaperSystem : EntitySystem
     {
-        [Dependency] private readonly IPrototypeManager _proto = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
-        [Dependency] private readonly FaxSystem _fax = default!;
-        [Dependency] private readonly IPlayerManager _playerManager = default!;
-        [Dependency] private readonly StationSystem _station = default!;
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private IPrototypeManager _proto = default!;
+        [Dependency] private IRobustRandom _random = default!;
+        [Dependency] private FaxSystem _fax = default!;
+        [Dependency] private NewsSystem _news = default!;
+        [Dependency] private IPlayerManager _playerManager = default!;
+        [Dependency] private StationSystem _station = default!;
+        [Dependency] private IConfigurationManager _cfg = default!;
 
         public override void Initialize()
         {
@@ -100,7 +102,34 @@ namespace Content.Server.Corvax.StationGoal
                 wasSent |= fax.ReceiveStationGoal;
             }
 
+            // Publish news if at least one fax received the goal.
+            if (wasSent)
+            {
+                PublishStationGoalNews(ent, goal);
+            }
+
             return wasSent;
+        }
+
+        /// <summary>
+        ///     Publishes a news article about the station goal in the mass media.
+        /// </summary>
+        private void PublishStationGoalNews(EntityUid ent, StationGoalPrototype goal)
+        {
+            var stationName = MetaData(ent).EntityName;
+
+            var title = Loc.GetString("station-goal-news-title", ("station", stationName));
+
+            var content = Loc.GetString(goal.Text, ("station", stationName));
+            var endPattern = Loc.GetString("station-goal-end");
+
+            if (content.EndsWith(endPattern))
+            {
+                content = content[..^endPattern.Length];
+                content = content.TrimEnd();
+            }
+
+            _news.TryAddNews(ent, title, content, out _, Loc.GetString("station-goal-news-author"));
         }
     }
 }

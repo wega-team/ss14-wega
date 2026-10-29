@@ -9,6 +9,15 @@
     damage:
       types:
         Heat: 17
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Opaque
 
 - type: entity
   parent: BasicHitscan
@@ -16,11 +25,15 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: HitscanStaminaDamage
-    staminaDamage: 33
+    staminaDamage: 10
   - type: HitscanBasicDamage
     damage:
       types:
         Shock: 1
+  - type: StunOnCollide
+    slowdownAmount: 2.2
+    walkSpeedModifier: 0.5
+    sprintSpeedModifier: 0.5
   - type: HitscanBasicVisuals
     muzzleFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -31,3 +44,354 @@
     impactFlash:
       sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
       state: impact_blue
+
+- type: entity
+  parent: Pulse
+  id: IonScan
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Shock: 5
+  - type: HitscanEMP
+    range: 0.25
+    energyConsumption: 720
+  - type: HitscanReflect
+    reflectiveType: None
+
+- type: entity
+  parent: IonScan
+  id: IonScanDamage
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanEMP
+    range: 0.25
+    energyConsumption: 1800
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 30
+
+- type: entity
+  name: magnum ion bolt
+  id: BulletIonMagnum
+  categories: [ HideSpawnMenu ]
+  parent: [BulletLaser, BaseBulletTrigger]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: PointLight
+    enabled: true
+    color: "#5b6ee1"
+  - type: Projectile
+    impactEffect: BulletImpactEffectOrangeDisabler
+    damage:
+      types:
+        Heat: 10
+  - type: ComplexProjectileDamage
+    damageOptions:
+    - damage:
+        types:
+          Heat: 15
+          Shock: 5
+      whitelist:
+        components:
+        - BorgChassis
+        - Android
+  - type: EmpOnTrigger
+    range: 0.5
+    energyConsumption: 360
+
+- type: entity
+  parent: [SolutionAmmo, SolutionToolVeryTiny, BaseBullet]
+  id: BulletTaserExmp
+  categories: [ HideSpawnMenu ]
+  name: taser bolt
+  components:
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    noRot: true
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    color: "#ffff33"
+    layers:
+    - state: spark
+      shader: unshaded
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.15,-0.45,0.15,0.15"
+        hard: false
+        mask:
+        - Opaque
+        - Impassable
+        - BulletImpassable
+      fly-by: &flybyfixture
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.5
+        layer:
+        - Impassable
+        - MidImpassable
+        - HighImpassable
+        - LowImpassable
+        hard: false
+  - type: Ammo
+  - type: Projectile
+    damage:
+      types:
+        Shock: 0
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/taser_hit.ogg"
+    forceSound: true
+  - type: TimedDespawn
+    lifetime: 0.170 # Very short range
+  - type: Solution
+    solution:
+      reagents:
+      - ReagentId: HardlightToxinSec
+        Quantity: 7.5
+  - type: SolutionInjectOnProjectileHit
+    transferAmount: 7.5
+    solution: ammo
+
+- type: entity
+  id: BulletTaserBorg
+  categories: [ HideSpawnMenu ]
+  parent: BulletTaserExmp
+  components:
+  - type: TimedDespawn
+    lifetime: 0.1 # Very short range
+
+- type: entity
+  name: pulsar shot
+  id: PulsarProjectile
+  parent: BulletLaser
+  components:
+  - type: Reflective
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Projectiles/projectilepulsar.rsi
+    layers:
+    - state: magnum_piercing
+      shader: unshaded
+  - type: Ammo
+  - type: Projectile
+    impactEffect: BulletImpactEffectWhite
+    damage:
+      types:
+        Heat: 26
+    soundHit:
+      path: "/Audio/Weapons/Guns/Hits/laser_sear_wall.ogg"
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.1,-0.1,0.1,0.1"
+        hard: false
+        mask:
+        - Opaque
+  - type: PointLight
+    radius: 1.5
+    energy: 4.6
+    color: "#ffffff"
+
+- type: entity
+  name: pulse bolt
+  id: BulletPulse
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Reflective
+    reflective:
+    - Energy
+  - type: FlyBySound
+    sound:
+      collection: EnergyMiss
+      params:
+        volume: 5
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: Physics
+  - type: Ammo
+  - type: Projectile
+    impactEffect: BulletImpactEffectDisabler
+    damage:
+      types:
+        Heat: 21
+
+- type: entity
+  id: BulletPulseSpread
+  categories: [ HideSpawnMenu ]
+  parent: BulletPulse
+  components:
+  - type: ProjectileSpread
+    proto: BulletPulse
+    count: 6
+    spread: 10
+
+- type: entity
+  parent: BasicHitscan
+  id: PulseSniper
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 150
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_blue
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_blue
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_blue
+
+- type: entity
+  parent: BulletKinetic
+  id: BulletKineticCrusher
+  name: kinetic bolt
+  description: Not too bad, but you still don't want to get hit by it.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 6
+        Structural: 15
+  - type: DamageMarkerOnCollide
+    whitelist:
+      components:
+        - MobState
+    damage:
+      types:
+        Blunt: 18
+        Slash: 4
+
+- type: entity
+  parent: RedMediumLaser
+  id: FireLaser
+  name: fire laser ray
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HitscanBasicDamage
+    damage:
+      types:
+        Heat: 20
+  - type: HitscanBasicVisuals
+    muzzleFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: muzzle_xeno_fire
+    travelFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: beam_xeno_fire
+    impactFlash:
+      sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+      state: impact_xeno_fire
+  - type: HitscanIgnite
+    igniteChance: 1
+    fireStacks: 0.75
+
+- type: entity
+  id: BulletKineticPellet
+  name: kinetic pellet
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  description: A sliver of a kinetic bolt. On its own, barely a scratch.
+  components:
+  - type: Reflective
+    reflective:
+    - NonEnergy
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    damage:
+      types:
+        Blunt: 3
+        Structural: 6
+  - type: TimedDespawn
+    lifetime: 0.20
+  - type: PelletGathering
+    hitsRequired: 3
+  - type: ProjectilePressure
+
+- type: entity
+  id: BulletKineticPelletSpread
+  parent: BulletKineticPellet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: ProjectileSpread
+    proto: BulletKineticPellet
+    count: 6
+    spread: 45
+
+- type: entity
+  id: BulletKineticLance
+  name: kinetic lance
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  description: A tightly focused kinetic bolt that punches clean through the first vein it meets.
+  components:
+  - type: Reflective
+    reflective:
+    - NonEnergy
+  - type: Sprite
+    noRot: false
+    sprite: Objects/Weapons/Guns/Projectiles/magic.rsi
+    layers:
+    - state: chronobolt
+      shader: unshaded
+  - type: Projectile
+    impactEffect: BulletImpactEffectKinetic
+    deleteOnCollide: false
+    damage:
+      types:
+        Blunt: 25
+        Structural: 45
+  - type: TimedDespawn
+    lifetime: 0.27
+  - type: PelletGathering
+    hitsRequired: 1
+  - type: PiercingGather
+    depth: 2
+    maxDurability: 150
+  - type: ProjectilePressure
+
+- type: entity
+  id: BulletKineticLight
+  parent: BulletKinetic
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Blunt: 7
+        Structural: 18
+  - type: TimedDespawn
+    lifetime: 0.22

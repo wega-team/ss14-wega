@@ -1,0 +1,12 @@
+- type: entity
+  parent: BaseSpellbook
+  id: FireSelfSpellbook
+  name: fire self spellbook
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/books.rsi
+    layers:
+    - state: fireself
+  - type: Spellbook
+    spellActions:
+      ActionFireSelf: null

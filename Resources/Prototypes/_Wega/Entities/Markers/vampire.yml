@@ -6,4 +6,6 @@
   - type: Sprite
     layers:
     - state: blue
+    - sprite: Objects/Specific/Chapel/bible.rsi
+      state: icon
   - type: HolyPoint

@@ -10,7 +10,7 @@ public abstract partial class SharedCellSystem
 
         foreach (var modifierId in modifiers)
         {
-            if (!_prototype.TryIndex(modifierId, out var modifier))
+            if (!ProtoMan.TryIndex(modifierId, out var modifier))
                 continue;
 
             var modifiersMessage = Loc.GetString("cell-sequencer-menu-cell-modifier-message",

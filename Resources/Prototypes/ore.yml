@@ -5,18 +5,21 @@
 - type: ore
   id: OreSteel
   oreEntity: SteelOre1
+  pointsPerUnit: 2 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 5
 
 - type: ore
   id: OreSpaceQuartz
   oreEntity: SpaceQuartz1
+  pointsPerUnit: 2 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 5
 
 - type: ore
   id: OreCoal
   oreEntity: Coal1
+  pointsPerUnit: 1 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 5
 
@@ -24,12 +27,14 @@
 - type: ore
   id: OreGold
   oreEntity: GoldOre1
+  pointsPerUnit: 25 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 3
 
 - type: ore
   id: OreSilver
   oreEntity: SilverOre1
+  pointsPerUnit: 20 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 3
 
@@ -43,24 +48,28 @@
 - type: ore
   id: OrePlasma
   oreEntity: PlasmaOre1
+  pointsPerUnit: 30 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreUranium
   oreEntity: UraniumOre1
+  pointsPerUnit: 40 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreBananium
   oreEntity: BananiumOre1
+  pointsPerUnit: 60 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 2
 
 - type: ore
   id: OreDiamond
   oreEntity: DiamondOre1
+  pointsPerUnit: 50 # Corvax-Wega-Lavaland
   minOreYield: 1
   maxOreYield: 2
 
@@ -85,10 +94,6 @@
   oreEntity: MobSpawnCrabGold
 
 - type: ore
-  id: OreBananiumCrab
-  oreEntity: MobSpawnCrabBananium
-
-- type: ore
   id: OreUraniumCrab
   oreEntity: MobSpawnCrabUranium
 
@@ -108,7 +113,6 @@
     OrePlasma: 4
     OreSilver: 1
     OreUranium: 1
-    OreBananium: 0.5
     OreArtifactFragment: 0.5
 
 - type: weightedRandomOre
@@ -118,6 +122,5 @@
     OreIronCrab: 5
     OreUraniumCrab: 2
     OreSilverCrab: 3
-    OreBananiumCrab: 1
     OreCoalCrab: 5
     OreGoldCrab: 2

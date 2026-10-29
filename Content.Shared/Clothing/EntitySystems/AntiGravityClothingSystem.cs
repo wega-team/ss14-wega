@@ -10,20 +10,49 @@ namespace Content.Shared.Clothing.EntitySystems;
 /// This is for balance reasons as it prevents you from wearing anti-grav clothing to cheese being stun cuffed, as
 /// well as other worse things.
 /// </remarks>
-public sealed class AntiGravityClothingSystem : EntitySystem
+public sealed partial class AntiGravityClothingSystem : EntitySystem
 {
-    [Dependency] private readonly StandingStateSystem _standing = default!;
-    [Dependency] private readonly SharedGravitySystem _gravity = default!;
+    [Dependency] private StandingStateSystem _standing = default!;
+    [Dependency] private SharedGravitySystem _gravity = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
+        SubscribeLocalEvent<AntiGravityClothingComponent, ComponentAdd>(OnAdd); // Corvax-Wega-Add
+        SubscribeLocalEvent<AntiGravityClothingComponent, ComponentRemove>(OnRemove); // Corvax-Wega-Add
+
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<IsWeightlessEvent>>(OnIsWeightless);
         SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotEquippedEvent>(OnEquipped);
         SubscribeLocalEvent<AntiGravityClothingComponent, ClothingGotUnequippedEvent>(OnUnequipped);
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<DownedEvent>>(OnDowned);
         SubscribeLocalEvent<AntiGravityClothingComponent, InventoryRelayedEvent<StoodEvent>>(OnStood);
     }
+
+    // Corvax-Wega-Add-start
+    private void OnAdd(Entity<AntiGravityClothingComponent> ent, ref ComponentAdd args)
+    {
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || clothing.InSlotFlag == null)
+            return;
+
+        var wearer = Transform(ent).ParentUid;
+        if (_standing.IsDown(wearer))
+            return;
+
+        _gravity.RefreshWeightless(wearer, true);
+    }
+
+    private void OnRemove(Entity<AntiGravityClothingComponent> ent, ref ComponentRemove args)
+    {
+        if (!TryComp<ClothingComponent>(ent, out var clothing) || clothing.InSlotFlag == null)
+            return;
+
+        var wearer = Transform(ent).ParentUid;
+        if (_standing.IsDown(wearer))
+            return;
+
+        _gravity.RefreshWeightless(wearer, false);
+    }
+    // Corvax-Wega-Add-end
 
     private void OnIsWeightless(Entity<AntiGravityClothingComponent> ent, ref InventoryRelayedEvent<IsWeightlessEvent> args)
     {

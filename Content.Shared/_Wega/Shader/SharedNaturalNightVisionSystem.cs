@@ -2,9 +2,9 @@ using Content.Shared.Actions;
 
 namespace Content.Shared.Shaders;
 
-public sealed class SharedNaturalNightVisionSystem : EntitySystem
+public sealed partial class SharedNaturalNightVisionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedActionsSystem _action = default!;
+    [Dependency] private SharedActionsSystem _action = default!;
 
     public override void Initialize()
     {

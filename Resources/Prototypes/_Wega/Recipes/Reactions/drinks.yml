@@ -166,16 +166,6 @@
     RainbowSky: 5
 
 - type: reaction
-  id: ThreeMileIslandIcedTea
-  reactants:
-    LongIslandIcedTea:
-      amount: 10
-    Uranium:
-      amount: 1
-  products:
-    ThreeMileIslandIcedTea: 10
-
-- type: reaction
   id: BlackBlood
   reactants:
     BlueCuracao:
@@ -513,15 +503,15 @@
   products:
     QueenMary: 5
 
-- type: reaction
-  id: Box
-  reactants:
-    Gin:
-      amount: 2
-    JuicePotato:
-      amount: 1
-  products:
-    Box: 3
+# - type: reaction
+#   id: Box
+#   reactants:
+#     Gin:
+#       amount: 2
+#     JuicePotato:
+#       amount: 1
+#   products:
+#     Box: 3
 
 - type: reaction
   id: BeerBerryRoyal
@@ -573,21 +563,21 @@
   products:
     Monako: 5
 
-- type: reaction
-  id: SlimeDrink
-  requiredMixerCategories:
-  - Shake
-  reactants:
-    Slime:
-      amount: 5
-    Ice:
-      amount: 2
-    Sugar:
-      amount: 1
-    Gin:
-      amount: 2
-  products:
-    SlimeDrink: 5
+# - type: reaction
+#   id: SlimeDrink
+#   requiredMixerCategories:
+#   - Shake
+#   reactants:
+#     Slime:
+#       amount: 5
+#     Ice:
+#       amount: 2
+#     Sugar:
+#       amount: 1
+#     Gin:
+#       amount: 2
+#   products:
+#     SlimeDrink: 5
 
 - type: reaction
   id: InnocentERP
@@ -724,7 +714,7 @@
       amount: 1
   products:
     NewYorker: 7
-    
+
 - type: reaction
   id: MilkshakeChockolate
   requiredMixerCategories:

@@ -1,9 +1,10 @@
 using Content.Shared.Injector.Fabticator;
 using Robust.Client.GameObjects;
 
-public sealed class InjectorFabticatorSystem : EntitySystem
+public sealed partial class InjectorFabticatorSystem : EntitySystem
 {
-    [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private AppearanceSystem _appearance = default!;
+    [Dependency] private SpriteSystem _sprite = default!;
 
     public override void Initialize()
     {
@@ -17,10 +18,9 @@ public sealed class InjectorFabticatorSystem : EntitySystem
         if (args.Sprite == null)
             return;
 
-        var sprite = args.Sprite;
         if (!_appearance.TryGetData<bool>(uid, InjectorFabticatorVisuals.IsRunning, out var isRunning, args.Component))
             return;
 
-        sprite.LayerSetVisible(InjectorFabticatorVisuals.IsRunning, isRunning);
+        _sprite.LayerSetVisible(uid, InjectorFabticatorVisuals.IsRunning, isRunning);
     }
 }

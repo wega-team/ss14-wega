@@ -1,0 +1,156 @@
+- type: entity
+  parent: CrateBaseWeldable
+  id: CrateNecropolis
+  name: necropolis crate
+  description: "An ancient sarcophagus that emits an ominous glow. Contains rewards for defeating the horrors of the Necropolis. Has strange protective properties."
+  components:
+  - type: Icon
+    sprite: _Wega/Structures/Storage/Crates/necrocrate.rsi
+  - type: Sprite
+    sprite: _Wega/Structures/Storage/Crates/necrocrate.rsi
+  - type: Reflect
+    reflects:
+    - Energy
+    reflectProb: 0.2
+    spread: 90
+  - type: RadiationBlockingContainer
+    resistance: 2.5
+
+- type: entity
+  parent: [ BaseStructureDynamic, BasePaperLabelableVisualized ]
+  id: HoloCreate
+  name: holo crate
+  description: A large container for items.
+  components:
+  - type: TriggerOnSpawn
+  - type: TimerTrigger
+    delay: 480
+    popup : null
+    examinable : false
+  - type: DamageOnTrigger
+    damage:
+      types:
+        Blunt: 5000
+    keysIn:
+    - timer
+  - type: Animateable
+  - type: Transform
+    noRot: true
+    anchored: false
+  - type: Icon
+    sprite: _Wega/Structures/Storage/Crates/holo.rsi
+    state: icon
+  - type: Sprite
+    noRot: true
+    sprite: _Wega/Structures/Storage/Crates/holo.rsi
+    layers:
+    - state: base
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: closed
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: paper
+      sprite: Structures/Storage/Crates/labels.rsi
+      map: ["enum.PaperLabelVisuals.Layer"]
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  - type: EntityStorage
+  - type: PlaceableSurface
+    isPlaceable: false # defaults to closed.
+  - type: Damageable
+    damageModifierSet: Metallic
+  - type: Injurable
+    damageContainer: StructuralInorganic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Effects/teleport_arrival.ogg
+  - type: EntityStorageVisuals
+    stateDoorOpen: open
+    stateDoorClosed: closed
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+      paper_label: !type:ContainerSlot
+  - type: StaticPrice
+    price: 0
+  - type: RequireProjectileTarget
+
+- type: entity
+  parent: CrateCoffin
+  id: CrateCoffinVampire
+  name: coffin
+  description: A comfy coffin, excellent place for the vampires and corpses.
+  suffix: DO NOT MAPP
+  components:
+  - type: VampireCoffin
+  - type: Lock
+    showExamine: false
+    showLockVerbs: false
+    unlockOnClick: false
+    useAccess: false
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: WoodDestroy
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          MaterialWoodPlank1:
+            min: 1
+            max: 4
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: DamageInContainer
+    damage:
+      types:
+        Asphyxiation: -8
+        Cellular: -2
+        Bloodloss: -2
+    damageGroups:
+      groups:
+        Brute: -4
+        Burn: -4
+        Toxin: -4
+    allowedStates:
+    - Alive
+    - PreCritical
+    - Critical
+    slotId: entity_storage
+    whitelist:
+      components:
+      - Vampire
+  - type: PointLight
+    radius: 3.5
+    energy: 5
+    color: "#880000"
+  - type: TimedDespawn
+    lifetime: 30.0
+  - type: SpawnOnDespawn
+    prototype: Ash
+  - type: Construction
+    graph: CrateCoffin
+    node: cratecoffinvampire
+    containers:
+    - entity_storage

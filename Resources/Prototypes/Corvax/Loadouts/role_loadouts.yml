@@ -6,6 +6,7 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
+  - BaseShoose # Corvax-Wega-Add
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool
@@ -14,6 +15,20 @@
   - Bottom
   - Socks
   # Corvax-Wega-end
+
+#Law
+
+- type: roleLoadout
+  id: JobMagistrate
+  groups:
+  - Inventory # Corvax-Loadouts
+  - MagistrateHead
+  - MagistrateJumpsuit
+  - MagistrateOuterClothing
+  - CommonBackpack
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
 
 # Engineering
 - type: roleLoadout
@@ -68,14 +83,15 @@
   - PilotJumpsuit
   - SecurityBackpack
   - PilotOuterClothing
+  - WegaDefoltBadge # Corvax-Wega-Add
   - SecurityBelt
   - SecurityShoes
   - SurvivalSecurity
   - Trinkets
   - GroupSpeciesBreathTool
   # Corvax-Wega-start
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
   # Corvax-Wega-end
 
@@ -87,16 +103,16 @@
   - SeniorOfficerJumpsuit
   - SeniorOfficerBackpack
   - SeniorOfficerOuterClothing
+  - WegaDefoltBadge # Corvax-Wega-Add
   - SeniorOfficerShoes
   - SeniorOfficerBelt
   - SurvivalSecurity
   - Trinkets
-  - SecurityStar
   - GroupSpeciesBreathToolSecurity
   # Corvax-Wega-start
   - SeniorOfficerItem
-  - Top
-  - Bottom
+  - TopSecurity
+  - BottomSecurity
   - Socks
   # Corvax-Wega-end
 
@@ -109,7 +125,6 @@
   - SeniorPhysicianHead
   - MedicalMask
   - SeniorPhysicianJumpsuit
-  - MedicalGloves
   - SeniorPhysicianBackpack
   - SeniorPhysicianOuterClothing
   - SeniorPhysicianShoes

@@ -1,15 +1,13 @@
 using System.Linq;
 using Content.Shared.GameTicking;
 using Content.Shared.Humanoid.Markings;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Shared.Genetics.Systems
 {
-    public sealed class MarkingPrototypesIndexerSystem : EntitySystem
+    public sealed partial class MarkingPrototypesIndexerSystem : EntitySystem
     {
-        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private IRobustRandom _random = default!;
 
         private List<MarkingPrototypeInfo> _markingPrototypes = new List<MarkingPrototypeInfo>();
         private HashSet<string> _usedHexCombinations = new();
@@ -43,7 +41,7 @@ namespace Content.Shared.Genetics.Systems
         {
             _markingPrototypes.Clear();
 
-            var allMarkingPrototypes = _prototypeManager.EnumeratePrototypes<MarkingPrototype>();
+            var allMarkingPrototypes = ProtoMan.EnumeratePrototypes<MarkingPrototype>();
             foreach (var markingPrototype in allMarkingPrototypes)
             {
                 if (markingPrototype.MarkingType is MarkingTypes.NonGenetics)
@@ -53,7 +51,7 @@ namespace Content.Shared.Genetics.Systems
                 {
                     MarkingPrototypeId = markingPrototype.ID,
                     HexValue = GenerateHexValueForMarking(),
-                    Species = GetPossibleSpeciesForMarking(markingPrototype)
+                    Groups = GetGroupsForMarking(markingPrototype)
                 };
 
                 _markingPrototypes.Add(markingPrototypeInfo);
@@ -110,23 +108,21 @@ namespace Content.Shared.Genetics.Systems
             return new[] { "1", "1", "1" };
         }
 
-        private string GetPossibleSpeciesForMarking(MarkingPrototype markingPrototype)
+        private string GetGroupsForMarking(MarkingPrototype markingPrototype)
         {
-            if (markingPrototype.SpeciesRestrictions != null && markingPrototype.SpeciesRestrictions.Count > 0)
+            if (markingPrototype.GroupWhitelist != null && markingPrototype.GroupWhitelist.Count > 0)
             {
-                return string.Join(", ", markingPrototype.SpeciesRestrictions.Select(species => species.ToString()));
+                return string.Join(", ", markingPrototype.GroupWhitelist.Select(group => group.ToString()));
             }
-            else
-            {
-                return string.Empty;
-            }
+
+            return string.Empty;
         }
     }
 
-    public sealed class MarkingPrototypeInfo
+    public sealed partial class MarkingPrototypeInfo
     {
         public string MarkingPrototypeId { get; set; } = string.Empty;
         public string[] HexValue { get; set; } = default!;
-        public string Species { get; set; } = string.Empty;
+        public string Groups { get; set; } = string.Empty;
     }
 }

@@ -8,13 +8,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Client.Shaders.Systems;
 
-public sealed class NightVisionOverlay : Overlay
+public sealed partial class NightVisionOverlay : Overlay
 {
-    [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private IEntityManager _entityManager = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
+    private static readonly ProtoId<ShaderPrototype> NightVision = "WegaNightVision";
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
     private readonly ShaderInstance _baseShader;
@@ -28,7 +29,7 @@ public sealed class NightVisionOverlay : Overlay
     public NightVisionOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _baseShader = _prototypeManager.Index<ShaderPrototype>("NightVision").Instance();
+        _baseShader = _prototypeManager.Index(NightVision).Instance();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -40,18 +41,8 @@ public sealed class NightVisionOverlay : Overlay
             return false;
         }
 
-        if (_entityManager.TryGetComponent<NightVisionComponent>(player, out var nv))
-        {
-            Brightness = nv.Brightness;
-            LuminanceThreshold = nv.LuminanceThreshold;
-            NoiseAmount = nv.NoiseAmount;
-            Tint = nv.Tint;
-
-            _currentShader = _baseShader.Duplicate();
-            return true;
-        }
-
-        return false;
+        _currentShader = _baseShader.Duplicate();
+        return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)

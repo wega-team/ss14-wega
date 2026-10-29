@@ -1,4 +1,4 @@
-﻿namespace Content.Shared.Chat
+namespace Content.Shared.Chat
 {
     /// <summary>
     ///     Chat channels that the player can select in the chat box.
@@ -45,6 +45,13 @@
         ///     Deadchat
         /// </summary>
         Dead = ChatChannel.Dead,
+
+        // Corvax-Wega-MindChat-start
+        /// <summary>
+        ///     Mind chat
+        /// </summary>
+        Mind = ChatChannel.Mind,
+        // Corvax-Wega-MindChat-end
 
         /// <summary>
         ///     Admin chat

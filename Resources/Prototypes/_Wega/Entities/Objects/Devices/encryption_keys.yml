@@ -1,0 +1,24 @@
+- type: entity
+  parent: [ EncryptionKey, BaseSecurityLawyerContraband ]
+  id: EncryptionKeySecurityRadio
+  name: security encryption key
+  description: An encryption key used by security.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Security
+    - SecSquadOne
+    - SecSquadTwo
+    - SecSquadThree
+    - SecSquadFour
+    - SecSquadFive
+    - SecSquadSix
+    - SecSquadCommand
+    defaultChannel: Security
+  - type: Sprite
+    layers:
+    - state: crypt_gray
+    - state: sec_label
+  - type: Tag
+    tags:
+    - EncryptionSecurity

@@ -1,0 +1,11 @@
+- type: entity
+  parent: TelecomServer
+  id: TelecomServerFilledLavaland
+  suffix: Lavaland
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyCargo
+      - EncryptionKeyMedical

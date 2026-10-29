@@ -167,7 +167,7 @@
     children:
     - id: SpaceCash100
       weight: 2
-    - id: GlowstickBase
+    - id: GlowstickGreen
       amount: !type:RangeNumberSelector
         range: 1, 5
     - id: GlowstickRed
@@ -578,7 +578,7 @@
     - id: AnomalyCoreLiquid
       amount: !type:RangeNumberSelector
         range: 1, 3
-    - id: AnomalyCoreBluespace
+    - id: AnomalyCoreBluespaceInert # Corvax-Wega-Edit
       amount: !type:RangeNumberSelector
         range: 1, 3
     - id: AnomalyCoreElectricity

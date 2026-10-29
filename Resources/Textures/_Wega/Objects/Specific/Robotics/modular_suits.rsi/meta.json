@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "mod-core-standard",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "mod-core-plasma",
+      "delays": [ [ 0.3, 0.3, 0.3, 0.3 ] ]
+    },
+    {
+      "name": "mod-core-infinite",
+      "delays": [ [ 0.05, 0.05, 0.05, 0.05 ] ]
+    },
+    {
+      "name": "mod0"
+    },
+    {
+      "name": "mod1",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "mod2",
+      "delays": [ [ 0.1, 0.1, 0.1, 0.1 ] ]
+    },
+    {
+      "name": "mod3"
+    },
+    {
+      "name": "mod4"
+    },
+    {
+      "name": "mod5"
+    },
+    {
+      "name": "mod6"
+    },
+    {
+      "name": "mod7"
+    },
+    {
+      "name": "mod8"
+    },
+    {
+      "name": "chestplate"
+    },
+    {
+      "name": "gauntlets"
+    },
+    {
+      "name": "boots"
+    },
+    {
+      "name": "helmet"
+    },
+    {
+      "name": "standard-plating"
+    },
+    {
+      "name": "engineering-plating"
+    },
+    {
+      "name": "atmospheric-plating"
+    },
+    {
+      "name": "civilian-plating"
+    },
+    {
+      "name": "medical-plating"
+    },
+    {
+      "name": "security-plating"
+    },
+    {
+      "name": "cosmohonk-plating"
+    },
+    {
+      "name": "skinapplier"
+    },
+    {
+      "name": "safeguard-plating"
+    },
+    {
+      "name": "advanced-plating"
+    },
+    {
+      "name": "rescue-plating"
+    },
+    {
+      "name": "research-plating"
+    }
+  ]
+}

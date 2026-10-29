@@ -4,19 +4,19 @@ using Robust.Shared.Random;
 
 namespace Content.Shared.Genetics.Systems;
 
-public sealed class DnaServerSystem : EntitySystem
+public sealed partial class DnaServerSystem : EntitySystem
 {
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DnaServerComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<DnaServerComponent, MapInitEvent>(OnStartup);
         SubscribeLocalEvent<DnaServerComponent, ComponentShutdown>(OnShutdown);
     }
 
-    private void OnStartup(Entity<DnaServerComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<DnaServerComponent> ent, ref MapInitEvent args)
     {
         ent.Comp.ServerId = GenerateId();
         Dirty(ent);

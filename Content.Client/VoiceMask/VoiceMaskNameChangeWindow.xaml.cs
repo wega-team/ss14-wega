@@ -15,17 +15,17 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
 {
     public Action<string>? OnNameChange;
     public Action<string?>? OnVerbChange;
+    public Action? OnToggle;
+    public Action? OnAccentToggle;
     public Action<string>? OnVoiceChange; // Corvax-TTS
 
     private List<(string, string)> _verbs = new();
     private List<TTSVoicePrototype> _voices = new(); // Corvax-TTS
 
     private string? _verb;
-
     public VoiceMaskNameChangeWindow()
     {
         RobustXamlLoader.Load(this);
-
         NameSelectorSet.OnPressed += _ =>
         {
             OnNameChange?.Invoke(NameSelector.Text);
@@ -36,6 +36,9 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
             OnVerbChange?.Invoke((string?) args.Button.GetItemMetadata(args.Id));
             SpeechVerbSelector.SelectId(args.Id);
         };
+
+        ToggleButton.OnPressed += args => OnToggle?.Invoke();
+        ToggleAccentButton.OnPressed += args => OnAccentToggle?.Invoke();
 
         // Corvax-TTS-Start
         if (IoCManager.Resolve<IConfigurationManager>().GetCVar(CCCVars.TTSEnabled))
@@ -100,11 +103,13 @@ public sealed partial class VoiceMaskNameChangeWindow : FancyWindow
     }
     // Corvax-TTS-End
 
-    public void UpdateState(string name, string voice, string? verb) // Corvax-TTS
+    public void UpdateState(string name, string? verb, bool active, bool accentHide, LocId titleText, string voice) // Corvax-TTS
     {
         NameSelector.Text = name;
         _verb = verb;
-
+        ToggleButton.Pressed = active;
+        ToggleAccentButton.Pressed = accentHide;
+        Title = Loc.GetString(titleText);
         for (int id = 0; id < SpeechVerbSelector.ItemCount; id++)
         {
             if (string.Equals(verb, SpeechVerbSelector.GetItemMetadata(id)))

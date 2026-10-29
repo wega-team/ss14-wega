@@ -9,6 +9,16 @@
     Plastic: 150
 
 - type: latheRecipe
+  id: CassetteTapeLong
+  result: CassetteTapeLong
+  categories:
+  - Tools
+  completetime: 2
+  materials:
+    Steel: 100
+    Plastic: 300
+
+- type: latheRecipe
   id: TapeRecorder
   result: TapeRecorder
   categories:
@@ -17,3 +27,57 @@
   materials:
     Steel: 250
     Plastic: 250
+
+- type: latheRecipe
+  id: CargoHoloprojectorField
+  result: CargoHoloprojectorField
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+
+- type: latheRecipe
+  id: TechDiskBag
+  result: TechDiskBag
+  categories:
+  - Clothing
+  completetime: 3
+  materials:
+    Cloth: 300
+    Durathread: 100
+
+- type: latheRecipe
+  id: TechDiskBagT3
+  result: TechDiskBagT3
+  categories:
+  - Clothing
+  completetime: 3
+  materials:
+    Cloth: 300
+    Durathread: 100
+
+- type: latheRecipe
+  id: TravelCameraCivilian
+  result: TravelCameraCivilian
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+    Gold: 10
+
+- type: latheRecipe
+  id: SynthCore
+  result: SynthCore
+  categories:
+  - Tools
+  completetime: 5
+  materials:
+    Steel: 1500
+    Plasma: 1000
+    Gold: 500
+    Silver: 500
+    Diamond: 200

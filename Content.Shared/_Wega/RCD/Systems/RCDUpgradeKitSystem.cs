@@ -1,6 +1,4 @@
-using System.Linq;
 using Content.Shared.RCD.Components;
-using Content.Shared.RCD;
 using Content.Shared.Interaction;
 using Robust.Shared.Audio.Systems;
 
@@ -8,7 +6,7 @@ namespace Content.Shared.RCD.Systems;
 
 public sealed partial class RCDUpgradeKitSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -22,15 +20,12 @@ public sealed partial class RCDUpgradeKitSystem : EntitySystem
         if (!args.CanReach)
             return;
 
-        if (!TryComp<RCDComponent>(args.Target, out var RCD))
-            return;
-
-        if (RCD.Reinforced)
+        if (!TryComp<RCDComponent>(args.Target, out var rcd) || rcd.Reinforced)
             return;
 
         _audio.PlayPredicted(ent.Comp.UpgradeSound, args.Target.Value, args.User);
 
-        RCD.Reinforced = true;
+        rcd.Reinforced = true;
         QueueDel(ent);
 
         args.Handled = true;

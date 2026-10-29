@@ -1,0 +1,14 @@
+- files: ["hiero_bgm.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Yogstation, made by @Hey-Holokin (Github)"
+  source: "https://github.com/yogstation13/Yogstation/commit/04f271c80f2df96c8120052362efb6a3e28dd0d0"
+
+- files: ["bdm_boss1.ogg", "hiero_boss1.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Tken gfrom TGstation"
+  source: "https://github.com/tgstation/tgstation"
+
+- files: ["bdm_boss2.ogg", "bubblegum_boss1.ogg", "colossus_boss1.ogg", "dragon_boss1.ogg", "hiero_boss2.ogg", "legion_boss1.ogg", "wendigo_boss1.ogg"]
+  license: "CC0-1.0"
+  copyright: "All music created by Enny Daiz"
+  source: "https://youtu.be/zxBk14FHNq0"

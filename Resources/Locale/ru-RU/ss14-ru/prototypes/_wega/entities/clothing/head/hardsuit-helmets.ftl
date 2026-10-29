@@ -4,3 +4,5 @@ ent-ClothingHeadHelmetHardsuitVoidAdvanced = улучшенный шлем пу�
     .desc = Улучшенный шлем пустотного скафандра.
 ent-ClothingHeadHelmetHardsuitBlueShield = шлем скафандра офицера "Синий Щит"
     .desc = Шлем от скафандра Синего Щита.
+ent-ClothingHeadHelmetHardsuitFrostMiner = { ent-ClothingHeadHelmetHardsuitMaxim }
+    .desc = { ent-ClothingHeadHelmetHardsuitMaxim.desc }

@@ -1,0 +1,14 @@
+- type: entity
+  name: green chainsaw
+  parent: Chainsaw
+  id: ChainsawGreen
+  description: Dangerous sharp sawing thing, how did it get here?
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Melee/green_chainsaw.rsi
+  - type: Construction
+    graph: CirSaw
+    node: circular
+  - type: Item
+    size: Normal
+    sprite: _Wega/Objects/Weapons/Melee/green_chainsaw.rsi

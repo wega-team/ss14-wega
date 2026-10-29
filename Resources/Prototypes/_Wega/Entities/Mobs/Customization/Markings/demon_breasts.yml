@@ -1,10 +1,8 @@
 - type: marking
   id: DemonBreastSmall
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -17,10 +15,8 @@
 - type: marking
   id: DemonBreastDefault
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -33,10 +29,8 @@
 - type: marking
   id: DemonBreastMedium
   bodyPart: Chest
-  markingCategory: Chest
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -48,11 +42,9 @@
 
 - type: marking
   id: DemonBreastBig
-  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук 
-  markingCategory: Chest
-  speciesRestriction: [Demon]
+  bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
+  groupWhitelist: [Demon]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:
@@ -65,10 +57,8 @@
 - type: marking
   id: DemonBreastSuperBig
   bodyPart: Special #Не "Chest" чтобы спрайт отобразить по верх рук
-  markingCategory: Chest
-  speciesRestriction: [Demon]
+  groupWhitelist: [Demon]
   sexRestriction: [Female]
-  followSkinColor: true
   forcedColoring: true
   coloring:
     default:

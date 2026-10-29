@@ -4,9 +4,9 @@ using Robust.Shared.Timing;
 
 namespace Content.Client.TapeRecorder.Ui;
 
-public sealed class TapeRecorderBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed partial class TapeRecorderBoundUserInterface(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
+    [Dependency] private IEntityManager _entMan = default!;
 
     [ViewVariables]
     private TapeRecorderWindow? _window;
@@ -58,6 +58,9 @@ public sealed class TapeRecorderBoundUserInterface(EntityUid owner, Enum uiKey) 
     {
         base.Dispose(disposing);
         if (disposing)
-            _window?.Dispose();
+        {
+            _window?.Close();
+            _window = null;
+        }
     }
 }

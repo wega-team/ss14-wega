@@ -9,9 +9,6 @@
     - Vocal
     tags:
     - Ipc # Corvax-Species
-  blacklist:
-    tags:
-    - SiliconEmotes
   chatMessages: ["chat-emote-msg-scream"]
   chatTriggers:
     - scream
@@ -144,6 +141,7 @@
     # Corvax-Localization-Start
     - свистит
     - свистнул
+    - свистнула
     # Corvax-Localization-End
 
 - type: emote
@@ -189,6 +187,8 @@
     - squishes
     # Corvax-Localization-Start
     - хлюпает
+    - хлюпнул
+    - хлюпнула
     # Corvax-Localization-End
 
 - type: emote
@@ -210,6 +210,8 @@
    - chittered
    # Corvax-Localization-Start
    - стрекочет
+   - застрекотал
+   - застрекотала
    # Corvax-Localization-End
 
 - type: emote
@@ -231,6 +233,8 @@
    - squeaked
    # Corvax-Localization-Start
    - пищит
+   - пискнул
+   - пискнула
    # Corvax-Localization-End
 
 - type: emote
@@ -250,9 +254,29 @@
    - click
    - clicks
    # Corvax-Localization-Start
-   - клац
    - клацает
+   - клацнул
+   - клацнула
    # Corvax-Localization-End
+
+- type: emote
+  id: Hiss
+  name: chat-emote-name-hiss
+  category: Vocal
+  available: false
+  icon: Interface/Emotes/hiss.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: [chat-emote-msg-hiss]
+  chatTriggers:
+  - hiss
+  - hisses
+  - hissed
+  - hissing
 
 # Vulpkanin
 - type: emote
@@ -264,14 +288,19 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
+    tags:
+    - SiliconEmotes
   chatMessages: ["chat-emote-msg-bark"]
   chatTriggers:
   - bark
   - barks
   - barked
   - barking
+  # Corvax-Localization-Start
+  - лает
+  - залаял
+  - залаяла
+  # Corvax-Localization-End
 
 - type: emote
   id: Snarl
@@ -282,14 +311,18 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
+    tags:
+    - SiliconEmotes
   chatMessages: ["chat-emote-msg-snarl"]
   chatTriggers:
   - snarl
   - snarls
   - snarled
   - snarling
+  # Corvax-Localization-Start
+  - зарычал
+  - зарычала
+  # Corvax-Localization-End
 
 - type: emote
   id: Whine
@@ -300,14 +333,19 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
+    tags:
+    - SiliconEmotes
   chatMessages: ["chat-emote-msg-whine"]
   chatTriggers:
   - whine
   - whines
   - whined
   - whining
+  # Corvax-Localization-Start
+  - скулит
+  - заскулил
+  - заскулила
+  # Corvax-Localization-End
 
 - type: emote
   id: Howl
@@ -318,8 +356,8 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
+    tags:
+    - SiliconEmotes
   chatMessages: ["chat-emote-msg-howl"]
   chatTriggers:
   - howl
@@ -328,11 +366,9 @@
   - howled
 # Corvax-Localization-Start
   - воет
-  - воет.
-  - воет!
   - завывает
-  - завывает.
-  - завывает!
+  - завыл
+  - завыла
 # Corvax-Localization-End
 
 - type: emote
@@ -344,8 +380,8 @@
     components:
     - Vocal
   blacklist:
-    components:
-    - BorgChassis
+    tags:
+    - SiliconEmotes
   chatMessages: ["chat-emote-msg-growl"]
   chatTriggers:
   - growl
@@ -354,9 +390,27 @@
   - growling
   # Corvax-Localization-Start
   - рычит
-  - рычит.
-  - рычит!
   # Corvax-Localization-End
+
+#vox
+- type: emote
+  id: Caw
+  name: chat-emote-name-caw
+  category: Vocal
+  icon: Interface/Emotes/caw.png
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: [chat-emote-msg-caw]
+  chatTriggers:
+  - caw
+  - caws
+  - cawed
+  - cawing
 
 # hand emotes
 - type: emote
@@ -377,12 +431,9 @@
     - clapped
     # Corvax-Localization-Start
     - хлопает
-    - хлопнул
-    - хлопнула
     - хлопает в ладоши
-    - хлопнул в ладоши
-    - хлопнула в ладоши
     - апплодирует
+    - аплодирует
     # Corvax-Localization-End
 
 - type: emote
@@ -403,6 +454,14 @@
     - claps her hands together
     - claps his hands together
     - claps its hands together
+    # Corvax-Localization-Start
+    - хлопнул
+    - хлопнула
+    - делает хлопок
+    - делает одиночный хлопок
+    - хлопнул в ладоши
+    - хлопнула в ладоши
+    # Corvax-Localization-End
 
 - type: emote
   id: Snap
@@ -509,6 +568,14 @@
    - gasp
    - gasps
    - gasped
+   # Corvax-Localization-Start
+   - задыхается
+   - не может вдохнуть
+   - ахает
+   - охает
+   - хватает ртом воздух
+   - вдыхает
+   # Corvax-Localization-End
 
 - type: emote
   id: DefaultDeathgasp
@@ -520,6 +587,12 @@
   chatMessages: ["chat-emote-msg-deathgasp"]
   chatTriggers:
   - deathgasp
+  # Corvax-Localization-Start
+  - издаёт предсмертный хрип
+  - хрипит
+  - умирает
+  - умер
+  # Corvax-Localization-End
 
 - type: emote
   id: MonkeyDeathgasp
@@ -591,7 +664,47 @@
     - chirping
     # Corvax-Localization-Start
     - чирикает
+    - чирикнул
+    - чирикнула
     # Corvax-Localization-End
+
+- type: emote
+  id: Flap
+  name: chat-emote-name-flap
+  category: Hands # Not really "hands", but how far it to vocal? (moth mimes want to flap too!)
+  available: false
+  icon: Interface/Emotes/flap.png
+  whitelist:
+    components:
+    - Hands
+  blacklist:
+    tags:
+    - SiliconEmotes
+  chatMessages: ["chat-emote-msg-flap"]
+  chatTriggers:
+   - flap
+   - flaps
+   - flapped
+   - flapping
+   - flutter
+   - flutters
+   - fluttering
+   - fluttered
+   - flap wings
+   - flaps wings
+   - flutter wings
+   - flutters wings
+   - flaps his wings
+   - flaps her wings
+   - flaps their wings
+   - flaps its wings
+   - flutters his wings
+   - flutters her wings
+   - flutters their wings
+   - flutters its wings
+   # Corvax-Localization-Start
+   - махает крыльями
+   # Corvax-Localization-End
 
 # Machine Emotes
 - type: emote

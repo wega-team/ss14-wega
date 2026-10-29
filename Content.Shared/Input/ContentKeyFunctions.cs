@@ -27,8 +27,8 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction EscapeContext = "EscapeContext";
         public static readonly BoundKeyFunction OpenCharacterMenu = "OpenCharacterMenu";
         public static readonly BoundKeyFunction OpenEmotesMenu = "OpenEmotesMenu";
-        public static readonly BoundKeyFunction Strangle = "Strangle"; /// Corvax-Wega
-        public static readonly BoundKeyFunction OfferItem = "OfferItem"; /// Corvax-Wega-Offer
+        public static readonly BoundKeyFunction Strangle = "Strangle"; // Corvax-Wega
+        public static readonly BoundKeyFunction OfferItem = "OfferItem"; // Corvax-Wega-Offer
         public static readonly BoundKeyFunction OpenCraftingMenu = "OpenCraftingMenu";
         public static readonly BoundKeyFunction OpenGuidebook = "OpenGuidebook";
         public static readonly BoundKeyFunction OpenInventoryMenu = "OpenInventoryMenu";
@@ -49,7 +49,8 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction TryPullObject = "TryPullObject";
         public static readonly BoundKeyFunction MovePulledObject = "MovePulledObject";
         public static readonly BoundKeyFunction ReleasePulledObject = "ReleasePulledObject";
-        public static readonly BoundKeyFunction MouseMiddle = "MouseMiddle";
+        public static readonly BoundKeyFunction MouseWheelUp = "MouseWheelUp"; // Corvax-Wega-Add
+        public static readonly BoundKeyFunction MouseWheelDown = "MouseWheelDown"; // Corvax-Wega-Add
         public static readonly BoundKeyFunction RotateObjectClockwise = "RotateObjectClockwise";
         public static readonly BoundKeyFunction RotateObjectCounterclockwise = "RotateObjectCounterclockwise";
         public static readonly BoundKeyFunction FlipObject = "FlipObject";
@@ -66,6 +67,16 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction ZoomOut = "ZoomOut";
         public static readonly BoundKeyFunction ZoomIn = "ZoomIn";
         public static readonly BoundKeyFunction ResetZoom = "ResetZoom";
+
+        // Corvax-Wega-Posing-start
+        public static readonly BoundKeyFunction TogglePosing = "TogglePosing";
+        public static readonly BoundKeyFunction PosingOffsetLeft = "PosingOffsetLeft";
+        public static readonly BoundKeyFunction PosingOffsetRight = "PosingOffsetRight";
+        public static readonly BoundKeyFunction PosingOffsetUp = "PosingOffsetUp";
+        public static readonly BoundKeyFunction PosingOffsetDown = "PosingOffsetDown";
+        public static readonly BoundKeyFunction PosingRotateNegative = "PosingRotateNegative";
+        public static readonly BoundKeyFunction PosingRotatePositive = "PosingRotatePositive";
+        // Corvax-Wega-Posing-end
 
         public static readonly BoundKeyFunction ArcadeUp = "ArcadeUp";
         public static readonly BoundKeyFunction ArcadeDown = "ArcadeDown";
@@ -125,7 +136,8 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction EditorCopyObject = "EditorCopyObject";
         public static readonly BoundKeyFunction EditorFlipObject = "EditorFlipObject";
         public static readonly BoundKeyFunction InspectEntity = "InspectEntity";
-
+        public static readonly BoundKeyFunction InspectServerComponent = "InspectServerComponent";
+        public static readonly BoundKeyFunction InspectClientComponent = "InspectClientComponent";
         public static readonly BoundKeyFunction MappingUnselect = "MappingUnselect";
         public static readonly BoundKeyFunction SaveMap = "SaveMap";
         public static readonly BoundKeyFunction MappingEnablePick = "MappingEnablePick";

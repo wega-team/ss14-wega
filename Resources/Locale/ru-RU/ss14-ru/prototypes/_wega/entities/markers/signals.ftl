@@ -1,0 +1,12 @@
+ent-MarkerHierophantSignal = сигнал иерофанта
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд
+ent-MarkerWinterReserveSignal = сигнал зимнего заповедника
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд
+ent-MarkerBiosphereSignal = сигнал биосферы
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд
+ent-MarkerBeachSignal = сигнал пляжа
+    .desc = { ent-MarkerBase.desc }
+    .suffix = Лаваленд

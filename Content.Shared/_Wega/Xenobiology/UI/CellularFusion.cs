@@ -9,11 +9,11 @@ public enum CellularFusionUiKey
 }
 
 [Serializable, NetSerializable]
-public sealed class CellularFusionUiSyncMessage : BoundUserInterfaceMessage;
+public sealed partial class CellularFusionUiSyncMessage : BoundUserInterfaceMessage;
 
 
 [Serializable, NetSerializable]
-public sealed class CellularFusionUiSpliceMessage : BoundUserInterfaceMessage
+public sealed partial class CellularFusionUiSpliceMessage : BoundUserInterfaceMessage
 {
     public readonly Cell CellA;
     public readonly Cell CellB;
@@ -26,7 +26,7 @@ public sealed class CellularFusionUiSpliceMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class CellularFusionUiState : BoundUserInterfaceState
+public sealed partial class CellularFusionUiState : BoundUserInterfaceState
 {
     public readonly IReadOnlyList<Cell> RemoteCells;
     public readonly int Material;

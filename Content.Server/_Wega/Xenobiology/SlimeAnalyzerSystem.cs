@@ -11,23 +11,23 @@ using Content.Shared.Xenobiology.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.DoAfter;
 using Content.Shared.Popups;
-using Content.Server.PowerCell;
 using Robust.Shared.Timing;
 using Content.Shared.Interaction.Events;
 using Robust.Shared.Containers;
+using Content.Shared.PowerCell;
 
 namespace Content.Server.Medical;
 
-public sealed class SlimeAnalyzerSystem : EntitySystem
+public sealed partial class SlimeAnalyzerSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
-    [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly PowerCellSystem _cell = default!;
+    [Dependency] private SharedAudioSystem _audio = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private ItemToggleSystem _toggle = default!;
+    [Dependency] private UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private SharedTransformSystem _transform = default!;
+    [Dependency] private SharedPopupSystem _popup = default!;
+    [Dependency] private PowerCellSystem _cell = default!;
 
     public override void Initialize()
     {
@@ -69,7 +69,7 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 
     private void OnAfterInteract(Entity<SlimeAnalyzerComponent> ent, ref AfterInteractEvent args)
     {
-        if (args.Target == null || !args.CanReach || !HasComp<SlimeHungerComponent>(args.Target) || !_cell.HasDrawCharge(ent, user: args.User))
+        if (args.Target == null || !args.CanReach || !HasComp<SlimeHungerComponent>(args.Target) || !_cell.HasDrawCharge(ent.Owner, user: args.User))
             return;
 
         _audio.PlayPvs(ent.Comp.ScanningBeginSound, ent);
@@ -89,7 +89,7 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 
     private void OnDoAfter(Entity<SlimeAnalyzerComponent> ent, ref SlimeAnalyzerDoAfterEvent args)
     {
-        if (args.Handled || args.Cancelled || args.Target == null || !_cell.HasDrawCharge(ent, user: args.User))
+        if (args.Handled || args.Cancelled || args.Target == null || !_cell.HasDrawCharge(ent.Owner, user: args.User))
             return;
 
         _audio.PlayPvs(ent.Comp.ScanningEndSound, ent);
@@ -101,13 +101,13 @@ public sealed class SlimeAnalyzerSystem : EntitySystem
 
     private void OnInsertedIntoContainer(Entity<SlimeAnalyzerComponent> analyzer, ref EntGotInsertedIntoContainerMessage args)
     {
-        if (analyzer.Comp.ScannedEntity is { } target)
+        if (analyzer.Comp.ScannedEntity is { } _)
             _toggle.TryDeactivate(analyzer.Owner);
     }
 
     private void OnDropped(Entity<SlimeAnalyzerComponent> analyzer, ref DroppedEvent args)
     {
-        if (analyzer.Comp.ScannedEntity is { } target)
+        if (analyzer.Comp.ScannedEntity is { } _)
             _toggle.TryDeactivate(analyzer.Owner);
     }
 

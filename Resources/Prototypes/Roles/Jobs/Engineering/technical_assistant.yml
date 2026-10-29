@@ -13,7 +13,7 @@
   startingGear: TechnicalAssistantGear
   icon: "JobIconTechnicalAssistant"
   supervisors: job-supervisors-engineering
-  canBeAntag: false
+  guides: [ Engineering ] # TODO: should have a more specific guidebook page instead of using the department itself
   access:
   - Maintenance
   - Engineering
@@ -22,7 +22,7 @@
 - type: startingGear
   id: TechnicalAssistantGear
   equipment:
-    shoes: ClothingShoesBootsWork
+    # shoes: ClothingShoesBootsWork # Corvax-Wega-Edit
     id: TechnicalAssistantPDA
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering

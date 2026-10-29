@@ -6,8 +6,8 @@ namespace Content.Shared.Genetics.Systems;
 
 public abstract partial class SharedDnaModifierSystem : EntitySystem
 {
-    [Dependency] private readonly MetaDataSystem _metaData = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private MetaDataSystem _metaData = default!;
+    [Dependency] private IRobustRandom _random = default!;
 
     public void TrySaveInDisk(EntityUid disk, EnzymeInfo enzyme)
     {

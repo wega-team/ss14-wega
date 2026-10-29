@@ -1,6 +1,8 @@
+using Content.Shared.Tools; // Corvax-Wega-Lavaland
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes; // Corvax-Wega-Lavaland
 
 namespace Content.Shared.Weapons.Ranged.Upgrades.Components;
 
@@ -33,4 +35,9 @@ public sealed partial class UpgradeableGunComponent : Component
     /// </summary>
     [DataField]
     public int MaxUpgradeCount = 2;
+
+    // Corvax-Wega-Lavaland-start
+    [DataField]
+    public ProtoId<ToolQualityPrototype> Tool = "Screwing";
+    // Corvax-Wega-Lavaland-end
 }

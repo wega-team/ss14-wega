@@ -24,9 +24,11 @@
     - WhitelistChameleon
     - WhitelistChameleonIdCard
   - type: StealTarget
-    stealGroup: IDCard
+    stealGroup:
+    - IDCard
   - type: EdibleMatter # Corvax-Wega-Add
     canBeEaten: false # Corvax-Wega-Add
+  - type: PointsCard # Corvax-Wega-Lavaland
 
 #IDs with layers
 
@@ -39,7 +41,8 @@
     layers:
     - state: default
     - sprite: &icon-rsi Interface/Misc/job_icons.rsi
-      offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
+      # offset: &icon-offset -0.09375, 0.0625 #3 pixels left, 2 pixels up
+      offset: &icon-offset -0.18750, 0.03125  # Corvax-ID-sprite 6 pixels left, 1 pixels up
       state: Passenger
   - type: PresetIdCard
     job: Passenger
@@ -72,7 +75,8 @@
     - WhitelistChameleonIdCard
     - HighRiskItem
   - type: StealTarget
-    stealGroup: CaptainIDCard
+    stealGroup:
+    - CaptainIDCard
 
 - type: entity
   parent: IDCardStandard
@@ -678,8 +682,8 @@
       state: Bartender
   - type: PresetIdCard
     job: Bartender
-    name: Pun Pun
-  - type: Tag #  Ignore Chameleon tags
+    name: id-card-preset-pun
+  - type: Tag # Ignore Chameleon tags
     tags:
     - DoorBumpOpener
 
@@ -788,8 +792,6 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Boxer
-  - type: PresetIdCard
-    job: Boxer
 
 - type: entity
   parent: IDCardStandard
@@ -806,8 +808,24 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Zookeeper
+
+- type: entity
+  parent: IDCardStandard
+  id: TramDriverIDCard
+  name: tram driver ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: "#ffc500"
+    - state: stripe_bottom
+      color: "#454a50"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: TramDriver
   - type: PresetIdCard
-    job: Zookeeper
+    job: TramDriver
 
 #Supply
 
@@ -828,6 +846,22 @@
       state: CargoTechnician
   - type: PresetIdCard
     job: CargoTechnician
+
+- type: entity
+  parent: CargoIDCard
+  id: SeniorCourierIDCard
+  name: senior courier ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+    - state: stripe_top
+      color: *color-supply-top
+    - state: stripe_bottom
+      color: *color-supply-bottom
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: SeniorCourier
 
 - type: entity
   parent: IDCardStandard
@@ -927,24 +961,41 @@
 #Antags
 
 - type: entity
-  name: passenger ID card
   parent: [IDCardStandard, BaseChameleon]
   id: AgentIDCard
+  name: passenger ID card
   suffix: Agent
   components:
-  - type: PresetIdCard
-    job: Passenger
-  - type: Access
-    tags:
-    - Maintenance
-    - SyndicateAgent
   - type: Sprite
     layers:
     - state: default
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Passenger
+  - type: Access
+    tags:
+    - Maintenance
+    - SyndicateAgent
+  - type: AccessStealer
   - type: AgentIDCard
+    iconGroups:
+    - CommandIconGroup
+    - SecurityIconGroup
+    - CargoIconGroup
+    - EngineeringIconGroup
+    - MedicalIconGroup
+    - ScienceIconGroup
+    - ServiceIconGroup
+    - TheatreIconGroup
+    - CivilianIconGroup
+    - SiliconIconGroup
+    - CentCommIconGroup
+    - TaskForceIconGroup
+    - AntagonistIconGroup
+    - MiscIconGroup
+    - BlankIconGroup
+  - type: IdCard
+    jobIcon: JobIconPassenger
   - type: UIRequiresLock
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
@@ -964,7 +1015,6 @@
         type: ChameleonBoundUserInterface
 
 - type: entity
-  name: passenger ID card
   parent: AgentIDCard
   id: NukieAgentIDCard
   suffix: Nukie
@@ -976,7 +1026,7 @@
     - NuclearOperative
 
 - type: entity
-  parent: [ IDCardStandard, BaseSyndicateContraband ]
+  parent: IDCardStandard # Corvax-Contraband
   id: SyndicateIDCard
   name: syndicate ID card
   components:
@@ -990,12 +1040,54 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Syndicate
+  - type: IdCard
+    jobIcon: JobIconSyndicate
   - type: Item
     heldPrefix: black
   - type: Access
     tags:
     - NuclearOperative
     - SyndicateAgent
+
+- type: entity
+  parent: SyndicateIDCard
+  id: SyndicateIDCardAdaptive
+  name: syndicate ID card
+  suffix: Adaptive
+  components:
+  - type: AgentIDCard
+    iconGroups:
+    - CommandIconGroup
+    - SecurityIconGroup
+    - CargoIconGroup
+    - EngineeringIconGroup
+    - MedicalIconGroup
+    - ScienceIconGroup
+    - ServiceIconGroup
+    - TheatreIconGroup
+    - CivilianIconGroup
+    - SiliconIconGroup
+    - CentCommIconGroup
+    - TaskForceIconGroup
+    - AntagonistIconGroup
+    - MiscIconGroup
+    - BlankIconGroup
+  - type: UIRequiresLock
+  - type: ActivatableUI
+    key: enum.AgentIDCardUiKey.Key
+    verbText: agent-id-open-ui-verb
+  - type: UserInterface
+    interfaces:
+      enum.AgentIDCardUiKey.Key:
+        type: AgentIDCardBoundUserInterface
+
+- type: entity # Used for reinforcements, means that someone isn't immediately outed because they forget to change their ID on spawning
+  parent: SyndicateIDCardAdaptive
+  id: SyndicateIDCardAdaptivePassenger
+  suffix: Adaptive, Passenger Icon
+  components:
+  - type: IdCard
+    jobIcon: JobIconPassenger
 
 - type: entity
   parent: [ SyndicateIDCard, BaseSyndicateContraband ]
@@ -1012,7 +1104,10 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SyndicateOperative
-  - type: AgentIDCard
+  - type: AccessStealer
+  - type: IdCard
+    jobTitle: job-name-syndicate-operative
+    jobIcon: JobIconSyndicateOperative
 
 - type: entity
   parent: [ SyndiOperativeIDCard, BaseSyndicateContraband ]
@@ -1029,6 +1124,9 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SyndicateCorpsman
+  - type: IdCard
+    jobTitle: job-name-syndicate-corpsman
+    jobIcon: JobIconSyndicateCorpsman
 
 - type: entity
   parent: [ SyndiOperativeIDCard, BaseSyndicateContraband ]
@@ -1045,6 +1143,35 @@
     - sprite: *icon-rsi
       offset: *icon-offset
       state: SyndicateCommander
+  - type: IdCard
+    jobTitle: job-name-syndicate-commander
+    jobIcon: JobIconSyndicateCommander
+
+- type: entity
+  parent: [ IDCardStandard, BaseHighlyIllegalContraband ]
+  id: NinjaIDCard
+  name: ninja ID card
+  suffix: Ninja
+  components:
+  - type: Sprite
+    layers:
+    - state: ninja
+    - state: stripe_top
+      color: "#38D848"
+    - state: stripe_bottom
+      color: "#309000"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Ninja
+  - type: Item
+    heldPrefix: green
+  - type: AccessStealer
+  - type: IdCard
+    jobTitle: job-name-ninja
+    jobIcon: JobIconNinja
+  - type: Access
+    tags:
+    - Maintenance
 
 - type: entity
   parent: [ IDCardStandard, BaseMajorContraband ]
@@ -1054,15 +1181,29 @@
   - type: Sprite
     layers:
     - state: pirate
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Pirate
   - type: Item
     heldPrefix: orange #this is close enough to the weird puce color pirate IDs have going on
-  - type: Access
-    tags:
-    - NuclearOperative
-    - SyndicateAgent
+  - type: IdCard
+    jobTitle: job-name-pirate
+    jobIcon: JobIconPirate
 
 - type: entity
   parent: IDCardStandard
+  id: XenoborgIDCard
+  name: xenoborg ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: default
+  - type: Access
+    tags:
+    - Xenoborg
+
+- type: entity
+  parent: [ IDCardStandard, BaseMagicalContraband ]
   id: WizardIDCard
   name: wizard ID card
   components:
@@ -1079,6 +1220,9 @@
     - Wizard
     - External
     - Maintenance
+  - type: IdCard
+    jobTitle: job-name-wizard
+    jobIcon: JobIconWizard
 
 #ERT/Centcomm
 
@@ -1091,9 +1235,11 @@
     layers:
     - state: centcom
     - state: stripe_top
-      color: &color-centcomm-top "#134975"
+      # &color-centcomm-top "#134975"
+      color: &color-centcomm-top "#ffe78d" # Corvax-ID-sprite
     - state: stripe_bottom
-      color: &color-centcomm-bottom "#0d304d"
+      # color: &color-centcomm-bottom "#0d304d"
+      color: &color-centcomm-bottom "#ffd700" # Corvax-ID-sprite
     - sprite: *icon-rsi
       offset: *icon-offset
       state: Nanotrasen
@@ -1109,7 +1255,8 @@
   components:
   - type: Sprite
     layers:
-    - state: gold
+    # - state: gold
+    - state: centcom # Corvax-ID-sprite
     - state: stripe_top
       color: *color-centcomm-top
     - state: stripe_bottom
@@ -1118,7 +1265,8 @@
       offset: *icon-offset
       state: ERTLeader
   - type: Item
-    heldPrefix: gold
+    # heldPrefix: gold
+    heldPrefix: blue # Corvax-ID-sprite
   - type: PresetIdCard
     job: ERTLeader
 
@@ -1250,9 +1398,11 @@
     layers:
     - state: centcom
     - state: stripe_top
-      color: *color-centcomm-top
+      # color: *color-centcomm-top
+      color: *color-security-top # Corvax-ID-sprite
     - state: stripe_bottom
-      color: *color-centcomm-bottom
+      # color: *color-centcomm-bottom
+      color: *color-security-bottom # Corvax-ID-sprite
     - sprite: *icon-rsi
       offset: *icon-offset
       state: CBURN
@@ -1292,13 +1442,32 @@
     - SyndicateAgent
     - Wizard
     - Xenoborg
+    - BlueShieldOfficer # Corwax-Wega-BSO-Access
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
+  - type: AccessStealer
   - type: AgentIDCard
+    iconGroups:
+    - CommandIconGroup
+    - SecurityIconGroup
+    - CargoIconGroup
+    - EngineeringIconGroup
+    - MedicalIconGroup
+    - ScienceIconGroup
+    - ServiceIconGroup
+    - TheatreIconGroup
+    - CivilianIconGroup
+    - SiliconIconGroup
+    - CentCommIconGroup
+    - TaskForceIconGroup
+    - AntagonistIconGroup
+    - MiscIconGroup
+    - BlankIconGroup
+    - AdminIconGroup
   - type: ActivatableUI
     key: enum.AgentIDCardUiKey.Key
-    inHandsOnly: true
+    verbText: agent-id-open-ui-verb
   - type: UserInterface
     interfaces:
       enum.AgentIDCardUiKey.Key:

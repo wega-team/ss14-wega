@@ -1,0 +1,61 @@
+- type: entity
+  id: MobCarpRainbowDragon
+  suffix: DragonBrood
+  parent: [MobCarpRainbow, MobDragonBrood]
+  components:
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-information-sentient-rainbowcarp-name
+      description: ghost-role-information-sentient-carp-description
+      rules: ghost-role-information-space-dragon-summoned-carp-rules
+      mindRoles:
+      - MindRoleGhostRoleTeamAntagonistFlock
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 8
+          Slash: 12
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        80: Dead
+    - type: LeechMeleeWeapon
+      heal:
+        types:
+          Heat: -20
+          Blunt: -20
+          Slash: -20
+          Piercing: -20
+
+- type: entity
+  id: MobCarpHoloDragon
+  suffix: DragonBrood
+  parent: [MobCarpHolo, MobDragonBrood]
+  components:
+    - type: GhostRole
+      allowMovement: true
+      allowSpeech: true
+      makeSentient: true
+      name: ghost-role-information-sentient-golocarp-name
+      description: ghost-role-information-sentient-carp-description
+      rules: ghost-role-information-space-dragon-summoned-carp-rules
+      mindRoles:
+      - MindRoleGhostRoleTeamAntagonistFlock
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        60: Dead
+    - type: LeechMeleeWeapon
+      heal:
+        types:
+          Heat: -5
+          Blunt: -5
+          Slash: -5
+          Piercing: -5
+    - type: MeleeWeapon
+      damage:
+        types:
+          Blunt: 5
+          Slash: 10

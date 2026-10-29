@@ -1,0 +1,34 @@
+﻿- type: htnCompound
+  id: WatchersEscapeCompound
+  branches:
+    - preconditions:
+        - !type:BuckledPrecondition
+          isBuckled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnbuckleOperator
+            shutdownState: TaskFinished
+
+    - preconditions:
+        - !type:PulledPrecondition
+          isPulled: true
+      tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:UnPullOperator
+            shutdownState: TaskFinished
+
+- type: htnCompound
+  id: WatchersBehaviorCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: WatchersEscapeCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: InnateRangedCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound

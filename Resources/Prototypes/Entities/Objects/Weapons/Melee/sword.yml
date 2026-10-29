@@ -6,9 +6,9 @@
   id: BaseSword
   abstract: true
   components:
-  - type: Sharp
   - type: Execution
     doAfterDuration: 4.0
+    canGunExecute: false # Corvax-Wega-Suicide
   - type: MeleeWeapon
     wideAnimationRotation: -135
   - type: Sprite
@@ -29,9 +29,6 @@
   id: Cutlass
   description: A wickedly curved blade, often seen in the hands of space pirates.
   components:
-  - type: Tag
-    tags:
-    - Machete
   - type: Sprite
     sprite: Objects/Weapons/Melee/cutlass.rsi
   - type: MeleeWeapon
@@ -54,9 +51,6 @@
   id: Machete
   description: A large, vicious looking blade.
   components:
-  - type: Tag
-    tags:
-    - Machete
   - type: Sprite
     sprite: Objects/Weapons/Melee/machete.rsi
   - type: MeleeWeapon
@@ -86,7 +80,7 @@
     attackRate: 1.5
     damage:
       types:
-        Slash: 17 #cmon, it has to be at least BETTER than the rest.
+        Slash: 18 # Corvax-Wega-Change #cmon, it has to be at least BETTER than the rest.
     soundHit:
         path: /Audio/Weapons/bladeslice.ogg
   - type: Reflect
@@ -108,7 +102,12 @@
   - type: PirateAccent
     # not putting a BlockMovement component here cause that's funny.
   - type: StealTarget
-    stealGroup: CaptainSword
+    stealGroup:
+    - CaptainSword
+  # Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.5
+  # Corvax-Wega-End
 
 - type: entity
   name: katana
@@ -116,9 +115,6 @@
   id: Katana
   description: Ancient craftwork made with not so ancient plasteel.
   components:
-  - type: Tag
-    tags:
-    - Katana
   - type: Sprite
     sprite: Objects/Weapons/Melee/katana.rsi
   - type: MeleeWeapon
@@ -142,12 +138,10 @@
 
 - type: entity
   name: energy katana
-  parent: Katana
+  parent: [BaseCorvaxContraband435, Katana] # Corvax-Contraband
   id: EnergyKatana
   description: A katana infused with strong energy.
   components:
-  - type: Contraband
-    severity: HighlyIllegal
   - type: Sprite
     sprite: Objects/Weapons/Melee/energykatana.rsi
   - type: MeleeWeapon
@@ -161,12 +155,11 @@
       sprite: Objects/Weapons/Melee/energykatana_storage_64x.rsi #Done in 64x64 because it looks way too puny in 32x32
     shape:
     - 0,0,0,3
-  - type: EnergyKatana
-  - type: DashAbility
-  - type: LimitedCharges
-    maxCharges: 3
-  - type: AutoRecharge
-    rechargeDuration: 20
+  - type: BindItemOnEquip
+  - type: ActionGrant
+    actions:
+    - ActionEnergyKatanaDash
+  - type: ItemActionGrant
   - type: Clothing
     sprite: Objects/Weapons/Melee/energykatana.rsi
     slots:
@@ -175,11 +168,15 @@
   - type: Reflect
     slotFlags:
     - NONE
+  # Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.3
+  # Corvax-Wega-End
 
 #Greatswords
 - type: entity
   name: claymore
-  parent: BaseSword
+  parent: [ BaseSword, BaseMajorContraband ]
   id: Claymore
   description: An ancient war blade.
   components:
@@ -203,13 +200,13 @@
   - type: Reflect
     reflectProb: 0.3
     spread: 90
+  # - type: Clothing
+    # sprite: Objects/Weapons/Melee/claymore.rsi
+    # slots:
+    # - Back
+    # - SuitStorage #Bigger than the other swords, easier to strap to your suit.
+    # - Belt # Corvax-Wega-NullRod Мне похуй
   # Corvax-Wega-NullRod-end
-  - type: Clothing
-    sprite: Objects/Weapons/Melee/claymore.rsi
-    slots:
-    - Back
-    - SuitStorage #Bigger than the other swords, easier to strap to your suit.
-    - Belt # Corvax-Wega-NullRod Мне похуй
   - type: DisarmMalus
 
 #Other/Weird
@@ -225,7 +222,7 @@
       attackRate: 10
       damage:
         types:
-          Structural: 150
+          Structural: 60
           Slash: 20 #Horror
           Blunt: 20
           Heat: 20
@@ -239,6 +236,10 @@
     - type: Item
       size: Ginormous
       sprite: Objects/Weapons/Melee/Throngler-in-hand.rsi
+      shape:
+      - 0,0,3,3
+      - 1,4,2,6
+      storedRotation: -45
     - type: DisarmMalus
     - type: Grammar
       attributes:

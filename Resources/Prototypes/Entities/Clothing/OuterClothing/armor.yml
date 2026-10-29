@@ -5,7 +5,7 @@
 #Basic armor vest for inheritance
 - type: entity
   abstract: true
-  parent: [ClothingOuterBaseMedium, AllowSuitStorageClothing, BaseSecurityContraband]
+  parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing ]
   id: ClothingOuterArmorBase
   name: armor vest
   description: A standard Type I armored vest that provides decent protection against most types of damage.
@@ -29,31 +29,36 @@
     equippedDirtState: equipped-armor
   # Corvax-Wega-Dirtable-end
 
-#Standard armor vest, allowed for security and bartenders
+#Standard armor vest, allowed for security only
 - type: entity
-  parent: [ BaseSecurityBartenderContraband, ClothingOuterArmorBase]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, BaseSecurityContraband, ClothingOuterArmorBase] # Corvax-Contraband
   id: ClothingOuterArmorBasic
   components:
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
-#Alternate / slim basic armor vest
+#Alternate / slim basic armor vest, allowed for security and bartenders
 - type: entity
-  parent: ClothingOuterArmorBasic
+  parent: [ BaseSecurityBartenderContraband, ClothingOuterArmorBasic ]
   id: ClothingOuterArmorBasicSlim
   name: armor vest
   suffix: slim
   description: A slim Type I armored vest that provides decent protection against most types of damage.
   components:
+  # Corvax-Contraband-start
+  - type: Contraband
+    severity: Corvax432
+    allowedDepartments: [Security]
+    allowedJobs: [Bartender]
+  # Corvax-Contraband-end
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
 
 - type: entity
-  parent: ClothingOuterArmorBase
+  parent: ClothingOuterArmorBasic
   id: ClothingOuterArmorBulletproof
   name: bulletproof vest
   description: A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent.
@@ -73,7 +78,7 @@
     damageCoefficient: 0.80
 
 - type: entity
-  parent: ClothingOuterArmorBase
+  parent: ClothingOuterArmorBasic
   id: ClothingOuterArmorReflective
   name: reflective vest
   description: An armored vest with advanced shielding to protect against energy weapons.
@@ -97,7 +102,7 @@
 
 #Detective's vest
 - type: entity
-  parent: [ClothingOuterArmorBase, BaseSecurityContraband]
+  parent: [ClothingOuterArmorBasic, BaseSecurityContraband]
   id: ClothingOuterVestDetective
   name: detective's vest
   description: A hard-boiled private investigator's armored vest.
@@ -108,7 +113,7 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
 
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing ]
   id: ClothingOuterArmorBaseCarapace
   abstract: true
   components:
@@ -120,12 +125,6 @@
         Piercing: 0.6
         Heat: 0.5
         Caustic: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.65
-  - type: ClothingSpeedModifier
-    walkModifier: 1.0
-    sprintModifier: 1.0
-  - type: HeldSpeedModifier
   - type: GroupExamine
   # Corvax-Wega-Dirtable-start
   - type: Dirtable
@@ -139,17 +138,22 @@
   name: captain's carapace
   description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest.
   components:
+  # Corvax-Contraband-start
+  - type: Contraband
+    severity: Corvax432
+    allowedDepartments: [Command]
+    allowedJobs: []
+  # Corvax-Contraband-end
   - type: Sprite
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Armor/captain_carapace.rsi
   - type: Tag
     tags:
-    - CorgiWearable
     - WhitelistChameleon
 
 - type: entity
-  parent: [ClothingOuterArmorBaseCarapace, BaseCentcommContraband]
+  parent: [BaseCorvaxContraband432DepartmentsCentralCommand, ClothingOuterArmorBaseCarapace, BaseCentcommContraband] # Corvax-Contraband
   id: ClothingOuterArmorCentcommCarapace
   name: centcomm carapace
   description: An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility. Issued only to centcomm officials and agents.
@@ -161,7 +165,7 @@
 
 #Web vest
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterArmorBase, ClothingOuterStorageBase, BaseSyndicateContraband] # Corvax-Contraband
   id: ClothingOuterVestWeb
   name: web vest
   description: A synthetic armor vest. This one has added webbing and ballistic plates.
@@ -177,25 +181,22 @@
         Slash: 0.6
         Piercing: 0.3
         Heat: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
+  - type: StaminaResistance # Corvax-Wega-Change
+    damageCoefficient: 0.75
   - type: StaticPrice
     price: 1500
 
-#Elite web vest
+#Energy web vest
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterArmorBase, TemperatureProtection, ClothingOuterStorageBase, BaseSyndicateContraband] # Corvax-Contraband
   id: ClothingOuterVestWebElite
-  name: elite web vest
-  description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
+  name: energy web vest
+  description: A synthetic armor vest. This one has added webbing with heat and radiation resistant fibers, with the trade-off of weaker ballistic protection.
   components:
   - type: Sprite
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
   - type: Clothing
     sprite: Clothing/OuterClothing/Vests/elitevest.rsi
-  - type: TemperatureProtection
-    heatingCoefficient: 0.1
-    coolingCoefficient: 0.1
   - type: Armor
     modifiers:
       coefficients:
@@ -205,16 +206,16 @@
         Heat: 0.3
         Radiation: 0.5
         Caustic: 0.5
-  - type: ExplosionResistance
-    damageCoefficient: 0.5
   - type: FireProtection
     reduction: 0.85
+  - type: StaminaResistance # Corvax-Wega-Change
+    damageCoefficient: 0.6
   - type: StaticPrice
     price: 2500
 
 #Mercenary web vest
 - type: entity
-  parent: [ BaseMajorContraband, ClothingOuterVestWeb] #web vest so it should have some pockets for ammo
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, BaseMajorContraband, ClothingOuterVestWeb] # Corvax-Contraband; web vest so it should have some pockets for ammo
   id: ClothingOuterVestWebMerc
   name: mercenary web vest
   description: A high-quality armored vest made from a hard synthetic material. It's surprisingly flexible and light, despite formidable armor plating.
@@ -230,13 +231,15 @@
         Slash: 0.7
         Piercing: 0.5
         Heat: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
+  # Corvax-Wega-Edit-Nuka-Start
+  - type: StaminaResistance
+    damageCoefficient: 1
+  # Corvax-Wega-Edit-Nuka-End
 
 
 # Armor covering multiple body parts including limbs
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband] # Corvax-Contraband
   id: ClothingOuterArmorRaid
   name: syndicate raid suit
   description: A somewhat flexible and well-armored suit with a powerful shoulder mounted flashlight manufactured in the Gorlex Marauder's iconic blood-red color scheme, it does not protect its wearer from space.
@@ -257,9 +260,8 @@
         Slash: 0.35
         Piercing: 0.35
         Heat: 0.35
+        Radiation: 0.5 # Corvax-Wega-Edit-Nuka
         Caustic: 0.5
-  - type: ExplosionResistance
-    damageCoefficient: 0.35
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.45
   - type: ClothingSpeedModifier
@@ -272,9 +274,6 @@
       outerClothing:
       - state: equipped-OUTERCLOTHING-light
         shader: unshaded
-      outerClothing-vox:
-      - state: equipped-OUTERCLOTHING-light-vox
-        shader: unshaded
   - type: ItemTogglePointLight
   - type: Appearance
   - type: HandheldLight
@@ -286,7 +285,7 @@
     color: "#80ff80"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    lightMask: ConeSingle
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -310,13 +309,12 @@
     maxCharge: 600
     startingCharge: 600
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 2
   - type: Item
     size: Normal
 
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband] # Corvax-Contraband
   id: ClothingOuterArmorRiot
   name: riot suit
   description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
@@ -330,20 +328,23 @@
       coefficients:
         Blunt: 0.4
         Slash: 0.4
-        Piercing: 0.7
+        Piercing: 0.8 # increase to 0.8 Corvax-Wega-Edit
         Heat: 0.9
         Caustic: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.9
   - type: GroupExamine
-  # Corvax-Wega-Dirtable-start
+  # Corvax-Wega-Edit-start
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 1
   - type: Dirtable
     dirtState: armorriot
     equippedDirtState: equipped-armorriot
-  # Corvax-Wega-Dirtable-end
+  # Corvax-Wega-Edit-end
 
 - type: entity
-  parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing] # Corvax-Contraband
   id: ClothingOuterArmorCult
   name: acolyte armor
   description: An evil-looking piece of cult armor, made of bones.
@@ -360,6 +361,10 @@
         Piercing: 0.5
         Heat: 0.5
   - type: GroupExamine
+  # Corvax-Wega-Blood-Cult-Start
+  - type: BloodShieldActivaeble
+  - type: HeldSpeedModifier
+  # Corvax-Wega-Blood-Cult-End
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
@@ -429,7 +434,7 @@
     sprite: Clothing/OuterClothing/Armor/magusred.rsi
 
 - type: entity
-  parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing] # Corvax-Contraband
   id: ClothingOuterArmorChangeling
   name: chitinous armor
   description: Inflates the changeling's body into an all-consuming chitinous mass of armor.
@@ -451,13 +456,13 @@
     sprintModifier: 0.65
   - type: HeldSpeedModifier
   - type: ExplosionResistance
-    damageCoefficient: 0.5
+    damageCoefficient: 0.75
   - type: GroupExamine
   - type: ProtectedFromStepTriggers
     slots: WITHOUT_POCKET
 
 - type: entity
-  parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing] # Corvax-Contraband
   id: ClothingOuterArmorBone
   name: bone armor
   description: Sits on you like a second skin.
@@ -469,15 +474,17 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.8
-        Piercing: 0.4
+        # Corvax-Wega-Lavaland-Edit-start
+        Blunt: 0.3
+        Slash: 0.3
+        Piercing: 0.3
+        # Corvax-Wega-Lavaland-Edit-end
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.9 # Corvax-Wega-Lavaland-Edit
+    sprintModifier: 0.9 # Corvax-Wega-Lavaland-Edit
   - type: HeldSpeedModifier
   - type: ExplosionResistance
-    damageCoefficient: 0.4
+    damageCoefficient: 0.6
   - type: GroupExamine
   - type: Construction
     graph: BoneArmor
@@ -486,7 +493,7 @@
     slots: WITHOUT_POCKET
 
 - type: entity
-  parent: [ ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing ]
+  parent: [BaseCorvaxContraband432DepartmentsSecurity, ClothingOuterBaseLarge, BaseMajorContraband, AllowSuitStorageClothing] # Corvax-Contraband
   id: ClothingOuterArmorPodWars
   name: ironclad II armor
   description: A repurposed suit of ironclad II armor, a relic of the pod wars.

@@ -5,16 +5,16 @@ using Content.Shared.DoAfter;
 using Content.Shared.Genetics;
 using Content.Shared.Interaction;
 using Robust.Server.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Genetics.System;
 
 public sealed partial class DnaModifierSystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private AudioSystem _audio = default!;
+    [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
 
-    [ValidatePrototypeId<DamageTypePrototype>]
-    private const string Damage = "Poison";
+    private static readonly ProtoId<DamageTypePrototype> Damage = "Poison";
 
     private void InitializeInjector()
     {
@@ -24,7 +24,7 @@ public sealed partial class DnaModifierSystem
         SubscribeLocalEvent<DnaModifierCleanRandomizeComponent, ComponentStartup>(OnCleanRandomize);
     }
 
-    public void OnFillingInjector(EntityUid injector, UniqueIdentifiersPrototype? uniqueIdentifiers, List<EnzymesPrototypeInfo>? enzymesPrototypes)
+    public void OnFillingInjector(EntityUid injector, UniqueIdentifiersData? uniqueIdentifiers, List<EnzymesPrototypeInfo>? enzymesPrototypes)
     {
         if (!TryComp(injector, out DnaModifierInjectorComponent? comp))
             return;
