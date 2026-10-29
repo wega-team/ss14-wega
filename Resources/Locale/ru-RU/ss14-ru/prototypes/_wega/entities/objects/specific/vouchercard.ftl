@@ -1,3 +1,5 @@
 ent-BaseVoucherCard = воучер-карта
-ent-HallowenVoucherCard = хеллоуинская воучер-карта
+ent-HallowenVoucherCard = хеллоуинская карта-ваучера
     .desc = Возьмите с театромата свой костюмчик на тыквеный спас.
+ent-CandyBag = мешок конфет
+    .desc = Специальный подарок от ЦК в честь праздника.
