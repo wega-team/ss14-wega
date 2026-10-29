@@ -17,13 +17,13 @@
   parent: RestrictedAntag
   id: Changeling
   prefRoles: [ Changeling ]
-# Corvax-Wega-start
+  # Corvax-MRP-start
   blacklist:
     components:
     - AntagImmune
-    - Android
+    - Android # Corvax-Wega-Android
     - Ipc
-# Corvax-Wega-End
+  # Corvax-MRP-end
   briefing:
     text: changeling-role-greeting
     color: Red

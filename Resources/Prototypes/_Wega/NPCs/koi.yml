@@ -42,9 +42,6 @@
         Base: base
       Dead:
         Base: dead
-  - type: Tag
-    tags:
-    - Carp
   - type: InteractionPopup
     interactSuccessString: petting-success-carp
     interactFailureString: petting-failure-carp

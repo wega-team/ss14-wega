@@ -330,8 +330,9 @@
         variation: 0.250
     activatedDamage:
         types:
-            Slash: 15 # Corvax-Wega-Edit
-            Heat: 15 # Corvax-Wega-Edit
+            Slash: 20 # Corvax-Wega-Edit
+            Heat: 20 # Corvax-Wega-Edit
+            Structural: 25 # Corvax-Wega-Edit
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
@@ -371,6 +372,10 @@
   - type: Reflect
     reflectProb: .75
     spread: 75
+  # Corvax-Wega-Start
+  - type: BonusMeleeDamage
+    heavyDamageMultiplier: 1.25
+  # Corvax-Wega-End
 
 # Item will look weird in handslot. Will need to adjust handstorage visuals in a future PR
 - type: entity
@@ -433,6 +438,12 @@
   id: CyborgEnergySword
   suffix: For Borgs
   description: A very loud & dangerous sword with a beam made of pure, concentrated plasma. Specially designed for syndicate cyborgs.
+  # Corvax-Wega-Start
+  components: # could add energy-draining like the L6C
+  - type: Reflect
+    reflectProb: 0
+    spread: 0
+  # Corvax-Wega-End
 
 - type: entity
   parent: EnergySwordDouble
@@ -442,6 +453,11 @@
   components: # could add energy-draining like the L6C
   - type: Wieldable
     freeHandsRequired: 0 # because borg has no off-hand to wield with.  Without this, it will be unable to activate the esword
+  # Corvax-Wega-Start
+  - type: Reflect
+    reflectProb: 0
+    spread: 0
+  # Corvax-Wega-End
 
 - type: entity
   parent: [ EnergyDaggerLoud, BaseXenoborgContraband ]

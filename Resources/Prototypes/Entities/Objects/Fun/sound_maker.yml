@@ -158,11 +158,6 @@
     node: bananiumHorn
   - type: Tool
     useSound: *SoundBananiumHorn
-  # Corvax-Wega-Add-start
-  - type: Tag
-    tags:
-    - BananiumClakson
-  # Corvax-Wega-Add-end
 
 - type: entity
   parent: BaseItem

@@ -363,8 +363,7 @@
   id: StylishAirlocksGlassOld
   rsiPath: _Wega/Stylish/Old/Doors/Airlocks/Glass/airlock-base.rsi
   entities:
-#  - AirlockGlass
-  - AirlockStandardGlass
+  # - AirlockGlass
   - AirlockServiceGlassLocked
   - AirlockLawyerGlassLocked
   - AirlockTheatreGlassLocked
@@ -373,8 +372,7 @@
   - AirlockBarKitchenGlassLocked
   - AirlockKitchenGlassLocked
   - AirlockJanitorGlassLocked
-#  - AirlockChapelGlassLocked
-  - AirlockChapelStandardGlassLocked
+  # - AirlockChapelGlassLocked
 
 - type: stylishPreset
   parent: BaseStylishAirlockOld

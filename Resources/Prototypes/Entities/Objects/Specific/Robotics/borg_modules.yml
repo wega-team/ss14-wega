@@ -1093,6 +1093,7 @@
     - item: BorgFireExtinguisher
     - item: BorgHandheldGPSBasic
     # Corvax-Wega-Robot-Start
+    - item: HandLabeler
     - hand:
         emptyLabel: borg-slot-table-empty
         emptyRepresentative: BorgIconRollerBed
@@ -1738,6 +1739,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponLightMachineGunL6C
+    - item: CyborgEnergySword # Corvax-Wega-Robot
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot
   # Corvax-Wega-Robot-start
