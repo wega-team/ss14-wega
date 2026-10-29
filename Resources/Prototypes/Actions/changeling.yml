@@ -77,12 +77,12 @@
   - type: TargetAction
   - type: EntityTargetAction
     event: !type:ChangelingDevourActionEvent
-    # Corvax-Wega-Start
+    # Corvax-MRP-start
     blacklist:
       components:
-        - Android
-        - Ipc
-    # Corvax-Wega-End
+      - Android # Corvax-Wega-Android
+      - Ipc
+    # Corvax-MRP-end
 
 - type: entity
   id: ActionChangelingTransform
@@ -198,12 +198,12 @@
     whitelist:
       components:
       - HumanoidProfile
-# Corvax-Wega-Start
+    # Corvax-MRP-start
     blacklist:
       components:
-        - Android
-        - Ipc
-# Corvax-Wega-End
+      - Android # Corvax-Wega-Android
+      - Ipc
+    # Corvax-MRP-end
     event: !type:ChangelingStingDnaEvent
   - type: PopupOnAction
     popupType: Medium
@@ -220,12 +220,12 @@
     whitelist:
       components:
       - Bloodstream
-# Corvax-Wega-Start
+    # Corvax-MRP-start
     blacklist:
       components:
-        - Android
-        - Ipc
-# Corvax-Wega-End
+      - Android # Corvax-Wega-Android
+      - Ipc
+    # Corvax-MRP-end
     event: !type:EntityEffectActionEvent
   - type: ActionRequirements
     failPopup: changeling-not-enough-chemicals
@@ -450,12 +450,12 @@
     - state: take_over_corpse
   - type: EntityTargetAction
     event: !type:ChangelingTakeOverCorpseActionEvent
-    # Corvax-Wega-Start
+    # Corvax-MRP-start
     blacklist:
       components:
-        - Android
-        - Ipc
-    # Corvax-Wega-End
+      - Android # Corvax-Wega-Android
+      - Ipc
+    # Corvax-MRP-end
   - type: TargetAction
 
 - type: entity
@@ -565,10 +565,9 @@
     blacklist:
       components:
       - RandomHumanoidAppearance # Hungry... For... Salvage corpses... grrrr...
-    # Corvax-Wega-Start
-      - Android
-      - Ipc
-    # Corvax-Wega-End
+      - Rotting # The entire point of this ability is to give lings a reason to not rot corpses. We don't wanna make it usable on rotten corpses.
+      - Ipc # Corvax-MRP
+      - Android # Corvax-Wega-Android
     event: !type:EntityEffectActionEvent
   - type: EntityEffectAction
     effects:
