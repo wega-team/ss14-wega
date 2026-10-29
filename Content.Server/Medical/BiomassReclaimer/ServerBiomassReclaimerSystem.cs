@@ -1,4 +1,5 @@
 using Content.Shared.Administration.Logs;
+using Content.Shared.Android; // Corvax-Wega-Android
 using Content.Shared.CCVar;
 using Content.Shared.Database;
 using Content.Shared.Humanoid;
@@ -49,6 +50,11 @@ public sealed partial class ServerBiomassReclaimerSystem : BiomassReclaimerSyste
         var result = base.ValidateInsertion(reclaimer, dragged);
         if (result != BiomassReclaimerInsertResult.Success)
             return result;
+
+        // Corvax-Wega-Android-start
+        if (HasComp<AndroidComponent>(dragged))
+            return BiomassReclaimerInsertResult.InvalidTarget;
+        // Corvax-Wega-Android-end
 
         // Reject souled bodies in easy mode.
         if (!_biomassEasyMode ||
