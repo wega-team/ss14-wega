@@ -7,6 +7,7 @@
   - id: ClothingHeadHatPumpkin
   - id: ClothingUniformJumpsuitLawyerBlack
   - id: ClothingHandsGlovesLatex
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenSkeleton
@@ -16,6 +17,7 @@
   items:
   - id: ClothingHeadHelmetBoneMir
   - id: ClothingOuterArmorBoneMir
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenNinja
@@ -25,6 +27,7 @@
   items:
   - id: ClothingHeadHelmetSpaceNinjaMir
   - id: ClothingOuterSuitSpaceNinjaMir
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenGhost
@@ -33,6 +36,7 @@
   icon: { sprite: Clothing/OuterClothing/Misc/ghostsheet.rsi, state: "icon" }
   items:
   - id: ClothingOuterGhostSheet
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenDemon
@@ -43,6 +47,7 @@
   - id: ClothingHeadHatDemonicWatermelon
   - id: ClothingUniformJumpsuitLawyerRed
   - id: ClothingNeckWingsTail
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenSkub
@@ -53,6 +58,7 @@
   - id: ClothingHeadHatSkub
   - id: ClothingOuterSkub
   - id: Skub
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenBorg
@@ -62,6 +68,7 @@
   items:
   - id: ClothingHeadHatCardborg
   - id: ClothingOuterCardborg
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenWhitch
@@ -72,6 +79,7 @@
   - id: ClothingHeadHatWitch1
   - id: ClothingHeadHatWitch
   - id: ClothingOuterSuitWitchRobes
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenCarp
@@ -82,33 +90,17 @@
   - id: ClothingOuterSuitCarp
   - id: PlushieCarp
     amount: 2
-
-- type: voucherKit
-  id: HallowenWizV
-  name: voucher-hallowen-wizv-name
-  description: voucher-hallowen-wizv-desc
-  icon: { sprite: Clothing/Head/Hats/violetwizard.rsi, state: "icon" }
-  items:
-  - id: ClothingOuterWizardViolet
-  - id: ClothingHeadHatVioletwizard
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenWizB
   name: voucher-hallowen-wizb-name
   description: voucher-hallowen-wizb-desc
-  icon: { sprite: Clothing/Head/Hats/wizardhat.rsi, state: "icon" }
+  icon: { sprite: Clothing/Head/Hats/wizard_fake.rsi, state: "icon" }
   items:
-  - id: ClothingOuterWizard
-  - id: ClothingHeadHatWizard
-
-- type: voucherKit
-  id: HallowenWizR
-  name: voucher-hallowen-wizr-name
-  description: voucher-hallowen-wizr-desc
-  icon: { sprite: Clothing/Head/Hats/redwizard.rsi, state: "icon" }
-  items:
-  - id: ClothingOuterWizardRed
-  - id: ClothingHeadHatRedwizard
+  - id: ClothingOuterWizardFake
+  - id: ClothingHeadHatWizardFake
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenDoc
@@ -120,6 +112,7 @@
   - id: ClothingMaskPlague
   - id: ClothingOuterPlagueSuit
   - id: ClothingShoesBootsJackMir
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenChick
@@ -129,6 +122,7 @@
   items:
   - id: ClothingOuterSuitChicken
   - id: ClothingHeadHatChickenhead
+  - id: CandyBucket
 
 - type: voucherKit
   id: HallowenVamp
@@ -138,3 +132,28 @@
   items:
   - id: ClothingNeckCloakHelloweenVampir
   - id: ClothingUniformJumpsuitLawyerBlack
+  - id: CandyBucket
+
+- type: entity
+  parent: BaseStorageItem
+  id: CandyBag
+  name: "candy bag"
+  description: Grab as much as you can fit in your pockets!
+  components:
+  - type: Item
+    size: Huge
+  - type: Sprite
+    sprite: _Wega/Objects/Misc/soilbag.rsi
+    state: icon
+  - type: Appearance
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,15,9
+    whitelist:
+      tags:
+      - Lollipops # Corvax-Wega-Add
+  - type: StorageFill
+    contents:
+      - id: FoodProduceLollipopMedRandom
+        amount: 80

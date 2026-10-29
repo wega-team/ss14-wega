@@ -1,7 +1,6 @@
 - type: markingsGroup
   parent: None
   id: Returned
-  onlyGroupWhitelisted: true
   limits:
     enum.HumanoidVisualLayers.Hair:
       limit: 1

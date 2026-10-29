@@ -30,6 +30,7 @@
         - Pill
       tags:
         - FoodSnack
+        - Lollipops # Corvax-Wega-Add
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
