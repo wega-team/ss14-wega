@@ -91,6 +91,19 @@
   category: cargoproduct-category-name-fun
   group: market
 
+ # Corvax-Wega-securitydeathimplants
+- type: cargoProduct
+  id: FunSecurityDeathImplants
+  icon:
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
+  product: CrateFunSecurityDeathImplants
+  cost: 1000
+  category: cargoproduct-category-name-fun
+  group: market
+
+ # Corvax-Wega-securitydeathimplants-end
+
 - type: cargoProduct
   id: FunLightImplants
   icon:
