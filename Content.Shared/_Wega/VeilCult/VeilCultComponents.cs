@@ -61,6 +61,8 @@ public sealed partial class InteractionCogInfectedComponent : Component
     public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Wega/Effects/interaction_cog_drain.ogg");
 
     public float NextTimeTick { get; set; } = 5;
+	
+    public float NextSoundTick { get; set; } = 30;
 }
 
 [RegisterComponent]
