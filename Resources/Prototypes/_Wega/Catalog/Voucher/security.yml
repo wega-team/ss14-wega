@@ -105,3 +105,13 @@
   icon: { sprite: _Wega/Objects/Weapons/Melee/batonBS.rsi, state: "stunbaton_off" }
   items:
   - id: StunbatonBlueshield
+
+- type: voucherKit
+  id: BlueShieldkit5
+  name: voucher-security-seraphim-name
+  description: voucher-security-seraphim-desc
+  icon: { sprite: _Wega/Objects/Weapons/Melee/corporate_blade.rsi, state: "icon" }
+  items:
+  - id: CorporateBlade
+  - id: ClothingBeltSheathBlueshield
+  - id: SeraphimAutoImplanter

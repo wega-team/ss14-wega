@@ -1,0 +1,25 @@
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float intensity;
+
+void fragment() {
+    highp vec2 coord = FRAGCOORD.xy * SCREEN_PIXEL_SIZE.xy;
+    highp vec2 px = SCREEN_PIXEL_SIZE.xy * 1.5;
+
+    highp vec4 col = zTextureSpec(SCREEN_TEXTURE, coord);
+
+    // Резкость
+    highp vec4 blur = (
+        zTextureSpec(SCREEN_TEXTURE, coord + vec2(px.x, 0.0)) +
+        zTextureSpec(SCREEN_TEXTURE, coord - vec2(px.x, 0.0)) +
+        zTextureSpec(SCREEN_TEXTURE, coord + vec2(0.0, px.y)) +
+        zTextureSpec(SCREEN_TEXTURE, coord - vec2(0.0, px.y))
+    ) * 0.25;
+    highp vec4 sharp = col + (col - blur) * 1.6 * intensity;
+
+    // Фиолетовый тон
+    highp vec4 purple = vec4(0.62, 0.35, 1.0, 1.0);
+    highp vec4 tinted = sharp * purple;
+    tinted.a = sharp.a;
+
+    COLOR = mix(sharp, tinted, 0.45 * intensity);
+}

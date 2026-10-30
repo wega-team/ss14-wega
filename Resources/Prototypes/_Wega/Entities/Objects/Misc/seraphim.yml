@@ -1,0 +1,51 @@
+- type: entity
+  parent: BaseSubdermalImplant
+  id: SeraphimImplant
+  suffix: "Wega, BSO"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
+    state: icon
+  - type: SubdermalImplant
+    permanent: true
+    implantComponents:
+    - type: SeraphimMarkVisual
+    - type: SeraphimImplant
+
+- type: entity
+  parent: BaseImplantOnlyImplanter
+  id: SeraphimAutoImplanter
+  suffix: "Wega, BSO"
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
+    state: icon
+    layers:
+    - state: icon
+      map: ["icon"]
+    - state: empty
+      visible: false
+      map: ["empty"]
+  - type: Item
+    sprite: _Wega/Objects/Specific/seraphim_implanter.rsi
+    size: Ginormous
+  - type: Implanter
+    implant: SeraphimImplant
+    implantTime: 60
+    whitelist:
+      components:
+      - VisualBody
+  - type: SeraphimImplanter
+  - type: Strap
+    position: Down
+    rotation: -90
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ImplanterVisuals.Full:
+        icon:
+          True: { visible: true }
+          False: { visible: false }
+        empty:
+          True: { visible: false }
+          False: { visible: true }

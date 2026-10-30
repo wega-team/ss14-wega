@@ -1,0 +1,112 @@
+#эффекты имплантера
+- type: entityEffect
+  id: SeraphimImplantTickBleed
+  effects:
+  - !type:Emote
+    emote: Scream
+    showInChat: true
+    force: true
+  - !type:Jitter
+    amplitude: 6
+    frequency: 5
+    time: 10
+  - !type:ModifyBleed
+    amount: 3
+  - !type:PopupMessage
+    messages: [ "seraphim-implanter-bleed" ]
+    type: Pvs
+    visualType: Medium
+
+- type: entityEffect
+  id: SeraphimImplantTickDrugs
+  effects:
+  - !type:Emote
+    emote: Scream
+    showInChat: true
+    force: true
+  - !type:Jitter
+    amplitude: 6
+    frequency: 5
+    time: 10
+  - !type:AddReagentToBloodstream
+    reagent: SpaceDrugs
+    quantity: 3
+  - !type:PopupMessage
+    messages: [ "seraphim-implanter-drugs" ]
+    type: Pvs
+    visualType: Medium
+
+- type: entityEffect
+  id: SeraphimImplantTickPain
+  effects:
+  - !type:Emote
+    emote: Scream
+    showInChat: true
+    force: true
+  - !type:Jitter
+    amplitude: 6
+    frequency: 5
+    time: 10
+  - !type:ModifyBleed
+    amount: 2
+  - !type:PopupMessage
+    messages: [ "seraphim-implanter-pain" ]
+    type: Pvs
+    visualType: Medium
+
+# Завершение имплантации
+- type: entityEffect
+  id: SeraphimImplantFinish
+  effects:
+  - !type:Vomit
+  - !type:Jitter
+    amplitude: 8
+    frequency: 6
+    time: 8
+  - !type:GenericStatusEffect
+    key: Dizzy
+    component: DrunkStatusEffectComponent
+    time: 30
+  - !type:PopupMessage
+    messages: [ "seraphim-implanter-done" ]
+    type: Local
+    visualType: Large
+
+# Старт овердрайва
+- type: entityEffect
+  id: SeraphimOverdriveStart
+  effects:
+  - !type:Emote
+    emote: Scream
+    showInChat: true
+    force: true
+  - !type:Jitter
+    amplitude: 10
+    frequency: 8
+    time: 25
+  - !type:PlaySound
+    sound:
+      path: /Audio/_Wega/Effects/seraphim/seraphim_working.ogg
+  - !type:PopupMessage
+    messages: [ "seraphim-overdrive-start" ]
+    type: Pvs
+    visualType: LargeCaution
+
+# Конец овердрайва
+- type: entityEffect
+  id: SeraphimOverdriveEnd
+  effects:
+  - !type:StaminaDamage
+    damage: 60
+  - !type:Jitter
+    amplitude: 5
+    frequency: 3
+    time: 10
+  - !type:GenericStatusEffect
+    key: Dizzy
+    component: DrunkStatusEffectComponent
+    time: 20
+  - !type:PopupMessage
+    messages: [ "seraphim-overdrive-end" ]
+    type: Local
+    visualType: LargeCaution

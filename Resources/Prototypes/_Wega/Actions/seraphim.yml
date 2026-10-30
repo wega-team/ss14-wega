@@ -1,0 +1,67 @@
+- type: entity
+  parent: BaseAction
+  id: ActionSeraphimKnee
+  name: "[color=cyan]Удар в колено[/color]"
+  description: "Заготовленный удар: следующая атака без оружия надолго замедлит цель."
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 20
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/seraphim.rsi
+    layers:
+    - state: knee
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:SeraphimKneeActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionSeraphimFuckOff
+  name: "[color=cyan]Отъебись![/color]"
+  description: "Заготовленный удар: следующая атака отбросит противника на приличное расстояние."
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 25
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/seraphim.rsi
+    layers:
+    - state: fuckoff
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:SeraphimFuckOffActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionSeraphimConcentrate
+  name: "[color=cyan]Сконцентрироваться[/color]"
+  description: "Ваш корпоративный клинок временно отражает летящие снаряды ценой пацифизма. Требуется клинок в руках."
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 45
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/seraphim.rsi
+    layers:
+    - state: concentrate
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:SeraphimConcentrateActionEvent
+
+- type: entity
+  parent: BaseAction
+  id: ActionSeraphimOverdrive
+  name: "[color=purple]ЗАЖЕЧЬ ПО ПОЛНОЙ!!![/color]"
+  description: "Конвертирует ресурсы вашего организма в невиданную силу. Последствия могут быть фатальными."
+  components:
+  - type: Action
+    itemIconStyle: NoItem
+    useDelay: 90
+  - type: Sprite
+    sprite: _Wega/Interface/Actions/seraphim.rsi
+    layers:
+    - state: overdrive
+      map: ["enum.ActionVisuals.Icon"]
+  - type: InstantAction
+    event: !type:SeraphimOverdriveActionEvent

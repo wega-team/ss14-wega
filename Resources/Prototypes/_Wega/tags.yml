@@ -644,3 +644,7 @@
 
 - type: Tag
   id: XenoborgModuleHeavyBalance
+
+# Seraphim set
+- type: Tag
+  id: CorporateBlade
