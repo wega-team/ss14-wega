@@ -211,6 +211,8 @@
   name: juggernaut
   description: A terrifying, unholy creature, the product of the devil himself!
   components:
+  - type: Damageable
+    damageModifierSet: BloodCultJuggernaut
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -275,7 +277,7 @@
     attackRate: 0.70
     damage:
       types:
-        Blunt: 25
+        Blunt: 15
         Structural: 120
 
 - type: entity
@@ -614,7 +616,7 @@
       state: glow_proteon_cult
       shader: unshaded
   - type: Item
-    size: Normal
+    size: Small
   # - type: Clothing
     # quickEquip: false
     # sprite: _Wega/Mobs/Demons/bloodcultmobs.rsi

@@ -76,6 +76,7 @@
     - ImplantingHeadTransition
     - RemoveMindShieldTransition
     - RemoveFakeMindShieldTransition
+    - RemoveLoyaltyTransition
 
 - type: surgeryPackage
   id: ThroatImplantPackage
@@ -89,6 +90,7 @@
     - AndroidImplantHeadTransition
     - AndroidRemoveMindShieldTransition
     - AndroidRemoveFakeMindShieldTransition
+    - AndroidRemoveLoyaltyTransition
 
 - type: surgeryPackage
   id: IpcHeadImplantPackage
@@ -96,3 +98,4 @@
     - IpcImplantHeadTransition
     - IpcRemoveMindShieldTransition
     - IpcRemoveFakeMindShieldTransition
+    - IpcRemoveLoyaltyTransition

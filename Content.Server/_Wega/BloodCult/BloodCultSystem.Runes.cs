@@ -72,7 +72,6 @@ public sealed partial class BloodCultSystem
 
     private void InitializeRunes()
     {
-        base.Initialize();
 
         SubscribeLocalEvent<BloodDaggerComponent, SelectBloodRuneMessage>(AfterRuneSelect);
         SubscribeLocalEvent<BloodCultistComponent, BloodRuneDoAfterEvent>(DoAfterRuneSelect);
@@ -154,7 +153,7 @@ public sealed partial class BloodCultSystem
 
     private EntityUid SpawnRuneEffect(EntityUid cultist, string runeProto)
     {
-        var rune = Spawn(runeProto + "Effect", Transform(cultist).Coordinates);
+        var rune = SpawnAtPosition(runeProto + "Effect", Transform(cultist).Coordinates);
         _appearance.SetData(rune, RuneColorVisuals.Color, TryFindColor(cultist));
         return rune;
     }
@@ -197,7 +196,7 @@ public sealed partial class BloodCultSystem
 
     private EntityUid SpawnFinalRune(EntityUid cultist, string runeProto)
     {
-        var rune = Spawn(runeProto, Transform(cultist).Coordinates);
+        var rune = SpawnAtPosition(runeProto, Transform(cultist).Coordinates);
         _appearance.SetData(rune, RuneColorVisuals.Color, TryFindColor(cultist));
         return rune;
     }
@@ -422,14 +421,19 @@ public sealed partial class BloodCultSystem
 
     private void HandleSpecialSacrifice(EntityUid target, EntityUid cultist, MapCoordinates coords, BloodRuneComponent runeComp)
     {
-        SendRuneMessageToCultists(coords, 2f, runeComp.RuneType);
-
         var cult = _bloodCult.GetActiveRule();
+
         if (cult == null)
+        {
+            ShowActivationFailed(cultist);
             return;
+        }
+
+        SendRuneMessageToCultists(coords, 2f, runeComp.RuneType);
 
         cult.Offerings++;
         CreateSoulStone(target);
+
         if (HasComp<BloodCultObjectComponent>(target))
         {
             cult.SelectedTargets.Remove(target);
@@ -441,6 +445,9 @@ public sealed partial class BloodCultSystem
 
     private void ConvertToCultist(EntityUid target, EntityUid cultist, MapCoordinates coords, BloodRuneComponent runeComp)
     {
+        if (!_mind.TryGetMind(target, out _, out _))
+            return;
+
         SendRuneMessageToCultists(coords, 2f, runeComp.RuneType);
         _rejuvenate.PerformRejuvenate(target);
         EnsureComp<AutoCultistComponent>(target);
@@ -459,7 +466,7 @@ public sealed partial class BloodCultSystem
 
     private void CreateSoulStone(EntityUid target)
     {
-        var soulStone = Spawn("BloodCultSoulStone", Transform(target).Coordinates);
+        var soulStone = SpawnAtPosition("BloodCultSoulStone", Transform(target).Coordinates);
         if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
             _mind.TransferTo(mindContainer.Mind.Value, soulStone);
     }
@@ -498,9 +505,9 @@ public sealed partial class BloodCultSystem
         var randomRuneEntity = teleportRunes[_random.Next(teleportRunes.Count)];
         var runeCoords = Transform(randomRuneEntity).Coordinates;
 
-        Spawn("BloodCultOutEffect", Transform(cultist).Coordinates);
+        SpawnAtPosition("BloodCultOutEffect", Transform(cultist).Coordinates);
         _transform.SetCoordinates(cultist, runeCoords);
-        Spawn("BloodCultInEffect", runeCoords);
+        SpawnAtPosition("BloodCultInEffect", runeCoords);
         QueueDel(randomRuneEntity);
     }
 
@@ -543,6 +550,27 @@ public sealed partial class BloodCultSystem
 
             if (TryReviveDeadCultist(target, cultist, runeComp))
                 break;
+
+            if (_mobState.IsDead(target) &&
+                HasComp<HumanoidProfileComponent>(target) &&
+                !HasComp<BloodCultistComponent>(target) &&
+                !HasComp<BloodCultConstructComponent>(target) &&
+                !HasComp<NullRodOwnerComponent>(target) &&
+                IsConvertibleTarget(target) &&
+                _mind.TryGetMind(target, out _, out _))
+            {
+                var cult = _bloodCult.GetActiveRule();
+
+                if (cult == null || cult.Offerings < 1)
+                {
+                    ShowActivationFailed(cultist);
+                    break;
+                }
+
+                ConvertToCultist(target, cultist, coords, runeComp);
+                cult.Offerings--;
+                break;
+            }
 
             if (TryCreateGhostRoleForCultist(target, cultist, runeComp))
                 break;
@@ -881,9 +909,9 @@ public sealed partial class BloodCultSystem
         var coords = Transform(rune).Coordinates;
 
         QueueDel(rune);
-        Spawn("BloodCultDistortedEffect", coords);
+        SpawnAtPosition("BloodCultDistortedEffect", coords);
 
-        Spawn(GetGodPrototype(), coords);
+        SpawnAtPosition(GetGodPrototype(), coords);
 
         RaiseLocalEvent(new BloodGodCalledEvent());
         TransformNearbyCultists(coords);
@@ -906,7 +934,7 @@ public sealed partial class BloodCultSystem
 
         foreach (var target in nearbyCultists)
         {
-            var harvester = Spawn("MobConstructHarvester", Transform(target).Coordinates);
+            var harvester = SpawnAtPosition("MobConstructHarvester", Transform(target).Coordinates);
             if (TryComp<MindContainerComponent>(target, out var mindContainer) && mindContainer.Mind != null)
                 _mind.TransferTo(mindContainer.Mind.Value, harvester);
 
@@ -971,9 +999,9 @@ public sealed partial class BloodCultSystem
         if (Transform(target).MapID != Transform(rune).MapID)
             return;
 
-        Spawn("BloodCultOutEffect", Transform(target).Coordinates);
+        SpawnAtPosition("BloodCultOutEffect", Transform(target).Coordinates);
         _transform.SetCoordinates(target, Transform(rune).Coordinates);
-        Spawn("BloodCultInEffect", Transform(rune).Coordinates);
+        SpawnAtPosition("BloodCultInEffect", Transform(rune).Coordinates);
 
         QueueDel(rune);
     }
@@ -991,17 +1019,24 @@ public sealed partial class BloodCultSystem
 
     private bool CheckRuneActivate(MapCoordinates coords, int needCount)
     {
-        var constructsCount = _entityLookup.GetEntitiesInRange<BloodCultConstructComponent>(coords, 2f).Count();
+        var constructsCount = _entityLookup.GetEntitiesInRange<BloodCultConstructComponent>(coords, 2f)
+            .Count(construct => MetaData(construct.Owner).EntityPrototype?.ID == "MobConstructIdol");
+
         var aliveCultistsCount = _entityLookup.GetEntitiesInRange<BloodCultistComponent>(coords, 2f)
             .Count(cultist => !_mobState.IsDead(cultist));
+
         return aliveCultistsCount + constructsCount >= needCount;
     }
 
     private bool CheckRitual(MapCoordinates coords, int needCount)
     {
+        var constructsCount = _entityLookup.GetEntitiesInRange<BloodCultConstructComponent>(coords, 6f)
+            .Count(construct => !_mobState.IsDead(construct.Owner));
+
         var aliveCultistsCount = _entityLookup.GetEntitiesInRange<BloodCultistComponent>(coords, 6f)
             .Count(cultist => !_mobState.IsDead(cultist));
-        return aliveCultistsCount >= needCount;
+
+        return aliveCultistsCount + constructsCount >= needCount;
     }
 
     private void SendCultistMessage(EntityUid cultist, BloodCultRune type)
