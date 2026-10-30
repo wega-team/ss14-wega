@@ -1,6 +1,6 @@
 using System.Numerics;
+using Content.Shared._Wega.Interaction.Components;
 using Content.Shared._Wega.Stunnable.Components;
-using Content.Shared._Wega.Vampire.Components;
 using Content.Shared.Body;
 using Content.Shared.CombatMode;
 using Content.Shared.Damage.Components;
@@ -68,14 +68,14 @@ public sealed partial class VampireSystem
             return;
         }
 
-        EnsureComp<VampireBloodSwellActiveComponent>(ent.Owner);
+        EnsureComp<BlockCombatModeInteractComponent>(ent.Owner);
 
         Timer.Spawn(args.Time, () =>
         {
             if (Deleted(ent.Owner))
                 return;
 
-            RemComp<VampireBloodSwellActiveComponent>(ent.Owner);
+            RemComp<BlockCombatModeInteractComponent>(ent.Owner);
         });
 
         ReduceBloodSwellStuns(ent.Owner, args.Time);

@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using Content.Shared._Wega.Vampire.Components; // Corvax-Wega-Add
+using Content.Shared._Wega.Interaction.Components; // Corvax-Wega-Add
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -401,7 +401,7 @@ namespace Content.Shared.Interaction
                 return false;
 
             //Corvax-Wega-Start
-            if (HasComp<VampireBloodSwellActiveComponent>(user))
+            if (HasComp<BlockCombatModeInteractComponent>(user))
                 return false;
             //Corvax-Wega-End
 
