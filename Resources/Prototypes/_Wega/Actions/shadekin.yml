@@ -1,0 +1,44 @@
+- type: entity
+  parent: BaseAction
+  id: ActionCreatePortalShadekin
+  name: Create Portal
+  description: Opens a portal linked to your shadow realm.
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: Interface/Actions/jump.rsi
+    layers:
+    - state: icon
+  - type: InstantAction
+    event: !type:ActionTeleportShadekin
+
+- type: entity
+  parent: BaseAction
+  id: ActionCreateSecondPortalShadekin
+  name: Create Second Portal
+  description: Opens a second portal linked to your first.
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: Interface/Actions/jump.rsi
+    layers:
+    - state: icon
+  - type: InstantAction
+    event: !type:ActionTeleportShadekin
+
+- type: entity
+  parent: BaseAction
+  id: ActionClosePortalsShadekin
+  name: Close Portals
+  description: Closes both of your portals.
+  components:
+  - type: Action
+    useDelay: 1
+  - type: Sprite
+    sprite: Interface/Actions/jump.rsi
+    layers:
+    - state: icon
+  - type: InstantAction
+    event: !type:ActionCloseTeleportShadekin

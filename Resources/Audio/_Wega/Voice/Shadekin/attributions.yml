@@ -1,0 +1,9 @@
+- files: ["mar.ogg", "wurble.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from CHOMPStation"
+  source: "https://github.com/CHOMPStation2/CHOMPStation2"
+
+- files: ["scream_f1.ogg", "scream_f2.ogg", "scream_m1.ogg", "scream_m2.ogg"]
+  license: "CC-BY-SA-3.0"
+  copyright: "Taken from Parkstation14: slime_scream_f1.ogg, slime_scream_f2.ogg, slime_scream_m1.ogg, slime_scream_m2.ogg"
+  source: "https://github.com/Simple-Station/Parkstation/blob/master/Resources/Audio/SimpleStation14/Voice/Slime/"

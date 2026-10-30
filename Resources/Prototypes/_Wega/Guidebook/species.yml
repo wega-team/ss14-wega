@@ -42,3 +42,8 @@
   id: Feroxi
   name: species-name-feroxi
   text: "/ServerInfo/_Wega/Guidebook/Mobs/Feroxi.xml"
+
+- type: guideEntry
+  id: Shadekin
+  name: species-name-shadekin
+  text: "/ServerInfo/_Wega/Guidebook/Mobs/Shadekin.xml"

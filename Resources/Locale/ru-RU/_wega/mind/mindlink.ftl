@@ -4,3 +4,4 @@ veil-cult-mind-channel = Праведники Ратвара
 diona-mind-channel = Дионы
 zomnie-mind-channel = Зомби
 carp-mind-channel = Карпы
+shadekin-mind-channel = Эмпатия

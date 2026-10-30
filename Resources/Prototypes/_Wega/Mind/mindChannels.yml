@@ -27,9 +27,16 @@
   name: zomnie-mind-channel
   keycode: 'з'
   color: "#7e916e"
-  
+
 - type: mindChannel
   id: MindCarp
   name: carp-mind-channel
   keycode: 'а'
   color: "#ec1e00"
+
+- type: mindChannel
+  id: MindShadekin
+  name: shadekin-mind-channel
+  keycode: "э"
+  color: "#7f32a8"
+  whisper: false

@@ -13,3 +13,7 @@
 - type: metabolizerType
   id: Feroxi
   name: metabolizer-type-feroxi
+
+- type: metabolizerType
+  id: Shadekin
+  name: metabolizer-type-shadekin

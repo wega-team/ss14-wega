@@ -7,6 +7,9 @@ reagent-desc-resomi-blood = Густая жидкость с резким амм
 reagent-name-tyrium = тириум
 reagent-desc-tyrium = Сложный хладогент. Лучше не пробуйте его на вкус.
 
+reagent-name-shadekin-blood = чёрная кровь
+reagent-desc-shadekin-blood = Невероятно высокое содержание железа окрашивает эту инопланетную кровь почти в угольно-черный цвет.
+
 reagent-name-ariral-blood = оранжево-красная кровь
 reagent-desc-ariral-blood = Гистая жидкость с очень едким запахом и вкусом.
 

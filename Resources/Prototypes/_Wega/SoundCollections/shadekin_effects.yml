@@ -1,0 +1,19 @@
+- type: soundCollection
+  id: Darkswapoff
+  files:
+    - /Audio/_Wega/Effects/Shadekin/darkswapoff.ogg
+
+- type: soundCollection
+  id: Darkswapon
+  files:
+    - /Audio/_Wega/Effects/Shadekin/darkswapon.ogg
+
+- type: soundCollection
+  id: FurutisticTP
+  files:
+    - /Audio/_Wega/Effects/Shadekin/futuristic-teleport.ogg
+
+- type: soundCollection
+  id: Shadeskip
+  files:
+    - /Audio/_Wega/Effects/Shadekin/shadeskip.ogg

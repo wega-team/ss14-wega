@@ -1,0 +1,20 @@
+# Shadekin Core
+- type: entity
+  parent:
+  - OrganBase
+  - OrganBaseChildInternal
+  id: OrganShadekinCore
+  name: shadekin core
+  suffix: Shadekin
+  components:
+  - type: GibbableOrgan
+  - type: Organ
+    category: Core
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Shadekin/organs.rsi
+    layers:
+    - state: core
+  - type: ShadekinCore
+  - type: Tag
+    tags:
+    - Core

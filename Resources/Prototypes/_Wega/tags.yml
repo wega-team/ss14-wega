@@ -644,3 +644,9 @@
 
 - type: Tag
   id: XenoborgModuleHeavyBalance
+
+- type: Tag
+  id: MobShadekin
+
+- type: Tag
+  id: Core

@@ -1,0 +1,314 @@
+- type: markingsGroup
+  parent: None
+  id: Shadekin
+  onlyGroupWhitelisted: true
+  limits:
+    enum.HumanoidVisualLayers.HeadTop:
+      limit: 1
+      required: true
+      default: [ EarsShadekin ]
+    enum.HumanoidVisualLayers.Chest:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Tail:
+      limit: 1
+      required: true
+      default: [ TailShadekin ]
+    enum.HumanoidVisualLayers.Special:
+      limit: 2
+      required: false
+
+- type: entity
+  parent: BaseSpeciesAppearance
+  id: AppearanceShadekin
+  categories: [ HideSpawnMenu ]
+  name: shadekin appearance
+  components:
+  - type: InitialBody
+    organs:
+      Torso: OrganShadekinTorso
+      Head: OrganShadekinHead
+      ArmLeft: OrganShadekinArmLeft
+      ArmRight: OrganShadekinArmRight
+      HandRight: OrganShadekinHandRight
+      HandLeft: OrganShadekinHandLeft
+      LegLeft: OrganShadekinLegLeft
+      LegRight: OrganShadekinLegRight
+      FootLeft: OrganShadekinFootLeft
+      FootRight: OrganShadekinFootRight
+      Brain: OrganShadekinBrain
+      Eyes: OrganShadekinEyes
+      Tongue: OrganShadekinTongue
+      Appendix: OrganShadekinAppendix
+      Ears: OrganShadekinEars
+      Lungs: OrganShadekinLungs
+      Heart: OrganShadekinHeart
+      Stomach: OrganShadekinStomach
+      Liver: OrganShadekinLiver
+      Kidneys: OrganShadekinKidneys
+      Core: OrganShadekinCore
+  - type: HumanoidProfile
+    species: Shadekin
+
+- type: entity
+  parent:
+  - AppearanceShadekin
+  - BaseSpeciesMobOrganic
+  id: MobShadekin
+  name: Urist McMar
+  components:
+  - type: Operated
+    raceGraph: ShadekinSurgery
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 5
+  - type: Speech
+    allowedEmotes: ['Mar', 'Wurble']
+  - type: Vocal
+    emoteSounds: MaleShadekin
+  - type: TypingIndicator
+    proto: alien
+  - type: MeleeWeapon
+    soundHit:
+      collection: AlienClaw
+    angle: 30
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+  - type: ActionTeleporter
+    firstPortalPrototype: PortalShadekinFirst
+    secondPortalPrototype: PortalShadekinSecond
+    newPortalSound:
+      collection: Darkswapoff
+    clearPortalsSound:
+      collection: Darkswapon
+  - type: NaturalNightVision
+    visionRadius: 10
+    tintColor: "#00000000"
+    brightnessGain: 10
+    contrast: 10
+  - type: FlashImmunityIgnore
+    flashReduction: 0.50
+  - type: FlashModifier
+    modifier: 4
+  - type: Respirator
+    updateInterval: 6
+    saturation: 150
+    maxSaturation: 150
+    minSaturation: -30
+    suffocationThreshold: 0
+    damage:
+      types:
+        Asphyxiation: 1.0
+    damageRecovery:
+      types:
+        Asphyxiation: -0.5
+  - type: Damageable
+    damageModifierSet: Shadekin
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#1c1624"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
+  - type: Flammable
+    damage:
+      types:
+        Heat: 2.25
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.35
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: ShadekinBlood
+        Quantity: 600
+  - type: TemperatureDamage
+    heatDamageThreshold: 314
+    coldDamageThreshold: 230
+    coldDamage:
+      types:
+        Cold : 0.05 #per second, scales with temperature & other constants
+    heatDamage:
+      types:
+        Heat : 2.5 #per second, scales with temperature & other constants
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.625 # 5% faster
+    baseSprintSpeed: 4.725 # 5% faster
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobShadekin
+    lowest: MobScurret
+  # Corvax-Wega-Genetics-end
+  # Corvax-Wega-Start
+  - type: MindLink
+    channels: ["MindShadekin"]
+  # Corvax-Wega-End
+  - type: Tag
+    tags:
+    - MobShadekin
+    - DoorBumpOpener
+    - CanPilot
+    - FootstepSound
+    - AnomalyHost
+
+- type: entity
+  parent: OrganBaseOrganic
+  id: OrganShadekin
+  abstract: true
+  suffix: Shadekin
+
+- type: entity
+  id: OrganShadekinMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Shadekin ]
+
+- type: entity
+  parent: OrganShadekin
+  id: OrganShadekinInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Shadekin/organs.rsi
+
+- type: entity
+  id: OrganShadekinVisual
+  abstract: true
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Species/Shadekin/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Shadekin
+
+- type: entity
+  parent: [ OrganShadekin, OrganShadekinVisual ]
+  id: OrganShadekinExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Mobs/Species/Shadekin/parts.rsi
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganShadekinExternal ]
+  id: OrganShadekinTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganShadekinExternal ]
+  id: OrganShadekinHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Snout
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganShadekinExternal ]
+  id: OrganShadekinArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganShadekinExternal ]
+  id: OrganShadekinArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganShadekinExternal ]
+  id: OrganShadekinHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganShadekinExternal ]
+  id: OrganShadekinHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganShadekinExternal ]
+  id: OrganShadekinLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganShadekinExternal ]
+  id: OrganShadekinLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganShadekinExternal ]
+  id: OrganShadekinFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganShadekinExternal ]
+  id: OrganShadekinFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganShadekinInternal ]
+  id: OrganShadekinBrain
+
+- type: entity
+  parent: [ OrganShadekinVisual, OrganBaseEyes, OrganShadekinInternal ]
+  id: OrganShadekinEyes
+  components:
+  - type: VisualOrgan
+    data:
+      sprite: _Wega/Mobs/Customization/eyes.rsi
+      state: shadekin
+      shader: unshaded
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/_Wega/Mobs/Species/Shadekin/parts.rsi
+  - type: Appearance
+
+- type: entity
+  parent: [ OrganBaseTongue, OrganShadekinInternal ]
+  id: OrganShadekinTongue
+
+- type: entity
+  parent: [ OrganBaseAppendix, OrganShadekinInternal ]
+  id: OrganShadekinAppendix
+
+- type: entity
+  parent: [ OrganBaseEars, OrganShadekinInternal ]
+  id: OrganShadekinEars
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganShadekinInternal, OrganShadekinMetabolizer ]
+  id: OrganShadekinLungs
+
+- type: entity
+  parent: [ OrganBaseHeart, OrganShadekinInternal, OrganShadekinMetabolizer ]
+  id: OrganShadekinHeart
+
+- type: entity
+  parent: [ OrganBaseStomach, OrganShadekinInternal, OrganShadekinMetabolizer ]
+  id: OrganShadekinStomach
+
+- type: entity
+  parent: [ OrganBaseLiver, OrganShadekinInternal, OrganShadekinMetabolizer ]
+  id: OrganShadekinLiver
+
+- type: entity
+  parent: [ OrganBaseKidneys, OrganShadekinInternal, OrganShadekinMetabolizer ]
+  id: OrganShadekinKidneys

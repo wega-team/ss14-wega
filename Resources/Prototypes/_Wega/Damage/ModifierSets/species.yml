@@ -46,3 +46,13 @@
     Slash: 0.8
     Piercing: 0.9
     Shock: 1.2
+
+- type: damageModifierSet
+  id: Shadekin
+  coefficients:
+    Blunt: 1.15
+    Slash: 1.15
+    Piercing: 1.15
+    Asphyxiation: 0.50
+    Heat: 1.25
+    Cold: 0.80

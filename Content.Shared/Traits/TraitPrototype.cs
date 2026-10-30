@@ -1,6 +1,7 @@
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
+using Content.Shared.Humanoid.Prototypes; // Corvax-Wega-Shadekin
 
 namespace Content.Shared.Traits;
 
@@ -37,6 +38,14 @@ public sealed partial class TraitPrototype : IPrototype
     /// </summary>
     [DataField]
     public EntityWhitelist? Blacklist;
+
+    // Corvax-Wega-Shadekin-start
+    [DataField]
+    public HashSet<ProtoId<SpeciesPrototype>>? Species;
+
+    [DataField]
+    public Color? ForcedEyeColor;
+    // Corvax-Wega-Shadekin-end
 
     /// <summary>
     /// The components that get added to the player, when they pick this trait.

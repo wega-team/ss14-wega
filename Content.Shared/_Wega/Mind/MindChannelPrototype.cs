@@ -25,4 +25,10 @@ public sealed partial class MindChannelPrototype : IPrototype
 
     [IdDataField, ViewVariables]
     public string ID { get; private set; } = default!;
+
+    /// <summary>
+    /// Whether sending a message on this mind channel also emits an audible whisper to nearby entities.
+    /// </summary>
+    [DataField]
+    public bool Whisper { get; private set; } = true;
 }

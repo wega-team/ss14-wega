@@ -407,3 +407,77 @@
       collection: FemaleDeathGasp
     FilinidMeows:
       collection: FelinidMeowsSound
+
+- type: emoteSounds
+  id: MaleShadekin
+  voiceSelectorName: humanoid-profile-editor-voice-masculine
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: ShadekinScream_m
+    DefaultDeathgasp:
+      collection: DeathGasp
+    Laugh:
+      collection: MaleLaugh
+    Sneeze:
+      collection: MaleSneezes
+    Cough:
+      collection: MaleCoughs
+    Yawn:
+      collection: MaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: BikeHorn
+    Sigh:
+      collection: MaleSigh
+    Crying:
+      collection: MaleCry
+    Whistle:
+      collection: Whistles
+    Weh:
+      collection: Weh
+    Mar:
+      collection: Mar
+    Wurble:
+      collection: Wurble
+    Moan:
+      collection: MaleMoans
+
+- type: emoteSounds
+  id: FemaleShadekin
+  voiceSelectorName: humanoid-profile-editor-voice-feminine
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      collection: ShadekinScream_f
+    DefaultDeathgasp:
+      collection: DeathGasp
+    Laugh:
+      collection: FemaleLaugh
+    Sneeze:
+      collection: FemaleSneezes
+    Cough:
+      collection: FemaleCoughs
+    Yawn:
+      collection: FemaleYawn
+    Snore:
+      collection: Snores
+    Honk:
+      collection: BikeHorn
+    Sigh:
+      collection: FemaleSigh
+    Crying:
+      collection: FemaleCry
+    Whistle:
+      collection: Whistles
+    Weh:
+      collection: Weh
+    Mar:
+      collection: Mar
+    Wurble:
+      collection: Wurble
+    Moan:
+      collection: FemaleMoans

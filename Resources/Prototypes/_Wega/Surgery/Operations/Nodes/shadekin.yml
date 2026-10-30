@@ -1,0 +1,20 @@
+- type: surgeryNode
+  id: ShadekinTorsoClosed
+  description: Торс закрыт
+  bodyPart: torso
+  transitions:
+    - ShadekinOpenTorsoTransition
+
+- type: surgeryNode
+  id: ShadekinTorsoOpen
+  description: Торс вскрыт
+  bodyPart: torso
+  packages:
+    - TorsoImplantPackage
+    - HealingTorsoPackage
+    - DeconvertationPackage
+    - MedicinalSurgeryPackage
+  transitions:
+    - ShadekinOrganManipulationTransition
+    - InternalTorsoTransition        # reused from base
+    - ShadekinCloseTorsoTransition
