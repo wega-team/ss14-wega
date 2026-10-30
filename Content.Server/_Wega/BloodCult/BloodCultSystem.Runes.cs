@@ -445,6 +445,9 @@ public sealed partial class BloodCultSystem
 
     private void ConvertToCultist(EntityUid target, EntityUid cultist, MapCoordinates coords, BloodRuneComponent runeComp)
     {
+        if (!_mind.TryGetMind(target, out _, out _))
+            return;
+
         SendRuneMessageToCultists(coords, 2f, runeComp.RuneType);
         _rejuvenate.PerformRejuvenate(target);
         EnsureComp<AutoCultistComponent>(target);

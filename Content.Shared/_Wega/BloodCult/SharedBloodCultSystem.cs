@@ -2,6 +2,7 @@ using System.Linq;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Components;
 using Content.Shared.Blood.Cult.Components;
+using Content.Shared.Examine;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mind;
 using Content.Shared.Popups;
@@ -91,4 +92,10 @@ public abstract partial class SharedBloodCultSystem : EntitySystem
         args.Cancel();
     }
     // Corvax-Wega-Testing-end
+
+    [SubscribeLocalEvent]
+    private void OnCultAllowedGunExamine(EntityUid uid, CultAllowedGunComponent component, ExaminedEvent args)
+    {
+        args.PushMarkup(Loc.GetString("cult-allowed-gun-examine"));
+    }
 }

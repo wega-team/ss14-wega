@@ -487,7 +487,7 @@ public sealed partial class BloodCultSystem : SharedBloodCultSystem
 
     private void OnConstructSelect(Entity<ConstructComponent> construct, ref BloodConstructSelectMessage args)
     {
-        if (!HasComp<BloodCultistComponent>(args.Actor))
+        if (!HasComp<BloodCultistComponent>(args.Actor) && !HasComp<BloodCultConstructComponent>(args.Actor))
             return;
 
         if (!_interaction.InRangeUnobstructed(args.Actor, construct.Owner))
