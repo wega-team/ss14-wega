@@ -8,6 +8,7 @@ using Content.Shared.Mind;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Veil.Cult.Components;
 using Robust.Shared.Timing;
 
 namespace Content.Shared.Blood.Cult;
