@@ -27,6 +27,7 @@ public abstract partial class SharedBloodCultSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<BloodCultistComponent, ShotAttemptedEvent>(OnShotAttempted); // Corvax-Wega-Testing
+        SubscribeLocalEvent<CultAllowedGunComponent, ExaminedEvent>(OnCultAllowedGunExamine);
     }
 
     #region Deconvertation
@@ -93,9 +94,11 @@ public abstract partial class SharedBloodCultSystem : EntitySystem
     }
     // Corvax-Wega-Testing-end
 
-    [SubscribeLocalEvent]
     private void OnCultAllowedGunExamine(EntityUid uid, CultAllowedGunComponent component, ExaminedEvent args)
     {
+        if (!HasComp<BloodCultistComponent>(args.Examiner))
+            return;
+
         args.PushMarkup(Loc.GetString("cult-allowed-gun-examine"));
     }
 }
