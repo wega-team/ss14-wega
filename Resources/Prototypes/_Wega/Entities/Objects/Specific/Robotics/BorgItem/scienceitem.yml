@@ -1,6 +1,7 @@
 - type: entity
   parent: WeaponPistolCHIMP
   id: WeaponPistolCHIMPBorg
+  categories: [ HideSpawnMenu ]
   name: integrated C.H.I.M.P.
   description: An even smaller particle handcannon, designed for cyborg use.
   components:
@@ -68,6 +69,7 @@
 
 - type: entity
   parent: HolofanProjectorBorg
+  categories: [ HideSpawnMenu ]
   id: HolofanProjectorBorgSci
   components:
   - type: HolosignProjector
@@ -83,6 +85,7 @@
 
 - type: entity
   id: HoloFanSci
+  categories: [ HideSpawnMenu ]
   parent: HoloFan
   components:
   - type: TimedDespawn
@@ -90,6 +93,7 @@
 
 - type: entity
   id: TechDiskBagBorg
+  categories: [ HideSpawnMenu ]
   parent: TechDiskBag
   components:
     - type: MagnetPickup
@@ -99,6 +103,7 @@
 
 - type: entity
   id: TechDiskBagT3Borg
+  categories: [ HideSpawnMenu ]
   parent: TechDiskBagT3
   components:
     - type: MagnetPickup
