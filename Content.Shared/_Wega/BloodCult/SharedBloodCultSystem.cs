@@ -96,7 +96,7 @@ public abstract partial class SharedBloodCultSystem : EntitySystem
 
     private void OnCultAllowedGunExamine(EntityUid uid, CultAllowedGunComponent component, ExaminedEvent args)
     {
-        if (!HasComp<BloodCultistComponent>(args.Examiner))
+        if (!HasComp<BloodCultistComponent>(args.Examiner) && !HasComp<VeilCultistComponent>(args.Examiner))
             return;
 
         args.PushMarkup(Loc.GetString("cult-allowed-gun-examine"));
