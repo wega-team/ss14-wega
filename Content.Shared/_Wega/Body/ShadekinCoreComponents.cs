@@ -13,7 +13,7 @@ public sealed partial class ShadekinCoreComponent : Component
     public string ActiveState = "core";
 
     [DataField, AutoNetworkedField]
-    public string InactiveState = "core";
+    public string InactiveState = "core-burned";
 
     [DataField, AutoNetworkedField]
     public Color BrightColor = Color.FromHex("#999999"); // V ≈ 0.6

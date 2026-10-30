@@ -15,9 +15,6 @@
     layers:
     - state: core
   - type: ShadekinCore
-    mode: Active
-    activeState: core
-    inactiveState: core-burned
   - type: Tag
     tags:
     - Core

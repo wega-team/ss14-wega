@@ -108,12 +108,11 @@
       collection: Darkswapoff
     clearPortalsSound:
       collection: Darkswapon
-  - type: NightVision
-    enabled: false
-    action: ActionToggleNightVision
-    prioritized: false
-    lightingColor: "#cccccc"
-    overlayColor: "#cccccc"
+  - type: NaturalNightVision
+    visionRadius: 10
+    tintColor: "#00000000"
+    brightnessGain: 10
+    contrast: 10
   - type: FlashImmunityIgnore
     flashReduction: 0.50
   - type: FlashModifier
@@ -130,8 +129,6 @@
     damageRecovery:
       types:
         Asphyxiation: -0.5
-  - type: Injurable
-    damageContainer: Biological
   - type: Damageable
     damageModifierSet: Shadekin
   - type: DamageVisuals
@@ -144,12 +141,11 @@
   - type: Flammable
     damage:
       types:
-        Heat: 1.5
+        Heat: 2.25
   - type: Barotrauma
     damage:
       types:
         Blunt: 0.35
-  - type: Reactive
   - type: Bloodstream
     bloodReferenceSolution:
       reagents:
@@ -281,6 +277,9 @@
       sprite: _Wega/Mobs/Customization/eyes.rsi
       state: shadekin
       shader: unshaded
+  - type: EyeBlinking
+    eyelidsSprite: /Textures/_Wega/Mobs/Species/Shadekin/parts.rsi
+  - type: Appearance
 
 - type: entity
   parent: [ OrganBaseTongue, OrganShadekinInternal ]

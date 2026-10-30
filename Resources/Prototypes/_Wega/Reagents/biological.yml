@@ -87,7 +87,7 @@
   physicalDesc: reagent-physical-desc-inky
   standsout: true
 
-#Xenobio wega start
+#region Xenobio
 
 - type: reagent
   id: SlimeExtractGray
@@ -287,4 +287,4 @@
   physicalDesc: reagent-physical-desc-sweet
   flavor: chaotic
 
-#Xenobio wega end
+#endregion

@@ -291,14 +291,6 @@ namespace Content.Server.GameTicking.Rules
             foreach (var actionPrototype in actionPrototypes)
                 _action.AddAction(ent, actionPrototype);
 
-            var cultistComp = EnsureComp<BloodCultistComponent>(ent);
-            var mindLink = EnsureComp<MindLinkComponent>(ent);
-            if (!mindLink.Channels.Contains(cultistComp.CultMindChannel))
-            {
-                mindLink.Channels.Add(cultistComp.CultMindChannel);
-                Dirty(ent, mindLink);
-            }
-
             var componentsToRemove = new[]
             {
                 typeof(PacifiedComponent)
