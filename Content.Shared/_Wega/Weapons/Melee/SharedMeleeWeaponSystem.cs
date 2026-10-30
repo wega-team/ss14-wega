@@ -10,16 +10,28 @@ namespace Content.Shared.Weapons.Melee;
 
 public abstract partial class SharedMeleeWeaponSystem : EntitySystem
 {
-	[SubscribeLocalEvent]
-     private void OnExamine(EntityUid uid, BonusMeleeDamageComponent component, ExaminedEvent args)
+    [SubscribeLocalEvent]
+    private void OnExamine(EntityUid uid, BonusMeleeDamageComponent component, ExaminedEvent args)
     {
         if (component.HeavyDamageMultiplier == 1)
             return;
 
-		var myFloat = component.HeavyDamageMultiplier;
-		string booster = myFloat.ToString();
-		
+        var myFloat = component.HeavyDamageMultiplier;
+        string booster = myFloat.ToString();
+
         args.PushMarkup(Loc.GetString("damage-booster",
                 ("booster", booster)));
+    }
+
+    [SubscribeLocalEvent]
+    private void OnArmorPenetrationExamine(EntityUid uid, MeleeWeaponComponent component, ExaminedEvent args)
+    {
+        if (component.ArmorPenetration <= 0f)
+            return;
+
+        var penetration = MathF.Round(component.ArmorPenetration * 100f);
+
+        args.PushMarkup(Loc.GetString("melee-armor-penetration",
+            ("penetration", penetration)));
     }
 }

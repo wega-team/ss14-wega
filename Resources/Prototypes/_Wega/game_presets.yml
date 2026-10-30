@@ -93,6 +93,48 @@
     - BasicRoundstartVariation
 
 - type: gamePreset
+  id: TraitorVamp
+  name: traitor-vamp-title
+  description: traitor-vamp-description
+  showInVote: false
+  rules:
+  - Traitor
+  - Vampire
+  - SubGamemodesNoMinorBloodBrothers
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: TraitorLing
+  name: traitor-ling-title
+  description: traitor-ling-description
+  showInVote: false
+  rules:
+  - Traitor
+  - Changeling
+  - SubGamemodesNoMinorBloodBrothers
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: VampLing
+  name: vamp-ling-title
+  description: vamp-ling-description
+  showInVote: false
+  rules:
+  - Vampire
+  - Changeling
+  - SubGamemodesNoMinorBloodBrothers
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
   id: SecretLight
   alias:
     - secretlight
