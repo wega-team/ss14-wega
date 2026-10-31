@@ -9,18 +9,9 @@
   - type: DeviceList
   - type: DeviceNetwork
     deviceNetId: Wired
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: dna
-    - map: ["computerLayerKeys"]
-      state: rd_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: dna
+    stateKeys: rd_key
   - type: ActivatableUI
     singleUser: true
     key: enum.DnaModifierUiKey.Key
@@ -36,7 +27,7 @@
   - type: DeviceLinkSource
     range: 4
     ports:
-      - MedicalScannerSender
+    - MedicalScannerSender
   - type: AccessReader
     access: [["Research"]]
   - type: ContainerContainer
@@ -68,18 +59,9 @@
   - type: DeviceList
   - type: DeviceNetwork
     deviceNetId: Wired
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: mining_screen
-    - map: ["computerLayerKeys"]
-      state: power_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: mining_screen
+    stateKeys: power_key
   - type: ActivatableUI
     singleUser: true
     key: enum.MiningConsoleUiKey.Key
@@ -105,18 +87,9 @@
   name: avanpost shuttle console
   description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: mining
-    - map: ["computerLayerKeys"]
-      state: mining_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: mining
+    stateKeys: mining_key
   - type: LavalandShuttleConsole
   - type: ActivatableUI
     singleUser: true
@@ -143,18 +116,9 @@
   name: penal servitude avanpost shuttle console
   description: "Use this terminal to call a shuttle to Lavaland, where the real adventure begins."
   components:
-  - type: Sprite
-    layers:
-    - map: ["computerLayerBody"]
-      state: computer
-    - map: ["computerLayerKeyboard"]
-      state: generic_keyboard
-    - map: ["computerLayerScreen"]
-      state: security
-    - map: ["computerLayerKeys"]
-      state: security_key
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+  - type: ComputerVisuals
+    stateScreen: security
+    stateKeys: security_key
   - type: PenalServitudeShuttleConsole
   - type: ActivatableUI
     singleUser: true

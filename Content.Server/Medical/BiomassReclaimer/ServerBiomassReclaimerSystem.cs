@@ -1,0 +1,69 @@
+using Content.Shared.Administration.Logs;
+using Content.Shared.Android; // Corvax-Wega-Android
+using Content.Shared.CCVar;
+using Content.Shared.Database;
+using Content.Shared.Humanoid;
+using Content.Shared.Medical.BiomassReclaimer;
+using Content.Shared.Mind;
+using Robust.Server.Player;
+using Robust.Shared.Configuration;
+
+namespace Content.Server.Medical.BiomassReclaimer;
+
+/// <inheritdoc/>
+public sealed partial class ServerBiomassReclaimerSystem : BiomassReclaimerSystem
+{
+    [Dependency] private ISharedAdminLogManager _adminLogger = default!;
+    [Dependency] private IConfigurationManager _configManager = default!;
+    [Dependency] private SharedMindSystem _minds = default!;
+    [Dependency] private IPlayerManager _playerManager = default!;
+
+    private bool _biomassEasyMode;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        Subs.CVar(_configManager, CCVars.BiomassEasyMode, value => _biomassEasyMode = value, true);
+    }
+
+    [SubscribeLocalEvent]
+    private void OnDoAfter(Entity<BiomassReclaimerComponent> reclaimer, ref ReclaimerDoAfterEvent args)
+    {
+        if (args.Handled || args.Cancelled)
+            return;
+
+        if (args.Args.Target != reclaimer.Owner || args.Args.Used is not { } toProcess)
+            return;
+
+        if (!TryValidateInsertionAndPopup(reclaimer, toProcess, args.Args.User) || !PhysicsQuery.TryComp(toProcess, out var physics))
+            return;
+
+        _adminLogger.Add(LogType.Action, LogImpact.High, $"{ToPrettyString(args.Args.User):player} used a biomass reclaimer to gib {ToPrettyString(toProcess):target} in {ToPrettyString(reclaimer):reclaimer}");
+        StartProcessing((toProcess, physics), reclaimer);
+
+        args.Handled = true;
+    }
+
+    protected override BiomassReclaimerInsertResult ValidateInsertion(Entity<BiomassReclaimerComponent> reclaimer, EntityUid dragged)
+    {
+        var result = base.ValidateInsertion(reclaimer, dragged);
+        if (result != BiomassReclaimerInsertResult.Success)
+            return result;
+
+        // Corvax-Wega-Android-start
+        if (HasComp<AndroidComponent>(dragged))
+            return BiomassReclaimerInsertResult.InvalidTarget;
+        // Corvax-Wega-Android-end
+
+        // Reject souled bodies in easy mode.
+        if (!_biomassEasyMode ||
+            !HasComp<HumanoidProfileComponent>(dragged) ||
+            !_minds.TryGetMind(dragged, out _, out var mind))
+            return BiomassReclaimerInsertResult.Success;
+
+        return mind.UserId == null || !_playerManager.TryGetSessionById(mind.UserId.Value, out _)
+            ? BiomassReclaimerInsertResult.Success
+            : BiomassReclaimerInsertResult.SoulPresent;
+    }
+}

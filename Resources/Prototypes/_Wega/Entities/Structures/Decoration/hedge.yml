@@ -32,8 +32,8 @@
   - type: IconSmooth
     key: hedge
     states:
-    - !type:DiagonalSpriteSmoothing
-      mask: [ walls, windows, grilles, marble, doors ]
+    - !type:CornerSpriteSmoothing
+      mask: [ hedge ]
       base: hedge
   - type: Construction
     graph: Table

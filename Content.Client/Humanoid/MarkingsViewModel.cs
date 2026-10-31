@@ -391,9 +391,9 @@ public sealed partial class MarkingsViewModel
 
         // Corvax-Wega-Customize-start
         var existingMarking = markings[markingIdx];
-        var proto = _prototype.Index(markingId);
+        var markingProto = _prototype.Index(markingId);
 
-        var isGradient = proto.Sprites.Count > 1;
+        var isGradient = markingProto.Sprites.Count > 1;
         if (isGradient)
         {
             var matchSkin = false;
@@ -406,18 +406,19 @@ public sealed partial class MarkingsViewModel
 
             if (matchSkin && colorIndex == 0)
                 return;
-
-            markings[markingIdx] = existingMarking.WithColorAt(colorIndex, color);
         }
         else
         {
             if (!IsMarkingColorCustomizable(organ, layer, markingId))
                 return;
-
-            markings[markingIdx] = existingMarking.WithColorAt(colorIndex, color);
         }
-        // Corvax-Wega-Customize-End
 
+        var newColor = color;
+        if (markingProto.Strategy != null)
+            newColor = markingProto.Strategy.ClosestSkinColor(color);
+
+        markings[markingIdx] = existingMarking.WithColorAt(colorIndex, newColor);
+        // Corvax-Wega-Customize-end
         MarkingsChanged?.Invoke(organ, layer);
     }
 

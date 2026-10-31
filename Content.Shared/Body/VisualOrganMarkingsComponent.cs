@@ -17,7 +17,7 @@ public sealed partial class VisualOrganMarkingsComponent : Component
     /// <summary>
     /// Defines the type of markings this organ can take
     /// </summary>
-    [DataField(required: true), AlwaysPushInheritance]
+    [DataField(required: true), AlwaysPushInheritance, AutoNetworkedField] // Corvax-Wega-Surgery-Edit
     public OrganMarkingData MarkingData = default!;
 
     /// <summary>
@@ -29,7 +29,7 @@ public sealed partial class VisualOrganMarkingsComponent : Component
     /// <summary>
     /// Layers that are eligible for hiding based on e.g. clothing
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField, AutoNetworkedField, AlwaysPushInheritance]
     public HashSet<Enum> HideableLayers = new();
 
     /// <summary>
@@ -59,7 +59,7 @@ public sealed partial class VisualOrganMarkingsComponent : Component
 [Serializable, NetSerializable]
 public partial record struct OrganMarkingData
 {
-    [DataField(required: true)]
+    [DataField(required: true), AlwaysPushInheritance]
     public HashSet<HumanoidVisualLayers> Layers = default!;
 
     /// <summary>

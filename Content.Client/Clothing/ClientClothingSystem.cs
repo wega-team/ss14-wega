@@ -171,7 +171,7 @@ public sealed partial class ClientClothingSystem : ClothingSystem
 
                 var layerData = new PrototypeLayerData
                 {
-                    RsiPath = rsi.RsiPath.ToString(),
+                    RsiPath = (SpriteSpecifierSerializer.TextureRoot / rsi.RsiPath).ToString(),
                     State = rsi.RsiState,
                 };
 

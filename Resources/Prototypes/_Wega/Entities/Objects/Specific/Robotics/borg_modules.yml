@@ -1610,6 +1610,7 @@
     hands:
     - item: BorgWeaponSniperHristovAdvanced
     - item: WeaponPistolDesertEagleBorg
+    - item: EnergyDaggerLoud
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule
@@ -1650,7 +1651,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponSubMachineGunC20rROWAdvensed
-    - item: CyborgEnergySword
+    - item: CyborgEnergySwordDouble
     - item: PinpointerSyndicateNuclear
     - item: PinpointerUniversal # Corvax-Wega-Robot-add
   - type: ComponentBorgModule

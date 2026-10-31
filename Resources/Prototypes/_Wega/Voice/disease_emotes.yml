@@ -39,24 +39,6 @@
     - замяукал
     - мяу
 
-- type: emote
-  id: FilinidHisses
-  name: chat-emote-name-hisses
-  category: Vocal
-  available: false
-  icon: { sprite: Clothing/Head/Hats/catears.rsi, state: "icon" }
-  whitelist:
-    components:
-    - Vocal
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["chat-emote-msg-hisses"]
-  chatTriggers:
-    - шипит
-    - зашипел
-    - зашипела
-
 #андройды
 - type: emote
   id: LPCmoan

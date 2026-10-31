@@ -59,17 +59,6 @@
       - Sheild
 
 - type: cargoBounty
-  id: BountyHorn
-  reward: 8000
-  description: bounty-description-horn
-  entries:
-  - name: bounty-item-horn
-    amount: 1
-    whitelist:
-      tags:
-      - BananiumClakson
-
-- type: cargoBounty
   id: BountyUshanka
   reward: 4000
   description: bounty-description-ushanka

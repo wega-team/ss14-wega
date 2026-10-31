@@ -27,6 +27,7 @@
       - type: VisualOrgan
         layer: enum.HumanoidVisualLayers.LArm
         data:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
           state: l_arm
       - type: VisualOrganMarkings
         markingData:
@@ -43,6 +44,7 @@
       - type: VisualOrgan
         layer: enum.HumanoidVisualLayers.RArm
         data:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
           state: r_arm
       - type: VisualOrganMarkings
         markingData:
@@ -67,6 +69,7 @@
       - type: VisualOrgan
         layer: enum.HumanoidVisualLayers.LLeg
         data:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
           state: l_leg
       - type: VisualOrganMarkings
         markingData:
@@ -83,6 +86,7 @@
       - type: VisualOrgan
         layer: enum.HumanoidVisualLayers.RLeg
         data:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
           state: r_leg
       - type: VisualOrganMarkings
         markingData:

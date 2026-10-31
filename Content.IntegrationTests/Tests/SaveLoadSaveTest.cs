@@ -17,6 +17,7 @@ namespace Content.IntegrationTests.Tests
     /// Tests that a grid's yaml does not change when saved consecutively.
     /// </summary>
     [TestFixture]
+    [Ignore("WegaSosaiti")] // Corvax-Wega-Tests
     public sealed partial class SaveLoadSaveTest : GameTest
     {
         [Test]

@@ -164,7 +164,7 @@
   - type: Speech
     speechSounds: Lizard
     speechVerb: Reptilian
-    allowedEmotes: ['Thump', 'Purr', 'FilinidHisses', 'Growl'] # Corvax-Wega-Edit
+    allowedEmotes: ['Thump', 'Purr', 'Hiss', 'Growl'] # Corvax-Wega-Edit
   - type: TypingIndicator
     proto: lizard
   - type: CreamPied
@@ -365,7 +365,7 @@
       - Crayon
       - Paper
       # Corvax-Wega-start
-      - Salad 
+      - Salad
       - Vegetable
       - Soup
       # Corvax-Wega-end

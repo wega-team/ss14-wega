@@ -115,7 +115,7 @@
       100: Critical
       160: Dead
   - type: Speech
-    allowedEmotes: ['FilinidMeows', 'Purr', 'FilinidHisses']
+    allowedEmotes: ['FilinidMeows', 'Purr', 'Hiss']
   - type: Vocal
     emoteSounds: MaleFelinid
   - type: DnaModifier

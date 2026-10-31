@@ -141,12 +141,8 @@
       - WireBrush
       - LightReplacer
       - CleanerGrenade
-      - JanicartKeys
-      - Screwdriver
-      - Crowbar
-      - Powerdrill
+      - JanicartKeys # Corvax-Pega
       components:
-      - TRayScanner
       - SprayPainter
       - SprayPainterAmmo
   - type: ItemMapper

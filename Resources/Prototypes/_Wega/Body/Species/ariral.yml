@@ -147,7 +147,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: AriralBlood
-        Quantity: 200
+        Quantity: 400
     bloodlossDamage:
       types:
         Bloodloss: 1.5

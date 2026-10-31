@@ -262,7 +262,7 @@
     bloodReferenceSolution:
       reagents:
       - ReagentId: Tyrium
-        Quantity: 300
+        Quantity: 600
     bleedReductionAmount: 0
     bloodRefreshAmount: 0
   - type: DisableMetabolismEffects

@@ -219,6 +219,13 @@ public sealed partial class SoundInsulationSystem : SharedSoundInsulationSystem
             return;
         }
 
+        if (HasComp<IgnoreSoundInsulationComponent>(listenerEnt))
+        {
+            component.Occlusion = 0f;
+            component.Volume = component.Params.Volume;
+            return;
+        }
+
         if (HasComp<DeafnessComponent>(listenerEnt))
         {
             component.Gain = 0f;

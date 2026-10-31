@@ -1676,3 +1676,41 @@ Entries:
   id: 223
   time: '2026-10-24T00:46:40Z'
   url: https://github.com/wega-team/ss14-wega/pull/577
+- author: GaMEWAR360
+  changes:
+  - type: Tweak
+    message: 'Изменен модули штурмового борга: каждый модуль вооружения заимел ближнее оружие. Снайпа - кинжал, л6 - энергомеч, црка - дабла. Энергомечы боргов не дают рефлект'
+  - type: Tweak
+    message: Дабла теперь имеет 20 урона порезами и термы. Добавлено 25 урона структурам и снижен модификатор ЛКМ с 1.3 до 1.25
+  - type: Tweak
+    message: Борги с возможностью поднимать материалы могут брать картон и алмазы!
+  - type: Fix
+    message: Переносные зарядники вновь одеваются на слот спины!
+  - type: Fix
+    message: Монитор у медборга вновь работает!
+  id: 224
+  time: '2026-10-29T19:25:41Z'
+  url: https://github.com/wega-team/ss14-wega/pull/579
+- author: GaMEWAR360
+  changes:
+  - type: Add
+    message: Жуткий месяц!
+  id: 225
+  time: '2026-10-29T20:50:01Z'
+  url: https://github.com/wega-team/ss14-wega/pull/584
+- author: GaMEWAR360
+  changes:
+  - type: Fix
+    message: Исправлено веселье! Ратвар больше не может вербовать людей с МЩ.
+  id: 226
+  time: '2026-10-29T20:56:16Z'
+  url: https://github.com/wega-team/ss14-wega/pull/581
+- author: Zekins3366
+  changes:
+  - type: Tweak
+    message: Всем расам подогнано количество крови под актуальные значения
+  - type: Fix
+    message: Исправлена слышимость звуков у безтелесных сущностей
+  id: 227
+  time: '2026-10-29T22:29:55Z'
+  url: https://github.com/wega-team/ss14-wega/pull/586

@@ -47,7 +47,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
     [Dependency] private MobStateSystem _mobState = default!;
     [Dependency] private MobThresholdSystem _mobThreshold = default!;
     [Dependency] private SharedPopupSystem _popup = default!;
-    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private ServerPrayerSystem _prayerSystem = default!;
     [Dependency] private IRobustRandom _random = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 

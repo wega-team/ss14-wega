@@ -28,7 +28,7 @@ public sealed partial class VampireSystem
 {
     [Dependency] private CloningSystem _cloning = default!;
     [Dependency] private HallucinationsSystem _hallucinations = default!;
-    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private ServerPrayerSystem _prayerSystem = default!;
     [Dependency] private QuickDialogSystem _quickDialog = default!;
 
     private void InitializeDantalion()

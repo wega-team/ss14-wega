@@ -69,6 +69,12 @@ namespace Content.Server.Implants
 
             EntityManager.AddComponents(uid, config.Value);
 
+            if (TryComp<OrganComponent>(uid, out var organComp) && organComp.Body is { } body)
+            {
+                var ev = new BodyPartImplantAddedEvent((uid, component));
+                RaiseLocalEvent(body, ref ev);
+            }
+
             if (user != null)
                 _popup.PopupEntity(Loc.GetString("body-part-implant-config-" + config.Key), uid, user.Value);
         }

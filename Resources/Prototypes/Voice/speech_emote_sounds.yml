@@ -119,8 +119,8 @@
       collection: DeathGasp
     # Corvax-Wega-Start
     Purr:
-      collection: ReptilianPurr 
-    FilinidHisses:
+      collection: ReptilianPurr
+    Hiss:
       collection: ReptilianHiss
     Growl:
       collection: ReptilianGrowl
@@ -160,8 +160,8 @@
       collection: FemaleDeathGasp
     # Corvax-Wega-Start
     Purr:
-      collection: ReptilianPurr 
-    FilinidHisses:
+      collection: ReptilianPurr
+    Hiss:
       collection: ReptilianHiss
     Growl:
       collection: ReptilianGrowl

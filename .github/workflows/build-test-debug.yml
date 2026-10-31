@@ -9,7 +9,7 @@ on:
     branches: [ master, staging, stable ]
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }} # Corvax-Pega-Edit <- Pega It's like lol
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.number || github.ref }}
   cancel-in-progress: ${{ github.event_name != 'merge_group' }}
 
 jobs:
@@ -20,7 +20,7 @@ jobs:
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 50
+    timeout-minutes: 30
 
     steps:
     - name: Checkout Master
@@ -62,23 +62,16 @@ jobs:
 
     - name: Run Content.IntegrationTests
       shell: pwsh
-      # Corvax-Pega-Edit-start
-      continue-on-error: true
       run: |
         $env:DOTNET_gcServer=1
-        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj --blame -- NUnit.ConsoleOut=0 NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
-      # Corvax-Pega-Edit-end
+        dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj -- NUnit.ConsoleOut=0 NUnit.MapWarningTo=Failed NUnit.TestOutputXml="logs" NUnit.WorkDirectory="$(pwd)/test_results"
 
     - name: Archive NUnit3 test results.
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: nunit3-results-${{ matrix.os }}
-        # Corvax-Pega-Edit-start
-        path: |
-          test_results/*
-          TestResults/*
-        # Corvax-Pega-Edit-end
+        path: test_results/*
         retention-days: 7
         compression-level: 9
   ci-success:

@@ -244,7 +244,7 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                     HasComp<NullRodOwnerComponent>(target))
                     continue;
 
-                if (HasComp<MindShieldComponent>(target) || HasComp<BibleUserComponent>(target) || HasComp<BloodCultistComponent>(target))
+                if (IsMindshielded(target) || HasComp<BibleUserComponent>(target) || HasComp<BloodCultistComponent>(target))
                 {
                     if (_mobState.IsDead(target))
                     {
@@ -412,5 +412,11 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                 _mind.TransferTo(mindContainer.Mind.Value, soulStone);
             }
         }
+    }
+	
+    private bool IsMindshielded(EntityUid target)
+    {
+        return TryComp<MindShieldStatusComponent>(target, out var shield)
+            && shield.IsMindshielded; // changelings or fake shields
     }
 }

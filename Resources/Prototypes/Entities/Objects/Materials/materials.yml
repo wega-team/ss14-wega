@@ -33,6 +33,12 @@
     prototype: CarpetCard
     doAfter: 0.5
     removeOnInteract: true
+  # Corvax-Wega-Start
+  - type: Tag
+    tags:
+    - ConstructionMaterial
+    - RawMaterial
+  # Corvax-Wega-End
 
 - type: entity
   parent: MaterialCardboard
@@ -353,6 +359,7 @@
     tags:
     - RawMaterial
     - Diamond
+    - ConstructionMaterial # Corvax-Wega-Edit
 
 - type: entity
   parent: MaterialDiamond
@@ -431,6 +438,9 @@
     layers:
     - state: pyrotton_3
       map: ["base"]
+  - type: IgnitionSource
+    ignited: true
+    temperature: 400
   - type: Edible
     requiresSpecialDigestion: true
     solution: composite
@@ -508,6 +518,12 @@
   - type: Item
     heldPrefix: bananium
     sprite: Objects/Materials/bananium.rsi
+  # Corvax-Wega-Start
+  - type: Tag
+    tags:
+    - ConstructionMaterial
+    - RawMaterial
+  # Corvax-Wega-End
 
 - type: entity
   parent: MaterialBananium

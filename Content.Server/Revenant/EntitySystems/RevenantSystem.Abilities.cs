@@ -73,7 +73,7 @@ public sealed partial class RevenantSystem
     [Dependency] private SharedPointLightSystem _light = default!;
     [Dependency] private NPCSystem _npc = default!;
     [Dependency] private NpcFactionSystem _npcFaction = default!;
-    [Dependency] private PrayerSystem _prayerSystem = default!;
+    [Dependency] private ServerPrayerSystem _prayerSystem = default!;
     [Dependency] private QuickDialogSystem _quickDialog = default!;
     [Dependency] private ContainerSystem _container = default!;
     // Corvax-Wega-Revenant-end
