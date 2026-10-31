@@ -1,0 +1,44 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "recolor by ivawchik",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "mag-frag-1"
+        },
+        {
+            "name": "mag-frag-2"
+        },
+        {
+            "name": "mag-frag-3"
+        },
+        {
+            "name": "mag-frag-4"
+        },
+        {
+            "name": "mag-blast-1"
+        },
+        {
+            "name": "mag-blast-2"
+        },
+        {
+            "name": "mag-blast-3"
+        },
+        {
+            "name": "mag-blast-4"
+        },
+        {
+            "name": "frag"
+        },
+        {
+            "name": "blast"
+        }
+    ]
+}

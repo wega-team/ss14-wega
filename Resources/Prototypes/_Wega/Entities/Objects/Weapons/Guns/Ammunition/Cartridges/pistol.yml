@@ -16,3 +16,50 @@
     tags:
       - CartridgePistolFoam
       - Cartridge
+
+- type: entity
+  id: CartridgePistolFrozen
+  name: cartridge (frozen)
+  description: Arguably the most popular caliber on the market, used by all manner of pistols and submachine guns. Frozen ammunition lowers body temperature when it hits an opponent.
+  parent: BaseCartridgePistol
+  components:
+  - type: CartridgeAmmo
+    proto: BulletPistolFrozen
+  -  type: Sprite
+     layers:
+       - state: base
+         map: [ "enum.AmmoVisualLayers.Base" ]
+       - state: tip
+         map: [ "enum.AmmoVisualLayers.Tip" ]
+         color: "#18a2d5ff"
+  - type: Tag
+    tags:
+      - CartridgePistol
+
+- type: entity
+  abstract: true
+  parent: BaseCartridge
+  id: BaseCartridgePistolMG90
+  name: cartridge (.25 auto)
+  components:
+  - type: Tag
+    tags:
+      - CartridgePistolMG90
+  - type: CartridgeAmmo
+    proto: BulletPistolMG90
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Casings/ammo_casing.rsi
+    layers:
+    - state: base
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+
+- type: entity
+  parent: BaseCartridgePistolMG90
+  id: CartridgePistolMG90
+  name: cartridge (.25 auto)
+  description: An unpopular caliber on the modern market, it is used in modified pistols and submachine guns. Standard kinetic ammunition is common and useful in most situations.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletPistolMG90

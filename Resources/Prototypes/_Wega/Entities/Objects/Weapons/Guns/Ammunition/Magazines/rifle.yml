@@ -1,8 +1,7 @@
 # Empty mags
 - type: entity
   id: BaseExtMagazineRifle
-  name: extented riffle magazine (.20)
-  description: Extented riffle magazine for .20 with a capacity of 45.
+  name: extented rifle magazine (.30)
   parent: BaseItem
   abstract: true
   components:
@@ -36,8 +35,8 @@
 # Magazines
 - type: entity
   id: ExtMagazineRifle
-  name: extented riffle magazine (.20)
-  description: Extented riffle magazine for .20 with a capacity of 45.
+  name: extented rifle magazine (.30)
+  description: Extented rifle magazine for .30 with a capacity of 45. Intended to hold general-purpose kinetic ammunition.
   parent: BaseExtMagazineRifle
   components:
   - type: BallisticAmmoProvider
@@ -48,3 +47,20 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
+
+- type: entity
+  parent: BaseExtMagazineRifle
+  id: ExtMagazineRifleFrozen
+  name: extented riffle magazine (.30 rifle frozen)
+  description: Extented rifle magazine for .30 with a capacity of 45. Intended to hold experimental chilling ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgeLightRifleFrozen
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
+      color: "#18a2d5ff"

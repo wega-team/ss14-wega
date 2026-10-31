@@ -1,0 +1,48 @@
+- type: entity
+  abstract: true
+  parent: [BaseItem, BaseMajorContraband]
+  id: BaseGrenadeMini
+  name: base mini grenade
+  components:
+  - type: Tag
+    tags:
+    - GrenadeMini
+  - type: Item
+    size: Tiny
+  - type: Sprite
+
+- type: entity
+  parent: BaseGrenadeMini
+  id: GrenadeFragMini
+  name: mini frag grenade round
+  description: The projectile, designed for under‑barrel grenade launchers, has less power but is also more compact in size. It contains an anti‑personnel charge and shrapnel that tears apart anyone in the explosion zone.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletGrenadeFragMini
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Ammunition/Explosives/explosives_mini.rsi
+    layers:
+    - state: mini-frag
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: mini-frag
+    suffix: false
+
+- type: entity
+  parent: BaseGrenadeMini
+  id: GrenadeBlastMini
+  name: mini blast grenade round
+  description: The projectile, designed for under‑barrel grenade launchers, has less power but is also more compact in size. It contains an explosive substance developed specifically to penetrate the reinforced skin of space stations.
+  components:
+  - type: CartridgeAmmo
+    proto: BulletGrenadeBlastMini
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Ammunition/Explosives/explosives_mini.rsi
+    layers:
+    - state: mini-blast
+      map: ["enum.AmmoVisualLayers.Base"]
+  - type: Appearance
+  - type: SpentAmmoVisuals
+    state: mini-blast
+    suffix: false

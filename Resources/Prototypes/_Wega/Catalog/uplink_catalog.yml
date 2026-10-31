@@ -313,7 +313,6 @@
     Telecrystal: 1
   categories:
   - UplinkAmmo
-  conditions:
 
 - type: listing
   id: UplinkMagazineEagleAP
@@ -684,6 +683,54 @@
   description: uplink-pistol-ext-magazine-c20r-desc
   icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag_ext.rsi, state: red-icon }
   productEntity: ExtMagazinePistolSubMachineGun
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkMG90
+  name: uplink-mg90-bundle-name
+  description: uplink-mg90-bundle-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi, state: icon }
+  productEntity: ClothingBackpackDuffelSyndicateFilledMG90
+  cost:
+    Telecrystal: 28
+  categories:
+    - UplinkWeaponry
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkMagazinePistolSubMachineGunFrozen
+  name: uplink-pistol-magazine-c20r-frozen-name
+  description: uplink-pistol-magazine-c20r-frozen-desc
+  icon: { sprite: /Textures/Objects/Weapons/Guns/Ammunition/Magazine/Pistol/smg_mag.rsi, state: blue-icon }
+  productEntity: MagazinePistolSubMachineGunFrozen
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
+  conditions:
+    - !type:StoreWhitelistCondition
+      whitelist:
+        tags:
+          - NukeOpsUplink
+
+- type: listing
+  id: UplinkExtMagazineRifleFrozen
+  name: uplink-ext-rifle-magazine-frozen-name
+  description: uplink-ext-rifle-magazine-frozen-desc
+  icon: { sprite: /Textures/_Wega/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/ext_rifle_mag.rsi, state: blue-icon }
+  productEntity: ExtMagazineRifleFrozen
   cost:
     Telecrystal: 1
   categories:
