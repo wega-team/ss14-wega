@@ -126,3 +126,12 @@ uplink-casebadge-desc = Маленькая сумка для хранения т
 
 uplink-pistol-ext-magazine-c20r-name = Расширенный магазин ПП (.35 авто)
 uplink-pistol-ext-magazine-c20r-desc = Магазин ПП на 60 патронов. Совместим с C-20r.
+
+uplink-mg90-bundle-name = Набор "МГ90"
+uplink-mg90-bundle-desc = Огневая и взрывная мощь: Пистолет пулемёт с подствольным гранатомётом, 7 магазинов .25 калибра и 2 коробки с мини гранатами.
+
+uplink-pistol-magazine-c20r-frozen-name = Магазин ПП (.35 морозный)
+uplink-pistol-magazine-c20r-frozen-desc = Магазин ПП на 30 морозных патронов. Совместим с C-20r.
+
+uplink-ext-rifle-magazine-frozen-name = Расширенный винтовочный магазин (.30 винтовочный морозный)
+uplink-ext-rifle-magazine-frozen-desc = Расширенный винтовочный магазин на 45 патронов под патрон .30 винтовочный морозный. Совместим с штурмовой винтовкой xC-67.

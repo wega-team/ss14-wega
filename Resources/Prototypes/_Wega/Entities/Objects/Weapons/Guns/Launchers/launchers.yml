@@ -38,3 +38,52 @@
   - type: GunRequiresWield
   - type: StaticPrice
     price: 10000
+
+- type: entity
+  parent: [ BaseItem, BaseSyndicateContraband ]
+  id: WeaponLauncherMG90
+  categories: [ HideSpawnMenu ]
+  name: m90-lm
+  description: PLOOP.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi
+    layers:
+      - state: base
+        map: ["enum.GunVisualLayers.Base"]
+      - state: mag-0
+        map: ["enum.GunVisualLayers.Mag"]
+  - type: Item
+    size: Large
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+        ents: []
+      hotswap-paired: !type:Container
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Rifles/m-90gl.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: AmmoCounter
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - GrenadeMini
+    capacity: 2
+    proto: GrenadeFragMini
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+  - type: Gun
+    fireRate: 1
+    projectileSpeed: 25 # Slower than a bullet, same speed as our old projectile limit.
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
+  - type: WeaponHotswap
+    alternateForm: WeaponSubMachineMG90
+    isAlternate: true
+  - type: StaticPrice
+    price: 10000

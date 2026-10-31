@@ -89,3 +89,19 @@
         children:
         - id: EnergyShieldSuitModule
           amount: 5
+
+- type: entity
+  parent: ClothingBackpackDuffelSyndicateBundle
+  id: ClothingBackpackDuffelSyndicateFilledMG90
+  name: MG90 bundle
+  description: test.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: WeaponSubMachineMG90
+        - id: MagazinePistolSubMachineGunMG90
+          amount: 6
+        - id: GrenadeMiniBoxBlast
+        - id: GrenadeMiniBoxFrag

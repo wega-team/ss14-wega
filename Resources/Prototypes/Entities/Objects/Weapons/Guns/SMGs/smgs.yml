@@ -110,10 +110,10 @@
   #   minAngle: -19
   #   maxAngle: -12
   - type: Gun
-    fireRate: 7
+    fireRate: 8
     minAngle: 2
-    maxAngle: 16
-    angleIncrease: 2
+    maxAngle: 14
+    angleIncrease: 1.5
     angleDecay: 20
     shotsPerBurst: 5
   # Corvax-Wega-Edit-Nuka-End
@@ -142,11 +142,11 @@
   - type: Gun
     # Corvax-Wega-Edit-Nuka-Start
     minAngle: 2
-    maxAngle: 16
-    angleIncrease: 2
+    maxAngle: 14
+    angleIncrease: 1.5
     angleDecay: 16
-    fireRate: 7
-    burstFireRate: 7
+    fireRate: 8
+    burstFireRate: 8
     # Corvax-Wega-Edit-Nuka-End
     selectedMode: Burst
     availableModes:

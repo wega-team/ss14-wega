@@ -12,6 +12,12 @@
         },
         {
             "name": "mag-1"
+        },
+        {
+            "name": "stripe"
+        },
+        {
+            "name": "blue-icon"
         }
     ]
 }

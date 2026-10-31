@@ -237,15 +237,6 @@
   id: Cook
 
 - type: Tag
-  id: MagazineEagle
-
-- type: Tag
-  id: MagazineHristov
-
-- type: Tag
-  id: ExtMagazineRifle
-
-- type: Tag
   id: ClockworkGlassShard
 
 - type: Tag
@@ -644,3 +635,25 @@
 
 - type: Tag
   id: XenoborgModuleHeavyBalance
+
+# Nuka Tags Start
+
+- type: Tag
+  id: MagazineEagle
+
+- type: Tag
+  id: MagazineHristov
+
+- type: Tag
+  id: ExtMagazineRifle
+
+- type: Tag
+  id: MagazinePistolSubMachineGunMG90
+
+- type: Tag
+  id: CartridgePistolMG90
+
+- type: Tag
+  id: GrenadeMini
+
+# Nuka Tags End

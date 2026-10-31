@@ -1,0 +1,15 @@
+- type: entity
+  id: CartridgeLightRifleFrozen
+  name: cartridge (.30 frozen)
+  description: test.
+  parent: BaseCartridgeLightRifle
+  components:
+  - type: CartridgeAmmo
+    proto: BulletLightRifleFrozen
+  -  type: Sprite
+     layers:
+       - state: base
+         map: [ "enum.AmmoVisualLayers.Base" ]
+       - state: tip
+         map: [ "enum.AmmoVisualLayers.Tip" ]
+         color: "#18a2d5ff"

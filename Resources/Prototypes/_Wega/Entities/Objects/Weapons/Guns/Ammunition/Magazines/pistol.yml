@@ -117,3 +117,87 @@
       - state: inhand-left-mag
       right:
       - state: inhand-right-mag
+
+- type: entity
+  id: MagazinePistolSubMachineGunFrozen
+  name: SMG magazine (.35 frozen)
+  description: 30-round double-stack magazine for submachine guns. Intended to hold experimental chilling ammunition.
+  parent: BaseMagazinePistolSubMachineGun
+  components:
+  - type: BallisticAmmoProvider
+    capacity: 30
+    proto: CartridgePistolFrozen
+    whitelist:
+      tags:
+        - CartridgePistol
+    soundInsert:
+      path: /Audio/Weapons/Guns/MagIn/bullet_insert.ogg
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
+      color: "#18a2d5ff"
+  - type: Item
+    inhandVisuals:
+      left:
+      - state: inhand-left-mag
+      - state: inhand-left-stripe
+        color: "#18a2d5ff"
+      right:
+      - state: inhand-right-mag
+      - state: inhand-right-stripe
+        color: "#18a2d5ff"
+  - type: Tag
+    tags:
+      - MagazinePistolSubMachineGun
+
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseMagazinePistolSubMachineGunMG90
+  name: MG90 magazine (.25 auto)
+  components:
+  - type: Tag
+    tags:
+      - MagazinePistolSubMachineGunMG90
+  - type: Item
+    size: Small
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - CartridgePistolMG90
+    capacity: 30
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Ammunition/Magazine/Rifle/m_90_mag.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  parent: BaseMagazinePistolSubMachineGunMG90
+  id: MagazinePistolSubMachineGunMG90
+  name: MG90 magazine (.25 auto)
+  description: An extremely exotic 30‑round magazine for the MG90 submachine gun. Intended to hold general-purpose kinetic ammunition.
+  components:
+  - type: BallisticAmmoProvider
+    proto: CartridgePistolMG90
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-1
+      map: ["enum.GunVisualLayers.Mag"]
