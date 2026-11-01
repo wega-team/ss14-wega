@@ -38,6 +38,9 @@
         startingItem: PowerCellMicroreactor
         disableEject: true
         swap: false
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   parent: [BorgHypo,SolutionHyposprayTiny]

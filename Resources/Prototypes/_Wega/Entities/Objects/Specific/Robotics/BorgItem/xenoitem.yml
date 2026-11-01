@@ -18,6 +18,9 @@
           startingItem: PowerCellMicroreactor
           disableEject: true
           swap: false
+    - type: EmpResistance
+      strengthMultiplier: 0
+      durationMultiplier: 0
 
 - type: entity
   id: XenoborgHolosignForcefield
@@ -215,6 +218,9 @@
         startingItem: PowerCellSmallNuclear
         disableEject: true
         swap: false
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   parent: Holoprojector
@@ -235,6 +241,9 @@
           startingItem: PowerCellMicroreactor
           disableEject: true
           swap: false
+    - type: EmpResistance
+      strengthMultiplier: 0
+      durationMultiplier: 0
 
 - type: entity
   parent: RepeirModeDevice
@@ -344,6 +353,9 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   parent: ClothingHeadBase
@@ -413,6 +425,9 @@
   - type: BatteryAmmoProvider
     proto: IonScanDamage
     fireCost: 500
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   name: upgradebrain

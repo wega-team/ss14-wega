@@ -59,7 +59,20 @@ public abstract partial class SharedBatterySystem : EntitySystem
     {
         args.Affected = true;
         UseCharge(ent.AsNullable(), args.EnergyConsumption);
-    }
+    
+	
+	// Corvax-Wega-Start
+		if (TryComp<BatterySelfRechargerComponent>(ent, out var recharger))
+		{
+			args.Disabled = true;
+			recharger.NextAutoRecharge = _timing.CurTime + args.Duration;
+			Dirty(ent, recharger);
+        
+			RefreshChargeRate(ent.AsNullable());
+		}
+	// Corvax-Wega-End
+	}
+
 
     private void OnExamine(Entity<BatteryComponent> ent, ref ExaminedEvent args)
     {
@@ -120,6 +133,11 @@ public abstract partial class SharedBatterySystem : EntitySystem
         var rechargerQuery = EntityQueryEnumerator<BatterySelfRechargerComponent, BatteryComponent>();
         while (rechargerQuery.MoveNext(out var uid, out var recharger, out var battery))
         {
+			// Corvax-Wega-Start
+			if (HasComp<EmpDisabledComponent>(uid))
+				continue;
+			// Corvax-Wega-End
+			
             if (recharger.NextAutoRecharge == null || curTime < recharger.NextAutoRecharge)
                 continue;
 
