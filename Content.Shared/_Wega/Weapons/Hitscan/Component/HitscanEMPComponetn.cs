@@ -22,5 +22,5 @@ public sealed partial class HitscanEMPComponent : Component
     /// How long it disables targets.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public TimeSpan DisableDuration = TimeSpan.FromSeconds(10);
+    public TimeSpan DisableDuration = TimeSpan.FromSeconds(60);
 }

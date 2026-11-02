@@ -2,6 +2,7 @@ using System.Numerics;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Content.Shared.Teleportation.Components; // Corvax-Wega-Shadekin
 
 namespace Content.Shared.Body;
 
@@ -46,6 +47,9 @@ public sealed partial class InitialBodySystem : EntitySystem
                 Del(spawn);
                 continue;
             }
+
+            if (TryComp<ShadekinCoreComponent>(spawn, out var core)) // Corvax-Wega-Shadekin
+                core.OwnerBody = ent.Owner; // Corvax-Wega-Shadekin
 
             spawned[part] = spawn;
         }

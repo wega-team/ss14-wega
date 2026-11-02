@@ -31,6 +31,11 @@
           Full: { visible: false }
           Opened: { visible: false }
           Empty: { visible: true }
+  # Corvax-Wega-Start
+  - type: Tag
+    tags:
+    - Lightbox
+  # Corvax-Wega-End
 
 # Light Tubes
 - type: entity

@@ -27,9 +27,11 @@
   - type: IconSmooth
     key: windows-plasma
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-plasma ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-plasma
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted

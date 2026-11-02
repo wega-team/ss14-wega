@@ -283,3 +283,4 @@
         - HighImpassable
   - type: Transform
     noRot: false
+  - type: StylishSprite # Corvax-Wega-Stylish

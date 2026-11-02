@@ -845,8 +845,13 @@
     flavorKind: station-event-random-sentience-flavor-inanimate
     weight: 0.0002 # 5,000 times less likely than 1 regular animal
     # not putting a BlockMovement component here cause that's funny.
-  - type: EdibleMatter # Corvax-Wega-Add
-    canBeEaten: false # Corvax-Wega-Add
+  # Corvax-Wega-Start
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.1
+  # Corvax-Wega-End
 
 - type: entity
   name: advanced laser pistol
@@ -887,6 +892,11 @@
     tags:
     - Sidearm
     - LaserWeapon
+  # Corvax-Wega-Start
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.1
+  # Corvax-Wega-End
 
 - type: entity
   name: C.H.I.M.P. handcannon
@@ -981,6 +991,11 @@
     tags:
     - Sidearm
     - LaserWeapon
+  # Corvax-Wega-Start
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.1
+  # Corvax-Wega-End
 
 - type: entity
   name: energy shotgun
@@ -1075,8 +1090,13 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 48
     autoRechargePauseTime: 10
-  - type: EdibleMatter # Corvax-Wega-Add
-    canBeEaten: false # Corvax-Wega-Add
+  # Corvax-Wega-Start
+  - type: EdibleMatter
+    canBeEaten: false
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.1
+  # Corvax-Wega-End
 
 - type: entity
   name: temperature gun

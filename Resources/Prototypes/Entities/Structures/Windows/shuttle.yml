@@ -33,9 +33,11 @@
   - type: IconSmooth
     key: windows-shuttle
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-shuttle ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-shuttle
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted

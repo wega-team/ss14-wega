@@ -51,11 +51,12 @@ public sealed partial class StylishPresetPrototype : IPrototype, IInheritingProt
     public Angle? Rotation;
 
     /// <summary>
-    /// Optional local offset applied to the sprite.
+    /// A list of offsets. If there is exactly 1 offset, it is applied as a static offset.
+    /// If there are 4 offsets, they are mapped to directions (North, West, South, East).
     /// </summary>
     [DataField]
     [AlwaysPushInheritance]
-    public Vector2? Offset;
+    public List<Vector2>? Offsets;
 
     /// <summary>
     /// Entity prototype IDs this preset applies to.

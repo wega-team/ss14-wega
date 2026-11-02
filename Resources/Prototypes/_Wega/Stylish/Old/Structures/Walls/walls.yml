@@ -4,9 +4,15 @@
   id: StylishWallsSolidOld
   rsiPath: _Wega/Stylish/Old/Walls/solid.rsi
   entities:
-  - WallReinforced
   - WallSolid
   - Girder
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsSolidReinforcedOld
+  rsiPath: _Wega/Stylish/Old/Walls/solid-reinforced.rsi
+  entities:
+  - WallReinforced
   - ReinforcedGirder
 
 - type: stylishPreset
@@ -14,8 +20,14 @@
   id: StylishWallsSolidRustOld
   rsiPath: _Wega/Stylish/Old/Walls/solid-rust.rsi
   entities:
-  - WallReinforcedRust
   - WallSolidRust
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsSolidReinforcedRustOld
+  rsiPath: _Wega/Stylish/Old/Walls/solid-reinforced-rust.rsi
+  entities:
+  - WallReinforcedRust
 
 - type: stylishPreset
   parent: BaseStylishOld
@@ -85,8 +97,10 @@
   id: StylishWallsPlastitaniumDiagonalOld
   rsiPath: _Wega/Stylish/Old/Walls/plastitanium-diagonal.rsi
   entities:
+  - WallPlastitaniumDiagonalIndestructible
   - WallPlastitaniumDiagonal
 
+# Silver
 - type: stylishPreset
   parent: BaseStylishOld
   id: StylishWallsSilverOld
@@ -94,12 +108,20 @@
   entities:
   - WallSilver
 
+# Shuttle
 - type: stylishPreset
   parent: BaseStylishOld
   id: StylishWallsShuttleOld
   rsiPath: _Wega/Stylish/Old/Walls/shuttle.rsi
   entities:
   - WallShuttle
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsShuttleDiagonalOld
+  rsiPath: _Wega/Stylish/Old/Walls/shuttle_diagonal.rsi
+  entities:
+  - WallShuttleDiagonal
 
 # Xeno
 - type: stylishPreset
@@ -108,6 +130,12 @@
   rsiPath: _Wega/Stylish/Old/Walls/exo.rsi
   entities:
   - WallSolidChitin
+
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallsChitinReinforcedOld
+  rsiPath: _Wega/Stylish/Old/Walls/exo-reinforced.rsi
+  entities:
   - WallReinforcedChitin
 
 # Xenoborg

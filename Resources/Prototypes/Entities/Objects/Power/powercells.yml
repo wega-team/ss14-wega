@@ -121,6 +121,12 @@
       reagents:
       - ReagentId: Uranium
         Quantity: 5
+  # Corvax-Wega-Start
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0
+  # Corvax-Wega-End
+
 
 - type: entity
   name: medium-capacity power cell
@@ -260,13 +266,17 @@
     maxCharge: 720
     startingCharge: 720
   - type: BatterySelfRecharger
-    autoRechargeRate: 720 # takes 1 minute to charge itself back to full # Corvax-Wega-Edit
-    autoRechargePauseTime: 5 # Corvax-Wega-Start
+    autoRechargeRate: 12 # takes 1 minute to charge itself back to full
   - type: Extractable
     juiceSolution:
       reagents:
       - ReagentId: Uranium
         Quantity: 5
+  # Corvax-Wega-Start
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.2
+  # Corvax-Wega-End
 
 - type: entity
   parent: PowerCellMicroreactor

@@ -12,6 +12,9 @@ chat-emote-name-rev = Газовать
 
 chat-emote-name-bubble = Бурлить
 
+chat-emote-name-mar = Мар
+chat-emote-name-wurble = Журчать
+
 # Message
 chat-emote-msg-moan = стонет
 chat-emote-msg-LPCmoan = издает робо-стон
@@ -25,3 +28,6 @@ chat-emote-msg-harpy-bangs = гремит
 chat-emote-msg-harpy-revs = газует
 
 chat-emote-msg-bubble = бурлит
+
+chat-emote-msg-shadekin-mars = издаёт Мар
+chat-emote-msg-shadekin-wurble = журчит!

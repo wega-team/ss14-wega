@@ -930,6 +930,7 @@
   - type: ItemBorgModule
     hands:
     - item: LightReplacerFilled
+    - item: BorgTrashBag
     # Corvax-Wega-Robot-Start
     - item: BorgGeneratorBoxLight
     - hand:
@@ -940,8 +941,21 @@
           - LightBulb
           tags:
           - Lightbox
+    - hand:
+        emptyLabel: borg-slot-box-light-mixed-empty
+        emptyRepresentative: BoxLightMixed
+        whitelist:
+          components:
+          - LightBulb
+          tags:
+          - Lightbox
+    - hand:
+        emptyLabel: borg-slot-box-light-empty
+        emptyRepresentative: LightBulbCrystalYellow
+        whitelist:
+          components:
+          - LightBulb
     # Corvax-Wega-Robot-end
-    - item: BorgTrashBag
     - item: Plunger
     - item: SoapNT
       hand:

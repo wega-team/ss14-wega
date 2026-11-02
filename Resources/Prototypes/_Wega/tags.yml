@@ -657,3 +657,9 @@
   id: GrenadeMini
 
 # Nuka Tags End
+
+- type: Tag
+  id: MobShadekin
+
+- type: Tag
+  id: Core

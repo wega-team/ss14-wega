@@ -1,0 +1,24 @@
+- type: species
+  id: Shadekin
+  name: species-name-shadekin
+  roundStart: true
+  prototype: MobShadekin
+  defaultSkinTone: "#FFFFFF"
+  dollPrototype: AppearanceShadekin
+  skinColoration: Hues
+  naming: First
+  maleFirstNames: NamesShadekin
+  femaleFirstNames: NamesShadekin
+  minAge: 18
+  maxAge: 250
+  youngAge: 80
+  oldAge: 175
+  defaultSoundsBySex:
+  - MaleShadekin
+  - FemaleShadekin
+  - MaleShadekin
+  voices:
+  - MaleShadekin
+  - FemaleShadekin
+  minHeight: 160
+  maxHeight: 190

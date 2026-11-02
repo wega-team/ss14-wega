@@ -100,10 +100,13 @@
     sprite: _Wega/Objects/Weapons/Guns/Plasma/adv_cutter.rsi
     state: icon
   - type: Gun
-    fireRate: 2
+    fireRate: 75
   - type: Battery
     maxCharge: 2500
     startingCharge: 2500
   - type: BatteryAmmoProvider
     proto: BulletPlasmaCutterMagma
     fireCost: 75
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0

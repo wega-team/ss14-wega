@@ -11,9 +11,11 @@
   - type: IconSmooth
     key: windows-exo
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-exo ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-exo
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted

@@ -37,9 +37,11 @@
   - type: IconSmooth
     key: windows-regal
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-regal ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-regal
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted

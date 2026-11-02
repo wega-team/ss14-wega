@@ -136,10 +136,14 @@
         type: BorgSelectTypeUserInterface
       enum.RadarConsoleUiKey.Key:
         type: RadarConsoleBoundUserInterface
+      enum.GpsUiKey.Key:
+        type: GpsBoundUserInterface
   - type: IntrinsicUI
     uis:
       enum.RadarConsoleUiKey.Key:
         toggleAction: ActionAGhostShowRadar
+      enum.GpsUiKey.Key:
+        toggleAction: ActionGPSShow
   - type: RadarConsole
     followEntity: true
   - type: HandheldGPS

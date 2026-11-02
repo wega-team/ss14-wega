@@ -11,6 +11,9 @@
         startingItem: PowerCellMicroreactor
         disableEject: true
         swap: false
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   name: makeshift disabler pistol
@@ -49,7 +52,9 @@
       fireCost: 40
     - proto: BulletTaserBorg
       fireCost: 600
-
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   parent: WeaponMeleeNeedle
@@ -102,6 +107,9 @@
   - type: BatterySelfRecharger
     autoRechargeRate: 40
   - type: AmmoCounter
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 # SEC Dec
 - type: entity
@@ -171,6 +179,9 @@
       fireCost: 250
     - proto: TearGasGrenadeProject
       fireCost: 500
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   name: box granade
@@ -312,6 +323,9 @@
   - type: Tag
     tags:
     - Itemborg
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   name: turel laser pistol
@@ -369,5 +383,7 @@
   - type: Tag
     tags:
     - Itemborg
-
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 

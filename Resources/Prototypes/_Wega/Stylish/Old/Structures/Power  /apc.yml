@@ -1,0 +1,13 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishAPCOld
+  offsets: ["0, 0"]
+  rsiPath: _Wega/Stylish/Old/Wallmounts/apc.rsi
+  entities:
+  - APCFrame
+  - APCConstructed
+  - APCBasic
+  - APCHighCapacity
+  - APCSuperCapacity
+  - APCHyperCapacity
+  - APCXenoborg

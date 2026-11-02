@@ -32,9 +32,11 @@
   - type: IconSmooth
     key: windows-plasma-reinf
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-plasma-reinf ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-plasma-reinf
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted

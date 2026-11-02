@@ -12,8 +12,7 @@
     startingCharge: 720
     pricePerJoule: 0.15
   - type: BatterySelfRecharger
-    autoRechargeRate: 720
-    autoRechargePauseTime: 5
+    autoRechargeRate: 12
   - type: PowerCell
   - type: Explosive
     explosionType: Default
@@ -22,9 +21,9 @@
   - type: Tag
     tags:
       - PowerCell
-  - type: BatteryAmmoProvider
-    proto: RedLightLaser
-    fireCost: 50
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.2
 
 - type: entity
   name: super potato battery
@@ -47,5 +46,4 @@
     graph: PowerCellSuperPotatoCraft
     node: superpotatobattery
   - type: BatterySelfRecharger
-    autoRechargeRate: 140
-    autoRechargePauseTime: 10
+    autoRechargeRate: 14

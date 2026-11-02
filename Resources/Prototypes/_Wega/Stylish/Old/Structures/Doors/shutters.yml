@@ -51,16 +51,10 @@
 # Shutters
 - type: stylishPreset
   parent: BaseStylishOld
-  id: StylishShuttersFrameOld
-  rsiPath: _Wega/Stylish/Old/Doors/Shutters/shutters.rsi
-  entities:
-  - ShuttersFrame
-
-- type: stylishPreset
-  parent: BaseStylishOld
   id: StylishShuttersOld
   rsiPath: _Wega/Stylish/Old/Doors/Shutters/shutters.rsi
   entities:
+  - ShuttersFrame
   - ShuttersNormal
   - ShuttersNormalOpen
 

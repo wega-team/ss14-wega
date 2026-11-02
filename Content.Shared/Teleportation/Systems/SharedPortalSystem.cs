@@ -17,6 +17,7 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Robust.Shared.Prototypes;
+using Content.Shared.Whitelist; // Corvax-Wega
 
 namespace Content.Shared.Teleportation.Systems;
 
@@ -36,6 +37,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tag = default!;
+    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Corvax-Wega
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -99,6 +101,14 @@ public abstract partial class SharedPortalSystem : EntitySystem
         if (_tag.HasTag(args.OtherEntity, PreventCollisionTag))
             return;
 
+        // Corvax-Wega-Shadekin-start
+        if (ent.Comp.RequiredCollisionTag != null && !_tag.HasTag(subject, ent.Comp.RequiredCollisionTag.Value))
+            return;
+
+        if (_whitelist.IsWhitelistPass(ent.Comp.CollisionBlacklist, subject))
+            return;
+        // Corvax-Wega-Shadekin-end
+
         // best not.
         if (Transform(subject).Anchored)
             return;
@@ -142,6 +152,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
             }
 
             TeleportEntity(ent, subject, Transform(target).Coordinates, target);
+            RaiseLocalEvent(subject, new EntityTeleportedFromPortalEvent(ent)); // Corvax-Wega-Shadekin
             return;
         }
 
