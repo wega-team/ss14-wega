@@ -27,7 +27,6 @@
   - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons
   - type: ShowContrabandDetails
-  - type: FlashImmunity
   - type: UserInterface
     interfaces:
       enum.SiliconLawsUiKey.Key:

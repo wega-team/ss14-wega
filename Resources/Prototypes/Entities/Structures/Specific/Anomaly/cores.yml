@@ -494,7 +494,7 @@
       color: "#1e070e"
       castShadows: false
     - type: RadiationSource
-      intensity: 3
+      intensity: 2
   # - type: PointLight
     # radius: 1.5
     # energy: 10

@@ -52,3 +52,7 @@ ghost-role-information-sentient-golocarp-name = Голокарп
 ghost-role-information-sentient-rainbowcarp-name = Радужный карп
 
 ghost-role-information-syndicate-cyborg-medical-name = Медицинский киборг Синдиката
+
+ghost-role-information-hulk-name = Халк
+ghost-role-information-zila-name = Унатзила
+ghost-role-information-hulk-description = Всё крушить и ломать.
