@@ -145,12 +145,17 @@ public sealed partial class VeilCultSystem : SharedVeilCultSystem
                         {
                             cult.EnergyCount += 10;
                         }
-                        _audio.PlayPvs(_audio.ResolveSound(cogComponent.Sound), cog);
-                    }
+						if (cogComponent.NextSoundTick <= 0)
+						{
+							cogComponent.NextSoundTick = 30;
+							_audio.PlayPvs(_audio.ResolveSound(cogComponent.Sound), cog);
+						}
+					}
                 }
             }
 
             cogComponent.NextTimeTick -= frameTime;
+            cogComponent.NextSoundTick -= frameTime;
         }
 
         var ritualQuery = EntityQueryEnumerator<VeilCultPortalComponent>();

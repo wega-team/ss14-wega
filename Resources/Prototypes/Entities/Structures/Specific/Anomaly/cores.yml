@@ -714,13 +714,15 @@
     maxCharge: 720
     startingCharge: 0
   - type: BatterySelfRecharger
-    autoRechargeRate: 720
-    autoRechargePauseTime: 5
+    autoRechargeRate: 12
   - type: Tag
     tags:
     - ForceableFollow
     - AnomalyCore
     - ElecCore
+  - type: EmpResistance
+    strengthMultiplier: 1
+    durationMultiplier: 0.2
   # Corvax-Wega-Add-end
 
 - type: entity

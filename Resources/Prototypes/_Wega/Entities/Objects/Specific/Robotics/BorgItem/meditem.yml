@@ -26,31 +26,11 @@
 
 - type: entity
   name: handheld crew monitor
-  parent: BaseHandheldComputer
+  parent: HandheldCrewMonitor
   categories: [ HideSpawnMenu ]
   id: HandheldCrewMonitorBorg
   description: A hand-held crew monitor displaying the status of suit sensors.
   components:
-  - type: Item
-    heldPrefix: scanner
-  - type: Sprite
-    sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
-    state: icon
-  - type: ActivatableUI
-    key: enum.CrewMonitoringUIKey.Key
-  - type: UserInterface
-    interfaces:
-      enum.CrewMonitoringUIKey.Key:
-        type: CrewMonitoringBoundUserInterface
-  - type: CrewMonitoringConsole
-  - type: DeviceNetwork
-    deviceNetId: Wireless
-    receiveFrequencyId: CrewMonitor
-  - type: WirelessNetwork
-    range: 500
-  - type: StationLimitedNetwork
-  - type: StaticPrice
-    price: 500
   - type: ItemSlots
     slots:
       cell_slot:
@@ -58,6 +38,9 @@
         startingItem: PowerCellMicroreactor
         disableEject: true
         swap: false
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   parent: [BorgHypo,SolutionHyposprayTiny]

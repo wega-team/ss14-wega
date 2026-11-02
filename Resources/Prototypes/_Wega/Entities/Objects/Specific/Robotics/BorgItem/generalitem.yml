@@ -28,6 +28,9 @@
         startingItem: PowerCellSmallNuclear
         disableEject: true
         swap: false
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 # Common Magboots
 - type: entity
@@ -100,6 +103,9 @@
         startingItem: PowerCellSmallNuclear
         disableEject: true
         swap: false
+  - type: EmpResistance
+    strengthMultiplier: 0
+    durationMultiplier: 0
 
 - type: entity
   parent: BaseItem

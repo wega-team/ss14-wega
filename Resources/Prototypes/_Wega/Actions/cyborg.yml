@@ -55,3 +55,23 @@
     - state: xenoborg-eye2-module
   - type: InstantAction
     event: !type:SteathAbilityEvent {}
+
+- type: entity
+  parent: BaseToggleAction
+  id: ActionGPSShow
+  name: GPS Scanner Interface
+  description: View a Mass Scanner Interface.
+  components:
+  - type: Action
+    keywords: [ "AI", "console", "interface" ]
+    priority: -6
+  - type: Sprite
+    sprite: Objects/Devices/gps.rsi # Corvax-Resprite Interface/Actions/actions_ai.rsi
+    layers:
+    - state: icon
+      map: ["enum.ActionVisuals.Icon"]
+    - state: icon
+      map: ["enum.ActionVisuals.IconToggled"]
+      visible: false
+  - type: InstantAction
+    event: !type:ToggleIntrinsicUIEvent { key: enum.GpsUiKey.Key }
