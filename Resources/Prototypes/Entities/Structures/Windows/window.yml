@@ -50,9 +50,11 @@
   - type: IconSmooth
     key: windows
     states:
-    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
-      mask: [ windows ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows
+    # Corvax-Wega-Stylish-Edit-end
       - windows-reinf
       - windows-tinted
       - windows-plasma
