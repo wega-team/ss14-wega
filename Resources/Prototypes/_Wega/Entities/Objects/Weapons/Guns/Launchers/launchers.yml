@@ -70,7 +70,7 @@
     whitelist:
       tags:
       - GrenadeMini
-    capacity: 2
+    capacity: 1
     proto: GrenadeFragMini
     soundInsert:
       path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
