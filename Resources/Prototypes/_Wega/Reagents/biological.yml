@@ -76,6 +76,20 @@
       volume: 6
 
 - type: reagent
+  parent: Blood
+  id: ShadekinBlood
+  name: reagent-name-shadekin-blood
+  group: Biological
+  desc: reagent-desc-shadekin-blood
+  flavor: metallic
+  color: "#1c1624"
+  recognizable: true
+  physicalDesc: reagent-physical-desc-inky
+  standsout: true
+
+#region Xenobio
+
+- type: reagent
   id: SlimeExtractGray
   name: reagent-name-gray-slime
   group: Biological
@@ -272,3 +286,5 @@
   color: "#FFFFFF"
   physicalDesc: reagent-physical-desc-sweet
   flavor: chaotic
+
+#endregion

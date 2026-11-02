@@ -1,0 +1,24 @@
+- type: surgeryGraph
+  id: ShadekinSurgery
+  startNodes:
+    - ShadekinTorsoClosed   # <-- only torso is Shadekin-specific
+    - HeadClosed
+    - AttachHead
+    - ImplantingTooth
+    - ThroatClosed
+    - AmputateLeftArm
+    - AttachLeftArm
+    - AmputateRightArm
+    - AttachRightArm
+    - AmputateLeftHand
+    - AttachLeftHand
+    - AmputateRightHand
+    - AttachRightHand
+    - AmputateLeftLeg
+    - AttachLeftLeg
+    - AmputateRightLeg
+    - AttachRightLeg
+    - AmputateLeftFoot
+    - AttachLeftFoot
+    - AmputateRightFoot
+    - AttachRightFoot

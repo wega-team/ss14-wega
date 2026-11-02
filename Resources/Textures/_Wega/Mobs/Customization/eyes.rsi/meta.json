@@ -14,6 +14,10 @@
       {
           "name": "slime",
           "directions": 4
+      },
+      {
+          "name": "shadekin",
+          "directions": 4
       }
     ]
 }

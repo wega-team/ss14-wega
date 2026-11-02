@@ -218,6 +218,16 @@ public sealed partial class HumanoidProfileEditor
     private void SetSpecies(string newSpecies)
     {
         Profile = Profile?.WithSpecies(newSpecies);
+        // Corvax-Wega-Traits-Start
+        foreach (var traitId in Profile!.TraitPreferences.ToList())
+        {
+            if (_prototypeManager.TryIndex(traitId, out var traitProto)
+                && traitProto.Species != null && !traitProto.Species.Contains(newSpecies))
+            {
+                Profile = Profile.WithoutTraitPreference(traitId, _prototypeManager);
+            }
+        }
+        // Corvax-Wega-Traits-End
         OnSkinColorOnValueChanged(); // Species may have special color prefs, make sure to update it.
         _markingsModel.OrganData = _markingManager.GetMarkingData(newSpecies);
         _markingsModel.ValidateMarkings();
@@ -225,6 +235,7 @@ public sealed partial class HumanoidProfileEditor
         RefreshJobs();
         // In case there's species restrictions for loadouts
         RefreshLoadouts();
+        RefreshTraits(); // Corvax-Wega-Traits
         UpdateSexControls(); // update sex for new species
         UpdateVoiceControls();
         UpdateTTSVoicesControls(); // Corvax-TTS

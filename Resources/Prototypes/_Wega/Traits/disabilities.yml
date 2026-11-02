@@ -26,3 +26,14 @@
     - type: BuckleOnMapInit
       prototype: VehicleWheelchair
     - type: LegsParalyzed
+
+- type: trait
+  id: BurnedCore
+  name: trait-burned-core-name
+  description: trait-burned-core-desc
+  category: Disabilities
+  species:
+    - Shadekin
+  forcedEyeColor: "#4d4d4d"
+  specials:
+  - !type:ShadekinCoreBurned

@@ -356,17 +356,19 @@ public sealed partial class ChatSystem : SharedChatSystem
                 session.Channel);
         }
 
-        // Also send a whisper
-        SendEntityWhisper(
-            source,
-            message,
-            ChatTransmitRange.Normal,
-            null,
-            name,
-            false,
-            ignoreActionBlocker,
-            channel
-        );
+        if (channel.Whisper)
+        {
+            SendEntityWhisper(
+                source,
+                message,
+                ChatTransmitRange.Normal,
+                null,
+                name,
+                false,
+                ignoreActionBlocker,
+                channel
+            );
+        }
 
         // Log to admin logs
         _adminLogger.Add(LogType.Chat, LogImpact.Low,

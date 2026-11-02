@@ -1,0 +1,271 @@
+- type: surgeryTransition
+  id: ShadekinOpenTorsoTransition
+  target: ShadekinTorsoOpen
+  label: Вскрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding, Pain ]
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: ShadekinOrganManipulationTransition
+  target: OrganManipulation
+  label: Манипуляция с органами
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      parallel: true
+      steps:
+        # Сердце
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganShadekinHeart
+          requiredPart: Heart
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Heart
+        - tag: [ Heart ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganShadekinHeart
+          requiredPart: Heart
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Heart
+
+        # Легкие
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganShadekinLungs
+          requiredPart: Lungs
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Lungs
+        - tag: [ Lungs ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganShadekinLungs
+          requiredPart: Lungs
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Lungs
+
+        # Желудок
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganShadekinStomach
+          requiredPart: Stomach
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Stomach
+        - tag: [ Stomach ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganShadekinStomach
+          requiredPart: Stomach
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Stomach
+
+        # Печень
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganShadekinLiver
+          requiredPart: Liver
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Liver
+        - tag: [ Liver ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganShadekinLiver
+          requiredPart: Liver
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Liver
+
+        # Почки
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganShadekinKidneys
+          requiredPart: Kidneys
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Kidneys
+        - tag: [ Kidneys ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganShadekinKidneys
+          requiredPart: Kidneys
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Kidneys
+
+        # Ядро
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          entityPreview: OrganShadekinCore
+          requiredPart: Core
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              organ: Core
+        - tag: [ Core ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          entityPreview: OrganShadekinCore
+          requiredPart: Core
+          sound:
+            collection: Organ
+          time: 3
+          successChance: 0.8
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: Core
+
+- type: surgeryTransition
+  id: ShadekinCloseTorsoTransition
+  target: Default
+  label: Закрыть торс
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - jumpsuit
+          - outerClothing
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 6
+        - tool: [ BoneSetter ]
+          tag: [ Wrench ]
+          action: Empty
+          failureEffect: [ Fracture, Pain ]
+          time: 8
+        - tool: [ BoneGel ]
+          tag: [ Screwdriver ]
+          action: Empty
+          time: 4
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 8

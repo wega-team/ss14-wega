@@ -22,3 +22,32 @@
         layer:
         - WallLayer
         hard: false
+
+- type: entity
+  parent: BasePortal
+  id: PortalShadekinFirst
+  name: bluespace rift
+  description: A bluespace rift, probably created by some Shadekin.
+  components:
+  - type: Appearance
+  - type: Portal
+    requiredCollisionTag: MobShadekin
+    collisionBlacklist:
+      components:
+      - Vampire
+      - ChangelingIdentity
+    arrivalSound:
+      collection: Shadeskip
+    departureSound:
+      collection: Shadeskip
+  - type: Sprite
+    sprite: _Wega/Effects/shadekin-portal.rsi
+    layers:
+    - state: closed
+      map: ["enum.PortalVisualLayers.Base"]
+  - type: PointLight
+    color: Purple
+
+- type: entity
+  parent: PortalShadekinFirst
+  id: PortalShadekinSecond

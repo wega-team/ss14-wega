@@ -189,7 +189,11 @@ public sealed partial class BloodSharpenerComponent : Component;
 /// Заглушка для логики
 /// </summary>
 [RegisterComponent]
-public sealed partial class BloodCultistEyesComponent : Component;
+public sealed partial class BloodCultistEyesComponent : Component
+{
+    [DataField]
+    public Color? OriginalEyeColor;
+}
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BloodPentagramDisplayComponent : Component;

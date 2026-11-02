@@ -94,3 +94,37 @@
     - бурлит.
     - бурлит!
     - бурлить
+
+- type: emote
+  id: Mar
+  name: chat-emote-name-mar
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-shadekin-mars"]
+  chatTriggers:
+    - mar
+    - mars
+    - marna
+    - мар
+    - марна
+    - марня
+    - мярня
+
+- type: emote
+  id: Wurble
+  name: chat-emote-name-wurble
+  category: Vocal
+  available: false
+  whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-shadekin-wurble"]
+  chatTriggers:
+    - wurble
+    - wurbles
+    - журчит
+    - журчат
+

@@ -1,0 +1,21 @@
+- type: soundCollection
+  id: Mar
+  files:
+    - /Audio/_Wega/Voice/Shadekin/mar.ogg
+
+- type: soundCollection
+  id: Wurble
+  files:
+    - /Audio/_Wega/Voice/Shadekin/wurble.ogg
+
+- type: soundCollection
+  id: ShadekinScream_m
+  files:
+    - /Audio/_Wega/Voice/Shadekin/scream_m1.ogg
+    - /Audio/_Wega/Voice/Shadekin/scream_m2.ogg
+
+- type: soundCollection
+  id: ShadekinScream_f
+  files:
+    - /Audio/_Wega/Voice/Shadekin/scream_f1.ogg
+    - /Audio/_Wega/Voice/Shadekin/scream_f2.ogg
