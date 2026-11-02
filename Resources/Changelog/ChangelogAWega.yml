@@ -1714,3 +1714,40 @@ Entries:
   id: 227
   time: '2026-10-29T22:29:55Z'
   url: https://github.com/wega-team/ss14-wega/pull/586
+- author: ElusiveTheDrake
+  changes:
+  - type: Add
+    message: Добавлена новая раса -  Тенекины
+  - type: Add
+    message: Добавлена уникальная для Тенекинов черта персонажа - Выгоревший
+  - type: Tweak
+    message: Деконверсия культа крови от 2й стадии теперь возвращает прежний цвет глаз.
+  id: 228
+  time: '2026-11-02T13:47:48Z'
+  url: https://github.com/wega-team/ss14-wega/pull/580
+- author: GaMEWAR360
+  changes:
+  - type: Add
+    message: Добавлено в панель действия шахтёрского борга просмотр интерфейса GPS!
+  - type: Tweak
+    message: Шестерни культа для ЛКП теперь нельзя размещать рядом друг с другом, звук работы теперь воспроизводится раз в 30 секунд!
+  - type: Tweak
+    message: Батареи с авточаржем, что рание имели паузу в работе, теперь перестают восполнять энергию пока имеют ЭМИ эффект.
+  - type: Fix
+    message: Фикс мед, уборочного борга! Фикс гайдбука ксенобио!
+  id: 229
+  time: '2026-11-02T13:49:50Z'
+  url: https://github.com/wega-team/ss14-wega/pull/587
+- author: Zekins3366
+  changes:
+  - type: Add
+    message: Добавлена Old стилизация для некоторых недостающих объектов
+  - type: Add
+    message: Добавлена Old стилизация для ЛКП, Пожарной/Воздушной сигнализаций и интеркома
+  - type: Tweak
+    message: Изменен формат смещения некоторых объектов
+  - type: Fix
+    message: Исправлена поломка клиента при переходе в старый стиль
+  id: 230
+  time: '2026-11-02T14:02:10Z'
+  url: https://github.com/wega-team/ss14-wega/pull/589
