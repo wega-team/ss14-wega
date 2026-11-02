@@ -1,0 +1,8 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallmountsFireAlarmOld
+  offsets: ["0, 0"]
+  rsiPath: Structures/Wallmounts/fire-alarm.rsi
+  entities:
+  - FireAlarm
+  - FireAlarmAssembly

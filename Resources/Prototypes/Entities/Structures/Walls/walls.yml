@@ -497,9 +497,11 @@
   - type: IconSmooth
     key: walls-plastitanium
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls-plastitanium ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls-plastitanium
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -626,9 +628,11 @@
   - type: IconSmooth
     key: walls
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -704,9 +708,11 @@
   - type: IconSmooth
     key: walls
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -968,9 +974,11 @@
   - type: IconSmooth
     key: walls-shuttle
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls-shuttle ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls-shuttle
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -1054,9 +1062,11 @@
   - type: IconSmooth
     key: walls
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -1159,9 +1169,11 @@
   - type: IconSmooth
     key: walls-exo
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls-exo ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls-exo
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -1227,9 +1239,11 @@
   - type: IconSmooth
     key: walls-exo
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls-exo ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls-exo
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
@@ -1270,9 +1284,11 @@
   - type: IconSmooth
     key: walls-exo-borg
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ walls-exo-borg ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - walls-exo-borg
+    # Corvax-Wega-Stylish-Edit-end
       - windows-exo-borg
       - grilles
       - doors
@@ -1739,7 +1755,8 @@
   - type: Occluder
   - type: BlockWeather
   - type: SunShadowCast
-  # Corvax-Wega-SoundInsolation-start
-  - type: SoundInsulation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
     absorptionFactor: 0.08
-  # Corvax-Wega-SoundInsolation-end
+  - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end

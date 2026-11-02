@@ -105,6 +105,7 @@
         enum.RadioDeviceVisualLayers.Speaker:
           True: { visible: true }
           False: { visible: false }
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   parent: [ BaseWallmountMetallic, StructureHealthMachineFlimsy ]

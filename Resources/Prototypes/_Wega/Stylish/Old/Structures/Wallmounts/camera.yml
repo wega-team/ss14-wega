@@ -1,7 +1,7 @@
 - type: stylishPreset
   parent: BaseStylishOld
   id: StylishWallmountsCameraOld
-  offset: 0, -0.05
+  offsets: ["0, -0.05"]
   rsiPath: _Wega/Stylish/Old/Wallmounts/camera.rsi
   entities:
   - SurveillanceCameraConstructed

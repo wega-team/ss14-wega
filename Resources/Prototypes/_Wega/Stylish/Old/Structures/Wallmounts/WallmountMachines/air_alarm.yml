@@ -1,0 +1,10 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallmountsAirAlarmOld
+  offsets: ["0, 0"]
+  rsiPath: Structures/Wallmounts/air-alarm.rsi
+  entities:
+  - AirAlarm
+  - AirAlarmVox
+  - AirAlarmFreezer
+  - AirAlarmAssembly

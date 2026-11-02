@@ -27,9 +27,11 @@
   - type: IconSmooth
     key: windows-uranium
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-uranium ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-uranium
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted

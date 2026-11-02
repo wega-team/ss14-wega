@@ -30,9 +30,11 @@
   - type: IconSmooth
     key: windows-uranium-reinf
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-uranium-reinf ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-uranium-reinf
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-tinted
