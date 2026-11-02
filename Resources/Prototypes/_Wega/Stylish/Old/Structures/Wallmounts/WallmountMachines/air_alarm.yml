@@ -6,4 +6,5 @@
   entities:
   - AirAlarm
   - AirAlarmVox
+  - AirAlarmFreezer
   - AirAlarmAssembly

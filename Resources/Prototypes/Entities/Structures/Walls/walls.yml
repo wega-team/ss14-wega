@@ -1739,7 +1739,8 @@
   - type: Occluder
   - type: BlockWeather
   - type: SunShadowCast
-  # Corvax-Wega-SoundInsolation-start
-  - type: SoundInsulation
+  # Corvax-Wega-start
+  - type: SoundInsulation # Corvax-Wega-SoundInsolation
     absorptionFactor: 0.08
-  # Corvax-Wega-SoundInsolation-end
+  - type: StylishSprite # Corvax-Wega-Stylish
+  # Corvax-Wega-end
