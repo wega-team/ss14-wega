@@ -102,6 +102,7 @@
           params:
             volume: -4
   - type: StationAiWhitelist
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 - type: entity
   parent: [ BaseWallmountMetallic, StructureHealthMachineFlimsy ]

@@ -150,6 +150,7 @@
           tags:
           - InteractionCog
   # Corvax-Wega-VeilCult-End
+  - type: StylishSprite # Corvax-Wega-Stylish
 
 # APC under construction
 - type: entity
@@ -181,6 +182,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: MetalBreak
+  - type: StylishSprite # Corvax-Wega-Stylish
 # Constructed APC
 - type: entity
   parent: BaseAPC

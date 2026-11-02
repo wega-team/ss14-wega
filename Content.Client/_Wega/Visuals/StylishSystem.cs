@@ -12,37 +12,47 @@ using Robust.Shared.Reflection;
 namespace Content.Client.Visuals;
 
 /// <summary>
-/// Applies per-style visual overrides driven by <see cref="StylishPresetPrototype"/>.
-/// Entities only need a <see cref="StylishSpriteComponent"/> marker — no per-entity config.
+/// Applies per style visual overrides driven by <see cref="StylishPresetPrototype"/>.
+/// Entities only need a <see cref="StylishSpriteComponent"/> marker to participate.
 /// </summary>
 public sealed partial class StylishSystem : EntitySystem
 {
     [Dependency] private IConfigurationManager _cfg = default!;
     [Dependency] private IResourceCache _resourceCache = default!;
     [Dependency] private IReflectionManager _reflection = default!;
+    [Dependency] private IEyeManager _eyeManager = default!;
     [Dependency] private SpriteSystem _sprite = default!;
 
     /// <summary>
     /// protoId -> { style -> resolved style }. Built once from presets, rebuilt on reload.
     /// </summary>
     private readonly Dictionary<string, Dictionary<StylishType, StyleInfo>> _protoIndex = new();
+
     private static int _currentVisual;
+    private Angle _lastEyeRotation = Angle.Zero;
 
     #region Lifecycle
 
     public override void Initialize()
     {
-        base.Initialize();
-
         RebuildIndex();
-
-        SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnPrototypesReloaded);
-        SubscribeLocalEvent<StylishSpriteComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<StylishSpriteComponent, ComponentShutdown>(OnShutdown);
-
         Subs.CVar(_cfg, WegaCVars.StylishVisual, OnStyleChanged, true);
     }
 
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        var eye = _eyeManager.CurrentEye;
+        var eyeRot = eye.Rotation;
+        if (eyeRot.EqualsApprox(_lastEyeRotation, 0.01f))
+            return;
+
+        _lastEyeRotation = eyeRot;
+        UpdateAllDirectionalOffsets();
+    }
+
+    [SubscribeLocalEvent]
     private void OnStartup(Entity<StylishSpriteComponent> ent, ref ComponentStartup args)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
@@ -51,12 +61,32 @@ public sealed partial class StylishSystem : EntitySystem
         Apply((ent.Owner, ent.Comp, sprite), _currentVisual);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<StylishSpriteComponent> ent, ref ComponentShutdown args)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
         Restore((ent.Owner, ent.Comp, sprite));
+    }
+
+    [SubscribeLocalEvent]
+    private void OnMove(Entity<StylishSpriteComponent> ent, ref MoveEvent args)
+    {
+        if (args.NewRotation == args.OldRotation)
+            return;
+
+        if (!TryComp<SpriteComponent>(ent, out var sprite))
+            return;
+
+        var protoId = MetaData(ent.Owner).EntityPrototype?.ID;
+        if (protoId == null || !_protoIndex.TryGetValue(protoId, out var styles))
+            return;
+
+        if (!styles.TryGetValue((StylishType)_currentVisual, out var info))
+            return;
+
+        ApplyOffset(ent.Owner, sprite, info);
     }
 
     #endregion
@@ -89,7 +119,7 @@ public sealed partial class StylishSystem : EntitySystem
             }
 
             var layers = ResolveLayers(preset);
-            var info = new StyleInfo(baseRes.RSI, layers, preset.Rotation, preset.Offset);
+            var info = new StyleInfo(baseRes.RSI, layers, preset.Rotation, preset.Offsets);
 
             foreach (var protoId in preset.Entities)
             {
@@ -150,6 +180,7 @@ public sealed partial class StylishSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
     {
         if (!args.WasModified<StylishPresetPrototype>())
@@ -188,7 +219,7 @@ public sealed partial class StylishSystem : EntitySystem
 
         _sprite.SetBaseRsi((ent.Owner, ent.Comp2), info.Rsi);
         TryApplyRotation(ent.Owner, ent.Comp2, info.Rotation);
-        TryApplyOffset(ent.Owner, ent.Comp2, info.Offset);
+        ApplyOffset(ent.Owner, ent.Comp2, info);
 
         if (info.Layers == null)
             return;
@@ -202,6 +233,25 @@ public sealed partial class StylishSystem : EntitySystem
             }
 
             SetLayerRsi(ent.Owner, ent.Comp2, key, rsi, state: null);
+        }
+    }
+
+    private void UpdateAllDirectionalOffsets()
+    {
+        var query = EntityQueryEnumerator<StylishSpriteComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out var comp, out var sprite))
+        {
+            if (!comp.SnapshotTaken)
+                continue;
+
+            var protoId = MetaData(uid).EntityPrototype?.ID;
+            if (protoId == null || !_protoIndex.TryGetValue(protoId, out var styles))
+                continue;
+
+            if (!styles.TryGetValue((StylishType)_currentVisual, out var info))
+                continue;
+
+            ApplyOffset(uid, sprite, info);
         }
     }
 
@@ -288,12 +338,54 @@ public sealed partial class StylishSystem : EntitySystem
         _sprite.SetRotation((uid, sprite), target.Value - xform.LocalRotation);
     }
 
-    private void TryApplyOffset(EntityUid uid, SpriteComponent sprite, Vector2? target)
+    private void ApplyOffset(EntityUid uid, SpriteComponent sprite, StyleInfo info)
     {
-        if (target == null)
+        if (info.Offsets is not { Count: > 0 })
             return;
 
-        _sprite.SetOffset((uid, sprite), target.Value);
+        // If only one offset is provided, apply it statically.
+        if (info.Offsets.Count == 1)
+        {
+            _sprite.SetOffset((uid, sprite), info.Offsets[0]);
+            return;
+        }
+
+        // Otherwise, use the directional logic.
+        var eye = _eyeManager.CurrentEye;
+        var eyeRot = eye?.Rotation ?? Angle.Zero;
+        var xform = Transform(uid);
+
+        var totalRot = xform.WorldRotation - eyeRot;
+        var offset = GetDirectionalOffset(info.Offsets, totalRot);
+        _sprite.SetOffset((uid, sprite), offset);
+    }
+
+    /// <summary>
+    /// Maps the current rotation to a directional offset from the provided list.
+    /// </summary>
+    private Vector2 GetDirectionalOffset(List<Vector2> offsets, Angle rotation)
+    {
+        if (offsets.Count == 1)
+            return offsets[0];
+
+        var degrees = rotation.Degrees;
+        degrees = (degrees % 360 + 360) % 360;
+
+        // Maps angles to the 4 directions according to the user's definition:
+        // North = 0, West = 90, South = 180, East = -90 (270).
+        var index = degrees switch
+        {
+            >= 315 or < 45 => 0,    // North
+            >= 45 and < 135 => 3,   // West
+            >= 135 and < 225 => 2,  // South
+            >= 225 and < 315 => 1,  // East
+            _ => 0
+        };
+
+        if (index >= offsets.Count)
+            return Vector2.Zero;
+
+        return offsets[index];
     }
 
     private bool TryGetLayerByKey(EntityUid uid, SpriteComponent sprite, object key, out ISpriteLayer layer)
@@ -330,8 +422,7 @@ public sealed partial class StylishSystem : EntitySystem
     #endregion
 
     /// <summary>
-    /// Resolved style data for one (prototype, style) pair. Built once in <see cref="RebuildIndex"/>,
-    /// shared read-only. Nullable Rotation/Offset mean "don't touch".
+    /// Resolved style data for one prototype and style pair.
     /// </summary>
-    private sealed record StyleInfo(RSI Rsi, Dictionary<object, RSI>? Layers, Angle? Rotation, Vector2? Offset);
+    private sealed record StyleInfo(RSI Rsi, Dictionary<object, RSI>? Layers, Angle? Rotation, List<Vector2>? Offsets);
 }

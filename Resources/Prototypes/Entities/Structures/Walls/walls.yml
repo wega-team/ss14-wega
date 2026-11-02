@@ -497,7 +497,7 @@
   - type: IconSmooth
     key: walls-plastitanium
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls-plastitanium ]
       altMask:
       - windows
@@ -626,7 +626,7 @@
   - type: IconSmooth
     key: walls
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls ]
       altMask:
       - windows
@@ -704,7 +704,7 @@
   - type: IconSmooth
     key: walls
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls ]
       altMask:
       - windows
@@ -968,7 +968,7 @@
   - type: IconSmooth
     key: walls-shuttle
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls-shuttle ]
       altMask:
       - windows
@@ -1054,7 +1054,7 @@
   - type: IconSmooth
     key: walls
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls ]
       altMask:
       - windows
@@ -1159,7 +1159,7 @@
   - type: IconSmooth
     key: walls-exo
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls-exo ]
       altMask:
       - windows
@@ -1227,7 +1227,7 @@
   - type: IconSmooth
     key: walls-exo
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls-exo ]
       altMask:
       - windows
@@ -1270,7 +1270,7 @@
   - type: IconSmooth
     key: walls-exo-borg
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ walls-exo-borg ]
       altMask:
       - windows-exo-borg

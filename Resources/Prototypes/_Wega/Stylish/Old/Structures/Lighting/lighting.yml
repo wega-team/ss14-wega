@@ -2,7 +2,11 @@
   parent: BaseStylishOld
   id: StylishWallLightOld
   rsiPath: Structures/Wallmounts/Lighting/light-tube.rsi
-  offset: 0, 0.81
+  offsets:
+  - 0, 0.625
+  - 0, 0.72
+  - 0, 0.845
+  - 0, 0.72
   entities:
   - AlwaysPoweredWallLight
   - PoweredlightEmpty
@@ -35,7 +39,11 @@
   parent: BaseStylishOld
   id: StylishWallSmallLightOld
   rsiPath: Structures/Wallmounts/Lighting/light-small.rsi
-  offset: 0, 0.875
+  offsets:
+  - 0, 0.625
+  - 0, 0.72
+  - 0, 0.845
+  - 0, 0.72
   entities:
   - SmallLight
   - PoweredSmallLightEmpty

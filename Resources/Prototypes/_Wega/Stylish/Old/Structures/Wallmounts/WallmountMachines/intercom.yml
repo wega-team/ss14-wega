@@ -1,0 +1,19 @@
+- type: stylishPreset
+  parent: BaseStylishOld
+  id: StylishWallmountsIntercomOld
+  offsets: ["0, 0"]
+  rsiPath: _Wega/Stylish/Old/Wallmounts/intercom.rsi
+  entities:
+  - IntercomAssembly
+  - IntercomConstructed
+  - Intercom
+  - IntercomCommon
+  - IntercomCommand
+  - IntercomEngineering
+  - IntercomMedical
+  - IntercomScience
+  - IntercomSecurity
+  - IntercomService
+  - IntercomSupply
+  - IntercomAll
+  - IntercomFreelance

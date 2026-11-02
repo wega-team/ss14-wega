@@ -34,7 +34,7 @@
   - type: IconSmooth
     key: windows-reinf
     states:
-    - !type:CardinalCornerSpriteSmoothing
+    - !type:CornerSpriteSmoothing # Corvax-Wega-Stylish-Edit
       mask: [ windows-reinf ]
       altMask:
       - windows

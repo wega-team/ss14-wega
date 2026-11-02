@@ -3,45 +3,44 @@
     "license": "CC-BY-SA-3.0",
     "copyright": "Made by KREKS",
     "size": {
-      "x": 32,
-      "y": 32
+        "x": 32,
+        "y": 32
     },
     "states": [
-      {
-        "name": "full"
-      },
-      {
-        "name": "plastitanium0",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium1",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium2",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium3",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium4",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium5",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium6",
-        "directions": 4
-      },
-      {
-        "name": "plastitanium7",
-        "directions": 4
-      }
+        {
+            "name": "full"
+        },
+        {
+            "name": "wall0",
+            "directions": 4
+        },
+        {
+            "name": "wall1",
+            "directions": 4
+        },
+        {
+            "name": "wall2",
+            "directions": 4
+        },
+        {
+            "name": "wall3",
+            "directions": 4
+        },
+        {
+            "name": "wall4",
+            "directions": 4
+        },
+        {
+            "name": "wall5",
+            "directions": 4
+        },
+        {
+            "name": "wall6",
+            "directions": 4
+        },
+        {
+            "name": "wall7",
+            "directions": 4
+        }
     ]
-  }
-  
+}
