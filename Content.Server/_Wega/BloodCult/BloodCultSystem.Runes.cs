@@ -386,6 +386,13 @@ public sealed partial class BloodCultSystem
                 ShowActivationFailed(cultist);
             }
         }
+
+        var bodies = _entityLookup.GetEntitiesInRange<BodyComponent>(coords, 1f);
+        foreach (var body in bodies)
+        {
+            if (CheckRuneActivate(coords, 1) && TrySacrificeNonHumanoidBody(body.Owner, cultist, runeComp))
+                return;
+        }
     }
 
     private bool IsMindshielded(EntityUid target)
@@ -573,9 +580,6 @@ public sealed partial class BloodCultSystem
             }
 
             if (TryCreateGhostRoleForCultist(target, cultist, runeComp))
-                break;
-
-            if (TrySacrificeNonHumanoidBody(target, cultist, runeComp))
                 break;
 
             ShowActivationFailed(cultist);
