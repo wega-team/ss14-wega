@@ -4,9 +4,9 @@
   name: reinforced plasma window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-plasma-reinf.rsi
+    sprite: _Wega/Structures/Windows/window-plasma-reinf.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-plasma-reinf.rsi
+    sprite: _Wega/Structures/Windows/window-plasma-reinf.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Damageable
     damageModifierSet: GlassReinforcedPlasmaMod

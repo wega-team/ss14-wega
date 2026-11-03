@@ -4,9 +4,9 @@
   name: shuttle window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-shuttle.rsi
+    sprite: _Wega/Structures/Windows/window-shuttle.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-shuttle.rsi
+    sprite: _Wega/Structures/Windows/window-shuttle.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Repairable
     fuelCost: 15

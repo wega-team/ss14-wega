@@ -4,9 +4,9 @@
   name: reinforced uranium window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-uranium-reinf.rsi
+    sprite: _Wega/Structures/Windows/window-uranium-reinf.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-uranium-reinf.rsi
+    sprite: _Wega/Structures/Windows/window-uranium-reinf.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Damageable
     damageModifierSet: GlassReinforcedMod

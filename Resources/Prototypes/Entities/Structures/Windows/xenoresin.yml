@@ -5,9 +5,9 @@
   description: Transparent and hardened, yet slightly sticky to the touch.
   components:
   - type: Sprite
-    sprite: Structures/Windows/exo-resin.rsi
+    sprite: _Wega/Structures/Windows/exo-resin.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/exo-resin.rsi
+    sprite: _Wega/Structures/Windows/exo-resin.rsi # Corvax-Wega-Stylish-Edit
   - type: IconSmooth
     key: windows-exo
     states:
