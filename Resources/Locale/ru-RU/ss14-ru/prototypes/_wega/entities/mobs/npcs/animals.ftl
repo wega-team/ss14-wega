@@ -40,5 +40,7 @@ ent-MobKoi3 = космический кои
 
 ent-MobZillaGhost = { ent-MobZilla }
     .desc = { ent-MobZilla.desc }
+    .suffix = ГостРоль
 ent-MobHulkGhost = { ent-MobHulk }
     .desc = { ent-MobHulk.desc }
+    .suffix = ГостРоль
