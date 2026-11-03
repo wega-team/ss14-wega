@@ -27,6 +27,31 @@
       maxVol: 10
 
 - type: entity
+  parent: [SolutionHypospraySmall, JetInjector]
+  id: SyndiJetInjector
+  name: gorlex jet injector
+  description: The latest sterile injector. Developed by Cybersun for mass production and supply to Gorlex Marauders. Allows for faster administration of medications, even while on the move.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/syndi_jetinjector.rsi
+    layers:
+    - state: jetinjector_base
+      map: [ "enum.SolutionContainerLayers.Base" ]
+    - state: jetinjector_filled1
+      map: [ "enum.SolutionContainerLayers.Fill" ]
+      visible: false
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/syndi_jetinjector.rsi
+  - type: SolutionContainerVisuals
+    maxFillLevels: 4
+  - type: Injector
+    activeModeProtoId: AdvancedJetInjectorDynamicMode
+    movementThreshold: 15
+    allowedModes:
+    - AdvancedJetInjectorDynamicMode
+    - AdvancedJetInjectorInjectMode
+
+- type: entity
   name: chemical injector
   parent: [ChemicalMedipen, BaseSyndicateContraband]
   id: StimpackEmpty

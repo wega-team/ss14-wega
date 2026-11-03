@@ -331,6 +331,14 @@
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-insulative
+    # Corvax-Wega-Nuka-Start
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Blunt: 0.95
+        Piercing: 0.95
+    # Corvax-Wega-Nuka-End
 
 # can't parent combat gloves since they are butcherable
 - type: entity
