@@ -9,7 +9,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared.FactionLock;
 
-public sealed class FactionLockSystem : EntitySystem
+public sealed partial class FactionLockSystem : EntitySystem
 {
     private static readonly TimeSpan DenyCooldown = TimeSpan.FromSeconds(1);
 
