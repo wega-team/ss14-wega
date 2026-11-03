@@ -83,3 +83,29 @@
     sprite: _Wega/Mobs/Aliens/Genetics/zilla.rsi
     noRot: true
     state: zilla
+
+- type: entity
+  parent: MobHulk
+  id: MobHulkGhost
+  components:
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-hulk-name
+    description: ghost-role-information-hulk-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgentHarmless
+  - type: GhostTakeoverAvailable
+
+- type: entity
+  parent: MobZilla
+  id: MobZillaGhost
+  components:
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-zila-name
+    description: ghost-role-information-hulk-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgentHarmless
+  - type: GhostTakeoverAvailable

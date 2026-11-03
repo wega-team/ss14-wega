@@ -18,3 +18,6 @@ ent-ClothingBackpackDuffelSyndicateControllerBundle = набор скафанд�
     .desc = Содержит фирменный кроваво-красный комбинезон Синдиката.
 ent-ClothingBackpackDuffelEnergyShieldModuleBundle = набор модулей энергетического щита
     .desc = Содержит пять модулей энергетического щита. Позволяет оснастить всю команду личной защитой.
+
+ent-ClothingBackpackDuffelSyndicateFilledMG90 = набор "МГ90"
+    .desc = Огневая и взрывная мощь: Пистолет пулемёт с подствольным гранатомётом, семь магазинов 25 калибра и две коробки с мини гранатами. 

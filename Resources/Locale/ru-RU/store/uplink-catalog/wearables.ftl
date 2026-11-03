@@ -15,7 +15,7 @@ uplink-clothing-no-slips-shoes-desc = Ботинки-хамелеоны, кот�
 uplink-clothing-outer-vest-web-name = Тактический жилет
 uplink-clothing-outer-vest-web-desc = Синтетический бронежилет. Имеет дополнительные ремни и баллистические пластины.
 
-uplink-clothing-outer-vest-web-elite-name = Энергетический тактический жилет
+uplink-clothing-outer-vest-web-elite-name = Элитный тактический жилет
 uplink-clothing-outer-vest-web-elite-desc = Синтетический бронежилет. К этому добавлено больше волокон устойчивых к радиации и термическим ожогам, что, однако, снижает баллистическую защиту.
 
 uplink-clothing-shoes-boots-mag-syndie-name = Кроваво-красные магнитные сапоги

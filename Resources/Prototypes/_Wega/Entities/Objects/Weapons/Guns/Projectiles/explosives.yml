@@ -1,0 +1,42 @@
+- type: entity
+  parent: BaseBulletTrigger
+  id: BulletGrenadeFragMini
+  categories: [ HideSpawnMenu ]
+  name: mini frag grenade
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: grenade
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 80
+    intensitySlope: 3
+    maxIntensity: 5
+    canCreateVacuum: false
+  - type: ContainerContainer
+    containers:
+      cluster-payload: !type:Container
+  - type: ProjectileGrenade
+    triggerKey: trigger
+    fillPrototype: PelletClusterLessLethal
+    capacity: 30
+
+- type: entity
+  parent: BaseBulletTrigger
+  id: BulletGrenadeBlastMini
+  categories: [ HideSpawnMenu ]
+  name: mini blast grenade
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: grenade
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Clake
+    totalIntensity: 120 # a ~3 tile radius
+    intensitySlope: 5
+    maxIntensity: 20
+    canCreateVacuum: false
