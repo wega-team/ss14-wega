@@ -101,12 +101,9 @@ public sealed partial class VampireSystem
 
         var ev = new FlashAttemptEvent(target, args.Performer, null);
         RaiseLocalEvent(target, ref ev, true);
-		if (!HasComp<BorgChassisComponent>(target))
-		{
-			if ((ev.Cancelled && TryComp<VampireDiablerieComponent>(ent, out var dieal) && dieal.DiablerieLevel < 2) || (ev.Cancelled && !HasComp<VampireDiablerieComponent>(ent)))
-				return;
-		}
-		
+		if ((ev.Cancelled && TryComp<VampireDiablerieComponent>(ent, out var dieal) && dieal.DiablerieLevel < 2) || (ev.Cancelled && !HasComp<VampireDiablerieComponent>(ent)))
+			return;
+	
         _stun.TryUpdateParalyzeDuration(target, TimeSpan.FromSeconds(5f));
         _flash.Flash(target, args.Performer, null, TimeSpan.FromSeconds(3f), 0.8f);
         _status.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(8f));

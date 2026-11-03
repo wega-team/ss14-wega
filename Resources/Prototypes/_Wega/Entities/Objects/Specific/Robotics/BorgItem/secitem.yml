@@ -306,8 +306,8 @@
     autoRechargePauseTime: 10
   - type: AmmoCounter
   - type: SpeedModifiedOnWield
-    walkModifier: 0.1
-    sprintModifier: 0.1
+    walkModifier: 0.8
+    sprintModifier: 0.8
   - type: CursorOffsetRequiresWield
   - type: Unremoveable
   - type: ItemSelector
@@ -366,8 +366,8 @@
     autoRechargePauseTime: 10
   - type: AmmoCounter
   - type: SpeedModifiedOnWield
-    walkModifier: 0.1
-    sprintModifier: 0.1
+    walkModifier: 0.8
+    sprintModifier: 0.8
   - type: CursorOffsetRequiresWield
   - type: Unremoveable
   - type: ItemSelector

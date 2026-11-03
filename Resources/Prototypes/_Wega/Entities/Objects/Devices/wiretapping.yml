@@ -40,8 +40,7 @@
     deviceNetId: Wired
     receiveFrequencyId: SurveillanceCamera
     transmitFrequencyId: SurveillanceCamera
-  - type: WirelessNetwork
-    range: 200
+  - type: DeviceNetworkRouter
   - type: SurveillanceCameraRouter
     subnetFrequency: SurveillanceCameraAlpha
 
