@@ -234,7 +234,8 @@
   - type: OfferGiver # Corvax-Wega-Offer
   - type: SpeechSynthesis # Corvax-Wega-Barks
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
-  - type: StatusIcon # Corvax-Wega-Corvax-Wega <- Саси
+  - type: StatusIcon # Corvax-Wega-Corvax-Wega <- Саси < - Сам саси
+  - type: Blindable # Corvax-Wega
 
 - type: entity
   abstract: true
@@ -325,6 +326,10 @@
   parent: [BaseBorgChassis, BaseBorgTransponder]
   abstract: true
   components:
+ # Corvax-Wega-Start
+  - type: FlashImmunityIgnore
+    flashReduction: 0.5
+ # Corvax-Wega-End
   - type: RandomMetadata
     nameSegments:
     - NamesBorg
@@ -388,6 +393,10 @@
   parent: BaseBorgChassis
   abstract: true
   components:
+ # Corvax-Wega-Start
+  - type: FlashImmunityIgnore
+    flashReduction: 0.5
+ # Corvax-Wega-End
   - type: NpcFactionMember
     factions:
     - NanoTrasen #The seemingly best fit. It was a regular NT cyborg once, after all.

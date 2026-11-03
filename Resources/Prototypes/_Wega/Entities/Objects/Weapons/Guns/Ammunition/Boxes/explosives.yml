@@ -1,0 +1,65 @@
+- type: entity
+  abstract: true
+  parent: BaseItem
+  id: BaseGrenadeMiniBox
+  name: mini grenade box
+  components:
+  - type: BallisticAmmoProvider
+    mayTransfer: true
+    whitelist:
+      tags:
+        - GrenadeMini
+    proto: GrenadeMini
+    capacity: 10
+  - type: Item
+    size: Normal
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Ammunition/Boxes/explosives_mini.rsi
+  - type: MagazineVisuals
+    magState: mag
+    steps: 5
+    zeroVisible: false
+  - type: Appearance
+
+- type: entity
+  parent: BaseGrenadeMiniBox
+  id: GrenadeMiniBoxFrag
+  name: mini frag grenade box
+  description: A plastic box with mini projectiles for the MG90 under-barrel grenade launcher. Designed for storing fragmentation projectiles.
+  components:
+  - type: BallisticAmmoProvider
+    proto: GrenadeFragMini
+  - type: MagazineVisuals
+    magState: mag-frag
+    steps: 5
+    zeroVisible: false
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-frag-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: frag
+
+- type: entity
+  parent: BaseGrenadeMiniBox
+  id: GrenadeMiniBoxBlast
+  name: mini blast grenade box
+  description: A plastic box with mini projectiles for the MG90 under‑barrel grenade launcher. Designed for storing blasting projectiles.
+  components:
+  - type: BallisticAmmoProvider
+    proto: GrenadeBlastMini
+  - type: MagazineVisuals
+    magState: mag-blast
+    steps: 5
+    zeroVisible: false
+  - type: Sprite
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-blast-1
+      map: ["enum.GunVisualLayers.Mag"]
+    - state: blast

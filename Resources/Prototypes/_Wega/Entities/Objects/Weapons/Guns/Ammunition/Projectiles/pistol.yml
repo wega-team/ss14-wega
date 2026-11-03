@@ -14,3 +14,30 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
     layers:
     - state: practice
+
+- type: entity
+  id: BulletPistolFrozen
+  name: bullet (.35 auto frozen)
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 7
+        Cold: 2
+  - type: StunOnCollide
+    slowdownAmount: 0.75
+    walkSpeedModifier: 0.6
+    sprintSpeedModifier: 0.6
+
+- type: entity
+  parent: BaseBullet
+  id: BulletPistolMG90
+  name: bullet (.25 auto)
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 19

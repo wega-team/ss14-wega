@@ -318,6 +318,8 @@
         Quantity: 5
       - ReagentId: Uranium
         Quantity: 5
+  - type: Item
+    size: Normal
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
   - type: Produce
@@ -331,7 +333,7 @@
     tags:
     - Fruit
   - type: RadiationSource
-    intensity: 0.3
+    intensity: 0.1
     slope: 0.1
   - type: PointLight
     color: "#19FF19FF"

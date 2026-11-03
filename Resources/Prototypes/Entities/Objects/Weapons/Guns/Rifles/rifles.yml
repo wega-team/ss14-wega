@@ -208,8 +208,12 @@
   - type: Clothing
     sprite: Objects/Weapons/Guns/Rifles/estoc.rsi
   - type: Gun
+    # Corvax-Wega-Nuka-Start
+    fireRate: 5.5
     minAngle: 21
-    maxAngle: 32 
+    maxAngle: 32
+    angleIncrease: 1
+    angleDecay: 9.5 
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/estocshot.ogg
     shotsPerBurst: 3
@@ -218,6 +222,8 @@
     - Burst
     - SemiAuto
     burstFireRate: 14
+    burstCooldown: 0.2
+    # Corvax-Wega-Nuka-End
   - type: ItemSlots
     slots:
       gun_magazine:

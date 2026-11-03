@@ -128,6 +128,7 @@
       interactSuccessSound:
         path: /Audio/Ambience/Objects/periodic_beep.ogg
 # Corvax-Wega-Start
+    - type: FlashImmunity
     - type: Inventory
       templateId: borgDutch
     - type: MobThresholds # tankier

@@ -965,6 +965,7 @@
       overlaySprite:
         sprite: _Wega/Mobs/Silicon/chassis.rsi
         state: borg_sheild_teleskop
+    - type: FlashImmunity
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
   - type: Tag
@@ -1012,6 +1013,7 @@
       reflectProb: 0.5
       reflects:
         - Energy
+    - type: FlashImmunity
     - type: SimpleSpriteOverlay
       overlaySprite:
         sprite: _Wega/Mobs/Silicon/chassis.rsi
@@ -1063,6 +1065,7 @@
       overlaySprite:
         sprite: _Wega/Mobs/Silicon/chassis.rsi
         state: borg_sheild_bullet
+    - type: FlashImmunity
   - type: BorgModuleIcon
     icon: { sprite: _Wega/Interface/Actions/actions_borg.rsi, state: sheild-module }
   - type: Tag
@@ -1106,6 +1109,7 @@
     - type: TelekinesisGen
       itemPrototype: RiotSheildBorg
       handPos: Left
+    - type: FlashImmunity
     - type: SimpleSpriteOverlay
       overlaySprite:
         sprite: _Wega/Mobs/Silicon/chassis.rsi
