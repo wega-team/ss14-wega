@@ -15,7 +15,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: 'SY'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Corvax/Shuttles/Emergency/emergency_corvax.yml
+          emergencyShuttlePath: /Maps/Corvax/Shuttles/Emergency/emergency_corvaxavrite.yml
         - type: StationLavaland
           planets: [ Lavaland, Icemoon ]
           avanposts:
