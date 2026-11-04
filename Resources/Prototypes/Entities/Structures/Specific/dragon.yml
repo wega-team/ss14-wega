@@ -25,7 +25,7 @@
         Piercing: -2
         Bloodloss: -2
         Radiation: -2
-        Toxin: -2
+        Poison: -2
         Shock: -2
         Cold: -2
     whitelist:

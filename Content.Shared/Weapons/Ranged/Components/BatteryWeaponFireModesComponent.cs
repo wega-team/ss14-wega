@@ -51,9 +51,6 @@ public sealed partial class BatteryWeaponFireMode
 
     // Corvax-Wega-MagVisuals-start
     [DataField]
-    public string State = string.Empty;
-
-    [DataField]
     public string MagState = string.Empty;
     // Corvax-Wega-MagVisuals-end
 }
