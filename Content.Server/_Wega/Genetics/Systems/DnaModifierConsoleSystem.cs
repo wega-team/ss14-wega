@@ -18,6 +18,7 @@ using Content.Shared.Forensics.Components;
 using Content.Shared.Genetics;
 using Content.Shared.Genetics.Systems;
 using Content.Shared.Genetics.UI;
+using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -59,47 +60,19 @@ namespace Content.Server.Genetics.System
         private const float MinRadiationValue = 1f;
         private const float MaxRadiationValue = 10f;
 
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            SubscribeLocalEvent<DnaModifierConsoleComponent, MapInitEvent>(OnMapInit);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, AfterActivatableUIOpenEvent>(OnUIOpen);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, PowerChangedEvent>(OnPowerChanged);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, NewLinkEvent>(OnNewLink);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, SinkPortDisconnectedEvent>(OnPortDisconnected);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, AnchorStateChangedEvent>(OnAnchorChanged);
-
-            // mewmewmew
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleEjectEvent>(OnEjectPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleEjectRejuveEvent>(OnEjectRejuvePressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleReagentButtonEvent>(OnReagentButtonPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleSaveServerEvent>(OnSaveServerPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleClearBufferEvent>(OnClearBufferPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleRenameBufferEvent>(OnRenameBufferPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleInjectorEvent>(OnInjectorPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierInjectBlockEvent>(OnInjectBlockPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleSubjectInjectEvent>(OnSubjectInjectPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleExportOnDiskEvent>(OnExportOnDiskPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleExportFromDiskEvent>(OnExportFromDiskPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleClearDiskEvent>(OnClearDiskPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleReleverationEvent>(OnReleverationPressed);
-            SubscribeLocalEvent<DnaModifierConsoleComponent, DnaModifierConsoleReleverationsEvent>(OnReleverationsPressed);
-        }
-
         #region UI logic
+        [SubscribeLocalEvent]
         private void OnMapInit(EntityUid uid, DnaModifierConsoleComponent component, MapInitEvent args)
         {
             component.LastInjectorTime = _timing.CurTime + component.InjectorCooldown;
             component.LastSubjectInjectTime = _timing.CurTime + component.SubjectInjectCooldown;
             _signalSystem.EnsureSourcePorts(uid, DnaModifierConsoleComponent.ScannerPort);
-
             Dirty(uid, component);
 
             if (!TryComp<DeviceLinkSourceComponent>(uid, out var receiver))
                 return;
 
-            foreach (var port in receiver.Outputs.Values.SelectMany(ports => ports))
+            foreach (var port in receiver.Outputs.Values.SelectMany(p => p))
             {
                 if (TryComp<MedicalScannerComponent>(port, out var scanner))
                 {
@@ -120,21 +93,21 @@ namespace Content.Server.Genetics.System
                     continue;
 
                 component.NextUpdate = _timing.CurTime + component.UpdateInterval;
+
                 if (component.GeneticScanner != null && HasComp<MedicalScannerComponent>(component.GeneticScanner))
                 {
-                    Transform(component.GeneticScanner.Value).Coordinates.TryDistance(EntityManager, transform.Coordinates, out float scannerDistance);
-                    component.GeneticScannerInRange = scannerDistance <= component.MaxDistance;
-
+                    Transform(component.GeneticScanner.Value).Coordinates.TryDistance(EntityManager, transform.Coordinates, out var dist);
+                    component.GeneticScannerInRange = dist <= component.MaxDistance;
                     UpdateUserInterface(uid, component);
                 }
             }
         }
 
+        [SubscribeLocalEvent]
         private void OnPowerChanged(EntityUid uid, DnaModifierConsoleComponent component, ref PowerChangedEvent args)
-        {
-            UpdateUserInterface(uid, component);
-        }
+            => UpdateUserInterface(uid, component);
 
+        [SubscribeLocalEvent]
         private void OnNewLink(EntityUid uid, DnaModifierConsoleComponent component, NewLinkEvent args)
         {
             if (TryComp<MedicalScannerComponent>(args.Sink, out var scanner) && args.SourcePort == DnaModifierConsoleComponent.ScannerPort)
@@ -146,6 +119,7 @@ namespace Content.Server.Genetics.System
             RecheckConnections(uid, component.GeneticScanner, component);
         }
 
+        [SubscribeLocalEvent]
         private void OnPortDisconnected(EntityUid uid, DnaModifierConsoleComponent component, SinkPortDisconnectedEvent args)
         {
             if (args.Port == DnaModifierConsoleComponent.ScannerPort)
@@ -154,11 +128,11 @@ namespace Content.Server.Genetics.System
             UpdateUserInterface(uid, component);
         }
 
+        [SubscribeLocalEvent]
         private void OnUIOpen(EntityUid uid, DnaModifierConsoleComponent component, AfterActivatableUIOpenEvent args)
-        {
-            UpdateUserInterface(uid, component);
-        }
+            => UpdateUserInterface(uid, component);
 
+        [SubscribeLocalEvent]
         private void OnAnchorChanged(EntityUid uid, DnaModifierConsoleComponent component, ref AnchorStateChangedEvent args)
         {
             if (args.Anchored)
@@ -166,10 +140,11 @@ namespace Content.Server.Genetics.System
                 RecheckConnections(uid, component.GeneticScanner, component);
                 return;
             }
+
             UpdateUserInterface(uid, component);
         }
 
-        public void UpdateUserInterface(EntityUid consoleUid, DnaModifierConsoleComponent consoleComponent)
+        public void UpdateUserInterface(EntityUid consoleUid, DnaModifierConsoleComponent component)
         {
             if (!_uiSystem.HasUi(consoleUid, DnaModifierUiKey.Key))
                 return;
@@ -180,53 +155,41 @@ namespace Content.Server.Genetics.System
                 return;
             }
 
-            var newState = GetUserInterfaceState((consoleUid, consoleComponent));
-            _uiSystem.SetUiState(consoleUid, DnaModifierUiKey.Key, newState);
+            _uiSystem.SetUiState(consoleUid, DnaModifierUiKey.Key, GetUserInterfaceState((consoleUid, component)));
         }
 
-        public void RecheckConnections(EntityUid console, EntityUid? scanner, DnaModifierConsoleComponent? consoleComp = null)
+        public void RecheckConnections(EntityUid console, EntityUid? scanner, DnaModifierConsoleComponent? comp = null)
         {
-            if (!Resolve(console, ref consoleComp))
+            if (!Resolve(console, ref comp))
                 return;
 
             if (scanner != null)
             {
-                Transform(scanner.Value).Coordinates.TryDistance(EntityManager, Transform(console).Coordinates, out float scannerDistance);
-                consoleComp.GeneticScannerInRange = scannerDistance <= consoleComp.MaxDistance;
+                Transform(scanner.Value).Coordinates.TryDistance(EntityManager, Transform(console).Coordinates, out float d);
+                comp.GeneticScannerInRange = d <= comp.MaxDistance;
             }
 
-            UpdateUserInterface(console, consoleComp);
+            UpdateUserInterface(console, comp);
         }
 
         private DnaModifierBoundUserInterfaceState GetUserInterfaceState(Entity<DnaModifierConsoleComponent> ent)
         {
-            // genetic scanner info
             EntityUid? inputContainer = null;
             NetEntity console = GetNetEntity(ent);
-
-            string scanBodyInfo = string.Empty;
-            string scannerBodyStatus = string.Empty;
-            string scannerBodyDna = string.Empty;
-
-            float scannerBodyHealth = -1;
-            float scannerBodyRadiation = 0;
-
-            bool hasDisk = false;
-            bool scannerHasBeaker = false;
-            bool scannerInRange = ent.Comp.GeneticScannerInRange;
-
+            string scanBodyInfo = string.Empty, scannerBodyStatus = string.Empty, scannerBodyDna = string.Empty;
+            float scannerBodyHealth = -1, scannerBodyRadiation = 0;
+            bool hasDisk = false, scannerHasBeaker = false, scannerInRange = ent.Comp.GeneticScannerInRange;
             EnzymeInfo? enzyme = null;
-            UniqueIdentifiersData? uniqueIdentifiers = null;
-            List<EnzymesPrototypeInfo>? enzymesPrototypes = null;
-
+            UniqueIdentifiersData? unique = null;
+            List<EnzymesPrototypeInfo>? enzymes = null;
             var currentTime = _timing.CurTime;
-            var injectorCooldown = ent.Comp.LastInjectorTime + ent.Comp.InjectorCooldown;
-            var subjectInjectCooldown = ent.Comp.LastSubjectInjectTime + ent.Comp.SubjectInjectCooldown;
+            var injectorCd = ent.Comp.LastInjectorTime + ent.Comp.InjectorCooldown;
+            var subjectInjectCd = ent.Comp.LastSubjectInjectTime + ent.Comp.SubjectInjectCooldown;
+            var buffers = GetAllBuffers(ent);
 
-            var buffer = GetAllBuffers(ent);
             if (ent.Comp.GeneticScanner != null && TryComp<MedicalScannerComponent>(ent.Comp.GeneticScanner, out var scanner))
             {
-                EntityUid? scanBody = scanner.BodyContainer.ContainedEntity;
+                var body = scanner.BodyContainer.ContainedEntity;
                 inputContainer = _itemSlotsSystem.GetItemOrNull(ent.Comp.GeneticScanner.Value, SharedDnaModifier.InputSlotName);
 
                 if (_itemSlotsSystem.TryGetSlot(ent.Owner, SharedDnaModifier.DiskSlotName, out var diskSlot)
@@ -237,89 +200,69 @@ namespace Content.Server.Genetics.System
                         enzyme = data;
                 }
 
-                if (_itemSlotsSystem.TryGetSlot(ent.Comp.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var beakerSlot)
-                    && beakerSlot.HasItem)
-                {
+                if (_itemSlotsSystem.TryGetSlot(ent.Comp.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var beaker)
+                    && beaker.HasItem)
                     scannerHasBeaker = true;
-                }
 
-                // GET STATE
-                if (scanBody != null && TryComp<MobStateComponent>(scanBody, out var mobState))
+                if (body != null && TryComp<MobStateComponent>(body, out var mobState))
                 {
-                    scanBodyInfo = MetaData(scanBody.Value).EntityName;
-                    scannerBodyStatus = (mobState.CurrentState != MobState.Invalid)
+                    scanBodyInfo = MetaData(body.Value).EntityName;
+                    scannerBodyStatus = mobState.CurrentState != MobState.Invalid
                         ? GetStatus(mobState.CurrentState)
                         : Loc.GetString("dna-modifier-entity-unknown-text");
 
-                    if (TryComp<DnaComponent>(scanBody.Value, out var dna))
+                    if (TryComp<DnaComponent>(body.Value, out var dna))
                         scannerBodyDna = dna.DNA ?? string.Empty;
 
-                    if (TryComp<DamageableComponent>(scanBody.Value, out var damage))
+                    if (TryComp<DamageableComponent>(body.Value, out var damage))
                     {
-                        if (TryComp<MobThresholdsComponent>(scanBody.Value, out var mobThresholds))
+                        if (TryComp<MobThresholdsComponent>(body.Value, out var th))
                         {
-                            FixedPoint2 deathHealth = FixedPoint2.Zero;
-                            foreach (var threshold in mobThresholds.Thresholds)
+                            var deathHealth = FixedPoint2.Zero;
+                            foreach (var t in th.Thresholds)
                             {
-                                if (threshold.Value == MobState.Dead)
+                                if (t.Value == MobState.Dead)
                                 {
-                                    deathHealth = threshold.Key;
+                                    deathHealth = t.Key;
                                     break;
                                 }
                             }
 
                             if (deathHealth > FixedPoint2.Zero)
                             {
-                                var totalDamage = _damage.GetTotalDamage(scanBody.Value);
-                                float currentHealth = 1.0f - (totalDamage.Float() / deathHealth.Float());
-                                scannerBodyHealth = Math.Clamp(currentHealth, 0f, 1f);
+                                var total = _damage.GetTotalDamage(body.Value);
+                                scannerBodyHealth = Math.Clamp(1.0f - (total.Float() / deathHealth.Float()), 0f, 1f);
                             }
                         }
 
-                        var positiveDamage = _damage.GetPositiveDamage((scanBody.Value, damage));
-                        if (positiveDamage.DamageDict.TryGetValue(RadDamage, out var radiationDamage))
-                            scannerBodyRadiation = Math.Clamp(radiationDamage.Float() / 200f, 0f, 1f);
+                        var pos = _damage.GetPositiveDamage((body.Value, damage));
+                        if (pos.DamageDict.TryGetValue(RadDamage, out var rad))
+                            scannerBodyRadiation = Math.Clamp(rad.Float() / 200f, 0f, 1f);
                     }
 
-                    if (TryComp<DnaModifierComponent>(scanBody.Value, out var dnaModifier))
+                    if (TryComp<DnaModifierComponent>(body.Value, out var mod))
                     {
-                        uniqueIdentifiers = dnaModifier.UniqueIdentifiers;
-                        enzymesPrototypes = dnaModifier.EnzymesPrototypes;
+                        unique = mod.UniqueIdentifiers;
+                        enzymes = mod.EnzymesPrototypes;
                     }
                 }
             }
 
             return new DnaModifierBoundUserInterfaceState(
-                console,
-                uniqueIdentifiers,
-                enzymesPrototypes,
-                enzyme,
-                scanBodyInfo,
-                scannerBodyStatus,
-                scannerBodyDna,
-                scannerBodyHealth,
-                scannerBodyRadiation,
-                scannerHasBeaker,
-                BuildInputContainerInfo(inputContainer),
-                scannerInRange,
-                hasDisk,
-                buffer,
-                currentTime < injectorCooldown ? injectorCooldown - currentTime : TimeSpan.Zero,
-                currentTime < subjectInjectCooldown ? subjectInjectCooldown - currentTime : TimeSpan.Zero
-            );
+                console, unique, enzymes, enzyme, scanBodyInfo, scannerBodyStatus, scannerBodyDna,
+                scannerBodyHealth, scannerBodyRadiation, scannerHasBeaker,
+                BuildInputContainerInfo(inputContainer), scannerInRange, hasDisk, buffers,
+                currentTime < injectorCd ? injectorCd - currentTime : TimeSpan.Zero,
+                currentTime < subjectInjectCd ? subjectInjectCd - currentTime : TimeSpan.Zero);
         }
 
-        private string GetStatus(MobState mobState)
+        private string GetStatus(MobState mobState) => mobState switch
         {
-            return mobState switch
-            {
-                MobState.Alive => Loc.GetString("dna-modifier-entity-alive-text"),
-                MobState.PreCritical => Loc.GetString("dna-modifier-entity-critical-text"),
-                MobState.Critical => Loc.GetString("dna-modifier-entity-critical-text"),
-                MobState.Dead => Loc.GetString("dna-modifier-entity-dead-text"),
-                _ => Loc.GetString("dna-modifier-entity-unknown-text"),
-            };
-        }
+            MobState.Alive => Loc.GetString("dna-modifier-entity-alive-text"),
+            MobState.PreCritical or MobState.Critical => Loc.GetString("dna-modifier-entity-critical-text"),
+            MobState.Dead => Loc.GetString("dna-modifier-entity-dead-text"),
+            _ => Loc.GetString("dna-modifier-entity-unknown-text"),
+        };
 
         private ContainerInfo? BuildInputContainerInfo(EntityUid? container)
         {
@@ -328,19 +271,9 @@ namespace Content.Server.Genetics.System
 
             if (!TryComp(container, out FitsInDispenserComponent? fits)
                 || !_solutionContainerSystem.TryGetSolution(container.Value, fits.Solution, out _, out var solution))
-            {
                 return null;
-            }
 
-            return BuildContainerInfo(Name(container.Value), solution);
-        }
-
-        private static ContainerInfo BuildContainerInfo(string name, Solution solution)
-        {
-            return new ContainerInfo(name, solution.Volume, solution.MaxVolume)
-            {
-                Reagents = solution.Contents
-            };
+            return new ContainerInfo(Name(container.Value), solution.Volume, solution.MaxVolume) { Reagents = solution.Contents };
         }
 
         public Dictionary<int, EnzymeInfo?> GetAllBuffers(EntityUid uid)
@@ -349,7 +282,7 @@ namespace Content.Server.Genetics.System
             if (!TryComp<DnaClientComponent>(uid, out var client))
                 return buffers;
 
-            for (int i = 1; i <= 3; i++)
+            for (var i = 1; i <= 3; i++)
             {
                 if (_dnaClient.TryGetBufferData((uid, client), i, out var data))
                     buffers[i] = data;
@@ -360,21 +293,13 @@ namespace Content.Server.Genetics.System
         #endregion
 
         #region Console logic
-
         private bool CanInteract(EntityUid console, EntityUid actor)
-        {
-            if (!actor.IsValid())
-                return false;
+            => actor.IsValid() && _interaction.InRangeUnobstructed(actor, console);
 
-            if (!_interaction.InRangeUnobstructed(actor, console))
-                return false;
+        private void PlayClickSound(EntityUid console, DnaModifierConsoleComponent c)
+            => _audio.PlayPvs(c.ClickSound, console, AudioParams.Default.WithVolume(-2f));
 
-            return true;
-        }
-
-        private void PlayClickSound(EntityUid console, DnaModifierConsoleComponent component)
-            => _audio.PlayPvs(component.ClickSound, console, AudioParams.Default.WithVolume(-2f));
-
+        [SubscribeLocalEvent]
         private void OnEjectPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleEjectEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -383,13 +308,14 @@ namespace Content.Server.Genetics.System
             if (console.GeneticScanner == null || !HasComp<MedicalScannerComponent>(console.GeneticScanner))
                 return;
 
-            if (_container.TryGetContainer(console.GeneticScanner.Value, SharedDnaModifier.OccupantSlotName, out var container))
-                _container.EmptyContainer(container);
+            if (_container.TryGetContainer(console.GeneticScanner.Value, SharedDnaModifier.OccupantSlotName, out var c))
+                _container.EmptyContainer(c);
 
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnEjectRejuvePressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleEjectRejuveEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -399,12 +325,13 @@ namespace Content.Server.Genetics.System
                 return;
 
             if (_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot))
-                _itemSlotsSystem.TryEject(console.GeneticScanner.Value, slot, null, out var _, true);
+                _itemSlotsSystem.TryEject(console.GeneticScanner.Value, slot, null, out _, true);
 
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnReagentButtonPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleReagentButtonEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -413,19 +340,20 @@ namespace Content.Server.Genetics.System
             if (console.GeneticScanner == null)
                 return;
 
-            if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner) || scanner.BodyContainer.ContainedEntity == null
+            if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner)
+                || scanner.BodyContainer.ContainedEntity == null
                 || !_itemSlotsSystem.TryGetSlot(console.GeneticScanner.Value, SharedDnaModifier.InputSlotName, out var slot)
                 || slot.Item == null)
                 return;
 
-            if (!_solutionContainerSystem.TryGetSolution(slot.Item.Value, SharedDnaModifier.SolutionSlotName, out var sourceSolution, out var sourceSolutionComp))
+            if (!_solutionContainerSystem.TryGetSolution(slot.Item.Value, SharedDnaModifier.SolutionSlotName, out var srcSol, out var srcComp))
                 return;
 
-            var targetEntity = scanner.BodyContainer.ContainedEntity.Value;
-            if (!_solutionContainerSystem.TryGetInjectableSolution(targetEntity, out var targetSolution, out _))
+            var target = scanner.BodyContainer.ContainedEntity.Value;
+            if (!_solutionContainerSystem.TryGetInjectableSolution(target, out var tgtSol, out _))
                 return;
 
-            FixedPoint2 transferAmount = args.Amount switch
+            var amount = args.Amount switch
             {
                 DnaModifierReagentAmount.U1 => FixedPoint2.New(1),
                 DnaModifierReagentAmount.U5 => FixedPoint2.New(5),
@@ -433,24 +361,24 @@ namespace Content.Server.Genetics.System
                 DnaModifierReagentAmount.U25 => FixedPoint2.New(25),
                 DnaModifierReagentAmount.U50 => FixedPoint2.New(50),
                 DnaModifierReagentAmount.U100 => FixedPoint2.New(100),
-                DnaModifierReagentAmount.All => sourceSolutionComp.GetReagentQuantity(args.ReagentId),
+                DnaModifierReagentAmount.All => srcComp.GetReagentQuantity(args.ReagentId),
                 _ => FixedPoint2.Zero
             };
 
-            if (transferAmount <= FixedPoint2.Zero || sourceSolutionComp.GetReagentQuantity(args.ReagentId) < transferAmount)
+            if (amount <= FixedPoint2.Zero || srcComp.GetReagentQuantity(args.ReagentId) < amount)
                 return;
 
-            var reagentSolution = new Solution();
-            reagentSolution.AddReagent(args.ReagentId, transferAmount);
-
-            _solutionContainerSystem.RemoveReagent(sourceSolution.Value, args.ReagentId, transferAmount);
-            if (!_solutionContainerSystem.TryAddSolution(targetSolution.Value, reagentSolution))
+            var reagent = new Solution();
+            reagent.AddReagent(args.ReagentId, amount);
+            _solutionContainerSystem.RemoveReagent(srcSol.Value, args.ReagentId, amount);
+            if (!_solutionContainerSystem.TryAddSolution(tgtSol.Value, reagent))
                 return;
 
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnSaveServerPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleSaveServerEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -462,58 +390,43 @@ namespace Content.Server.Genetics.System
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
                 return;
 
-            var scanBody = scanner.BodyContainer.ContainedEntity;
-            if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier))
+            var body = scanner.BodyContainer.ContainedEntity;
+            if (!TryComp<DnaModifierComponent>(body, out var mod))
                 return;
 
-            EnzymeInfo? dataToSend = null;
+            EnzymeInfo? data = null;
             switch (args.CurrentType)
             {
-                case 1:
-                    if (dnaModifier.UniqueIdentifiers != null)
+                case 1 when mod.UniqueIdentifiers != null:
                     {
-                        dataToSend = new EnzymeInfo()
-                        {
-                            Identifier = _dnaModifier.CloneUniqueIdentifiers(dnaModifier.UniqueIdentifiers),
-                            Info = null
-                        };
+                        data = new EnzymeInfo { Identifier = _dnaModifier.CloneUniqueIdentifiers(mod.UniqueIdentifiers) };
+                        break;
                     }
-                    break;
-
-                case 2:
-                    if (dnaModifier.UniqueIdentifiers != null && dnaModifier.EnzymesPrototypes != null)
+                case 2 when mod.UniqueIdentifiers != null && mod.EnzymesPrototypes != null:
                     {
-                        dataToSend = new EnzymeInfo()
+                        data = new EnzymeInfo
                         {
-                            Identifier = _dnaModifier.CloneUniqueIdentifiers(dnaModifier.UniqueIdentifiers),
-                            Info = _dnaModifier.CloneEnzymesPrototypes(dnaModifier.EnzymesPrototypes)
+                            Identifier = _dnaModifier.CloneUniqueIdentifiers(mod.UniqueIdentifiers),
+                            Info = _dnaModifier.CloneEnzymesPrototypes(mod.EnzymesPrototypes)
                         };
+                        break;
                     }
-                    break;
-
-                case 3:
-                    if (dnaModifier.EnzymesPrototypes != null)
+                case 3 when mod.EnzymesPrototypes != null:
                     {
-                        dataToSend = new EnzymeInfo()
-                        {
-                            Identifier = null,
-                            Info = _dnaModifier.CloneEnzymesPrototypes(dnaModifier.EnzymesPrototypes)
-                        };
+                        data = new EnzymeInfo { Info = _dnaModifier.CloneEnzymesPrototypes(mod.EnzymesPrototypes) };
+                        break;
                     }
-                    break;
-
-                default: return;
             }
 
-            if (dataToSend == null)
+            if (data == null)
                 return;
 
-            _dnaClient.TryAddToBuffer((uid, client), args.CurrentSection, dataToSend);
-
+            _dnaClient.TryAddToBuffer((uid, client), args.CurrentSection, data);
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnClearBufferPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleClearBufferEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -523,11 +436,11 @@ namespace Content.Server.Genetics.System
                 return;
 
             _dnaClient.TryClearBuffer((uid, client), args.Index);
-
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnRenameBufferPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleRenameBufferEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -542,27 +455,19 @@ namespace Content.Server.Genetics.System
             if (!TryComp<ActorComponent>(args.Actor, out var playerActor))
                 return;
 
-            var playerSession = playerActor.PlayerSession;
-            _quickDialog.OpenDialog(playerSession, Loc.GetString("dna-modifier-button-rename"), "",
-                (string name) =>
-                {
-                    if (playerSession.AttachedEntity is not { } user)
-                        return;
-
-                    if (!_interaction.InRangeUnobstructed(user, uid))
-                        return;
-
-                    var finalName = string.IsNullOrWhiteSpace(name)
-                        ? data.SampleName
-                        : name;
-
-                    _dnaClient.TryRenameBuffer((uid, client), args.Index, finalName);
-
-                    PlayClickSound(uid, console);
-                    UpdateUserInterface(uid, console);
-                });
+            var session = playerActor.PlayerSession;
+            _quickDialog.OpenDialog(session, Loc.GetString("dna-modifier-button-rename"), "", (string name) =>
+            {
+                if (session.AttachedEntity is not { } user) return;
+                if (!_interaction.InRangeUnobstructed(user, uid)) return;
+                var finalName = string.IsNullOrWhiteSpace(name) ? data.SampleName : name;
+                _dnaClient.TryRenameBuffer((uid, client), args.Index, finalName);
+                PlayClickSound(uid, console);
+                UpdateUserInterface(uid, console);
+            });
         }
 
+        [SubscribeLocalEvent]
         private void OnInjectorPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleInjectorEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -577,15 +482,13 @@ namespace Content.Server.Genetics.System
             if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
                 return;
 
-            _dnaModifier.OnFillingInjector(Spawn(Injector, Transform(uid).Coordinates),
-                data.Identifier, data.Info);
-
+            _dnaModifier.OnFillingInjector(Spawn(Injector, Transform(uid).Coordinates), data.Identifier, data.Info);
             console.LastInjectorTime = _timing.CurTime;
-
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnInjectBlockPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierInjectBlockEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -601,18 +504,17 @@ namespace Content.Server.Genetics.System
                 return;
 
             var targetBlock = data.Info.FirstOrDefault(e => e.Order == args.CurrentBlock);
-            if (targetBlock == null)
+            if (targetBlock.EnzymesPrototypeId == null && targetBlock.Order == 0)
                 return;
 
-            var singleBlockInfo = new List<EnzymesPrototypeInfo> { targetBlock };
-            _dnaModifier.OnFillingInjector(Spawn(Injector, Transform(uid).Coordinates), null, singleBlockInfo);
-
+            var single = new List<EnzymesPrototypeInfo> { targetBlock };
+            _dnaModifier.OnFillingInjector(Spawn(Injector, Transform(uid).Coordinates), null, single);
             console.LastInjectorTime = _timing.CurTime;
-
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnSubjectInjectPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleSubjectInjectEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -627,24 +529,21 @@ namespace Content.Server.Genetics.System
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
                 return;
 
-            var scanBody = scanner.BodyContainer.ContainedEntity;
-            if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier) || !scanBody.HasValue)
+            var body = scanner.BodyContainer.ContainedEntity;
+            if (!body.HasValue || !TryComp<DnaModifierComponent>(body, out var mod))
                 return;
 
             if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
                 return;
 
             PlayClickSound(uid, console);
-            _dnaModifier.ChangeDna((scanBody.Value, dnaModifier), data);
-
+            _dnaModifier.ChangeDna((body.Value, mod), data);
             console.LastSubjectInjectTime = _timing.CurTime;
-
-            var damage = new DamageSpecifier { DamageDict = { { RadDamage, 20 } } };
-            _damage.TryChangeDamage(scanBody.Value, damage, true);
-
+            _damage.TryChangeDamage(body.Value, new DamageSpecifier { DamageDict = { { RadDamage, 20 } } }, true);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnExportOnDiskPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleExportOnDiskEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -656,15 +555,15 @@ namespace Content.Server.Genetics.System
             if (!_dnaClient.TryGetBufferData((uid, client), args.Index, out var data))
                 return;
 
-            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
+            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var disk) && disk.Item != null)
             {
-                _dnaModifier.TrySaveInDisk(diskSlot.Item.Value, data);
-
+                _dnaModifier.TrySaveInDisk(disk.Item.Value, data);
                 PlayClickSound(uid, console);
                 UpdateUserInterface(uid, console);
             }
         }
 
+        [SubscribeLocalEvent]
         private void OnExportFromDiskPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleExportFromDiskEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -673,19 +572,19 @@ namespace Content.Server.Genetics.System
             if (console.GeneticScanner == null || !TryComp<DnaClientComponent>(uid, out var client))
                 return;
 
-            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
+            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var disk) && disk.Item != null)
             {
-                _dnaModifier.TryGetDataFromDisk(diskSlot.Item.Value, out var data);
+                _dnaModifier.TryGetDataFromDisk(disk.Item.Value, out var data);
                 if (data == null)
                     return;
 
                 _dnaClient.TryAddToBufferDisk((uid, client), args.Index, data);
-
                 PlayClickSound(uid, console);
                 UpdateUserInterface(uid, console);
             }
         }
 
+        [SubscribeLocalEvent]
         private void OnClearDiskPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleClearDiskEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -694,13 +593,14 @@ namespace Content.Server.Genetics.System
             if (console.GeneticScanner == null)
                 return;
 
-            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var diskSlot) && diskSlot.Item != null)
+            if (_itemSlotsSystem.TryGetSlot(uid, SharedDnaModifier.DiskSlotName, out var disk) && disk.Item != null)
             {
                 PlayClickSound(uid, console);
-                _dnaModifier.TryClearDiskData(diskSlot.Item.Value);
+                _dnaModifier.TryClearDiskData(disk.Item.Value);
             }
         }
 
+        [SubscribeLocalEvent]
         private void OnReleverationPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleReleverationEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -712,34 +612,31 @@ namespace Content.Server.Genetics.System
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
                 return;
 
-            var scanBody = scanner.BodyContainer.ContainedEntity;
-            if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier) || !scanBody.HasValue)
+            var body = scanner.BodyContainer.ContainedEntity;
+            if (!body.HasValue || !TryComp<DnaModifierComponent>(body, out var mod))
                 return;
 
             var intensity = Math.Clamp(args.Intensity, MinRadiationValue, MaxRadiationValue);
 
-            if (args.CurrentTab == 0 && dnaModifier.UniqueIdentifiers != null)
-            {
-                ModifyUniqueIdentifiers(dnaModifier.UniqueIdentifiers, args.CurrentBlock, args.CurrentValue, intensity);
-            }
-            else if (args.CurrentTab == 1 && dnaModifier.EnzymesPrototypes != null)
-            {
-                ModifyEnzymesPrototypes(dnaModifier.EnzymesPrototypes, args.CurrentBlock, args.CurrentValue, intensity);
-            }
-            else
-            {
-                return;
-            }
+            var species = "Human";
+            if (TryComp<HumanoidProfileComponent>(body.Value, out var humanoid))
+                species = humanoid.Species;
 
-            AddRadiationDamage(scanBody.Value, intensity);
-            Dirty(scanBody.Value, dnaModifier);
+            if (args.CurrentTab == 0 && mod.UniqueIdentifiers != null)
+                ModifyUniqueIdentifiers(mod.UniqueIdentifiers, species, args.CurrentBlock, args.CurrentValue, intensity);
+            else if (args.CurrentTab == 1 && mod.EnzymesPrototypes != null)
+                ModifyEnzymesPrototypes(mod.EnzymesPrototypes, args.CurrentBlock, args.CurrentValue, intensity);
+            else return;
 
-            _dnaModifier.ChangeDna((scanBody.Value, dnaModifier), args.CurrentTab);
+            AddRadiationDamage(body.Value, intensity);
+            Dirty(body.Value, mod);
 
+            _dnaModifier.ChangeDna((body.Value, mod), args.CurrentTab);
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
+        [SubscribeLocalEvent]
         private void OnReleverationsPressed(EntityUid uid, DnaModifierConsoleComponent console, DnaModifierConsoleReleverationsEvent args)
         {
             if (!CanInteract(uid, args.Actor))
@@ -751,270 +648,194 @@ namespace Content.Server.Genetics.System
             if (!TryComp<MedicalScannerComponent>(console.GeneticScanner, out var scanner))
                 return;
 
-            var scanBody = scanner.BodyContainer.ContainedEntity;
-            if (!TryComp<DnaModifierComponent>(scanBody, out var dnaModifier) || !scanBody.HasValue)
+            var body = scanner.BodyContainer.ContainedEntity;
+            if (!body.HasValue || !TryComp<DnaModifierComponent>(body, out var mod))
                 return;
 
             var intensity = Math.Clamp(args.Intensity, MinRadiationValue, MaxRadiationValue);
             var duration = Math.Clamp(args.Duration, MinRadiationValue, MaxRadiationValue);
 
-            int type = -1;
-            if (args.CurrentTab == 0 && dnaModifier.UniqueIdentifiers != null)
+            var species = "Human";
+            if (TryComp<HumanoidProfileComponent>(body.Value, out var humanoid))
+                species = humanoid.Species;
+
+            int type;
+            if (args.CurrentTab == 0 && mod.UniqueIdentifiers != null)
             {
                 type = 0;
-                ModifyUniqueIdentifiers(dnaModifier.UniqueIdentifiers, intensity, duration);
+                ModifyUniqueIdentifiers(mod.UniqueIdentifiers, species, intensity, duration);
             }
-            else if (args.CurrentTab == 1 && dnaModifier.EnzymesPrototypes != null)
+            else if (args.CurrentTab == 1 && mod.EnzymesPrototypes != null)
             {
                 type = 1;
-                ModifyEnzymesPrototypes(dnaModifier.EnzymesPrototypes, intensity, duration);
+                ModifyEnzymesPrototypes(mod.EnzymesPrototypes, intensity, duration);
             }
-            else
-            {
-                return;
-            }
+            else return;
 
-            AddRadiationDamage(scanBody.Value, intensity);
-            Dirty(scanBody.Value, dnaModifier);
+            AddRadiationDamage(body.Value, intensity);
+            Dirty(body.Value, mod);
 
-            _dnaModifier.ChangeDna((scanBody.Value, dnaModifier), type);
-
+            _dnaModifier.ChangeDna((body.Value, mod), type);
             PlayClickSound(uid, console);
             UpdateUserInterface(uid, console);
         }
 
-        private void ModifyUniqueIdentifiers(UniqueIdentifiersData uniqueIdentifiers, string block, int value, float intensity)
-        {
-            var fields = new List<(string[] Field, string Name)>
-            {
-                (uniqueIdentifiers.HairColorR, nameof(uniqueIdentifiers.HairColorR)),
-                (uniqueIdentifiers.HairColorG, nameof(uniqueIdentifiers.HairColorG)),
-                (uniqueIdentifiers.HairColorB, nameof(uniqueIdentifiers.HairColorB)),
-                (uniqueIdentifiers.SecondaryHairColorR, nameof(uniqueIdentifiers.SecondaryHairColorR)),
-                (uniqueIdentifiers.SecondaryHairColorG, nameof(uniqueIdentifiers.SecondaryHairColorG)),
-                (uniqueIdentifiers.SecondaryHairColorB, nameof(uniqueIdentifiers.SecondaryHairColorB)),
-                (uniqueIdentifiers.BeardColorR, nameof(uniqueIdentifiers.BeardColorR)),
-                (uniqueIdentifiers.BeardColorG, nameof(uniqueIdentifiers.BeardColorG)),
-                (uniqueIdentifiers.BeardColorB, nameof(uniqueIdentifiers.BeardColorB)),
-                (uniqueIdentifiers.SkinTone, nameof(uniqueIdentifiers.SkinTone)),
-                (uniqueIdentifiers.FurColorR, nameof(uniqueIdentifiers.FurColorR)),
-                (uniqueIdentifiers.FurColorG, nameof(uniqueIdentifiers.FurColorG)),
-                (uniqueIdentifiers.FurColorB, nameof(uniqueIdentifiers.FurColorB)),
-                (uniqueIdentifiers.HeadAccessoryColorR, nameof(uniqueIdentifiers.HeadAccessoryColorR)),
-                (uniqueIdentifiers.HeadAccessoryColorG, nameof(uniqueIdentifiers.HeadAccessoryColorG)),
-                (uniqueIdentifiers.HeadAccessoryColorB, nameof(uniqueIdentifiers.HeadAccessoryColorB)),
-                (uniqueIdentifiers.HeadMarkingColorR, nameof(uniqueIdentifiers.HeadMarkingColorR)),
-                (uniqueIdentifiers.HeadMarkingColorG, nameof(uniqueIdentifiers.HeadMarkingColorG)),
-                (uniqueIdentifiers.HeadMarkingColorB, nameof(uniqueIdentifiers.HeadMarkingColorB)),
-                (uniqueIdentifiers.BodyMarkingColorR, nameof(uniqueIdentifiers.BodyMarkingColorR)),
-                (uniqueIdentifiers.BodyMarkingColorG, nameof(uniqueIdentifiers.BodyMarkingColorG)),
-                (uniqueIdentifiers.BodyMarkingColorB, nameof(uniqueIdentifiers.BodyMarkingColorB)),
-                (uniqueIdentifiers.TailMarkingColorR, nameof(uniqueIdentifiers.TailMarkingColorR)),
-                (uniqueIdentifiers.TailMarkingColorG, nameof(uniqueIdentifiers.TailMarkingColorG)),
-                (uniqueIdentifiers.TailMarkingColorB, nameof(uniqueIdentifiers.TailMarkingColorB)),
-                (uniqueIdentifiers.EyeColorR, nameof(uniqueIdentifiers.EyeColorR)),
-                (uniqueIdentifiers.EyeColorG, nameof(uniqueIdentifiers.EyeColorG)),
-                (uniqueIdentifiers.EyeColorB, nameof(uniqueIdentifiers.EyeColorB)),
-                (uniqueIdentifiers.Gender, nameof(uniqueIdentifiers.Gender)),
-                (uniqueIdentifiers.BeardStyle, nameof(uniqueIdentifiers.BeardStyle)),
-                (uniqueIdentifiers.HairStyle, nameof(uniqueIdentifiers.HairStyle)),
-                (uniqueIdentifiers.HeadAccessoryStyle, nameof(uniqueIdentifiers.HeadAccessoryStyle)),
-                (uniqueIdentifiers.HeadMarkingStyle, nameof(uniqueIdentifiers.HeadMarkingStyle)),
-                (uniqueIdentifiers.BodyMarkingStyle, nameof(uniqueIdentifiers.BodyMarkingStyle)),
-                (uniqueIdentifiers.TailMarkingStyle, nameof(uniqueIdentifiers.TailMarkingStyle))
-            };
-
-            if (_random.NextFloat() < 0.025f)
-            {
-                var randomField = fields[_random.Next(fields.Count)];
-                int randomIndex = _random.Next(0, randomField.Field.Length);
-                if (randomField.Name == nameof(uniqueIdentifiers.SkinTone))
-                {
-                    randomField.Field[randomIndex] = GenerateSkinToneComponent(randomIndex, intensity, 1.0f);
-                }
-                else
-                {
-                    randomField.Field[randomIndex] = GenerateRandomHexValue(randomField.Field[randomIndex], intensity, 1.0f);
-                }
-                return;
-            }
-
-            if (!int.TryParse(block, out int blockNumber))
-                return;
-
-            var blockMap = new Dictionary<int, int>
-            {
-                { 1, 0 }, { 2, 1 }, { 3, 2 }, { 4, 3 }, { 5, 4 }, { 6, 5 }, { 7, 6 },
-                { 8, 7 }, { 9, 8 }, { 13, 9 },
-                { 14, 10 }, { 15, 11 }, { 16, 12 }, { 17, 13 }, { 18, 14 }, { 19, 15 },
-                { 20, 16 }, { 21, 17 }, { 22, 18 }, { 23, 19 }, { 24, 20 }, { 25, 21 },
-                { 26, 22 }, { 27, 23 }, { 28, 24 }, { 29, 25 }, { 30, 26 }, { 31, 27 },
-                { 32, 28 }, { 33, 29 }, { 34, 30 }, { 35, 31 }, { 36, 32 }, { 37, 33 },
-                { 38, 34 }
-            };
-
-            if (!blockMap.ContainsKey(blockNumber))
-                return;
-
-            int blockIndex = blockMap[blockNumber];
-            if (blockIndex < 0 || blockIndex >= fields.Count)
-                return;
-
-            var field = fields[blockIndex].Field;
-            if (value < 0 || value >= field.Length)
-                return;
-
-            if (blockNumber == 13)
-            {
-                if (value >= 0 && value < uniqueIdentifiers.SkinTone.Length)
-                {
-                    uniqueIdentifiers.SkinTone[value] = GenerateSkinToneComponent(value, intensity, 1.0f);
-                }
-                return;
-            }
-
-            field[value] = GenerateRandomHexValue(field[value], intensity, 1.0f);
-        }
-
-        private void ModifyUniqueIdentifiers(UniqueIdentifiersData uniqueIdentifiers, float intensity, float duration)
-        {
-            var fields = new List<(string[] Field, string Name)>
-            {
-                (uniqueIdentifiers.HairColorR, nameof(uniqueIdentifiers.HairColorR)),
-                (uniqueIdentifiers.HairColorG, nameof(uniqueIdentifiers.HairColorG)),
-                (uniqueIdentifiers.HairColorB, nameof(uniqueIdentifiers.HairColorB)),
-                (uniqueIdentifiers.SecondaryHairColorR, nameof(uniqueIdentifiers.SecondaryHairColorR)),
-                (uniqueIdentifiers.SecondaryHairColorG, nameof(uniqueIdentifiers.SecondaryHairColorG)),
-                (uniqueIdentifiers.SecondaryHairColorB, nameof(uniqueIdentifiers.SecondaryHairColorB)),
-                (uniqueIdentifiers.BeardColorR, nameof(uniqueIdentifiers.BeardColorR)),
-                (uniqueIdentifiers.BeardColorG, nameof(uniqueIdentifiers.BeardColorG)),
-                (uniqueIdentifiers.BeardColorB, nameof(uniqueIdentifiers.BeardColorB)),
-                (uniqueIdentifiers.SkinTone, nameof(uniqueIdentifiers.SkinTone)),
-                (uniqueIdentifiers.FurColorR, nameof(uniqueIdentifiers.FurColorR)),
-                (uniqueIdentifiers.FurColorG, nameof(uniqueIdentifiers.FurColorG)),
-                (uniqueIdentifiers.FurColorB, nameof(uniqueIdentifiers.FurColorB)),
-                (uniqueIdentifiers.HeadAccessoryColorR, nameof(uniqueIdentifiers.HeadAccessoryColorR)),
-                (uniqueIdentifiers.HeadAccessoryColorG, nameof(uniqueIdentifiers.HeadAccessoryColorG)),
-                (uniqueIdentifiers.HeadAccessoryColorB, nameof(uniqueIdentifiers.HeadAccessoryColorB)),
-                (uniqueIdentifiers.HeadMarkingColorR, nameof(uniqueIdentifiers.HeadMarkingColorR)),
-                (uniqueIdentifiers.HeadMarkingColorG, nameof(uniqueIdentifiers.HeadMarkingColorG)),
-                (uniqueIdentifiers.HeadMarkingColorB, nameof(uniqueIdentifiers.HeadMarkingColorB)),
-                (uniqueIdentifiers.BodyMarkingColorR, nameof(uniqueIdentifiers.BodyMarkingColorR)),
-                (uniqueIdentifiers.BodyMarkingColorG, nameof(uniqueIdentifiers.BodyMarkingColorG)),
-                (uniqueIdentifiers.BodyMarkingColorB, nameof(uniqueIdentifiers.BodyMarkingColorB)),
-                (uniqueIdentifiers.TailMarkingColorR, nameof(uniqueIdentifiers.TailMarkingColorR)),
-                (uniqueIdentifiers.TailMarkingColorG, nameof(uniqueIdentifiers.TailMarkingColorG)),
-                (uniqueIdentifiers.TailMarkingColorB, nameof(uniqueIdentifiers.TailMarkingColorB)),
-                (uniqueIdentifiers.EyeColorR, nameof(uniqueIdentifiers.EyeColorR)),
-                (uniqueIdentifiers.EyeColorG, nameof(uniqueIdentifiers.EyeColorG)),
-                (uniqueIdentifiers.EyeColorB, nameof(uniqueIdentifiers.EyeColorB)),
-                (uniqueIdentifiers.Gender, nameof(uniqueIdentifiers.Gender)),
-                (uniqueIdentifiers.BeardStyle, nameof(uniqueIdentifiers.BeardStyle)),
-                (uniqueIdentifiers.HairStyle, nameof(uniqueIdentifiers.HairStyle)),
-                (uniqueIdentifiers.HeadAccessoryStyle, nameof(uniqueIdentifiers.HeadAccessoryStyle)),
-                (uniqueIdentifiers.HeadMarkingStyle, nameof(uniqueIdentifiers.HeadMarkingStyle)),
-                (uniqueIdentifiers.BodyMarkingStyle, nameof(uniqueIdentifiers.BodyMarkingStyle)),
-                (uniqueIdentifiers.TailMarkingStyle, nameof(uniqueIdentifiers.TailMarkingStyle))
-            };
-
-            int fieldsToModify = Math.Clamp((int)intensity, 1, 3);
-            for (int i = 0; i < fieldsToModify; i++)
-            {
-                var fieldIndex = _random.Next(fields.Count);
-                var fieldName = fields[fieldIndex].Name;
-                var field = fields[fieldIndex].Field;
-
-                if (fieldName == nameof(uniqueIdentifiers.SkinTone))
-                {
-                    for (int j = 0; j < field.Length; j++)
-                    {
-                        field[j] = GenerateSkinToneComponent(j, intensity, duration);
-                    }
-                    continue;
-                }
-
-                for (int j = 0; j < field.Length; j++)
-                {
-                    field[j] = GenerateRandomHexValue(field[j], intensity, duration);
-                }
-            }
-        }
-
-        private void ModifyEnzymesPrototypes(List<EnzymesPrototypeInfo> enzymesPrototypes, string block, int value, float intensity)
+        private void ModifyUniqueIdentifiers(UniqueIdentifiersData u, string species, string block, int value, float intensity)
         {
             if (_random.NextFloat() < 0.025f)
             {
-                var randomEnzyme = enzymesPrototypes[_random.Next(enzymesPrototypes.Count)];
-                int randomIndex = _random.Next(0, randomEnzyme.HexCode.Length);
-                randomEnzyme.HexCode[randomIndex] = GenerateRandomHexValue(randomEnzyme.HexCode[randomIndex], intensity, 1.0f);
-                return;
-            }
-
-            if (!int.TryParse(block, out int blockNumber))
-                return;
-
-            int blockIndex = blockNumber - 1;
-            if (blockIndex < 0 || blockIndex >= enzymesPrototypes.Count)
-                return;
-
-            var enzyme = enzymesPrototypes[blockIndex];
-            if (value < 0 || value >= enzyme.HexCode.Length)
-                return;
-
-            enzyme.HexCode[value] = GenerateRandomHexValue(enzyme.HexCode[value], intensity, 1.0f);
-        }
-
-        private void ModifyEnzymesPrototypes(List<EnzymesPrototypeInfo> enzymesPrototypes, float intensity, float duration)
-        {
-            int itemsToModify = Math.Clamp((int)intensity, 1, 2);
-            for (int i = 0; i < itemsToModify; i++)
-            {
-                var enzymeIndex = _random.Next(enzymesPrototypes.Count);
-                var enzyme = enzymesPrototypes[enzymeIndex];
-                for (int j = 0; j < enzyme.HexCode.Length; j++)
+                var actions = new List<Action>
                 {
-                    enzyme.HexCode[j] = GenerateRandomHexValue(enzyme.HexCode[j], intensity, duration);
-                }
+                    () => u.HairColor = MutateColorArray(u.HairColor, intensity),
+                    () => u.BeardColor = MutateColorArray(u.BeardColor, intensity),
+                    () => u.SkinTone = _dnaModifier.MutateSkinToneDigit(u.SkinTone, 0, intensity),
+                    () => u.FurColor = _dnaModifier.MutateColorDigit(u.FurColor, _random.Next(0, 6), intensity),
+                    () => u.EyeColor = _dnaModifier.MutateColorDigit(u.EyeColor, _random.Next(0, 6), intensity),
+                    () => u.HeadAccessoryColor = MutateColorArray(u.HeadAccessoryColor, intensity),
+                    () => u.HeadMarkingColor = MutateColorArray(u.HeadMarkingColor, intensity),
+                    () => u.BodyMarkingColor = MutateColorArray(u.BodyMarkingColor, intensity),
+                    () => u.TailMarkingColor = MutateColorArray(u.TailMarkingColor, intensity),
+                    () => u.TailOverlayColor = MutateColorArray(u.TailOverlayColor, intensity),
+                    () => u.SnoutColor = MutateColorArray(u.SnoutColor, intensity),
+                    () => u.SnoutCoverColor = MutateColorArray(u.SnoutCoverColor, intensity),
+                    () => u.HeadSideColor = MutateColorArray(u.HeadSideColor, intensity),
+                    () => u.Sex = (Sex)_random.Next(0, 3)
+                };
+                _random.Pick(actions)();
+                return;
+            }
+
+            var parts = block.Split(':');
+            if (!int.TryParse(parts[0], out var blockNumber))
+                return;
+
+            var layer = parts.Length > 1 && int.TryParse(parts[1], out var l) ? l : 0;
+
+            switch (blockNumber)
+            {
+                case 1:  u.HairColor = MutateColorArrayAt(u.HairColor, layer, intensity); break;
+                case 2:  u.BeardColor = MutateColorArrayAt(u.BeardColor, layer, intensity); break;
+                case 3:  u.SkinTone = _dnaModifier.MutateSkinToneDigit(u.SkinTone, 0, intensity); break;
+                case 4:  u.FurColor = _dnaModifier.MutateColorDigit(u.FurColor, value, intensity); break;
+                case 5:  u.EyeColor = _dnaModifier.MutateColorDigit(u.EyeColor, value, intensity); break;
+                case 6:  u.HeadAccessoryColor = MutateColorArrayAt(u.HeadAccessoryColor, layer, intensity); break;
+                case 7:  u.HeadMarkingColor = MutateColorArrayAt(u.HeadMarkingColor, layer, intensity); break;
+                case 8:  u.BodyMarkingColor = MutateColorArrayAt(u.BodyMarkingColor, layer, intensity); break;
+                case 9:  u.TailMarkingColor = MutateColorArrayAt(u.TailMarkingColor, layer, intensity); break;
+                case 10: u.TailOverlayColor = MutateColorArrayAt(u.TailOverlayColor, layer, intensity); break;
+                case 11: u.SnoutColor = MutateColorArrayAt(u.SnoutColor, layer, intensity); break;
+                case 12: u.SnoutCoverColor = MutateColorArrayAt(u.SnoutCoverColor, layer, intensity); break;
+                case 13: u.HeadSideColor = MutateColorArrayAt(u.HeadSideColor, layer, intensity); break;
+                case 20: u.HairStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.Hair, species); break;
+                case 21: u.BeardStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.FacialHair, species); break;
+                case 22: u.HeadAccessoryStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.HeadTop, species); break;
+                case 23: u.HeadMarkingStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.Head, species); break;
+                case 24: u.BodyMarkingStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.Chest, species); break;
+                case 25: u.TailMarkingStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.Tail, species); break;
+                case 26: u.TailOverlayStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.TailOverlay, species); break;
+                case 27: u.SnoutStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.Snout, species); break;
+                case 28: u.SnoutCoverStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.SnoutCover, species); break;
+                case 29: u.HeadSideStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.HeadSide, species); break;
+                case 30: u.Sex = (Sex)_random.Next(0, 3); break;
             }
         }
 
-        private string GenerateRandomHexValue(string value, float intensity, float duration)
+        private void ModifyUniqueIdentifiers(UniqueIdentifiersData u, string species, float intensity, float duration)
         {
-            int baseValue = Convert.ToInt32(value, 16);
-            float changeStrength = Math.Clamp((intensity * duration) / 100f, 0f, 1f);
-            changeStrength = (float)Math.Sqrt(changeStrength);
+            var actions = new List<Action>
+            {
+                () => u.HairColor = MutateColorArray(u.HairColor, intensity * duration),
+                () => u.BeardColor = MutateColorArray(u.BeardColor, intensity * duration),
+                () => u.SkinTone = _dnaModifier.MutateSkinToneDigit(u.SkinTone, 0, intensity * duration),
+                () => u.FurColor = _dnaModifier.MutateColorDigit(u.FurColor, _random.Next(0, 6), intensity * duration),
+                () => u.EyeColor = _dnaModifier.MutateColorDigit(u.EyeColor, _random.Next(0, 6), intensity * duration),
+                () => u.HeadAccessoryColor = MutateColorArray(u.HeadAccessoryColor, intensity * duration),
+                () => u.HeadMarkingColor = MutateColorArray(u.HeadMarkingColor, intensity * duration),
+                () => u.BodyMarkingColor = MutateColorArray(u.BodyMarkingColor, intensity * duration),
+                () => u.TailMarkingColor = MutateColorArray(u.TailMarkingColor, intensity * duration),
+                () => u.TailOverlayColor = MutateColorArray(u.TailOverlayColor, intensity * duration),
+                () => u.SnoutColor = MutateColorArray(u.SnoutColor, intensity * duration),
+                () => u.SnoutCoverColor = MutateColorArray(u.SnoutCoverColor, intensity * duration),
+                () => u.HeadSideColor = MutateColorArray(u.HeadSideColor, intensity * duration),
+                () => u.Sex = (Sex)_random.Next(0, 3)
+            };
 
-            float threshold = 0.15f;
-            if (_random.NextFloat() <= threshold)
-                return baseValue.ToString("X1");
-
-            float maxChange = 16 * changeStrength;
-            float direction = _random.NextFloat() > 0.5f ? 1 : -1;
-
-            int modifiedValue = (int)(baseValue + (direction * maxChange * _random.NextFloat())) % 16;
-
-            if (modifiedValue < 0) modifiedValue += 16;
-            else if (modifiedValue >= 16) modifiedValue -= 16;
-
-            return modifiedValue.ToString("X1");
+            var count = Math.Clamp((int)intensity, 1, 3);
+            for (var i = 0; i < count; i++)
+                _random.Pick(actions)();
         }
 
-        private string GenerateSkinToneComponent(int index, float intensity, float duration)
+        private uint[] MutateColorArray(uint[] colors, float intensity)
         {
-            switch (index)
+            if (colors.Length == 0)
+                return new[] { _dnaModifier.GenerateRandomColor() };
+
+            var idx = _random.Next(colors.Length);
+            colors[idx] = _dnaModifier.MutateColorDigit(colors[idx], _random.Next(0, 6), intensity);
+            return colors;
+        }
+
+        private uint[] MutateColorArrayAt(uint[] colors, int layer, float intensity)
+        {
+            if (layer >= colors.Length)
             {
-                case 0: return (_random.NextFloat() < intensity / 100f) ? "1" : "0";
-                case 1: int digit1 = _random.Next(0, 10); return digit1.ToString("X1");
-                case 2: int digit2 = _random.Next(0, 10); return digit2.ToString("X1");
-                default: return "0";
+                var extended = new uint[layer + 1];
+                for (var i = 0; i < colors.Length; i++)
+                    extended[i] = colors[i];
+
+                var last = colors.Length > 0 ? colors[^1] : 0xFFFFFF;
+                for (var i = colors.Length; i < extended.Length; i++)
+                    extended[i] = last;
+
+                colors = extended;
+            }
+
+            colors[layer] = _dnaModifier.MutateColorDigit(colors[layer], _random.Next(0, 6), intensity);
+            return colors;
+        }
+
+        private void ModifyEnzymesPrototypes(List<EnzymesPrototypeInfo> list, string block, int value, float intensity)
+        {
+            if (_random.NextFloat() < 0.025f)
+            {
+                var idx = _random.Next(list.Count);
+                var e = list[idx];
+                list[idx] = e with { HexCode = _dnaModifier.MutateHexDigit(e.HexCode, _random.Next(0, 3), intensity) };
+                return;
+            }
+
+            if (!int.TryParse(block, out var blockNumber))
+                return;
+
+            var blockIndex = blockNumber - 1;
+            if (blockIndex < 0 || blockIndex >= list.Count)
+                return;
+
+            var target = list[blockIndex];
+            list[blockIndex] = target with { HexCode = _dnaModifier.MutateHexDigit(target.HexCode, value, intensity) };
+        }
+
+        private void ModifyEnzymesPrototypes(List<EnzymesPrototypeInfo> list, float intensity, float duration)
+        {
+            var count = Math.Clamp((int)intensity, 1, 2);
+            for (var i = 0; i < count; i++)
+            {
+                var idx = _random.Next(list.Count);
+                var e = list[idx];
+                var hex = e.HexCode;
+                for (var j = 0; j < 3; j++)
+                {
+                    hex = _dnaModifier.MutateHexDigit(hex, j, intensity * duration);
+                }
+
+                list[idx] = e with { HexCode = hex };
             }
         }
 
         private void AddRadiationDamage(EntityUid uid, float intensity)
         {
-            float randomMultiplier = 1.5f + _random.NextFloat() * 1.5f;
-            var damage = new DamageSpecifier { DamageDict = { { RadDamage, randomMultiplier * intensity } } };
-            _damage.TryChangeDamage(uid, damage, ignoreResistances: true, origin: uid);
+            var mult = 1.5f + _random.NextFloat() * 1.5f;
+            _damage.TryChangeDamage(uid, new DamageSpecifier { DamageDict = { { RadDamage, mult * intensity } } }, true, origin: uid);
         }
         #endregion
     }

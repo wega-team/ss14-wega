@@ -257,6 +257,11 @@
       types:
         Asphyxiation: -2.0
   # Corvax-Vulp_Port end
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobVulpkanin
+    lowest: MobWolfling
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: OrganBaseOrganic

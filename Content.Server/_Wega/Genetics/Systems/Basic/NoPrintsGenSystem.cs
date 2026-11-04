@@ -5,14 +5,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class NoPrintsGenSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<NoPrintsGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<NoPrintsGenComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<NoPrintsGenComponent> ent, ref ComponentInit args)
     {
         if (TryComp<FingerprintComponent>(ent, out var fingerprint))
@@ -24,6 +17,7 @@ public sealed partial class NoPrintsGenSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<NoPrintsGenComponent> ent, ref ComponentShutdown args)
     {
         if (TerminatingOrDeleted(ent))

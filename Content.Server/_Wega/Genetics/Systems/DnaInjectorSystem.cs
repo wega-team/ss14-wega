@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
@@ -15,14 +14,6 @@ public sealed partial class DnaModifierSystem
     [Dependency] private SharedDoAfterSystem _doAfterSystem = default!;
 
     private static readonly ProtoId<DamageTypePrototype> Damage = "Poison";
-
-    private void InitializeInjector()
-    {
-        SubscribeLocalEvent<DnaModifierInjectorComponent, AfterInteractEvent>(OnAfterInteract);
-        SubscribeLocalEvent<DnaModifierInjectorComponent, DnaInjectorDoAfterEvent>(OnDoAfter);
-
-        SubscribeLocalEvent<DnaModifierCleanRandomizeComponent, ComponentStartup>(OnCleanRandomize);
-    }
 
     public void OnFillingInjector(EntityUid injector, UniqueIdentifiersData? uniqueIdentifiers, List<EnzymesPrototypeInfo>? enzymesPrototypes)
     {
@@ -43,6 +34,7 @@ public sealed partial class DnaModifierSystem
         Dirty(injector, comp);
     }
 
+    [SubscribeLocalEvent]
     private void OnAfterInteract(Entity<DnaModifierInjectorComponent> ent, ref AfterInteractEvent args)
     {
         if (args.Handled || !args.CanReach || args.Target == null)
@@ -61,13 +53,13 @@ public sealed partial class DnaModifierSystem
         args.Handled = true;
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(EntityUid uid, DnaModifierInjectorComponent component, DnaInjectorDoAfterEvent args)
     {
         if (args.Handled || args.Cancelled || !args.Used.HasValue || !args.Target.HasValue)
             return;
 
         TryDoInject((uid, component), args.Target.Value);
-
         args.Handled = true;
     }
 
@@ -80,9 +72,7 @@ public sealed partial class DnaModifierSystem
             return false;
 
         if (ent.Comp.UniqueIdentifiers != null)
-        {
             dnaModifier.UniqueIdentifiers = ent.Comp.UniqueIdentifiers;
-        }
 
         if (ent.Comp.EnzymesPrototypes != null)
         {
@@ -93,10 +83,10 @@ public sealed partial class DnaModifierSystem
             else if (ent.Comp.EnzymesPrototypes.Count == 1 && dnaModifier.EnzymesPrototypes != null)
             {
                 var newCode = ent.Comp.EnzymesPrototypes[0];
-                var existingCode = dnaModifier.EnzymesPrototypes.FirstOrDefault(x => x.Order == newCode.Order);
-                if (existingCode != null)
+                var idx = dnaModifier.EnzymesPrototypes.FindIndex(x => x.Order == newCode.Order);
+                if (idx >= 0)
                 {
-                    existingCode.HexCode = newCode.HexCode;
+                    dnaModifier.EnzymesPrototypes[idx] = dnaModifier.EnzymesPrototypes[idx] with { HexCode = newCode.HexCode };
                 }
             }
         }
@@ -109,14 +99,11 @@ public sealed partial class DnaModifierSystem
         var damage = new DamageSpecifier { DamageDict = { { Damage, 5 } } };
         _damage.TryChangeDamage(target, damage, true);
 
-        _entManager.DeleteEntity(ent);
-
+        Del(ent);
         return true;
     }
 
-    /// <summary>
-    /// Generating pure SE
-    /// </summary>
+    [SubscribeLocalEvent]
     private void OnCleanRandomize(Entity<DnaModifierCleanRandomizeComponent> ent, ref ComponentStartup args)
     {
         if (!TryComp<DnaModifierInjectorComponent>(ent, out var injector))
