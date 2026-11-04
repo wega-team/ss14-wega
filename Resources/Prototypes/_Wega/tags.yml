@@ -662,4 +662,7 @@
   id: MobShadekin
 
 - type: Tag
+  id: RiftHealAura
+
+- type: Tag
   id: Core

@@ -401,7 +401,20 @@
   - type: Sprite
     sprite: _Wega/Structures/Specific/bloodcult_structures.rsi
     state: pylon
-  - type: BloodPylon
+  - type: MedicalAura
+    heal:
+      types:
+        Heat: -1
+        Blunt: -1
+        Slash: -1
+        Piercing: -1
+    blood: 0
+    bleed: -0.5
+    radius: 1
+    whitelist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: BloodStructure
     fixture: fix1
   - type: Damageable

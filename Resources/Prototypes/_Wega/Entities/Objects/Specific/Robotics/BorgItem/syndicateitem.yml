@@ -345,27 +345,23 @@
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Beer
+      - ReagentId: Nothing
         Quantity: 0
   - type: ChangeableReagent
     reagents:
     - reagent:
-      - ReagentId: Beer
-        Quantity: 0
-      name: no-reagent
-    - reagent:
-      - ReagentId: Omnizine
-        Quantity: 1
-      name: reagent-name-omnizine
-    - reagent:
       - ReagentId: Stimulants
         Quantity: 1
-      name: reagent-name-stimulants
     - reagent:
       - ReagentId: DexalinPlus
         Quantity: 1
-      name: reagent-name-dexalin-plus
     - reagent:
       - ReagentId: Mutadon
         Quantity: 1
-      name: reagent-name-mutadon
+    - reagent:
+      - ReagentId: Nothing
+        Quantity: 0
+    - reagent:
+      - ReagentId: Omnizine
+        Quantity: 1
+

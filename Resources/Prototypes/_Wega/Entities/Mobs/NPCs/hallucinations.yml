@@ -19,6 +19,12 @@
           - MobMask
         layer:
           - None
+  - type: StaminaDamageOnHit
+    damage: 5
+    sound: /Audio/Weapons/egloves.ogg
+    whitelist:
+      components:
+      - Hallucinations
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -124,6 +130,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - Thrall
+      - ThrallOwner
   - type: TimedDespawn
     lifetime: 30.0
     
@@ -154,6 +167,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - Thrall
+      - ThrallOwner
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -186,6 +206,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 3
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - Thrall
+      - ThrallOwner
   - type: TimedDespawn
     lifetime: 30.0
     
@@ -216,6 +243,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 3
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - Thrall
+      - ThrallOwner
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -249,6 +283,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -279,6 +320,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -309,6 +357,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -339,6 +394,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -369,6 +431,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: TimedDespawn
     lifetime: 30.0
 
@@ -399,6 +468,13 @@
         Blunt: 0
   - type: StaminaDamageOnHit
     damage: 5
+    whitelist:
+      components:
+      - Hallucinations
+    blacklist:
+      components:
+      - BloodCultConstruct
+      - BloodCultist
   - type: TimedDespawn
     lifetime: 30.0
 

@@ -27,6 +27,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Content.Shared.Whitelist; // Corvax-Wega-Add
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -51,6 +52,7 @@ public abstract partial class SharedStaminaSystem : EntitySystem
     [Dependency] private ItemToggleSystem _itemToggle = default!;
     [Dependency] protected SharedStunSystem StunSystem = default!;
     [Dependency] private MeleeBatteryHitsLeftSystem _meleeBattery = default!;
+    [Dependency] private EntityWhitelistSystem _whitelistSystem = default!; // Corvax-Wega-Add
 
     [Dependency] private EntityQuery<StaminaComponent> _stamQuery = default!;
 
@@ -190,6 +192,11 @@ public abstract partial class SharedStaminaSystem : EntitySystem
         {
             if (!_stamQuery.TryGetComponent(ent, out var stam))
                 continue;
+			
+			// Corvax-Wega-Start
+			if (_whitelistSystem.IsWhitelistFail(component.Whitelist, ent) || _whitelistSystem.IsWhitelistPass(component.Blacklist, ent))
+                continue;
+			// Corvax-Wega-End
 
             toHit.Add((ent, stam));
         }

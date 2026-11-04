@@ -1784,9 +1784,9 @@
   - type: ItemBorgModule
     hands:
     - item: HandheldHealthAnalyzer
-    - item: BorgHypoGeneratedSyndieGeneral
     - item: BaseBorgHypoSyndie
     - item: DefibrillatorSyndicateCyborg
+    - item: BorgHypoGeneratedSyndieGeneral
     - item: Jug
       hand:
         emptyLabel: borg-slot-chemical-containers-empty

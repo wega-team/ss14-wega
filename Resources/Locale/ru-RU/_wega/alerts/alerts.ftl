@@ -8,3 +8,5 @@ alerts-bloodrite-name = [color=purple]Обряд крови[/color]
 alerts-bloodrite-desc = Обратите это место в кровавую баню. Отображает статус способности [color=purple]Обряд крови[/color].
 alerts-eternaldarkness-name = [color=purple]Вечная темнота[/color]
 alerts-eternaldarkness-desc = Жертвы в радиусе 6 тайлов замерзают. Отображает статус способности [color=purple]Вечная темнота[/color].
+alerts-heal-aura-name = Лечащая аура
+alerts-heal-aura-desc = В этой области вы чувствуете лечение от ауры!
