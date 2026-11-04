@@ -11,7 +11,7 @@ namespace Content.Shared.Damage.Components;
 public sealed partial class MedicalAuraComponent : Component
 {
     [DataField]
-    public float NextTimeTick { get; set; }
+	public TimeSpan NextTimeTick = TimeSpan.Zero;
 	
     [DataField]
     public EntityWhitelist? Whitelist;

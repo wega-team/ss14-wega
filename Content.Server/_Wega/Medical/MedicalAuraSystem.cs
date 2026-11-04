@@ -26,12 +26,13 @@ public sealed partial class MedicalAuraSystem : EntitySystem
     {
         base.Update(frameTime);
 
+        var curTime = _gameTiming.CurTime;
         var pylonQuery = EntityQueryEnumerator<MedicalAuraComponent>();
         while (pylonQuery.MoveNext(out var uid, out var comp))
         {
-            if (comp.NextTimeTick <= 0)
+            if (comp.NextTimeTick <= curTime)
             {
-                comp.NextTimeTick = comp.Interval;
+				comp.NextTimeTick = curTime + comp.Interval;
 				foreach (var ent in _entityLookup.GetEntitiesInRange(uid, comp.Radius))
                 {
 					if (_whitelistSystem.IsWhitelistFail(comp.Whitelist, ent) || _whitelistSystem.IsWhitelistPass(comp.Blacklist, ent))
@@ -51,13 +52,11 @@ public sealed partial class MedicalAuraSystem : EntitySystem
 
 					if (comp.Alert != null && HasComp<AlertsComponent>(ent))
 					{
-						var curTime = _gameTiming.CurTime;
 						var endTime = curTime + comp.Interval;
 						_alert.ShowAlert(ent, comp.Alert.Value, cooldown: (curTime, endTime), autoRemove: true, showCooldown: false);
 					}
                 }
             }
-            comp.NextTimeTick -= frameTime;
         }
 	}
 }
