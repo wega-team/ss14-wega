@@ -31,7 +31,7 @@ public sealed partial class MedicalAuraSystem : EntitySystem
         {
             if (comp.NextTimeTick <= 0)
             {
-                comp.NextTimeTick = 1;
+                comp.NextTimeTick = comp.Interval;
 				foreach (var ent in _entityLookup.GetEntitiesInRange(uid, comp.Radius))
                 {
 					if (_whitelistSystem.IsWhitelistFail(comp.Whitelist, ent) || _whitelistSystem.IsWhitelistPass(comp.Blacklist, ent))
