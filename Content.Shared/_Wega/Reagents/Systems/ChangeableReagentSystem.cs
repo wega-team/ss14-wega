@@ -17,7 +17,7 @@ public sealed partial class ChangeableReagentSystem : EntitySystem
     [Dependency] private AccessReaderSystem _accessReaderSystem = default!;
     [Dependency] private SharedPopupSystem _popupSystem = default!;
     [Dependency] private SolutionRegenerationSystem _solutionrRagents = default!;
-    [Dependency] private readonly IPrototypeManager _protoMan = default!;
+    [Dependency] private IPrototypeManager _protoMan = default!;
 
     public override void Initialize()
     {
