@@ -59,8 +59,7 @@ public sealed partial class DnaModifierSystem
         if (args.Handled || args.Cancelled || !args.Used.HasValue || !args.Target.HasValue)
             return;
 
-        TryDoInject((uid, component), args.Target.Value);
-        args.Handled = true;
+        args.Handled = TryDoInject((uid, component), args.Target.Value);
     }
 
     private bool TryDoInject(Entity<DnaModifierInjectorComponent> ent, EntityUid target)
@@ -71,14 +70,21 @@ public sealed partial class DnaModifierSystem
         if (!TryComp(target, out DnaModifierComponent? dnaModifier))
             return false;
 
+        var changedUI = false;
+        var changedSE = false;
+
         if (ent.Comp.UniqueIdentifiers != null)
-            dnaModifier.UniqueIdentifiers = ent.Comp.UniqueIdentifiers;
+        {
+            dnaModifier.UniqueIdentifiers = CloneUniqueIdentifiers(ent.Comp.UniqueIdentifiers);
+            changedUI = true;
+        }
 
         if (ent.Comp.EnzymesPrototypes != null)
         {
             if (ent.Comp.EnzymesPrototypes.Count > 1)
             {
-                dnaModifier.EnzymesPrototypes = ent.Comp.EnzymesPrototypes;
+                dnaModifier.EnzymesPrototypes = CloneEnzymesPrototypes(ent.Comp.EnzymesPrototypes);
+                changedSE = true;
             }
             else if (ent.Comp.EnzymesPrototypes.Count == 1 && dnaModifier.EnzymesPrototypes != null)
             {
@@ -87,12 +93,18 @@ public sealed partial class DnaModifierSystem
                 if (idx >= 0)
                 {
                     dnaModifier.EnzymesPrototypes[idx] = dnaModifier.EnzymesPrototypes[idx] with { HexCode = newCode.HexCode };
+                    changedSE = true;
                 }
             }
         }
 
+        if (!changedUI && !changedSE)
+            return false;
+
         Dirty(target, dnaModifier);
-        ChangeDna(target);
+
+        if (changedUI) { ChangeDna((target, dnaModifier), 0); }
+        if (changedSE) { ChangeDna((target, dnaModifier), 1); }
 
         _audio.PlayPvs(ent.Comp.InjectSound, target);
 

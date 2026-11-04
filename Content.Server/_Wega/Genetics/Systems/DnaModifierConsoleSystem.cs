@@ -713,19 +713,19 @@ namespace Content.Server.Genetics.System
 
             switch (blockNumber)
             {
-                case 1:  u.HairColor = MutateColorArrayAt(u.HairColor, layer, intensity); break;
-                case 2:  u.BeardColor = MutateColorArrayAt(u.BeardColor, layer, intensity); break;
+                case 1:  u.HairColor = MutateColorArrayAt(u.HairColor, layer, value, intensity); break;
+                case 2:  u.BeardColor = MutateColorArrayAt(u.BeardColor, layer, value, intensity); break;
                 case 3:  u.SkinTone = _dnaModifier.MutateSkinToneDigit(u.SkinTone, 0, intensity); break;
                 case 4:  u.FurColor = _dnaModifier.MutateColorDigit(u.FurColor, value, intensity); break;
                 case 5:  u.EyeColor = _dnaModifier.MutateColorDigit(u.EyeColor, value, intensity); break;
-                case 6:  u.HeadAccessoryColor = MutateColorArrayAt(u.HeadAccessoryColor, layer, intensity); break;
-                case 7:  u.HeadMarkingColor = MutateColorArrayAt(u.HeadMarkingColor, layer, intensity); break;
-                case 8:  u.BodyMarkingColor = MutateColorArrayAt(u.BodyMarkingColor, layer, intensity); break;
-                case 9:  u.TailMarkingColor = MutateColorArrayAt(u.TailMarkingColor, layer, intensity); break;
-                case 10: u.TailOverlayColor = MutateColorArrayAt(u.TailOverlayColor, layer, intensity); break;
-                case 11: u.SnoutColor = MutateColorArrayAt(u.SnoutColor, layer, intensity); break;
-                case 12: u.SnoutCoverColor = MutateColorArrayAt(u.SnoutCoverColor, layer, intensity); break;
-                case 13: u.HeadSideColor = MutateColorArrayAt(u.HeadSideColor, layer, intensity); break;
+                case 6:  u.HeadAccessoryColor = MutateColorArrayAt(u.HeadAccessoryColor, layer, value, intensity); break;
+                case 7:  u.HeadMarkingColor = MutateColorArrayAt(u.HeadMarkingColor, layer, value, intensity); break;
+                case 8:  u.BodyMarkingColor = MutateColorArrayAt(u.BodyMarkingColor, layer, value, intensity); break;
+                case 9:  u.TailMarkingColor = MutateColorArrayAt(u.TailMarkingColor, layer, value, intensity); break;
+                case 10: u.TailOverlayColor = MutateColorArrayAt(u.TailOverlayColor, layer, value, intensity); break;
+                case 11: u.SnoutColor = MutateColorArrayAt(u.SnoutColor, layer, value, intensity); break;
+                case 12: u.SnoutCoverColor = MutateColorArrayAt(u.SnoutCoverColor, layer, value, intensity); break;
+                case 13: u.HeadSideColor = MutateColorArrayAt(u.HeadSideColor, layer, value, intensity); break;
                 case 20: u.HairStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.Hair, species); break;
                 case 21: u.BeardStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.FacialHair, species); break;
                 case 22: u.HeadAccessoryStyle = _dnaModifier.GetRandomMarkingForLayer(HumanoidVisualLayers.HeadTop, species); break;
@@ -775,7 +775,7 @@ namespace Content.Server.Genetics.System
             return colors;
         }
 
-        private uint[] MutateColorArrayAt(uint[] colors, int layer, float intensity)
+        private uint[] MutateColorArrayAt(uint[] colors, int layer, int digitIndex, float intensity)
         {
             if (layer >= colors.Length)
             {
@@ -790,7 +790,7 @@ namespace Content.Server.Genetics.System
                 colors = extended;
             }
 
-            colors[layer] = _dnaModifier.MutateColorDigit(colors[layer], _random.Next(0, 6), intensity);
+            colors[layer] = _dnaModifier.MutateColorDigit(colors[layer], digitIndex, intensity);
             return colors;
         }
 

@@ -31,6 +31,7 @@ namespace Content.Server.Genetics.System;
 public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 {
     [Dependency] private IAdminLogManager _admin = default!;
+    [Dependency] private IComponentFactory _componentFactory = default!;
     [Dependency] private SharedBuckleSystem _buckle = default!;
     [Dependency] private ChatSystem _chat = default!;
     [Dependency] private DamageableSystem _damage = default!;
@@ -314,7 +315,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
 
     private void InitializeEmptyUniqueIdentifiers(Entity<DnaModifierComponent> ent)
     {
-        ent.Comp.UniqueIdentifiers = new UniqueIdentifiersData
+        var u = new UniqueIdentifiersData
         {
             HairColor = new[] { GenerateRandomColor() },
             BeardColor = new[] { GenerateRandomColor() },
@@ -331,15 +332,129 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
             EyeColor = GenerateRandomColor(),
             Sex = (Sex)_random.Next(0, 3)
         };
+
+        if (ent.Comp.Upper != null)
+        {
+            ApplyDefaultsFromUpper(ent.Comp.Upper.Value, u);
+        }
+
+        ent.Comp.UniqueIdentifiers = u;
     }
 
-    public string GetRandomMarkingForLayer(HumanoidVisualLayers layer, string species)
+    private void ApplyDefaultsFromUpper(EntProtoId upperId, UniqueIdentifiersData u)
     {
-        var markings = ProtoMan.EnumeratePrototypes<MarkingPrototype>()
+        if (!ProtoMan.TryIndex(upperId, out var upperProto))
+            return;
+
+        if (!upperProto.TryComp<HumanoidProfileComponent>(out var humanoid, _componentFactory))
+            return;
+
+        var speciesId = humanoid.Species.Id;
+        MarkingsGroupPrototype? markingGroup = null;
+        if (upperProto.TryComp<InitialBodyComponent>(out var initialBody, _componentFactory))
+        {
+            foreach (var organId in initialBody.Organs.Values)
+            {
+                if (!ProtoMan.TryIndex(organId, out var organProto))
+                    continue;
+
+                if (organProto.TryComp<VisualOrganMarkingsComponent>(out var visualMarkings, _componentFactory))
+                {
+                    if (ProtoMan.TryIndex(visualMarkings.MarkingData.Group, out var groupProto))
+                    {
+                        markingGroup = groupProto;
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (markingGroup == null)
+            return;
+
+        foreach (var (layerEnum, limit) in markingGroup.Limits)
+        {
+            if (!limit.Required)
+                continue;
+
+            if (layerEnum is not HumanoidVisualLayers layer)
+                continue;
+
+            var markingId = GetRandomMarkingForLayer(layer, speciesId, false);
+            if (string.IsNullOrEmpty(markingId) && limit.Default.Count > 0)
+                markingId = limit.Default[0];
+
+            if (string.IsNullOrEmpty(markingId))
+                continue;
+
+            if (!ProtoMan.TryIndex(markingId, out MarkingPrototype? markingProto))
+                continue;
+
+            var colors = new uint[Math.Max(1, markingProto.Sprites.Count)];
+            for (var i = 0; i < colors.Length; i++)
+            {
+                colors[i] = GenerateRandomColor();
+            }
+
+            switch (layer)
+            {
+                case HumanoidVisualLayers.Hair:
+                    u.HairStyle = markingId;
+                    u.HairColor = colors;
+                    break;
+                case HumanoidVisualLayers.FacialHair:
+                    u.BeardStyle = markingId;
+                    u.BeardColor = colors;
+                    break;
+                case HumanoidVisualLayers.HeadTop:
+                    u.HeadAccessoryStyle = markingId;
+                    u.HeadAccessoryColor = colors;
+                    break;
+                case HumanoidVisualLayers.Head:
+                    u.HeadMarkingStyle = markingId;
+                    u.HeadMarkingColor = colors;
+                    break;
+                case HumanoidVisualLayers.HeadSide:
+                    u.HeadSideStyle = markingId;
+                    u.HeadSideColor = colors;
+                    break;
+                case HumanoidVisualLayers.Chest:
+                    u.BodyMarkingStyle = markingId;
+                    u.BodyMarkingColor = colors;
+                    break;
+                case HumanoidVisualLayers.Tail:
+                    u.TailMarkingStyle = markingId;
+                    u.TailMarkingColor = colors;
+                    break;
+                case HumanoidVisualLayers.TailOverlay:
+                    u.TailOverlayStyle = markingId;
+                    u.TailOverlayColor = colors;
+                    break;
+                case HumanoidVisualLayers.Snout:
+                    u.SnoutStyle = markingId;
+                    u.SnoutColor = colors;
+                    break;
+                case HumanoidVisualLayers.SnoutCover:
+                    u.SnoutCoverStyle = markingId;
+                    u.SnoutCoverColor = colors;
+                    break;
+            }
+        }
+    }
+
+    public string GetRandomMarkingForLayer(HumanoidVisualLayers layer, string species, bool ignoreSpecies = true)
+    {
+        var query = ProtoMan.EnumeratePrototypes<MarkingPrototype>()
             .Where(m => m.MarkingType is not MarkingTypes.NonGenetics)
-            .Where(m => m.GroupWhitelist == null || m.GroupWhitelist.Count == 0
-                        || m.GroupWhitelist.Any(g => g.ToString() == species))
-            .ToList();
+            .Where(m => m.BodyPart == layer);
+
+        if (!ignoreSpecies)
+        {
+            query = query.Where(m => m.GroupWhitelist == null || m.GroupWhitelist.Count == 0
+                || m.GroupWhitelist.Any(g => g.ToString() == species));
+        }
+
+        var markings = query.ToList();
 
         if (markings.Count == 0)
             return string.Empty;
@@ -616,7 +731,7 @@ public sealed partial class DnaModifierSystem : SharedDnaModifierSystem
         }
     }
 
-private void UpdateMarkings(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData u)
+    private void UpdateMarkings(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData u)
     {
         var species = humanoid.Comp.Species;
         _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Hair,
@@ -628,22 +743,11 @@ private void UpdateMarkings(Entity<HumanoidProfileComponent> humanoid, UniqueIde
         _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Head,
             u.HeadMarkingColor, u.HeadMarkingStyle, species);
 
-        var hasHead = !string.IsNullOrEmpty(u.HeadMarkingStyle);
-        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.HeadSide,
-            hasHead ? u.HeadSideColor : new uint[0],
-            hasHead ? u.HeadSideStyle : string.Empty, species);
-
-        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Snout,
-            hasHead ? u.SnoutColor : new uint[0],
-            hasHead ? u.SnoutStyle : string.Empty, species);
-
-        var hasSnout = hasHead && !string.IsNullOrEmpty(u.SnoutStyle);
-        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.SnoutCover,
-            hasSnout ? u.SnoutCoverColor : new uint[0],
-            hasSnout ? u.SnoutCoverStyle : string.Empty, species);
-
         _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.HeadTop,
             u.HeadAccessoryColor, u.HeadAccessoryStyle, species);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.HeadSide,
+            u.HeadSideColor, u.HeadSideStyle, species);
 
         _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Chest,
             u.BodyMarkingColor, u.BodyMarkingStyle, species);
@@ -655,6 +759,14 @@ private void UpdateMarkings(Entity<HumanoidProfileComponent> humanoid, UniqueIde
         _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.TailOverlay,
             hasTail ? u.TailOverlayColor : new uint[0],
             hasTail ? u.TailOverlayStyle : string.Empty, species);
+
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.Snout,
+            u.SnoutColor, u.SnoutStyle, species);
+
+        var hasSnout = !string.IsNullOrEmpty(u.SnoutStyle);
+        _ensureMarking.UpdateMarkingCategory(humanoid.Owner, HumanoidVisualLayers.SnoutCover,
+            hasSnout ? u.SnoutCoverColor : new uint[0],
+            hasSnout ? u.SnoutCoverStyle : string.Empty, species);
     }
 
     private void UpdateEyeColor(Entity<HumanoidProfileComponent> humanoid, UniqueIdentifiersData u)

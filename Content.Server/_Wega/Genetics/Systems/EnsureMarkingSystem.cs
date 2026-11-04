@@ -103,6 +103,9 @@ public sealed partial class EnsureMarkingSystem : EntitySystem
         if (!ProtoMan.TryIndex<MarkingPrototype>(style, out var markingPrototype))
             return;
 
+        if (markingPrototype.BodyPart != layer)
+            return;
+
         if (markingPrototype.GroupWhitelist != null && markingPrototype.GroupWhitelist.Count > 0)
         {
             bool match = markingPrototype.GroupWhitelist.Any(g => g.ToString() == species);
