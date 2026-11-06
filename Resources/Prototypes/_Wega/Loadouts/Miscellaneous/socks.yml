@@ -216,7 +216,7 @@
 - type: loadout
   id: ClothingUnderSocksOrengeSweater
   equipment:
-    socks: ClothingUnderSocksOrengeSweater
+    socks: ClothingUnderSocksOrangeSweater
   groupBy: "wegasweatersocks"
 
 - type: loadout
