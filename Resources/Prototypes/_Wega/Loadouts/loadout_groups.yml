@@ -140,6 +140,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: Bottom
@@ -406,6 +419,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: Socks
@@ -446,6 +472,19 @@
   - ClothingUnderSocksPantyhose
   - ClothingUnderSocksHighMoo
   - ClothingUnderSocksMoo
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 - type: loadoutGroup
   id: BaseShoose
@@ -621,6 +660,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: CaptainBottom
@@ -768,6 +820,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: CaptainSocks
@@ -812,6 +877,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 #BlueShield
 - type: loadoutGroup
@@ -1005,6 +1083,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: BlueShieldBottom
@@ -1273,6 +1364,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: BlueShieldSocks
@@ -1313,6 +1417,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 - type: loadoutGroup
   id: SurvivalBlueShield
@@ -1468,6 +1585,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: HoPBottom
@@ -1736,6 +1866,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: HoPSocks
@@ -1780,6 +1923,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 #Quartermaster
 - type: loadoutGroup
@@ -1923,6 +2079,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: QuartermasterBottom
@@ -2191,6 +2360,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: QuartermasterSocks
@@ -2235,6 +2417,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 #ChiefEngineer
 - type: loadoutGroup
@@ -2378,6 +2573,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: ChiefEngineerBottom
@@ -2646,6 +2854,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: ChiefEngineerSocks
@@ -2690,6 +2911,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 #ResearchDirector
 - type: loadoutGroup
@@ -2833,6 +3067,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: ResearchDirectorBottom
@@ -3101,6 +3348,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: ResearchDirectorSocks
@@ -3145,6 +3405,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 #HeadofSecurity
 - type: loadoutGroup
@@ -3288,6 +3561,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: HeadofSecurityBottom
@@ -3556,6 +3842,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: HeadofSecuritySocks
@@ -3600,6 +3899,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 #ChiefMedicalOfficer
 - type: loadoutGroup
@@ -3743,6 +4055,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerBottom
@@ -4012,6 +4337,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerSocks
@@ -4056,6 +4394,19 @@
   - ClothingUnderSocksFishnetKnee
   - ClothingUnderSocksFishnetThigh
   - ClothingUnderSocksPantyhose
+# Sweater
+  - ClothingUnderSocksWhiteSweater
+  - ClothingUnderSocksRedSweater
+  - ClothingUnderSocksGreenSweater
+  - ClothingUnderSocksBlueSweater
+  - ClothingUnderSocksPinkSweater
+  - ClothingUnderSocksLilacSweater
+  - ClothingUnderSocksBlackSweater
+  - ClothingUnderSocksCyanogenSweater
+  - ClothingUnderSocksGreySweater
+  - ClothingUnderSocksOrengeSweater
+  - ClothingUnderSocksYellowSweater
+  - ClothingUnderSocksBrownSweater
 
 # Cargo
 - type: loadoutGroup
@@ -4240,6 +4591,8 @@
   - ShaftMinerJumpskirtExplorer
   - ShaftMinerJumpsuitExplorerKhaki
   - ShaftMinerJumpskirtExplorerKhaki
+  - ShaftMinerJumpskirtShortsExplorer
+  - ShaftMinerJumpskirtShortSkirtExplorer
 
 - type: loadoutGroup
   id: ShaftMinerOuterClothing
@@ -4637,6 +4990,19 @@
   - ClothingUnderTopBraPasties
   - ClothingUnderTopCuteMooo
   - ClothingUnderTopGold
+# Sweater
+  - ClothingUnderTopBraWhiteSweater
+  - ClothingUnderTopBraRedSweater
+  - ClothingUnderTopBraGreenSweater
+  - ClothingUnderTopBraBlueSweater
+  - ClothingUnderTopBraPinkSweater
+  - ClothingUnderTopBraLilacSweater
+  - ClothingUnderTopBraBlackSweater
+  - ClothingUnderTopBraCyanogenSweater
+  - ClothingUnderTopBraGreySweater
+  - ClothingUnderTopBraOrengeSweater
+  - ClothingUnderTopBraYellowSweater
+  - ClothingUnderTopBraBrownSweater
 
 - type: loadoutGroup
   id: BottomSecurity
@@ -4904,6 +5270,19 @@
   - ClothingUnderBottomElegantVampire
   - ClothingUnderBottomCuteMooo
   - ClothingUnderBottomGold
+# Sweater
+  - ClothingUniformWhiteSweaterPants
+  - ClothingUniformRedSweaterPants
+  - ClothingUniformGreenSweaterPants
+  - ClothingUniformBlueSweaterPants
+  - ClothingUniformPinkSweaterPants
+  - ClothingUniformLilacSweaterPants
+  - ClothingUniformBlackSweaterPants
+  - ClothingUniformCyanogenSweaterPants
+  - ClothingUniformGreySweaterPants
+  - ClothingUniformOrengeSweaterPants
+  - ClothingUniformYellowSweaterPants
+  - ClothingUniformBrownSweaterPants
 
 - type: loadoutGroup
   id: BrigmedicHead

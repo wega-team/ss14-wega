@@ -157,3 +157,77 @@
   id: ClothingUnderSocksPantyhose
   equipment:
     socks: ClothingUnderSocksPantyhose
+
+#Sweater socks: start
+- type: loadout
+  id: ClothingUnderSocksWhiteSweater
+  equipment:
+    socks: ClothingUnderSocksWhiteSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksRedSweater
+  equipment:
+    socks: ClothingUnderSocksRedSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksGreenSweater
+  equipment:
+    socks: ClothingUnderSocksGreenSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksBlueSweater
+  equipment:
+    socks: ClothingUnderSocksBlueSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksPinkSweater
+  equipment:
+    socks: ClothingUnderSocksPinkSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksLilacSweater
+  equipment:
+    socks: ClothingUnderSocksLilacSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksBlackSweater
+  equipment:
+    socks: ClothingUnderSocksBlackSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksCyanogenSweater
+  equipment:
+    socks: ClothingUnderSocksCyanogenSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksGreySweater
+  equipment:
+    socks: ClothingUnderSocksGreySweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksOrengeSweater
+  equipment:
+    socks: ClothingUnderSocksOrengeSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksYellowSweater
+  equipment:
+    socks: ClothingUnderSocksYellowSweater
+  groupBy: "wegasweatersocks"
+
+- type: loadout
+  id: ClothingUnderSocksBrownSweater
+  equipment:
+    socks: ClothingUnderSocksBrownSweater
+  groupBy: "wegasweatersocks"
+#Sweater-end

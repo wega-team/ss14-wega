@@ -1117,3 +1117,115 @@
   - !type:GroupLoadoutEffect
     proto: FemaleRequired
   groupBy: "wegathong"
+
+# Sweater top: start
+
+- type: loadout
+  id: ClothingUnderTopBraWhiteSweater
+  equipment:
+    underweartop: ClothingUnderTopBraWhiteSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraRedSweater
+  equipment:
+    underweartop: ClothingUnderTopBraRedSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraGreenSweater
+  equipment:
+    underweartop: ClothingUnderTopBraGreenSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraBlueSweater
+  equipment:
+    underweartop: ClothingUnderTopBraBlueSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraPinkSweater
+  equipment:
+    underweartop: ClothingUnderTopBraPinkSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraLilacSweater
+  equipment:
+    underweartop: ClothingUnderTopBraLilacSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraBlackSweater
+  equipment:
+    underweartop: ClothingUnderTopBraBlackSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraCyanogenSweater
+  equipment:
+    underweartop: ClothingUnderTopBraCyanogenSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraGreySweater
+  equipment:
+    underweartop: ClothingUnderTopBraGreySweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraOrengeSweater
+  equipment:
+    underweartop: ClothingUnderTopBraOrengeSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraYellowSweater
+  equipment:
+    underweartop: ClothingUnderTopBraYellowSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+- type: loadout
+  id: ClothingUnderTopBraBrownSweater
+  equipment:
+    underweartop: ClothingUnderTopBraBrownSweater
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterbra"
+
+# Sweater top: end

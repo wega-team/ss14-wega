@@ -42,3 +42,7 @@ ent-ClothingUniformJumpskirtExplorer = юбка-комбинезон иссле�
     .desc = Плотная и удобная, предназначена для тяжелой работы в сложных условиях.
 ent-ClothingUniformJumpskirtExplorerKhaki = юбка-комбинезон исследователя
     .desc = Плотная и удобная, предназначена для тяжелой работы в сложных условиях.
+ent-ClothingUniformJumpskirtShortsExplorer = короткий шахтерский комбинезон
+    .desc = Плотная и удобная, предназначена для тяжелой работы в сложных условиях.
+ent-ClothingUniformJumpskirtShortSkirtExplorer = короткиая шахтерская юбка-комбинезон
+    .desc = Плотная и удобная, предназначена для тяжелой работы в сложных условиях.

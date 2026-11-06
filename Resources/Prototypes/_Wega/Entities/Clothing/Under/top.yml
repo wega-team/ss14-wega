@@ -318,3 +318,169 @@
     sprite: _Wega/Clothing/Under/Top/Head/rd.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Top/Head/rd.rsi
+
+- type: entity
+  parent: ClothingUnderTopBase
+  id: ClothingUnderTopBraWhiteSweater
+  name: white sweater bra
+  description: "An element of lingerie that supports the breasts and creates comfort. It is made of soft materials and has various details."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraRedSweater
+  name: red sweater bra
+  components:
+  - type: Sprite
+    color: "#ff4747"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#ff4747"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraGreenSweater
+  name: green sweater bra
+  components:
+  - type: Sprite
+    color: "#42ff7b"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#42ff7b"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraBlueSweater
+  name: blue sweater bra
+  components:
+  - type: Sprite
+    color: "#5b6cec"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#5b6cec"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraPinkSweater
+  name: pink sweater bra
+  components:
+  - type: Sprite
+    color: "#ff75f4"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#ff75f4"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraLilacSweater
+  name: lilac sweater bra
+  components:
+  - type: Sprite
+    color: "#a969d3"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#a969d3"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraBlackSweater
+  name: black sweater bra
+  components:
+  - type: Sprite
+    color: "#4d4554"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#4d4554"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraCyanogenSweater
+  name: cyanogen sweater bra
+  components:
+  - type: Sprite
+    color: "#43dffe"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#43dffe"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraGreySweater
+  name: grey sweater bra
+  components:
+  - type: Sprite
+    color: "#939296"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#939296"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraOrengeSweater
+  name: orange sweater bra
+  components:
+  - type: Sprite
+    color: "#ff8e24"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#ff8e24"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraYellowSweater
+  name: yellow sweater bra
+  components:
+  - type: Sprite
+    color: "#ffde66"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#ffde66"
+
+- type: entity
+  parent: ClothingUnderTopBraWhiteSweater
+  id: ClothingUnderTopBraBrownSweater
+  name: brown sweater bra
+  components:
+  - type: Sprite
+    color: "#8B5A3C"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Top/sweater.rsi
+    clothingVisuals:
+      underweartop:
+      - state: equipped-UNDERWEARTOP
+        color: "#8B5A3C"

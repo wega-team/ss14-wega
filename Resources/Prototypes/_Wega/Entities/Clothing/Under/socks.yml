@@ -672,9 +672,174 @@
   id: ClothingUnderSocksRdThigh
   name: research director socks
   description: "These socks in a dark purple shade symbolize the wisdom and creativity of the wearer! Their deep color emphasizes status and professionalism, perfectly complementing the image of those who lead in the world of science and knowledge."
-  suffix: thigh
   components:
   - type: Sprite
     sprite: _Wega/Clothing/Under/Socks/Head/rdthigh.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Socks/Head/rdthigh.rsi
+
+- type: entity
+  parent: ClothingUnderSocksBase
+  id: ClothingUnderSocksWhiteSweater
+  name: white sweater socks
+  description: "These socks in a dark purple shade symbolize the wisdom and creativity of the wearer! Their deep color emphasizes status and professionalism, perfectly complementing the image of those who lead in the world of science and knowledge."
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksRedSweater
+  name: red sweater socks
+  components:
+  - type: Sprite
+    color: "#ff4747"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#ff4747"
+
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksGreenSweater
+  name: green sweater socks
+  components:
+  - type: Sprite
+    color: "#42ff7b"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#42ff7b"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksBlueSweater
+  name: blue sweater socks
+  components:
+  - type: Sprite
+    color: "#5b6cec"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#5b6cec"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksPinkSweater
+  name: pink sweater socks
+  components:
+  - type: Sprite
+    color: "#ff75f4"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#ff75f4"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksLilacSweater
+  name: lilac sweater socks
+  components:
+  - type: Sprite
+    color: "#a969d3"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#a969d3"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksBlackSweater
+  name: black sweater socks
+  components:
+  - type: Sprite
+    color: "#4d4554"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#4d4554"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksCyanogenSweater
+  name: cyanogen sweater socks
+  components:
+  - type: Sprite
+    color: "#43dffe"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#43dffe"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksGreySweater
+  name: grey sweater socks
+  components:
+  - type: Sprite
+    color: "#939296"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#939296"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksOrangeSweater
+  name: orange sweater socks
+  components:
+  - type: Sprite
+    color: "#ff8e24"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#ff8e24"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksYellowSweater
+  name: yellow sweater socks
+  components:
+  - type: Sprite
+    color: "#ffde66"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#ffde66"
+
+- type: entity
+  parent: ClothingUnderSocksWhiteSweater
+  id: ClothingUnderSocksBrownSweater
+  name: brown sweater socks
+  components:
+  - type: Sprite
+    color: "#8B5A3C"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Socks/sweater.rsi
+    clothingVisuals:
+      socks:
+      - state: equipped-SOCKS
+        color: "#8B5A3C"

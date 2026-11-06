@@ -1874,10 +1874,114 @@
     proto: FemaleRequired
   groupBy: "wegaswimcolor"
 
+# Sweater bottom: start
 
+- type: loadout
+  id: ClothingUniformWhiteSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformWhiteSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
 
+- type: loadout
+  id: ClothingUniformRedSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformRedSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
 
+- type: loadout
+  id: ClothingUniformGreenSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformGreenSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
 
+- type: loadout
+  id: ClothingUniformBlueSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformBlueSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
 
+- type: loadout
+  id: ClothingUniformPinkSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformPinkSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
 
+- type: loadout
+  id: ClothingUniformLilacSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformLilacSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
 
+- type: loadout
+  id: ClothingUniformBlackSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformBlackSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
+
+- type: loadout
+  id: ClothingUniformCyanogenSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformCyanogenSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
+
+- type: loadout
+  id: ClothingUniformGreySweaterPants
+  equipment:
+    underwearbottom: ClothingUniformGreySweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
+
+- type: loadout
+  id: ClothingUniformOrengeSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformOrengeSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
+
+- type: loadout
+  id: ClothingUniformYellowSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformYellowSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
+
+- type: loadout
+  id: ClothingUniformBrownSweaterPants
+  equipment:
+    underwearbottom: ClothingUniformBrownSweaterPants
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: FemaleRequired
+  groupBy: "wegasweaterpants"
+
+# Sweater bottom: end
