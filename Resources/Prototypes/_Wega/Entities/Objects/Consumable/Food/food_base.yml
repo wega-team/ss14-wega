@@ -1,0 +1,12 @@
+- type: entity
+  abstract: true
+  parent: [BaseItem, SolutionFood, SolutionSmall]
+  id: FoodBaseNoSllme
+  components:
+  - type: FlavorProfile
+    flavors:
+      - food
+  - type: Edible
+  - type: Sprite
+  - type: StaticPrice
+    price: 0
