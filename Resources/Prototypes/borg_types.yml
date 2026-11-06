@@ -283,8 +283,8 @@
   addComponents:
   - type: ShowSatiationIcons
     shownTypes:
-    - Thirst
     - Hunger
+    - Thirst
   - type: Instrument
     allowPercussion: false
   - type: UserInterface

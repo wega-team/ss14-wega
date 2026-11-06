@@ -236,6 +236,7 @@
     voice: BarksCitadelSynthetic2 # Corvax-Wega-Barks
   - type: StatusIcon # Corvax-Wega-Corvax-Wega <- Саси < - Сам саси
   - type: Blindable # Corvax-Wega
+  - type: EyeProtection # Corvax-Wega
 
 - type: entity
   abstract: true
