@@ -636,8 +636,10 @@
       - type: DamageOtherOnHit
         damage:
           types:
-            Blunt: 50
+            Blunt: 60
             Structural: 800
+      - type: StunOtherOnHit
+        duration: 3
       sound:
         path: "/Audio/Effects/Footsteps/largethud.ogg"
 #endregion

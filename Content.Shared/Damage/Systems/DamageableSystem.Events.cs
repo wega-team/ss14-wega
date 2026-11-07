@@ -258,7 +258,7 @@ public record struct BeforeDamageChangedEvent(DamageSpecifier Damage, EntityUid?
 ///
 ///     For example, armor.
 /// </summary>
-public sealed class DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null)
+public sealed class DamageModifyEvent(DamageSpecifier damage, EntityUid? origin = null, float armorPenetration = 0f) // Corvax-Wega-ArmorPenetration-Edit
     : EntityEventArgs, IInventoryRelayEvent
 {
     /// <inheritdoc/>
@@ -282,6 +282,15 @@ public sealed class DamageModifyEvent(DamageSpecifier damage, EntityUid? origin 
     ///     Contains the entity which caused the damage, if any was responsible.
     /// </summary>
     public readonly EntityUid? Origin = origin;
+
+    // Corvax-Wega-ArmorPenetration-Start
+    /// <summary>
+    ///     Доля защиты экипировки, игнорируемая при нанесении урона.
+    ///     Значение ограничивается диапазоном от 0 до 1.
+    ///     Не влияет на врождённые сопротивления цели.
+    /// </summary>
+    public readonly float ArmorPenetration = Math.Clamp(armorPenetration, 0f, 1f);
+    // Corvax-Wega-ArmorPenetration-End
 }
 
 /// <summary>

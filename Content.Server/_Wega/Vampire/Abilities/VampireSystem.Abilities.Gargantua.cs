@@ -1,15 +1,20 @@
 using System.Numerics;
+using Content.Shared._Wega.Interaction.Components;
+using Content.Shared._Wega.Stunnable.Components;
 using Content.Shared.Body;
 using Content.Shared.CombatMode;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ensnaring;
 using Content.Shared.Ensnaring.Components;
 using Content.Shared.FixedPoint;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.NullRod.Components;
 using Content.Shared.Popups;
 using Content.Shared.Prying.Components;
+using Content.Shared.Throwing;
 using Content.Shared.Vampire;
 using Content.Shared.Vampire.Components;
 using Content.Shared.Weapons.Melee;
@@ -35,6 +40,24 @@ public sealed partial class VampireSystem
         SubscribeLocalEvent<VampireComponent, VampireOverwhelmingForceActionEvent>(OnOverwhelmingForce);
         SubscribeLocalEvent<VampireComponent, VampireDemonicGraspActionEvent>(OnDemonicGrasp);
         SubscribeLocalEvent<VampireComponent, VampireChargeActionEvent>(OnCharge);
+        SubscribeLocalEvent<StunOtherOnHitComponent, ThrowDoHitEvent>(OnVampireChargeHit);
+    }
+
+    private void ReduceBloodSwellStuns(EntityUid uid, TimeSpan remaining)
+    {
+        if (Deleted(uid) || remaining <= TimeSpan.Zero)
+            return;
+
+        var interval = TimeSpan.FromSeconds(1);
+        var reduction = TimeSpan.FromSeconds(3);
+
+        _status.TryRemoveTime(uid, "StatusEffectStunned", reduction);
+        _stun.AddKnockdownTime(uid, -reduction);
+
+        Timer.Spawn(interval, () =>
+        {
+            ReduceBloodSwellStuns(uid, remaining - interval);
+        });
     }
 
     private void OnBloodSwell(Entity<VampireComponent> ent, ref VampireBloodSwellActionEvent args)
@@ -45,61 +68,88 @@ public sealed partial class VampireSystem
             return;
         }
 
-        _damage.SetDamageModifierSetId(ent.Owner, BloodSwell);
+        EnsureComp<BlockCombatModeInteractComponent>(ent.Owner);
+
+        Timer.Spawn(args.Time, () =>
+        {
+            if (Deleted(ent.Owner))
+                return;
+
+            RemComp<BlockCombatModeInteractComponent>(ent.Owner);
+        });
+
+        ReduceBloodSwellStuns(ent.Owner, args.Time);
 
         if (args.Advanced)
         {
-            if (TryComp(ent, out MeleeWeaponComponent? meleeWeapon))
-            {
-                FixedPoint2? oldDamageValue = null;
-                var damageDict = meleeWeapon.Damage.DamageDict;
+            var hadResistance = TryComp<StaminaResistanceComponent>(ent.Owner, out var resistance);
+            var oldCoefficient = hadResistance ? resistance!.DamageCoefficient : 1f;
+            var oldWorn = resistance?.Worn ?? false;
 
-                var oldattackrate = meleeWeapon.AttackRate;
-                var attackrate = args.AttackRate;
+            resistance ??= EnsureComp<StaminaResistanceComponent>(ent.Owner);
+            resistance.DamageCoefficient = 0.5f;
+            resistance.Worn = false;
+            Dirty(ent.Owner, resistance);
 
-                if (damageDict.ContainsKey(args.BonusDamageType))
-                {
-                    oldDamageValue = damageDict[args.BonusDamageType];
-					meleeWeapon.AttackRate = attackrate;
-                    damageDict[args.BonusDamageType] += args.BonusDamageAmount;
-                }
-                else
-                {
-                    damageDict[args.BonusDamageType] = args.BonusDamageAmount;
-					meleeWeapon.AttackRate = attackrate;
-                }
+            _damage.SetDamageModifierSetId(ent.Owner, BloodSwell);
 
-                var savedOldDamage = oldDamageValue;
-                var damageType = args.BonusDamageType;
-                var bonusAmount = args.BonusDamageAmount;
-
-                Timer.Spawn(args.Time, () =>
-                {
-                    if (TryComp(ent, out MeleeWeaponComponent? weapon))
-                    {
-                        if (savedOldDamage.HasValue && weapon.Damage.DamageDict.ContainsKey(damageType))
-                        {
-                            weapon.Damage.DamageDict[damageType] = savedOldDamage.Value;
-							weapon.AttackRate = oldattackrate;
-                        }
-                        else if (!savedOldDamage.HasValue)
-                        {
-                            weapon.Damage.DamageDict.Remove(damageType);
-							weapon.AttackRate = oldattackrate;
-                        }
-                    }
-
-                    _damage.SetDamageModifierSetId(ent.Owner, VampireComponent.VampireDamageModifier);
-					_popup.PopupEntity(Loc.GetString("vampire-blood-swell-end"), ent, ent, PopupType.Medium);
-                });
-            }
-        }
-        else
-        {
             Timer.Spawn(args.Time, () =>
             {
+                if (Deleted(ent.Owner))
+                    return;
+
                 _damage.SetDamageModifierSetId(ent.Owner, VampireComponent.VampireDamageModifier);
-				_popup.PopupEntity(Loc.GetString("vampire-blood-swell-end"), ent, ent, PopupType.Medium);
+
+                if (TryComp<StaminaResistanceComponent>(ent.Owner, out var currentResistance))
+                {
+                    if (hadResistance)
+                    {
+                        currentResistance.DamageCoefficient = oldCoefficient;
+                        currentResistance.Worn = oldWorn;
+                        Dirty(ent.Owner, currentResistance);
+                    }
+                    else
+                    {
+                        RemComp<StaminaResistanceComponent>(ent.Owner);
+                    }
+                }
+            });
+        }
+
+        if (TryComp(ent, out MeleeWeaponComponent? meleeWeapon))
+        {
+            var oldAutoAttack = meleeWeapon.AutoAttack;
+            meleeWeapon.AutoAttack = true;
+
+            var damageDict = meleeWeapon.Damage.DamageDict;
+            var damageType = args.BonusDamageType;
+
+            var hadDamage = damageDict.TryGetValue(damageType, out var oldDamage);
+            var oldAttackRate = meleeWeapon.AttackRate;
+
+            damageDict[damageType] = oldDamage + args.BonusDamageAmount;
+            meleeWeapon.AttackRate = args.AttackRate;
+
+            Dirty(ent.Owner, meleeWeapon);
+
+            Timer.Spawn(args.Time, () =>
+            {
+                if (Deleted(ent.Owner))
+                    return;
+
+                if (TryComp(ent, out MeleeWeaponComponent? weapon))
+                {
+                    if (hadDamage)
+                        weapon.Damage.DamageDict[damageType] = oldDamage;
+                    else
+                        weapon.Damage.DamageDict.Remove(damageType);
+
+                    weapon.AutoAttack = oldAutoAttack;
+                    weapon.AttackRate = oldAttackRate;
+                    Dirty(ent.Owner, weapon);
+                }
+
+                _popup.PopupEntity(Loc.GetString("vampire-blood-swell-end"), ent, ent, PopupType.Medium);
             });
         }
 
@@ -184,8 +234,8 @@ public sealed partial class VampireSystem
                 force *= 2;
 
             _throwing.TryThrow(humanoidUid, direction * (force / 2), force);
-			
-			_stun.TryKnockdown(humanoidUid, TimeSpan.FromSeconds(2f), true, true, false);
+
+            _stun.TryKnockdown(humanoidUid, TimeSpan.FromSeconds(2f), true, true, false);
         }
 
         _audio.PlayPvs(args.Sound, ent);
@@ -269,6 +319,14 @@ public sealed partial class VampireSystem
 
         SubtractBloodEssence(ent.Owner, args.BloodCost);
         args.Handled = true;
+    }
+
+    private void OnVampireChargeHit(Entity<StunOtherOnHitComponent> ent, ref ThrowDoHitEvent args)
+    {
+        if (!HasComp<MobStateComponent>(args.Target))
+            return;
+
+        _stun.TryAddStunDuration(args.Target, ent.Comp.Duration, visualized: true);
     }
 
     private void OnCharge(Entity<VampireComponent> ent, ref VampireChargeActionEvent args)

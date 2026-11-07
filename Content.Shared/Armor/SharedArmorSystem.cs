@@ -43,12 +43,52 @@ public abstract partial class SharedArmorSystem : EntitySystem
         }
     }
 
+    // Corvax-Wega-ArmorPenetration-Start
+    /// <summary>
+    ///     Рассчитывает модификаторы защиты брони с учётом пробития.
+    ///     Ослабляет положительную защиту, не изменяя уязвимости к урону.
+    ///     Исходные модификаторы брони остаются неизменными.
+    /// </summary>
+    /// <param name="original">Исходные модификаторы брони.</param>
+    /// <param name="penetration">Доля игнорируемой защиты от 0 до 1.</param>
+    /// <returns>Новый набор модификаторов с учётом пробития.</returns>
+    private static DamageModifierSet GetPenetratedModifiers(DamageModifierSet original, float penetration)
+    {
+        var modifiers = new DamageModifierSet();
+
+        foreach (var (type, coefficient) in original.Coefficients)
+        {
+            modifiers.Coefficients[type] = coefficient < 1f
+                ? 1f - (1f - coefficient) * (1f - penetration)
+                : coefficient;
+        }
+
+        foreach (var (type, reduction) in original.FlatReductions)
+        {
+            modifiers.FlatReductions[type] = reduction > 0f
+                ? reduction * (1f - penetration)
+                : reduction;
+        }
+
+        return modifiers;
+    }
+    // Corvax-Wega-ArmorPenetration-End
+
     private void OnDamageModify(EntityUid uid, ArmorComponent component, InventoryRelayedEvent<DamageModifyEvent> args)
     {
         if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 
-        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, component.Modifiers);
+        // Corvax-Wega-ArmorPenetration-Edit-Start
+        // Учитываем пробитие при расчёте защиты экипированной брони.
+        var penetration = args.Args.ArmorPenetration;
+
+        var modifiers = penetration <= 0f
+            ? component.Modifiers
+            : GetPenetratedModifiers(component.Modifiers, penetration);
+
+        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers);
+        // Corvax-Wega-ArmorPenetration-Edit-End
     }
 
     private void OnBorgDamageModify(EntityUid uid, ArmorComponent component,
@@ -57,7 +97,16 @@ public abstract partial class SharedArmorSystem : EntitySystem
         if (TryComp<MaskComponent>(uid, out var mask) && mask.IsToggled)
             return;
 
-        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, component.Modifiers);
+        // Corvax-Wega-ArmorPenetration-Edit-Start
+        // Применяем пробитие к защите боргов.
+        var penetration = args.Args.ArmorPenetration;
+
+        var modifiers = penetration <= 0f
+            ? component.Modifiers
+            : GetPenetratedModifiers(component.Modifiers, penetration);
+
+        args.Args.Damage = DamageSpecifier.ApplyModifierSet(args.Args.Damage, modifiers);
+        // Corvax-Wega-ArmorPenetration-Edit-End
     }
 
     private void OnArmorVerbExamine(EntityUid uid, ArmorComponent component, GetVerbsEvent<ExamineVerb> args)

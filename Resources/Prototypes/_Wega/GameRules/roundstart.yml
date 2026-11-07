@@ -19,6 +19,21 @@
     - id: SubXenoborgs
       prob: 0.1 # Corvax-Wega-Edit
 
+- type: entity
+  parent: BaseGameRule
+  id: SubGamemodesNoMinorBloodBrothers
+  components:
+  - type: SubGamemodes
+    rules:
+    - id: Thief
+      prob: 0.25 
+    - id: SubWizard
+      prob: 0.05
+    - id: SubXenoborgs
+      prob: 0.1 
+    - id: SubBloodBrothers
+      prob: 0.15
+
 # Rules
 - type: entity
   abstract: true
