@@ -6,12 +6,13 @@
   conserveEnergy: false
   reactants:
     SlimeExtractGray:
-      amount: 1
+      amount: 5
     Blood:
-      amount: 2
+      amount: 10
   effects:
     - !type:SpawnEntity
       entity: MonkeyCube
+      number: 3
 
 - type: reaction
   id: CreateGraySlime
@@ -42,12 +43,12 @@
   id: FireReagenst
   reactants:
     SlimeExtractOrange:
-      amount: 5
+      amount: 1
     Blood:
-      amount: 10
+      amount: 2
   products:
-    Phlogiston: 25
-    Napalm: 25
+    Phlogiston: 5
+    Napalm: 5
 
 - type: reaction
   id: FireEffect
@@ -319,7 +320,7 @@
     Plasma:
       amount: 10
   products:
-    SlimeReinforcer: 1
+    SlimeReinforcer: 2
 
 # Pyrite
 - type: reaction
@@ -431,7 +432,7 @@
   effects:
     - !type:SpawnEntity
       entity: NetralAnimalSpawn
-      number: 5
+      number: 3
 
 - type: reaction
   id: RandomAgressiveAnimal
@@ -446,7 +447,7 @@
   effects:
     - !type:SpawnEntity
       entity: AngryAnimalSpawn
-      number: 5
+      number: 3
 
 - type: reaction
   id: RandomPassiveAnimal
@@ -461,7 +462,7 @@
   effects:
     - !type:SpawnEntity
       entity: PassiveAnimalSpawn
-      number: 5
+      number: 3
 
 # Oil
 - type: reaction
@@ -484,10 +485,10 @@
   effects:
   - !type:Explosion
     explosionType: Default
-    maxTotalIntensity: 200
-    intensitySlope: 50
-    intensityPerUnit: 100
-    maxIntensity: 1000
+    maxTotalIntensity: 400
+    intensitySlope: 10
+    intensityPerUnit: 10
+    maxIntensity: 400
 
 # Black
 - type: reaction

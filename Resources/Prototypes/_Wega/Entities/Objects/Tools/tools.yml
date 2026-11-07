@@ -287,6 +287,9 @@
     modifiers:
       coefficients:
         Heat: 0.9
+        Blunt: 1.1       
+        Piercing: 1.1  
+        Slash: 1.1    
         
 - type: entity
   id: SlimePoisonArmorBrute
@@ -300,6 +303,7 @@
   - type: SlimeArmor
     modifiers:
       coefficients:
+        Heat: 1.1
         Blunt: 0.9        
         Piercing: 0.9   
         Slash: 0.9   

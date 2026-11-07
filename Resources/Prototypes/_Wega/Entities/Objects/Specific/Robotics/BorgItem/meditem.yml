@@ -61,28 +61,11 @@
     solutionName: hypospray
   - type: Item
     sprite: _Wega/Objects/Specific/Medical/hyno.rsi
-  - type: SolutionRegeneration
-    generated:
-      reagents:
-      - ReagentId: Tricordrazine
-        Quantity: 0.5
   - type: Injector
     currentTransferAmount: null
     activeModeProtoId: HyposprayInjectMode
     allowedModes:
     - HyposprayInjectMode
-  - type: ChangeableReagent
-    reagents:
-    - generated:
-        reagents:
-        - ReagentId: Bicaridine
-          Quantity: 0.5
-      name: Water
-    - generated:
-        reagents:
-        - ReagentId: Tricordrazine
-          Quantity: 0.5
-      name: Bica
   - type: Unremoveable
   - type: Tag
     tags:
@@ -98,22 +81,19 @@
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Beer
+      - ReagentId: Nothing
         Quantity: 0
   - type: ChangeableReagent
     reagents:
     - reagent:
-      - ReagentId: Beer
+      - ReagentId: Epinephrine
+        Quantity: 1
+    - reagent:
+      - ReagentId: Nothing
         Quantity: 0
-      name: no-reagent
     - reagent:
       - ReagentId: Tricordrazine
         Quantity: 1
-      name: reagent-name-tricordrazine
-    - reagent:
-      - ReagentId: Epinephrine
-        Quantity: 1
-      name: reagent-name-epinephrine
 
 - type: entity
   parent: BaseBorgHypoGenerated
@@ -125,39 +105,31 @@
   - type: SolutionRegeneration
     generated:
       reagents:
-      - ReagentId: Beer
+      - ReagentId: Bicaridine
         Quantity: 0
   - type: ChangeableReagent
     reagents:
     - reagent:
-      - ReagentId: Beer
-        Quantity: 0
-      name: no-reagent
-    - reagent:
-      - ReagentId: Tricordrazine
-        Quantity: 1
-      name: reagent-name-tricordrazine
-    - reagent:
-      - ReagentId: Epinephrine
-        Quantity: 1
-      name: reagent-name-epinephrine
-    - reagent:
       - ReagentId: Bicaridine
         Quantity: 1
-      name: reagent-name-bicaridine
-    - reagent:
-      - ReagentId: Dermaline
-        Quantity: 1
-      name: reagent-name-dermaline
-    - reagent:
-      - ReagentId: Dylovene
-        Quantity: 1
-      name: reagent-name-dylovene
-    - reagent:
-      - ReagentId: Hyronalin
-        Quantity: 1
-      name: reagent-name-hyronalin
     - reagent:
       - ReagentId: Dexalin
         Quantity: 1
-      name: reagent-name-dexalin
+    - reagent:
+      - ReagentId: Dermaline
+        Quantity: 1
+    - reagent:
+      - ReagentId: Dylovene
+        Quantity: 1
+    - reagent:
+      - ReagentId: Nothing
+        Quantity: 0
+    - reagent:
+      - ReagentId: Tricordrazine
+        Quantity: 1
+    - reagent:
+      - ReagentId: Hyronalin
+        Quantity: 1
+    - reagent:
+      - ReagentId: Epinephrine
+        Quantity: 1

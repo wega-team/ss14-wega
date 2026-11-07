@@ -16,6 +16,21 @@
         weight: 0.15
       - id: MobCarpRainbowDragon
         weight: 0.01
+  - type: MedicalAura
+    heal:
+      types:
+        Heat: -2
+        Blunt: -2
+        Slash: -2
+        Piercing: -2
+        Bloodloss: -2
+        Radiation: -2
+        Poison: -2
+        Shock: -2
+        Cold: -2
+    whitelist:
+      tags:
+      - RiftHealAura
 # Corvax-Wega-End
   - type: Transform
     anchored: true
@@ -81,4 +96,10 @@
 ## Corvax-Wega-Start
   - type: FriendlyFaction
     faction: Dragon
+  - type: Tag
+    tags:
+    - Carp
+    - DoorBumpOpener
+    - CannotSuicide
+    - RiftHealAura
 ## Corvax-Wega-End

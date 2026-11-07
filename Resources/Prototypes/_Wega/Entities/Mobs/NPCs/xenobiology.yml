@@ -87,7 +87,7 @@
   - type: SlimeHunger
     modifierFood: 3
   - type: SlimeGrowth
-    points: 5000
+    points: 0
 
 ## Level 1
 

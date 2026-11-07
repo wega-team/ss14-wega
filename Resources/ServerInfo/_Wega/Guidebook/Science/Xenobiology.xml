@@ -1,6 +1,10 @@
 <Document>
   # Ксенобиология
   
+	Ниже предоставлена таблица реакций с экстракорами слаймов. 
+	
+	Обычно для реакции требуется соотношение экстракта к реагенту 5 к 10. Однако некоторые реакции могут проходить и в других пропорциях, что будет указана через двоеточие ( : ).
+  
     <Table Columns="4">
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
@@ -29,7 +33,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        5 кубиков обезьяны
+        3 кубиков обезьяны
       </Box>
     </ColorBox>
     <ColorBox>
@@ -39,7 +43,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        25 Эпинефрин
+        5 Эпинефрин : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -49,12 +53,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" Orientation="Vertical" Margin="2">
-        25 Напалма 25 Флогистона
+        5 Напалма 5 Флогистона : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        Сильный пожар
+        Сильный пожар : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -72,7 +76,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        10 Слаймового стероида
+        2 Слаймового стероида : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -86,12 +90,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        10 Слаймового стабилизатор
+        2 Слаймового стабилизатора : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        25 Морозного масла
+        5 Морозного масла : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -109,12 +113,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        Сталь или Пласталь
+        Сталь или Пласталь : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		Стекло или Бронированное стекло
+		Стекло или Бронированное стекло : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -124,7 +128,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        ЭМИ
+        ЭМИ : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -167,7 +171,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        Фрезон
+        Фрезон : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -186,12 +190,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        5 Случайных блюд
+        Случайное блюдо : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		5 Случайных напитков
+		Случайный напитк : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -220,7 +224,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		5 Плиткок Сепии
+		30 Плиткок Сепии : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -243,7 +247,7 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-        10 Слаймового усилителя
+        2 Слаймового усилителя : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
@@ -333,17 +337,17 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		5 Нейтральных существ
+		3 Нейтральных существ : 5 к 20
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		5 Агрессивных существ
+		3 Агрессивных существ : 5 к 20
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		5 Дружелюбных существ
+		3 Дружелюбных существ : 5 к 20
       </Box>
     </ColorBox>
     <ColorBox>
@@ -353,12 +357,12 @@
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		15 Зелья скорости
+		3 Зелья скорости : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>
       <Box HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2">
-		Взрыв
+		Взрыв : 1 к 2
       </Box>
     </ColorBox>
     <ColorBox>

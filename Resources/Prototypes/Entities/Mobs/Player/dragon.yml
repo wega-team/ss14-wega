@@ -161,6 +161,7 @@
     - CannotSuicide
     - DoorBumpOpener
     - StunImmune
+    - RiftHealAura # Corvax-Wega-Add
   - type: Puller
     needsHands: false
   - type: FriendlyFaction # Corvax-Wega-Friendly

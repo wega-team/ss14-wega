@@ -41,6 +41,11 @@ public sealed partial class GunSystem
 
         if (sprite == null) return;
 
+		// Corvax-Wega-Start
+		if (args.TryGetData<string>(BatteryWeaponFireModeVisuals.MagState, out var newMagState) && newMagState != "")
+			ent.Comp.MagState = newMagState;
+		// Corvax-Wega-End
+
         if (!args.TryGetData<bool>(AmmoVisuals.MagLoaded, out var magloaded) ||
             magloaded is true)
         {

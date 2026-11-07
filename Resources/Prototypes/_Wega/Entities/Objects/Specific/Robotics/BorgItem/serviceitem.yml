@@ -148,17 +148,14 @@
   - type: ChangeableReagent
     reagents:
     - reagent:
-      - ReagentId: Beer
-        Quantity: 0
-      name: no-reagent
-    - reagent:
       - ReagentId: Water
         Quantity: 5
-      name: reagent-name-water
+    - reagent:
+      - ReagentId: Nothing
+        Quantity: 0
     - reagent:
       - ReagentId: Beer
         Quantity: 5
-      name: reagent-name-beer
 
 - type: entity
   parent: BaseBorgDrinkSolution
@@ -170,40 +167,34 @@
     solution:
       maxVol: 60
   - type: SolutionRegeneration
+    duration: 2
     generated:
       reagents:
-      - ReagentId: Water
+      - ReagentId: Nothing
         Quantity: 0
   - type: ChangeableReagent
     reagents:
     - reagent:
-      - ReagentId: Beer
-        Quantity: 0
-      name: no-reagent
+      - ReagentId: Wine
+        Quantity: 5
     - reagent:
       - ReagentId: Water
         Quantity: 5
-      name: reagent-name-water
-    - reagent:
-      - ReagentId: Beer
-        Quantity: 5
-      name: reagent-name-beer
-    - reagent:
-      - ReagentId: Wine
-        Quantity: 5
-      name: reagent-name-wine
     - reagent:
       - ReagentId: Coffee
         Quantity: 5
-      name: reagent-name-coffee
-    - reagent:
-      - ReagentId: Cola
-        Quantity: 5
-      name: reagent-name-cola
     - reagent:
       - ReagentId: Milk
         Quantity: 5
-      name: reagent-name-milk
+    - reagent:
+      - ReagentId: Nothing
+        Quantity: 0
+    - reagent:
+      - ReagentId: Beer
+        Quantity: 5
+    - reagent:
+      - ReagentId: Cola
+        Quantity: 5
 
 # Garding
 - type: entity

@@ -1425,6 +1425,7 @@
         blacklist:
           components:
           - Clothing
+    - item: BoxFreezer
     # Corvax-Wega-Robot-Edit-end
   - type: BorgModuleIcon
     icon: { sprite: Interface/Actions/actions_borg.rsi, state: service-module }
