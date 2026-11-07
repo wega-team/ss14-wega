@@ -4,9 +4,9 @@
   name: uranium window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-uranium.rsi
+    sprite: _Wega/Structures/Windows/window-uranium.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-uranium.rsi
+    sprite: _Wega/Structures/Windows/window-uranium.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Damageable
     damageModifierSet: GlassMod

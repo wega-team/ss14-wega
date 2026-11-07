@@ -491,9 +491,9 @@
   suffix: indestructible
   components:
   - type: Sprite
-    sprite: Structures/Walls/plastitanium.rsi
+    sprite: _Wega/Structures/Walls/plastitanium.rsi  # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/plastitanium.rsi
+    sprite: _Wega/Structures/Walls/plastitanium.rsi  # Corvax-Wega-Stylish-Edit
   - type: IconSmooth
     key: walls-plastitanium
     states:
@@ -606,9 +606,9 @@
   name: reinforced wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid-reinforced.rsi
+    sprite: _Wega/Structures/Walls/solid-reinforced.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/solid-reinforced.rsi
+    sprite: _Wega/Structures/Walls/solid-reinforced.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Construction
     graph: Girder
@@ -698,9 +698,9 @@
   suffix: rusted
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid-reinforced-rust.rsi
+    sprite: _Wega/Structures/Walls/solid-reinforced-rust.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/solid-reinforced-rust.rsi
+    sprite: _Wega/Structures/Walls/solid-reinforced-rust.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Construction
     graph: Girder
@@ -964,9 +964,9 @@
   - type: RadiationBlocker
     resistance: 5
   - type: Sprite
-    sprite: Structures/Walls/shuttle.rsi
+    sprite: _Wega/Structures/Walls/shuttle.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/shuttle.rsi
+    sprite: _Wega/Structures/Walls/shuttle.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Construction
     graph: Girder
@@ -1035,13 +1035,13 @@
   name: solid wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Wega/Structures/Walls/solid.rsi # Corvax-Wega-Stylish-Edit
   - type: WallReplacementMarker
   - type: Construction
     graph: Girder
     node: wall
   - type: Icon
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Wega/Structures/Walls/solid.rsi # Corvax-Wega-Stylish-Edit
   - type: RCDDeconstructable
     cost: 6
     delay: 8
@@ -1163,9 +1163,9 @@
       - *SoundMetalSlam
       - *SpawnSteel
   - type: Sprite
-    sprite: Structures/Walls/exo.rsi
+    sprite: _Wega/Structures/Walls/exo.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/exo.rsi
+    sprite: _Wega/Structures/Walls/exo.rsi # Corvax-Wega-Stylish-Edit
   - type: IconSmooth
     key: walls-exo
     states:
@@ -1207,9 +1207,9 @@
   name: reinforced exodermis
   components:
   - type: Sprite
-    sprite: Structures/Walls/exo-reinforced.rsi
+    sprite: _Wega/Structures/Walls/exo-reinforced.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/exo-reinforced.rsi
+    sprite: _Wega/Structures/Walls/exo-reinforced.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Damageable
     damageModifierSet: PlasteelStaticMod
@@ -1278,9 +1278,9 @@
   name: mechadermis wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/exo-borg.rsi
+    sprite: _Wega/Structures/Walls/exo-borg.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Walls/exo-borg.rsi
+    sprite: _Wega/Structures/Walls/exo-borg.rsi # Corvax-Wega-Stylish-Edit
   - type: IconSmooth
     key: walls-exo-borg
     states:

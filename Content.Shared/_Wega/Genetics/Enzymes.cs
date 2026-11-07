@@ -10,31 +10,23 @@ public sealed partial class EnzymeInfo
     public UniqueIdentifiersData? Identifier { get; set; }
     public List<EnzymesPrototypeInfo>? Info { get; set; }
 
-    public object Clone()
+    public object Clone() => new EnzymeInfo
     {
-        return new EnzymeInfo
-        {
-            SampleName = SampleName,
-            Identifier = Identifier != null ? Identifier.Clone(Identifier) : null,
-            Info = Info?.Select(e => (EnzymesPrototypeInfo)e.Clone()).ToList()
-        };
-    }
+        SampleName = SampleName,
+        Identifier = Identifier?.Clone(),
+        Info = Info?.ToList()
+    };
 }
 
 [Serializable, NetSerializable]
-public sealed partial class EnzymesPrototypeInfo
+public partial record struct EnzymesPrototypeInfo
 {
-    public string EnzymesPrototypeId { get; set; } = string.Empty;
-    public string[] HexCode { get; set; } = new[] { "0", "0", "0" };
-    public int Order { get; set; } = default!;
+    public string EnzymesPrototypeId { get; set; }
+    public int HexCode { get; set; } // 0x000..0xFFF
+    public int Order { get; set; }
 
-    public object Clone()
+    public EnzymesPrototypeInfo()
     {
-        return new EnzymesPrototypeInfo
-        {
-            EnzymesPrototypeId = EnzymesPrototypeId,
-            HexCode = (string[])HexCode.Clone(),
-            Order = Order
-        };
+        EnzymesPrototypeId = string.Empty;
     }
 }

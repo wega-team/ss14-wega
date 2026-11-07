@@ -5,9 +5,9 @@
   parent: [BaseDeltaPressureReinforcedGlass, Window]
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-regal.rsi
+    sprite: _Wega/Structures/Windows/window-regal.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-regal.rsi
+    sprite: _Wega/Structures/Windows/window-regal.rsi # Corvax-Wega-Stylish-Edit
   - type: Damageable
     damageModifierSet: RGlass
   - type: Injurable

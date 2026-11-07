@@ -11,23 +11,15 @@ public sealed partial class PolymorphismGenSystem : EntitySystem
     [Dependency] private DnaModifierSystem _dnaModifier = default!;
     [Dependency] private SharedDoAfterSystem _doAfter = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<PolymorphismGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<PolymorphismGenComponent, ComponentShutdown>(OnShutdown);
-
-        SubscribeLocalEvent<PolymorphismGenComponent, PolymorphismActionEvent>(OnPolymorphism);
-        SubscribeLocalEvent<PolymorphismGenComponent, PolymorphismDoAfterEvent>(OnDoAfter);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<PolymorphismGenComponent> ent, ref ComponentInit args)
         => ent.Comp.PolymorphismActionEntity = _action.AddAction(ent, ent.Comp.PolymorphismAction);
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<PolymorphismGenComponent> ent, ref ComponentShutdown args)
         => _action.RemoveAction(ent.Comp.PolymorphismActionEntity);
 
+    [SubscribeLocalEvent]
     private void OnPolymorphism(Entity<PolymorphismGenComponent> ent, ref PolymorphismActionEvent args)
     {
         args.Handled = true;
@@ -54,6 +46,7 @@ public sealed partial class PolymorphismGenSystem : EntitySystem
         _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(Entity<PolymorphismGenComponent> ent, ref PolymorphismDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null)

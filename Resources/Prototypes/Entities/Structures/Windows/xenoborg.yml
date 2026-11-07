@@ -5,9 +5,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/exo-resin-borg.rsi
+    sprite: _Wega/Structures/Windows/exo-resin-borg.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/exo-resin-borg.rsi
+    sprite: _Wega/Structures/Windows/exo-resin-borg.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: IconSmooth
     key: windows-exo-borg

@@ -88,9 +88,9 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: Structures/Windows/window-plastitanium.rsi
+    sprite: _Wega/Structures/Windows/window-plastitanium.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-plastitanium.rsi
+    sprite: _Wega/Structures/Windows/window-plastitanium.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Airtight
   - type: Fixtures

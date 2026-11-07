@@ -14,6 +14,11 @@
   - type: GhostTakeoverAvailable
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-primate
+  # Corvax-Wega-Genetics-start
+  - type: DnaModifier
+    upper: MobHuman
+    lowest: MobMonkey
+  # Corvax-Wega-Genetics-end
 
 - type: entity
   parent: MobBaseMonkey

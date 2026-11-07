@@ -71,6 +71,37 @@ dna-modifier-no-data = Нет данных
 
 dna-disk-sample = образец-
 
+dna-modifier-label-hair = Цвет волос
+dna-modifier-label-beard = Цвет бороды
+dna-modifier-label-skin-tone = Тон кожи
+dna-modifier-label-fur-color = Цвет меха
+dna-modifier-label-eye-color = Цвет глаз
+dna-modifier-label-head-accessory = Окрас наростов
+dna-modifier-label-head-marking = Окрас лица
+dna-modifier-label-body-marking = Окрас тела
+dna-modifier-label-tail-marking = Окрас хвоста
+dna-modifier-label-tail-overlay = Окрас покрова хвоста
+dna-modifier-label-snout = Окрас морды
+dna-modifier-label-snout-cover = Окрас покрова морды
+dna-modifier-label-head-side = Окрас боков головы
+
+dna-modifier-label-hair-style = Прическа
+dna-modifier-label-beard-style = Форма бороды
+dna-modifier-label-head-accessory-style = Форма наростов
+dna-modifier-label-head-marking-style = Черты лица
+dna-modifier-label-body-marking-style = Узор тела
+dna-modifier-label-tail-marking-style = Форма хвоста
+dna-modifier-label-tail-overlay-style = Покров хвоста
+dna-modifier-label-snout-style = Форма морды
+dna-modifier-label-snout-cover-style = Покров морды
+dna-modifier-label-head-side-style = Форма боков
+dna-modifier-style-none = Нет
+
+dna-modifier-label-sex = Пол
+dna-modifier-sex-male = Мужской
+dna-modifier-sex-female = Женский
+dna-modifier-sex-unsexed = Бесполый
+
 # System
 dna-disk-name = диск ДНК-модификатора
 dna-instability-stage-one = Вы чувствуете как ваша кожа пузырится

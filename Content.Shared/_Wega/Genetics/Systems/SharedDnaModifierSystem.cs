@@ -1,5 +1,4 @@
 using System.Diagnostics.CodeAnalysis;
-using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Random;
 
 namespace Content.Shared.Genetics.Systems;
@@ -18,11 +17,9 @@ public abstract partial class SharedDnaModifierSystem : EntitySystem
             return;
 
         comp.Data = (EnzymeInfo)enzyme.Clone();
-        if (TryComp(disk, out MetaDataComponent? meta))
-            _metaData.SetEntityName(disk, Loc.GetString("dna-disk-name") + " " + $"({enzyme.SampleName})");
+        _metaData.SetEntityName(disk, Loc.GetString("dna-disk-name")+ " " + $"({enzyme.SampleName})");
 
         Dirty(disk, comp);
-        return;
     }
 
     public bool TryGetDataFromDisk(EntityUid disk, [NotNullWhen(true)] out EnzymeInfo? data)
@@ -50,197 +47,84 @@ public abstract partial class SharedDnaModifierSystem : EntitySystem
         return true;
     }
 
-    public Color GetFirstMarkingColor(IReadOnlyList<Marking> markings)
+    public static Color ToColor(uint color)
+        => new((byte)(color >> 16), (byte)(color >> 8), (byte)color);
+
+    public static uint FromColor(Color color)
+        => (uint)((byte)(color.R * 255) << 16 | (byte)(color.G * 255) << 8 | (byte)(color.B * 255));
+
+    public uint GenerateRandomColor() => (uint)_random.Next(0x1000000);
+
+    public uint GenerateRandomSkinTone() => (uint)_random.Next(0, 101);
+
+    public uint MutateColorDigit(uint color, int digitIndex, float intensity)
     {
-        if (markings.Count > 0 && markings[0].MarkingColors.Count > 0)
+        var hex = color.ToString("X6");
+        if (digitIndex < 0 || digitIndex >= 6)
+            return color;
+
+        var chars = hex.ToCharArray();
+        var value = HexCharToInt(chars[digitIndex]);
+
+        var maxChange = Math.Max(1, (int)(intensity * 3));
+        var change = _random.Next(-maxChange, maxChange + 1);
+        value = (value + change + 16) % 16;
+        chars[digitIndex] = IntToHexChar(value);
+
+        uint result = 0;
+        for (var i = 0; i < 6; i++)
         {
-            return markings[0].MarkingColors[0];
-        }
-        return Color.White;
-    }
-
-    public string[] ConvertColorToHexArray(Color color)
-    {
-        int r = (int)(color.R * 255);
-        int g = (int)(color.G * 255);
-        int b = (int)(color.B * 255);
-
-        string rHex = r.ToString("X2");
-        string gHex = g.ToString("X2");
-        string bHex = b.ToString("X2");
-
-        return new[]
-        {
-            rHex[0].ToString(),
-            rHex[1].ToString(),
-            "0",
-            gHex[0].ToString(),
-            gHex[1].ToString(),
-            "0",
-            bHex[0].ToString(),
-            bHex[1].ToString(),
-            "0"
-        };
-    }
-
-    public string[] ConvertSkinToneToHexArray(Color skinColor)
-    {
-        float skinToneValue = HumanSkinToneFromColor(skinColor);
-
-        int normalizedTone = (int)Math.Round(skinToneValue / 100f * 99);
-        normalizedTone = Math.Clamp(normalizedTone, 0, 99);
-
-        int digit1 = normalizedTone / 10;
-        int digit2 = normalizedTone % 10;
-
-        int firstHex = (normalizedTone >= 100) ? 1 : 0;
-
-        return new[]
-        {
-            firstHex.ToString("X1"),
-            digit1.ToString("X1"),
-            digit2.ToString("X1")
-        };
-    }
-
-    public float HumanSkinToneFromColor(Color color)
-    {
-        var hsv = Color.ToHsv(color);
-        // check for hue/value first, if hue is lower than this percentage
-        // and value is 1.0
-        // then it'll be hue
-        if (Math.Clamp(hsv.X, 25f / 360f, 1) > 25f / 360f
-            && hsv.Z == 1.0)
-        {
-            return Math.Abs(45 - (hsv.X * 360));
-        }
-        // otherwise it'll directly be the saturation
-        else
-        {
-            return hsv.Y * 100;
-        }
-    }
-
-    public Color ConvertSkinToneToColor(string[] skinTone)
-    {
-        Color defaultColor = Color.FromHsv(new System.Numerics.Vector4(0.07f, 0.2f, 1f, 1f));
-        if (skinTone == null || skinTone.Length != 3)
-            return defaultColor;
-
-        try
-        {
-            bool isMaxTone = skinTone[0] == "1";
-            if (!TryParseHexDigit(skinTone[1], out int tens))
-                tens = 0;
-            if (!TryParseHexDigit(skinTone[2], out int units))
-                units = 0;
-
-            int toneValue = isMaxTone ? 100 : Math.Clamp(tens * 10 + units, 0, 99);
-
-            float hue, saturation, value;
-
-            if (toneValue <= 20)
-            {
-                hue = 25 + (45 - 25) * (20 - toneValue) / 20f;
-                saturation = 0.2f;
-                value = 1f;
-            }
-            else
-            {
-                hue = 25f;
-                saturation = 0.2f + 0.8f * (toneValue - 20) / 80f;
-                value = 1f - 0.8f * (toneValue - 20) / 80f;
-            }
-
-            return Color.FromHsv(new System.Numerics.Vector4(
-                hue / 360f,
-                saturation,
-                value,
-                1f
-            ));
-        }
-        catch
-        {
-            return defaultColor;
-        }
-    }
-
-    private bool TryParseHexDigit(string digit, out int value)
-    {
-        value = 0;
-        if (string.IsNullOrEmpty(digit) || digit.Length != 1)
-            return false;
-
-        char c = digit[0];
-        if (char.IsDigit(c))
-        {
-            value = c - '0';
-            return true;
-        }
-        else if (c >= 'A' && c <= 'F')
-        {
-            value = 10 + (c - 'A');
-            return true;
-        }
-        else if (c >= 'a' && c <= 'f')
-        {
-            value = 10 + (c - 'a');
-            return true;
+            result = (result << 4) | (uint)HexCharToInt(chars[i]);
         }
 
-        return false;
+        return result;
     }
 
-    public string[] GenerateRandomGenderHexValue(int minHex, int maxHex)
+    public uint MutateSkinToneDigit(uint skinTone, int digitIndex, float intensity)
     {
-        var value = _random.Next(minHex, maxHex + 1);
-        var hexString = value.ToString("X3");
-        return new[]
-        {
-            hexString[0].ToString(),
-            hexString[1].ToString(),
-            hexString[2].ToString()
-        };
+        var maxChange = Math.Max(1, (int)(intensity * 10));
+        var change = _random.Next(-maxChange, maxChange + 1);
+        var newValue = (int)skinTone + change;
+        return (uint)Math.Clamp(newValue, 0, 100);
     }
 
-    public string[] GenerateTripleHexValues(byte min0, byte max0, byte min1, byte max1, byte min2, byte max2)
+    public int MutateHexDigit(int hexCode, int digitIndex, float intensity)
     {
-        return new[]
+        var hex = hexCode.ToString("X3");
+        if (digitIndex < 0 || digitIndex >= 3)
+            return hexCode;
+
+        var chars = hex.ToCharArray();
+        var value = HexCharToInt(chars[digitIndex]);
+
+        var maxChange = Math.Max(1, (int)(intensity * 3));
+        var change = _random.Next(-maxChange, maxChange + 1);
+        value = (value + change + 16) % 16;
+        chars[digitIndex] = IntToHexChar(value);
+
+        var result = 0;
+        for (var i = 0; i < 3; i++)
         {
-            _random.Next(min0, max0).ToString("X1"),
-            _random.Next(min1, max1).ToString("X1"),
-            _random.Next(min2, max2).ToString("X1")
-        };
+            result = (result << 4) | HexCharToInt(chars[i]);
+        }
+
+        return result;
     }
 
-    public string[] GenerateRandomHexValues()
+    private static int HexCharToInt(char c)
     {
-        return new[]
-        {
-            _random.Next(0, 16).ToString("X1"),
-            _random.Next(0, 16).ToString("X1"),
-            _random.Next(0, 16).ToString("X1")
-        };
+        if (c >= '0' && c <= '9')
+            return c - '0';
+
+        if (c >= 'A' && c <= 'F')
+            return c - 'A' + 10;
+
+        if (c >= 'a' && c <= 'f')
+            return c - 'a' + 10;
+
+        return 0;
     }
 
-    public string[] GenerateRandomToneValues()
-    {
-        int toneValue = _random.Next(0, 101);
-
-        int normalizedTone = (int)Math.Round(toneValue / 100f * 99);
-        normalizedTone = Math.Clamp(normalizedTone, 0, 99);
-
-        int digit1 = normalizedTone / 10;
-        int digit2 = normalizedTone % 10;
-
-        int firstHex = (toneValue == 100) ? 1 : 0;
-
-        return new[]
-        {
-            firstHex.ToString("X1"),
-            digit1.ToString("X1"),
-            digit2.ToString("X1")
-        };
-    }
+    private static char IntToHexChar(int value)
+        => value < 10 ? (char)('0' + value) : (char)('A' + (value - 10));
 }
-

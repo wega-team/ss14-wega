@@ -4,9 +4,9 @@
   name: reinforced window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-base-reinf.rsi
+    sprite: _Wega/Structures/Windows/window-base-reinf.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-base-reinf.rsi
+    sprite: _Wega/Structures/Windows/window-base-reinf.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Repairable
     fuelCost: 10

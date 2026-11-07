@@ -24,9 +24,9 @@
     - ForceFixRotations
     - Window
   - type: Sprite
-    sprite: Structures/Windows/window-base.rsi
+    sprite: _Wega/Structures/Windows/window-base.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-base.rsi
+    sprite: _Wega/Structures/Windows/window-base.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Physics
     bodyType: Static
@@ -109,9 +109,9 @@
   id: Window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-base.rsi
+    sprite: _Wega/Structures/Windows/window-base.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-base.rsi
+    sprite: _Wega/Structures/Windows/window-base.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Damageable
     damageModifierSet: GlassMod
@@ -136,9 +136,9 @@
   name: tinted window
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-tinted.rsi
+    sprite: _Wega/Structures/Windows/window-tinted.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-tinted.rsi
+    sprite: _Wega/Structures/Windows/window-tinted.rsi # Corvax-Wega-Stylish-Edit
   - type: IconSmooth
     key: windows-tinted
     states:

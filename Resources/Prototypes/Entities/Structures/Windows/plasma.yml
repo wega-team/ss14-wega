@@ -4,9 +4,9 @@
   parent: [BaseDeltaPressurePlasma, BaseWindowStructure, BaseRCDResistant, StructureHealthBarrier]
   components:
   - type: Sprite
-    sprite: Structures/Windows/window-plasma.rsi
+    sprite: _Wega/Structures/Windows/window-plasma.rsi # Corvax-Wega-Stylish-Edit
   - type: Icon
-    sprite: Structures/Windows/window-plasma.rsi
+    sprite: _Wega/Structures/Windows/window-plasma.rsi # Corvax-Wega-Stylish-Edit
     state: full
   - type: Damageable
     damageModifierSet: GlassPlasmaMod

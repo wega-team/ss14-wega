@@ -9,11 +9,7 @@ public sealed partial class DnaModifierSystem
 
     public EntityUid? PausedMap { get; private set; }
 
-    private void InitializeMap()
-    {
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
-    }
-
+    [SubscribeLocalEvent]
     private void OnRoundRestart(RoundRestartCleanupEvent _)
     {
         if (PausedMap == null || !Exists(PausedMap))
