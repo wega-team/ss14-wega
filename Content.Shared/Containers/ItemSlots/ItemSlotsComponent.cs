@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -229,7 +230,9 @@ public sealed partial class ItemSlot
     public string? ID => ContainerSlot?.ID;
 
     // Convenience properties
+    [MemberNotNullWhen(true, nameof(Item))]
     public bool HasItem => ContainerSlot?.ContainedEntity != null;
+
     public EntityUid? Item => ContainerSlot?.ContainedEntity;
 
     /// <summary>
