@@ -2,6 +2,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
+//Corvax-Wega-HandleStunSpell-Start
+using Content.Shared.Blood.Cult;
+using Content.Shared.Blood.Cult.Components;
+//Corvax-Wega-HandleStunSpell-End
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared.CombatMode;
@@ -441,7 +445,14 @@ namespace Content.Shared.Interaction
 
             if (!altInteract && _combatQuery.TryComp(user, out var combatMode) && combatMode.IsInCombatMode)
             {
-                if (!CombatModeCanHandInteract(user, target))
+                // Corvax-Wega-HandleStunSpell-Start
+                var isBloodCultStun = _handsQuery.TryComp(user, out var hands) &&
+                                    _hands.GetActiveItem((user, hands)) is { } heldItem &&
+                                    TryComp<BloodSpellComponent>(heldItem, out var bloodSpell) &&
+                                    bloodSpell.SpellType == BloodCultSpell.Stun;
+                // Corvax-Wega-HandleStunSpell-End
+
+                if (!isBloodCultStun && !CombatModeCanHandInteract(user, target)) // Corvax-Wega-HandleStunSpell-Edit
                     return;
             }
 

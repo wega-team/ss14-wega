@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared.Alert;
+using Content.Shared.Blood.Cult.Components; //Corvax-Wega-Add
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
@@ -82,7 +83,12 @@ public abstract partial class SharedEnsnareableSystem : EntitySystem
             return;
         }
 
-        _hands.PickupOrDrop(args.Args.User, args.Args.Used.Value);
+        //Corvax-Wega-Edit-Start
+        if (HasComp<BloodCultBolaComponent>(args.Args.Used.Value))
+            QueueDel(args.Args.Used.Value);
+        else
+            _hands.PickupOrDrop(args.Args.User, args.Args.Used.Value);
+        //Corvax-Wega-Edit-End
 
         Dirty(uid, component);
         ensnaring.Ensnared = null;

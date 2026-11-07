@@ -37,6 +37,7 @@ using Content.Shared.Teleportation.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.RoundEnd;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.Antag.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Player;
@@ -125,14 +126,44 @@ namespace Content.Server.GameTicking.Rules
 
         #region Cultist Processing
 
-        private void OnCultistSelected(Entity<BloodCultRuleComponent> mindId, ref AfterAntagEntitySelectedEvent args)
+        private bool IsBloodCultistCandidate(EntityUid uid)
+        {
+            if (HasComp<BloodCultistComponent>(uid))
+                return true;
+
+            if (!TryComp<ActorComponent>(uid, out var actor))
+                return false;
+
+            var query = EntityQueryEnumerator<BloodCultRuleComponent, AntagSelectionComponent>();
+
+            while (query.MoveNext(out _, out _, out var selection))
+            {
+                foreach (var sessions in selection.PreSelectedSessions.Values)
+                {
+                    if (sessions.Contains(actor.PlayerSession))
+                        return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsBloodCultTargetExcluded(EntityUid uid)
+        {
+            if (!_mind.TryGetMind(uid, out var mindId, out _))
+                return false;
+
+            return _job.MindHasJobWithId(mindId, "BlueShieldOfficer");
+        }
+
+        private void OnCultistSelected(Entity<BloodCultRuleComponent> rule, ref AfterAntagEntitySelectedEvent args)
         {
             var ent = args.EntityUid;
 
-            if (mindId.Comp.SelectedTargets.Count == 0)
-                SelectRandomTargets(mindId.Comp);
+            if (rule.Comp.SelectedTargets.Count == 0)
+                SelectRandomTargets(rule.Comp);
 
-            MakeCultist(ent);
+            MakeCultist(ent, rule.Comp);
             _antag.SendBriefing(ent, MakeBriefing(ent), Color.Red, null);
         }
 
@@ -141,8 +172,8 @@ namespace Content.Server.GameTicking.Rules
             cult.SelectedTargets.Clear();
 
             var mindShieldCandidates = new List<EntityUid>();
-            var enumerator = EntityQueryEnumerator<HumanoidProfileComponent, MindShieldStatusComponent>();
-            while (enumerator.MoveNext(out var uid, out _, out var status))
+            var enumerator = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent, MindShieldStatusComponent>();
+            while (enumerator.MoveNext(out var uid, out _, out _, out var status))
             {
                 if (!status.IsMindshielded)
                     continue;
@@ -150,7 +181,7 @@ namespace Content.Server.GameTicking.Rules
                 if (HasComp<SyntheticOperatedComponent>(uid))
                     continue;
 
-                if (HasComp<BloodCultistComponent>(uid))
+                if (IsBloodCultistCandidate(uid) || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 mindShieldCandidates.Add(uid);
@@ -184,7 +215,10 @@ namespace Content.Server.GameTicking.Rules
             var globalEnumerator = EntityQueryEnumerator<HumanoidProfileComponent, ActorComponent>();
             while (globalEnumerator.MoveNext(out var uid, out _, out _))
             {
-                if (cult.SelectedTargets.Contains(uid) || HasComp<BloodCultistComponent>(uid))
+                if (cult.SelectedTargets.Contains(uid)
+                    || IsBloodCultistCandidate(uid)
+                    || HasComp<SyntheticOperatedComponent>(uid)
+                    || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 globalCandidates.Add(uid);
@@ -200,7 +234,26 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private EntityUid? FindNewRandomTarget(BloodCultRuleComponent cult, EntityUid excludedTarget)
+        private void FindMissingTargets(BloodCultRuleComponent cult)
+        {
+            while (cult.SelectedTargets.Count < 2)
+            {
+                var target = FindNewRandomTarget(cult);
+
+                if (target == null)
+                    break;
+
+                cult.SelectedTargets.Add(target.Value);
+                EnsureComp<BloodCultObjectComponent>(target.Value);
+
+                foreach (var cultist in GetAllCultists())
+                {
+                    CreateObjectiveForCultist(cultist, target.Value, cult);
+                }
+            }
+        }
+
+        private EntityUid? FindNewRandomTarget(BloodCultRuleComponent cult, EntityUid? excludedTarget = null)
         {
             var mindShieldCandidates = new List<EntityUid>();
 
@@ -214,8 +267,10 @@ namespace Content.Server.GameTicking.Rules
                 if (!status.IsMindshielded
                     || uid == excludedTarget
                     || cult.SelectedTargets.Contains(uid)
-                    || HasComp<BloodCultistComponent>(uid)
-                    || HasComp<BloodCultObjectComponent>(uid))
+                    || IsBloodCultistCandidate(uid)
+                    || HasComp<BloodCultObjectComponent>(uid)
+                    || HasComp<SyntheticOperatedComponent>(uid)
+                    || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 mindShieldCandidates.Add(uid);
@@ -235,8 +290,10 @@ namespace Content.Server.GameTicking.Rules
             {
                 if (uid == excludedTarget
                     || cult.SelectedTargets.Contains(uid)
-                    || HasComp<BloodCultistComponent>(uid)
-                    || HasComp<BloodCultObjectComponent>(uid))
+                    || IsBloodCultistCandidate(uid)
+                    || HasComp<BloodCultObjectComponent>(uid)
+                    || HasComp<SyntheticOperatedComponent>(uid)
+                    || IsBloodCultTargetExcluded(uid))
                     continue;
 
                 globalCandidates.Add(uid);
@@ -279,7 +336,7 @@ namespace Content.Server.GameTicking.Rules
             }
         }
 
-        private void MakeCultist(EntityUid ent)
+        private void MakeCultist(EntityUid ent, BloodCultRuleComponent cult)
         {
             var cultist = EnsureComp<BloodCultistComponent>(ent);
             var actionPrototypes = new[]
@@ -303,42 +360,47 @@ namespace Content.Server.GameTicking.Rules
             _mindLink.AddChannel(ent, cultist.CultMindChannel);
 
             HandleMetabolism(ent);
-            CreateObjectivesForCultist(ent);
+            CreateObjectivesForCultist(ent, cult);
         }
 
-        private void CreateObjectivesForCultist(EntityUid cultist)
+        private void CreateObjectiveForCultist(
+            EntityUid cultist,
+            EntityUid target,
+            BloodCultRuleComponent cult)
         {
-            var cult = GetActiveRule();
-            if (cult == null || cult.SelectedTargets.Count == 0)
+            if (!Exists(target))
                 return;
 
             if (!_mind.TryGetMind(cultist, out var mindId, out var mind))
                 return;
 
+            var objective = _objectives.TryCreateObjective(mindId, mind, cult.ObjectivePrototype);
+            if (objective == null)
+                return;
+
+            _target.SetTarget(objective.Value, target);
+
+            var jobName = Loc.GetString("generic-unknown-title");
+
+            if (TryComp<MindContainerComponent>(target, out var mindContainer)
+                && mindContainer.Mind is { } targetMindId)
+            {
+                jobName = _job.MindTryGetJobName(targetMindId);
+            }
+
+            _meta.SetEntityName(objective.Value, Loc.GetString(
+                "objective-condition-blood-ritual-person-title",
+                ("targetName", Name(target)),
+                ("job", jobName)));
+
+            _mind.AddObjective(mindId, mind, objective.Value);
+        }
+
+        private void CreateObjectivesForCultist(EntityUid cultist, BloodCultRuleComponent cult)
+        {
             foreach (var target in cult.SelectedTargets)
             {
-                if (!Exists(target))
-                    continue;
-
-                var objective = _objectives.TryCreateObjective(mindId, mind, cult.ObjectivePrototype);
-                if (objective == null)
-                    continue;
-
-                _target.SetTarget(objective.Value, target);
-                var jobName = Loc.GetString("generic-unknown-title");
-
-                if (TryComp<MindContainerComponent>(target, out var mindContainer)
-                    && mindContainer.Mind is { } targetMindId)
-                {
-                    jobName = _job.MindTryGetJobName(targetMindId);
-                }
-
-                _meta.SetEntityName(objective.Value, Loc.GetString(
-                    "objective-condition-blood-ritual-person-title",
-                    ("targetName", Name(target)),
-                    ("job", jobName)));
-
-                _mind.AddObjective(mindId, mind, objective.Value);
+                CreateObjectiveForCultist(cultist, target, cult);
             }
         }
 
@@ -401,10 +463,12 @@ namespace Content.Server.GameTicking.Rules
                 _antag.SendBriefing(session, MakeBriefing(uid), Color.Red, new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/bloodcult_start.ogg"));
             RemComp<AutoCultistComponent>(uid);
 
-            MakeCultist(uid);
             var query = QueryActiveRules();
             while (query.MoveNext(out _, out var cult, out _, out _))
             {
+                MakeCultist(uid, cult);
+                FindMissingTargets(cult);
+
                 EntProtoId selectedDagger = cult.SelectedGod switch
                 {
                     BloodCultGod.NarSi => "WeaponBloodDagger",
@@ -413,7 +477,7 @@ namespace Content.Server.GameTicking.Rules
                     _ => "WeaponBloodDagger"
                 };
 
-                var dagger = _entityManager.SpawnEntity(selectedDagger, Transform(uid).Coordinates);
+                var dagger = _entityManager.SpawnAtPosition(selectedDagger, Transform(uid).Coordinates);
                 culsistComp.RecallDaggerActionEntity = dagger;
                 _hands.TryPickupAnyHand(uid, dagger);
                 break;

@@ -6,15 +6,25 @@ select-constuct-proteon = Пилон
 select-constuct-idol = Айдол
 
 select-spell-stun = Ошеломление
+    Оглушает, ослепляет и лишает цель возможности говорить.
 select-spell-teleport = Телепорт
-select-spell-electromagnetic-pulse = Электромагнитный Испульс
-select-spell-shadow-shackles = Теневые Оковы
-select-spell-twisted-construction = Искаженное Строительство
-select-spell-summon-equipment = Призыв Снаряжения
-select-spell-summon-dagger = Призыв Кинжала
+    Телепортирует цель к первой руне телепортации.
+select-spell-electromagnetic-pulse = Электромагнитный импульс
+    Создаёт электромагнитный импульс, выводящий из строя электронику поблизости.
+select-spell-shadow-shackles = Теневые оковы
+    Сковывает цель наручниками и временно лишает возможности говорить
+select-spell-twisted-construction = Искажённое строительство
+    Преобразует шлюзы и материалы в конструкции и ресурсы культа.
+select-spell-summon-equipment = Призыв снаряжения
+    Призывает комплект снаряжения культа на выбранного культиста.
+select-spell-summon-dagger = Призыв кинжала
+    Призывает ритуальный кинжал вашего божества.
 select-spell-hallucinations = Галлюцинации
-select-spell-conceal-presence = Маскировка Присутствия
-select-spell-blood-rites = Кровавый Обряд
+    Вызывает у цели галлюцинации на 30 секунд.
+select-spell-conceal-presence = Маскировка присутствия
+    Позволяет скрыть присутствие рун и построек от окружающих.
+select-spell-blood-rites = Кровавый обряд
+    Позволяет собирать кровь, лечить союзников и создавать кровавые заклинания.
 
 select-blood-orb = Кровавая Сфера
 select-blood-recharge = Кровавая Перезарядка
@@ -22,7 +32,7 @@ select-blood-spear = Кровавое Копье
 select-blood-bolt-barrage = Кровавый Шквал Болтов
 
 offering-rune = Руна Предложения
-offering-rune-desc = Конвертирует нормального члена экипажа в культиста, исцеляя его от физических и ожоговых повреждений. Также создаёт ритуальный кинжал. Если цель мертва, непригодна для конвертации или имеет имплант "Защита разума", она гибнет, оставляя камень душ.
+offering-rune-desc = Конвертирует нормального члена экипажа в культиста, исцеляя его от физических и ожоговых повреждений. Также создаёт ритуальный кинжал. Если цель мертва, непригодна для конвертации или имеет имплант "Защита разума", она гибнет, оставляя камень душ. Позволяет приносить в жертву низших существ для накопления зарядов возрождения.
 teleport-rune = Руна Телепорта
 teleport-rune-desc = Телепортирует объекты и людей на другую случайную руну телепортации. Может быть использована для достаточно быстрой транспортировки.
 empowering-rune = Руна Усиления
@@ -67,7 +77,7 @@ blood-cult-first-warning = Ваши глаза начали полыхать з�
 blood-cult-second-warning = Кровавая пентаграмма образуется над вами, это знак к действию
 blood-dagger-failed-interact = кинжал выскальзывает из вашей руки лезвием нанося увечья
 blood-sharpener-success = точило обратилось в прах
-blood-sharpener-failed = кинжал уже был заточен
+blood-sharpener-failed = оружие уже было заточено
 blood-cult-failed-attack = вы не можете навредить членам культа
 stone-soul-empty = камень души пустой
 stone-soul-already-summoned = душа уже была призвана
@@ -84,6 +94,7 @@ blood-structure-failed = взаимодействие будет возможн�
 blood-cult-dagger-not-found = кинжала не существует
 blood-cult-dagger-recalled = кинжал образуется перед вами
 blood-cult-blood-dagger-exists = вы уже имеете кинжал
+blood-cult-rites-cooldown = Заклинание станет доступно через {$seconds} сек.
 blood-orb-dialog-title = Передача крови
 blood-orb-dialog-prompt = Количество
 blood-orb-invalid-input = Невозможное значение, укажите числовое значение, которое хотите передать
@@ -100,6 +111,7 @@ blood-cult-shadow-shackles-failed = ничего не произошло
 blood-cult-twisted-failed = ничего не произошло
 blood-cult-blood-rites-failed = ничего не произошло
 blood-cult-spell-failed = ничего не произошло
+blood-cult-teleport-failed = отсутствует руна телепортации!
 
 rune-ritual-failed = ритуал не может быть начат
 rune-select-complete = надрезав свою руку вы начертали руну

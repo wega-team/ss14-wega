@@ -17,5 +17,8 @@ public sealed partial class MindControlImplantComponent : Component
     public LocId DebriefingText = "mind-control-user-freed";
 
     [DataField]
-    public SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/Ambience/Antag/traitor_start.ogg");
+    public SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/mindcontrol_start.ogg");
+
+    [DataField]
+    public SoundSpecifier DebriefingSound = new SoundPathSpecifier("/Audio/_Wega/Ambience/Antag/hypnotized.ogg");
 }

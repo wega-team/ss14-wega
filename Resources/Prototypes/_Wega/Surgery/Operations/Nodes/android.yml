@@ -169,6 +169,13 @@
   transitions:
     - AndroidExtractFakeMindShieldTransition
 
+# LoyaltyImplant
+- type: surgeryNode
+  id: AndroidRemoveLoyaltyOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - AndroidExtractLoyaltyTransition
+
 # endregion
 
 # ========================

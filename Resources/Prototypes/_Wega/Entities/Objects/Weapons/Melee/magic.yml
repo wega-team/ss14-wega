@@ -194,6 +194,12 @@
     interfaces:
       enum.BloodRunesUiKey.Key:
         type: RunesMenuBoundUserInterface
+  - type: Sharpening
+    difficulty: 3
+    uses: 25
+    damage:
+      types:
+        Slash: 17
 
 - type: entity
   parent: WeaponBloodDagger
@@ -254,6 +260,12 @@
     - Slicing
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.3
+  - type: Sharpening
+    difficulty: 3
+    uses: 25
+    damage:
+      types:
+        Slash: 35
 
 - type: entity
   id: WeaponDeathBlade
@@ -295,6 +307,12 @@
     - Slicing
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.3
+  - type: Sharpening
+    difficulty: 3
+    uses: 25
+    damage:
+      types:
+        Piercing: 35
 
 - type: entity
   id: WeaponHellBlade
@@ -336,6 +354,12 @@
     - Slicing
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.5
+  - type: Sharpening
+    difficulty: 3
+    uses: 25
+    damage:
+      types:
+        Heat: 30
 
 - type: entity
   parent: BaseItem
@@ -425,6 +449,12 @@
     - Slicing
   - type: BonusMeleeDamage
     heavyDamageMultiplier: 1.5
+  - type: Sharpening
+    difficulty: 3
+    uses: 20
+    damage:
+      types:
+        Piercing: 30
 
 - type: entity
   parent: BaseItem

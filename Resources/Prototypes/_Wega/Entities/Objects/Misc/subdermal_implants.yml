@@ -42,13 +42,15 @@
   parent: BaseSubdermalImplant
   id: LoyaltyImplant
   name: loyalty implant
-  description: This implant grants access to the Centcomm channel without a headset. Only authorized for Centcomm employees.
-  categories: [ HideSpawnMenu ]
+  description: This implant binds the user's mind to the will of the person who implanted it.
   components:
   - type: Sprite
     sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
     state: empty
   - type: MindControlImplant
+  - type: Tag
+    tags:
+    - SubdermalHeadImplant
 
 - type: entity
   parent: BaseSubdermalImplant

@@ -6,6 +6,7 @@ using Content.Shared.Blood.Cult.Components;
 using Content.Shared.Blood.Cult;
 using Content.Shared.Veil.Cult.Components;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Melee;
 
 namespace Content.Server.Blood.Cult;
 
@@ -17,7 +18,7 @@ public sealed partial class BloodCultSystem
     {
         SubscribeLocalEvent<CultEquipmentComponent, GotEquippedEvent>(OnDidEquip);
         SubscribeLocalEvent<CultEquipmentComponent, BeforeGettingEquippedHandEvent>(OnHandPickUp);
-        SubscribeLocalEvent<CultWeaponComponent, MeleeHitEvent>(OnCultMeleeHit);
+        SubscribeLocalEvent<MeleeWeaponComponent, MeleeHitEvent>(OnCultMeleeHit);
     }
 
     private void OnDidEquip(Entity<CultEquipmentComponent> ent, ref GotEquippedEvent args)
@@ -41,6 +42,10 @@ public sealed partial class BloodCultSystem
 
     private void OnHandPickUp(Entity<CultEquipmentComponent> ent, ref BeforeGettingEquippedHandEvent args)
     {
+        if (HasComp<BloodCultBolaComponent>(ent) &&
+            TerminatingOrDeleted(ent))
+            return;
+
         if (args.Cancelled)
             return;
 
@@ -64,25 +69,25 @@ public sealed partial class BloodCultSystem
             PopupType.MediumCaution);
     }
 
-    private void OnCultMeleeHit(EntityUid uid, CultWeaponComponent comp, MeleeHitEvent args)
+    private void OnCultMeleeHit(EntityUid uid, MeleeWeaponComponent comp, MeleeHitEvent args)
     {
         if (!args.IsHit || args.HitEntities.Count == 0)
             return;
 
-        if (args.HitEntities is not List<EntityUid> hitList)
+        if (args.HitEntities is not HashSet<EntityUid> hitSet)
             return;
 
-        for (int i = hitList.Count - 1; i >= 0; i--)
-        {
-            var target = hitList[i];
-            if (HasComp<BloodCultistComponent>(target) && comp.Cult == CultType.Blood)
-                hitList.RemoveAt(i);
+        var bloodCultist = HasComp<BloodCultistComponent>(args.User);
+        var veilCultist = HasComp<VeilCultistComponent>(args.User);
 
-            if (HasComp<VeilCultistComponent>(target) && comp.Cult == CultType.Veil)
-                hitList.RemoveAt(i);
-        }
+        if (!bloodCultist && !veilCultist)
+            return;
 
-        if (hitList.Count == 0)
+        hitSet.RemoveWhere(target =>
+            bloodCultist && HasComp<BloodCultistComponent>(target) ||
+            veilCultist && HasComp<VeilCultistComponent>(target));
+
+        if (hitSet.Count == 0)
             args.Handled = true;
     }
 }
