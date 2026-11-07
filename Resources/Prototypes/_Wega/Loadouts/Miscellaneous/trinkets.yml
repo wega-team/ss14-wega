@@ -49,10 +49,10 @@
   groupBy: "wegatoyload"
 
 - type: loadout
-  id: PlushieArachind
+  id: PlushieArachnid
   storage:
     back:
-    - PlushieArachind
+    - PlushieArachnid
   groupBy: "wegatoyload"
 
 - type: loadout
