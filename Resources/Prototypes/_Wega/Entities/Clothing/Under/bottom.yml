@@ -659,3 +659,169 @@
     sprite: _Wega/Clothing/Under/Bottom/swim_red.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Under/Bottom/swim_red.rsi
+
+- type: entity
+  parent: ClothingUnderBottomBase
+  id: ClothingUniformWhiteSweaterPants
+  name: white sweater pants
+  description: A stunning red swimsuit that catches the eye.
+  components:
+  - type: Sprite
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformRedSweaterPants
+  name: red sweater pants
+  components:
+  - type: Sprite
+    color: "#ff4747"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ff4747"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformGreenSweaterPants
+  name: green sweater pants
+  components:
+  - type: Sprite
+    color: "#42ff7b"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#42ff7b"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformBlueSweaterPants
+  name: blue sweater pants
+  components:
+  - type: Sprite
+    color: "#5b6cec"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#5b6cec"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformPinkSweaterPants
+  name: pink sweater pants
+  components:
+  - type: Sprite
+    color: "#ff75f4"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ff75f4"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformLilacSweaterPants
+  name: lilac sweater pants
+  components:
+  - type: Sprite
+    color: "#a969d3"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#a969d3"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformBlackSweaterPants
+  name: black sweater pants
+  components:
+  - type: Sprite
+    color: "#4d4554"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#4d4554"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformCyanogenSweaterPants
+  name: cyanogen sweater pants
+  components:
+  - type: Sprite
+    color: "#43dffe"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#43dffe"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformGreySweaterPants
+  name: grey sweater pants
+  components:
+  - type: Sprite
+    color: "#939296"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#939296"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformOrengeSweaterPants
+  name: orange sweater pants
+  components:
+  - type: Sprite
+    color: "#ff8e24"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ff8e24"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformYellowSweaterPants
+  name: yellow sweater pants
+  components:
+  - type: Sprite
+    color: "#ffde66"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#ffde66"
+
+- type: entity
+  parent: ClothingUniformWhiteSweaterPants
+  id: ClothingUniformBrownSweaterPants
+  name: brown sweater pants
+  components:
+  - type: Sprite
+    color: "#8B5A3C"
+  - type: Clothing
+    sprite: _Wega/Clothing/Under/Bottom/sweater.rsi
+    clothingVisuals:
+      underwearbottom:
+      - state: equipped-UNDERWEARBOTTOM
+        color: "#8B5A3C"

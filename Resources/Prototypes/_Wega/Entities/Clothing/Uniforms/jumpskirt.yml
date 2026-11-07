@@ -338,3 +338,24 @@
     - type: Clothing
       sprite: _Wega/Clothing/Uniforms/Jumpskirt/explorer_khaki.rsi
 
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtShortsExplorer
+  name: explorer shorts
+  description: "It is thick and comfortable, designed for heavy work in difficult conditions."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/miner_shorts.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/miner_shorts.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformJumpskirtShortSkirtExplorer
+  name: explorer short skirt
+  description: "It is thick and comfortable, designed for heavy work in difficult conditions."
+  components:
+    - type: Sprite
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/miner_skirt.rsi
+    - type: Clothing
+      sprite: _Wega/Clothing/Uniforms/Jumpskirt/miner_skirt.rsi
