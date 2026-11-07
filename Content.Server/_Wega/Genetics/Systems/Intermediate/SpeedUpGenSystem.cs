@@ -11,15 +11,7 @@ public sealed partial class SpeedUpGenSystem : EntitySystem
     [Dependency] private DamageableSystem _damageable = default!;
     [Dependency] private MovementSpeedModifierSystem _speed = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<SpeedUpGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<SpeedUpGenComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<SpeedUpGenComponent, DamageDealtEvent>(OnDamageChanged);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<SpeedUpGenComponent> ent, ref ComponentInit args)
     {
         if (HasComp<VampireComponent>(ent))
@@ -33,6 +25,7 @@ public sealed partial class SpeedUpGenSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<SpeedUpGenComponent> ent, ref ComponentShutdown args)
     {
         if (HasComp<VampireComponent>(ent))
@@ -46,6 +39,7 @@ public sealed partial class SpeedUpGenSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnDamageChanged(Entity<SpeedUpGenComponent> ent, ref DamageDealtEvent args)
     {
         if (!ent.Comp.DamageBooster)

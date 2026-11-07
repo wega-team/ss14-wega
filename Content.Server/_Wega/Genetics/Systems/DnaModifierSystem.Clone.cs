@@ -19,7 +19,6 @@ public sealed partial class DnaModifierSystem
             return false;
 
         CloneHumanoid(entity, target);
-
         return true;
     }
 
@@ -45,6 +44,7 @@ public sealed partial class DnaModifierSystem
             detail.Content = targetDetail.Content;
 
         _metaData.SetEntityName(entity, Name(target));
+
         if (TryComp<DnaComponent>(entity, out var dna) && TryComp<DnaComponent>(target, out var targetDna))
             dna.DNA = targetDna.DNA;
 
@@ -64,8 +64,6 @@ public sealed partial class DnaModifierSystem
             EnsureComp<WaggingComponent>(entity);
         else
             RemComp<WaggingComponent>(entity);
-
-        entity.Comp.UniqueIdentifiers!.Gender = target.Comp.UniqueIdentifiers!.Gender;
 
         Dirty(entity, entity.Comp);
         TryChangeUniqueIdentifiers(entity);

@@ -15,33 +15,30 @@ public sealed partial class DizzySystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<DizzyEffectComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<DizzyEffectComponent, ComponentShutdown>(OnShutdown);
-
-        SubscribeLocalEvent<DizzyEffectComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<DizzyEffectComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
-
         _overlay = new();
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerAttached(EntityUid uid, DizzyEffectComponent component, LocalPlayerAttachedEvent args)
     {
         _overlayMan.AddOverlay(_overlay);
     }
 
+    [SubscribeLocalEvent]
     private void OnPlayerDetached(EntityUid uid, DizzyEffectComponent component, LocalPlayerDetachedEvent args)
     {
         _overlay.CurrentIntensity = 0;
         _overlayMan.RemoveOverlay(_overlay);
     }
 
+    [SubscribeLocalEvent]
     private void OnInit(EntityUid uid, DizzyEffectComponent component, ComponentInit args)
     {
         if (_player.LocalEntity == uid)
             _overlayMan.AddOverlay(_overlay);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(EntityUid uid, DizzyEffectComponent component, ComponentShutdown args)
     {
         if (_player.LocalEntity == uid)
