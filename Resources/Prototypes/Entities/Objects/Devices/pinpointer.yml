@@ -59,7 +59,7 @@
   components:
   - type: Pinpointer
     component: NukeDisk
-    targetName: nuclear authentication disk
+    targetName: "диск ядерной аутентификации"
 
 - type: entity
   name: syndicate pinpointer
@@ -92,8 +92,8 @@
   - type: Icon
     state: pinpointer-syndicate
   - type: Pinpointer
-    component: NukeDisk
-    targetName: nuclear authentication disk
+    component: Nuke # Corvax-Wega-Nuka
+    targetName: "ядерная боеголовка"
 
 - type: entity
   name: universal pinpointer
