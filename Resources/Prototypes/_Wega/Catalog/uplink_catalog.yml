@@ -326,6 +326,44 @@
   - UplinkAmmo
 
 - type: listing
+  id: UplinkPhantomLibertyAgent
+  name: uplink-phantom-liberty-name
+  description: uplink-phantom-liberty-desc
+  productEntity: WeaponPistolPhantomLiberty
+  cost:
+    Telecrystal: 9
+  categories:
+  - UplinkWeaponry
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 7
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - NukeOpsUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  
+
+- type: listing
+  id: UplinkPhantomLiberty
+  name: uplink-phantom-liberty-name
+  description: uplink-phantom-liberty-desc
+  productEntity: WeaponPistolPhantomLiberty
+  cost:
+    Telecrystal: 11
+  categories:
+  - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: UplinkAmmoSniper
   name: uplink-ammo-sniper-name
   description: uplink-ammo-sniper-desc
