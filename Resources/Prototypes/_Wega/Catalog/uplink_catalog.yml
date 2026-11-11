@@ -331,12 +331,12 @@
   description: uplink-phantom-liberty-desc
   productEntity: WeaponPistolPhantomLiberty
   cost:
-    Telecrystal: 9
+    Telecrystal: 11
   categories:
   - UplinkWeaponry
   discountCategory: rareDiscounts
   discountDownTo:
-    Telecrystal: 7
+    Telecrystal: 8
   conditions:
   - !type:StoreWhitelistCondition
     blacklist:
@@ -352,7 +352,7 @@
   description: uplink-phantom-liberty-desc
   productEntity: WeaponPistolPhantomLiberty
   cost:
-    Telecrystal: 11
+    Telecrystal: 15
   categories:
   - UplinkWeaponry
   conditions:
