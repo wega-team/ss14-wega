@@ -8,73 +8,47 @@ namespace Content.Shared.Genetics.Systems
     {
         [Dependency] private IRobustRandom _random = default!;
 
-        private List<EnzymesPrototypeInfo> _enzymesPrototypes = new List<EnzymesPrototypeInfo>();
-        private bool _isInitialized = false;
+        private List<EnzymesPrototypeInfo> _enzymes = new();
 
-        public override void Initialize()
-        {
-            base.Initialize();
-
-            SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
-        }
-
+        [SubscribeLocalEvent]
         private void OnRoundRestart(RoundRestartCleanupEvent args)
-        {
-            _isInitialized = false;
-            _enzymesPrototypes.Clear();
-        }
+            => _enzymes.Clear();
 
         public List<EnzymesPrototypeInfo> GetAllEnzymesPrototypes()
         {
-            if (!_isInitialized)
-            {
+            if (_enzymes.Count == 0)
                 InitializeEnzymesPrototypes();
-            }
 
-            return _enzymesPrototypes;
+            return _enzymes;
         }
 
         private void InitializeEnzymesPrototypes()
         {
-            _enzymesPrototypes.Clear();
+            _enzymes.Clear();
 
             var allEnzymesPrototypes = ProtoMan.EnumeratePrototypes<StructuralEnzymesPrototype>().ToList();
             _random.Shuffle(allEnzymesPrototypes);
 
-            int maxBlocks = 54;
-            int blocksToAdd = Math.Min(allEnzymesPrototypes.Count, maxBlocks);
+            const int maxBlocks = 54;
+            var blocksToAdd = Math.Min(allEnzymesPrototypes.Count, maxBlocks);
 
-            var allBlocks = new List<EnzymesPrototypeInfo>();
-            for (int i = 0; i < blocksToAdd; i++)
+            for (var i = 0; i < blocksToAdd; i++)
             {
-                allBlocks.Add(new EnzymesPrototypeInfo
+                _enzymes.Add(new EnzymesPrototypeInfo
                 {
                     EnzymesPrototypeId = allEnzymesPrototypes[i].ID
                 });
             }
 
-            for (int i = blocksToAdd; i < maxBlocks; i++)
-            {
-                allBlocks.Add(new EnzymesPrototypeInfo());
-            }
+            for (var i = blocksToAdd; i < maxBlocks; i++)
+                _enzymes.Add(new EnzymesPrototypeInfo());
 
-            _random.Shuffle(allBlocks);
+            _random.Shuffle(_enzymes);
 
-            for (int i = 0; i < allBlocks.Count; i++)
-            {
-                allBlocks[i].Order = i + 1;
-                _enzymesPrototypes.Add(allBlocks[i]);
-            }
+            for (var i = 0; i < _enzymes.Count; i++)
+                _enzymes[i] = _enzymes[i] with { Order = i + 1 };
 
-            // Last block
-            var lastEmptyBlock = new EnzymesPrototypeInfo
-            {
-                Order = 55
-            };
-
-            _enzymesPrototypes.Add(lastEmptyBlock);
-
-            _isInitialized = true;
+            _enzymes.Add(new EnzymesPrototypeInfo { Order = 55 });
         }
     }
 }

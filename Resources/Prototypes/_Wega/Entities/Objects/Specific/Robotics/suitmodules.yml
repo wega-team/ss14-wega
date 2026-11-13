@@ -423,6 +423,8 @@
   name: teleporter suit module
   description: "A module that uses a bluespace core to let the user transport their particles elsewhere."
   components:
+  - type: Item
+    size: Colossal
   - type: Sprite
     state: teleporter
   - type: ModularSuitActionModule
@@ -1184,6 +1186,8 @@
   name: holster suit module
   description: "Based off typical storage compartments, this system allows the suit to holster a standard firearm across its surface and allow for extremely quick retrieval. While some users prefer the chest, others the forearm for quick deployment, some law enforcement prefer the holster to extend from the thigh."
   components:
+  - type: Item
+    size: Colossal
   - type: Sprite
     state: holster
   - type: ModularSuitActionModule
@@ -1216,6 +1220,8 @@
   name: kinetic holster suit module
   description: "A reinforced clamp bolted across the suit's chest, shaped around the frame of a proto-kinetic accelerator. Salvagers used to hauling weight on their backs love carrying their weapon in it."
   components:
+  - type: Item
+    size: Colossal
   - type: Sprite
     state: kinetic_holster
   - type: ModularSuitActionModule

@@ -38,6 +38,6 @@ slime-analyzer-type-lightpink = Светло-розовый
 slime-analyzer-type-rainbow = Радужный
 
 slime-analyzer-behavior-passive = Пассивный
-slime-analyzer-behavior-hungry = Головный
+slime-analyzer-behavior-hungry = Голодный
 slime-analyzer-behavior-aggressive = Агрессивный
 slime-analyzer-behavior-dividing = Делится

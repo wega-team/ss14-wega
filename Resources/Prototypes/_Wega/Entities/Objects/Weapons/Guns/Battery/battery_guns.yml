@@ -1,5 +1,5 @@
 - type: entity
-  parent: [BaseWeaponBatterySmall, BaseGrandTheftContraband]
+  parent: [BaseWeaponBatterySmall, BaseGrandTheftContraband, BaseGunMeleeLarge]
   id: WeaponBlueLaserPistol
   name: blue laser pistol
   description: "Standard officer 'Blue Shield' laser with mode selector. Has non-lethal fire options for suppressing threats and lethal fire for neutralization. Chrome finish and ergonomic grip ensure accuracy and reliability in critical situations."
@@ -35,12 +35,11 @@
     fireModes:
     - proto: RedMediumLaser
       fireCost: 100
-      state: lethal
-      magState: lethal
+      magState: mag-lethal
     - proto: LaserStun
       fireCost: 62.5
-      state: disabler
-      magState: disabler
+      magState: mag-disabler
+      pacifismAllowedMode: true
   - type: Item
     heldPrefix: lethal
   - type: Battery
@@ -50,8 +49,8 @@
     visuals:
       enum.BatteryWeaponFireModeVisuals.State:
         Firemode:
-          disabler: { state: mode-disabler }
-          lethal: { state: mode-lethal }
+          LaserStun: { state: mode-disabler }
+          RedMediumLaser: { state: mode-lethal }
   - type: EdibleMatter
     canBeEaten: false
   - type: Tag
@@ -64,7 +63,7 @@
 
 
 - type: entity
-  parent: BaseWeaponBatterySmall
+  parent: [BaseWeaponBatterySmall, BaseGunMeleeLarge]
   id: WeaponDominator
   name: laser pistol 'Dominator'
   description: A high-tech weapon created by the environmental organization Sibyl System, specifically designed to fight crime.
@@ -100,12 +99,11 @@
     fireModes:
     - proto: BulletLaserAdvanced
       fireCost: 100
-      state: lethal
-      magState: lethal
+      magState: mag-lethal
     - proto: BulletDisabler
       fireCost: 62.5
-      state: disabler
-      magState: disabler
+      magState: mag-disabler
+      pacifismAllowedMode: true
   - type: Item
     heldPrefix: lethal
   - type: Battery
@@ -115,8 +113,8 @@
     visuals:
       enum.BatteryWeaponFireModeVisuals.State:
         Firemode:
-          disabler: { state: mode-disabler }
-          lethal: { state: mode-lethal }
+          BulletDisabler: { state: mode-disabler }
+          BulletLaserAdvanced: { state: mode-lethal }
   - type: Tag
     tags:
     - Sidearm

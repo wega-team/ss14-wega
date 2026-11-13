@@ -57,6 +57,8 @@ public sealed partial class SolutionRegenerationSystem : EntitySystem
     public void SetReagent(Entity<SolutionRegenerationComponent> ent, Solution reagent)
     {
         ent.Comp.Generated = reagent;
+        ent.Comp.NextRegenTime = _timing.CurTime + ent.Comp.Duration;
+        Dirty(ent);
     }
 	// Corvax-Wega-End
 }

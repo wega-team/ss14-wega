@@ -5,14 +5,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class ChameleonGenSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ChameleonGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<ChameleonGenComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<ChameleonGenComponent> ent, ref ComponentInit args)
     {
         if (HasComp<CloakOfDarknessGenComponent>(ent))
@@ -29,6 +22,7 @@ public sealed partial class ChameleonGenSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<ChameleonGenComponent> ent, ref ComponentShutdown args)
     {
         if (HasComp<StealthOnMoveComponent>(ent))

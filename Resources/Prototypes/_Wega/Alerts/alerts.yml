@@ -6,3 +6,11 @@
     state: offer
   name: alerts-offer-name
   description: alerts-offer-desc
+
+- type: alert
+  id: HealAura
+  icons:
+  - sprite: _Wega/Objects/Specific/Robotics/iconitem.rsi
+    state: icon-medical
+  name: alerts-heal-aura-name
+  description: alerts-heal-aura-desc

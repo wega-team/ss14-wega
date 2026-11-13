@@ -61,7 +61,7 @@
     count: 1
 
 - type: entity
-  parent: [MaterialBase, FoodBase]
+  parent: [MaterialBase, FoodBaseNoSllme] # Corvax-Wega-Edit
   id: MaterialCloth
   name: cloth
   suffix: Full
@@ -146,7 +146,7 @@
     count: 1
 
 - type: entity
-  parent: [MaterialBase, FoodBase]
+  parent: [MaterialBase, FoodBaseNoSllme] # Corvax-Wega-Edit
   id: MaterialDurathread
   name: durathread
   suffix: Full
@@ -673,7 +673,7 @@
     count: 1
 
 - type: entity
-  parent: [MaterialBase, FoodBase]
+  parent: [MaterialBase, FoodBaseNoSllme] # Corvax-Wega-Edit
   id: MaterialBones
   name: bones
   suffix: Full

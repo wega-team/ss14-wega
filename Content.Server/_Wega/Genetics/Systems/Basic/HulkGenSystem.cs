@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Server.Destructible;
 using Content.Server.Polymorph.Systems;
 using Content.Shared.Actions;
@@ -29,42 +28,23 @@ public sealed partial class HulkGenSystem : EntitySystem
 
     private static readonly ProtoId<StructuralEnzymesPrototype> HulkGen = "GeneticsHulkBasic";
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<HulkGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<HulkGenComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<HulkGenComponent, HulkTransformationActionEvent>(OnTransformation);
-
-        SubscribeLocalEvent<HulkComponent, ComponentInit>(OnHulkInit);
-        SubscribeLocalEvent<HulkComponent, ComponentShutdown>(OnHulkShutdown);
-        SubscribeLocalEvent<HulkComponent, HulkChargeActionEvent>(OnHulkCharge);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<HulkGenComponent> ent, ref ComponentInit args)
         => ent.Comp.ActionEntity = _action.AddAction(ent, ent.Comp.ActionPrototype);
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<HulkGenComponent> ent, ref ComponentShutdown args)
         => _action.RemoveAction(ent.Comp.ActionEntity);
 
+    [SubscribeLocalEvent]
     private void OnTransformation(Entity<HulkGenComponent> ent, ref HulkTransformationActionEvent args)
     {
         args.Handled = true;
-        if (!TryComp<DnaModifierComponent>(ent, out var dnaModifier) || dnaModifier.EnzymesPrototypes == null
-            || !TryComp<HumanoidProfileComponent>(ent, out var humanoid))
+
+        if (!TryComp<HumanoidProfileComponent>(ent, out var humanoid))
             return;
 
-        foreach (var enzymeInfo in dnaModifier.EnzymesPrototypes)
-        {
-            if (enzymeInfo.EnzymesPrototypeId == HulkGen)
-            {
-                enzymeInfo.HexCode = new[] { "3", "3", "3" };
-                _dnaModifier.ChangeDna((ent, dnaModifier), 1);
-                break;
-            }
-        }
-
+        _dnaModifier.TrySetEnzymeHexCode(ent.Owner, HulkGen.Id, 0x333);
         var polymorph = CheckSpeciesEntity(humanoid)
             ? ent.Comp.PolymorphAltProto
             : ent.Comp.PolymorphProto;
@@ -77,6 +57,7 @@ public sealed partial class HulkGenSystem : EntitySystem
         var altSpecies = new[]
         {
             new ProtoId<SpeciesPrototype>("Reptilian"),
+            new ProtoId<SpeciesPrototype>("Feroxi"),
             new ProtoId<SpeciesPrototype>("Resomi"),
             new ProtoId<SpeciesPrototype>("Vox")
         };
@@ -84,18 +65,21 @@ public sealed partial class HulkGenSystem : EntitySystem
     }
 
     #region Abilities
+    [SubscribeLocalEvent]
     private void OnHulkInit(Entity<HulkComponent> ent, ref ComponentInit args)
     {
         foreach (var action in ent.Comp.ActionPrototypes)
             ent.Comp.ActionsEntity.Add(_action.AddAction(ent, action));
     }
 
+    [SubscribeLocalEvent]
     private void OnHulkShutdown(Entity<HulkComponent> ent, ref ComponentShutdown args)
     {
         foreach (var action in ent.Comp.ActionsEntity)
             _action.RemoveAction(action);
     }
 
+    [SubscribeLocalEvent]
     private void OnHulkCharge(Entity<HulkComponent> entity, ref HulkChargeActionEvent args)
     {
         var target = args.Target;

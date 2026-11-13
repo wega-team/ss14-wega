@@ -206,6 +206,12 @@
       types:
         Blunt: 8
         Slash: 12
+  - type: Tag
+    tags:
+    - Carp
+    - DoorBumpOpener
+    - CannotSuicide
+    - RiftHealAura 
     # Corvax-Wega-End
 
 - type: entity
@@ -330,4 +336,10 @@
         Blunt: 10
         Slash: 15
         Bloodloss: 5
+  - type: Tag
+    tags:
+    - Carp
+    - DoorBumpOpener
+    - CannotSuicide
+    - RiftHealAura 
   # Corvax-Wega-mewmew-end

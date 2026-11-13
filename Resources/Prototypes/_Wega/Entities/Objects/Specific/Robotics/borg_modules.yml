@@ -655,11 +655,14 @@
     hands:
     - item: BorgGeneratorCommonCandy
     - hand:
-        emptyRepresentative: FoodProduceLollipopMedical
-        emptyLabel: borg-slot-candy-empty
+        emptyRepresentative: BorgIconKitchenIcon
+        emptyLabel: borg-slot-food-empty
         whitelist:
-          tags:
-          - Lollipops
+          components:
+          - Edible
+        blacklist:
+          components:
+          - Clothing
     - item: BorgDrinkSolutionBase
     - item: BorgGeneratorCup
     - hand:
@@ -778,6 +781,8 @@
           - FitsInDispenser
           tags:
           - Dinnerware
+          - Cook
+          - Cookware
     - hand:
         emptyLabel: borg-slot-ingredient-empty
         emptyRepresentative: BorgModuleRawIngredientPlaceholder
@@ -1784,9 +1789,9 @@
   - type: ItemBorgModule
     hands:
     - item: HandheldHealthAnalyzer
-    - item: BorgHypoGeneratedSyndieGeneral
     - item: BaseBorgHypoSyndie
     - item: DefibrillatorSyndicateCyborg
+    - item: BorgHypoGeneratedSyndieGeneral
     - item: Jug
       hand:
         emptyLabel: borg-slot-chemical-containers-empty

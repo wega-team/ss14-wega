@@ -320,6 +320,8 @@
         Quantity: 5
   - type: Item
     size: Normal
+    shape:
+    - 0,0,2,1
   - type: Sprite
     sprite: _Wega/Objects/Specific/Hydroponics/radioactive_berry.rsi
   - type: Produce
@@ -333,7 +335,7 @@
     tags:
     - Fruit
   - type: RadiationSource
-    intensity: 0.1
+    intensity: 0.2
     slope: 0.1
   - type: PointLight
     color: "#19FF19FF"
@@ -726,7 +728,7 @@
         orGroup: GiftPool
       - id: PlushieDiona
         orGroup: GiftPool
-      - id: PlushieArachind
+      - id: PlushieArachnid
         orGroup: GiftPool
       - id: ToyMouse
         orGroup: GiftPool

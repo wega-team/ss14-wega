@@ -35,12 +35,6 @@ public sealed partial class MatterEaterSystem : EntitySystem
     [Dependency] private SharedContainerSystem _container = default!;
     [Dependency] private SatiationSystem _satiation = default!;
 
-    public override void Initialize()
-    {
-        SubscribeLocalEvent<EdibleMatterComponent, MatterEaterDoAfterEvent>(OnDoAfter);
-        SubscribeLocalEvent<EdibleMatterComponent, GetVerbsEvent<AlternativeVerb>>(AddMatterEatVerb);
-    }
-
     public bool TryEatMatter(EntityUid user, EntityUid target, EntityUid matter, EdibleMatterComponent comp)
     {
         if (!comp.CanBeEaten || HasComp<EdibleComponent>(matter)
@@ -72,6 +66,7 @@ public sealed partial class MatterEaterSystem : EntitySystem
         return true;
     }
 
+    [SubscribeLocalEvent]
     private void OnDoAfter(Entity<EdibleMatterComponent> ent, ref MatterEaterDoAfterEvent args)
     {
         if (args.Cancelled || args.Handled || args.Target == null
@@ -120,6 +115,7 @@ public sealed partial class MatterEaterSystem : EntitySystem
         args.Repeat = !forceFeed && Exists(ent);
     }
 
+    [SubscribeLocalEvent]
     private void AddMatterEatVerb(Entity<EdibleMatterComponent> ent, ref GetVerbsEvent<AlternativeVerb> ev)
     {
         if (ent.Owner == ev.User || !ev.CanInteract || !ev.CanAccess || !ent.Comp.CanBeEaten

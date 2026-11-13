@@ -28,6 +28,12 @@
           Blunt: -20
           Slash: -20
           Piercing: -20
+    - type: Tag
+      tags:
+      - Carp
+      - DoorBumpOpener
+      - CannotSuicide
+      - RiftHealAura 
 
 - type: entity
   id: MobCarpHoloDragon
@@ -59,3 +65,10 @@
         types:
           Blunt: 5
           Slash: 10
+    - type: Tag
+      tags:
+      - Carp
+      - DoorBumpOpener
+      - CannotSuicide
+      - RiftHealAura 
+         

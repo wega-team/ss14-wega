@@ -6,14 +6,7 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class HeatResistanceGenSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<HeatResistanceGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<HeatResistanceGenComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<HeatResistanceGenComponent> ent, ref ComponentInit args)
     {
         if (HasComp<FlammableComponent>(ent))
@@ -28,6 +21,7 @@ public sealed partial class HeatResistanceGenSystem : EntitySystem
         }
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<HeatResistanceGenComponent> ent, ref ComponentShutdown args)
     {
         if (ent.Comp.RemFlammable) AddComp<FlammableComponent>(ent);

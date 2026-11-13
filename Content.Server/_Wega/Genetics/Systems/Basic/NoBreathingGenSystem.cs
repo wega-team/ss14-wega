@@ -5,20 +5,14 @@ namespace Content.Server.Genetics.System;
 
 public sealed partial class NoBreathingGenSystem : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<NoBreathingGenComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<NoBreathingGenComponent, ComponentShutdown>(OnShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnInit(Entity<NoBreathingGenComponent> ent, ref ComponentInit args)
     {
         if (HasComp<RespiratorComponent>(ent))
             RemComp<RespiratorComponent>(ent);
     }
 
+    [SubscribeLocalEvent]
     private void OnShutdown(Entity<NoBreathingGenComponent> ent, ref ComponentShutdown args)
     {
         if (TerminatingOrDeleted(ent))

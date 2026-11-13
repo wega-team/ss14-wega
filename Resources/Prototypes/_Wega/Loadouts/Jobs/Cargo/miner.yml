@@ -25,6 +25,16 @@
   - !type:GroupLoadoutEffect
     proto: SalvageVeterancy
 
+- type: loadout
+  id: ShaftMinerJumpskirtShortsExplorer
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtShortsExplorer
+
+- type: loadout
+  id: ShaftMinerJumpskirtShortSkirtExplorer
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtShortSkirtExplorer
+
 # OuterClothing
 - type: loadout
   id: ShaftMinerArmorExplorerSuitKhaki

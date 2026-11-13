@@ -9,14 +9,7 @@ public sealed partial class TelekinesisGenSystem : EntitySystem
 {
     [Dependency] private HandsSystem _hands = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<TelekinesisGenComponent, ComponentStartup>(OnTelekinesisStartup);
-        SubscribeLocalEvent<TelekinesisGenComponent, ComponentShutdown>(OnTelekinesisShutdown);
-    }
-
+    [SubscribeLocalEvent]
     private void OnTelekinesisStartup(EntityUid uid, TelekinesisGenComponent component, ComponentStartup args)
     {
         if (!HasComp<HandsComponent>(uid))
@@ -32,6 +25,7 @@ public sealed partial class TelekinesisGenSystem : EntitySystem
             EnsureComp<UnremoveableComponent>(item);
     }
 
+    [SubscribeLocalEvent]
     private void OnTelekinesisShutdown(Entity<TelekinesisGenComponent> entity, ref ComponentShutdown args)
     {
         if (entity.Comp.TelekinesisItem is { Valid: true } item)

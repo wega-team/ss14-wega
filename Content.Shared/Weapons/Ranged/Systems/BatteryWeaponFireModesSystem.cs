@@ -118,8 +118,15 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
 
         if (ProtoMan.TryIndex<EntityPrototype>(fireMode.Prototype, out var prototype))
         {
+			// Corvax-Wega-Start
             if (TryComp<AppearanceComponent>(ent, out var appearance))
+			{
                 _appearanceSystem.SetData(ent, BatteryWeaponFireModeVisuals.State, prototype.ID, appearance);
+			
+				if (fireMode.MagState != null)
+					_appearanceSystem.SetData(ent, BatteryWeaponFireModeVisuals.MagState, fireMode.MagState, appearance);
+			}
+			// Corvax-Wega-End
 
             if (user != null)
                 _popupSystem.PopupEntity(Loc.GetString("gun-set-fire-mode-popup", ("mode", prototype.Name)), ent, user.Value);
