@@ -5,13 +5,13 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared.NPC.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(NpcFactionSystem))]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true), Access(typeof(NpcFactionSystem))] // Corvax-Wega-FactionLock-Edit
 public sealed partial class NpcFactionMemberComponent : Component
 {
     /// <summary>
     /// Factions this entity is a part of.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField] // Corvax-Wega-FactionLock-Edit
     public HashSet<ProtoId<NpcFactionPrototype>> Factions = new();
 
     /// <summary>
