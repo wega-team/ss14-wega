@@ -133,13 +133,14 @@
   - type: MeleeWeapon
     autoAttack: true
     attackRate: 2.5
+    armorPenetration: 0.4
     wideAnimationRotation: 180
     damage:
       types:
         Slash: 15
     animation: WeaponArcClaw
   - type: BonusMeleeDamage
-    heavyDamageMultiplier: 1.5
+    heavyDamageMultiplier: 1.35
 
 - type: entity
   parent: BaseKnife

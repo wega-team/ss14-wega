@@ -199,6 +199,15 @@ public sealed partial class MeleeWeaponComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly)]
     public int UndamagedSwings = 0;
+
+    // Corvax-Wega-ArmorPenetration-Start
+    /// <summary>
+    /// Доля защиты брони, игнорируемая оружием.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField, AutoNetworkedField]
+    public float ArmorPenetration = 0f;
+    // Corvax-Wega-ArmorPenetration-End
 }
 
 /// <summary>
