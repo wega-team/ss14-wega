@@ -1817,6 +1817,37 @@
 
 - type: entity
   parent: BaseSuitModule
+  id: AshAccretionSuitModule
+  name: ash accretion suit module
+  description: "A built-in module that coats the suit's plating with a layer of volcanic ash on planetary surfaces, hardening the armor and relieving the strain on the servos. Has no effect off-planet. Requires no power and cannot be removed."
+  components:
+  - type: Sprite
+    state: ash_accretion
+  - type: ModularSuitPermanentInstalled
+  - type: ModularSuitModuleEffect
+    activeComponents:
+    - type: AffectedModuleAshAccretion
+      modifiers:
+        coefficients: # цифры конченые, потому что я через калькулятор приближённые значения считал.
+          Blunt: 0.51
+          Slash: 0.59
+          Piercing: 0.95
+          Heat: 0.51
+          Radiation: 0.95
+          Caustic: 0.34
+      walkModifier: 1.1765
+      sprintModifier: 1.1765
+      explosionCoefficient: 0.857
+  - type: ModularSuitModule
+    modulePart: Torso
+    canBeDisabled: false
+    active: true
+    verbIcon:
+      sprite: *modules-rsi
+      state: ash_accretion
+
+- type: entity
+  parent: BaseSuitModule
   id: BurgerDispenserSuitModule
   name: burger dispenser suit module
   description: "A rare piece of technology reverse-engineered from a prototype found in a Donk Corporation vessel. This can draw incredible amounts of power from the suit's cell to create edible organic matter in the palm of the wearer's glove; however, research seemed to have entirely stopped at burgers. Notably, all attempts to get it to dispense Earl Grey tea have failed."
