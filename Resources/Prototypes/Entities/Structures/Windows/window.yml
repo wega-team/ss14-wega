@@ -142,9 +142,11 @@
   - type: IconSmooth
     key: windows-tinted
     states:
-    - !type:CardinalCornerSpriteSmoothing
-      mask: [ windows-tinted ]
-      altMask:
+    # Corvax-Wega-Stylish-Edit-start
+    - !type:CornerSpriteSmoothing
+      mask:
+      - windows-tinted
+    # Corvax-Wega-Stylish-Edit-end
       - windows
       - windows-reinf
       - windows-plasma
