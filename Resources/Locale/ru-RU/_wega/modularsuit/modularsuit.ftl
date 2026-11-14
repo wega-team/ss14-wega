@@ -102,6 +102,7 @@ modsuit-springlock-locked = Ой-ой, кажется вы больше нико
 modsuit-springlock-unequipped-failed = Я уже часть команды, часть корабля.
 modsuit-ash-accretion-engaged = Пепельное покрытие активировано.
 modsuit-ash-accretion-disengaged = Пепельное покрытие деактивировано.
+modsuit-ash-accretion-armor-examine = [color=orange]Пепельное покрытие[/color] дополнительно:
 modsuit-tanning-used = Вы чувствуете тёплое свечение, распространяющееся по коже...
 modsuit-tanning-max = Ваша кожа не может стать ещё темнее больше.
 modsuit-atrocinator-used = Таинственная сила вырывается из костюма, разбрасывая всех вокруг!
