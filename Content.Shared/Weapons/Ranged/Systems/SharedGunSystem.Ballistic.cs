@@ -451,7 +451,10 @@ public abstract partial class SharedGunSystem
             }
         }
 
-        Audio.PlayPredicted(entity.Comp2.RechargeSound, entity, entity);
+        //Corvax-Wega-Edit-Start
+        if (_netManager.IsServer)
+            Audio.PlayPvs(entity.Comp2.RechargeSound, entity);
+        //Corvax-Wega-Edit-End
 
         if (refiller.PowerConsumption > 0)
             TakeCharge(entity, refiller.PowerConsumption);
