@@ -1830,3 +1830,16 @@ Entries:
   id: 235
   time: '2026-11-07T17:24:24Z'
   url: https://github.com/wega-team/ss14-wega/pull/595
+- author: Ja4zuk0
+  changes:
+  - type: Add
+    message: Добавлена поддержка пробития брони для оружия ближнего боя.
+  - type: Tweak
+    message: Гемомансер и гаргантюа больше не могут использовать огнестрельное оружие.
+  - type: Tweak
+    message: Переработаны способности BloodSwell и рывок гаргантюа.
+  - type: Tweak
+    message: Изменены правила появления антагонистов и игровые режимы.
+  id: 236
+  time: '2026-11-14T08:47:26Z'
+  url: https://github.com/wega-team/ss14-wega/pull/583
