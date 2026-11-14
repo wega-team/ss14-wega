@@ -116169,30 +116169,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -54.866623,51.820183
-- proto: ChemistryEmptyBottle01
-  entities:
-  - uid: 57
-    components:
-    - type: Transform
-      parent: 56
-    - type: Tag
-      tags:
-      - Bottle
-    - type: SolutionContainerManager
-      containers:
-      - drink
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@drink: !type:ContainerSlot
-          ent: 58
-    - type: Forensics
-      residues: []
-      fingerprints: []
-      fibers: []
-      dNAs: []
-    - type: InsideEntityStorage
   - uid: 19916
     components:
     - type: Transform
@@ -166893,27 +166869,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -30.511639,59.570053
-- proto: ClothingHandsGlovesColorBlack
-  entities:
-  - uid: 52
-    components:
-    - type: Transform
-      parent: 2
-      pos: -10.452433,66.22243
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 53
-    - type: Forensics
-      residues: []
-      fingerprints:
-      - 1587761F31BB73BD825C5BE179A2766F
-      fibers:
-      - чёрные синтетические волокна
-      dNAs: []
   - uid: 20584
     components:
     - type: Transform
@@ -167713,23 +167668,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -90.49608,27.783672
-- proto: ClothingHeadHatHoodChaplainHood
-  entities:
-  - uid: 47
-    components:
-    - type: Transform
-      parent: 46
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 48
-    - type: AttachedClothing
-      attachedUid: 46
 - proto: ClothingHeadHatHoodCulthood
   entities:
   - uid: 20699
@@ -168786,20 +168724,6 @@ entities:
       parent: 2
       rot: -6.283185307179586 rad
       pos: 59.43079,-44.17787
-- proto: ClothingNeckCloakPan
-  entities:
-  - uid: 54
-    components:
-    - type: Transform
-      parent: 2
-      pos: 128.49423,-63.46637
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 55
 - proto: ClothingNeckCloakPirateCap
   entities:
   - uid: 57307
@@ -168837,29 +168761,6 @@ entities:
     - type: Transform
       parent: 2
       pos: -59.441784,-5.4293747
-- proto: ClothingNeckMantleHOS
-  entities:
-  - uid: 50
-    components:
-    - type: MetaData
-      name: чёрно-красная мантия
-      desc: Чешуйчатая мантия, которую можно обернуть вокруг верхней части тела.
-    - type: Transform
-      parent: 2
-      pos: -10.452433,66.42555
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 51
-    - type: Forensics
-      residues: []
-      fingerprints: []
-      fibers:
-      - чёрные синтетические волокна
-      dNAs: []
 - proto: ClothingNeckMantleHOSShoulder
   entities:
   - uid: 20856
@@ -169906,40 +169807,6 @@ entities:
       parent: 20585
     - type: Physics
       canCollide: False
-- proto: ClothingShoesBootsJack
-  entities:
-  - uid: 44
-    components:
-    - type: MetaData
-      name: чёрные сапоги
-      desc: Специальная обувь клана "Скрытого листа", для боевых операций или боевых действий.
-    - type: Transform
-      parent: 2
-      pos: -10.482728,65.62108
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: ContainerContainer
-      containers:
-        item: !type:ContainerSlot
-          ent: null
-          showEnts: False
-          occludes: True
-        solution@food: !type:ContainerSlot
-          ent: 45
-          showEnts: False
-          occludes: True
-    - type: Forensics
-      residues: []
-      fingerprints: []
-      fibers:
-      - чёрные синтетические волокна
-      dNAs: []
-  - uid: 21021
-    components:
-    - type: Transform
-      parent: 2
-      pos: 53.469215,14.635051
 - proto: ClothingShoesBootsJackFilled
   entities:
   - uid: 21008
@@ -171350,36 +171217,6 @@ entities:
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
-- proto: ClothingUniformJumpsuitTacticool
-  entities:
-  - uid: 40
-    components:
-    - type: MetaData
-      desc: Униформа для членов клана "Скрытого листа".
-    - type: Transform
-      parent: 2
-      pos: -10.436808,65.98805
-    - type: DeviceNetwork
-      transmitFrequency: 1262
-      address: 6313-0A91
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 41
-    - type: Forensics
-      residues: []
-      fingerprints: []
-      fibers:
-      - чёрные синтетические волокна
-      dNAs: []
-  - uid: 21163
-    components:
-    - type: Transform
-      parent: 2
-      pos: 53.681236,4.7304797
 - proto: ClothingUniformJumpsuitWeb
   entities:
   - uid: 21164
@@ -200152,22 +199989,6 @@ entities:
       parent: 2
       rot: 18.84955592153876 rad
       pos: 35.264652,-7.2745934
-- proto: DrinkJarWhat
-  entities:
-  - uid: 42
-    components:
-    - type: MetaData
-      name: банка с маринадом
-    - type: Transform
-      parent: 2
-      pos: -97.87808,14.611576
-    - type: SolutionContainerManager
-      containers:
-      - drink
-    - type: ContainerContainer
-      containers:
-        solution@drink: !type:ContainerSlot
-          ent: 43
 - proto: DrinkJuiceLimeCarton
   entities:
   - uid: 2768
@@ -295573,21 +295394,6 @@ entities:
     - type: Transform
       parent: 56862
       pos: 8.3637085,17.584198
-- proto: Pill
-  entities:
-  - uid: 9
-    components:
-    - type: Transform
-      parent: 8
-    - type: SolutionContainerManager
-      containers:
-      - food
-    - type: Physics
-      canCollide: False
-    - type: ContainerContainer
-      containers:
-        solution@food: !type:ContainerSlot
-          ent: 10
   - uid: 11
     components:
     - type: Transform
