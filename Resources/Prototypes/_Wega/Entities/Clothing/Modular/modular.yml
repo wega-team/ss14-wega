@@ -2207,6 +2207,15 @@
     sprite: _Wega/Clothing/Modular/Mining/control.rsi
   - type: Clothing
     sprite: _Wega/Clothing/Modular/Mining/control.rsi
+    clothingVisuals:
+      back:
+      - state: equipped-BACKPACK
+      - state: ash_accretion-equipped-BACKPACK
+  - type: ToggleableVisuals
+    clothingVisuals:
+      back:
+      - state: sealed-equipped-BACKPACK
+      - state: ash_accretion-equipped-BACKPACK
   - type: ContainerFill
     containers:
       suit_core: *core-slot
@@ -2215,6 +2224,9 @@
         - ClothingModularChestPlateMining
         - ClothingModularGauntletsMining
         - ClothingModularBootsMining
+  - type: ModularSuitPreassembled
+    modules:
+    - AshAccretionSuitModule
   - type: ModularSuit
     activeComponents:
       head:
@@ -2232,7 +2244,8 @@
         - type: TemperatureProtection
           coefficient: 0.01
         - type: ClothingAshStormProtection
-          modifier: 0.2
+          modifier: 0.6
+          stormShielded: true
         - type: FireProtection
           reduction: 0.5
       gloves:

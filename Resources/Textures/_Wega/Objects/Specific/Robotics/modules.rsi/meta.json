@@ -1,7 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise, kinetic_holster modified from holster by depsad, elec,flora,rock by melisandra, chem by KRIKUN",
+  "copyright": "Sprite taken from https://github.com/ss220-space/Paradise, kinetic_holster modified from holster by depsad, elec,flora,rock by melisandra, chem by KRIKUN, ash_accretion taken from tgstation at commit https://github.com/tgstation/tgstation/commit/49d2f1f3c9b5a59e8a8989c9d616e383c02c1cff",
   "size": {
     "x": 32,
     "y": 32
@@ -223,6 +223,9 @@
     },
     {
       "name": "plate_compression"
+    },
+    {
+      "name": "ash_accretion"
     }
   ]
 }
