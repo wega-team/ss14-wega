@@ -59,10 +59,10 @@ public sealed partial class AffectedModuleAshAccretionSystem : EntitySystem
             args.Msg.PushNewline();
             args.Msg.AddMarkupOrThrow(Loc.GetString("armor-coefficient-value",
                 ("type", Loc.GetString("armor-damage-type-" + type.Id.ToLower())),
-                ("value", MathF.Round((1f - coefficient) * 100, 1))));
+                ("value", Math.Round((1 - (double) coefficient) * 100, 1))));
         }
 
-        var explosion = MathF.Round((1f - accretion.ExplosionCoefficient) * 100, 1);
+        var explosion = Math.Round((1 - (double) accretion.ExplosionCoefficient) * 100, 1);
         if (explosion == 0)
             return;
 

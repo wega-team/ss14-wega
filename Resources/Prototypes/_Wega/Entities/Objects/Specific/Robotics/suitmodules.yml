@@ -1828,12 +1828,10 @@
     activeComponents:
     - type: AffectedModuleAshAccretion
       modifiers:
-        coefficients: # цифры конченые, потому что я через калькулятор приближённые значения считал.
-          Blunt: 0.51
-          Slash: 0.59
-          Piercing: 0.95
-          Heat: 0.51
-          Radiation: 0.95
+        coefficients:
+          Blunt: 0.565
+          Slash: 0.66
+          Heat: 0.565
           Caustic: 0.34
       walkModifier: 1.1765
       sprintModifier: 1.1765
