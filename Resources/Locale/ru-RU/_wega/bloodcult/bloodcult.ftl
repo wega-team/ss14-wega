@@ -71,6 +71,8 @@ revive-need-more = Нужно ещё [color=#880000]{ $needed }[/color] { $neede
     *[other]жертв
 }.
 
+runes-ui-default-title = Руна призыва
+
 # System
 blood-cultist-eyes-glow-examined = [color=red]Глаза {$name} созерцают неестественным цветом, это не к добру...[/color]
 blood-cult-first-warning = Ваши глаза начали полыхать заревом крови

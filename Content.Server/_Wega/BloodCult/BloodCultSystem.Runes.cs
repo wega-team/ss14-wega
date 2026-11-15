@@ -753,7 +753,25 @@ public sealed partial class BloodCultSystem
 
     private void OpenSummoningMenu(EntityUid rune, EntityUid cultist)
     {
+        var cultists = new Dictionary<NetEntity, (string Name, bool IsDead)>();
+        var runeCoords = _transform.GetMapCoordinates(rune);
+
+        var query = EntityQueryEnumerator<BloodCultistComponent, MetaDataComponent>();
+
+        while (query.MoveNext(out var uid, out _, out var metadata))
+        {
+            if (TerminatingOrDeleted(uid) || Transform(uid).MapID != runeCoords.MapId)
+                continue;
+
+            if (runeCoords.InRange(_transform.GetMapCoordinates(uid), 8f))
+                continue;
+
+            cultists.Add(GetNetEntity(uid), (metadata.EntityName, _mobState.IsDead(uid)));
+        }
+
         _ui.OpenUi(rune, SummoningRuneUiKey.Key, cultist);
+        _ui.SetUiState(rune, SummoningRuneUiKey.Key,
+            new SummoningRuneBoundUserInterfaceState(cultists));
     }
 
     private void HandleBloodboilRune(EntityUid rune, BloodRuneComponent runeComp, EntityUid cultist, MapCoordinates coords)
