@@ -9,6 +9,8 @@
         - to: BloodCultStructureAltar
           completed:
             - !type:SnapToGrid { }
+            - !type:SetAnchor
+              value: false
           steps:
             - material: RuneMetal
               amount: 3
@@ -36,6 +38,8 @@
         - to: BloodCultStructureArchives
           completed:
             - !type:SnapToGrid { }
+            - !type:SetAnchor
+              value: false
           steps:
             - material: RuneMetal
               amount: 3
@@ -63,6 +67,8 @@
         - to: BloodCultStructureForge
           completed:
             - !type:SnapToGrid { }
+            - !type:SetAnchor
+              value: false
           steps:
             - material: RuneMetal
               amount: 3
@@ -90,6 +96,8 @@
         - to: BloodCultStructurePylon
           completed:
             - !type:SnapToGrid { }
+            - !type:SetAnchor
+              value: false
           steps:
             - material: RuneMetal
               amount: 4

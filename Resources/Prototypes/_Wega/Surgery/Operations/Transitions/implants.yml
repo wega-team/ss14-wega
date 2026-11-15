@@ -1837,6 +1837,74 @@
             collection: Cautery
           time: 2
 
+# LoyaltyImplant
+- type: surgeryTransition
+  id: RemoveLoyaltyTransition
+  target: RemoveLoyaltyOperation
+  label: "Извлечь подозрительный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "LoyaltyImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractLoyaltyTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "LoyaltyImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveLoyaltyTransition
+  target: HeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
 # Throat
 - type: surgeryTransition
   id: RemoveDivineVocalCordsTransition

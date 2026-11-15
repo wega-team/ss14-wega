@@ -38,7 +38,11 @@ public abstract partial class SharedSharpeningSystem : EntitySystem
             return;
 
         if (ent.Comp.Sharpened)
+        {
+            var failedEvent = new SharpeningFailedEvent(GetNetEntity(args.User));
+            RaiseLocalEvent(args.Target.Value, failedEvent);
             return;
+        }
 
         if (!TryComp<MeleeWeaponComponent>(ent, out var weapon))
             return;
@@ -53,7 +57,7 @@ public abstract partial class SharedSharpeningSystem : EntitySystem
         ent.Comp.PreviousDamage = weapon.Damage;
         weapon.Damage = ent.Comp.Damage;
 
-        var ev = new SharpeningFinishedEvent(GetNetEntity(args.Target.Value), GetNetEntity(ent.Owner));
+        var ev = new SharpeningFinishedEvent(GetNetEntity(args.Target.Value), GetNetEntity(ent.Owner), GetNetEntity(args.User));
         RaiseLocalEvent(args.Target.Value, ev);
 
         args.Handled = true;
@@ -61,7 +65,7 @@ public abstract partial class SharedSharpeningSystem : EntitySystem
 
     private void OnMeleeHitEvent(Entity<SharpeningComponent> ent, ref MeleeHitEvent args)
     {
-        if (!args.IsHit)
+        if (!args.IsHit || args.HitEntities.Count == 0)
             return;
 
         if (!ent.Comp.Sharpened)

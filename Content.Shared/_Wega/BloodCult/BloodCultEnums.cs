@@ -118,3 +118,9 @@ public enum SummoningRuneUiKey : byte
 {
     Key
 }
+
+[Serializable, NetSerializable]
+public sealed partial class SummoningRuneBoundUserInterfaceState(Dictionary<NetEntity, (string Name, bool IsDead)> cultists) : BoundUserInterfaceState
+{
+    public readonly Dictionary<NetEntity, (string Name, bool IsDead)> Cultists = cultists;
+}

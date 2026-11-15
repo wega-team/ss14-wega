@@ -242,6 +242,13 @@
     - ExtractFakeMindShieldTransition
     - EndRemoveFakeMindShieldTransition
 
+- type: surgeryNode
+  id: RemoveLoyaltyOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - ExtractLoyaltyTransition
+    - EndRemoveLoyaltyTransition
+
 # Throat
 - type: surgeryNode
   id: RemoveDivineVocalCordsOperation
