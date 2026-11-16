@@ -480,6 +480,7 @@
     tags:
     - BaseBodyPart
     - LeftArmSynthetic
+    - LeftArm
 
 - type: entity
   parent: [ OrganBaseArmRight, OrganAndroidExternal ]
@@ -489,6 +490,7 @@
     tags:
     - BaseBodyPart
     - RightArmSynthetic
+    - RightArm
 
 - type: entity
   parent: [ OrganBaseHandLeft, OrganAndroidExternal ]
@@ -498,6 +500,7 @@
     tags:
     - BaseBodyPart
     - LeftHandSynthetic
+    - LeftHand
 
 - type: entity
   parent: [ OrganBaseHandRight, OrganAndroidExternal ]
@@ -507,6 +510,7 @@
     tags:
     - BaseBodyPart
     - RightHandSynthetic
+    - RightHand
 
 - type: entity
   parent: [ OrganBaseLegLeft, OrganAndroidExternal ]
@@ -516,6 +520,7 @@
     tags:
     - BaseBodyPart
     - LeftLegSynthetic
+    - LeftLeg
 
 - type: entity
   parent: [ OrganBaseLegRight, OrganAndroidExternal ]
@@ -525,6 +530,7 @@
     tags:
     - BaseBodyPart
     - RightLegSynthetic
+    - RightLeg
 
 - type: entity
   parent: [ OrganBaseFootLeft, OrganAndroidExternal ]
@@ -534,6 +540,7 @@
     tags:
     - BaseBodyPart
     - LeftFootSynthetic
+    - LeftFoot
 
 - type: entity
   parent: [ OrganBaseFootRight, OrganAndroidExternal ]
@@ -543,6 +550,7 @@
     tags:
     - BaseBodyPart
     - RightFootSynthetic
+    - RightFoot
 
 - type: entity
   parent: [ OrganAndroidInternal ]

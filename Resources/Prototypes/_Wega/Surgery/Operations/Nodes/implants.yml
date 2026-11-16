@@ -5,14 +5,14 @@
 # Torso
 - type: surgeryNode
   id: ImplantingTorsoOperation
-  description: Имлантация
+  description: Имплантацияция
   transitions:
     - ImplantTorsoTransition
     - EndImplantTorsoTransition
 
 - type: surgeryNode
   id: SlimeImplantingTorsoOperation
-  description: Имлантация
+  description: Имплантация
   transitions:
     - SlimeImplantTorsoTransition
     - EndSlimeImplantTorsoTransition
@@ -20,23 +20,44 @@
 # Head
 - type: surgeryNode
   id: ImplantingHeadOperation
-  description: Имлантация
+  description: Имплантация
   transitions:
     - ImplantHeadTransition
     - EndImplanHeadTransition
 
 - type: surgeryNode
+  id: SlimeImplantingHeadOperation
+  description: Имплантация
+  transitions:
+    - SlimeImplantHeadTransition
+    - SlimeEndImplanHeadTransition
+
+- type: surgeryNode
   id: ImplantingTooth
-  description: Имлантация
+  description: Имплантация
   transitions:
     - ImplantingToothTransition
 
 - type: surgeryNode
   id: ImplantingToothOperation
-  description: Имлантация
+  description: Имплантация
   transitions:
     - ImplantToothTransition
     - EndImplantToothTransition
+
+- type: surgeryNode
+  id: ImplantingEyesOperation
+  description: Имплантация
+  transitions:
+    - ImplantEyesTransition
+    - EndIImplantEyesTransition
+
+- type: surgeryNode
+  id: SlimeImplantingEyesOperation
+  description: Имплантация
+  transitions:
+    - SlimeImplantEyesTransition
+    - SlimeEndIImplantEyesTransition
 
 # ========================
 # УДАЛЕНИЕ ИМПЛАНТОВ
@@ -242,9 +263,55 @@
     - ExtractFakeMindShieldTransition
     - EndRemoveFakeMindShieldTransition
 
+- type: surgeryNode
+  id: SlimeRemoveMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - SlimeExtractMindShieldTransition
+    - SlimeEndRemoveMindShieldTransition
+
+- type: surgeryNode
+  id: SlimeRemoveFakeMindShieldOperation
+  description: Извлечь имплант защиты разума
+  transitions:
+    - SlimeExtractFakeMindShieldTransition
+    - SlimeEndRemoveFakeMindShieldTransition
+
 # Throat
 - type: surgeryNode
   id: RemoveDivineVocalCordsOperation
   description: Извлечь голосовые связки бога
   transitions:
     - EndRemoveDivineVocalCordsTransition
+
+# Med hud
+- type: surgeryNode
+  id: RemoveMedHudOperation
+  description: Извлечь глазые мед визора
+  transitions:
+    - ExtractMedHudTransition
+    - EndRemoveMedHudTransition
+    
+# Diagnostic hud
+- type: surgeryNode
+  id: RemoveDiaHudOperation
+  description: Извлечь глазые диагностические визора
+  transitions:
+    - ExtractDiaHudTransition
+    - EndRemoveDiaHudTransition
+
+# Med hud
+- type: surgeryNode
+  id: SlimeRemoveMedHudOperation
+  description: Извлечь глазые мед визора
+  transitions:
+    - SlimeExtractMedHudTransition
+    - SlimeEndRemoveMedHudTransition
+    
+# Diagnostic hud
+- type: surgeryNode
+  id: SlimeRemoveDiaHudOperation
+  description: Извлечь глазые диагностические визора
+  transitions:
+    - SlimeExtractDiaHudTransition
+    - SlimeEndRemoveDiaHudTransition

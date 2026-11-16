@@ -103,15 +103,12 @@ public abstract partial class SharedImplanterSystem : EntitySystem
         if (!CheckTarget(target, ent.Comp.Whitelist, ent.Comp.Blacklist))
             return;
 
-        // Corvax-Wega-Surgery-Edit-start
         //TODO: Rework when surgery is in for implant cases
-        if (ent.Comp.CurrentMode == ImplanterToggleMode.Draw)
+        if (ent.Comp.CurrentMode == ImplanterToggleMode.Draw && !ent.Comp.ImplantOnly)
         {
-            _popup.PopupEntity(Loc.GetString("implanter-removal-requires-surgery"), args.User, args.User);
-            args.Handled = true;
-            return;
+            TryDraw(ent, args.User, target);
         }
-        // Corvax-Wega-Surgery-Edit-end
+
         else
         {
             if (!CanImplant(args.User, target, ent, out var implant, out _))

@@ -666,3 +666,6 @@
 
 - type: Tag
   id: Core
+
+- type: Tag
+  id: EyesImplants

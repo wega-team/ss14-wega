@@ -115,7 +115,7 @@
           path: /Audio/_Wega/Medical/Surgery/retractor2.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
-      - behavior: [ Retractor ]
+      - behavior: [ Retractor, Hemostat ]
         sprite:
           sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
           state: hemrevein_r
@@ -123,16 +123,35 @@
           path: /Audio/_Wega/Medical/Surgery/retractor1.ogg
         changeSound:
           path: /Audio/Items/change_drill.ogg
-      - behavior: [ Hemostat ]
-        sprite:
-          sprite: _Wega/Objects/Specific/Medical/Surgery/hemrevein.rsi
-          state: hemrevein_h
-        useSound:
-          path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
-        changeSound:
-          path: /Audio/Items/change_drill.ogg
   - type: SurgicalTool
     modifier: 1.5
+    
+- type: entity
+  name: laser scalpel
+  id: OmnitoolSurgical
+  parent: Scalpel
+  description: A scalpel which uses a directed laser to slice instead of a blade, for more precise surgery while also cauterizing as it cuts.
+  components:
+  - type: Sprite
+    state: laser
+  - type: Sterile
+    alwaysSterile: true
+  - type: Item
+    heldPrefix: laser
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 10 # Corvax-Wega-Surgery
+  - type: Tool
+    qualities:
+    - Scalpel
+    - Hemostat
+    - Retractor
+    - Cautery
+    - Drilling
+    - FixOVein
+    - BoneSetter
+    - Sawing
+    - BoneGel
+
 # Storage
 
 - type: entity
