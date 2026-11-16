@@ -129,14 +129,6 @@ public abstract partial class SharedPortalSystem : EntitySystem
             _pulling.TryStopPull(pullerComp.Pulling.Value, subjectPulling);
         }
 
-        // Corvax-Wega-start
-        if (ent.Comp.BlockCarriedMobs && ContainsMob(subject))
-        {
-            _popup.PopupEntity(Loc.GetString(ent.Comp.BlockedByCarriedMobMessage), subject, subject);
-            return;
-        }
-        // Corvax-Wega-end
-
         // also break grapple joints
         _joints.RemoveJoint(subject, SharedGrapplingGunSystem.GrapplingJoint);
 
@@ -154,6 +146,14 @@ public abstract partial class SharedPortalSystem : EntitySystem
 
             // pick a target and teleport there
             var target = _random.Pick(link.LinkedEntities);
+
+            // Corvax-Wega-start
+            if (ent.Comp.BlockCarriedMobs && ContainsMob(subject))
+            {
+                _popup.PopupEntity(Loc.GetString(ent.Comp.BlockedByCarriedMobMessage), subject, subject);
+                return;
+            }
+            // Corvax-Wega-end
 
             if (HasComp<PortalComponent>(target))
             {
@@ -173,7 +173,16 @@ public abstract partial class SharedPortalSystem : EntitySystem
 
         // no linked entity--teleport randomly
         if (ent.Comp.RandomTeleport)
+        {
+            // Corvax-Wega-start
+            if (ent.Comp.BlockCarriedMobs && ContainsMob(subject))
+            {
+                _popup.PopupEntity(Loc.GetString(ent.Comp.BlockedByCarriedMobMessage), subject, subject);
+                return;
+            }
+            // Corvax-Wega-end
             TeleportRandomly(ent, subject);
+        }
     }
 
     private void OnEndCollide(Entity<PortalComponent> ent, ref EndCollideEvent args)
