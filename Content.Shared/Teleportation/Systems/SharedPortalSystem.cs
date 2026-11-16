@@ -18,6 +18,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using Content.Shared.Silicons.Borgs.Components;   // Corvax-Wega
 using Robust.Shared.Utility;
 using Robust.Shared.Prototypes;
 using Content.Shared.Whitelist; // Corvax-Wega
@@ -323,7 +324,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
             {
                 foreach (var contained in container.ContainedEntities)
                 {
-                    if (HasComp<PAIComponent>(contained))
+                    if (HasComp<PAIComponent>(contained) || HasComp<BorgBrainComponent>(contained))
                         continue;
 
                     if (HasComp<MobStateComponent>(contained) || ContainsMob(contained))
@@ -335,7 +336,7 @@ public abstract partial class SharedPortalSystem : EntitySystem
         var children = Transform(uid).ChildEnumerator;
         while (children.MoveNext(out var child))
         {
-            if (HasComp<PAIComponent>(child))
+            if (HasComp<PAIComponent>(child) || HasComp<BorgBrainComponent>(child))
                 continue;
 
             if (HasComp<MobStateComponent>(child) || ContainsMob(child))
