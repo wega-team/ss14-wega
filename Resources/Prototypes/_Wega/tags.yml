@@ -669,3 +669,55 @@
 
 - type: Tag
   id: EyesImplants
+
+# Dwarf
+
+- type: Tag
+  id: DwarfLeftArm
+
+- type: Tag
+  id: DwarfRightArm
+
+- type: Tag
+  id: DwarfLeftHand
+
+- type: Tag
+  id: DwarfRightHand
+
+- type: Tag
+  id: DwarfLeftLeg
+
+- type: Tag
+  id: DwarfRightLeg
+
+- type: Tag
+  id: DwarfLeftFoot
+
+- type: Tag
+  id: DwarfRightFoot
+  
+# Resomi
+
+- type: Tag
+  id: ResomiLeftArm
+
+- type: Tag
+  id: ResomiRightArm
+
+- type: Tag
+  id: ResomiLeftHand
+
+- type: Tag
+  id: ResomiRightHand
+
+- type: Tag
+  id: ResomiLeftLeg
+
+- type: Tag
+  id: ResomiRightLeg
+
+- type: Tag
+  id: ResomiLeftFoot
+
+- type: Tag
+  id: ResomiRightFoot
