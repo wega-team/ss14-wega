@@ -254,6 +254,8 @@
   - type: DnaModifier
     upper: MobResomi
     lowest: MobStokkey
+  - type: Operated
+    raceGraph: ResomiSurgery
 
 - type: entity
   parent: OrganBase
@@ -311,34 +313,74 @@
 - type: entity
   parent: [ OrganBaseArmLeft, OrganResomiExternal ]
   id: OrganResomiArmLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiLeftArm
 
 - type: entity
   parent: [ OrganBaseArmRight, OrganResomiExternal ]
   id: OrganResomiArmRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiRightHand
 
 - type: entity
   parent: [ OrganBaseHandLeft, OrganResomiExternal ]
   id: OrganResomiHandLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiLeftHand
 
 - type: entity
   parent: [ OrganBaseHandRight, OrganResomiExternal ]
   id: OrganResomiHandRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiRightHand
 
 - type: entity
   parent: [ OrganBaseLegLeft, OrganResomiExternal ]
   id: OrganResomiLegLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiLeftLeg
 
 - type: entity
   parent: [ OrganBaseLegRight, OrganResomiExternal ]
   id: OrganResomiLegRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiRightLeg
 
 - type: entity
   parent: [ OrganBaseFootLeft, OrganResomiExternal ]
   id: OrganResomiFootLeft
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiLeftFoot
 
 - type: entity
   parent: [ OrganBaseFootRight, OrganResomiExternal ]
   id: OrganResomiFootRight
+  components:
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - ResomiRightFoot
 
 - type: entity
   parent: [ OrganBaseBrain, OrganResomiInternal ]

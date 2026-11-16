@@ -20,7 +20,30 @@
     - AndroidOrganManipulationTransition
     - AndroidCloseTorsoTransition
 
+- type: surgeryNode
+  id: AndroidImplantingEyesOperation
+  description: Имлантация
+  transitions:
+    - AndroidImplantEyesTransition
+    - AndroidEndIImplantEyesTransition
+
 # region Импланты
+
+# Med hud
+- type: surgeryNode
+  id: AndroidRemoveMedHudOperation
+  description: Извлечь глазые мед визора
+  transitions:
+    - AndroidExtractMedHudTransition
+    - AndroidEndRemoveMedHudTransition
+    
+# Diagnostic hud
+- type: surgeryNode
+  id: AndroidRemoveDiaHudOperation
+  description: Извлечь глазые диагностические визора
+  transitions:
+    - AndroidExtractDiaHudTransition
+    - AndroidEndRemoveDiaHudTransition
 
 # SadTromboneImplant
 - type: surgeryNode

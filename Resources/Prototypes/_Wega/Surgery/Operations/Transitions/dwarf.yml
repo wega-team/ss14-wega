@@ -1,0 +1,734 @@
+# ========================
+# ПЕРЕХОДЫ КОНЕЧНОСТЕЙ
+# ========================
+
+# ЛЕВАЯ РУКА
+- type: surgeryTransition
+  id: DwarfAmputateLeftArmTransition
+  target: DwarfAmputateLeftArmStart
+  label: Манипуляции с левой рукой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: ArmLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: ArmLeft
+
+- type: surgeryTransition
+  id: DwarfAmputateLeftArmFinishTransition
+  target: EndOperation
+  label: Ампутировать левую руку
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: ArmLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: DwarfAttachLeftArmStartTransition
+  target: DwarfAttachLeftArmProcess
+  label: Прикрепить левую руку
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: ArmLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: ArmLeft
+
+- type: surgeryTransition
+  id: DwarfAttachLeftArmProcessTransition
+  target: EndOperation
+  label: Прикрепить левую руку
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          invert: true
+          organ: ArmLeft
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: ArmLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+          successChance: 0.95
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: ArmLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+        - tag: [ DwarfLeftArm ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: ArmLeft
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ РУКА
+- type: surgeryTransition
+  id: DwarfAmputateRightArmTransition
+  target: DwarfAmputateRightArmStart
+  label: Манипуляции с правой рукой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: ArmRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: ArmRight
+
+- type: surgeryTransition
+  id: DwarfAmputateRightArmFinishTransition
+  target: EndOperation
+  label: Ампутировать правую руку
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: ArmRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+
+- type: surgeryTransition
+  id: DwarfAttachRightArmStartTransition
+  target: DwarfAttachRightArmProcess
+  label: Прикрепить правую руку
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: ArmRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: ArmRight
+
+- type: surgeryTransition
+  id: DwarfAttachRightArmProcessTransition
+  target: EndOperation
+  label: Прикрепить правую руку
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          invert: true
+          organ: ArmRight
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: ArmRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfRightArm ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: ArmRight
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ КИСТЬ
+- type: surgeryTransition
+  id: DwarfAmputateLeftHandTransition
+  target: DwarfAmputateLeftHandStart
+  label: Манипуляции с левой кистью
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: HandLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: ArmLeft
+            - !type:OrganPresentCondition
+              organ: HandLeft
+
+- type: surgeryTransition
+  id: DwarfAmputateLeftHandFinishTransition
+  target: EndOperation
+  label: Ампутировать левую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: HandLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: DwarfAttachLeftHandStartTransition
+  target: DwarfAttachLeftHandProcess
+  label: Прикрепить левую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: HandLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: ArmLeft
+            - !type:OrganPresentCondition
+              invert: true
+              organ: HandLeft
+
+- type: surgeryTransition
+  id: DwarfAttachLeftHandProcessTransition
+  target: EndOperation
+  label: Прикрепить левую кисть
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          organ: ArmLeft
+        - !type:OrganPresentCondition
+          invert: true
+          organ: HandLeft
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: HandLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfLeftHand ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: HandLeft
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ КИСТЬ
+- type: surgeryTransition
+  id: DwarfAmputateRightHandTransition
+  target: DwarfAmputateRightHandStart
+  label: Манипуляции с правой кистью
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: HandRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: ArmRight
+            - !type:OrganPresentCondition
+              organ: HandRight
+
+- type: surgeryTransition
+  id: DwarfAmputateRightHandFinishTransition
+  target: EndOperation
+  label: Ампутировать правую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: HandRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+
+- type: surgeryTransition
+  id: DwarfAttachRightHandStartTransition
+  target: DwarfAttachRightHandProcess
+  label: Прикрепить правую кисть
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: HandRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: ArmRight
+            - !type:OrganPresentCondition
+              invert: true
+              organ: HandRight
+
+- type: surgeryTransition
+  id: DwarfAttachRightHandProcessTransition
+  target: EndOperation
+  label: Прикрепить правую кисть
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          organ: ArmRight
+        - !type:OrganPresentCondition
+          invert: true
+          organ: HandRight
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: HandRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfRightHand ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: HandRight
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ НОГА
+- type: surgeryTransition
+  id: DwarfAmputateLeftLegTransition
+  target: DwarfAmputateLeftLegStart
+  label: Манипуляции с левой ногой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: LegLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: LegLeft
+
+- type: surgeryTransition
+  id: DwarfAmputateLeftLegFinishTransition
+  target: EndOperation
+  label: Ампутировать левую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: LegLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: DwarfAttachLeftLegStartTransition
+  target: DwarfAttachLeftLegProcess
+  label: Прикрепить левую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: LegLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: LegLeft
+
+- type: surgeryTransition
+  id: DwarfAttachLeftLegProcessTransition
+  target: EndOperation
+  label: Прикрепить левую ногу
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          invert: true
+          organ: LegLeft
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: LegLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfLeftLeg ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: LegLeft
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ НОГА
+- type: surgeryTransition
+  id: DwarfAmputateRightLegTransition
+  target: DwarfAmputateRightLegStart
+  label: Манипуляции с правой ногой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: LegRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: LegRight
+
+- type: surgeryTransition
+  id: DwarfAmputateRightLegFinishTransition
+  target: EndOperation
+  label: Ампутировать правую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: LegRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+
+- type: surgeryTransition
+  id: DwarfAttachRightLegStartTransition
+  target: DwarfAttachRightLegProcess
+  label: Прикрепить правую ногу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: LegRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              invert: true
+              organ: LegRight
+
+- type: surgeryTransition
+  id: DwarfAttachRightLegProcessTransition
+  target: EndOperation
+  label: Прикрепить правую ногу
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          invert: true
+          organ: LegRight
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: LegRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfRightLeg ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: LegRight
+          time: 6
+          successChance: 0.85
+
+# ЛЕВАЯ СТОПА
+- type: surgeryTransition
+  id: DwarfAmputateLeftFootTransition
+  target: DwarfAmputateLeftFootStart
+  label: Манипуляции с левой стопой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: FootLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: LegLeft
+            - !type:OrganPresentCondition
+              organ: FootLeft
+
+- type: surgeryTransition
+  id: DwarfAmputateLeftFootFinishTransition
+  target: EndOperation
+  label: Ампутировать левую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: FootLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 8
+
+- type: surgeryTransition
+  id: DwarfAttachLeftFootStartTransition
+  target: DwarfAttachLeftFootProcess
+  label: Прикрепить левую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: FootLeft
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: LegLeft
+            - !type:OrganPresentCondition
+              invert: true
+              organ: FootLeft
+
+- type: surgeryTransition
+  id: DwarfAttachLeftFootProcessTransition
+  target: EndOperation
+  label: Прикрепить левую стопу
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          organ: LegLeft
+        - !type:OrganPresentCondition
+          invert: true
+          organ: FootLeft
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: FootLeft
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfLeftFoot ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: FootLeft
+          time: 6
+          successChance: 0.85
+
+# ПРАВАЯ СТОПА
+- type: surgeryTransition
+  id: DwarfAmputateRightFootTransition
+  target: DwarfAmputateRightFootStart
+  label: Манипуляции с правой стопой
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: FootRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: LegRight
+            - !type:OrganPresentCondition
+              organ: FootRight
+
+- type: surgeryTransition
+  id: DwarfAmputateRightFootFinishTransition
+  target: EndOperation
+  label: Ампутировать правую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Sawing ]
+          tag: [ BotanyHatchet, FireAxe ]
+          action: RemoveOrgan
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: FootRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/saw.ogg
+          time: 6
+
+- type: surgeryTransition
+  id: DwarfAttachRightFootStartTransition
+  target: DwarfAttachRightFootProcess
+  label: Прикрепить правую стопу
+  stepGroups:
+    - steps:
+        - tool: [ Scalpel ]
+          tag: [ Knife, Shiv, BasicGlassShard, Wirecutter ]
+          action: Cut
+          failureEffect: [ Cut, Bleeding ]
+          requiredPart: FootRight
+          sound:
+            collection: Scalpel
+          time: 4
+          successChance: 0.95
+          conditions:
+            - !type:OrganPresentCondition
+              organ: LegRight
+            - !type:OrganPresentCondition
+              invert: true
+              organ: FootRight
+
+- type: surgeryTransition
+  id: DwarfAttachRightFootProcessTransition
+  target: EndOperation
+  label: Прикрепить правую стопу
+  stepGroups:
+    - conditions:
+        - !type:OrganPresentCondition
+          organ: LegRight
+        - !type:OrganPresentCondition
+          invert: true
+          organ: FootRight
+      steps:
+        - tool: [ Hemostat ]
+          tag: [ CableCoil, Crowbar ]
+          action: ClampBleeding
+          failureEffect: [ Bleeding, Pain ]
+          requiredPart: FootRight
+          sound:
+            path: /Audio/_Wega/Medical/Surgery/hemostat1.ogg
+          time: 3
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: Retract
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+        - tag: [ DwarfRightFoot ]
+          action: InsertOrgan
+          failureEffect: [ Pain ]
+          requiredPart: FootRight
+          time: 6
+          successChance: 0.85
+

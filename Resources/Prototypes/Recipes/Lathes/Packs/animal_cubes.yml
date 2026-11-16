@@ -11,6 +11,19 @@
   - MouseCube
   - CockroachCube
   - SlimeCube
+# Corvax-Wega-Start
+  - TajkeyCube
+  - WolflingCube
+  - StokkeyCube
+  - StokkeyVoxCube
+  - SkrellkeyCube
+  - MonkeyDemonCube
+  - MonkeyDwarfCube
+  - GiantSpiderCube
+  - ParrotCube
+  - CatCube
+  - DionaNymphCube
+# Corvax-Wega-End
 
 - type: latheRecipePack
   id: HostileCubesStatic

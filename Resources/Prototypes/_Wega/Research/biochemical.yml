@@ -158,6 +158,19 @@
   - LauncherSyringe
   - MiniSyringe
 
+- type: technology
+  id: EyesImplants
+  name: research-technology-eyes-implant
+  icon:
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
+  discipline: Biochemical
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - EyesImplantDiagnosticHud
+  - EyesImplantMedHud
+
 # Tier 3
 
 - type: technology

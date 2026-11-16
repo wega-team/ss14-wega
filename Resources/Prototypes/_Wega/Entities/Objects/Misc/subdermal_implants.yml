@@ -91,3 +91,70 @@
     - type: SmokeOnTrigger
       spreadAmount: 20
       duration: 10
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: KravMagaImplant
+  name: krav maga implant
+  description: This implant lets the user see the heat signatures of living creatures through walls and darkness.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: syndicate
+  - type: SubdermalImplant
+  - type: ComponentsImplantAdd
+    implantKey: kravmaga
+    components:
+    - type: MartialArts
+      style:
+      - KravMaga
+  - type: Tag
+    tags:
+    - SubdermalImplant
+
+## Eyes Implant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: EyesImplantBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
+  - type: Tag
+    tags:
+    - EyesImplants
+
+- type: entity
+  parent: EyesImplantBase
+  id: EyesImplantMedHud
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
+  - type: ComponentsImplantAdd
+    implantKey: medhud
+    components:
+    - type: ShowHealthIcons
+    - type: ShowHealthBars
+      damageContainers:
+      - Biological
+      - Inorganic
+
+- type: entity
+  parent: EyesImplantBase
+  id: EyesImplantDiagnosticHud
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/implants.rsi
+    state: empty
+  - type: ComponentsImplantAdd
+    implantKey: diagnostic
+    components:
+    - type: ShowHealthBars
+      damageContainers:
+      - Inorganic
+      - Silicon
+      - Android 
+    - type: ShowAccessReaderSettings

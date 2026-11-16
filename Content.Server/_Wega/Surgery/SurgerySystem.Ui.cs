@@ -10,7 +10,18 @@ namespace Content.Server.Surgery;
 
 public sealed partial class SurgerySystem
 {
-    private static readonly ProtoId<ToolQualityPrototype> SharpQuality = "Slicing";
+	private static readonly ProtoId<ToolQualityPrototype>[] SharpQualities = 
+	{
+        "Scalpel",
+        "Hemostat",
+        "Retractor",
+        "Cautery",
+        "Sawing",
+        "Drilling",
+        "FixOVein",
+        "BoneGel",
+        "BoneSetter"
+	};
 
     private void UiInitialize()
     {
@@ -24,7 +35,7 @@ public sealed partial class SurgerySystem
         var used = args.Used;
 
         var hasSpecialTool = comp.SpecialTool != null && _tool.HasQuality(used, comp.SpecialTool);
-        var hasDefaultTool = comp.SpecialTool == null && _tool.HasQuality(used, SharpQuality);
+    var hasDefaultTool = comp.SpecialTool == null && SharpQualities.Any(q => _tool.HasQuality(used, q));
         if (!hasSpecialTool && !hasDefaultTool)
             return;
 

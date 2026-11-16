@@ -56,3 +56,5 @@ ent-DrillAS = дрель
 ent-ScalpelAS = скальпель
     .desc = { ent-Scalpel.desc }
     .suffix = Стерильный
+ent-OmnitoolSurgical = хирургический омнитул
+    .desc = { ent-Scalpel.desc }

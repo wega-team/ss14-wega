@@ -109,3 +109,22 @@
     Plastic: 300
     Plasma: 200
     Gold: 100
+
+- type: latheRecipe
+  id: EyesImplantDiagnosticHud
+  result: EyesImplantDiagnosticHud
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+    Silver: 200
+
+- type: latheRecipe
+  id: EyesImplantMedHud
+  result: EyesImplantMedHud
+  completetime: 5
+  materials:
+    Steel: 500
+    Plastic: 300
+    Plasma: 200
+    Gold: 100
