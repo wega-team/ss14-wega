@@ -110,6 +110,10 @@ public sealed partial class ActionTeleporterComponent : Component
 
     [DataField]
     public SoundSpecifier ClearPortalsSound = new SoundPathSpecifier("/Audio/Machines/button.ogg");
+
+    // Minimum distance (in tiles) a new portal must be from any existing portal.
+    [DataField]
+    public float PortalMinDistance = 3f;
 }
 
 [Serializable, NetSerializable]

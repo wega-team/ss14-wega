@@ -8,6 +8,7 @@ using Content.Shared.Database;
 using Content.Shared.DoAfter;
 using Content.Shared.Gibbing;
 using Content.Shared.Mobs;
+using Robust.Shared.Physics.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Teleportation.Components;
 using Content.Shared.Teleportation.Systems;
@@ -30,6 +31,7 @@ public sealed partial class ActionTeleporterSystem : EntitySystem
     [Dependency] private SharedAppearanceSystem _appearance = default!;
     [Dependency] private SharedDoAfterSystem _doafter = default!;
     [Dependency] private BodySystem _body = default!;
+    [Dependency] private EntityLookupSystem _lookup = default!;
 
     public override void Update(float frameTime)
     {
@@ -64,6 +66,12 @@ public sealed partial class ActionTeleporterSystem : EntitySystem
     {
         if (args.Handled)
             return;
+
+        if (!PortalProximityCheck(args.Performer, component))
+        {
+            args.Handled = true;
+            return;
+        }
 
         var doafterArgs = new DoAfterArgs(
             EntityManager,
@@ -145,6 +153,9 @@ public sealed partial class ActionTeleporterSystem : EntitySystem
         if (component.FirstPortal is not { } firstPortal)
             return false;
 
+        if (!PortalProximityCheck(user, component))
+            return false;
+
         if (!component.AllowPortalsOnDifferentGrids
             && xform.ParentUid != Transform(firstPortal).ParentUid)
         {
@@ -185,6 +196,17 @@ public sealed partial class ActionTeleporterSystem : EntitySystem
         portal.RandomTeleport = false;
         if (component.AllowPortalsOnDifferentMaps)
             portal.CanTeleportToOtherMaps = true;
+    }
+    private bool PortalProximityCheck(EntityUid user, ActionTeleporterComponent component)
+    {
+        var portals = _lookup.GetEntitiesInRange<PortalComponent>(
+            Transform(user).Coordinates, component.PortalMinDistance);
+
+        if (portals.Count == 0)
+            return true;
+
+        _popup.PopupEntity(Loc.GetString("action-teleporter-popup-near-portal"), user, user);
+        return false;
     }
 
     #endregion
