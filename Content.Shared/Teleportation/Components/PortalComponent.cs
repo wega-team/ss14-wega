@@ -3,7 +3,7 @@ using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Corvax-Wega
 using Content.Shared.Tag;   // Corvax-Wega
 using Robust.Shared.Serialization;  // Corvax-Wega
-using Content.Shared.Whitelist;     // Corvax-Wega
+using Content.Shared.Whitelist; // Corvax-Wega
 
 namespace Content.Shared.Teleportation.Components;
 
@@ -71,6 +71,8 @@ public sealed partial class PortalComponent : Component
     [DataField] public TimeSpan OpeningAnimationTime = TimeSpan.FromSeconds(1);
     [DataField] public TimeSpan ClosingAnimationTime = TimeSpan.FromSeconds(1);
     [DataField] public EntityWhitelist? CollisionBlacklist;
+    [DataField] public bool BlockCarriedMobs;
+    [DataField] public LocId BlockedByCarriedMobMessage = "portal-blocked-carried-mob";
     // Corvax-Wega-Shadekin-end
 }
 

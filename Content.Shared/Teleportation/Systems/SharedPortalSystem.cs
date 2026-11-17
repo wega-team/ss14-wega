@@ -1,6 +1,8 @@
 using System.Linq;
+using Content.Shared.Mobs.Components;   // Corvax-Wega
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
+using Content.Shared.PAI;   // Corvax-Wega
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
@@ -8,6 +10,7 @@ using Content.Shared.Teleportation.Components;
 using Content.Shared.Weapons.Misc;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers; // Corvax-Wega
 using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Dynamics;
@@ -15,6 +18,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
+using Content.Shared.Silicons.Borgs.Components;   // Corvax-Wega
 using Robust.Shared.Utility;
 using Robust.Shared.Prototypes;
 using Content.Shared.Whitelist; // Corvax-Wega
@@ -37,7 +41,8 @@ public abstract partial class SharedPortalSystem : EntitySystem
     [Dependency] private SharedPopupSystem _popup = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
     [Dependency] private TagSystem _tag = default!;
-    [Dependency] private EntityWhitelistSystem _whitelist = default!; // Corvax-Wega
+    [Dependency] private EntityWhitelistSystem _whitelist = default!;   // Corvax-Wega
+    [Dependency] private SharedContainerSystem _container = default!;   // Corvax-Wega
 
     private const string PortalFixture = "portalFixture";
     private const string ProjectileFixture = "projectile";
@@ -143,6 +148,14 @@ public abstract partial class SharedPortalSystem : EntitySystem
             // pick a target and teleport there
             var target = _random.Pick(link.LinkedEntities);
 
+            // Corvax-Wega-start
+            if (ent.Comp.BlockCarriedMobs && ContainsMob(subject))
+            {
+                _popup.PopupEntity(Loc.GetString(ent.Comp.BlockedByCarriedMobMessage), subject, subject);
+                return;
+            }
+            // Corvax-Wega-end
+
             if (HasComp<PortalComponent>(target))
             {
                 // if target is a portal, signal that they shouldn't be immediately teleported back
@@ -161,7 +174,16 @@ public abstract partial class SharedPortalSystem : EntitySystem
 
         // no linked entity--teleport randomly
         if (ent.Comp.RandomTeleport)
+        {
+            // Corvax-Wega-start
+            if (ent.Comp.BlockCarriedMobs && ContainsMob(subject))
+            {
+                _popup.PopupEntity(Loc.GetString(ent.Comp.BlockedByCarriedMobMessage), subject, subject);
+                return;
+            }
+            // Corvax-Wega-end
             TeleportRandomly(ent, subject);
+        }
     }
 
     private void OnEndCollide(Entity<PortalComponent> ent, ref EndCollideEvent args)
@@ -285,10 +307,44 @@ public abstract partial class SharedPortalSystem : EntitySystem
         }
 
         TeleportEntity(ent, subject, newCoords);
+        RaiseLocalEvent(subject, new EntityTeleportedFromPortalEvent(ent)); // Corvax-Wega-Shadekin
     }
 
     protected virtual void LogTeleport(EntityUid portal, EntityUid subject, EntityCoordinates source,
         EntityCoordinates target)
     {
     }
+
+    // Corvax-Wega-start
+    private bool ContainsMob(EntityUid uid)
+    {
+        if (TryComp<ContainerManagerComponent>(uid, out var manager))
+        {
+            foreach (var container in _container.GetAllContainers(uid, manager))
+            {
+                foreach (var contained in container.ContainedEntities)
+                {
+                    if (HasComp<PAIComponent>(contained) || HasComp<BorgBrainComponent>(contained))
+                        continue;
+
+                    if (HasComp<MobStateComponent>(contained) || ContainsMob(contained))
+                        return true;
+                }
+            }
+        }
+
+        var children = Transform(uid).ChildEnumerator;
+        while (children.MoveNext(out var child))
+        {
+            if (HasComp<PAIComponent>(child) || HasComp<BorgBrainComponent>(child))
+                continue;
+
+            if (HasComp<MobStateComponent>(child) || ContainsMob(child))
+                return true;
+        }
+
+        return false;
+    }
+    // Corvax-Wega-end
+
 }
