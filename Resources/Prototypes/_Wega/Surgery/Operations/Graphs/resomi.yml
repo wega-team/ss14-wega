@@ -1,0 +1,22 @@
+- type: surgeryGraph
+  id: ResomiSurgery
+  startNodes:
+    - TorsoClosed
+    - HeadClosed
+    - AttachHead
+    - ResomiAmputateLeftArm
+    - ResomiAttachLeftArm
+    - ResomiAmputateRightArm
+    - ResomiAttachRightArm
+    - ResomiAmputateLeftHand
+    - ResomiAttachLeftHand
+    - ResomiAmputateRightHand
+    - ResomiAttachRightHand
+    - ResomiAmputateLeftLeg
+    - ResomiAttachLeftLeg
+    - ResomiAmputateRightLeg
+    - ResomiAttachRightLeg
+    - ResomiAmputateLeftFoot
+    - ResomiAttachLeftFoot
+    - ResomiAmputateRightFoot
+    - ResomiAttachRightFoot

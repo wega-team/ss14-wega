@@ -1,0 +1,54 @@
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: TajkeyCube
+  result: TajkeyCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: StokkeyVoxCube
+  result: StokkeyVoxCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: WolflingCube
+  result: WolflingCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: SkrellkeyCube
+  result: SkrellkeyCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: StokkeyCube
+  result: StokkeyCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: MonkeyDemonCube
+  result: MonkeyDemonCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: MonkeyDwarfCube
+  result: MonkeyDwarfCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: GiantSpiderCube
+  result: GiantSpiderCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: ParrotCube
+  result: ParrotCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: CatCube
+  result: CatCube
+
+- type: latheRecipe
+  parent: BaseCubeRecipe
+  id: DionaNymphCube
+  result: DionaNymphCube

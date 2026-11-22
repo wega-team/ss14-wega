@@ -154,6 +154,8 @@
   - type: DnaModifier
     upper: MobDwarf
     lowest: MobMonkeyDwarf
+  - type: Operated
+    raceGraph: DwarfSurgery
   # Corvax-Wega-Genetics-end
 
 - type: entity
@@ -276,6 +278,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfLeftArm
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanArmRight, OrganDwarfAppearance ]
@@ -288,6 +296,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfRightArm
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanHandRight, OrganDwarfAppearance ]
@@ -300,6 +314,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfRightHand
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanHandLeft, OrganDwarfAppearance ]
@@ -312,6 +332,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfLeftHand
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanLegLeft, OrganDwarfAppearance ]
@@ -324,6 +350,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfLeftLeg
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanLegRight, OrganDwarfAppearance ]
@@ -336,6 +368,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfRightLeg
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanFootLeft, OrganDwarfAppearance ]
@@ -348,6 +386,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfLeftFoot
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanFootRight, OrganDwarfAppearance ]
@@ -360,6 +404,12 @@
           32:
             sprite: Mobs/Species/Human/displacement.rsi
             state: dwarfism
+  # Corvax-Wega-Surgery-start
+  - type: Tag
+    tags:
+    - BaseBodyPart
+    - DwarfRightFoot
+  # Corvax-Wega-Surgery-end
 
 - type: entity
   parent: [ OrganHumanEyes, OrganDwarfAppearance ]

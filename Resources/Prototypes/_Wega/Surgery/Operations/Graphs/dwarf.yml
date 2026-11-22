@@ -1,0 +1,22 @@
+- type: surgeryGraph
+  id: DwarfSurgery
+  startNodes:
+    - TorsoClosed
+    - HeadClosed
+    - AttachHead
+    - DwarfAmputateLeftArm
+    - DwarfAttachLeftArm
+    - DwarfAmputateRightArm
+    - DwarfAttachRightArm
+    - DwarfAmputateLeftHand
+    - DwarfAttachLeftHand
+    - DwarfAmputateRightHand
+    - DwarfAttachRightHand
+    - DwarfAmputateLeftLeg
+    - DwarfAttachLeftLeg
+    - DwarfAmputateRightLeg
+    - DwarfAttachRightLeg
+    - DwarfAmputateLeftFoot
+    - DwarfAttachLeftFoot
+    - DwarfAmputateRightFoot
+    - DwarfAttachRightFoot

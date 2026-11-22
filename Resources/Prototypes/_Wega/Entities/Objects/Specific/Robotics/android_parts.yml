@@ -111,6 +111,43 @@
     state: pry_arm
   - type: BodyPartImplant
     key: pry
+    configurations:
+      arm-left:
+      - type: Organ
+        category: ArmLeft
+      - type: VisualOrgan
+        layer: enum.HumanoidVisualLayers.LArm
+        data:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
+          state: l_arm
+      - type: VisualOrganMarkings
+        markingData:
+          group: Android
+          layers:
+          - LArm
+      - type: Tag
+        tags:
+        - BaseBodyPart
+        - LeftArmSynthetic
+        - LeftArm
+      arm-right:
+      - type: Organ
+        category: ArmRight
+      - type: VisualOrgan
+        layer: enum.HumanoidVisualLayers.RArm
+        data:
+          sprite: _Wega/Mobs/Species/Android/parts.rsi
+          state: r_arm
+      - type: VisualOrganMarkings
+        markingData:
+          group: Android
+          layers:
+          - RArm
+      - type: Tag
+        tags:
+        - BaseBodyPart
+        - RightArmSynthetic
+        - RightArm
     implantComponents:
       - type: Tool
         qualities:

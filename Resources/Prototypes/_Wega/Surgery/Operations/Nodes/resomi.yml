@@ -1,0 +1,251 @@
+# ========================
+# УЗЛЫ КОНЕЧНОСТЕЙ
+# ========================
+
+- type: surgeryNode
+  id: ResomiAmputateLeftArm
+  description: Левая рука на месте
+  bodyPart: left_arm
+  transitions:
+    - ResomiAmputateLeftArmTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftArmStart
+  description: Начало ампутации левой руки
+  bodyPart: left_arm
+  packages:
+    - HealingLeftArmPackage
+  transitions:
+    - ResomiAmputateLeftArmFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachLeftArm
+  description: Левая рука отсутствует
+  bodyPart: left_arm
+  transitions:
+    - ResomiAttachLeftArmStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachLeftArmProcess
+  description: Процесс пришивания левой руки
+  bodyPart: left_arm
+  transitions:
+    - ResomiAttachLeftArmProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightArm
+  description: Правая рука на месте
+  bodyPart: right_arm
+  transitions:
+    - ResomiAmputateRightArmTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightArmStart
+  description: Начало ампутации правой руки
+  bodyPart: right_arm
+  packages:
+    - HealingRightArmPackage
+  transitions:
+    - ResomiAmputateRightArmFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachRightArm
+  description: Правая рука отсутствует
+  bodyPart: right_arm
+  transitions:
+    - ResomiAttachRightArmStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachRightArmProcess
+  description: Процесс пришивания правой руки
+  bodyPart: right_arm
+  transitions:
+    - ResomiAttachRightArmProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftHand
+  description: Левая кисть на месте
+  bodyPart: left_hand
+  transitions:
+    - ResomiAmputateLeftHandTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftHandStart
+  description: Начало ампутации левой кисти
+  bodyPart: left_hand
+  packages:
+    - HealingLeftHandPackage
+  transitions:
+    - ResomiAmputateLeftHandFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachLeftHand
+  description: Левая кисть отсутствует
+  bodyPart: left_hand
+  transitions:
+    - ResomiAttachLeftHandStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachLeftHandProcess
+  description: Процесс пришивания левой кисти
+  bodyPart: left_hand
+  transitions:
+    - ResomiAttachLeftHandProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightHand
+  description: Правая кисть на месте
+  bodyPart: right_hand
+  transitions:
+    - ResomiAmputateRightHandTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightHandStart
+  description: Начало ампутации правой кисти
+  bodyPart: right_hand
+  packages:
+    - HealingRightHandPackage
+  transitions:
+    - ResomiAmputateRightHandFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachRightHand
+  description: Правая кисть отсутствует
+  bodyPart: right_hand
+  transitions:
+    - ResomiAttachRightHandStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachRightHandProcess
+  description: Процесс пришивания правой кисти
+  bodyPart: right_hand
+  transitions:
+    - ResomiAttachRightHandProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftLeg
+  description: Левая нога на месте
+  bodyPart: left_leg
+  transitions:
+    - ResomiAmputateLeftLegTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftLegStart
+  description: Начало ампутации левой ноги
+  bodyPart: left_leg
+  packages:
+    - HealingLeftLegPackage
+  transitions:
+    - ResomiAmputateLeftLegFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachLeftLeg
+  description: Левая нога отсутствует
+  bodyPart: left_leg
+  transitions:
+    - ResomiAttachLeftLegStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachLeftLegProcess
+  description: Процесс пришивания левой ноги
+  bodyPart: left_leg
+  transitions:
+    - ResomiAttachLeftLegProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightLeg
+  description: Правая нога на месте
+  bodyPart: right_leg
+  transitions:
+    - ResomiAmputateRightLegTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightLegStart
+  description: Начало ампутации правой ноги
+  bodyPart: right_leg
+  packages:
+    - HealingRightLegPackage
+  transitions:
+    - ResomiAmputateRightLegFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachRightLeg
+  description: Правая нога отсутствует
+  bodyPart: right_leg
+  transitions:
+    - ResomiAttachRightLegStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachRightLegProcess
+  description: Процесс пришивания правой ноги
+  bodyPart: right_leg
+  transitions:
+    - ResomiAttachRightLegProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftFoot
+  description: Левая стопа на месте
+  bodyPart: left_foot
+  transitions:
+    - ResomiAmputateLeftFootTransition
+
+- type: surgeryNode
+  id: ResomiAmputateLeftFootStart
+  description: Начало ампутации левой стопы
+  bodyPart: left_foot
+  packages:
+    - HealingLeftFootPackage
+  transitions:
+    - ResomiAmputateLeftFootFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachLeftFoot
+  description: Левая стопа отсутствует
+  bodyPart: left_foot
+  transitions:
+    - ResomiAttachLeftFootStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachLeftFootProcess
+  description: Процесс пришивания левой стопы
+  bodyPart: left_foot
+  transitions:
+    - ResomiAttachLeftFootProcessTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightFoot
+  description: Правая стопа на месте
+  bodyPart: right_foot
+  transitions:
+    - ResomiAmputateRightFootTransition
+
+- type: surgeryNode
+  id: ResomiAmputateRightFootStart
+  description: Начало ампутации правой стопы
+  bodyPart: right_foot
+  packages:
+    - HealingRightFootPackage
+  transitions:
+    - ResomiAmputateRightFootFinishTransition
+    - CompleteOperationTransitionAlt
+
+- type: surgeryNode
+  id: ResomiAttachRightFoot
+  description: Правая стопа отсутствует
+  bodyPart: right_foot
+  transitions:
+    - ResomiAttachRightFootStartTransition
+
+- type: surgeryNode
+  id: ResomiAttachRightFootProcess
+  description: Процесс пришивания правой стопы
+  bodyPart: right_foot
+  transitions:
+    - ResomiAttachRightFootProcessTransition

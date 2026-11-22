@@ -194,6 +194,71 @@
           time: 2
 
 - type: surgeryTransition
+  id: SlimeImplantingHeadTransition
+  target: SlimeImplantingHeadOperation
+  label: "Имплантиривать подкожный имплант"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeImplantHeadTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tag: [ SubdermalHeadImplant ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: SlimeEndImplanHeadTransition
+  target: SlimeHeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+- type: surgeryTransition
   id: ImplantingToothTransition
   target: ImplantingToothOperation
   label: "Имплантация в зуб"
@@ -312,6 +377,430 @@
           sound:
             collection: Organ
           time: 5
+
+# Implant eyes
+
+- type: surgeryTransition
+  id: ImplantingEyesTransition
+  target: ImplantingEyesOperation
+  label: Имплантировать глазные имплаты
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ImplantEyesTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tag: [ EyesImplants ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: EndIImplantEyesTransition
+  target: HeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Удаление медхуда
+
+- type: surgeryTransition
+  id: RemoveMedHudTransition
+  target: RemoveMedHudOperation
+  label: "Извлечь имплант мед визора"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantMedHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractMedHudTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantMedHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "EyesImplantMedHud"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveMedHudTransition
+  target: HeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Удаление диагностического худа
+
+- type: surgeryTransition
+  id: RemoveDiaHudTransition
+  target: RemoveDiaHudOperation
+  label: "Извлечь имплант диагностические визора"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantDiagnosticHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: ExtractDiaHudTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantDiagnosticHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "EyesImplantDiagnosticHud"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: EndRemoveDiaHudTransition
+  target: HeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Implant eyes slime
+
+- type: surgeryTransition
+  id: SlimeImplantingEyesTransition
+  target: SlimeImplantingEyesOperation
+  label: Имплантировать глазные имплаты
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeImplantEyesTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tag: [ EyesImplants ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: SlimeEndIImplantEyesTransition
+  target: SlimeHeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          tag: [ Cigarette, Lighter, Welder ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Удаление медхуда
+
+- type: surgeryTransition
+  id: SlimeRemoveMedHudTransition
+  target: SlimeRemoveMedHudOperation
+  label: "Извлечь имплант мед визора"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantMedHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeExtractMedHudTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantMedHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "EyesImplantMedHud"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: SlimeEndRemoveMedHudTransition
+  target: SlimeHeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Удаление диагностического худа
+
+- type: surgeryTransition
+  id: SlimeRemoveDiaHudTransition
+  target: SlimeRemoveDiaHudOperation
+  label: "Извлечь имплант диагностические визора"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantDiagnosticHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeExtractDiaHudTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantDiagnosticHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "EyesImplantDiagnosticHud"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: SlimeEndRemoveDiaHudTransition
+  target: SlimeHeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
 
 # ========================
 # УДАЛЕНИЕ ИМПЛАНТОВ
@@ -1820,6 +2309,143 @@
 - type: surgeryTransition
   id: EndRemoveFakeMindShieldTransition
   target: HeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# Head slime
+# MindShieldImplant
+- type: surgeryTransition
+  id: SlimeRemoveMindShieldTransition
+  target: SlimeRemoveMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "MindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeExtractMindShieldTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "MindShieldImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: SlimeEndRemoveMindShieldTransition
+  target: SlimeHeadOpen
+  label: "Завершить"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Cautery ]
+          action: ClampBleeding
+          failureEffect: [ Burn ]
+          sound:
+            collection: Cautery
+          time: 2
+
+# FakeMindShieldImplant
+- type: surgeryTransition
+  id: SlimeRemoveFakeMindShieldTransition
+  target: SlimeRemoveFakeMindShieldOperation
+  label: "Извлечь имплант защиты разума"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "FakeMindShieldImplant"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Drilling ]
+          tag: [ Powerdrill, Pen, Pickaxe, Screwdriver ]
+          action: DrillThrough
+          failureEffect: [ Bleeding, Pain ]
+          sound:
+            path: /Audio/Items/drill_use.ogg
+          time: 6
+          successChance: 0.95
+
+- type: surgeryTransition
+  id: SlimeExtractFakeMindShieldTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Retractor ]
+          tag: [ Crowbar ]
+          action: RemoveImplant
+          requiredImplant: "FakeMindShieldImplant"
+          failureEffect: [ Bleeding ]
+          sound:
+            collection: Retractor
+          time: 8
+
+- type: surgeryTransition
+  id: SlimeEndRemoveFakeMindShieldTransition
+  target: SlimeHeadOpen
   label: "Завершить"
   stepGroups:
     - conditions:

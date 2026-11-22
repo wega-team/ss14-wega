@@ -59,6 +59,208 @@
             collection: CargoBeep
           time: 2
 
+## Глазные импланты
+- type: surgeryTransition
+  id: AndroidImplantingEyesTransition
+  target: AndroidImplantingEyesOperation
+  label: Имплантировать глазные имплаты
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidImplantEyesTransition
+  target: Default
+  label: "Имплантиривать"
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tag: [ EyesImplants ]
+          entityPreview: EmptySubdermalImplant
+          action: Implanting
+          failureEffect: [ Pain ]
+          sound:
+            collection: Retractor
+          time: 4
+
+- type: surgeryTransition
+  id: AndroidEndIImplantEyesTransition
+  target: AndroidHeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+
+# Удаление медхуда
+
+- type: surgeryTransition
+  id: AndroidRemoveMedHudTransition
+  target: AndroidRemoveMedHudOperation
+  label: "Извлечь имплант мед визора"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantMedHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractMedHudTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantMedHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "EyesImplantMedHud"
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidEndRemoveMedHudTransition
+  target: AndroidHeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+
+# Удаление диагностического худа
+
+- type: surgeryTransition
+  id: AndroidRemoveDiaHudTransition
+  target: AndroidRemoveDiaHudOperation
+  label: "Извлечь имплант диагностические визора"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantDiagnosticHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Screwing ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: Unscrew
+          sound:
+            collection: Screwdriver
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidExtractDiaHudTransition
+  target: Default
+  label: "Извлечь"
+  stepGroups:
+    - conditions:
+        - !type:ImplantPresentCondition
+          implant: "EyesImplantDiagnosticHud"
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+        - !type:OrganPresentCondition
+          organ: Head
+      parallel: true
+      steps:
+        - tool: [ Cutting ]
+          tag: [ Knife, Shiv, BasicGlassShard]
+          action: RemoveImplant
+          requiredImplant: "EyesImplantDiagnosticHud"
+          sound:
+            path: /Audio/Items/wirecutter.ogg
+          time: 2
+
+- type: surgeryTransition
+  id: AndroidEndRemoveDiaHudTransition
+  target: AndroidHeadOpen
+  label: Завершить
+  stepGroups:
+    - conditions:
+        - !type:ClothingCondition
+          invert: true
+          slots:
+          - head
+          - mask
+        - !type:OrganPresentCondition
+          organ: Head
+      steps:
+        - tool: [ Pulsing ]
+          tag: [ DoorElectronicsConfigurator ]
+          action: Pulse
+          sound:
+            collection: CargoBeep
+          time: 2
+
 # ========================
 # УДАЛЕНИЕ ИМПЛАНТОВ
 # ========================

@@ -29,27 +29,13 @@
         - SubdermalImplant
     allowDeimplantAll: false
     deimplantWhitelist:
+    # Corvax-Wega-Start
     - SadTromboneImplant
     - LightImplant
     - BikeHornImplant
     - TrackingImplant
-    - StorageImplant
-    - FreedomImplant
-    - UplinkImplant
-    - EmpImplant
-    - ScramImplant
-    - DnaScramblerImplant
-    - MicroBombImplant
-    - MacroBombImplant
-    - DeathAcidifierImplant
-    - DeathRattleImplant
     - MindShieldImplant
-    - FakeMindShieldImplant
-    - RadioImplant
-    - ChameleonControllerImplant
-    - VoiceMaskImplant
-    - LoyaltyImplant #Corvax-Wega-Edit
-    - ThermalVisionImplant # Corvax-Wega-Add
+    # Corvax-Wega-End
     deimplantFailureDamage:
       types:
         Cellular: 50

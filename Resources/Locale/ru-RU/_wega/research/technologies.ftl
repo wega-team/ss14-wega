@@ -24,3 +24,4 @@ research-technology-biochemical-chemistry = Редкий медицинский 
 research-technology-civilian-t3-borgmodule = Редкие сервисные модули
 research-technology-indastrial-t3-borgmodule = Редкие промышленные модули
 research-technology-synthcore = Синтетическое ядро
+research-technology-eyes-implant = Глазные импланты

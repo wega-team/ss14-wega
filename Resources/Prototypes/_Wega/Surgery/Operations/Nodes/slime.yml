@@ -92,6 +92,6 @@
   description: Череп вскрыт
   bodyPart: head
   packages:
-    - HeadImplantPackage
+    - SlimeHeadImplantPackage
   transitions:
     - SlimeCloseHeadTransition
