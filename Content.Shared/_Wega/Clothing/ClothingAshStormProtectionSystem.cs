@@ -25,6 +25,9 @@ public sealed partial class ClothingAshStormProtectionSystem : EntitySystem
 
     private void OnGetModifier(Entity<ClothingAshStormProtectionComponent> ent, ref InventoryRelayedEvent<AshProtectionAttemptEvent> args)
     {
+        if (ent.Comp.StormShielded)
+            args.Args.StormShielded = true;
+
         if (ent.Comp.Modifier <= 0f)
             return;
 

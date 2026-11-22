@@ -44,6 +44,7 @@ public sealed partial class LavalandSystem
     private static readonly ProtoId<DamageTypePrototype> StructuralDamage = "Structural";
     private static readonly ProtoId<DamageTypePrototype> BluntDamage = "Blunt";
     private static readonly EntProtoId FallingRock = "FallingRockEffect";
+    private const float BlockedShakeModifier = 0.3f;
 
     #region Weather Processing
 
@@ -219,14 +220,14 @@ public sealed partial class LavalandSystem
                     continue;
             }
 
+            var ev = new AshProtectionAttemptEvent();
+            RaiseLocalEvent(uid, ref ev);
+
             var damage = comp.CurrentWeatherEntry.Damage;
             if (damage != null)
             {
                 if (!HasComp<DamageableComponent>(uid) || HasComp<GodmodeComponent>(uid))
                     continue;
-
-                var ev = new AshProtectionAttemptEvent();
-                RaiseLocalEvent(uid, ref ev);
 
                 if (ev.Modifier < 1f)
                 {
@@ -237,11 +238,11 @@ public sealed partial class LavalandSystem
                 }
             }
 
-            ApplyWeatherEffects(uid, comp);
+            ApplyWeatherEffects(uid, comp, ev.StormShielded);
         }
     }
 
-    private void ApplyWeatherEffects(EntityUid targetUid, LavalandComponent comp)
+    private void ApplyWeatherEffects(EntityUid targetUid, LavalandComponent comp, bool stormShielded)
     {
         if (comp.CurrentWeatherEntry?.SpecialEffect == null)
             return;
@@ -249,11 +250,12 @@ public sealed partial class LavalandSystem
         switch (comp.CurrentWeatherEntry.SpecialEffect.Value)
         {
             case LavalandWeatherType.StormWind:
-                ApplyWindPush(targetUid);
+                if (!stormShielded)
+                    ApplyWindPush(targetUid);
                 break;
 
             case LavalandWeatherType.VolcanicActivity:
-                ApplyVolcanicActivity(comp, targetUid);
+                ApplyVolcanicActivity(comp, targetUid, stormShielded);
                 break;
         }
     }
@@ -333,11 +335,11 @@ public sealed partial class LavalandSystem
 
     #region Volcanic Activity
 
-    private void ApplyVolcanicActivity(LavalandComponent comp, EntityUid? targetUid = null)
+    private void ApplyVolcanicActivity(LavalandComponent comp, EntityUid? targetUid = null, bool stormShielded = false)
     {
         if (targetUid.HasValue)
         {
-            ApplyEarthquakeToPlayer(targetUid.Value, comp.RumbleSound);
+            ApplyEarthquakeToPlayer(targetUid.Value, comp.RumbleSound, stormShielded);
             if (_random.Prob(0.1f))
             {
                 SpawnEffectsNearPlayer(targetUid.Value, comp.RockFallSound);
@@ -399,36 +401,40 @@ public sealed partial class LavalandSystem
 
     #region Player Effects
 
-    private void ApplyEarthquakeToPlayer(EntityUid playerUid, SoundSpecifier sound)
+    private void ApplyEarthquakeToPlayer(EntityUid playerUid, SoundSpecifier sound, bool stormShielded)
     {
         if (!TryComp<CameraRecoilComponent>(playerUid, out var recoil))
             return;
 
         var intensity = _random.NextFloat(0.3f, 0.7f);
-        ApplyCameraShake(playerUid, intensity, recoil);
+        ApplyCameraShake(playerUid, intensity, recoil, stormShielded);
         _audio.PlayEntity(sound, playerUid, playerUid);
 
         if (_random.Prob(0.3f))
         {
-            ApplyStrongShake(playerUid, sound, recoil);
+            ApplyStrongShake(playerUid, sound, recoil, stormShielded);
         }
     }
 
-    private void ApplyCameraShake(EntityUid playerUid, float intensity, CameraRecoilComponent recoil)
+    private void ApplyCameraShake(EntityUid playerUid, float intensity, CameraRecoilComponent recoil, bool stormShielded)
     {
         var direction = _random.NextAngle().ToVec();
         var shakeMagnitude = intensity * 0.5f;
+        if (stormShielded)
+            shakeMagnitude *= BlockedShakeModifier;
 
         var kickback = direction * shakeMagnitude;
         _recoil.KickCamera(playerUid, kickback, recoil);
-        if (_random.Prob(intensity * 0.5f))
+        if (!stormShielded && _random.Prob(intensity * 0.5f))
             TryKnockDown(playerUid);
     }
 
-    private void ApplyStrongShake(EntityUid playerUid, SoundSpecifier sound, CameraRecoilComponent recoil)
+    private void ApplyStrongShake(EntityUid playerUid, SoundSpecifier sound, CameraRecoilComponent recoil, bool stormShielded)
     {
         var direction = _random.NextAngle().ToVec();
         var strongKick = direction * _random.NextFloat(0.4f, 0.8f);
+        if (stormShielded)
+            strongKick *= BlockedShakeModifier;
 
         Timer.Spawn(TimeSpan.FromSeconds(_random.NextFloat(0.1f, 0.5f)),
             () =>

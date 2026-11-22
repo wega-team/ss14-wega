@@ -6,6 +6,7 @@ namespace Content.Shared.Clothing.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class ClothingAshStormProtectionComponent : Component
 {
-    [DataField, AutoNetworkedField]
-    public float Modifier = 0.5f;
+    [DataField, AutoNetworkedField] public float Modifier = 0.5f;
+
+    [DataField, AutoNetworkedField] public bool StormShielded;
 }

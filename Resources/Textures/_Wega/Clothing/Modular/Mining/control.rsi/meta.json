@@ -21,6 +21,10 @@
     {
       "name": "sealed-equipped-BACKPACK",
       "directions": 4
+    },
+    {
+      "name": "ash_accretion-equipped-BACKPACK",
+      "directions": 4
     }
   ]
 }

@@ -144,11 +144,12 @@
   components:
   - type: ModularSuitPreassembled
     modules:
+    - AshAccretionSuitModule
     - GPSSuitModule
     - OreBagSuitModule
     - GrabberSuitModule
     - DrillSuitModule
-    - StorageSuitModule
+    - StorageLargeSuitModule
     - AdvancedFlashlightSuitModuleAqua
   - type: ItemSlots
     slots:
