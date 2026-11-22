@@ -6,4 +6,4 @@ melee-armor-penetration = Это оружие игнорирует [color=orange
 
 no-choose-server = На экстракторе не выбран сервер для преобразования очков исследования.
 extrator-point-get = Переработка экстрактора начата. Зачисленно { $points } очков на сервер.
-
+cult-allowed-gun-examine = [color=#bd3030]Данное орудие не сковывает ваши руки, позволяя его использовать.[/color]

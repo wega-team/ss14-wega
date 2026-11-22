@@ -55,3 +55,7 @@
     sprite: _Wega/Objects/Specific/BloodCult/stone.rsi
     state: sharpener
   - type: BloodSharpener
+  - type: Sharpener
+    strength: 3
+    usesMultiplier: 1
+    deleteOnSharpening: true

@@ -40,6 +40,11 @@ using Content.Shared.Timing.Systems;
 using Content.Shared.Hands.Components;
 using Content.Shared.Examine;
 using Content.Shared.Timing.Components;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs;
+using Content.Shared.Charges.Systems;
+using Content.Shared.Actions.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Containers;
@@ -49,6 +54,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Blood.Cult;
 
@@ -75,6 +81,8 @@ public sealed partial class BloodCultSystem
     [Dependency] private StatusEffectsSystem _statusEffect = default!;
     [Dependency] private UseDelaySystem _useDelay = default!;
     [Dependency] private VisibilitySystem _visibility = default!;
+    [Dependency] private IPrototypeManager _prototypeManager = default!;
+    [Dependency] private SharedChargesSystem _charges = default!;
 
     private static readonly SoundPathSpecifier CultSpell = new SoundPathSpecifier("/Audio/_Wega/Effects/cult_spell.ogg");
     private static readonly EntProtoId Muted = "StatusEffectMuted";
@@ -189,20 +197,12 @@ public sealed partial class BloodCultSystem
 
     private void OnStun(EntityUid cultist, BloodCultistComponent component, BloodCultStunActionEvent args)
     {
-        if (TrySpawnSpellInHand(cultist, "BloodCultSpellStun"))
-        {
-            args.Handled = true;
-            EmpoweringCheck(args.Action, component);
-        }
+        TrySpawnSpellInHand(cultist, "BloodCultSpellStun", args.Action);
     }
 
     private void OnTeleport(EntityUid cultist, BloodCultistComponent component, BloodCultTeleportActionEvent args)
     {
-        if (TrySpawnSpellInHand(cultist, "BloodCultSpellTeleport"))
-        {
-            args.Handled = true;
-            EmpoweringCheck(args.Action, component);
-        }
+        TrySpawnSpellInHand(cultist, "BloodCultSpellTeleport", args.Action);
     }
 
     private void OnElectromagneticPulse(EntityUid cultist, BloodCultistComponent component, BloodCultElectromagneticPulseActionEvent args)
@@ -243,29 +243,17 @@ public sealed partial class BloodCultSystem
 
     private void OnShadowShackles(EntityUid cultist, BloodCultistComponent component, BloodCultShadowShacklesActionEvent args)
     {
-        if (TrySpawnSpellInHand(cultist, "BloodCultSpellShadowShackles"))
-        {
-            args.Handled = true;
-            EmpoweringCheck(args.Action, component);
-        }
+        TrySpawnSpellInHand(cultist, "BloodCultSpellShadowShackles", args.Action);
     }
 
     private void OnTwistedConstruction(EntityUid cultist, BloodCultistComponent component, BloodCultTwistedConstructionActionEvent args)
     {
-        if (TrySpawnSpellInHand(cultist, "BloodCultSpellTwistedConstruction"))
-        {
-            args.Handled = true;
-            EmpoweringCheck(args.Action, component);
-        }
+        TrySpawnSpellInHand(cultist, "BloodCultSpellTwistedConstruction", args.Action);
     }
 
     private void OnSummonEquipment(EntityUid cultist, BloodCultistComponent component, BloodCultSummonEquipmentActionEvent args)
     {
-        if (TrySpawnSpellInHand(cultist, "BloodCultSpellSummonEquipment"))
-        {
-            args.Handled = true;
-            EmpoweringCheck(args.Action, component);
-        }
+        TrySpawnSpellInHand(cultist, "BloodCultSpellSummonEquipment", args.Action);
     }
 
     private void OnSummonDagger(EntityUid cultist, BloodCultistComponent component, BloodCultSummonDaggerActionEvent args)
@@ -286,21 +274,37 @@ public sealed partial class BloodCultSystem
             _ => "WeaponBloodDagger"
         };
 
-        var dagger = Spawn(selectedDagger, cultistCoords);
+        var dagger = SpawnAtPosition(selectedDagger, cultistCoords);
         component.RecallDaggerActionEntity = dagger;
         _hands.TryPickupAnyHand(cultist, dagger);
 
+        component.SelectedEmpoweringSpells.Remove(args.Action);
+        _action.RemoveAction(args.Action.Owner);
         args.Handled = true;
-        EmpoweringCheck(args.Action, component);
     }
 
     private void OnHallucinations(EntityUid cultist, BloodCultistComponent component, BloodCultHallucinationsActionEvent args)
     {
-        if (!HasComp<BloodCultistComponent>(args.Target))
-            _hallucinations.StartHallucinations(args.Target, "Hallucinations", TimeSpan.FromSeconds(30f), true, "Bloodcult");
+        if (!HasComp<ActorComponent>(args.Target) || HasComp<BloodCultistComponent>(args.Target))
+            return;
 
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        _hallucinations.StartHallucinations(
+            args.Target,
+            "Hallucinations",
+            TimeSpan.FromSeconds(30f),
+            true,
+            "Bloodcult");
+
+        if (!_charges.TryUseCharge(args.Action.Owner))
+            return;
+
+        _action.StartUseDelay(args.Action.Owner);
+
+        if (_charges.IsEmpty(args.Action.Owner))
+        {
+            component.SelectedEmpoweringSpells.Remove(args.Action.Owner);
+            _action.RemoveAction(args.Action.Owner);
+        }
     }
 
     private void OnConcealPresence(EntityUid cultist, BloodCultistComponent component, BloodCultConcealPresenceActionEvent args)
@@ -375,9 +379,18 @@ public sealed partial class BloodCultSystem
                 }
             }
         }
-        args.Handled = true;
-        EmpoweringCheck(args.Action, component);
+        if (!_charges.TryUseCharge(args.Action.Owner))
+            return;
+
+        _action.StartUseDelay(args.Action.Owner);
+
+        if (_charges.IsEmpty(args.Action.Owner))
+        {
+            component.SelectedEmpoweringSpells.Remove(args.Action.Owner);
+            _action.RemoveAction(args.Action.Owner);
+        }
     }
+
     #region Blood Rites
     private void OnBloodRites(EntityUid cultist, BloodCultistComponent component, BloodCultBloodRitesActionEvent args)
     {
@@ -410,10 +423,34 @@ public sealed partial class BloodCultSystem
 
     private void BloodRitesSelect(Entity<BloodSpellComponent> ent, ref BloodRitesSelectRitesMessage args)
     {
-        if (!HasComp<BloodCultistComponent>(args.Actor) || ent.Comp.SpellType != BloodCultSpell.BloodRites)
+        if (!TryComp<BloodCultistComponent>(args.Actor, out var cultist) ||
+            ent.Comp.SpellType != BloodCultSpell.BloodRites)
             return;
 
-        _action.AddAction(args.Actor, args.Rites);
+        if (cultist.BloodRitesCooldowns.TryGetValue(args.Rites, out var cooldown) &&
+            _gameTiming.CurTime < cooldown)
+        {
+            var remaining = Math.Ceiling((cooldown - _gameTiming.CurTime).TotalSeconds);
+
+            _popup.PopupEntity(
+                Loc.GetString("blood-cult-rites-cooldown", ("seconds", remaining)),
+                args.Actor,
+                args.Actor,
+                PopupType.SmallCaution);
+
+            return;
+        }
+
+        var actionUid = _action.AddAction(args.Actor, args.Rites);
+        if (actionUid is not { } action)
+            return;
+
+        if (TryComp<ActionComponent>(action, out var actionComp) &&
+            actionComp.UseDelay is { } delay)
+        {
+            cultist.BloodRitesCooldowns[args.Rites] = _gameTiming.CurTime + delay;
+        }
+
         QueueDel(ent);
     }
 
@@ -440,7 +477,7 @@ public sealed partial class BloodCultSystem
                 {
                     component.BloodCount -= inputValue;
 
-                    var bloodOrb = Spawn("BloodCultOrb", Transform(cultist).Coordinates);
+                    var bloodOrb = SpawnAtPosition("BloodCultOrb", Transform(cultist).Coordinates);
                     EnsureComp<BloodOrbComponent>(bloodOrb, out var orb);
                     orb.Blood = inputValue;
 
@@ -490,7 +527,7 @@ public sealed partial class BloodCultSystem
             if (_inventory.TryEquip(cultist, target, bloodShield.CurrentSlot, force: true))
             {
                 var shield = EnsureComp<EnergyShieldOwnerComponent>(cultist);
-                shield.ShieldEntity = Spawn("BloodCultShieldEffect", Transform(cultist).Coordinates);
+                shield.ShieldEntity = SpawnAtPosition("BloodCultShieldEffect", Transform(cultist).Coordinates);
                 _transform.SetParent(shield.ShieldEntity.Value, cultist);
 
                 _audio.PlayPvs(CultSpell, target);
@@ -536,7 +573,7 @@ public sealed partial class BloodCultSystem
             component.RecallSpearAction = null;
         }
 
-        var spear = Spawn("BloodCultSpear", Transform(cultist).Coordinates);
+        var spear = SpawnAtPosition("BloodCultSpear", Transform(cultist).Coordinates);
         component.RecallSpearActionEntity = spear;
         _hands.TryPickupAnyHand(cultist, spear);
 
@@ -602,22 +639,42 @@ public sealed partial class BloodCultSystem
             return;
 
         var user = args.User;
+
+        if (TryComp<BloodSpellSourceActionComponent>(entity.Owner, out var source))
+        {
+            if (source.Action is not { } action ||
+                !Exists(action) ||
+                !TryComp<ActionComponent>(action, out var actionComp) ||
+                actionComp.AttachedEntity != user ||
+                !_charges.HasCharges(action, 1))
+            {
+                args.Handled = true;
+                QueueDel(entity.Owner);
+                return;
+            }
+        }
+
         switch (spellComp.SpellType)
         {
             case BloodCultSpell.Stun:
-                HandleStunSpell(entity, user, target);
+                if (HandleStunSpell(entity, user, target))
+                    args.Handled = true;
                 break;
             case BloodCultSpell.Teleport:
-                HandleTeleportSpell(entity, user, target);
+                if (HandleTeleportSpell(entity, user, target))
+                    args.Handled = true;
                 break;
             case BloodCultSpell.ShadowShackles:
-                HandleShadowShacklesSpell(entity, user, target);
+                if (HandleShadowShacklesSpell(entity, user, target))
+                    args.Handled = true;
                 break;
             case BloodCultSpell.TwistedConstruction:
-                HandleTwistedConstructionSpell(entity, user, target);
+                if (HandleTwistedConstructionSpell(entity, user, target))
+                    args.Handled = true;
                 break;
             case BloodCultSpell.SummonEquipment:
-                HandleSummonEquipmentSpell(entity, user, target);
+                if (HandleSummonEquipmentSpell(entity, user, target))
+                    args.Handled = true;
                 break;
             case BloodCultSpell.BloodRites:
                 HandleBloodRitesSpell(entity, user, target, ref args);
@@ -630,10 +687,13 @@ public sealed partial class BloodCultSystem
 
     #region Spell Handlers
 
-    private void HandleStunSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
+    private bool HandleStunSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
     {
-        if (HasComp<BloodCultistComponent>(target) || HasComp<NullRodOwnerComponent>(target))
-            return;
+        if (!TryComp<MobStateComponent>(target, out var mobState) ||
+            mobState.CurrentState != MobState.Alive ||
+            HasComp<BloodCultistComponent>(target) ||
+            HasComp<NullRodOwnerComponent>(target))
+            return false;
 
         ExtractBlood(user, -10, 6);
 
@@ -641,18 +701,24 @@ public sealed partial class BloodCultSystem
         _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(10f));
         _flash.Flash(target, user, spell, TimeSpan.FromSeconds(2f), 1f);
 
+        ConsumeSpellAction(spell.Owner, user);
         QueueDel(spell);
+        return true;
     }
 
-    private void HandleTeleportSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
+    private bool HandleTeleportSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
     {
         if (HasComp<NullRodOwnerComponent>(target))
-            return;
+            return false;
 
-        ExtractBlood(user, -7, 5);
-
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, user, TimeSpan.FromSeconds(2f),
-            new TeleportSpellDoAfterEvent(), user, target, spell)
+        return _doAfterSystem.TryStartDoAfter(new DoAfterArgs(
+            EntityManager,
+            user,
+            TimeSpan.FromSeconds(2f),
+            new TeleportSpellDoAfterEvent(),
+            user,
+            target,
+            spell)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -661,18 +727,18 @@ public sealed partial class BloodCultSystem
         });
     }
 
-    private void HandleShadowShacklesSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
+    private bool HandleShadowShacklesSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
     {
         if (HasComp<BloodCultistComponent>(target) || HasComp<NullRodOwnerComponent>(target))
-            return;
+            return false;
 
         if (!IsValidForCuffing(target))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-shadow-shackles-failed"), user, user, PopupType.SmallCaution);
-            return;
+            return false;
         }
 
-        TryApplyHandcuffs(spell, user, target);
+        return TryApplyHandcuffs(spell, user, target);
     }
 
     private bool IsValidForCuffing(EntityUid target)
@@ -690,47 +756,46 @@ public sealed partial class BloodCultSystem
         return false;
     }
 
-    private void TryApplyHandcuffs(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
+    private bool TryApplyHandcuffs(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
     {
         if (!TryComp<CuffableComponent>(target, out var cuffable) || !cuffable.CanStillInteract)
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-shadow-shackles-failed"), user, user, PopupType.SmallCaution);
-            return;
+            return false;
         }
 
-        var handcuffs = Spawn("Handcuffs", Transform(target).Coordinates);
+        var handcuffs = SpawnAtPosition("Handcuffs", Transform(target).Coordinates);
+
         if (!TryComp<HandcuffComponent>(handcuffs, out var handcuffsComp) ||
             !_cuff.TryAddNewCuffs(target, user, handcuffs, cuffable, handcuffsComp))
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-shadow-shackles-failed"), user, user, PopupType.SmallCaution);
             QueueDel(handcuffs);
-            return;
+            return false;
         }
 
         _cuff.CuffUsed(handcuffsComp);
         _statusEffect.TryAddStatusEffectDuration(target, Muted, TimeSpan.FromSeconds(12f));
 
+        ConsumeSpellAction(spell.Owner, user);
         QueueDel(spell);
+
+        return true;
     }
 
-    private void HandleTwistedConstructionSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
+    private bool HandleTwistedConstructionSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
     {
         if (HasComp<AirlockComponent>(target))
-        {
-            TransformAirlock(spell, user, target);
-            return;
-        }
+            return TransformAirlock(spell, user, target);
 
         if (TryComp<StackComponent>(target, out var stack))
-        {
-            TransformMaterial(spell, user, target, stack);
-            return;
-        }
+            return TransformMaterial(spell, user, target, stack);
 
         _popup.PopupEntity(Loc.GetString("blood-cult-twisted-failed"), user, user, PopupType.SmallCaution);
+        return false;
     }
 
-    private void TransformAirlock(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid airlock)
+    private bool TransformAirlock(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid airlock)
     {
         ExtractBlood(user, -12, 8);
 
@@ -741,33 +806,42 @@ public sealed partial class BloodCultSystem
         var airlockTransform = Transform(airlock).Coordinates;
         QueueDel(airlock);
 
-        var ent = Spawn(spawnProto, airlockTransform);
+        var ent = SpawnAtPosition(spawnProto, airlockTransform);
         _audio.PlayPvs(CultSpell, ent);
+
+        ConsumeSpellAction(spell.Owner, user);
         QueueDel(spell);
+        return true;
     }
 
-    private void TransformMaterial(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid material, StackComponent stack)
+    private bool TransformMaterial(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid material, StackComponent stack)
     {
         if (!ProtoMan.TryIndex(stack.StackTypeId, out var stackPrototype))
-            return;
+            return false;
 
         if (stackPrototype.ID is not ("Steel" or "Plasteel"))
-            return;
+            return false;
 
-        ExtractBlood(user, -12, 8);
         var coords = Transform(material).Coordinates;
 
-        if (stackPrototype.ID == "Steel" && stack.Count >= 30)
+        if (stackPrototype.ID == "Steel")
         {
+            if (stack.Count < 30)
+                return false;
+
             TransformSteelToConstruct(material, coords, stack);
         }
-        else if (stackPrototype.ID == "Plasteel")
+        else
         {
             TransformPlasteelToRuneMetal(material, coords, stack.Count);
         }
 
+        ExtractBlood(user, -12, 8);
         _audio.PlayPvs(CultSpell, user);
+
+        ConsumeSpellAction(spell.Owner, user);
         QueueDel(spell);
+        return true;
     }
 
     private void TransformSteelToConstruct(EntityUid steelStack, EntityCoordinates coords, StackComponent stack)
@@ -775,38 +849,43 @@ public sealed partial class BloodCultSystem
         _stack.ReduceCount(steelStack, 30);
         if (stack.Count > 0)
         {
-            Spawn("BloodCultConstruct", coords);
+            SpawnAtPosition("BloodCultConstruct", coords);
         }
         else
         {
             QueueDel(steelStack);
-            Spawn("BloodCultConstruct", coords);
+            SpawnAtPosition("BloodCultConstruct", coords);
         }
     }
 
     private void TransformPlasteelToRuneMetal(EntityUid plasteelStack, EntityCoordinates coords, int count)
     {
-        var runeSteel = Spawn("SheetRuneMetal1", coords);
+        var runeSteel = SpawnAtPosition("SheetRuneMetal1", coords);
         QueueDel(plasteelStack);
 
         if (TryComp<StackComponent>(runeSteel, out var newStack))
             _stack.SetCount((runeSteel, newStack), count);
     }
 
-    private void HandleSummonEquipmentSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
+    private bool HandleSummonEquipmentSpell(Entity<BloodSpellComponent> spell, EntityUid user, EntityUid target)
     {
-        QueueDel(spell);
+        if (!HasComp<BloodCultistComponent>(target) ||
+            !HasComp<InventoryComponent>(target))
+            return false;
 
         var dropEvent = new DropHandItemsEvent();
         RaiseLocalEvent(target, ref dropEvent);
 
         var selectedGear = GetGodWeaponGear();
         var gear = new List<ProtoId<StartingGearPrototype>> { selectedGear };
-        _loadout.Equip(target, gear, null);
 
+        _loadout.Equip(target, gear, null);
         FillMissingEquipmentSlots(target);
 
+        ConsumeSpellAction(spell.Owner, user);
         QueueDel(spell);
+
+        return true;
     }
 
     private ProtoId<StartingGearPrototype> GetGodWeaponGear()
@@ -855,40 +934,58 @@ public sealed partial class BloodCultSystem
             return;
 
         var handled = false;
+        var delay = TimeSpan.FromSeconds(5);
+
         if (HasComp<BloodCultistComponent>(target))
         {
-            handled = HealCultist(cultist, target);
+            var healedDamage = HealCultist(cultist, target);
+
+            if (healedDamage > 0)
+            {
+                handled = true;
+
+                var cooldown = Math.Clamp(
+                    (int)Math.Ceiling(healedDamage / 15.0),
+                    1,
+                    10);
+
+                delay = TimeSpan.FromSeconds(cooldown);
+            }
         }
         else if (HasComp<HumanoidProfileComponent>(target) && !HasComp<NullRodOwnerComponent>(target))
         {
             handled = StealBloodFromHumanoid(cultist, user, target);
         }
-        else if (TryComp<PuddleComponent>(target, out _))
+        else if (HasComp<PuddleComponent>(target))
         {
             handled = AbsorbBloodFromPuddles(cultist, user);
+            delay = TimeSpan.FromSeconds(1);
         }
         else
         {
             _popup.PopupEntity(Loc.GetString("blood-cult-blood-rites-failed"), user, user, PopupType.SmallCaution);
-            handled = true;
+            return;
         }
 
         if (handled)
         {
             args.Handled = true;
+            _useDelay.SetLength((spell, useDelay), delay);
             _useDelay.TryResetDelay((spell, useDelay));
         }
     }
 
-    private bool HealCultist(BloodCultistComponent cultist, EntityUid target)
+    private int HealCultist(BloodCultistComponent cultist, EntityUid target)
     {
         if (!TryComp<DamageableComponent>(target, out var damage))
-            return false;
+            return 0;
 
         var totalBlood = cultist.BloodCount;
+        var initialBlood = totalBlood;
         var prioritizedDamageTypes = new[] { "Blunt", "Piercing", "Heat", "Slash", "Caustic" };
 
         var positiveDamage = _damage.GetPositiveDamage((target, damage));
+
         foreach (var damageType in prioritizedDamageTypes)
         {
             if (totalBlood <= 0)
@@ -898,13 +995,14 @@ public sealed partial class BloodCultSystem
             {
                 var healAmount = FixedPoint2.Min(currentDamage, totalBlood);
                 var healSpecifier = new DamageSpecifier { DamageDict = { { damageType, -healAmount } } };
+
                 _damage.TryChangeDamage(target, healSpecifier, true);
                 totalBlood -= healAmount.Int();
             }
         }
 
         cultist.BloodCount = totalBlood;
-        return true;
+        return initialBlood - totalBlood;
     }
 
     private bool StealBloodFromHumanoid(BloodCultistComponent cultist, EntityUid user, EntityUid target)
@@ -937,7 +1035,7 @@ public sealed partial class BloodCultSystem
         }
 
         cultist.BloodCount += absorbedBlood;
-        return true;
+        return absorbedBlood > 0;
     }
 
     private bool IsBloodPuddle(EntityUid puddle)
@@ -947,7 +1045,10 @@ public sealed partial class BloodCultSystem
 
         var solution = solutionComp.Solution;
         return solution.Contents.Any(r =>
-            r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood");
+            r.Reagent.Prototype == "Blood" ||
+            _prototypeManager
+                .EnumerateParents<ReagentPrototype>(r.Reagent.Prototype)
+                .Any(parent => parent.ID == "Blood"));
     }
 
     private int ExtractBloodFromPuddle(EntityUid puddle)
@@ -959,7 +1060,11 @@ public sealed partial class BloodCultSystem
         var absorbedBlood = 0;
 
         var bloodReagents = solution.Contents
-            .Where(r => r.Reagent.Prototype == "Blood" || r.Reagent.Prototype == "CopperBlood")
+            .Where(r =>
+                r.Reagent.Prototype == "Blood" ||
+                _prototypeManager
+                    .EnumerateParents<ReagentPrototype>(r.Reagent.Prototype)
+                    .Any(parent => parent.ID == "Blood"))
             .ToList();
 
         if (bloodReagents.Count == 0)
@@ -977,7 +1082,7 @@ public sealed partial class BloodCultSystem
         _solution.UpdateChemicals((puddle, solutionComp));
 
         if (absorbedBlood > 0)
-            Spawn("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
+            SpawnAtPosition("BloodCultFloorGlowEffect", Transform(puddle).Coordinates);
 
         if (solution.Volume <= FixedPoint2.Zero)
             QueueDel(puddle);
@@ -1003,7 +1108,11 @@ public sealed partial class BloodCultSystem
         if (args.Cancelled || args.Target == null || args.Used == null)
             return;
 
-        QueueDel(args.Used);
+        if (!TryComp<BloodSpellSourceActionComponent>(args.Used.Value, out var source) ||
+            source.Action is not { } action ||
+            !Exists(action) ||
+            !_charges.HasCharges(action, 1))
+            return;
 
         var runes = new List<EntityUid>();
         var runeQuery = EntityQueryEnumerator<BloodRuneComponent>();
@@ -1017,10 +1126,24 @@ public sealed partial class BloodCultSystem
         if (runes.Count > 0)
         {
             var randomRune = runes[_random.Next(runes.Count)];
-            Spawn("BloodCultOutEffect", Transform(args.Target.Value).Coordinates);
+
+            SpawnAtPosition("BloodCultOutEffect", Transform(args.Target.Value).Coordinates);
             _transform.SetCoordinates(args.Target.Value, Transform(randomRune).Coordinates);
-            Spawn("BloodCultInEffect", Transform(randomRune).Coordinates);
+            SpawnAtPosition("BloodCultInEffect", Transform(randomRune).Coordinates);
+
             QueueDel(randomRune);
+
+            ExtractBlood(cultist, -7, 5);
+            ConsumeSpellAction(args.Used.Value, cultist);
+            QueueDel(args.Used.Value);
+        }
+        else
+        {
+            _popup.PopupEntity(
+                Loc.GetString("blood-cult-teleport-failed"),
+                cultist,
+                cultist,
+                PopupType.SmallCaution);
         }
     }
 
@@ -1033,24 +1156,48 @@ public sealed partial class BloodCultSystem
         }
     }
 
-    private bool TrySpawnSpellInHand(EntityUid uid, EntProtoId proto)
+    private void ConsumeSpellAction(EntityUid spell, EntityUid user)
+    {
+        if (!TryComp<BloodSpellSourceActionComponent>(spell, out var source)
+            || source.Action is not { } action
+            || !Exists(action)
+            || !TryComp<BloodCultistComponent>(user, out var cultist))
+            return;
+
+        if (!_charges.TryUseCharge(action))
+            return;
+
+        _action.StartUseDelay(action);
+
+        if (_charges.IsEmpty(action))
+        {
+            cultist.SelectedEmpoweringSpells.Remove(action);
+            _action.RemoveAction(action);
+        }
+    }
+
+    private bool TrySpawnSpellInHand(EntityUid uid, EntProtoId proto, EntityUid? action = null)
     {
         if (!TryComp<HandsComponent>(uid, out var hands))
             return false;
 
-        var spell = Spawn(proto, Transform(uid).Coordinates);
+        var spell = SpawnAtPosition(proto, Transform(uid).Coordinates);
         var activeHand = _hands.GetActiveHand((uid, hands));
 
-        if (_hands.TryPickupAnyHand(uid, spell))
-            return true;
-        else if (activeHand != null && _hands.TryForcePickup((uid, hands), spell, activeHand))
-            return true;
-        else
+        if (_hands.TryPickupAnyHand(uid, spell) ||
+            activeHand != null && _hands.TryForcePickup((uid, hands), spell, activeHand))
         {
-            QueueDel(spell);
-            return false;
+            if (action != null)
+            {
+                var source = EnsureComp<BloodSpellSourceActionComponent>(spell);
+                source.Action = action;
+            }
+
+            return true;
         }
 
+        QueueDel(spell);
+        return false;
     }
     #endregion
 }

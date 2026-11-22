@@ -12,6 +12,14 @@ public sealed partial class SummoningRuneBoundUserInterface : BoundUserInterface
     {
     }
 
+    protected override void UpdateState(BoundUserInterfaceState state)
+    {
+        base.UpdateState(state);
+
+        if (state is SummoningRuneBoundUserInterfaceState summoningState)
+            _menu?.InitializeButtons(summoningState);
+    }
+
     protected override void Open()
     {
         base.Open();

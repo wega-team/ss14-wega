@@ -7,10 +7,15 @@ public sealed partial class SharpeningFinishedEvent : EntityEventArgs
 {
     public NetEntity Sharpener;
     public NetEntity Sharpening;
+    public NetEntity User;
 
-    public SharpeningFinishedEvent(NetEntity sharpener, NetEntity sharpening)
+    public SharpeningFinishedEvent(
+        NetEntity sharpener,
+        NetEntity sharpening,
+        NetEntity user)
     {
         Sharpener = sharpener;
         Sharpening = sharpening;
+        User = user;
     }
 }

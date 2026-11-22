@@ -12,6 +12,8 @@ public sealed partial class BloodCultistComponent : Component
 {
     public bool BloodMagicActive = false;
 
+    public Dictionary<EntProtoId, TimeSpan> BloodRitesCooldowns = new();
+
     [DataField] public EntityUid? SelectedSpell { get; set; }
 
     [DataField] public List<EntityUid?> SelectedEmpoweringSpells = new();
@@ -184,6 +186,9 @@ public sealed partial class VeilShifterComponent : Component
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BloodSharpenerComponent : Component;
+
+[RegisterComponent]
+public sealed partial class BloodCultBolaComponent : Component;
 
 /// <summary>
 /// Заглушка для логики

@@ -168,6 +168,13 @@
   transitions:
     - IpcExtractFakeMindShieldTransition
 
+# LoyaltyImplant
+- type: surgeryNode
+  id: IpcRemoveLoyaltyOperation
+  description: Извлечь подозрительный имплант
+  transitions:
+    - IpcExtractLoyaltyTransition
+
 # endregion
 
 # ========================
