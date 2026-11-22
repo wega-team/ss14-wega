@@ -40,17 +40,14 @@ public sealed partial class MindControlSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<ImplanterComponent, AddImplantAttemptEvent>(OnAttemptImplant);
+        SubscribeLocalEvent<MindControlImplantComponent, AddImplantAttemptEvent>(OnAttemptImplant);
         SubscribeLocalEvent<MindControlImplantComponent, ImplantImplantedEvent>(OnImplanted);
         SubscribeLocalEvent<MindControlImplantComponent, ImplantRemovedEvent>(OnRemoved);
         SubscribeLocalEvent<MindControlComponent, ExaminedEvent>(OnMindControlExamined);
     }
 
-    private void OnAttemptImplant(Entity<ImplanterComponent> ent, ref AddImplantAttemptEvent args)
+    private void OnAttemptImplant(Entity<MindControlImplantComponent> ent, ref AddImplantAttemptEvent args)
     {
-        if (!TryComp<MindControlImplantComponent>(args.Implant, out var implantComp))
-            return;
-
         if (args.User == args.Target)
         {
             args.Cancel();
@@ -72,7 +69,7 @@ public sealed partial class MindControlSystem : EntitySystem
             return;
         }
 
-        implantComp.Master = args.User;
+        ent.Comp.Master = args.User;
     }
 
     private void OnImplanted(Entity<MindControlImplantComponent> ent, ref ImplantImplantedEvent args)
