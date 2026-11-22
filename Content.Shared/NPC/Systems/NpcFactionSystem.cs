@@ -24,6 +24,7 @@ public sealed partial class NpcFactionSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<NpcFactionMemberComponent, ComponentStartup>(OnFactionStartup);
+        SubscribeLocalEvent<NpcFactionMemberComponent, AfterAutoHandleStateEvent>(OnFactionHandleState); // Corvax-Wega-FactionLock
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(OnProtoReload);
 
         InitializeException();
@@ -40,6 +41,13 @@ public sealed partial class NpcFactionSystem : EntitySystem
     {
         RefreshFactions(ent);
     }
+
+    // Corvax-Wega-FactionLock-start
+    private void OnFactionHandleState(Entity<NpcFactionMemberComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        RefreshFactions(ent);
+    }
+    // Corvax-Wega-FactionLock-end
 
     /// <summary>
     /// Refreshes the cached factions for this component.
@@ -113,6 +121,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
         if (!ent.Comp.Factions.Add(faction))
             return;
 
+        Dirty(ent.Owner, ent.Comp); // Corvax-Wega-FactionLock
+
         if (dirty)
             RefreshFactions((ent, ent.Comp));
     }
@@ -135,6 +145,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
             ent.Comp.Factions.Add(faction);
         }
 
+        Dirty(ent.Owner, ent.Comp); // Corvax-Wega-FactionLock
+
         if (dirty)
             RefreshFactions((ent, ent.Comp));
     }
@@ -156,6 +168,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
         if (!ent.Comp.Factions.Remove(faction))
             return;
 
+        Dirty(ent.Owner, ent.Comp); // Corvax-Wega-FactionLock
+
         if (dirty)
             RefreshFactions((ent, ent.Comp));
     }
@@ -169,6 +183,8 @@ public sealed partial class NpcFactionSystem : EntitySystem
             return;
 
         ent.Comp.Factions.Clear();
+
+        Dirty(ent.Owner, ent.Comp); // Corvax-Wega-FactionLock
 
         if (dirty)
             RefreshFactions((ent, ent.Comp));
