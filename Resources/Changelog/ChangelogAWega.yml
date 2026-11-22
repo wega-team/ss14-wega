@@ -1843,3 +1843,32 @@ Entries:
   id: 236
   time: '2026-11-14T08:47:26Z'
   url: https://github.com/wega-team/ss14-wega/pull/583
+- author: ElusiveTheDrake
+  changes:
+  - type: Tweak
+    message: Тенекины теперь не могут ставить порталы рядом с другими порталами
+  - type: Fix
+    message: Тенекины теперь не могут переносить существ через свои порталы
+  id: 237
+  time: '2026-11-22T12:45:27Z'
+  url: https://github.com/wega-team/ss14-wega/pull/602
+- author: ddepsadd
+  changes:
+  - type: Add
+    message: 'Шахтёрский МОД-костюм получил встроенный модуль "Пепельное покрытие": на лаве и айсмуне даёт броню и не замедляет, лучше держит взрывы и защищает от погоды. @liquiduser4rl толстый.'
+  - type: Tweak
+    message: В собранном шахтёрском МОД-костюме модуль хранения заменён на большой.
+  id: 238
+  time: '2026-11-22T13:03:10Z'
+  url: https://github.com/wega-team/ss14-wega/pull/600
+- author: GaMEWAR360
+  changes:
+  - type: Add
+    message: Новые глазные импланты и их изучение!
+  - type: Add
+    message: В фабрикатор биокубов добавлены все кубы предков рас!
+  - type: Tweak
+    message: Экстрактор имплантов вновь способен извлекать импланты, однако теперь только НТшные и которые являются подкожными.
+  id: 239
+  time: '2026-11-22T13:05:34Z'
+  url: https://github.com/wega-team/ss14-wega/pull/601
