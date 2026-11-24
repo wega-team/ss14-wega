@@ -1872,3 +1872,10 @@ Entries:
   id: 239
   time: '2026-11-22T13:05:34Z'
   url: https://github.com/wega-team/ss14-wega/pull/601
+- author: Lo1lolo-byte
+  changes:
+  - type: Fix
+    message: имплант подчинения снова подчиняет — работают блокировки самоимпланта, трупа и mindshield, цель получает задачу и эффекты
+  id: 240
+  time: '2026-11-22T22:01:25Z'
+  url: https://github.com/wega-team/ss14-wega/pull/599
