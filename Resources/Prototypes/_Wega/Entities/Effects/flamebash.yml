@@ -1,0 +1,17 @@
+- type: entity
+  id: EffectFlameBash
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _Wega/Effects/flamebash.rsi
+    state: flamebash
+    scale: 2, 2
+    noRot: false
+  - type: TimedDespawn
+    lifetime: 0.40
+  - type: PointLight
+    enabled: true
+    color: Orange
+    radius: 3.3
+    energy: 4

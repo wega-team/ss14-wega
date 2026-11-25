@@ -63,3 +63,61 @@
   - type: Appearance
   - type: StaticPrice
     price: 500
+
+- type: entity
+  parent: [ BaseItem, BaseGunMeleeSmall ]
+  id: WeaponPistolPhantomLiberty
+  name: phantom liberty
+  description: A powerful custom-made handgun with an advanced ammunition system.
+  suffix: Pistol
+  components:
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
+    wideAnimationRotation: 290
+  - type: FlameBash
+    flameSound:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/fl_flamethrow.ogg
+      params:
+        volume: 0.5 #громко пизда
+  - type: Sprite
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/phantomliberty.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+  - type: Appearance
+  - type: Item
+    size: Small
+  - type: Clothing
+    sprite: _Wega/Objects/Weapons/Guns/Pistols/phantomliberty.rsi
+    quickEquip: false
+    slots:
+    - suitStorage
+    - Belt
+  - type: Gun
+    projectileSpeed: 80
+    fireRate: 1.8
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/deserteagle.ogg
+      params:
+        volume: 2
+  - type: BallisticAmmoProvider
+    capacity: 10
+    proto: CartridgeMagnumIncendiary
+    cycleable: false
+  - type: BallisticAmmoSelfRefiller
+    autoRefillRate: 3s
+    firingPausesAutoRefill: true
+    autoRefillPauseDuration: 1s
+    rechargeSound:
+      path: /Audio/_Wega/Weapons/Guns/Gunshots/fl_empty.ogg
+  - type: AmmoCounter
+  - type: ContainerContainer
+    containers:
+      ballistic-ammo: !type:Container
+  - type: StaticPrice
+    price: 500
