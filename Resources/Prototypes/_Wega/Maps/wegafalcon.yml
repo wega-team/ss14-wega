@@ -1,0 +1,64 @@
+- type: gameMap
+  id: WegaFalcon
+  mapName: 'Falcon'
+  mapPath: /Maps/_Wega/WegaFalcon.yml
+  minPlayers: 0
+  maxPlayers: 15
+  stations:
+    Falcon:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Falcon {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'SS'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_Wega/Shuttles/emergency_courser.yml
+        - type: StationArrivals
+          shuttlePath: /Maps/_Wega/Shuttles/arrivals_falcon.yml
+        - type: StationCargoShuttle
+          path: /Maps/_Wega/Shuttles/cargo_falcon.yml
+        - type: StationLavaland
+          planets: [ Icemoon ]
+        - type: StationJobs
+          availableJobs:
+            # command
+            Captain: [ 1, 1 ]
+            IAA: [ 1, 1 ]
+            # cargo
+            Quartermaster: [ 1, 1 ]
+            ShaftMiner: [ 2, 2 ]
+            CargoTechnician: [ 2, 2 ]
+            # engineering
+            ChiefEngineer: [ 1, 1 ]
+            StationEngineer: [ 2, 2 ]
+            AtmosphericTechnician: [ 2, 2 ]
+            # medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            Geneticist: [ 1, 1 ]
+            Chemist: [ 1, 1 ]
+            Surgeon: [ 1, 1 ]
+            MedicalDoctor: [ 2, 2 ]
+            Paramedic: [ 1, 1 ]
+            # science
+            ResearchDirector: [ 1, 1 ]
+            Scientist: [ 2, 2 ]
+            ResearchAssistant: [ 2, 2 ]
+            # security
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            SecurityOfficer: [ 1, 1 ]
+            SecurityCadet: [ 1, 1 ]
+            Detective: [ 1, 1 ]
+            # service
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 1, 1 ]
+            Botanist: [ 1, 1 ]
+            Chaplain: [ 1, 1 ]
+            Chef: [ 1, 1 ]
+            Clown: [ 1, 1 ]
+            ServiceWorker: [ 2, 2 ]
+            Passenger: [ -1, -1 ]
+            # silicon
+            Borg: [ 1, 1 ]

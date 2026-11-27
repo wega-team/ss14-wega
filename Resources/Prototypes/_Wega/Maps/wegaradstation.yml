@@ -1,0 +1,85 @@
+- type: gameMap
+  id: WegaRadstation
+  mapName: 'Radstation'
+  mapPath: /Maps/_Wega/wegaradstation.yml
+  minPlayers: 30
+  maxPlayers: 60
+  stations:
+    Radstation:
+      stationProto: StandardNanotrasenStation
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: '{0} Radstation {1}'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: 'SS'
+        - type: StationEmergencyShuttle
+          emergencyShuttlePath: /Maps/_Wega/Shuttles/kerberosemergency.yml
+        - type: StationLavaland
+          planets: [ Lavaland, Icemoon ]
+          avanposts:
+            Lavaland:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpost.yml"
+            Icemoon:
+            - "/Maps/_Wega/Nonstations/cyberiadavanpostalt.yml"
+        - type: StationJobs
+          availableJobs:
+            #service
+            Captain: [ 1, 1 ]
+            BlueShieldOfficer: [ 1, 1 ]
+            IAA: [ 1, 1 ]
+            HeadOfPersonnel: [ 1, 1 ]
+            Bartender: [ 2, 2 ]
+            Botanist: [ 2, 3 ]
+            Chef: [ 2, 2 ]
+            Janitor: [ 2, 2 ]
+            Chaplain: [ 1, 1 ]
+            Librarian: [ 1, 1 ]
+            ServiceWorker: [ 3, 3 ]
+            #engineering
+            ChiefEngineer: [ 1, 1 ]
+            SeniorEngineer: [ 1, 1 ]
+            AtmosphericTechnician: [ 2, 2 ]
+            StationEngineer: [ 4, 4 ]
+            TechnicalAssistant: [ 2, 2 ]
+            #medical
+            ChiefMedicalOfficer: [ 1, 1 ]
+            Geneticist: [ 1, 1 ]
+            Chemist: [ 2, 2 ]
+            Surgeon: [ 2, 2 ]
+            Coroner: [ 1, 1 ]
+            SeniorPhysician: [ 1, 1 ]
+            MedicalDoctor: [ 4, 4 ]
+            Paramedic: [ 1, 1 ]
+            MedicalIntern: [ 2, 2 ]
+            Psychologist: [ 1, 1 ]
+            #science
+            ResearchDirector: [ 1, 1 ]
+            SeniorResearcher: [ 1, 1 ]
+            Scientist: [ 4, 4 ]
+            ResearchAssistant: [ 2, 2 ]
+            #security
+            HeadOfSecurity: [ 1, 1 ]
+            Warden: [ 1, 1 ]
+            WardenHelper: [ 1, 1 ]
+            SeniorOfficer: [ 1, 1 ]
+            SecurityOfficer: [ 3, 3 ]
+            Detective: [ 1, 1 ]
+            SecurityCadet: [ 3, 3 ]
+            Brigmedic: [ 1, 1 ]
+            #supply
+            Quartermaster: [ 1, 1 ]
+            ShaftMiner: [ 3, 3 ]
+            ShaftMinerMedic: [ 1, 1 ]
+            CargoTechnician: [ 3, 3 ]
+            Postman: [ 1, 1 ]
+            #civilian
+            Passenger: [ -1, -1 ]
+            Clown: [ 1, 1 ]
+            Mime: [ 1, 1 ]
+            Reporter: [ 2, 2 ]
+            Musician: [ 1, 1 ]
+            Barber: [ 1, 1 ]
+            # silicon
+            StationAi: [ 1, 1 ]
+            Borg: [ 2, 2 ]
