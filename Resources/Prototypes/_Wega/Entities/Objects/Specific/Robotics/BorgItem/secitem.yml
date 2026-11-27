@@ -317,7 +317,6 @@
     angleDecay: 0
     minAngle: 0
     maxAngle: 0
-    fireRateModified: 5
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ship_svalinn.ogg
       params:
