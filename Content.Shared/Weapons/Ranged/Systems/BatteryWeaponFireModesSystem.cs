@@ -132,6 +132,13 @@ public sealed partial class BatteryWeaponFireModesSystem : EntitySystem
                 _popupSystem.PopupEntity(Loc.GetString("gun-set-fire-mode-popup", ("mode", prototype.Name)), ent, user.Value);
         }
 
+		// Corvax-Wega-Start
+		if (fireMode.FireRate != null && TryComp<GunComponent>(ent, out var gunComponent))
+		{
+			_gun.SetFireRate((ent, gunComponent), fireMode.FireRate.Value);
+		}
+		// Corvax-Wega-End
+
         if (TryComp(ent, out BatteryAmmoProviderComponent? batteryAmmoProviderComponent))
         {
             batteryAmmoProviderComponent.Prototype = fireMode.Prototype;

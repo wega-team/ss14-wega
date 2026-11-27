@@ -72,19 +72,8 @@
     - state: icon-surgery
   - type: ItemBorgModule
     hands:
-    - item: ScalpelAS
-      hand:
-        emptyLabel: borg-slot-surgery-empty
-        emptyRepresentative: ScalpelAS
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-surgery-empty
-        emptyRepresentative: CauteryAS
-        whitelist:
-          tags:
-          - Itemborg
+    - item: OmnitoolSurgical
+    - item: MedicaloloprojectorField
     - item: SprayBottleEthanol
       hand:
         emptyRepresentative: SprayBottle
@@ -873,7 +862,7 @@
     hands:
     # - item: StunprodBorg
     - item: WeaponBorgDisabler
-    - item: WeaponMeleeNeedleBorgSec
+    - item: StunbatonBorg
     - item: Flash
       hand:
         emptyLabel: borg-slot-flash-empty
@@ -1182,7 +1171,7 @@
   - type: ItemBorgModule
     hands:
     - item: WeaponBorgLethal
-    - item: Truncheon
+    - item: StunbatonBorgUp
     - item: Flash
       hand:
         emptyLabel: borg-slot-flash-empty
@@ -1266,12 +1255,6 @@
     hands:
     - item: WeaponBorgTurel
       hand:
-        emptyLabel: borg-slot-turelgun-empty
-        emptyRepresentative: WeaponBorgTurel
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
         emptyLabel: borg-slot-turelgun-empty
         emptyRepresentative: WeaponBorgTurel
         whitelist:
@@ -1728,26 +1711,8 @@
     - state: icon-syndicate
   - type: ItemBorgModule
     hands:
-    - item: ScalpelAS
-      hand:
-        emptyLabel: borg-slot-surgery-empty
-        emptyRepresentative: ScalpelAS
-        whitelist:
-          tags:
-          - Itemborg
-    - hand:
-        emptyLabel: borg-slot-surgery-empty
-        emptyRepresentative: CauteryAS
-        whitelist:
-          tags:
-          - Itemborg
-    - item: TurboItemRechargerXenoborg
-    - hand:
-        emptyRepresentative: PowerCellHigh
-        emptyLabel: borg-slot-powercell-empty
-        whitelist:
-          components:
-          - PowerCell
+    - item: OmnitoolSurgicalEvil
+    - item: MedicaloloprojectorField
     - item: SprayBottleEthanol
       hand:
         emptyRepresentative: SprayBottle
