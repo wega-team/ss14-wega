@@ -57,4 +57,6 @@ ent-ScalpelAS = скальпель
     .desc = { ent-Scalpel.desc }
     .suffix = Стерильный
 ent-OmnitoolSurgical = хирургический омнитул
-    .desc = { ent-Scalpel.desc }
+    .desc = Омнитул от мира хирургии, способен соеденять операционный стол и консоль сканера тел.
+ent-OmnitoolSurgicalEvil = { ent-OmnitoolSurgical }
+    .desc = { ent-OmnitoolSurgical.desc }

@@ -4,8 +4,10 @@ ent-BasicHitscan = basic hitscan
     .desc = { "" }
 ent-LaserHitscanBase = basic laser ray
     .desc = { "" }
-ent-RedLightLaser = red light laser ray
+## Corvax-Wega-Start
+ent-RedLightLaser = лазер "Свалин"
     .desc = { ent-LaserHitscanBase.desc }
+## Corvax-Wega-End
 ent-RangeLaser = зелёный лазерный
     .desc = { ent-LaserHitscanBase.desc }
 ent-RedLaser = red laser ray
@@ -28,8 +30,10 @@ ent-XrayLaser = X-ray pulse beam
     .desc = { ent-LaserHitscanBase.desc }
 ent-Pulse = blue high-energy laser ray
     .desc = { ent-LaserHitscanBase.desc }
-ent-RedShuttleLaser = shuttle class red laser ray
+## Corvax-Wega-Start
+ent-RedShuttleLaser = лазер "Перфоратор"
     .desc = { ent-LaserHitscanBase.desc }
+## Corvax-Wega-End
 ent-DebugLaser = debug laser ray
     .desc = { ent-LaserHitscanBase.desc }
     .suffix = DEBUG

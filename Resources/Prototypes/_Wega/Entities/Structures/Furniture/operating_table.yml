@@ -1,0 +1,35 @@
+- type: entity
+  id: HoloOperatingTable
+  parent: Bed
+  name: operating table
+  description: Special medical table for surgery. This one just seems to be a useless prop, though.
+  components:
+  - type: Sprite
+    sprite: _Wega/Structures/Furniture/Tables/holo_optable.rsi
+    state: operating_table
+    noRot: true
+  - type: Icon
+    sprite: _Wega/Structures/Furniture/Tables/holo_optable.rsi
+    state: operating_table
+  - type: AmbientMusicMarkerMedical
+  # Corvax-Wega-Surgery-start
+  - type: OperatingTable
+  - type: DeviceNetwork
+    deviceNetId: Wired
+    receiveFrequencyId: BasicDevice
+  - type: DeviceList
+  - type: DeviceLinkSink
+    ports:
+      - SurgeryTableReceiver
+  - type: TriggerOnSpawn
+  - type: TimerTrigger
+    delay: 300
+    popup : null
+    examinable : false
+  - type: DamageOnTrigger
+    damage:
+      types:
+        Blunt: 5000
+    keysIn:
+    - timer
+  # Corvax-Wega-Surgery-end

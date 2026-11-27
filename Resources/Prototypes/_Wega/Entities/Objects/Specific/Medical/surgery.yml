@@ -127,19 +127,32 @@
     modifier: 1.5
     
 - type: entity
-  name: laser scalpel
+  name: omnitoolsergey
   id: OmnitoolSurgical
-  parent: Scalpel
+  parent: BaseToolSurgery
   description: A scalpel which uses a directed laser to slice instead of a blade, for more precise surgery while also cauterizing as it cuts.
   components:
   - type: Sprite
-    state: laser
+    sprite: _Wega/Objects/Specific/Medical/Surgery/omnimed.rsi
+    state: omnimed
   - type: Sterile
     alwaysSterile: true
   - type: Item
-    heldPrefix: laser
+    sprite: _Wega/Objects/Specific/Medical/Surgery/omnimed.rsi
   - type: SurgicalTool # Corvax-Wega-Surgery
-    modifier: 10 # Corvax-Wega-Surgery
+    modifier: 1.5 # Corvax-Wega-Surgery
+  - type: NetworkConfigurator
+  - type: ActivatableUI
+    key: enum.NetworkConfiguratorUiKey.List
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.NetworkConfiguratorUiKey.List:
+        type: NetworkConfiguratorListBoundUserInterface
+      enum.NetworkConfiguratorUiKey.Configure:
+        type: NetworkConfiguratorBoundUserInterface
+      enum.NetworkConfiguratorUiKey.Link:
+        type: NetworkConfiguratorLinkBoundUserInterface
   - type: Tool
     qualities:
     - Scalpel
@@ -151,6 +164,48 @@
     - BoneSetter
     - Sawing
     - BoneGel
+    - Pulsing
+
+- type: entity
+  name: omnitoolsergey
+  id: OmnitoolSurgicalEvil
+  parent: Scalpel
+  description: A scalpel which uses a directed laser to slice instead of a blade, for more precise surgery while also cauterizing as it cuts.
+  components:
+  - type: Sprite
+    sprite: _Wega/Objects/Specific/Medical/Surgery/omnimed.rsi
+    state: evil
+  - type: Sterile
+    alwaysSterile: true
+  - type: Item
+    sprite: _Wega/Objects/Specific/Medical/Surgery/omnimed.rsi
+    heldPrefix: evil
+  - type: SurgicalTool # Corvax-Wega-Surgery
+    modifier: 1.5 # Corvax-Wega-Surgery
+  - type: NetworkConfigurator
+  - type: ActivatableUI
+    key: enum.NetworkConfiguratorUiKey.List
+    inHandsOnly: true
+  - type: UserInterface
+    interfaces:
+      enum.NetworkConfiguratorUiKey.List:
+        type: NetworkConfiguratorListBoundUserInterface
+      enum.NetworkConfiguratorUiKey.Configure:
+        type: NetworkConfiguratorBoundUserInterface
+      enum.NetworkConfiguratorUiKey.Link:
+        type: NetworkConfiguratorLinkBoundUserInterface
+  - type: Tool
+    qualities:
+    - Scalpel
+    - Hemostat
+    - Retractor
+    - Cautery
+    - Drilling
+    - FixOVein
+    - BoneSetter
+    - Sawing
+    - BoneGel
+    - Pulsing
 
 # Storage
 

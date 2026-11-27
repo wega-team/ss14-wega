@@ -638,6 +638,16 @@ public abstract partial class SharedGunSystem : EntitySystem
         }
     }
 
+	// Corvax-Wega-Start
+	public void SetFireRate(Entity<GunComponent> gun, float fireRate)
+	{
+		gun.Comp.FireRate = fireRate;
+		gun.Comp.FireRateModified = fireRate;
+		Dirty(gun);
+		RefreshModifiers(gun.Owner);
+	}
+	// Corvax-Wega-End
+
     protected abstract void CreateEffect(EntityUid gunUid, MuzzleFlashEvent message, EntityUid? user = null);
 
     public abstract void PlayImpactSound(EntityUid otherEntity, DamageSpecifier? modifiedDamage, SoundSpecifier? weaponSound, bool forceWeaponSound);
